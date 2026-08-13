@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda Animal - Emergencia Terremoto Colombia</title>
+    <!-- Importar tipografía moderna de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome para mayor atractivo visual -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.7; 
+            color: var(--text-main); 
+            background-color: var(--bg-color); 
+            margin: 0; 
+            padding: 30px 15px; 
+        }
+
+        .container { 
+            max-width: 850px; 
+            margin: auto; 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); 
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        h1 { 
+            color: var(--text-main); 
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h1 span {
+            color: var(--primary);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        h2 { 
+            color: var(--text-main); 
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0; 
+        }
+
+        h2 i {
+            color: var(--primary);
+        }
+
+        .info-box, .donation-info { 
+            background: #f1f5f9; 
+            padding: 20px 25px; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            border-left: 5px solid var(--success); 
+            transition: transform 0.2s ease;
+        }
+
+        .donation-info { 
+            background: #fffbeb; 
+            border-left-color: var(--accent); 
+        }
+
+        .info-box:hover, .donation-info:hover {
+            transform: translateY(-2px);
+        }
+
+        ul { 
+            list-style-type: none; 
+            padding: 0; 
+            margin: 10px 0 0 0;
+        }
+
+        li { 
+            margin-bottom: 12px; 
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        li i {
+            color: var(--success);
+            margin-top: 5px;
+        }
+
+        .donation-info li i {
+            color: var(--accent);
+        }
+
+        .btn { 
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px; 
+            background: var(--primary); 
+            color: #fff; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn:hover { 
+            background: var(--primary-dark); 
+            box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
+        }
+
+        .footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding-top: 25px; 
+            border-top: 1px solid #e2e8f0; 
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* Estilo responsivo para celulares */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ayuda para Animales - <span>Emergencia Terremoto Colombia</span></h1>
+            <p class="intro-text">Estamos uniendo esfuerzos para brindar atención, refugio y ayuda a los animales afectados por el reciente terremoto en Colombia.</p>
+        </header>
+        
+        <h2><i class="fa-solid fa-box-open"></i> Donaciones de Insumos y Comida</h2>
+        <div class="info-box">
+            <p><strong>Punto de recolección (24/7):</strong> Centro de Bienestar Animal (CBA), Cra. 56 # 7 Oeste - 445, Cali.</p>
+            <p><strong>Lo que más necesitamos actualmente:</strong></p>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> <strong>Comida húmeda:</strong> Hills Urgent Care A/D (para caninos de rescate)</li>
+                <li><i class="fa-solid fa-check"></i> <strong>Medicamentos:</strong> Lactato de ringer, cloruro de sodio, lidocaína, vitaminas (Complejo B, Aminolyte), antibióticos, analgésicos, antitétanica, etc.</li>
+                <li><i class="fa-solid fa-check"></i> <strong>Insumos:</strong> Guacales, correas, gasas, cobijas, tapabocas, comida y camas para perros y gatos.</li>
+            </ul>
+        </div>
+
+        <h2><i class="fa-solid fa-hand-holding-dollar"></i> Donaciones Económicas</h2>
+        <div class="donation-info">
+            <p>Si deseas apoyar económicamente, estas son las cuentas autorizadas:</p>
+            <ul>
+                <li><i class="fa-solid fa-wallet"></i> <strong>Bancolombia:</strong> 434 0000 2972 (Cuenta ahorros, NIT 901557231-4, Fundacion Huellitas Callejeras)</li>
+                <li><i class="fa-solid fa-mobile-screen"></i> <strong>Nequi:</strong> 320 633 8459 (Martha Cerpa)</li>
+                <li><i class="fa-solid fa-mobile-screen"></i> <strong>DaviPlata:</strong> 304 662 79 15 (Arturo Junior Torres)</li>
+                <li><i class="fa-solid fa-qrcode"></i> <strong>@Bre-B:</strong> 304 333 1104 (Mayra Pajaro)</li>
+                <li><i class="fa-brands fa-paypal"></i> <strong>PayPal:</strong> <a href="https://paypal.me/mayrescata" target="_blank">paypal.me/mayrescata</a></li>
+            </ul>
+        </div>
+
+        <h2><i class="fa-solid fa-kit-medical"></i> Atención Veterinaria y Ayuda Social</h2>
+        <div class="info-box">
+            <p><strong>Atención Primaria Gratuita:</strong> Clínica Veterinaria Villalobos, Carrera 28 # 10A-55, Barrio Colseguros, Cali. De 7:00 A.M. a 4:00 P.M.</p>
+            <p><strong>Hogar de paso:</strong> Si encuentras una mascota perdida, puedes acudir a: Barrio Ciro velasco, Cra. 10 # 21-51, Jamundí.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Para más información y actualizaciones, visita:</p>
+            <a href="https://www.instagram.com/nathalialoppez/" class="btn" target="_blank">
+                <i class="fa-brands fa-instagram"></i> Instagram de Nathalia Lóppez
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+[cite: 1]

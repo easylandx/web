@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oh my Cut! Tres Cantos · Perfil 3C — Peluquería Sector Pueblos</title>
+<meta name="description" content="Oh my Cut! Tres Cantos, Sector Pueblos 2,3. Corte, color, mechas, alisados y tratamientos. Reserva llamando al 910 93 43 99 o síguenos en Instagram @estilistas3c_omc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum:#241432;
+    --plum-2:#3a1f4d;
+    --magenta:#ff2e93;
+    --coral:#ff7a59;
+    --sunshine:#ffd23f;
+    --lilac:#c77dff;
+    --mint:#3fe6b0;
+    --cream:#fff6ed;
+    --ink:#241432;
+    --paper:#fffaf4;
+    --radius:22px;
+    --shadow: 0 14px 34px rgba(36,20,50,.18);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Poppins',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.logo,.tag,.brand-word{font-family:'Fredoka',sans-serif;}
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  :focus-visible{outline:3px solid var(--magenta); outline-offset:3px; border-radius:6px;}
+
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,246,237,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(36,20,50,.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1160px; margin:0 auto;
+  }
+  .logo{
+    font-size:22px; font-weight:700; letter-spacing:.3px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo span.dot{
+    width:10px;height:10px;border-radius:50%;
+    background:linear-gradient(135deg,var(--magenta),var(--sunshine));
+    display:inline-block;
+  }
+  .logo small{
+    display:block; font-family:'Poppins',sans-serif; font-weight:600;
+    font-size:10.5px; letter-spacing:1.5px; color:var(--magenta); text-transform:uppercase;
+  }
+  nav.links{display:flex; gap:28px; font-weight:600; font-size:15px;}
+  nav.links a{text-decoration:none; opacity:.82; transition:opacity .2s;}
+  nav.links a:hover{opacity:1;}
+  .header-cta{display:flex; align-items:center; gap:12px;}
+  .phone-pill{
+    display:flex; align-items:center; gap:8px;
+    font-weight:700; font-size:14.5px; text-decoration:none;
+    color:var(--ink); border:2px solid var(--ink); padding:9px 16px; border-radius:100px;
+    transition:transform .18s ease, background .18s ease, color .18s ease;
+  }
+  .phone-pill:hover{background:var(--ink); color:var(--paper); transform:translateY(-2px);}
+  .btn-primary{
+    background:linear-gradient(120deg,var(--magenta),var(--coral));
+    color:#fff; font-weight:700; font-size:14.5px;
+    padding:11px 20px; border-radius:100px; text-decoration:none;
+    border:none; cursor:pointer;
+    box-shadow:0 10px 22px rgba(255,46,147,.35);
+    transition:transform .18s ease, box-shadow .18s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(255,46,147,.45);}
+  @media (max-width:860px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 15% -10%, #3a1f4d 0%, var(--plum) 55%, #1a0e26 100%);
+    color:#fff;
+    padding:88px 24px 70px;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1160px;margin:0 auto;
+    display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center;
+  }
+  .blob{
+    position:absolute; border-radius:50%; filter:blur(2px); opacity:.5;
+    animation:float 9s ease-in-out infinite;
+  }
+  .blob1{width:260px;height:260px; background:radial-gradient(circle at 30% 30%, var(--magenta), transparent 70%); top:-60px; right:120px;}
+  .blob2{width:220px;height:220px; background:radial-gradient(circle at 30% 30%, var(--sunshine), transparent 70%); bottom:-60px; right:-40px; animation-delay:1.5s;}
+  .blob3{width:180px;height:180px; background:radial-gradient(circle at 30% 30%, var(--lilac), transparent 70%); top:40%; left:-60px; animation-delay:3s;}
+  @keyframes float{ 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-18px);} }
+  @media (prefers-reduced-motion: reduce){ .blob{animation:none;} }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25);
+    padding:7px 14px; border-radius:100px; font-size:13px; font-weight:600;
+    letter-spacing:.4px; margin-bottom:22px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--mint);}
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 62px); line-height:1.04; font-weight:700; margin:0 0 20px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(100deg,var(--sunshine),var(--coral) 45%, var(--magenta) 90%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{
+    font-size:18px; line-height:1.65; max-width:490px; opacity:.86; margin:0 0 32px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-ghost{
+    display:inline-flex; align-items:center; gap:9px;
+    border:2px solid rgba(255,255,255,.55); color:#fff;
+    padding:11px 20px; border-radius:100px; text-decoration:none; font-weight:700; font-size:14.5px;
+    transition:background .18s ease, border-color .18s ease;
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.12); border-color:#fff;}
+  .hero-stats{display:flex; gap:30px; margin-top:44px; flex-wrap:wrap;}
+  .hero-stats div b{display:block; font-size:26px; font-family:'Fredoka',sans-serif;}
+  .hero-stats div span{font-size:12.5px; opacity:.75; letter-spacing:.3px;}
+
+  .hero-card{
+    position:relative; z-index:2;
+    background:linear-gradient(160deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:28px; padding:30px; backdrop-filter:blur(6px);
+  }
+  .hero-card h3{margin:0 0 6px; font-size:20px;}
+  .hero-card p{margin:0 0 20px; font-size:14px; opacity:.8; line-height:1.5;}
+  .swatches{display:flex; gap:10px; margin-bottom:22px;}
+  .swatches span{width:34px;height:34px;border-radius:10px; box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);}
+  .sw1{background:#e8b98a;} .sw2{background:#a5673f;} .sw3{background:#c77dff;}
+  .sw4{background:#ff7a59;} .sw5{background:#ffd23f;} .sw6{background:#2b1b22;}
+  .hero-card .ig-line{
+    display:flex; align-items:center; gap:10px; padding:12px 14px;
+    background:rgba(255,255,255,.08); border-radius:14px; text-decoration:none; color:#fff;
+    font-weight:600; font-size:14px; border:1px solid rgba(255,255,255,.15);
+    transition:transform .18s ease, background .18s ease;
+  }
+  .hero-card .ig-line:hover{background:rgba(255,255,255,.16); transform:translateY(-2px);}
+  .ig-icon{
+    width:30px;height:30px;border-radius:9px; flex-shrink:0;
+    background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    display:flex; align-items:center; justify-content:center;
+  }
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero{padding:64px 20px 50px;}
+  }
+
+  /* ---------- MARQUEE (signature) ---------- */
+  .marquee-band{
+    background:linear-gradient(100deg,var(--magenta),var(--coral) 45%,var(--sunshine) 100%);
+    transform:rotate(-1.6deg) scale(1.03);
+    margin:-26px 0 0;
+    padding:16px 0;
+    overflow:hidden;
+    position:relative; z-index:5;
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+  }
+  .marquee-track{
+    display:flex; width:max-content; gap:0;
+    animation:scroll 26s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
+  .marquee-track span{
+    font-family:'Fredoka',sans-serif; font-weight:600; font-size:22px; color:#241432;
+    padding:0 26px; white-space:nowrap; letter-spacing:.5px;
+  }
+  .marquee-track span.sep{opacity:.55; font-weight:400;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:600px; margin:0 auto 52px; text-align:center;}
+  .kicker{
+    display:inline-block; font-weight:700; font-size:13px; letter-spacing:1.6px;
+    text-transform:uppercase; color:var(--magenta); margin-bottom:12px;
+  }
+  .section-head h2{font-size:clamp(28px,3.6vw,40px); margin:0 0 14px; line-height:1.15;}
+  .section-head p{font-size:16px; line-height:1.6; opacity:.75; margin:0;}
+
+  /* ---------- SERVICIOS ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media (max-width:860px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--paper); border-radius:var(--radius); padding:28px 24px;
+    box-shadow:var(--shadow); border-top:5px solid var(--c);
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .service-card:hover{transform:translateY(-6px); box-shadow:0 20px 40px rgba(36,20,50,.22);}
+  .service-card .icon{
+    width:52px;height:52px;border-radius:16px; margin-bottom:16px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--c); color:#fff;
+  }
+  .service-card h3{margin:0 0 8px; font-size:19px;}
+  .service-card p{margin:0; font-size:14.5px; line-height:1.55; opacity:.72;}
+
+  /* ---------- POR QUE ---------- */
+  .why{
+    background:var(--plum); color:#fff; border-radius:32px;
+    padding:64px 44px; position:relative; overflow:hidden;
+  }
+  .why::before{
+    content:""; position:absolute; width:340px;height:340px; border-radius:50%;
+    background:radial-gradient(circle, var(--magenta), transparent 70%);
+    top:-140px; right:-100px; opacity:.55;
+  }
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; position:relative; z-index:2;}
+  .why h2{font-size:clamp(26px,3.4vw,34px); margin:0 0 16px;}
+  .why > .why-grid > div:first-child p{opacity:.78; line-height:1.65; font-size:15.5px;}
+  .why-list{display:flex; flex-direction:column; gap:22px;}
+  .why-item{display:flex; gap:16px;}
+  .why-item .num{
+    font-family:'Fredoka',sans-serif; font-weight:600; font-size:15px;
+    width:38px;height:38px; border-radius:11px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,var(--sunshine),var(--coral)); color:var(--plum);
+  }
+  .why-item h4{margin:0 0 4px; font-size:16px;}
+  .why-item p{margin:0; font-size:14px; opacity:.72; line-height:1.55;}
+  @media (max-width:800px){ .why-grid{grid-template-columns:1fr;} .why{padding:44px 26px;} }
+
+  /* ---------- INSTAGRAM ---------- */
+  .ig-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:14px;
+  }
+  @media (max-width:760px){ .ig-grid{grid-template-columns:repeat(3,1fr);} }
+  .ig-tile{
+    aspect-ratio:1/1; border-radius:16px; position:relative; overflow:hidden;
+    display:flex; align-items:flex-end; padding:12px; color:#fff; font-size:12px; font-weight:600;
+    transition:transform .2s ease;
+  }
+  .ig-tile:hover{transform:scale(1.04);}
+  .ig-tile span{position:relative; z-index:2;}
+  .ig-tile::after{content:""; position:absolute; inset:0; background:rgba(0,0,0,.18);}
+  .ig-tile.t1{background:linear-gradient(160deg,#ff2e93,#7b2ff7);}
+  .ig-tile.t2{background:linear-gradient(160deg,#ffd23f,#ff7a59);}
+  .ig-tile.t3{background:linear-gradient(160deg,#3fe6b0,#2f9e83);}
+  .ig-tile.t4{background:linear-gradient(160deg,#c77dff,#ff2e93);}
+  .ig-tile.t5{background:linear-gradient(160deg,#ff7a59,#ffd23f);}
+  .ig-tile.t6{background:linear-gradient(160deg,#241432,#7b2ff7);}
+  .ig-follow{
+    text-align:center; margin-top:36px;
+  }
+  .ig-follow p{opacity:.7; margin-bottom:16px; font-size:15px;}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:860px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi-card{
+    background:var(--paper); border-radius:var(--radius); padding:26px; box-shadow:var(--shadow);
+  }
+  .stars{color:var(--sunshine); font-size:17px; letter-spacing:2px; margin-bottom:12px;}
+  .testi-card p{margin:0 0 16px; font-size:14.5px; line-height:1.6; opacity:.82;}
+  .testi-who{display:flex; align-items:center; gap:10px; font-weight:600; font-size:13.5px;}
+  .testi-who .avatar{
+    width:34px;height:34px;border-radius:50%;
+    background:linear-gradient(135deg,var(--magenta),var(--lilac));
+  }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    background:linear-gradient(110deg,var(--magenta),var(--coral) 60%, var(--sunshine));
+    border-radius:32px; padding:60px 40px; text-align:center; color:#241432;
+    position:relative; overflow:hidden;
+  }
+  .cta-banner h2{font-size:clamp(26px,3.6vw,38px); margin:0 0 14px;}
+  .cta-banner p{font-size:16px; margin:0 0 30px; opacity:.85;}
+  .cta-buttons{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn-dark{
+    background:var(--plum); color:#fff; font-weight:700; padding:14px 26px; border-radius:100px;
+    text-decoration:none; display:inline-flex; align-items:center; gap:10px; font-size:15px;
+    box-shadow:0 12px 26px rgba(36,20,50,.35); transition:transform .18s ease;
+  }
+  .btn-dark:hover{transform:translateY(-3px);}
+  .btn-outline-dark{
+    border:2.5px solid var(--plum); color:var(--plum); font-weight:700; padding:12px 24px; border-radius:100px;
+    text-decoration:none; display:inline-flex; align-items:center; gap:10px; font-size:15px;
+    transition:background .18s ease, color .18s ease;
+  }
+  .btn-outline-dark:hover{background:var(--plum); color:#fff;}
+
+  /* ---------- UBICACION ---------- */
+  .loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:stretch;}
+  @media (max-width:860px){ .loc-grid{grid-template-columns:1fr;} }
+  .loc-card{
+    background:var(--paper); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:32px; display:flex; flex-direction:column; justify-content:center; gap:20px;
+  }
+  .loc-row{display:flex; gap:14px; align-items:flex-start;}
+  .loc-row .ico{
+    width:42px;height:42px;border-radius:12px; flex-shrink:0;
+    display:flex;align-items:center;justify-content:center; color:#fff;
+  }
+  .loc-row h4{margin:0 0 4px; font-size:15.5px;}
+  .loc-row p{margin:0; font-size:14px; opacity:.72; line-height:1.5;}
+  .map-frame{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); min-height:320px;}
+  .map-frame iframe{width:100%; height:100%; min-height:320px; border:0; display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--plum); color:#fff; padding:54px 0 26px;}
+  .footer-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:30px; flex-wrap:wrap;
+    padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .footer-logo{font-family:'Fredoka',sans-serif; font-size:22px; font-weight:700;}
+  .footer-tag{opacity:.6; font-size:13.5px; margin-top:8px; max-width:340px; line-height:1.55;}
+  .footer-links{display:flex; gap:40px; flex-wrap:wrap;}
+  .footer-col h5{font-size:12.5px; letter-spacing:1.2px; text-transform:uppercase; opacity:.55; margin:0 0 12px;}
+  .footer-col a{display:block; text-decoration:none; color:#fff; opacity:.85; font-size:14.5px; margin-bottom:9px;}
+  .footer-col a:hover{opacity:1; color:var(--sunshine);}
+  .footer-bottom{
+    display:flex; justify-content:space-between; padding-top:22px; font-size:12.5px; opacity:.5; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- FLOATING DOCK ---------- */
+  .dock{
+    position:fixed; bottom:20px; right:20px; z-index:60;
+    display:flex; flex-direction:column; gap:10px; align-items:flex-end;
+  }
+  .dock a{
+    display:flex; align-items:center; gap:9px;
+    padding:13px 18px; border-radius:100px; text-decoration:none; font-weight:700; font-size:14px;
+    box-shadow:0 12px 26px rgba(0,0,0,.25);
+    transition:transform .18s ease;
+  }
+  .dock a:hover{transform:translateY(-3px) scale(1.03);}
+  .dock .call{background:var(--plum); color:#fff;}
+  .dock .ig{background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); color:#fff;}
+
+  ::selection{background:var(--sunshine); color:var(--plum);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span class="dot"></span>
+      Oh my Cut!
+      <small>Perfil 3&nbsp;· Tres Cantos</small>
+    </div>
+    <nav class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#porque">Por qué nosotros</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#ubicacion">Cómo llegar</a>
+    </nav>
+    <div class="header-cta">
+      <a class="phone-pill" href="tel:+34910934399">📞 910 93 43 99</a>
+      <a class="btn-primary" href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener">Ver Instagram →</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <span class="blob blob1"></span>
+  <span class="blob blob2"></span>
+  <span class="blob blob3"></span>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Sector Pueblos 2,3 · Tres Cantos</div>
+      <h1>Tu pelo, tu momento, <span class="grad">tu mejor versión.</span></h1>
+      <p class="lead">Somos el perfil 3C de Oh my Cut! en Tres Cantos: cortes con criterio, color con oficio y un trato que se nota desde que cruzas la puerta. Sin salir de tu barrio.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="tel:+34910934399">📞 Llamar y reservar</a>
+        <a class="btn-ghost" href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener">📸 Síguenos @estilistas3c_omc</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>Sector Pueblos</b><span>Local 2, 3 · Tres Cantos</span></div>
+        <div><b>910 93 43 99</b><span>Llama o escribe para tu cita</span></div>
+        <div><b>@estilistas3c_omc</b><span>Trabajos y promos reales</span></div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3>Colores que sí funcionan</h3>
+      <p>Balayage, mechas, fantasía o color natural con brillo de verdad. Así se ve la paleta que más pedimos en el salón.</p>
+      <div class="swatches">
+        <span class="sw1"></span><span class="sw2"></span><span class="sw3"></span>
+        <span class="sw4"></span><span class="sw5"></span><span class="sw6"></span>
+      </div>
+      <a class="ig-line" href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener">
+        <span class="ig-icon">📷</span>
+        Ver antes / después en Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track">
+    <span>CORTE</span><span class="sep">✂</span>
+    <span>COLOR</span><span class="sep">✂</span>
+    <span>MECHAS</span><span class="sep">✂</span>
+    <span>BALAYAGE</span><span class="sep">✂</span>
+    <span>ALISADOS</span><span class="sep">✂</span>
+    <span>PEINADOS</span><span class="sep">✂</span>
+    <span>TRATAMIENTOS</span><span class="sep">✂</span>
+    <span>CORTE</span><span class="sep">✂</span>
+    <span>COLOR</span><span class="sep">✂</span>
+    <span>MECHAS</span><span class="sep">✂</span>
+    <span>BALAYAGE</span><span class="sep">✂</span>
+    <span>ALISADOS</span><span class="sep">✂</span>
+    <span>PEINADOS</span><span class="sep">✂</span>
+    <span>TRATAMIENTOS</span><span class="sep">✂</span>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Servicios</span>
+      <h2>Todo lo que tu pelo necesita, en un solo salón</h2>
+      <p>Del corte del día a día al cambio de imagen que llevas tiempo pensando.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card" style="--c:var(--magenta)">
+        <div class="icon" style="--c:var(--magenta)">✂️</div>
+        <h3>Corte y estilismo</h3>
+        <p>Cortes a medida para mujer, hombre y niños, adaptados a tu tipo de cara y a tu día a día.</p>
+      </div>
+
+      <div class="service-card" style="--c:var(--coral)">
+        <div class="icon" style="--c:var(--coral)">🎨</div>
+        <h3>Color y mechas</h3>
+        <p>Balayage, babylights, mechas californianas y color de fantasía cuidando siempre la salud del cabello.</p>
+      </div>
+
+      <div class="service-card" style="--c:var(--sunshine)">
+        <div class="icon" style="--c:var(--sunshine)">💧</div>
+        <h3>Tratamientos</h3>
+        <p>Hidratación profunda, reconstrucción y brillo para un pelo sano, fuerte y con movimiento.</p>
+      </div>
+
+      <div class="service-card" style="--c:var(--lilac)">
+        <div class="icon" style="--c:var(--lilac)">〰️</div>
+        <h3>Alisados</h3>
+        <p>Alisado y control del encrespamiento con acabados naturales que duran de verdad.</p>
+      </div>
+
+      <div class="service-card" style="--c:var(--mint)">
+        <div class="icon" style="--c:var(--mint)">💇</div>
+        <h3>Peinados y recogidos</h3>
+        <p>Peinados para bodas, eventos y ocasiones especiales, con prueba previa si la necesitas.</p>
+      </div>
+
+      <div class="service-card" style="--c:var(--plum)">
+        <div class="icon" style="--c:var(--plum)">🪒</div>
+        <h3>Salón unisex</h3>
+        <p>Servicio para toda la familia: mujer, hombre y niños, en el mismo salón y con la misma atención.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="porque" style="padding-top:0;">
+  <div class="wrap">
+    <div class="why">
+      <div class="why-grid">
+        <div>
+          <span class="kicker" style="color:var(--sunshine)">Por qué elegirnos</span>
+          <h2>Un salón de barrio con oficio de peluquería grande</h2>
+          <p>Somos el perfil 3C de Oh my Cut!, independiente del resto de salones de la marca en tu comunicación con nosotros: lo que ves aquí y en nuestro Instagram es lo que encontrarás al cruzar la puerta en Sector Pueblos.</p>
+        </div>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="num">1</div>
+            <div><h4>Asesoramiento real, sin prisas</h4><p>Escuchamos lo que quieres antes de coger las tijeras o el tinte.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="num">2</div>
+            <div><h4>Trabajos a la vista, sin filtros</h4><p>Publicamos resultados reales de clientas y clientes en nuestro Instagram.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="num">3</div>
+            <div><h4>Cerca de ti, en Tres Cantos</h4><p>Sector Pueblos 2, 3 — fácil de llegar y sin necesidad de moverte de la zona.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="num">4</div>
+            <div><h4>Promociones activas</h4><p>Seguimos publicando ofertas y novedades del salón, síguenos para no perdértelas.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">@estilistas3c_omc</span>
+      <h2>Mira nuestros trabajos y promos en Instagram</h2>
+      <p>Este es nuestro escaparate real: cortes, color y transformaciones que hacemos cada semana en el salón.</p>
+    </div>
+    <div class="ig-grid" aria-hidden="true">
+      <div class="ig-tile t1"><span>Corte</span></div>
+      <div class="ig-tile t2"><span>Balayage</span></div>
+      <div class="ig-tile t3"><span>Tratamiento</span></div>
+      <div class="ig-tile t4"><span>Color</span></div>
+      <div class="ig-tile t5"><span>Peinado</span></div>
+      <div class="ig-tile t6"><span>Promo</span></div>
+    </div>
+    <div class="ig-follow">
+      <p>Todo el contenido real está en el perfil — te esperamos allí.</p>
+      <a class="btn-primary" href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener">📸 Seguir @estilistas3c_omc</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Testimonios</span>
+      <h2>Lo que dicen quienes ya han pasado por el salón</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Llevo años yendo y siempre salgo encantada. Saben aconsejar de verdad, no solo hacer lo que pides sin más."</p>
+        <div class="testi-who"><span class="avatar"></span> Clienta habitual · Tres Cantos</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"El balayage me quedó espectacular y muy natural. Se nota que trabajan con mimo y con calma."</p>
+        <div class="testi-who"><span class="avatar"></span> Cliente · Sector Pueblos</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Trato cercano de barrio con resultados de salón grande. Pedir cita por teléfono fue rapidísimo."</p>
+        <div class="testi-who"><span class="avatar"></span> Cliente · Tres Cantos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-banner">
+      <h2>¿Le damos un cambio a tu pelo?</h2>
+      <p>Llama ahora y te encontramos hueco, o escríbenos por Instagram si lo prefieres.</p>
+      <div class="cta-buttons">
+        <a class="btn-dark" href="tel:+34910934399">📞 910 93 43 99</a>
+        <a class="btn-outline-dark" href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener">📸 Escribir por Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Encuéntranos</span>
+      <h2>Te esperamos en Sector Pueblos, Tres Cantos</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <div class="loc-row">
+          <div class="ico" style="background:var(--magenta)">📍</div>
+          <div><h4>Dirección</h4><p>Oh my Cut! — Sector Pueblos 2, 3<br>28760 Tres Cantos, Madrid</p></div>
+        </div>
+        <div class="loc-row">
+          <div class="ico" style="background:var(--coral)">📞</div>
+          <div><h4>Teléfono</h4><p><a href="tel:+34910934399" style="text-decoration:none; font-weight:600;">910 93 43 99</a> — llama para consultar disponibilidad y reservar tu cita.</p></div>
+        </div>
+        <div class="loc-row">
+          <div class="ico" style="background:var(--lilac)">📸</div>
+          <div><h4>Instagram</h4><p><a href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener" style="text-decoration:none; font-weight:600;">@estilistas3c_omc</a> — trabajos, promos y novedades del salón.</p></div>
+        </div>
+        <div class="loc-row">
+          <div class="ico" style="background:var(--sunshine)">🕐</div>
+          <div><h4>Horario y citas</h4><p>Consulta el horario actual y la disponibilidad llamando al salón o escribiendo por Instagram.</p></div>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=Sector+Pueblos+2%2C+3%2C+28760+Tres+Cantos%2C+Madrid&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de ubicación del salón en Sector Pueblos, Tres Cantos">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Oh my Cut! · Perfil 3C</div>
+        <p class="footer-tag">Perfil independiente del salón de Sector Pueblos, Tres Cantos. Mostramos trabajos y promociones propias, sin relación con la comunicación de otros salones Oh my Cut!.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Salón</h5>
+          <a href="#servicios">Servicios</a>
+          <a href="#porque">Por qué nosotros</a>
+          <a href="#ubicacion">Cómo llegar</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <a href="tel:+34910934399">910 93 43 99</a>
+          <a href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener">@estilistas3c_omc</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Sector Pueblos 2, 3 — 28760 Tres Cantos, Madrid</span>
+      <span>© 2026 Oh my Cut! Tres Cantos — Perfil 3C</span>
+    </div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="ig" href="https://www.instagram.com/estilistas3c_omc" target="_blank" rel="noopener" aria-label="Abrir Instagram">📸 Instagram</a>
+  <a class="call" href="tel:+34910934399" aria-label="Llamar al salón">📞 Llamar</a>
+</div>
+
+</body>
+</html>

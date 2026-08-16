@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Ana Karen Lepe · Mindset, motivación y orientación de talento</title>
+<meta name="description" content="Asesorías de mindset, motivación y orientación de talento con Ana Karen Lepe. Descubre tu norte profesional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF6EA;
+    --cream-2:#FFEFDA;
+    --coral:#FF6B4A;
+    --coral-deep:#E5502F;
+    --marigold:#F2A93B;
+    --plum:#3E2244;
+    --plum-soft:#6B4B72;
+    --mint:#3FA98A;
+    --paper:#FFFDF9;
+    --line: rgba(62,34,68,0.12);
+    --shadow: 0 18px 40px -18px rgba(62,34,68,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--plum);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.05;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* subtle grain / texture backdrop */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(242,169,59,0.28), transparent 40%),
+      radial-gradient(circle at 90% 0%, rgba(255,107,74,0.22), transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(63,169,138,0.14), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background:rgba(255,246,234,0.85);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem;
+    letter-spacing:.2px;
+  }
+  .brand .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 0 0 4px rgba(255,107,74,0.18);
+  }
+  .nav-cta{
+    display:flex; align-items:center; gap:12px;
+  }
+  .ig-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--plum); color:var(--cream);
+    padding:9px 16px; border-radius:999px;
+    font-weight:700; font-size:.85rem;
+    text-decoration:none;
+    transition:transform .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .ig-pill:hover{ background:var(--coral-deep); transform:translateY(-2px); }
+  .ig-pill svg{width:16px;height:16px;flex:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; z-index:1;
+    padding:76px 0 64px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--coral-deep);
+    background:rgba(255,107,74,0.12);
+    padding:7px 14px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.4rem);
+    color:var(--plum);
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--coral-deep);
+  }
+  .hero p.lead{
+    margin-top:22px;
+    font-size:1.15rem; line-height:1.6;
+    color:var(--plum-soft);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 26px; border-radius:14px;
+    font-weight:800; font-size:.98rem;
+    text-decoration:none;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:var(--coral); color:var(--paper);
+    box-shadow:var(--shadow);
+  }
+  .btn-primary:hover{ transform:translateY(-3px) rotate(-0.3deg); }
+  .btn-ghost{
+    background:transparent; color:var(--plum);
+    border:2px solid var(--plum);
+  }
+  .btn-ghost:hover{ background:var(--plum); color:var(--cream); }
+
+  .signature-wave{
+    margin-top:36px; font-family:'Fraunces', serif; font-style:italic;
+    color:var(--plum-soft); font-size:1rem;
+  }
+
+  /* Compass signature graphic */
+  .compass-wrap{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .compass-card{
+    position:relative;
+    width:100%; max-width:360px; aspect-ratio:1/1;
+    border-radius:50%;
+    background: radial-gradient(circle at 30% 25%, #FFFDF9, var(--cream-2) 60%, #FFE3C4 100%);
+    box-shadow: var(--shadow), inset 0 0 0 10px rgba(255,255,255,0.6), inset 0 0 0 12px rgba(62,34,68,0.08);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .compass-ring{
+    position:absolute; inset:22px;
+    border-radius:50%;
+    border:1.5px dashed rgba(62,34,68,0.25);
+  }
+  .needle{
+    width:6px; height:44%;
+    transform-origin:center;
+    position:relative;
+    animation:spin-settle 3.4s cubic-bezier(.2,.9,.25,1) infinite;
+  }
+  .needle::before, .needle::after{
+    content:""; position:absolute; left:0; width:100%;
+  }
+  .needle::before{
+    top:0; height:50%;
+    background:linear-gradient(var(--coral), var(--coral-deep));
+    clip-path:polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+  .needle::after{
+    bottom:0; height:50%;
+    background:var(--plum-soft);
+    clip-path:polygon(50% 100%, 100% 0%, 0% 0%);
+  }
+  @keyframes spin-settle{
+    0%{ transform:rotate(0deg); }
+    45%{ transform:rotate(24deg); }
+    60%{ transform:rotate(-14deg); }
+    75%{ transform:rotate(6deg); }
+    100%{ transform:rotate(0deg); }
+  }
+  .compass-center{
+    position:absolute; width:14px; height:14px; border-radius:50%;
+    background:var(--marigold);
+    box-shadow:0 0 0 5px var(--paper);
+  }
+  .compass-label{
+    position:absolute; font-family:'Fraunces',serif; font-weight:600; font-size:.72rem;
+    letter-spacing:.14em; color:var(--plum-soft);
+  }
+  .cl-n{ top:34px; } .cl-s{ bottom:34px; } .cl-e{ right:30px; } .cl-w{ left:30px; }
+  .compass-tag{
+    position:absolute; bottom:-18px; left:50%; transform:translateX(-50%) rotate(-3deg);
+    background:var(--plum); color:var(--cream);
+    font-family:'Fraunces',serif; font-style:italic; font-size:.85rem;
+    padding:8px 18px; border-radius:10px; box-shadow:var(--shadow);
+    white-space:nowrap;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ position:relative; z-index:1; padding:88px 0; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .kicker{
+    font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--mint); margin-bottom:14px; display:block;
+  }
+  .section-head h2{ font-size:clamp(2rem, 3.4vw, 2.7rem); }
+  .section-head p{ color:var(--plum-soft); font-size:1.05rem; margin-top:16px; line-height:1.6; }
+
+  /* ---------- SOBRE MI ---------- */
+  .about{
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .about-grid{
+    display:grid; grid-template-columns: .8fr 1.2fr; gap:56px; align-items:center;
+  }
+  .about-portrait{
+    aspect-ratio:4/5; border-radius:28px;
+    background:
+      radial-gradient(circle at 70% 20%, rgba(255,107,74,0.35), transparent 55%),
+      linear-gradient(160deg, var(--marigold), var(--coral-deep));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .about-portrait span{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    color:var(--paper); font-size:1.4rem; text-align:center; padding:0 20px;
+  }
+  .about-portrait::after{
+    content:"🤍"; position:absolute; font-size:2.4rem; bottom:22px; right:22px; opacity:.85;
+  }
+  .about-copy p{ font-size:1.08rem; line-height:1.75; color:var(--plum-soft); }
+  .about-copy p + p{ margin-top:16px; }
+  .about-badges{ display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+  .badge{
+    font-size:.82rem; font-weight:700; padding:9px 16px; border-radius:999px;
+    background:var(--cream-2); border:1px solid var(--line); color:var(--plum);
+  }
+
+  /* ---------- SERVICIOS ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;
+  }
+  .service-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:32px 28px;
+    box-shadow:0 12px 28px -18px rgba(62,34,68,0.28);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .service-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
+  .service-icon{
+    width:52px; height:52px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem; margin-bottom:20px;
+  }
+  .ic-1{ background:rgba(255,107,74,0.15); }
+  .ic-2{ background:rgba(242,169,59,0.2); }
+  .ic-3{ background:rgba(63,169,138,0.18); }
+  .service-card h3{ font-size:1.28rem; margin-bottom:10px; }
+  .service-card p{ color:var(--plum-soft); line-height:1.6; font-size:.98rem; }
+
+  /* ---------- TIPS (signature sticky notes) ---------- */
+  .tips{
+    background:linear-gradient(180deg, var(--cream-2), var(--cream));
+  }
+  .tips-board{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:26px;
+    margin-top:10px;
+  }
+  .sticky{
+    position:relative;
+    padding:26px 22px 24px;
+    border-radius:6px;
+    background:var(--paper);
+    box-shadow:0 14px 24px -14px rgba(62,34,68,0.3);
+    font-family:'Fraunces', serif; font-style:italic;
+    font-size:1.05rem; line-height:1.45; color:var(--plum);
+    min-height:170px;
+    transition:transform .35s ease;
+  }
+  .sticky:nth-child(1){ transform:rotate(-4deg); background:#FFF0DE; }
+  .sticky:nth-child(2){ transform:rotate(3deg); background:#FFE7E0; }
+  .sticky:nth-child(3){ transform:rotate(-2.5deg); background:#E8F5EF; }
+  .sticky:nth-child(4){ transform:rotate(4.5deg); background:#FFF0DE; }
+  .sticky:hover{ transform:rotate(0deg) translateY(-6px) scale(1.02); }
+  .sticky .tape{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%) rotate(-2deg);
+    width:56px; height:20px;
+    background:rgba(255,255,255,0.7);
+    border:1px solid rgba(62,34,68,0.08);
+  }
+  .sticky .num{
+    font-family:'Manrope', sans-serif; font-style:normal; font-weight:800;
+    font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--coral-deep); display:block; margin-bottom:10px;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta{
+    background:var(--plum);
+    color:var(--cream);
+    border-radius:32px;
+    margin:0 24px;
+    padding:64px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,107,74,0.35), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(242,169,59,0.3), transparent 45%);
+  }
+  .cta-inner{ position:relative; z-index:1; max-width:640px; margin:0 auto; }
+  .cta h2{ font-size:clamp(1.9rem, 4vw, 2.6rem); color:var(--cream); }
+  .cta p{ margin-top:16px; color:rgba(255,246,234,0.82); font-size:1.05rem; line-height:1.6; }
+  .cta-actions{
+    margin-top:32px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+  }
+  .cta .btn-primary{ background:var(--coral); }
+  .cta .btn-ghost{ border-color:rgba(255,246,234,0.6); color:var(--cream); }
+  .cta .btn-ghost:hover{ background:rgba(255,246,234,0.12); color:var(--cream); }
+  .contact-lines{
+    margin-top:30px; display:flex; flex-direction:column; gap:6px;
+    font-size:.92rem; color:rgba(255,246,234,0.72);
+  }
+  .contact-lines a{ text-decoration:underline; text-underline-offset:3px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:36px 0 40px;
+    text-align:center;
+    font-size:.85rem;
+    color:var(--plum-soft);
+    position:relative; z-index:1;
+  }
+  footer a{ text-decoration:none; font-weight:700; color:var(--coral-deep); }
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .compass-wrap{ order:-1; margin-bottom:8px; }
+    .about-grid{ grid-template-columns:1fr; }
+    .services-grid{ grid-template-columns:1fr; }
+    .tips-board{ grid-template-columns:1fr 1fr; }
+    .cta{ margin:0 14px; padding:48px 22px; }
+  }
+  @media (max-width: 540px){
+    .tips-board{ grid-template-columns:1fr; }
+    .nav-cta .ig-pill span.full{ display:none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="dot"></span> Ana Karen Lepe</div>
+    <div class="nav-cta">
+      <a class="ig-pill" href="https://www.instagram.com/anakarenlepeee/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        <span class="full">@anakarenlepeee</span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">✨ Mindset · Motivación · Orientación de talento</span>
+      <h1>Encuentra tu <em>norte</em> profesional.</h1>
+      <p class="lead">Asesorías personalizadas para reconectar con tu propósito, ordenar tu mente y dar el siguiente paso en tu carrera con claridad — sin perder tu esencia en el camino.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:anakaren.orientatalento@gmail.com">Agenda tu asesoría</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/anakarenlepeee/" target="_blank" rel="noopener">Ver Instagram</a>
+      </div>
+      <p class="signature-wave">— con cariño, Ana Karen 🤍</p>
+    </div>
+    <div class="compass-wrap reveal">
+      <div class="compass-card">
+        <div class="compass-ring"></div>
+        <span class="compass-label cl-n">N</span>
+        <span class="compass-label cl-s">S</span>
+        <span class="compass-label cl-e">E</span>
+        <span class="compass-label cl-w">O</span>
+        <div class="needle"></div>
+        <div class="compass-center"></div>
+        <div class="compass-tag">tu propósito está por aquí</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="about-portrait reveal"><span>"Cada persona<br>tiene un talento<br>esperando salir."</span></div>
+    <div class="about-copy reveal">
+      <span class="kicker">Sobre mí</span>
+      <h2 style="margin-bottom:20px;">Hola, soy Ana Karen</h2>
+      <p>Acompaño a personas emprendedoras y profesionales que sienten que van en piloto automático a reconectar con su mentalidad, su motivación y su talento — para tomar decisiones de carrera y de vida con más claridad y menos ruido.</p>
+      <p>Mi trabajo combina herramientas de mindset, comunicación y orientación vocacional en sesiones cercanas, prácticas y sin fórmulas genéricas: partimos de tu historia, no de un molde.</p>
+      <div class="about-badges">
+        <span class="badge">🧭 Orientación de talento</span>
+        <span class="badge">🌱 Mindset & motivación</span>
+        <span class="badge">💬 Comunicación y entrevistas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Servicios</span>
+      <h2>Asesorías pensadas para tu momento actual</h2>
+      <p>Sesiones 1:1, en español, adaptadas a tu punto de partida — ya sea que estés replanteando tu carrera, buscando trabajo o construyendo tu propio proyecto.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon ic-1">🧭</div>
+        <h3>Orientación de talento</h3>
+        <p>Identifica tus fortalezas reales, aclara hacia dónde quieres crecer y diseña un plan de carrera con sentido — no con presión.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon ic-2">🌱</div>
+        <h3>Mindset & motivación</h3>
+        <p>Trabaja las creencias que te frenan, reconstruye tu confianza y aprende a sostener la motivación más allá del primer impulso.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon ic-3">💬</div>
+        <h3>Comunicación y entrevistas</h3>
+        <p>Prepárate para entrevistas de trabajo y conversaciones clave: cómo hablar de ti con seguridad y dejar una impresión real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tips">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Tips del día</span>
+      <h2>Un poquito de lo que comparto cada semana</h2>
+      <p>Notas rápidas de mindset y motivación, directo de mi Instagram — ideales para leer entre una tarea y otra.</p>
+    </div>
+    <div class="tips-board">
+      <div class="sticky reveal"><div class="tape"></div><span class="num">Tip 01</span>Tu ritmo también es una estrategia. No compares tu proceso con el de nadie más.</div>
+      <div class="sticky reveal"><div class="tape"></div><span class="num">Tip 02</span>La claridad no llega antes de actuar: llega mientras avanzas.</div>
+      <div class="sticky reveal"><div class="tape"></div><span class="num">Tip 03</span>Pedir orientación no es debilidad, es una forma de ahorrar años de ensayo y error.</div>
+      <div class="sticky reveal"><div class="tape"></div><span class="num">Tip 04</span>Tu talento no necesita ser perfecto para empezar a mostrarse.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta reveal">
+    <div class="cta-inner">
+      <h2>¿Lista o listo para dar el siguiente paso?</h2>
+      <p>Escríbeme y agendemos tu primera asesoría. Vemos juntas dónde estás, hacia dónde quieres ir, y cómo llegar ahí sin perder tu esencia.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:anakaren.orientatalento@gmail.com">Agenda por correo</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/anakarenlepeee/" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+      </div>
+      <div class="contact-lines">
+        <span>Asesorías: <a href="mailto:anakaren.orientatalento@gmail.com">anakaren.orientatalento@gmail.com</a></span>
+        <span>Colaboraciones: <a href="mailto:anakarenlepe@ignition.agency">anakarenlepe@ignition.agency</a></span>
+        <span>Instagram: <a href="https://www.instagram.com/anakarenlepeee/" target="_blank" rel="noopener">@anakarenlepeee</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Ana Karen Lepe. Todos los derechos reservados. · Built by <a href="#">EasyLandX</a>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

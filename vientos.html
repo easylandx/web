@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vientos Migratorios — La vida después de emigrar</title>
+<meta name="description" content="Vientos Migratorios es el espacio de Carolina para hablar de lo que no se cuenta cuando emigras: reconstrucción, trabajo, relaciones, emociones e identidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0E2E2A;
+    --teal:#1F6F63;
+    --sky-teal:#5CB8AC;
+    --sage:#8FB996;
+    --sand:#F6EEE0;
+    --sand-2:#EFE3CE;
+    --coral:#E4744F;
+    --ink:#16211D;
+    --cream-text:#FBF6EC;
+    --max-w:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  em{
+    font-style:italic;
+    font-weight:600;
+    color:var(--coral);
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max-w);margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(14,46,42,0.72);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:background .3s ease;
+  }
+  nav{
+    max-width:var(--max-w);margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;
+    color:var(--cream-text);
+  }
+  .logo-mark{
+    width:30px;height:30px;flex-shrink:0;
+  }
+  nav .links{display:flex;gap:28px;align-items:center;}
+  nav .links a{
+    color:rgba(251,246,236,0.85);
+    font-size:0.92rem;font-weight:500;
+    transition:color .2s;
+  }
+  nav .links a:hover{color:var(--sky-teal);}
+  nav .cta-small{
+    background:var(--coral);
+    color:var(--cream-text) !important;
+    padding:9px 18px;border-radius:100px;
+    font-weight:600;font-size:0.88rem;
+  }
+  @media (max-width:720px){
+    nav .links a:not(.cta-small){display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    background:linear-gradient(160deg, var(--teal-deep) 0%, #123B35 55%, #175048 100%);
+    color:var(--cream-text);
+    overflow:hidden;
+    padding-top:90px;
+  }
+  .wind-lines{
+    position:absolute;inset:0;width:100%;height:100%;
+    opacity:0.35;
+  }
+  .wind-lines path{
+    fill:none;
+    stroke:var(--sky-teal);
+    stroke-width:1.4;
+    stroke-dasharray:6 10;
+    animation:driftLine 14s linear infinite;
+  }
+  .wind-lines path:nth-child(2){stroke:var(--sage);animation-duration:19s;animation-direction:reverse;}
+  .wind-lines path:nth-child(3){stroke:var(--coral);opacity:.6;animation-duration:23s;}
+  @keyframes driftLine{
+    to{stroke-dashoffset:-320;}
+  }
+  .birds{
+    position:absolute;inset:0;pointer-events:none;
+  }
+  .bird{
+    position:absolute;
+    font-size:14px;
+    color:var(--cream-text);
+    opacity:0.75;
+    animation:fly linear infinite;
+    white-space:nowrap;
+  }
+  @keyframes fly{
+    from{ transform:translateX(-10vw) translateY(0); }
+    to{ transform:translateX(110vw) translateY(-40px); }
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    max-width:var(--max-w);margin:0 auto;padding:60px 28px 80px;
+    width:100%;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--sky-teal);font-weight:600;
+    margin-bottom:26px;
+  }
+  .eyebrow::before{
+    content:"";width:26px;height:1px;background:var(--sky-teal);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height:1.05;
+    max-width:820px;
+    margin-bottom:26px;
+  }
+  .hero p.lead{
+    font-size:clamp(1.05rem,1.6vw,1.28rem);
+    line-height:1.6;
+    max-width:560px;
+    color:rgba(251,246,236,0.86);
+    font-weight:300;
+    margin-bottom:40px;
+  }
+  .hero-ctas{
+    display:flex;gap:16px;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;
+    border-radius:100px;
+    font-weight:600;font-size:0.98rem;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-primary{
+    background:var(--coral);
+    color:var(--cream-text);
+    box-shadow:0 8px 24px rgba(228,116,79,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(228,116,79,0.45);}
+  .btn-ghost{
+    background:rgba(251,246,236,0.08);
+    border:1px solid rgba(251,246,236,0.35);
+    color:var(--cream-text);
+  }
+  .btn-ghost:hover{background:rgba(251,246,236,0.16);transform:translateY(-2px);}
+  .hero-stats{
+    position:relative;z-index:2;
+    border-top:1px solid rgba(251,246,236,0.15);
+  }
+  .hero-stats .wrap{
+    display:flex;flex-wrap:wrap;gap:40px;
+    padding:26px 28px;
+  }
+  .stat{display:flex;flex-direction:column;}
+  .stat b{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;}
+  .stat span{font-size:0.82rem;color:rgba(251,246,236,0.65);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:100px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head .eyebrow{color:var(--teal);}
+  .section-head .eyebrow::before{background:var(--teal);}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;}
+  .section-head p{margin-top:16px;font-size:1.05rem;color:#4B5A54;line-height:1.6;}
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:center;
+  }
+  .about-portrait{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:linear-gradient(150deg, var(--sky-teal), var(--teal) 60%, var(--teal-deep));
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .about-portrait svg{width:62%;height:62%;}
+  .about-portrait .tag{
+    position:absolute;bottom:22px;left:22px;right:22px;
+    background:rgba(14,46,42,0.55);
+    backdrop-filter:blur(6px);
+    color:var(--cream-text);
+    padding:14px 18px;border-radius:14px;
+    font-size:0.92rem;line-height:1.4;
+  }
+  .about-text p{font-size:1.08rem;line-height:1.75;color:#33403B;margin-bottom:18px;}
+  .about-text p:first-child{
+    font-family:'Fraunces',serif;font-size:1.35rem;font-style:italic;
+    color:var(--teal-deep);font-weight:500;line-height:1.45;margin-bottom:24px;
+  }
+  .signature-line{
+    margin-top:28px;font-family:'Fraunces',serif;font-weight:600;color:var(--coral);
+    display:flex;align-items:center;gap:10px;
+  }
+  @media (max-width:880px){
+    .about{grid-template-columns:1fr;}
+    .about-portrait{max-width:340px;}
+  }
+
+  /* ---------- TEMAS / WINDS ---------- */
+  .temas{background:var(--sand-2);}
+  .temas-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .tema-card{
+    background:var(--sand);
+    border-radius:22px;
+    padding:32px 28px;
+    position:relative;
+    border:1px solid rgba(31,111,99,0.12);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .tema-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 34px rgba(15,50,45,0.12);
+    border-color:var(--sky-teal);
+  }
+  .tema-icon{
+    width:46px;height:46px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .tema-icon svg{width:24px;height:24px;}
+  .tema-card h3{font-size:1.22rem;margin-bottom:10px;color:var(--teal-deep);}
+  .tema-card p{font-size:0.96rem;line-height:1.55;color:#48564F;}
+  .tema-card .viento{
+    position:absolute;top:28px;right:28px;
+    font-size:0.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--sky-teal);
+  }
+  @media (max-width:900px){ .temas-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .temas-grid{grid-template-columns:1fr;} }
+
+  /* ---------- VOCES / QUOTES BAND ---------- */
+  .voces{
+    background:var(--teal-deep);
+    color:var(--cream-text);
+    position:relative;
+    overflow:hidden;
+  }
+  .voces .wind-lines{opacity:0.18;}
+  .voces-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+    position:relative;z-index:2;
+  }
+  .voz{
+    background:rgba(251,246,236,0.06);
+    border:1px solid rgba(251,246,236,0.14);
+    border-radius:18px;
+    padding:26px;
+  }
+  .voz p.quote{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;
+    line-height:1.55;margin-bottom:16px;color:var(--cream-text);
+  }
+  .voz .who{
+    font-size:0.82rem;color:var(--sky-teal);font-weight:600;
+  }
+  .voces-note{
+    max-width:560px;margin-top:34px;font-size:0.85rem;color:rgba(251,246,236,0.55);
+    position:relative;z-index:2;
+  }
+  @media (max-width:880px){ .voces-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CANALES / INSTAGRAM + YOUTUBE ---------- */
+  .canales-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:26px;
+  }
+  .canal-card{
+    border-radius:26px;
+    padding:44px 38px;
+    position:relative;
+    overflow:hidden;
+    color:var(--cream-text);
+    display:flex;flex-direction:column;justify-content:space-between;
+    min-height:300px;
+  }
+  .canal-card.ig{
+    background:linear-gradient(135deg,#3F5A54 0%, #1F6F63 45%, #E4744F 130%);
+  }
+  .canal-card.yt{
+    background:linear-gradient(135deg,#122E2A 0%, #1F6F63 60%, #5CB8AC 130%);
+  }
+  .canal-top{display:flex;align-items:center;justify-content:space-between;}
+  .canal-icon{width:44px;height:44px;}
+  .canal-card h3{font-size:1.6rem;margin-top:24px;}
+  .canal-card p{font-size:0.98rem;line-height:1.55;color:rgba(251,246,236,0.85);margin-top:10px;max-width:380px;}
+  .canal-meta{display:flex;gap:22px;margin-top:26px;}
+  .canal-meta div{display:flex;flex-direction:column;}
+  .canal-meta b{font-family:'Fraunces',serif;font-size:1.2rem;}
+  .canal-meta span{font-size:0.76rem;color:rgba(251,246,236,0.65);}
+  .canal-card .btn{margin-top:28px;align-self:flex-start;}
+  @media (max-width:880px){ .canales-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:linear-gradient(160deg, var(--sand-2), var(--sand));
+    text-align:center;
+  }
+  .cta-final .wrap{max-width:680px;}
+  .cta-final h2{font-size:clamp(2rem,4vw,2.9rem);line-height:1.12;color:var(--teal-deep);}
+  .cta-final p{margin:20px 0 34px;font-size:1.08rem;color:#48564F;line-height:1.6;}
+  .cta-final .hero-ctas{justify-content:center;}
+  .cta-final .btn-primary{color:var(--cream-text);}
+  .cta-final .btn-ghost{
+    background:rgba(31,111,99,0.08);
+    border:1px solid rgba(31,111,99,0.3);
+    color:var(--teal-deep);
+  }
+  .cta-final .btn-ghost:hover{background:rgba(31,111,99,0.16);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--teal-deep);color:rgba(251,246,236,0.7);
+    padding:40px 0;
+  }
+  footer .wrap{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    font-size:0.85rem;
+  }
+  footer .foot-links{display:flex;gap:22px;}
+  footer a:hover{color:var(--sky-teal);}
+
+  @media (prefers-reduced-motion: reduce){
+    .wind-lines path, .bird{animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <path d="M4 22c4-6 9-9 14-6 4 2.5 6 1 9-2 3-3 8-4 11-1" stroke="#5CB8AC" stroke-width="2" stroke-linecap="round"/>
+        <path d="M4 28c3-3 7-4 11-2" stroke="#8FB996" stroke-width="2" stroke-linecap="round"/>
+        <path d="M22 12l3 2-1 3.4" stroke="#FBF6EC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Vientos Migratorios
+    </a>
+    <div class="links">
+      <a href="#sobre">Sobre Carolina</a>
+      <a href="#temas">Temas</a>
+      <a href="#canales">Comunidad</a>
+      <a href="https://www.instagram.com/vientos_migratorios" target="_blank" rel="noopener" class="cta-small">Seguir ahora</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <svg class="wind-lines" viewBox="0 0 1200 800" preserveAspectRatio="none">
+    <path d="M-50 180 C 250 100, 400 260, 650 190 S 1100 120, 1300 200"/>
+    <path d="M-50 420 C 300 350, 500 520, 750 430 S 1150 360, 1300 440"/>
+    <path d="M-50 620 C 280 560, 460 700, 720 630 S 1120 580, 1300 650"/>
+  </svg>
+  <div class="birds" aria-hidden="true">
+    <div class="bird" style="top:18%; animation-duration:26s; animation-delay:0s;">⌃⌃&nbsp;⌃</div>
+    <div class="bird" style="top:34%; animation-duration:33s; animation-delay:-8s; font-size:11px;">⌃&nbsp;⌃⌃&nbsp;⌃</div>
+    <div class="bird" style="top:52%; animation-duration:29s; animation-delay:-16s;">⌃⌃</div>
+    <div class="bird" style="top:64%; animation-duration:38s; animation-delay:-4s; font-size:10px;">⌃&nbsp;⌃</div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="eyebrow">Comunidad para quienes emigraron</div>
+    <h1>Hacer las maletas fue lo fácil. <em>De lo demás</em>, hablamos aquí.</h1>
+    <p class="lead">Vientos Migratorios es el espacio de Carolina para contar las cositas que no se cuentan cuando emigras: la reconstrucción, el trabajo que no convalida, los vínculos que cambian y la identidad que se reacomoda.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.instagram.com/vientos_migratorios" target="_blank" rel="noopener">Seguir en Instagram</a>
+      <a class="btn btn-ghost" href="https://youtube.com/@vientosmigratorios" target="_blank" rel="noopener">Ver en YouTube</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="wrap">
+      <div class="stat"><b>49.1K</b><span>Seguidores en Instagram</span></div>
+      <div class="stat"><b>387</b><span>Publicaciones</span></div>
+      <div class="stat"><b>🇪🇸</b><span>La vida después de emigrar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOBRE CAROLINA ================= -->
+<section id="sobre">
+  <div class="wrap about">
+    <div class="about-portrait">
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="38" r="18" fill="#FBF6EC" opacity="0.9"/>
+        <path d="M20 90c2-20 14-32 30-32s28 12 30 32" fill="#FBF6EC" opacity="0.9"/>
+      </svg>
+      <div class="tag">🩵 Carolina · fundadora de Vientos Migratorios</div>
+    </div>
+    <div class="about-text">
+      <p>"Emigrar no termina cuando aterrizas. Empieza ahí."</p>
+      <p>Soy Carolina, y hace unos años hice las maletas y crucé el charco hasta España. Lo que nadie me contó fue todo lo que venía después: reconstruir una vida desde cero, un trabajo que no reconoce tu experiencia, amistades que se quedan lejos y una identidad que ya no encaja del todo en ningún lado.</p>
+      <p>Vientos Migratorios nació para hablar de eso, sin filtros ni postureo. Hoy somos una comunidad de casi 50 mil personas contándonos lo que de verdad se siente al vivir "la vida después de emigrar".</p>
+      <div class="signature-line">🌱 Reconstrucción · Trabajo · Relaciones · Emociones · Identidad</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEMAS ================= -->
+<section id="temas" class="temas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">De qué hablamos</div>
+      <h2>Cinco vientos que atraviesa quien emigra</h2>
+      <p>No es solo el idioma o el papeleo. Es todo lo demás — y de todo lo demás, aquí sí se habla.</p>
+    </div>
+    <div class="temas-grid">
+
+      <div class="tema-card">
+        <span class="viento">Viento 1</span>
+        <div class="tema-icon" style="background:rgba(31,111,99,0.14);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F6F63" stroke-width="2" stroke-linecap="round"><path d="M3 12h13a3 3 0 100-6"/><path d="M3 18h9a3 3 0 100-6"/></svg>
+        </div>
+        <h3>Reconstrucción</h3>
+        <p>Volver a montar tu vida pieza por pieza en un lugar que aún no es "casa" — y en el que ya no puedes volver a empezar como si nada.</p>
+      </div>
+
+      <div class="tema-card">
+        <span class="viento">Viento 2</span>
+        <div class="tema-icon" style="background:rgba(143,185,150,0.22);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5C8A63" stroke-width="2" stroke-linecap="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+        </div>
+        <h3>Trabajo</h3>
+        <p>Currículums que hay que traducir, títulos que no convalidan y la sensación de empezar tu carrera de cero, otra vez.</p>
+      </div>
+
+      <div class="tema-card">
+        <span class="viento">Viento 3</span>
+        <div class="tema-icon" style="background:rgba(228,116,79,0.16);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E4744F" stroke-width="2" stroke-linecap="round"><path d="M20 21c0-4-3.6-7-8-7s-8 3-8 7"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Relaciones</h3>
+        <p>Amistades que se quedan a un huso horario de distancia, y la lentitud de construir vínculos nuevos desde cero.</p>
+      </div>
+
+      <div class="tema-card">
+        <span class="viento">Viento 4</span>
+        <div class="tema-icon" style="background:rgba(92,184,172,0.2);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B7A6D" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-4.4-9.5-9C.7 8 3 4 7 4c2 0 3.8 1.2 5 3 1.2-1.8 3-3 5-3 4 0 6.3 4 4.5 8-2.5 4.6-9.5 9-9.5 9z"/></svg>
+        </div>
+        <h3>Emociones</h3>
+        <p>El duelo migratorio que nadie te explica, la nostalgia repentina y hasta la culpa de estar bien — o de no estarlo.</p>
+      </div>
+
+      <div class="tema-card">
+        <span class="viento">Viento 5</span>
+        <div class="tema-icon" style="background:rgba(31,111,99,0.14);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F6F63" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-6-3.8-9s1.3-6.4 3.8-9z"/></svg>
+        </div>
+        <h3>Identidad</h3>
+        <p>Quién eres cuando ya no vives donde naciste, y cómo se siente pertenecer un poco a dos lugares a la vez.</p>
+      </div>
+
+      <div class="tema-card" style="display:flex;flex-direction:column;justify-content:center;background:var(--teal-deep);border:none;">
+        <h3 style="color:var(--cream-text);">¿Te suena todo esto?</h3>
+        <p style="color:rgba(251,246,236,0.75);margin-bottom:18px;">Cada semana hablamos de uno de estos vientos en Instagram y YouTube.</p>
+        <a class="btn btn-primary" style="align-self:flex-start;" href="https://www.instagram.com/vientos_migratorios" target="_blank" rel="noopener">Súmate a la comunidad</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= VOCES ================= -->
+<section class="voces">
+  <svg class="wind-lines" viewBox="0 0 1200 500" preserveAspectRatio="none">
+    <path d="M-50 100 C 250 40, 400 160, 650 110 S 1100 60, 1300 120"/>
+    <path d="M-50 300 C 300 250, 500 380, 750 310 S 1150 260, 1300 320"/>
+  </svg>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--sky-teal);">Lo que se siente al llegar aquí</div>
+      <h2 style="color:var(--cream-text);">No eres la única persona a la que le pasa</h2>
+    </div>
+    <div class="voces-grid">
+      <div class="voz">
+        <p class="quote">"Por fin encontré un lugar donde no tengo que explicar por qué extraño mi país aunque esté bien aquí."</p>
+        <div class="who">— comunidad de Vientos Migratorios</div>
+      </div>
+      <div class="voz">
+        <p class="quote">"Escuchar que el duelo migratorio existe y tiene nombre me ayudó a dejar de sentirme rara."</p>
+        <div class="who">— comunidad de Vientos Migratorios</div>
+      </div>
+      <div class="voz">
+        <p class="quote">"Es el único sitio donde hablan de lo del trabajo y las convalidaciones sin adornarlo."</p>
+        <div class="who">— comunidad de Vientos Migratorios</div>
+      </div>
+    </div>
+    <p class="voces-note">Voces representativas de los mensajes y comentarios que recibe la comunidad — compartidas de forma anónima.</p>
+  </div>
+</section>
+
+<!-- ================= CANALES ================= -->
+<section id="canales">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Dónde encontrarnos</div>
+      <h2>Elige tu manera de acompañarnos</h2>
+      <p>Contenido nuevo cada semana en Instagram y conversaciones más largas en YouTube.</p>
+    </div>
+    <div class="canales-grid">
+
+      <div class="canal-card ig">
+        <div class="canal-top">
+          <svg class="canal-icon" viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#FBF6EC" stroke="none"/></svg>
+          <span style="font-size:0.8rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(251,246,236,0.75);">Instagram</span>
+        </div>
+        <div>
+          <h3>@vientos_migratorios</h3>
+          <p>Posts, historias y reels sobre la vida después de emigrar — lo cotidiano, lo emocional y las cositas que no contamos.</p>
+          <div class="canal-meta">
+            <div><b>49.1K</b><span>Seguidores</span></div>
+            <div><b>387</b><span>Publicaciones</span></div>
+            <div><b>117</b><span>Siguiendo</span></div>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="https://www.instagram.com/vientos_migratorios" target="_blank" rel="noopener">Seguir en Instagram →</a>
+      </div>
+
+      <div class="canal-card yt">
+        <div class="canal-top">
+          <svg class="canal-icon" viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l6 3-6 3z" fill="#FBF6EC" stroke="none"/></svg>
+          <span style="font-size:0.8rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(251,246,236,0.75);">YouTube</span>
+        </div>
+        <div>
+          <h3>@vientosmigratorios</h3>
+          <p>Charlas más largas y en profundidad sobre reconstrucción, trabajo, relaciones, emociones e identidad tras emigrar.</p>
+        </div>
+        <a class="btn btn-ghost" href="https://youtube.com/@vientosmigratorios" target="_blank" rel="noopener">Ver en YouTube →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta-final">
+  <div class="wrap">
+    <h2>El viento sopla distinto cuando no lo enfrentas sola.</h2>
+    <p>Súmate a la comunidad de Vientos Migratorios y encuentra a otras personas que están reconstruyendo su vida después de emigrar, igual que tú.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.instagram.com/vientos_migratorios" target="_blank" rel="noopener">Seguir en Instagram</a>
+      <a class="btn btn-ghost" href="https://youtube.com/@vientosmigratorios" target="_blank" rel="noopener">Ver en YouTube</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Vientos Migratorios · Carolina</span>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/vientos_migratorios" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@vientosmigratorios" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

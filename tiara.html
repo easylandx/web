@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiara Salazar · Psicóloga | Terapia online</title>
+<meta name="description" content="Terapia psicológica online para todo el mundo. Agenda tu cita con Tiara Salazar Contreras.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#1F4741;
+    --pine-dark:#153330;
+    --cream:#FBF3E7;
+    --cream-soft:#F6E9D8;
+    --rose:#E2897C;
+    --rose-soft:#F1B6AC;
+    --gold:#D9A441;
+    --ink:#2B2620;
+    --white:#FFFDF9;
+    --radius: 22px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--pine-dark);
+  }
+
+  .script{
+    font-family:'Caveat', cursive;
+    color:var(--rose);
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- FRAME CORNER SIGNATURE ---------- */
+  .framed{
+    position:relative;
+    padding:34px;
+  }
+  .framed::before,
+  .framed::after,
+  .framed .c3,
+  .framed .c4{
+    content:"";
+    position:absolute;
+    width:28px;
+    height:28px;
+    border:3px solid var(--gold);
+  }
+  .framed::before{ top:0; left:0; border-right:none; border-bottom:none; }
+  .framed::after{ top:0; right:0; border-left:none; border-bottom:none; }
+  .framed .c3{ bottom:0; left:0; border-right:none; border-top:none; }
+  .framed .c4{ bottom:0; right:0; border-left:none; border-top:none; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(251,243,231,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(31,71,65,0.1);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.25rem;
+    color:var(--pine-dark);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo span{color:var(--rose);}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-size:0.95rem;
+    font-weight:500;
+  }
+  .nav-links a{
+    opacity:0.85;
+    transition:opacity .2s;
+  }
+  .nav-links a:hover{opacity:1; color:var(--rose);}
+  .nav-cta{
+    background:var(--pine);
+    color:var(--white);
+    padding:10px 22px;
+    border-radius:999px;
+    font-size:0.9rem;
+    font-weight:600;
+    white-space:nowrap;
+    transition:transform .2s, background .2s;
+  }
+  .nav-cta:hover{background:var(--pine-dark); transform:translateY(-2px);}
+  .menu-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 0 110px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:0.55;
+    z-index:0;
+  }
+  .blob1{width:340px;height:340px;background:var(--rose-soft);top:-120px;right:-80px;}
+  .blob2{width:220px;height:220px;background:var(--gold);opacity:0.25;bottom:-60px;left:-60px;}
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--cream-soft);
+    border:1px solid rgba(31,71,65,0.15);
+    color:var(--pine-dark);
+    font-size:0.85rem;
+    font-weight:600;
+    padding:7px 16px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"●";
+    color:var(--rose);
+    font-size:0.6rem;
+  }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--rose);
+  }
+
+  .hero p.lead{
+    font-size:1.15rem;
+    max-width:46ch;
+    color:#4A4238;
+    margin-bottom:32px;
+  }
+
+  .cta-row{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+
+  .btn-primary{
+    background:var(--rose);
+    color:var(--white);
+    padding:16px 32px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:1.02rem;
+    box-shadow:0 10px 24px -8px rgba(226,137,124,0.55);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .btn-primary:hover{
+    transform:translateY(-3px);
+    background:#D4695A;
+    box-shadow:0 14px 30px -8px rgba(226,137,124,0.7);
+  }
+
+  .btn-ghost{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    color:var(--pine-dark);
+    padding:14px 8px;
+    border-bottom:2px solid var(--pine-dark);
+    transition:color .2s, border-color .2s;
+  }
+  .btn-ghost:hover{color:var(--rose); border-color:var(--rose);}
+
+  .hero-portrait{
+    position:relative;
+    z-index:1;
+  }
+  .portrait-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:18px;
+    box-shadow:0 30px 60px -20px rgba(31,71,65,0.35);
+    transform:rotate(-2deg);
+  }
+  .portrait-img{
+    border-radius:14px;
+    aspect-ratio:4/5;
+    background:
+      radial-gradient(circle at 30% 20%, #F1B6AC 0%, transparent 55%),
+      radial-gradient(circle at 75% 75%, #D9A441 0%, transparent 50%),
+      linear-gradient(160deg, #1F4741, #2E6B62);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .portrait-heart{
+    font-family:'Caveat', cursive;
+    color:var(--white);
+    font-size:2rem;
+    text-align:center;
+    line-height:1.3;
+  }
+  .badge-float{
+    position:absolute;
+    bottom:-18px;
+    left:-24px;
+    background:var(--gold);
+    color:var(--pine-dark);
+    padding:14px 20px;
+    border-radius:16px;
+    font-weight:600;
+    font-size:0.9rem;
+    box-shadow:0 12px 24px -8px rgba(217,164,65,0.6);
+    transform:rotate(3deg);
+  }
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .section{
+    padding:90px 0;
+  }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.4vw, 2.6rem);
+    margin-bottom:14px;
+  }
+  .section-head p{
+    color:#4A4238;
+    font-size:1.05rem;
+  }
+
+  /* ---------- SOBRE MI ---------- */
+  .about{
+    background:var(--white);
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-visual{
+    background:linear-gradient(155deg, var(--pine), var(--pine-dark));
+    border-radius:var(--radius);
+    aspect-ratio:1/1;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .about-visual span{
+    font-family:'Caveat', cursive;
+    color:var(--cream-soft);
+    font-size:1.6rem;
+    text-align:center;
+    padding:20px;
+  }
+  .about h2{margin-bottom:18px;}
+  .about p{color:#4A4238; margin-bottom:16px; max-width:52ch;}
+  .pill-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+  }
+  .pill-list span{
+    background:var(--cream-soft);
+    color:var(--pine-dark);
+    font-size:0.88rem;
+    font-weight:600;
+    padding:8px 16px;
+    border-radius:999px;
+    border:1px solid rgba(31,71,65,0.12);
+  }
+
+  /* ---------- SERVICIOS ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .service-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:34px 28px;
+    box-shadow:0 16px 40px -24px rgba(31,71,65,0.35);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 24px 48px -20px rgba(31,71,65,0.4);
+  }
+  .service-icon{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.5rem;
+    margin-bottom:20px;
+  }
+  .service-card:nth-child(1) .service-icon{background:#F1DCC9; }
+  .service-card:nth-child(2) .service-icon{background:#F1B6AC44;}
+  .service-card:nth-child(3) .service-icon{background:#1F474118;}
+  .service-card h3{font-size:1.25rem; margin-bottom:10px;}
+  .service-card p{color:#4A4238; font-size:0.98rem;}
+
+  /* ---------- PROCESO ---------- */
+  .process{
+    background:var(--pine-dark);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .process::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(226,137,124,0.18), transparent 70%);
+    top:-200px;
+    right:-150px;
+  }
+  .process .section-head h2{color:var(--cream);}
+  .process .section-head p{color:#D9CFC0;}
+  .process .section-head .eyebrow{
+    background:rgba(251,243,231,0.1);
+    border-color:rgba(251,243,231,0.2);
+    color:var(--cream);
+  }
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+    position:relative;
+    z-index:1;
+  }
+  .step{
+    padding:8px;
+  }
+  .step-num{
+    font-family:'Fraunces', serif;
+    font-size:2.4rem;
+    color:var(--rose);
+    margin-bottom:10px;
+  }
+  .step h3{color:var(--cream); font-size:1.1rem; margin-bottom:8px;}
+  .step p{color:#C9BFAF; font-size:0.92rem;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{
+    background:linear-gradient(135deg, var(--rose), #D97D69);
+    border-radius:36px;
+    margin:0 28px;
+    padding:70px 40px;
+    text-align:center;
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 80% 20%, rgba(255,255,255,0.18), transparent 55%);
+  }
+  .final-cta h2{
+    color:var(--white);
+    font-size:clamp(1.8rem, 3.6vw, 2.6rem);
+    margin-bottom:16px;
+    position:relative;
+  }
+  .final-cta p{
+    max-width:52ch;
+    margin:0 auto 32px;
+    color:#FFF3EE;
+    font-size:1.08rem;
+    position:relative;
+  }
+  .final-cta .btn-primary{
+    background:var(--white);
+    color:var(--rose);
+    box-shadow:0 14px 30px -10px rgba(0,0,0,0.35);
+    position:relative;
+  }
+  .final-cta .btn-primary:hover{
+    background:var(--pine-dark);
+    color:var(--white);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:70px 0 40px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:50px;
+  }
+  .footer-logo{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.3rem;
+    color:var(--pine-dark);
+    margin-bottom:12px;
+  }
+  footer p{color:#6B6153; font-size:0.95rem; max-width:36ch;}
+  footer h4{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:#8A7E6C;
+    margin-bottom:16px;
+  }
+  .footer-links{list-style:none;}
+  .footer-links li{margin-bottom:12px;}
+  .footer-links a{
+    color:var(--pine-dark);
+    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:color .2s;
+  }
+  .footer-links a:hover{color:var(--rose);}
+  .footer-bottom{
+    border-top:1px solid rgba(31,71,65,0.12);
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:0.85rem;
+    color:#8A7E6C;
+  }
+  .footer-bottom span.script{font-size:1.1rem;}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links{display:none;}
+    .hero .wrap{grid-template-columns:1fr; gap:50px;}
+    .hero{padding:60px 0 80px;}
+    .about .wrap{grid-template-columns:1fr;}
+    .about-visual{max-width:320px; margin:0 auto;}
+    .services-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .final-cta{margin:0 16px; padding:50px 24px;}
+    .badge-float{left:8px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .service-card:hover, .btn-primary:hover{transform:none;}
+  }
+
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">Tiara Salazar <span>·</span> Psicóloga</a>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="nav-cta" href="https://encuadrado.com/p/tiara-salazar-contreras" target="_blank" rel="noopener">Agendar cita</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Terapia online · Todo el mundo</span>
+        <h1>Un espacio para ti, <em>donde estés.</em></h1>
+        <p class="lead">Soy Tiara Salazar, psicóloga. Acompaño procesos terapéuticos online con calidez y compromiso, para que puedas sentirte escuchada, entendida y en calma, sin importar en qué país estés.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="https://encuadrado.com/p/tiara-salazar-contreras" target="_blank" rel="noopener">
+            Agenda tu cita psicológica →
+          </a>
+          <a class="btn-ghost" href="https://instagram.com/psicologatiara" target="_blank" rel="noopener">
+            @psicologatiara en Instagram
+          </a>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <div class="portrait-card">
+          <div class="portrait-img">
+            <p class="portrait-heart">te quiero<br>mucho &lt;3</p>
+          </div>
+        </div>
+        <div class="badge-float">🤍 Terapia 100% online</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="section about" id="sobre-mi">
+    <div class="wrap">
+      <div class="about-visual reveal">
+        <span>"Cada sesión<br>es tu encuadre,<br>tu espacio seguro."</span>
+      </div>
+      <div>
+        <h2 class="reveal">Terapia cercana, sin importar la distancia</h2>
+        <p class="reveal">Creo en un acompañamiento psicológico honesto, cálido y profesional. Trabajamos juntas a tu ritmo, desde cualquier lugar del mundo, con la misma cercanía que tendríamos en un consultorio.</p>
+        <p class="reveal">Cada cita es un espacio pensado solo para ti: sin juicios, con escucha real y herramientas concretas para tu bienestar emocional.</p>
+        <div class="pill-list reveal">
+          <span>Sesiones 100% online</span>
+          <span>Atención en español</span>
+          <span>Espacio confidencial</span>
+          <span>Enfoque cálido y humano</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios" style="background:var(--cream-soft);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Servicios</span>
+        <h2 class="reveal">Cómo puedo acompañarte</h2>
+        <p class="reveal">Sesiones diseñadas para adaptarse a tu vida, tu horario y tu proceso.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">🌎</div>
+          <h3>Terapia online global</h3>
+          <p>Sesiones por videollamada para todo el mundo. Sin importar tu zona horaria o país, siempre hay un espacio para ti.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🤍</div>
+          <h3>Acompañamiento personalizado</h3>
+          <p>Cada proceso es único. Trabajamos objetivos claros según lo que estés atravesando y a tu propio ritmo.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">📅</div>
+          <h3>Agenda flexible</h3>
+          <p>Reserva tu cita fácilmente desde el link de agenda, elige el horario que mejor se ajuste a ti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="section process" id="proceso">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 class="reveal">Empezar es más fácil de lo que crees</h2>
+        <p class="reveal">Cuatro pasos simples para dar inicio a tu proceso terapéutico.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>Agenda tu cita</h3>
+          <p>Entra al link de reservas y elige el horario disponible que más te acomode.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h3>Confirmación</h3>
+          <p>Recibes la confirmación con el enlace de tu sesión online.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h3>Tu primera sesión</h3>
+          <p>Nos conocemos, hablamos de lo que te trae a terapia y qué esperas del proceso.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">04</div>
+          <h3>Tu proceso continúa</h3>
+          <p>Seguimos trabajando juntas, sesión a sesión, a tu ritmo y con total confianza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section">
+    <div class="final-cta reveal">
+      <h2>Tu bienestar merece un espacio hoy</h2>
+      <p>Agenda tu cita psicológica online y da el primer paso hacia sentirte mejor, con acompañamiento cercano y profesional.</p>
+      <a class="btn-primary" href="https://encuadrado.com/p/tiara-salazar-contreras" target="_blank" rel="noopener">
+        Agendar mi cita ahora →
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Tiara Salazar</div>
+        <p>Psicóloga · Terapia online para todo el mundo. <span class="script">Te quiero mucho &lt;3</span></p>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul class="footer-links">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo funciona</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-links">
+          <li><a href="https://encuadrado.com/p/tiara-salazar-contreras" target="_blank" rel="noopener">📅 Agenda tu cita</a></li>
+          <li><a href="https://instagram.com/psicologatiara" target="_blank" rel="noopener">📷 @psicologatiara</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tiara Salazar · Psicóloga</span>
+      <span class="script">Este espacio es para ti 🤍</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

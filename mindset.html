@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natalia · Mentora de Sanación y Transformación Interior</title>
+<meta name="description" content="Sanar es conectar contigo. Acompañamiento en autoconocimiento, introspección creativa y neurociencia para transformar tu vida desde adentro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-plum:#1F1229;
+    --dusk-berry:#3B2140;
+    --rosewood:#B65C6B;
+    --rosewood-soft:#D98A97;
+    --golden:#E8B94A;
+    --sage:#93A784;
+    --cream:#FBF4EC;
+    --cream-dim:#F3E7DA;
+    --ink-text:#2A1B2E;
+    --max-w:1180px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink-text);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  section{position:relative;}
+
+  .wrap{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    padding:20px 0;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    background:rgba(251,244,236,0.92);
+    backdrop-filter:blur(10px);
+    padding:12px 0;
+    box-shadow:0 1px 0 rgba(42,27,46,0.08);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-size:1.35rem;
+    font-weight:600;
+    font-style:italic;
+    color:var(--cream);
+    transition:color .4s ease;
+  }
+  header.scrolled .logo{color:var(--ink-plum);}
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-size:0.92rem;
+    font-weight:600;
+  }
+  .nav-links a:not(.ig-btn){
+    color:var(--cream);
+    opacity:0.85;
+    transition:opacity .3s ease, color .4s ease;
+  }
+  header.scrolled .nav-links a:not(.ig-btn){color:var(--ink-plum);}
+  .nav-links a:not(.ig-btn):hover{opacity:1;}
+  .nav-links a:not(.ig-btn){position:relative;}
+
+  .ig-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(135deg,var(--rosewood),var(--golden));
+    color:#fff !important;
+    padding:9px 18px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.88rem;
+    box-shadow:0 6px 18px rgba(182,92,107,0.35);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .ig-btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 24px rgba(182,92,107,0.45);}
+  .ig-btn svg{width:16px;height:16px;flex-shrink:0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 0%, rgba(182,92,107,0.35), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 90% 20%, rgba(232,185,74,0.18), transparent 55%),
+      linear-gradient(160deg, var(--ink-plum) 0%, var(--dusk-berry) 55%, #2E1B37 100%);
+    color:var(--cream);
+    display:flex;
+    align-items:center;
+    padding:140px 0 90px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--golden);
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px;height:1px;
+    background:var(--golden);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.2vw, 4.2rem);
+    line-height:1.08;
+    color:var(--cream);
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:600;
+    background:linear-gradient(100deg,var(--rosewood-soft),var(--golden));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.sub{
+    margin-top:22px;
+    font-size:1.12rem;
+    max-width:490px;
+    color:rgba(251,244,236,0.82);
+  }
+  .hero-ctas{
+    margin-top:36px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--rosewood),#c96c7c);
+    color:#fff;
+    padding:15px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    box-shadow:0 10px 26px rgba(182,92,107,0.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(182,92,107,0.5);}
+  .btn-ghost{
+    border:1.5px solid rgba(251,244,236,0.35);
+    color:var(--cream);
+    padding:14px 28px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    transition:border-color .25s ease, background .25s ease;
+    display:inline-block;
+  }
+  .btn-ghost:hover{border-color:var(--golden);background:rgba(232,185,74,0.08);}
+
+  .hero-words{
+    margin-top:44px;
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+    font-size:0.85rem;
+    color:rgba(251,244,236,0.6);
+  }
+  .hero-words span{display:flex;align-items:center;gap:8px;}
+  .hero-words span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--golden);}
+
+  /* signature svg */
+  .signature-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .signature-wrap svg{width:100%;max-width:440px;height:auto;overflow:visible;}
+  .sig-path{
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:1;
+    stroke-dashoffset:1;
+    pathLength:1;
+    transition:stroke-dashoffset 1.8s cubic-bezier(.22,.9,.3,1);
+  }
+  .signature-wrap.in-view .sig-path{stroke-dashoffset:0;}
+  .sig-dot{opacity:0;transition:opacity .8s ease 1.2s;}
+  .signature-wrap.in-view .sig-dot{opacity:1;}
+
+  /* ---------- PAIN POINTS ---------- */
+  .pains{
+    background:var(--cream);
+    padding:110px 0 100px;
+  }
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head .eyebrow{color:var(--rosewood);}
+  .section-head .eyebrow::before{background:var(--rosewood);}
+  .section-head h2{
+    font-size:clamp(1.9rem,3.4vw,2.7rem);
+    color:var(--ink-plum);
+  }
+  .pain-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  .pain-card{
+    background:#fff;
+    border:1px solid rgba(42,27,46,0.08);
+    border-radius:20px;
+    padding:30px 28px;
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .pain-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(42,27,46,0.08);}
+  .pain-mark{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--rosewood-soft);
+    line-height:1;
+  }
+  .pain-card p{font-size:1.02rem;color:var(--ink-text);}
+
+  /* ---------- METHOD ---------- */
+  .method{
+    background:var(--ink-plum);
+    color:var(--cream);
+    padding:110px 0;
+    position:relative;
+  }
+  .method .eyebrow{color:var(--sage);}
+  .method .eyebrow::before{background:var(--sage);}
+  .method h2{color:var(--cream);font-size:clamp(1.9rem,3.4vw,2.7rem);}
+  .method-sub{color:rgba(251,244,236,0.65);max-width:560px;margin-top:14px;font-size:1.05rem;}
+
+  .pillars{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:rgba(251,244,236,0.12);
+    border:1px solid rgba(251,244,236,0.12);
+    border-radius:22px;
+    overflow:hidden;
+  }
+  .pillar{
+    background:var(--dusk-berry);
+    padding:42px 32px;
+    transition:background .35s ease;
+  }
+  .pillar:hover{background:#452650;}
+  .pillar .glyph{
+    width:46px;height:46px;
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    margin-bottom:22px;
+  }
+  .pillar:nth-child(1) .glyph{background:rgba(182,92,107,0.25);}
+  .pillar:nth-child(2) .glyph{background:rgba(232,185,74,0.25);}
+  .pillar:nth-child(3) .glyph{background:rgba(147,167,132,0.25);}
+  .pillar h3{
+    font-size:1.28rem;
+    font-weight:500;
+    margin-bottom:12px;
+    color:var(--cream);
+  }
+  .pillar p{
+    font-size:0.96rem;
+    color:rgba(251,244,236,0.68);
+  }
+
+  /* ---------- QUOTE ---------- */
+  .quote-section{
+    background:linear-gradient(135deg,var(--rosewood-soft),var(--golden));
+    padding:90px 0;
+    text-align:center;
+  }
+  .quote-section blockquote{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.8rem,4vw,3rem);
+    color:var(--ink-plum);
+    max-width:760px;
+    margin:0 auto;
+    line-height:1.3;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--cream);
+    padding:110px 0;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-portrait{
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(182,92,107,0.5), transparent 55%),
+      radial-gradient(circle at 75% 75%, rgba(232,185,74,0.45), transparent 55%),
+      linear-gradient(155deg, var(--dusk-berry), var(--ink-plum));
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .about-portrait svg{width:58%;opacity:0.92;}
+  .about h2{font-size:clamp(1.8rem,3.2vw,2.4rem);color:var(--ink-plum);margin-bottom:20px;}
+  .about p{font-size:1.06rem;color:var(--ink-text);margin-bottom:16px;max-width:520px;}
+  .about-tags{
+    margin-top:26px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .about-tags span{
+    font-size:0.82rem;
+    font-weight:700;
+    padding:8px 16px;
+    border-radius:999px;
+    background:var(--cream-dim);
+    color:var(--rosewood);
+    border:1px solid rgba(182,92,107,0.25);
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:radial-gradient(ellipse 90% 100% at 50% 0%, #452650, var(--ink-plum) 65%);
+    color:var(--cream);
+    padding:120px 0;
+    text-align:center;
+  }
+  .cta-final .eyebrow{justify-content:center;color:var(--golden);}
+  .cta-final .eyebrow::before{display:none;}
+  .cta-final h2{
+    font-size:clamp(2.1rem,4.4vw,3.4rem);
+    max-width:680px;
+    margin:0 auto 20px;
+  }
+  .cta-final p{
+    color:rgba(251,244,236,0.7);
+    max-width:520px;
+    margin:0 auto 40px;
+    font-size:1.08rem;
+  }
+  .cta-final .ig-btn{
+    padding:16px 34px;
+    font-size:1rem;
+  }
+  .cta-final .ig-btn svg{width:20px;height:20px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink-plum);
+    color:rgba(251,244,236,0.55);
+    padding:34px 0;
+    border-top:1px solid rgba(251,244,236,0.1);
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    font-size:0.85rem;
+  }
+  footer a{font-weight:700;color:var(--golden);}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .signature-wrap{order:-1;margin-bottom:10px;}
+    .signature-wrap svg{max-width:280px;}
+    .pain-grid{grid-template-columns:1fr;}
+    .pillars{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-portrait{max-width:340px;margin:0 auto;}
+    .nav-links{display:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:0.01ms !important; animation-duration:0.01ms !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--golden);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo">Natalia</a>
+      <div class="nav-links">
+        <a href="#metodo">Método</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="https://www.instagram.com/mindset_natalia/" target="_blank" rel="noopener" class="ig-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+          @mindset_natalia
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Mentora de Sanación y Transformación Interior</div>
+      <h1>Sanar es <em>conectar</em><br>contigo</h1>
+      <p class="sub">Te ayudo a sanar tu mente para transformar tu vida, uniendo autoconocimiento, introspección creativa y neurociencia en un proceso real, no en frases bonitas.</p>
+      <div class="hero-ctas">
+        <a href="https://www.instagram.com/mindset_natalia/" target="_blank" rel="noopener" class="btn-primary">Sígueme en Instagram</a>
+        <a href="#metodo" class="btn-ghost">Conocer el método</a>
+      </div>
+      <div class="hero-words">
+        <span>Autoconocimiento</span>
+        <span>Introspección Creativa</span>
+        <span>Neurociencia</span>
+      </div>
+    </div>
+
+    <div class="signature-wrap" id="sigWrap">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- neural-line butterfly: wings made of dendrite-like curves -->
+        <g stroke="var(--rosewood-soft)" stroke-width="2">
+          <path class="sig-path" style="transition-delay:.05s" d="M200 200 C150 150, 90 140, 60 90 C40 60, 60 40, 90 55 C120 70, 130 110, 150 140"/>
+          <path class="sig-path" style="transition-delay:.15s;stroke:var(--golden)" d="M200 200 C160 175, 110 175, 80 130 C60 100, 75 75, 100 90 C125 105, 135 140, 155 165"/>
+          <path class="sig-path" style="transition-delay:.25s" d="M200 200 C165 205, 115 220, 95 265 C80 300, 100 320, 125 300 C148 282, 150 245, 165 215"/>
+          <path class="sig-path" style="transition-delay:.35s;stroke:var(--sage)" d="M200 200 C170 220, 135 245, 130 285 C127 312, 148 320, 160 298 C172 278, 168 240, 178 212"/>
+        </g>
+        <g stroke="var(--rosewood-soft)" stroke-width="2">
+          <path class="sig-path" style="transition-delay:.1s" d="M200 200 C250 150, 310 140, 340 90 C360 60, 340 40, 310 55 C280 70, 270 110, 250 140"/>
+          <path class="sig-path" style="transition-delay:.2s;stroke:var(--golden)" d="M200 200 C240 175, 290 175, 320 130 C340 100, 325 75, 300 90 C275 105, 265 140, 245 165"/>
+          <path class="sig-path" style="transition-delay:.3s" d="M200 200 C235 205, 285 220, 305 265 C320 300, 300 320, 275 300 C252 282, 250 245, 235 215"/>
+          <path class="sig-path" style="transition-delay:.4s;stroke:var(--sage)" d="M200 200 C230 220, 265 245, 270 285 C273 312, 252 320, 240 298 C228 278, 232 240, 222 212"/>
+        </g>
+        <path class="sig-path" style="transition-delay:.5s" stroke="var(--cream)" stroke-width="3" d="M200 150 C196 170, 204 185, 200 200 C196 215, 204 235, 200 260"/>
+        <circle class="sig-dot" cx="200" cy="140" r="4" fill="var(--golden)"/>
+        <circle class="sig-dot" cx="200" cy="270" r="4" fill="var(--rosewood-soft)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="pains">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Un espacio para reconocerte</div>
+      <h2>¿Te reconoces en alguno de estos momentos?</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <span class="pain-mark">“</span>
+        <p>Sientes que repites los mismos patrones, aunque conscientemente quieras cambiar.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="pain-mark">“</span>
+        <p>Te cuesta poner en palabras lo que sientes por dentro, y eso te agota.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="pain-mark">“</span>
+        <p>Sabes que algo dentro de ti necesita sanar, pero no sabes por dónde empezar.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="pain-mark">“</span>
+        <p>Buscas herramientas reales para transformarte, no solo frases motivacionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="method" id="metodo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Cómo trabajamos juntas</div>
+      <h2>Un método que une mente, emoción y ciencia</h2>
+      <p class="method-sub">Tres pilares que se entrelazan para que el cambio no se quede en la teoría, sino que se sienta en tu día a día.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="glyph">🌷</div>
+        <h3>Autoconocimiento</h3>
+        <p>Aprendes a mirarte sin juicio, para entender qué hay detrás de tus patrones, tus reacciones y tus bloqueos.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="glyph">✍️</div>
+        <h3>Introspección Creativa</h3>
+        <p>Usamos la escritura y otras herramientas creativas como puente hacia lo que tu mente aún no ha puesto en palabras.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="glyph">🌟</div>
+        <h3>Neurociencia</h3>
+        <p>Entiendes cómo funciona tu cerebro para que trabaje a tu favor, no en tu contra, durante el proceso de cambio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="wrap">
+    <blockquote class="reveal">“Sanar es conectar contigo.” 💗</blockquote>
+  </div>
+</section>
+
+<section class="about" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="about-portrait reveal">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--cream)" stroke-width="1.5" opacity="0.35"/>
+        <path d="M100 40 C60 40, 40 70, 45 105 C48 128, 65 145, 100 150 C135 145, 152 128, 155 105 C160 70, 140 40, 100 40Z" fill="none" stroke="var(--golden)" stroke-width="2" opacity="0.85"/>
+        <path d="M70 95 C85 80, 115 80, 130 95" fill="none" stroke="var(--rosewood-soft)" stroke-width="2"/>
+        <circle cx="100" cy="95" r="3" fill="var(--rosewood-soft)"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Sobre mí</div>
+      <h2>Hola, soy Natalia</h2>
+      <p>Soy mentora de sanación y transformación interior. Acompaño procesos donde la mente deja de ser un obstáculo y se convierte en tu mejor aliada.</p>
+      <p>Mi trabajo combina autoconocimiento, introspección creativa y neurociencia, para que entiendas no solo qué te pasa, sino por qué te pasa, y qué hacer con eso.</p>
+      <div class="about-tags">
+        <span>Sanación interior</span>
+        <span>Autoconocimiento</span>
+        <span>Neurociencia aplicada</span>
+        <span>Introspección creativa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <div class="eyebrow reveal">Empieza hoy</div>
+    <h2 class="reveal">¿Lista para sanar y transformar tu vida?</h2>
+    <p class="reveal">Sígueme en Instagram para contenido, reflexiones y el primer paso hacia tu proceso de transformación interior.</p>
+    <a href="https://www.instagram.com/mindset_natalia/" target="_blank" rel="noopener" class="ig-btn reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+      @mindset_natalia
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Natalia · Mentora de Sanación y Transformación Interior</span>
+    <a href="https://www.instagram.com/mindset_natalia/" target="_blank" rel="noopener">Instagram: @mindset_natalia</a>
+  </div>
+</footer>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // signature svg
+  const sig = document.getElementById('sigWrap');
+  const sigIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        sig.classList.add('in-view');
+        sigIo.unobserve(sig);
+      }
+    });
+  }, {threshold:0.3});
+  sigIo.observe(sig);
+</script>
+
+</body>
+</html>

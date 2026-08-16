@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaby Sodupe · Psicóloga | Terapia individual online y presencial</title>
+<meta name="description" content="Terapia individual online y presencial con Gaby Sodupe, psicoterapeuta con maestría y doctorado. México y Madrid. Cédula profesional 1110952.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B1B31;
+    --ink-soft:#5B4A61;
+    --paper:#FFF8F0;
+    --paper-2:#FBEDE1;
+    --coral:#FF6B54;
+    --coral-dark:#E24E36;
+    --gold:#F5A623;
+    --sage:#7A9B76;
+    --sky:#4E82A6;
+    --plum:#6B4E71;
+    --radius-lg:28px;
+    --radius-md:18px;
+    --shadow:0 20px 50px -25px rgba(43,27,49,0.35);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  section{position:relative;}
+
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2000;
+    opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,56px);
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky;top:0;z-index:1000;
+    background:rgba(255,248,240,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(43,27,49,0.08);
+  }
+  nav.container{
+    display:flex;align-items:center;justify-content:space-between;
+    height:78px;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.28rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo .dot{
+    width:11px;height:11px;border-radius:50%;
+    background:var(--coral);
+    box-shadow:5px 0 0 var(--gold), 10px 0 0 var(--sage);
+  }
+  .nav-links{
+    display:flex;gap:34px;align-items:center;
+    font-size:0.95rem;font-weight:500;
+  }
+  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;
+    width:0;height:2px;background:var(--coral);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--ink);color:var(--paper);
+    padding:11px 22px;border-radius:99px;
+    font-weight:600;font-size:0.9rem;
+    transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--coral-dark);transform:translateY(-2px);}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+  .burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:.3s;}
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:clamp(50px,8vw,90px) 0 clamp(60px,9vw,110px);
+    position:relative;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:clamp(30px,5vw,60px);
+    align-items:center;
+  }
+  .hero-eyebrow{color:var(--sky);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .hero-eyebrow::before{content:"";width:22px;height:2px;background:var(--sky);display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.4rem,4.6vw,3.8rem);
+    line-height:1.06;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--coral);
+  }
+  .hero p.lead{
+    font-size:1.14rem;
+    color:var(--ink-soft);
+    max-width:480px;
+    margin-bottom:32px;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;
+    border-radius:99px;
+    font-weight:600;
+    font-size:0.98rem;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    border:2px solid transparent;
+  }
+  .btn-primary{
+    background:var(--coral);color:#fff;
+    box-shadow:0 14px 30px -12px rgba(255,107,84,0.65);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px -12px rgba(255,107,84,0.75);}
+  .btn-outline{
+    background:transparent;border-color:var(--ink);color:var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px);}
+  .btn svg{width:19px;height:19px;flex-shrink:0;}
+
+  .badges{display:flex;flex-wrap:wrap;gap:10px;}
+  .badge{
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.03em;
+    background:var(--paper-2);
+    border:1px solid rgba(43,27,49,0.12);
+    padding:8px 14px;
+    border-radius:99px;
+    display:flex;align-items:center;gap:7px;
+  }
+  .badge .b-dot{width:6px;height:6px;border-radius:50%;background:var(--sage);}
+
+  /* hero blob mandala */
+  .hero-art{position:relative;height:clamp(320px,38vw,480px);}
+  .hero-art svg{position:absolute;inset:0;width:100%;height:100%;}
+  .blob{animation:float 9s ease-in-out infinite;transform-origin:center;}
+  .blob.b2{animation-duration:11s;animation-delay:-2s;}
+  .blob.b3{animation-duration:13s;animation-delay:-5s;}
+  .blob.b4{animation-duration:8s;animation-delay:-3s;}
+  @keyframes float{
+    0%,100%{transform:translate(0,0) rotate(0deg);}
+    50%{transform:translate(0,-14px) rotate(4deg);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .blob{animation:none;}
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.9rem,3.2vw,2.6rem);}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:1.05rem;}
+
+  /* ===== ABOUT ===== */
+  .about{padding:clamp(60px,8vw,100px) 0;background:var(--paper-2);}
+  .about .container{
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(30px,5vw,64px);align-items:center;
+  }
+  .about-visual{
+    aspect-ratio:1/1.05;
+    border-radius:var(--radius-lg);
+    background:linear-gradient(155deg,var(--plum) 0%, var(--coral) 55%, var(--gold) 100%);
+    position:relative;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .about-visual::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35), transparent 45%);
+  }
+  .about-visual .initials{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:clamp(4rem,9vw,6rem);color:rgba(255,255,255,0.92);
+    font-weight:600;letter-spacing:-0.02em;
+  }
+  .about-text h2{margin-bottom:20px;}
+  .about-text p{color:var(--ink-soft);margin-bottom:18px;font-size:1.05rem;}
+  .credentials{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+  .cred-item{
+    background:var(--paper);border-radius:var(--radius-md);
+    padding:18px;border:1px solid rgba(43,27,49,0.08);
+  }
+  .cred-item .cred-icon{
+    width:36px;height:36px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:10px;
+  }
+  .cred-item h4{font-family:'Fraunces',serif;font-size:1.02rem;font-weight:600;margin-bottom:4px;}
+  .cred-item p{font-size:0.87rem;color:var(--ink-soft);margin:0;}
+
+  /* ===== SERVICES ===== */
+  .services{padding:clamp(60px,8vw,100px) 0;}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  }
+  .service-card{
+    border-radius:var(--radius-lg);
+    padding:28px 24px;
+    color:#fff;
+    min-height:260px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;overflow:hidden;
+    transition:transform .3s ease;
+  }
+  .service-card:hover{transform:translateY(-8px);}
+  .service-card::after{
+    content:"";position:absolute;right:-30px;bottom:-30px;
+    width:120px;height:120px;border-radius:50%;
+    background:rgba(255,255,255,0.14);
+  }
+  .service-card.c1{background:linear-gradient(160deg,var(--coral),#FF8A6E);}
+  .service-card.c2{background:linear-gradient(160deg,var(--sky),#6FA3C4);}
+  .service-card.c3{background:linear-gradient(160deg,var(--sage),#9CBB98);}
+  .service-card.c4{background:linear-gradient(160deg,var(--gold),#FFC257);}
+  .service-card .s-icon{width:40px;height:40px;position:relative;z-index:1;}
+  .service-card h3{color:#fff;font-size:1.18rem;position:relative;z-index:1;margin:16px 0 8px;}
+  .service-card p{font-size:0.9rem;opacity:0.95;position:relative;z-index:1;}
+
+  /* ===== PROCESS ===== */
+  .process{padding:clamp(60px,8vw,100px) 0;background:var(--paper-2);}
+  .process-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    position:relative;
+  }
+  .process-grid::before{
+    content:"";position:absolute;top:26px;left:0;right:0;height:2px;
+    background:repeating-linear-gradient(90deg, rgba(43,27,49,0.18) 0 8px, transparent 8px 16px);
+    z-index:0;
+  }
+  .step{position:relative;padding-right:20px;z-index:1;}
+  .step-num{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;
+    margin-bottom:20px;
+  }
+  .step:nth-child(1) .step-num{border-color:var(--coral);color:var(--coral);}
+  .step:nth-child(2) .step-num{border-color:var(--sky);color:var(--sky);}
+  .step:nth-child(3) .step-num{border-color:var(--sage);color:var(--sage);}
+  .step:nth-child(4) .step-num{border-color:var(--gold);color:var(--gold);}
+  .step h4{font-family:'Fraunces',serif;font-size:1.08rem;margin-bottom:8px;}
+  .step p{font-size:0.92rem;color:var(--ink-soft);}
+
+  /* ===== LOCATIONS ===== */
+  .locations{padding:clamp(60px,8vw,100px) 0;}
+  .loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .loc-card{
+    border-radius:var(--radius-lg);
+    border:1px solid rgba(43,27,49,0.1);
+    padding:30px 26px;
+    background:var(--paper);
+    transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .loc-card:hover{box-shadow:var(--shadow);transform:translateY(-6px);}
+  .loc-card svg{width:34px;height:34px;margin-bottom:16px;}
+  .loc-card h4{font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:8px;}
+  .loc-card p{color:var(--ink-soft);font-size:0.94rem;}
+
+  /* ===== FAQ ===== */
+  .faq{padding:clamp(60px,8vw,100px) 0;background:var(--paper-2);}
+  .faq-list{max-width:760px;}
+  .faq-item{
+    border-bottom:1px solid rgba(43,27,49,0.14);
+  }
+  .faq-q{
+    width:100%;text-align:left;background:none;border:0;cursor:pointer;
+    padding:22px 0;display:flex;justify-content:space-between;align-items:center;
+    font-family:'Fraunces',serif;font-size:1.08rem;font-weight:500;color:var(--ink);
+    gap:20px;
+  }
+  .faq-q .plus{
+    width:26px;height:26px;flex-shrink:0;border-radius:50%;
+    background:var(--coral);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;transition:transform .3s ease;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a p{padding-bottom:22px;color:var(--ink-soft);max-width:640px;}
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    padding:clamp(70px,9vw,110px) 0;
+    background:linear-gradient(135deg,var(--plum) 0%, var(--coral) 50%, var(--gold) 100%);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .final-cta::before, .final-cta::after{
+    content:"";position:absolute;border-radius:50%;
+    background:rgba(255,255,255,0.08);
+  }
+  .final-cta::before{width:340px;height:340px;top:-160px;left:-100px;}
+  .final-cta::after{width:260px;height:260px;bottom:-140px;right:-60px;}
+  .final-cta h2{color:#fff;font-size:clamp(2rem,4vw,3rem);max-width:680px;margin:0 auto 16px;position:relative;z-index:1;}
+  .final-cta p{color:rgba(255,255,255,0.92);max-width:520px;margin:0 auto 34px;position:relative;z-index:1;}
+  .final-cta .btn-primary{background:#fff;color:var(--coral-dark);position:relative;z-index:1;}
+  .final-cta .btn-primary:hover{background:var(--ink);color:#fff;}
+
+  /* ===== FOOTER ===== */
+  footer{padding:56px 0 34px;background:var(--ink);color:rgba(255,248,240,0.82);}
+  .footer-top{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;
+    padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.12);
+    margin-bottom:26px;
+  }
+  .footer-logo{font-family:'Fraunces',serif;font-size:1.4rem;color:#fff;margin-bottom:10px;}
+  .footer-col h5{
+    font-family:'Space Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;
+    text-transform:uppercase;color:rgba(255,248,240,0.5);margin-bottom:14px;
+  }
+  .footer-col a, .footer-col p{display:block;margin-bottom:9px;font-size:0.92rem;color:rgba(255,248,240,0.85);}
+  .footer-col a:hover{color:var(--coral);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:0.8rem;color:rgba(255,248,240,0.5);
+  }
+
+  /* ===== FLOATING WHATSAPP ===== */
+  .wa-float{
+    position:fixed;bottom:26px;right:26px;z-index:900;
+    width:62px;height:62px;border-radius:50%;
+    background:var(--coral);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 16px 34px -10px rgba(255,107,84,0.65);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  .wa-float svg{width:28px;height:28px;}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 16px 34px -10px rgba(255,107,84,0.65);}
+    50%{box-shadow:0 16px 34px -10px rgba(255,107,84,0.95), 0 0 0 10px rgba(255,107,84,0.12);}
+  }
+  @media (prefers-reduced-motion:reduce){.wa-float{animation:none;}}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--sky);outline-offset:3px;}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:980px){
+    .about .container{grid-template-columns:1fr;}
+    .about-visual{max-width:340px;margin:0 auto;}
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .process-grid{grid-template-columns:repeat(2,1fr);row-gap:36px;}
+    .process-grid::before{display:none;}
+    .loc-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:820px){
+    .nav-links{
+      position:fixed;top:78px;left:0;right:0;
+      background:var(--paper);
+      flex-direction:column;align-items:flex-start;
+      padding:24px clamp(20px,5vw,56px);gap:20px;
+      transform:translateY(-140%);
+      transition:transform .3s ease;
+      border-bottom:1px solid rgba(43,27,49,0.1);
+    }
+    .nav-links.open{transform:translateY(0);}
+    .burger{display:block;}
+    .hero .container{grid-template-columns:1fr;}
+    .hero-art{order:-1;height:280px;}
+    .service-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo"><span class="dot"></span>Gaby Sodupe</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a class="nav-cta" href="https://wa.me/525539552668?text=Hola%20Gaby%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta" target="_blank" rel="noopener">Agenda tu sesión</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy reveal">
+      <div class="eyebrow hero-eyebrow">Psicoterapia · México y Madrid</div>
+      <h1>Un espacio para <em>conocerte</em> de nuevo</h1>
+      <p class="lead">Terapia individual, online y presencial, con Gaby Sodupe — psicoterapeuta con maestría y doctorado, integrante de Clínica Resignify.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/525539552668?text=Hola%20Gaby%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.8 9 10 7.4 9.7 6.8c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4C7.4 7 6.6 7.7 6.6 9.2c0 1.5 1.1 3 1.3 3.2.1.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+          Escríbeme por WhatsApp
+        </a>
+        <a class="btn btn-outline" href="https://www.instagram.com/psicogabysodupe/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+          Sígueme en Instagram
+        </a>
+      </div>
+      <div class="badges">
+        <span class="badge"><span class="b-dot"></span>Cédula profesional 1110952</span>
+        <span class="badge"><span class="b-dot" style="background:var(--sky)"></span>Maestría y doctorado</span>
+        <span class="badge"><span class="b-dot" style="background:var(--gold)"></span>Integrante Clínica Resignify</span>
+      </div>
+    </div>
+
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+        <path class="blob" fill="var(--coral)" opacity="0.9" d="M240 60c60 0 90 55 120 95s45 95-5 130-115 45-165 15-80-75-70-135S180 60 240 60z"/>
+        <path class="blob b2" fill="var(--gold)" opacity="0.85" d="M255 120c45-10 85 15 100 55s0 85-40 105-90 15-115-20-20-90 10-115 30-20 45-25z"/>
+        <path class="blob b3" fill="var(--sage)" opacity="0.85" d="M190 170c35-25 80-15 100 15s15 75-15 100-80 25-105-5-15-85 20-110z"/>
+        <path class="blob b4" fill="var(--sky)" opacity="0.8" d="M220 230c25-20 60-10 75 15s5 60-20 75-60 10-75-15-5-55 20-75z"/>
+        <circle cx="240" cy="240" r="20" fill="#FFF8F0" opacity="0.9"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre-mi">
+  <div class="container">
+    <div class="about-visual reveal">
+      <div class="initials">GS</div>
+    </div>
+    <div class="about-text reveal">
+      <div class="eyebrow" style="color:var(--sage);margin-bottom:14px;">Sobre mí</div>
+      <h2>Acompañarte en tu proceso, desde donde estés</h2>
+      <p>Soy Gaby Sodupe, psicoterapeuta con formación de maestría y doctorado en psicología. Acompaño procesos terapéuticos individuales, tanto en modalidad online como presencial, entre México y Madrid.</p>
+      <p>Formo parte del equipo de <strong>Clínica Resignify</strong>, donde combino un enfoque cercano y profesional con herramientas terapéuticas adaptadas a cada persona y a cada momento de vida.</p>
+      <div class="credentials">
+        <div class="cred-item">
+          <div class="cred-icon" style="background:rgba(255,107,84,0.14);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+          </div>
+          <h4>Maestría y doctorado</h4>
+          <p>Formación académica especializada en psicoterapia.</p>
+        </div>
+        <div class="cred-item">
+          <div class="cred-icon" style="background:rgba(78,130,166,0.14);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <h4>Cédula 1110952</h4>
+          <p>Ejercicio profesional registrado y verificable.</p>
+        </div>
+        <div class="cred-item">
+          <div class="cred-icon" style="background:rgba(122,155,118,0.14);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+          </div>
+          <h4>Clínica Resignify</h4>
+          <p>Trabajo en equipo dentro de un espacio terapéutico integral.</p>
+        </div>
+        <div class="cred-item">
+          <div class="cred-icon" style="background:rgba(245,166,35,0.16);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M2 12h4l3 8 4-16 3 8h6"/></svg>
+          </div>
+          <h4>México y Madrid</h4>
+          <p>Sesiones presenciales en ambas ciudades, online en cualquier lugar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--coral);">Servicios</div>
+      <h2>Terapia adaptada a tu momento</h2>
+      <p>Un acompañamiento pensado para ti, sea cual sea la etapa en la que te encuentres.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card c1 reveal">
+        <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M8 20h8M12 18v2"/></svg>
+        <div>
+          <h3>Terapia individual online</h3>
+          <p>Sesiones por videollamada desde donde estés, con la misma cercanía que en consultorio.</p>
+        </div>
+      </div>
+      <div class="service-card c2 reveal">
+        <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+        <div>
+          <h3>Terapia individual presencial</h3>
+          <p>Consulta en persona en México y en Madrid, según tu ubicación.</p>
+        </div>
+      </div>
+      <div class="service-card c3 reveal">
+        <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div>
+          <h3>Primera consulta</h3>
+          <p>Un espacio inicial para conocernos, entender qué te trae a terapia y definir objetivos.</p>
+        </div>
+      </div>
+      <div class="service-card c4 reveal">
+        <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg>
+        <div>
+          <h3>Proceso continuo</h3>
+          <p>Acompañamiento a mediano y largo plazo, con seguimiento cercano de tu evolución.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--sky);">Cómo trabajamos</div>
+      <h2>Cuatro pasos para empezar</h2>
+    </div>
+    <div class="process-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h4>Primer contacto</h4>
+        <p>Escríbeme por WhatsApp y cuéntame, en pocas palabras, qué te gustaría trabajar.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h4>Sesión inicial</h4>
+        <p>Nos conocemos, exploramos tu historia y definimos juntos los objetivos del proceso.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h4>Proceso terapéutico</h4>
+        <p>Sesiones periódicas, online o presenciales, con la frecuencia que mejor se adapte a ti.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h4>Acompañamiento</h4>
+        <p>Revisamos avances y ajustamos el camino contigo, con total flexibilidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="locations">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--sage);">Dónde</div>
+      <h2>Cerca de ti, estés donde estés</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.6"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <h4>México</h4>
+        <p>Sesiones presenciales disponibles, coordinadas por WhatsApp.</p>
+      </div>
+      <div class="loc-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <h4>Madrid</h4>
+        <p>Consulta presencial también en Madrid, con cita previa.</p>
+      </div>
+      <div class="loc-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.7 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.7-4-9s1.5-6.5 4-9z"/></svg>
+        <h4>Online</h4>
+        <p>Terapia por videollamada, sin importar en qué país te encuentres.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="preguntas">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--coral);">Preguntas frecuentes</div>
+      <h2>Todo lo que quieras saber antes de empezar</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">¿Las sesiones son online o presenciales? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Ambas modalidades están disponibles. Puedes elegir sesiones presenciales en México o Madrid, o sesiones online desde cualquier lugar.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿Cuánto dura cada sesión? <span class="plus">+</span></button>
+        <div class="faq-a"><p>La duración estándar suele ser de 50 minutos, aunque puede ajustarse según el momento del proceso y tus necesidades particulares.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿Cómo agendo mi primera cita? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Escríbeme directamente por WhatsApp contándome brevemente lo que te gustaría trabajar, y coordinamos juntos día y horario.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿La información que comparto es confidencial? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Sí. Todo lo que se comparte en sesión está protegido por el secreto profesional y el código de ética de la psicología.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿En qué idioma son las sesiones? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Las sesiones se llevan a cabo en español, tanto en las consultas presenciales como en las sesiones online.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="reveal">¿List@ para dar el primer paso?</h2>
+    <p class="reveal">Escríbeme por WhatsApp y empecemos a construir juntas tu proceso terapéutico.</p>
+    <a class="btn btn-primary reveal" href="https://wa.me/525539552668?text=Hola%20Gaby%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.8 9 10 7.4 9.7 6.8c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4C7.4 7 6.6 7.7 6.6 9.2c0 1.5 1.1 3 1.3 3.2.1.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+      Escríbeme por WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Gaby Sodupe</div>
+        <p style="max-width:280px;">Psicoterapeuta · Maestría y doctorado<br>Integrante de Clínica Resignify</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#preguntas">Preguntas frecuentes</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <a href="https://wa.me/525539552668?text=Hola%20Gaby%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta" target="_blank" rel="noopener">WhatsApp: +52 55 3955 2668</a>
+        <a href="https://www.instagram.com/psicogabysodupe/" target="_blank" rel="noopener">Instagram: @psicogabysodupe</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <p>Cédula profesional 1110952</p>
+        <p style="max-width:260px;">Este sitio no sustituye atención de urgencias. En caso de crisis, contacta a los servicios de emergencia de tu localidad.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Gaby Sodupe · Psicóloga</span>
+      <span>México y Madrid</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/525539552668?text=Hola%20Gaby%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.8 9 10 7.4 9.7 6.8c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4C7.4 7 6.6 7.7 6.6 9.2c0 1.5 1.1 3 1.3 3.2.1.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // burger menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // faq accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

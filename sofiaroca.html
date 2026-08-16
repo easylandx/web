@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sofía Roca | Psicología y Estilo de Vida</title>
+<meta name="description" content="Espacio de autoconocimiento y autocuidado. Psicoterapia online, lectura de tarot y journaling con Sofía Roca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3EA;
+    --cream-deep:#F5E7D8;
+    --plum:#4A3548;
+    --plum-soft:#6B5268;
+    --coral:#EF8B6E;
+    --gold:#D9A441;
+    --mauve:#A67FA0;
+    --rose:#EAB2A4;
+    --line:rgba(74,53,72,0.14);
+    --shadow:0 20px 50px rgba(74,53,72,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--plum);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--plum);
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--coral);color:#fff;}
+  a:focus-visible, button:focus-visible{
+    outline:2.5px solid var(--gold);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- background texture ---------- */
+  .grain-bg{
+    position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image: radial-gradient(circle at 12% 18%, rgba(217,164,65,0.10), transparent 40%),
+                       radial-gradient(circle at 88% 8%, rgba(166,127,160,0.14), transparent 45%),
+                       radial-gradient(circle at 70% 85%, rgba(239,139,110,0.10), transparent 45%);
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,243,234,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:1.25rem;letter-spacing:.01em;}
+  .brand .moon-mark{width:26px;height:26px;flex:none;}
+  .nav-links{display:flex;gap:30px;font-size:.92rem;letter-spacing:.02em;}
+  .nav-links a{text-decoration:none;position:relative;padding:4px 0;}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--coral);transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--plum);color:var(--cream);
+    padding:10px 20px;border-radius:30px;
+    text-decoration:none;font-size:.88rem;letter-spacing:.02em;
+    white-space:nowrap;transition:transform .25s ease, background .25s ease;
+  }
+  .nav-cta:hover{background:var(--coral);transform:translateY(-1px);}
+  .nav-mobile-hide{display:flex;}
+  @media (max-width:760px){
+    .nav-mobile-hide{display:none;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;z-index:1;
+    padding:96px 0 70px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;
+    gap:50px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--mauve);font-weight:500;margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--coral);}
+  .hero h1{
+    font-size:clamp(2.6rem,5.4vw,4.1rem);
+    line-height:1.04;
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--coral);
+    font-weight:400;
+  }
+  .hero p.lead{
+    margin-top:24px;font-size:1.18rem;color:var(--plum-soft);
+    max-width:44ch;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 28px;border-radius:40px;
+    text-decoration:none;font-size:.98rem;font-weight:500;letter-spacing:.01em;
+    transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease, background .28s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 14px 30px rgba(239,139,110,0.38);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(239,139,110,0.46);}
+  .btn-ghost{background:transparent;border-color:var(--plum);color:var(--plum);}
+  .btn-ghost:hover{background:var(--plum);color:var(--cream);transform:translateY(-2px);}
+
+  .hero-orb-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+  .moon-phases{width:100%;max-width:380px;}
+  .hero-word{
+    margin-top:44px;display:flex;gap:34px;flex-wrap:wrap;
+    font-family:'Fraunces',serif;font-style:italic;color:var(--plum-soft);font-size:1rem;
+  }
+  .hero-word span{opacity:.75;}
+
+  /* ---------- section shell ---------- */
+  section{position:relative;z-index:1;padding:86px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(2rem,3.6vw,2.7rem);line-height:1.12;}
+  .section-head p{margin-top:16px;color:var(--plum-soft);font-size:1.06rem;}
+
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:16px;
+    margin:0 auto;padding:6px 0;
+  }
+  .divider svg{width:120px;height:24px;opacity:.6;}
+
+  /* ---------- about ---------- */
+  .about{background:var(--cream-deep);}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+  .about-card{
+    background:var(--cream);border-radius:26px;padding:38px;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+  }
+  .about-card blockquote{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;
+    line-height:1.5;color:var(--plum);margin:0 0 18px;
+  }
+  .about-card cite{font-style:normal;font-size:.85rem;color:var(--mauve);letter-spacing:.04em;}
+  .about-text p{color:var(--plum-soft);font-size:1.06rem;margin-bottom:18px;}
+  .pillars{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;}
+  .pillar{display:flex;align-items:flex-start;gap:12px;flex:1 1 160px;}
+  .pillar .ic{font-size:1.4rem;line-height:1;}
+  .pillar h4{font-size:1rem;margin-bottom:4px;}
+  .pillar p{font-size:.9rem;color:var(--plum-soft);margin:0;}
+
+  /* ---------- services ---------- */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  }
+  .service-card{
+    background:var(--cream);border:1px solid var(--line);border-radius:24px;
+    padding:36px 30px;position:relative;overflow:hidden;
+    box-shadow:0 10px 26px rgba(74,53,72,0.06);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+    display:flex;flex-direction:column;
+  }
+  .service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);}
+  .service-card .glow{
+    position:absolute;top:-40px;right:-40px;width:140px;height:140px;
+    border-radius:50%;filter:blur(10px);opacity:.35;z-index:0;
+  }
+  .service-card.c1 .glow{background:var(--coral);}
+  .service-card.c2 .glow{background:var(--mauve);}
+  .service-card.c3 .glow{background:var(--gold);}
+  .service-card .moon-ic{width:44px;height:44px;margin-bottom:22px;position:relative;z-index:1;}
+  .service-card h3{font-size:1.35rem;margin-bottom:10px;position:relative;z-index:1;}
+  .service-card p{color:var(--plum-soft);font-size:.96rem;margin-bottom:26px;position:relative;z-index:1;flex-grow:1;}
+  .service-link{
+    position:relative;z-index:1;
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.9rem;font-weight:500;text-decoration:none;color:var(--plum);
+    border-bottom:1px solid var(--plum);padding-bottom:3px;width:fit-content;
+    transition:color .25s ease, border-color .25s ease, gap .25s ease;
+  }
+  .service-card.c1 .service-link:hover{color:var(--coral);border-color:var(--coral);gap:12px;}
+  .service-card.c2 .service-link:hover{color:var(--mauve);border-color:var(--mauve);gap:12px;}
+  .service-card.c3 .service-link:hover{color:var(--gold);border-color:var(--gold);gap:12px;}
+
+  /* ---------- journey / how it works ---------- */
+  .journey{background:var(--cream-deep);}
+  .journey-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;
+  }
+  .journey-row::before{
+    content:"";position:absolute;top:26px;left:6%;right:6%;height:1px;
+    background:repeating-linear-gradient(90deg, var(--mauve) 0 8px, transparent 8px 16px);
+    opacity:.5;
+  }
+  .journey-step{position:relative;padding:0 18px;text-align:left;}
+  .journey-phase{
+    width:52px;height:52px;border-radius:50%;background:var(--cream);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;position:relative;z-index:1;box-shadow:0 8px 18px rgba(74,53,72,0.08);
+  }
+  .journey-phase svg{width:26px;height:26px;}
+  .journey-step h4{font-size:1.02rem;margin-bottom:8px;}
+  .journey-step p{font-size:.88rem;color:var(--plum-soft);margin:0;}
+
+  /* ---------- instagram / social proof ---------- */
+  .insta{
+    background:linear-gradient(135deg, var(--plum) 0%, #5C4560 100%);
+    color:var(--cream);border-radius:32px;
+    padding:64px 50px;position:relative;overflow:hidden;
+  }
+  .insta::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 85% 20%, rgba(217,164,65,0.22), transparent 45%),
+                      radial-gradient(circle at 10% 90%, rgba(239,139,110,0.22), transparent 45%);
+  }
+  .insta-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .insta-text h2{color:var(--cream);font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:14px;}
+  .insta-text p{color:rgba(251,243,234,0.78);font-size:1.02rem;max-width:44ch;}
+  .insta-handle{
+    display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;
+  }
+  .btn-insta{
+    background:var(--cream);color:var(--plum);
+    padding:16px 32px;border-radius:40px;text-decoration:none;
+    font-weight:500;display:inline-flex;align-items:center;gap:10px;
+    transition:transform .28s ease, background .28s ease;flex:none;
+  }
+  .btn-insta:hover{transform:translateY(-2px) scale(1.02);background:var(--coral);color:#fff;}
+
+  /* ---------- final cta ---------- */
+  .final-cta{text-align:center;padding:100px 0 60px;}
+  .final-cta h2{font-size:clamp(2.1rem,4.2vw,3.1rem);max-width:16ch;margin:0 auto 22px;line-height:1.12;}
+  .final-cta p{color:var(--plum-soft);font-size:1.08rem;max-width:46ch;margin:0 auto 38px;}
+  .butterfly-wrap{margin:0 auto 30px;width:90px;height:70px;}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);padding:40px 0;
+    font-size:.86rem;color:var(--plum-soft);
+  }
+  .footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+  .footer-row a{text-decoration:none;color:var(--plum-soft);}
+  .footer-row a:hover{color:var(--coral);}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{transition:none;opacity:1;transform:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-orb-wrap{order:-1;max-width:220px;margin:0 auto;}
+    .about-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .journey-row{grid-template-columns:1fr 1fr;row-gap:36px;}
+    .journey-row::before{display:none;}
+    .insta-inner{flex-direction:column;text-align:center;align-items:center;}
+    .insta-text p{margin-left:auto;margin-right:auto;}
+  }
+  @media (max-width:520px){
+    .journey-row{grid-template-columns:1fr;}
+    .hero{padding-top:60px;}
+    .insta{padding:44px 26px;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain-bg"></div>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg class="moon-mark" viewBox="0 0 40 40" fill="none">
+        <path d="M24 4C15 6 9 14 9 22c0 9 7.5 16 17 16 3.5 0 6.7-1 9.4-2.8C29.4 37 21 33 21 22S29.4 5 35.4 6.8C32.7 5 29.5 4 24 4z" fill="#EF8B6E"/>
+      </svg>
+      Sofía Roca
+    </div>
+    <nav class="nav-links nav-mobile-hide">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="https://www.instagram.com/ps.sofiaroca/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <a class="nav-cta" href="#servicios">Agenda tu hora</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal in">
+        <div class="eyebrow"><span class="dot"></span>Psicología y Estilo de Vida</div>
+        <h1>Sanar el dolor,<br><em>desde el amor.</em></h1>
+        <p class="lead">Un espacio de autoconocimiento y autocuidado para acompañarte en tu proceso: psicoterapia, tarot y journaling con Sofía Roca, psicóloga.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://www.encuadrado.com/p/almaluna/s/psicoterapia-online?from=app" target="_blank" rel="noopener">Agenda tu hora ✨</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/ps.sofiaroca/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+        <div class="hero-word">
+          <span>✨ Autoconocimiento</span>
+          <span>❤️‍🩹 Sanación</span>
+          <span>🦋 Transformación</span>
+        </div>
+      </div>
+      <div class="hero-orb-wrap reveal in">
+        <svg class="moon-phases" viewBox="0 0 380 200" fill="none">
+          <circle cx="60" cy="100" r="34" fill="#F5E7D8" stroke="#EF8B6E" stroke-width="1.5"/>
+          <circle cx="150" cy="100" r="44" fill="#EAB2A4"/>
+          <path d="M150 56a44 44 0 000 88c-14 0-25-19.7-25-44s11-44 25-44z" fill="#FBF3EA"/>
+          <circle cx="270" cy="100" r="52" fill="#D9A441"/>
+          <path d="M270 48c28.7 0 52 23.3 52 52s-23.3 52-52 52 20-23.3 20-52-20-52-20-52z" fill="#EF8B6E" opacity="0.85"/>
+          <circle cx="345" cy="100" r="28" fill="#A67FA0" opacity="0.9"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <blockquote>&ldquo;Creo en la psicoterapia como un viaje de vuelta a una misma: no para llegar a otro lugar, sino para habitar el propio con más amor.&rdquo;</blockquote>
+          <cite>— Sofía Roca, Psicóloga</cite>
+        </div>
+        <div class="about-text reveal">
+          <div class="eyebrow"><span class="dot"></span>Sobre mí</div>
+          <h2 style="margin-bottom:18px;">Un espacio para volver a ti</h2>
+          <p>Acompaño procesos de autoconocimiento y autocuidado desde un enfoque cálido y cercano, integrando psicoterapia con otras herramientas simbólicas como el tarot y el journaling.</p>
+          <p>Cada persona llega con su propia historia y su propio ritmo. Mi trabajo es sostener ese proceso con presencia, sin juicio, para que el dolor se transforme en aprendizaje y el autoconocimiento en un hogar.</p>
+          <div class="pillars">
+            <div class="pillar"><span class="ic">✨</span><div><h4>Autoconocimiento</h4><p>Herramientas para entenderte mejor.</p></div></div>
+            <div class="pillar"><span class="ic">❤️‍🩹</span><div><h4>Sanación</h4><p>Un espacio seguro sin juicios.</p></div></div>
+            <div class="pillar"><span class="ic">🦋</span><div><h4>Transformación</h4><p>Del dolor al aprendizaje.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Servicios</div>
+        <h2>Tres caminos, un mismo propósito</h2>
+        <p>Elige la puerta de entrada que más resuene contigo hoy. Todas conducen al mismo lugar: encontrarte contigo misma.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card c1 reveal">
+          <div class="glow"></div>
+          <svg class="moon-ic" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="18" fill="#EF8B6E"/><path d="M22 4a18 18 0 000 36c-7.7 0-14-8.1-14-18S14.3 4 22 4z" fill="#FBF3EA"/></svg>
+          <h3>Terapia Online</h3>
+          <p>Sesiones individuales de psicoterapia por videollamada, en un espacio íntimo y flexible, allí donde tú estés.</p>
+          <a class="service-link" href="https://www.encuadrado.com/p/almaluna/s/psicoterapia-online?from=app" target="_blank" rel="noopener">Agenda tu sesión →</a>
+        </div>
+
+        <div class="service-card c2 reveal">
+          <div class="glow"></div>
+          <svg class="moon-ic" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="18" fill="#A67FA0"/><path d="M22 4c9.9 0 18 8.1 18 18s-8.1 18-18 18 7-8.1 7-18-7-18-7-18z" fill="#EF8B6E" opacity="0.8"/></svg>
+          <h3>Lectura de Tarot</h3>
+          <p>Una herramienta simbólica de introspección para iluminar preguntas, ciclos y decisiones que estás atravesando.</p>
+          <a class="service-link" href="https://www.encuadrado.com/p/almaluna/s/tarot?from=app" target="_blank" rel="noopener">Reservar lectura →</a>
+        </div>
+
+        <div class="service-card c3 reveal">
+          <div class="glow"></div>
+          <svg class="moon-ic" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="18" fill="#D9A441"/><rect x="14" y="12" width="16" height="20" rx="2" fill="#FBF3EA"/><line x1="18" y1="18" x2="26" y2="18" stroke="#D9A441" stroke-width="1.4"/><line x1="18" y1="22" x2="26" y2="22" stroke="#D9A441" stroke-width="1.4"/><line x1="18" y1="26" x2="23" y2="26" stroke="#D9A441" stroke-width="1.4"/></svg>
+          <h3>Journaling Book</h3>
+          <p>Un cuaderno guiado con preguntas y ejercicios para sostener tu proceso de autoconocimiento día a día.</p>
+          <a class="service-link" href="https://www.encuadrado.com/s/almaluna/journaling-book" target="_blank" rel="noopener">Conseguir el libro →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="journey" id="proceso">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Cómo funciona</div>
+        <h2>Como las fases de la luna</h2>
+        <p>El proceso terapéutico también tiene sus ciclos. Así es como empezamos.</p>
+      </div>
+      <div class="journey-row">
+        <div class="journey-step reveal">
+          <div class="journey-phase"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#A67FA0" stroke-width="1.5"/></svg></div>
+          <h4>Luna nueva</h4>
+          <p>Escribes y agendas tu primera sesión desde Encuadrado, cuando tú quieras.</p>
+        </div>
+        <div class="journey-step reveal">
+          <div class="journey-phase"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 000 18c-3.5 0-6-4-6-9s2.5-9 6-9z" fill="#EAB2A4"/></svg></div>
+          <h4>Cuarto creciente</h4>
+          <p>Nos conocemos en una primera sesión y definimos juntas el encuadre del proceso.</p>
+        </div>
+        <div class="journey-step reveal">
+          <div class="journey-phase"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#D9A441"/></svg></div>
+          <h4>Luna llena</h4>
+          <p>Avanzamos con sesiones periódicas, al ritmo que necesites tú y tu proceso.</p>
+        </div>
+        <div class="journey-step reveal">
+          <div class="journey-phase"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 010 18c3.5 0 6-4 6-9s-2.5-9-6-9z" fill="#EF8B6E"/></svg></div>
+          <h4>Cuarto menguante</h4>
+          <p>Integramos lo aprendido y celebramos cada transformación en el camino.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section>
+    <div class="wrap">
+      <div class="insta reveal">
+        <div class="insta-inner">
+          <div class="insta-text">
+            <div class="eyebrow" style="color:#EAB2A4;"><span class="dot" style="background:#D9A441;"></span>Sígueme en Instagram</div>
+            <h2>Contenido sobre psicología y estilo de vida, cada semana</h2>
+            <p>Reflexiones, herramientas de autocuidado y adelantos del journaling en @ps.sofiaroca.</p>
+            <div class="insta-handle">@ps.sofiaroca</div>
+          </div>
+          <a class="btn-insta" href="https://www.instagram.com/ps.sofiaroca/" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+            Ir al perfil
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="wrap">
+      <div class="butterfly-wrap reveal">
+        <svg viewBox="0 0 90 70" fill="none">
+          <path d="M45 14C40 4 24 0 16 8c-7 7-4 20 8 24-12-2-18 8-14 17 4 8 16 9 22 0 2-3 3-7 3-11" fill="#EAB2A4"/>
+          <path d="M45 14C50 4 66 0 74 8c7 7 4 20-8 24 12-2 18 8 14 17-4 8-16 9-22 0-2-3-3-7-3-11" fill="#EF8B6E"/>
+          <line x1="45" y1="10" x2="45" y2="52" stroke="#4A3548" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2 class="reveal">Tu proceso de sanación empieza con un paso</h2>
+      <p class="reveal">Da el primer paso hoy: agenda tu sesión de psicoterapia, reserva una lectura de tarot o comienza tu journaling.</p>
+      <div class="hero-ctas reveal" style="justify-content:center;">
+        <a class="btn btn-primary" href="https://www.encuadrado.com/p/almaluna/s/psicoterapia-online?from=app" target="_blank" rel="noopener">Agenda tu hora ✨</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/ps.sofiaroca/" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Sofía Roca · Psicología y Estilo de Vida</span>
+    <a href="https://www.instagram.com/ps.sofiaroca/" target="_blank" rel="noopener">@ps.sofiaroca</a>
+    <span>Built by EasyLandX</span>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

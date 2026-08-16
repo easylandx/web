@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edna Lozano · Psicoterapeuta — Trauma & Vínculos Conscientes</title>
+<meta name="description" content="Psicoterapia en línea con Edna Lozano. Acompañamiento en trauma y vínculos conscientes, terapia individual y de pareja, workbooks y cursos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A28;
+    --ink-2:#152220;
+    --bone:#F4EEE3;
+    --bone-2:#EAE0CE;
+    --gold:#C9A15A;
+    --gold-light:#E3C88C;
+    --clay:#B97565;
+    --sage:#7C8F6E;
+    --text-dark:#26221D;
+    --text-soft:#5B554A;
+    --max:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bone);
+    color:var(--text-dark);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  em{font-style:italic; font-weight:500; color:inherit;}
+  section{position:relative;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 0;
+    transition:background 0.4s ease, padding 0.4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    background:rgba(244,238,227,0.92);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    box-shadow:0 1px 0 rgba(38,34,29,0.08);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between;}
+  .logo{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:20px;
+    color:var(--ink);
+  }
+  header.transparent-mode .logo{color:var(--bone);}
+  .nav-links{display:flex; gap:32px; align-items:center;}
+  .nav-links a{
+    font-size:14px;
+    color:var(--ink);
+    opacity:0.75;
+    transition:opacity .25s;
+  }
+  header.transparent-mode .nav-links a{color:var(--bone);}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--gold);
+    color:var(--ink) !important;
+    padding:10px 20px;
+    border-radius:100px;
+    font-weight:600;
+    opacity:1 !important;
+    font-size:13px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(201,161,90,0.4);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    background:radial-gradient(120% 90% at 15% 0%, #24342F 0%, var(--ink) 45%, var(--ink-2) 100%);
+    color:var(--bone);
+    display:flex;
+    align-items:center;
+    padding-top:110px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+    width:100%;
+  }
+  .hero h1{
+    font-size:clamp(38px,5.2vw,68px);
+    line-height:1.06;
+    color:var(--bone);
+    margin-bottom:26px;
+  }
+  .hero-sub{
+    font-size:18px;
+    color:#CFC9BB;
+    max-width:480px;
+    margin-bottom:38px;
+  }
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:14.5px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:var(--ink);
+    box-shadow:0 8px 24px rgba(201,161,90,0.28);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(201,161,90,0.42);}
+  .btn-ghost{
+    border:1px solid rgba(244,238,227,0.35);
+    color:var(--bone);
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-light); transform:translateY(-2px);}
+  .hero-tags{
+    display:flex; gap:10px; flex-wrap:wrap;
+    margin-top:44px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.04em;
+    color:#B7C4BB;
+    border:1px solid rgba(124,143,110,0.4);
+    padding:6px 14px;
+    border-radius:100px;
+  }
+
+  /* kintsugi vessel graphic */
+  .vessel-wrap{position:relative; display:flex; justify-content:center;}
+  .vessel-wrap svg{width:100%; max-width:420px; height:auto;}
+  .crack-line{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:2.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    filter:drop-shadow(0 0 6px rgba(227,200,140,0.55));
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation:drawcrack 2.6s 0.4s cubic-bezier(.6,.05,.2,1) forwards;
+  }
+  .crack-line.delay2{animation-delay:0.9s;}
+  .crack-line.delay3{animation-delay:1.3s;}
+  @keyframes drawcrack{ to{ stroke-dashoffset:0; } }
+  .vessel-body{fill:#233530; stroke:#3A4C45; stroke-width:1;}
+  .vessel-glow{
+    position:absolute; inset:0; margin:auto; width:340px; height:340px;
+    background:radial-gradient(circle, rgba(201,161,90,0.16), transparent 70%);
+    filter:blur(10px);
+  }
+
+  /* scroll cue */
+  .scroll-cue{
+    position:absolute; bottom:32px; left:32px;
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; letter-spacing:0.1em;
+    color:#9FAFA3;
+    text-transform:uppercase;
+  }
+  .scroll-cue .line{width:1px; height:36px; background:linear-gradient(var(--gold), transparent); animation:pulseline 2s ease-in-out infinite;}
+  @keyframes pulseline{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+  /* ---------- SECTION GENERIC ---------- */
+  .section{padding:120px 0;}
+  .section-tight{padding:90px 0;}
+  .center{text-align:center; margin-left:auto; margin-right:auto;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--bone);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+  }
+  .portrait-frame{
+    position:relative;
+    border-radius:18px;
+    background:linear-gradient(160deg, var(--sage) 0%, #5F7256 100%);
+    aspect-ratio:4/5;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .portrait-frame svg{width:70%;}
+  .portrait-frame::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 70% 20%, rgba(201,161,90,0.35), transparent 55%);
+  }
+  .about h2{
+    font-size:clamp(30px,3.4vw,42px);
+    color:var(--ink);
+    margin-bottom:24px;
+    line-height:1.18;
+  }
+  .about p{
+    color:var(--text-soft);
+    font-size:16.5px;
+    max-width:520px;
+    margin-bottom:18px;
+  }
+  .about-pills{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;}
+  .pill{
+    background:var(--bone-2);
+    border:1px solid rgba(38,34,29,0.08);
+    padding:9px 16px;
+    border-radius:100px;
+    font-size:13.5px;
+    color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  .pill .dot{width:6px; height:6px; border-radius:50%; background:var(--gold);}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--ink); color:var(--bone);}
+  .services .eyebrow{color:var(--gold-light);}
+  .services h2{color:var(--bone); font-size:clamp(30px,3.4vw,42px); max-width:640px;}
+  .services-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:56px; flex-wrap:wrap;}
+  .services-head p{color:#C7CCC3; max-width:360px; font-size:15.5px;}
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(244,238,227,0.12);
+    border-radius:20px;
+    overflow:hidden;
+  }
+  .card{
+    background:var(--ink);
+    padding:36px 28px;
+    transition:background .35s ease;
+    position:relative;
+  }
+  .card:hover{background:var(--ink-2);}
+  .card-icon{
+    width:44px; height:44px;
+    margin-bottom:26px;
+  }
+  .card h3{
+    font-size:19px;
+    color:var(--bone);
+    margin-bottom:12px;
+    font-weight:500;
+  }
+  .card p{
+    font-size:14px;
+    color:#AFB8AC;
+    line-height:1.6;
+  }
+  .card .num{
+    position:absolute; top:30px; right:28px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; color:rgba(201,161,90,0.55);
+  }
+
+  /* ---------- PHILOSOPHY / SIGNATURE ---------- */
+  .philosophy{
+    background:var(--bone-2);
+    padding:140px 0;
+  }
+  .philo-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+  }
+  .philo-graphic{position:relative;}
+  .philo-graphic svg{width:100%; height:auto;}
+  .philosophy h2{
+    font-size:clamp(30px,3.8vw,46px);
+    color:var(--ink);
+    line-height:1.2;
+    margin-bottom:24px;
+  }
+  .philosophy h2 em{color:var(--clay);}
+  .philosophy p{
+    color:var(--text-soft);
+    font-size:16.5px;
+    max-width:480px;
+    margin-bottom:16px;
+  }
+  .philo-quote{
+    margin-top:28px;
+    padding-left:20px;
+    border-left:2px solid var(--gold);
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:19px;
+    color:var(--ink);
+  }
+
+  /* ---------- TESTIMONIAL / STRIP ---------- */
+  .strip{
+    background:var(--ink);
+    padding:64px 0;
+    overflow:hidden;
+    border-top:1px solid rgba(244,238,227,0.08);
+    border-bottom:1px solid rgba(244,238,227,0.08);
+  }
+  .marquee{display:flex; gap:64px; white-space:nowrap; animation:scroll 26s linear infinite;}
+  @media (prefers-reduced-motion: reduce){ .marquee{animation:none;} }
+  .marquee span{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:26px;
+    color:rgba(244,238,227,0.5);
+    display:flex; align-items:center; gap:20px;
+  }
+  .marquee span::after{content:"✽"; color:var(--gold); font-style:normal; font-size:16px;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- FINAL CTA ---------- */
+  .cta{
+    background:linear-gradient(135deg, #24342F, var(--ink) 60%, #1A2624);
+    padding:140px 0;
+    text-align:center;
+    color:var(--bone);
+    position:relative;
+  }
+  .cta h2{
+    font-size:clamp(32px,5vw,56px);
+    max-width:760px;
+    margin:0 auto 22px;
+    line-height:1.12;
+  }
+  .cta p{
+    color:#C7CCC3;
+    font-size:17px;
+    max-width:520px;
+    margin:0 auto 44px;
+  }
+  .cta .btn-row{justify-content:center;}
+  .cta-links{
+    margin-top:46px;
+    display:flex; gap:28px; justify-content:center; flex-wrap:wrap;
+  }
+  .cta-links a{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.05em;
+    color:#9FAFA3;
+    border-bottom:1px solid transparent;
+    transition:color .25s, border-color .25s;
+    padding-bottom:2px;
+  }
+  .cta-links a:hover{color:var(--gold-light); border-color:var(--gold-light);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink-2);
+    color:#8B978E;
+    padding:48px 0 32px;
+    font-size:13px;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:20px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(244,238,227,0.08);
+    margin-bottom:24px;
+  }
+  .footer-logo{
+    font-family:'Fraunces',serif; font-style:italic; font-size:19px; color:var(--bone);
+  }
+  .footer-links{display:flex; gap:26px; flex-wrap:wrap;}
+  .footer-links a{color:#8B978E; transition:color .2s;}
+  .footer-links a:hover{color:var(--gold-light);}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed; bottom:26px; right:26px; z-index:200;
+    background:var(--gold);
+    color:var(--ink);
+    width:58px; height:58px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(201,161,90,0.45);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .float-wa:hover{transform:scale(1.08); box-shadow:0 14px 32px rgba(201,161,90,0.6);}
+  .float-wa svg{width:26px; height:26px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+    .vessel-wrap{order:-1; margin-bottom:10px;}
+    .vessel-wrap svg{max-width:260px;}
+    .about-grid{grid-template-columns:1fr;}
+    .portrait-frame{max-width:320px; margin:0 auto;}
+    .philo-grid{grid-template-columns:1fr;}
+    .philo-graphic{order:-1;}
+    .cards{grid-template-columns:1fr 1fr;}
+    .nav-links{
+      position:fixed; top:0; right:0; height:100vh; width:78%; max-width:320px;
+      background:var(--ink); flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:0 40px; gap:26px;
+      transform:translateX(100%); transition:transform .4s ease;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--bone) !important; opacity:1; font-size:17px;}
+    .nav-toggle{
+      display:flex; flex-direction:column; gap:5px; cursor:pointer; z-index:210;
+      background:none; border:none; padding:6px;
+    }
+    .nav-toggle span{width:22px; height:2px; background:var(--ink);}
+    header.transparent-mode .nav-toggle span{background:var(--bone);}
+    header.nav-open .nav-toggle span{background:var(--bone) !important;}
+  }
+  @media (max-width:600px){
+    .cards{grid-template-columns:1fr;}
+    .wrap{padding:0 22px;}
+    .scroll-cue{display:none;}
+    .services-head{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="transparent-mode" id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo">Edna Lozano</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#enfoque">Mi enfoque</a>
+        <a href="https://www.instagram.com/psicologa.ednalozano/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.link/l30wt6" target="_blank" rel="noopener" class="nav-cta">Agendar sesión</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Psicoterapeuta · 𝚿 Consultorio en línea 🌎</p>
+      <h1>Lo que se rompió<br> también puede <em style="color:var(--gold-light)">sanar en oro</em>.</h1>
+      <p class="hero-sub">Acompañamiento psicoterapéutico para trabajar el trauma y construir vínculos conscientes — desde donde estés, a tu ritmo.</p>
+      <div class="btn-row">
+        <a href="https://wa.link/l30wt6" target="_blank" rel="noopener" class="btn btn-primary">
+          Escríbeme por WhatsApp →
+        </a>
+        <a href="https://beacons.ai/psicologa.ednalozano" target="_blank" rel="noopener" class="btn btn-ghost">
+          Ver todos mis enlaces
+        </a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">TRAUMA</span>
+        <span class="tag">VÍNCULOS CONSCIENTES</span>
+        <span class="tag">TERAPIA INDIVIDUAL Y DE PAREJA</span>
+        <span class="tag">WORKBOOKS &amp; CURSOS</span>
+      </div>
+    </div>
+
+    <div class="vessel-wrap">
+      <div class="vessel-glow"></div>
+      <svg viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+        <path class="vessel-body" d="M120 60 Q90 40 140 30 Q200 15 260 30 Q310 42 280 62 L295 120 Q320 220 300 320 Q290 390 200 410 Q110 390 100 320 Q80 220 105 120 Z"/>
+        <path class="crack-line" d="M200 32 L188 96 L214 150 L172 210 L206 268 L160 330 L198 402"/>
+        <path class="crack-line delay2" d="M150 70 L178 118 L138 168 L182 226"/>
+        <path class="crack-line delay3" d="M262 90 L232 140 L266 196 L226 258 L252 330"/>
+        <circle cx="200" cy="32" r="4" fill="var(--gold-light)"/>
+        <circle cx="198" cy="402" r="4" fill="var(--gold-light)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span class="line"></span> Desplázate</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about section" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="portrait-frame reveal">
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="72" r="46" fill="#F4EEE3" opacity="0.92"/>
+        <path d="M40 210 Q40 130 100 130 Q160 130 160 210 Z" fill="#F4EEE3" opacity="0.92"/>
+        <path d="M100 26 L92 72 L112 110 L84 150" fill="none" stroke="#C9A15A" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">Sobre mí</p>
+      <h2>Un espacio seguro para mirar tu historia sin juicio</h2>
+      <p>Soy Edna Lozano, psicoterapeuta. Acompaño procesos de sanación del trauma y la construcción de vínculos conscientes, tanto en terapia individual como de pareja.</p>
+      <p>Creo en una terapia honesta, cercana y sin fórmulas genéricas: cada historia tiene su propio ritmo, y mi trabajo es sostener el proceso mientras tú vas encontrando el tuyo.</p>
+      <div class="about-pills">
+        <div class="pill"><span class="dot"></span> Sesiones en línea</div>
+        <div class="pill"><span class="dot"></span> Enfoque en trauma</div>
+        <div class="pill"><span class="dot"></span> Vínculos conscientes</div>
+        <div class="pill"><span class="dot"></span> Workbooks &amp; cursos propios</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services section" id="servicios">
+  <div class="wrap">
+    <div class="services-head reveal">
+      <div>
+        <p class="eyebrow">Cómo puedo acompañarte</p>
+        <h2>Distintas formas de empezar, según donde estés parad@ hoy</h2>
+      </div>
+      <p>Todo el acompañamiento se realiza en línea, para que puedas sostener tu proceso desde cualquier parte del mundo 🌎</p>
+    </div>
+
+    <div class="cards reveal">
+      <div class="card">
+        <span class="num">01</span>
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="16" r="9" stroke="#C9A15A" stroke-width="1.6"/><path d="M6 40c0-9 7-15 16-15s16 6 16 15" stroke="#C9A15A" stroke-width="1.6"/></svg>
+        <h3>Terapia individual</h3>
+        <p>Un espacio propio para procesar tu historia, tus heridas y patrones, con acompañamiento continuo.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none"><circle cx="15" cy="16" r="7" stroke="#C9A15A" stroke-width="1.6"/><circle cx="29" cy="16" r="7" stroke="#C9A15A" stroke-width="1.6"/><path d="M4 40c0-7 5-12 11-12M40 40c0-7-5-12-11-12" stroke="#C9A15A" stroke-width="1.6"/></svg>
+        <h3>Terapia de pareja</h3>
+        <p>Trabajamos juntos la comunicación, la confianza y los vínculos conscientes desde un lugar seguro.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none"><rect x="9" y="6" width="26" height="32" rx="2" stroke="#C9A15A" stroke-width="1.6"/><path d="M15 16h14M15 23h14M15 30h8" stroke="#C9A15A" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Workbooks &amp; cursos</h3>
+        <p>Recursos y guías para seguir tu proceso de autoconocimiento a tu propio ritmo, entre sesiones.</p>
+      </div>
+      <div class="card">
+        <span class="num">04</span>
+        <svg class="card-icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="16" stroke="#C9A15A" stroke-width="1.6"/><path d="M6 22h32M22 6c5 4 8 10 8 16s-3 12-8 16c-5-4-8-10-8-16s3-12 8-16z" stroke="#C9A15A" stroke-width="1.6"/></svg>
+        <h3>Consultorio en línea</h3>
+        <p>Sesiones por videollamada, sin importar en qué país o ciudad te encuentres.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHILOSOPHY / SIGNATURE ================= -->
+<section class="philosophy" id="enfoque">
+  <div class="wrap philo-grid">
+    <div class="philo-graphic reveal">
+      <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 340 Q60 200 130 120 Q170 75 240 60 Q320 42 380 90 Q430 128 410 190 Q470 210 440 270 Q470 320 400 350 Q370 400 300 380 Q240 400 190 370 Q100 400 60 340 Z" fill="#F4EEE3" stroke="#E3D9C4" stroke-width="1"/>
+        <path d="M240 60 L220 140 L270 190 L210 250 L250 300 L200 360" fill="none" stroke="#C9A15A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M130 120 L175 160 L140 210 L190 250" fill="none" stroke="#C9A15A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+        <path d="M380 90 L340 150 L390 200 L350 250" fill="none" stroke="#C9A15A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+        <circle cx="240" cy="60" r="4.5" fill="#B97565"/>
+        <circle cx="200" cy="360" r="4.5" fill="#B97565"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">Mi enfoque</p>
+      <h2>El <em>kintsugi</em> de tu historia</h2>
+      <p>En el kintsugi, la cerámica rota no se disimula: se repara con oro, y la grieta se convierte en la parte más valiosa de la pieza.</p>
+      <p>Así entiendo el trabajo con el trauma. No se trata de borrar lo que pasó, sino de acompañarte a integrarlo — para que tu historia deje de doler de la misma forma y empiece a sostenerte.</p>
+      <p class="philo-quote">"Sanar no es volver a como eras antes. Es aprender a sostenerte distinto."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRIP ================= -->
+<div class="strip">
+  <div class="marquee">
+    <span>Trauma</span><span>Vínculos conscientes</span><span>Terapia individual</span><span>Terapia de pareja</span><span>Workbooks</span><span>Cursos</span>
+    <span>Trauma</span><span>Vínculos conscientes</span><span>Terapia individual</span><span>Terapia de pareja</span><span>Workbooks</span><span>Cursos</span>
+  </div>
+</div>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="cta">
+  <div class="wrap">
+    <p class="eyebrow" style="justify-content:center;">¿Empezamos?</p>
+    <h2 class="reveal">Te acompaño a sanar tu historia, <em style="color:var(--gold-light)">a tu ritmo</em>.</h2>
+    <p class="reveal">Escríbeme y conversemos sobre qué proceso se ajusta mejor a lo que estás viviendo hoy.</p>
+    <div class="btn-row reveal" style="justify-content:center;">
+      <a href="https://wa.link/l30wt6" target="_blank" rel="noopener" class="btn btn-primary">Escríbeme por WhatsApp →</a>
+      <a href="https://www.instagram.com/psicologa.ednalozano/" target="_blank" rel="noopener" class="btn btn-ghost">@psicologa.ednalozano</a>
+    </div>
+    <div class="cta-links">
+      <a href="https://wa.link/l30wt6" target="_blank" rel="noopener">WA.LINK/L30WT6</a>
+      <a href="https://www.instagram.com/psicologa.ednalozano/" target="_blank" rel="noopener">INSTAGRAM</a>
+      <a href="https://beacons.ai/psicologa.ednalozano" target="_blank" rel="noopener">BEACONS.AI/PSICOLOGA.EDNALOZANO</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <span class="footer-logo">Edna Lozano</span>
+      <div class="footer-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#enfoque">Mi enfoque</a>
+        <a href="https://www.instagram.com/psicologa.ednalozano/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://beacons.ai/psicologa.ednalozano" target="_blank" rel="noopener">Todos mis enlaces</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom" style="padding:0;">
+      <span>© 2026 Edna Lozano · Psicoterapeuta</span>
+      <span>𝚿 Consultorio en línea 🌎</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a href="https://wa.link/l30wt6" target="_blank" rel="noopener" class="float-wa" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#1E2A28"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-1.5-.7-2.5-1.3-3.5-3-.3-.4.3-.4.7-1.3.1-.2.1-.3 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+</a>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  const heroEl = document.querySelector('.hero');
+  function onScroll(){
+    if(window.scrollY > 40){
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    if(heroBottom < 80){
+      header.classList.remove('transparent-mode');
+    } else {
+      header.classList.add('transparent-mode');
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    header.classList.toggle('nav-open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    header.classList.remove('nav-open');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

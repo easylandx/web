@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicoalas — Rosa Muñoz Peloche | Ponle alas a tu psicología</title>
+<meta name="description" content="Terapia online cercana con Rosa Muñoz Peloche, psicóloga y creadora de Psicoalas. Autora de 'Cápsulas de psicología para cualquier momento'.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Sora:wght@300;400;500;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8F0;
+    --blush:#FFDCCB;
+    --coral:#FF6F5E;
+    --honey:#F4A93E;
+    --lavender:#8B7FD9;
+    --ink:#3A2244;
+    --ink-soft:#6B5678;
+    --white:#FFFFFF;
+    --radius:24px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Sora',sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .script{font-family:'Caveat',cursive;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  section{position:relative;}
+
+  ::selection{background:var(--coral);color:#fff;}
+  :focus-visible{outline:3px solid var(--lavender);outline-offset:3px;border-radius:6px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- floating feather background ---------- */
+  .feather-field{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .feather-field svg{position:absolute;opacity:0.35;animation:drift linear infinite;}
+  @keyframes drift{
+    0%{transform:translateY(-10vh) rotate(0deg);}
+    100%{transform:translateY(110vh) rotate(25deg);}
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,248,240,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(58,34,68,0.08);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1180px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.35rem;color:var(--ink);}
+  .logo svg{width:34px;height:34px;flex-shrink:0;}
+  .nav-links{display:flex;gap:32px;align-items:center;}
+  .nav-links a{font-size:0.95rem;font-weight:500;color:var(--ink-soft);transition:color .2s;}
+  .nav-links a:hover{color:var(--coral);}
+  .nav-cta{
+    background:var(--coral);color:#fff;padding:11px 22px;border-radius:100px;
+    font-weight:600;font-size:0.9rem;transition:transform .2s, box-shadow .2s;
+    box-shadow:0 6px 18px rgba(255,111,94,0.35);
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,111,94,0.45);}
+  .burger{display:none;background:none;border:none;font-size:1.6rem;color:var(--ink);cursor:pointer;}
+
+  @media(max-width:840px){
+    .nav-links{position:fixed;top:70px;left:0;right:0;background:var(--cream);flex-direction:column;
+      padding:24px;gap:18px;transform:translateY(-130%);transition:transform .3s ease;border-bottom:1px solid rgba(58,34,68,0.08);}
+    .nav-links.open{transform:translateY(0);}
+    .burger{display:block;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;padding:90px 24px 60px;overflow:hidden;
+  }
+  .hero-grid{
+    max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;background:var(--blush);color:#C2472F;
+    padding:8px 16px;border-radius:100px;font-size:0.85rem;font-weight:600;margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.4rem,5vw,4rem);color:var(--ink);margin-bottom:22px;}
+  .hero h1 em{font-style:normal;color:var(--coral);position:relative;}
+  .hero p.lead{font-size:1.15rem;color:var(--ink-soft);max-width:520px;margin-bottom:34px;line-height:1.6;}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px;}
+  .btn-primary{
+    background:var(--ink);color:#fff;padding:16px 30px;border-radius:100px;font-weight:600;
+    display:inline-flex;align-items:center;gap:10px;transition:transform .2s,background .2s;
+  }
+  .btn-primary:hover{background:var(--coral);transform:translateY(-2px);}
+  .btn-secondary{
+    border:2px solid var(--ink);color:var(--ink);padding:14px 28px;border-radius:100px;font-weight:600;
+    transition:all .2s;
+  }
+  .btn-secondary:hover{background:var(--ink);color:#fff;}
+  .stat-chips{display:flex;gap:14px;flex-wrap:wrap;}
+  .chip{
+    background:var(--white);padding:12px 18px;border-radius:16px;font-size:0.85rem;font-weight:600;color:var(--ink-soft);
+    box-shadow:0 6px 20px rgba(58,34,68,0.06);display:flex;align-items:center;gap:8px;
+  }
+  .chip strong{color:var(--ink);font-family:'Fraunces',serif;font-size:1rem;}
+
+  /* hero wing signature */
+  .wing-stage{position:relative;height:480px;display:flex;align-items:center;justify-content:center;}
+  .wing-stage svg{width:100%;height:100%;max-width:460px;}
+  .feather-path{
+    stroke-dasharray:900;stroke-dashoffset:900;
+    animation:draw 2.2s ease forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .wing-float{animation:float 5s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;text-align:center;}
+    .hero p.lead{margin-left:auto;margin-right:auto;}
+    .cta-row,.stat-chips{justify-content:center;}
+    .wing-stage{height:320px;order:-1;}
+  }
+
+  /* ---------- trust strip ---------- */
+  .trust{background:var(--ink);padding:26px 24px;}
+  .trust .wrap{display:flex;flex-wrap:wrap;justify-content:space-around;gap:20px;text-align:center;}
+  .trust-item{color:#fff;}
+  .trust-item strong{display:block;font-family:'Fraunces',serif;font-size:1.4rem;color:var(--honey);}
+  .trust-item span{font-size:0.82rem;color:rgba(255,255,255,0.7);}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- section heading ---------- */
+  .section-pad{padding:100px 24px;}
+  .kicker{color:var(--coral);font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;display:block;}
+  .section-title{font-size:clamp(1.9rem,3.4vw,2.8rem);max-width:640px;margin-bottom:20px;}
+  .section-sub{color:var(--ink-soft);max-width:560px;font-size:1.05rem;line-height:1.65;}
+
+  /* ---------- about ---------- */
+  .about{background:var(--white);}
+  .about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:center;}
+  .frame{
+    position:relative;background:linear-gradient(155deg,var(--blush),var(--honey));
+    border-radius:32px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .frame svg{width:60%;}
+  .frame::after{
+    content:'';position:absolute;inset:14px;border:2px solid rgba(255,255,255,0.5);border-radius:22px;
+  }
+  .about-copy p{color:var(--ink-soft);line-height:1.75;margin-bottom:18px;font-size:1.02rem;}
+  .about-copy p:first-of-type{font-size:1.15rem;color:var(--ink);}
+  .credentials{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .credentials li{
+    background:var(--cream);padding:9px 16px;border-radius:100px;font-size:0.85rem;font-weight:600;color:var(--ink);
+    border:1px solid rgba(58,34,68,0.08);
+  }
+
+  /* ---------- specialties ---------- */
+  .specialties{background:var(--cream);}
+  .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px;}
+  .spec-card{
+    background:var(--white);border-radius:var(--radius);padding:32px 28px;
+    box-shadow:0 10px 30px rgba(58,34,68,0.06);transition:transform .3s, box-shadow .3s;
+    border-top:4px solid var(--coral);
+  }
+  .spec-card:nth-child(2){border-color:var(--honey);}
+  .spec-card:nth-child(3){border-color:var(--lavender);}
+  .spec-card:nth-child(4){border-color:var(--lavender);}
+  .spec-card:nth-child(5){border-color:var(--coral);}
+  .spec-card:nth-child(6){border-color:var(--honey);}
+  .spec-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(58,34,68,0.12);}
+  .spec-card svg{width:38px;height:38px;margin-bottom:18px;}
+  .spec-card h3{font-size:1.15rem;margin-bottom:10px;}
+  .spec-card p{color:var(--ink-soft);font-size:0.92rem;line-height:1.6;}
+  @media(max-width:900px){.spec-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.spec-grid{grid-template-columns:1fr;}}
+
+  /* ---------- book ---------- */
+  .book{background:linear-gradient(135deg,var(--lavender),#6D5FC7);color:#fff;}
+  .book-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:center;}
+  .book-mock{
+    aspect-ratio:3/4.4;background:linear-gradient(160deg,#fff,var(--blush));border-radius:12px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.3), -14px 14px 0 rgba(255,255,255,0.15);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px;
+    position:relative;
+  }
+  .book-mock::before{
+    content:'';position:absolute;left:0;top:0;bottom:0;width:14px;background:rgba(58,34,68,0.15);border-radius:12px 0 0 12px;
+  }
+  .book-mock svg{width:56px;height:56px;margin-bottom:18px;}
+  .book-mock .book-title{font-family:'Fraunces',serif;font-weight:700;color:var(--ink);font-size:1.3rem;line-height:1.15;margin-bottom:10px;}
+  .book-mock .book-author{font-family:'Caveat',cursive;font-size:1.3rem;color:#C2472F;}
+  .book .kicker{color:var(--honey);}
+  .book h2{color:#fff;}
+  .book p{color:rgba(255,255,255,0.88);line-height:1.75;font-size:1.05rem;margin-bottom:16px;}
+  .book-topics{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 30px;}
+  .book-topics li{background:rgba(255,255,255,0.15);padding:8px 16px;border-radius:100px;font-size:0.85rem;}
+  .btn-light{background:#fff;color:var(--lavender);padding:16px 30px;border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:transform .2s;}
+  .btn-light:hover{transform:translateY(-3px);}
+  @media(max-width:900px){.book-grid{grid-template-columns:1fr;}.book-mock{max-width:280px;margin:0 auto;}}
+
+  /* ---------- community ---------- */
+  .community{background:var(--white);text-align:center;}
+  .community .section-title, .community .section-sub{margin-left:auto;margin-right:auto;}
+  .ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:50px 0 40px;}
+  .ig-card{
+    aspect-ratio:1;border-radius:18px;display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;cursor:pointer;transition:transform .3s;
+  }
+  .ig-card:hover{transform:scale(1.04);}
+  .ig-card svg{width:34%;opacity:0.9;}
+  .ig-card:nth-child(1){background:linear-gradient(135deg,var(--coral),var(--honey));}
+  .ig-card:nth-child(2){background:linear-gradient(135deg,var(--lavender),#5A4FC2);}
+  .ig-card:nth-child(3){background:linear-gradient(135deg,var(--honey),#FFD08A);}
+  .ig-card:nth-child(4){background:linear-gradient(135deg,var(--blush),var(--coral));}
+  @media(max-width:700px){.ig-grid{grid-template-columns:repeat(2,1fr);}}
+  .follow-btn{
+    background:linear-gradient(135deg,var(--coral),var(--lavender));color:#fff;padding:16px 32px;
+    border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:transform .2s;
+  }
+  .follow-btn:hover{transform:translateY(-3px);}
+
+  /* ---------- final CTA ---------- */
+  .final-cta{
+    background:radial-gradient(circle at 30% 20%, var(--honey), var(--coral) 55%, #E14C58 100%);
+    color:#fff;text-align:center;overflow:hidden;position:relative;
+  }
+  .final-cta h2{color:#fff;font-size:clamp(2rem,4vw,3.2rem);max-width:700px;margin:0 auto 20px;}
+  .final-cta p{max-width:520px;margin:0 auto 36px;color:rgba(255,255,255,0.92);font-size:1.1rem;}
+  .final-cta .btn-light{color:var(--coral);}
+  .final-cta .cta-row{justify-content:center;margin-bottom:0;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:rgba(255,255,255,0.75);padding:60px 24px 30px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .footer-col h4{color:#fff;font-size:0.9rem;margin-bottom:14px;letter-spacing:0.05em;text-transform:uppercase;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col a{font-size:0.92rem;transition:color .2s;}
+  .footer-col a:hover{color:var(--honey);}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:26px;font-size:0.82rem;}
+  .social-row{display:flex;gap:14px;}
+  .social-row a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background .2s;}
+  .social-row a:hover{background:var(--coral);}
+  .social-row svg{width:18px;height:18px;}
+
+  /* ---------- floating side buttons ---------- */
+  .float-bar{position:fixed;right:22px;bottom:26px;display:flex;flex-direction:column;gap:12px;z-index:60;}
+  .float-btn{
+    width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(0,0,0,0.2);transition:transform .2s;
+  }
+  .float-btn:hover{transform:scale(1.08);}
+  .float-btn.ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);}
+  .float-btn.fb{background:#1877F2;}
+  .float-btn svg{width:26px;height:26px;fill:#fff;}
+</style>
+</head>
+<body>
+
+<div class="feather-field" id="featherField" aria-hidden="true"></div>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 8 32 8 16C8 10 12 6 17 6C20.5 6 23 8.5 24 12C25 8.5 27.5 6 31 6C36 6 40 10 40 16C40 32 24 40 24 40Z" fill="none" stroke="#FF6F5E" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 12V36" stroke="#F4A93E" stroke-width="2" stroke-linecap="round"/></svg>
+      Psicoalas
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#libro">El libro</a></li>
+      <li><a href="#comunidad">Comunidad</a></li>
+      <li><a href="https://www.instagram.com/psico_alas/" target="_blank" rel="noopener" class="nav-cta">Reserva tu sesión</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">🪽 Psicología cercana, sin mitos ni juicios</span>
+        <h1>Ponle <em>alas</em> a tu psicología</h1>
+        <p class="lead">Terapia online con Rosa Muñoz Peloche, psicóloga, escritora y la voz detrás de Psicoalas. Un espacio pensado para entenderte mejor y avanzar a tu ritmo.</p>
+        <div class="cta-row">
+          <a href="https://www.instagram.com/psico_alas/" target="_blank" rel="noopener" class="btn-primary">
+            Escríbeme y empecemos
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#libro" class="btn-secondary">Descubre el libro</a>
+        </div>
+        <div class="stat-chips">
+          <div class="chip"><strong>+550K</strong> comunidad en redes</div>
+          <div class="chip"><strong>Máster</strong> Terapia de Familia y Pareja</div>
+          <div class="chip"><strong>2025</strong> autora publicada</div>
+        </div>
+      </div>
+      <div class="wing-stage">
+        <svg viewBox="0 0 400 400" class="wing-float">
+          <path class="feather-path" d="M200 340C200 340 90 300 70 190C55 110 100 50 160 60C185 64 198 90 200 120C202 90 215 64 240 60C300 50 345 110 330 190C310 300 200 340 200 340Z" fill="none" stroke="#FF6F5E" stroke-width="3"/>
+          <path d="M200 120C200 120 195 200 200 300" stroke="#8B7FD9" stroke-width="2" fill="none" opacity="0.6"/>
+          <path d="M150 100C150 100 130 150 115 190" stroke="#F4A93E" stroke-width="2" fill="none" opacity="0.5"/>
+          <path d="M250 100C250 100 270 150 285 190" stroke="#F4A93E" stroke-width="2" fill="none" opacity="0.5"/>
+          <circle cx="200" cy="120" r="6" fill="#FF6F5E"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="trust">
+    <div class="wrap">
+      <div class="trust-item"><strong>Psicóloga colegiada</strong><span>Universidad Complutense de Madrid</span></div>
+      <div class="trust-item"><strong>Autora</strong><span>Cápsulas de psicología para cualquier momento</span></div>
+      <div class="trust-item"><strong>Divulgación</strong><span>Miles de personas cada día en @psico_alas</span></div>
+      <div class="trust-item"><strong>Experiencia</strong><span>Colegios, hospitales y servicios sociales</span></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section-pad" id="sobre-mi">
+    <div class="wrap about-grid">
+      <div class="frame reveal">
+        <svg viewBox="0 0 200 200" fill="none">
+          <path d="M100 170C100 170 40 135 40 75C40 45 60 25 85 25C95 25 100 40 100 55C100 40 105 25 115 25C140 25 160 45 160 75C160 135 100 170 100 170Z" stroke="#3A2244" stroke-width="3" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+      </div>
+      <div class="about-copy reveal">
+        <span class="kicker">Sobre mí</span>
+        <h2 class="section-title">Rosa Muñoz Peloche, la persona detrás de Psicoalas</h2>
+        <p>Estudié Psicología movida por la curiosidad de entender la mente humana, y no he dejado de aprender desde entonces. Mi formación combina la práctica clínica con la divulgación: creo firmemente que la salud mental se cuida mejor cuando se entiende sin tecnicismos ni mitos.</p>
+        <p>He trabajado en colegios, hospitales y servicios sociales de la Comunidad de Madrid, acompañando a personas en procesos de duelo, trastornos de conducta alimentaria, violencia de género y neurodivergencias. Hoy convierto todo ese aprendizaje en contenido y en sesiones de terapia pensadas para acompañarte de verdad.</p>
+        <ul class="credentials">
+          <li>Terapia de familia y pareja</li>
+          <li>Neurodivergencias</li>
+          <li>Duelo y pérdidas</li>
+          <li>Violencia de género</li>
+          <li>TCA</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALTIES -->
+  <section class="specialties section-pad" id="especialidades">
+    <div class="wrap">
+      <span class="kicker reveal">En qué puedo ayudarte</span>
+      <h2 class="section-title reveal">Terapia hecha a la medida de lo que estás viviendo</h2>
+      <p class="section-sub reveal">Cada proceso es distinto. Estas son algunas de las áreas en las que trabajamos juntas, siempre a tu ritmo.</p>
+      <div class="spec-grid">
+        <div class="spec-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FF6F5E" stroke-width="1.8"><path d="M12 21C12 21 4 15.5 4 9.5C4 6 6.5 4 9 4C10.8 4 12 5.3 12 7C12 5.3 13.2 4 15 4C17.5 4 20 6 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+          <h3>Ansiedad y estrés</h3>
+          <p>Herramientas prácticas para reconocer lo que te pasa y bajar la intensidad del día a día.</p>
+        </div>
+        <div class="spec-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F4A93E" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/></svg>
+          <h3>Autoestima y autoconocimiento</h3>
+          <p>Trabajamos la relación contigo misma/o desde la comprensión, no desde la exigencia.</p>
+        </div>
+        <div class="spec-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8B7FD9" stroke-width="1.8"><path d="M8 12a4 4 0 118 0 4 4 0 01-8 0z"/><path d="M2 20c0-4 3-6 10-6s10 2 10 6"/></svg>
+          <h3>Apego y relaciones</h3>
+          <p>Entiende tus patrones vinculares para construir relaciones más sanas y conscientes.</p>
+        </div>
+        <div class="spec-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8B7FD9" stroke-width="1.8"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg>
+          <h3>Neurodivergencias</h3>
+          <p>Acompañamiento en TDAH y altas capacidades, sin patologizar lo que te hace única/o.</p>
+        </div>
+        <div class="spec-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FF6F5E" stroke-width="1.8"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg>
+          <h3>Duelo y pérdidas</h3>
+          <p>Un espacio seguro para atravesar procesos de pérdida a tu propio ritmo.</p>
+        </div>
+        <div class="spec-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F4A93E" stroke-width="1.8"><path d="M12 2C12 2 7 8 7 13a5 5 0 0010 0c0-5-5-11-5-11z"/></svg>
+          <h3>Alta sensibilidad y TCA</h3>
+          <p>Comprensión y herramientas para personas altamente sensibles y para trastornos de conducta alimentaria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="book section-pad" id="libro">
+    <div class="wrap book-grid">
+      <div class="reveal">
+        <div class="book-mock">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 8 32 8 16C8 10 12 6 17 6C20.5 6 23 8.5 24 12C25 8.5 27.5 6 31 6C36 6 40 10 40 16C40 32 24 40 24 40Z" fill="none" stroke="#3A2244" stroke-width="2.5"/></svg>
+          <div class="book-title">Cápsulas de psicología para cualquier momento</div>
+          <div class="book-author">Rosa Muñoz Peloche</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="kicker">Recién publicado</span>
+        <h2 class="section-title">Un libro para entenderte antes, durante o sin terapia</h2>
+        <p>Reúno en estas páginas las herramientas que más repito en consulta: qué es la ansiedad, cómo funciona el apego, cómo detectar el narcisismo y qué significan realmente las neurodivergencias. Todo explicado con el mismo lenguaje cercano que conoces de @psico_alas.</p>
+        <ul class="book-topics">
+          <li>Ansiedad y depresión</li>
+          <li>Apego</li>
+          <li>Narcisismo</li>
+          <li>TDAH y altas capacidades</li>
+          <li>Alta sensibilidad</li>
+        </ul>
+        <a href="https://www.amazon.es/dp/8449343976" target="_blank" rel="noopener" class="btn-light">
+          Consíguelo en Amazon
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="community section-pad" id="comunidad">
+    <div class="wrap">
+      <span class="kicker reveal">Comunidad Psicoalas</span>
+      <h2 class="section-title reveal">Más de 550.000 personas ya le han puesto alas a su psicología</h2>
+      <p class="section-sub reveal">Cada semana comparto contenido para entender la mente sin mitos, sin juicios y con mucho cariño. Únete y sigue aprendiendo conmigo.</p>
+      <div class="ig-grid">
+        <div class="ig-card reveal"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <div class="ig-card reveal"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 21C12 21 4 15.5 4 9.5C4 6 6.5 4 9 4C10.8 4 12 5.3 12 7C12 5.3 13.2 4 15 4C17.5 4 20 6 20 9.5C20 15.5 12 21 12 21Z"/></svg></div>
+        <div class="ig-card reveal"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M8 12a4 4 0 118 0 4 4 0 01-8 0z"/><path d="M2 20c0-4 3-6 10-6s10 2 10 6"/></svg></div>
+        <div class="ig-card reveal"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 2C12 2 7 8 7 13a5 5 0 0010 0c0-5-5-11-5-11z"/></svg></div>
+      </div>
+      <a href="https://www.instagram.com/psico_alas/" target="_blank" rel="noopener" class="follow-btn reveal">
+        Seguir a @psico_alas
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta section-pad">
+    <div class="wrap">
+      <h2 class="reveal">¿Lista/o para ponerle alas a tu bienestar?</h2>
+      <p class="reveal">Escríbeme por Instagram o Facebook y hablamos sobre cómo puedo acompañarte. El primer paso siempre es el más difícil, y ya lo estás dando.</p>
+      <div class="cta-row reveal">
+        <a href="https://www.instagram.com/psico_alas/" target="_blank" rel="noopener" class="btn-light">Empezar ahora</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 40C24 40 8 32 8 16C8 10 12 6 17 6C20.5 6 23 8.5 24 12C25 8.5 27.5 6 31 6C36 6 40 10 40 16C40 32 24 40 24 40Z" fill="none" stroke="#FF6F5E" stroke-width="2.5"/></svg>
+          Psicoalas
+        </div>
+        <p style="max-width:260px;font-size:0.9rem;">Ponle alas a tu psicología. Terapia online con Rosa Muñoz Peloche.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explora</h4>
+        <ul>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#libro">El libro</a></li>
+          <li><a href="#comunidad">Comunidad</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Encuéntrame</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/psico_alas/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://facebook.com/psicoalas" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.amazon.es/dp/8449343976" target="_blank" rel="noopener">Libro en Amazon</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Psicoalas — Rosa Muñoz Peloche. Todos los derechos reservados.</span>
+      <div class="social-row">
+        <a href="https://www.instagram.com/psico_alas/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.4.5.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.4-.5-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.4.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.4-.5.2-.8.4-1.2.7-.3.3-.5.7-.7 1.2-.1.3-.3.9-.4 1.9C3 9.5 3 9.9 3 13c0 3.1 0 3.5.1 4.7.1 1 .2 1.6.4 1.9.2.5.4.8.7 1.2.3.3.7.5 1.2.7.3.1.9.3 1.9.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.4.5-.2.8-.4 1.2-.7.3-.3.5-.7.7-1.2.1-.3.3-.9.4-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-1.9-.2-.5-.4-.8-.7-1.2-.3-.3-.7-.5-1.2-.7-.3-.1-.9-.3-1.9-.4C15.5 4 15.1 4 12 4zm0 3.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.8a3.7 3.7 0 100 7.4 3.7 3.7 0 000-7.4zm5.7-2a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/></svg>
+        </a>
+        <a href="https://facebook.com/psicoalas" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-.9.3-1.6 1.7-1.6h1.7V3.5C16.6 3.4 15.6 3.3 14.4 3.3c-2.5 0-4.3 1.5-4.3 4.4v2.6H7.3v3.3h2.8V22h3.4z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:20px;font-size:0.78rem;color:rgba(255,255,255,0.4);">Built by EasyLandX</div>
+  </div>
+</footer>
+
+<div class="float-bar">
+  <a href="https://www.instagram.com/psico_alas/" target="_blank" rel="noopener" class="float-btn ig" aria-label="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.4.5.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.4-.5-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.4.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm5.7-2a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/></svg>
+  </a>
+  <a href="https://facebook.com/psicoalas" target="_blank" rel="noopener" class="float-btn fb" aria-label="Facebook">
+    <svg viewBox="0 0 24 24"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-.9.3-1.6 1.7-1.6h1.7V3.5C16.6 3.4 15.6 3.3 14.4 3.3c-2.5 0-4.3 1.5-4.3 4.4v2.6H7.3v3.3h2.8V22h3.4z"/></svg>
+  </a>
+</div>
+
+<script>
+  // mobile nav
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+
+  // floating feather field
+  const field = document.getElementById('featherField');
+  const featherSVG = (x, size, dur, delay, color) => `
+    <svg style="left:${x}%; width:${size}px; height:${size}px; animation-duration:${dur}s; animation-delay:${delay}s;" viewBox="0 0 40 40">
+      <path d="M20 36C20 36 8 30 8 16C8 9 13 5 17 5C19.5 5 20 10 20 14C20 10 20.5 5 23 5C27 5 32 9 32 16C32 30 20 36 20 36Z" fill="${color}" opacity="0.5"/>
+    </svg>`;
+  const colors = ['#FF6F5E','#F4A93E','#8B7FD9','#FFDCCB'];
+  let html = '';
+  for(let i=0;i<10;i++){
+    html += featherSVG(Math.random()*95, 18+Math.random()*22, 14+Math.random()*10, Math.random()*10, colors[i%colors.length]);
+  }
+  field.innerHTML = html;
+</script>
+
+</body>
+</html>

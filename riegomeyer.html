@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Viviana Riego Meyer · Psiquiatra · TDAH en adultos, infancias y mujeres</title>
+<meta name="description" content="Dra. Viviana Riego Meyer, médica psiquiatra. Acompañamiento en TDAH para adultos, infancias y especialmente mujeres con TDAH o sospecha de TDAH.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --cream-2:#FFF1DF;
+    --ink:#241B3A;
+    --ink-soft:#3B2E58;
+    --coral:#FF6B54;
+    --coral-dark:#E5503B;
+    --marigold:#FFB627;
+    --teal:#128077;
+    --teal-dark:#0D5F58;
+    --blush:#FFDCCB;
+    --lilac:#B98CE0;
+    --paper:#FFFDF9;
+    --line: rgba(36,27,58,0.12);
+    --shadow: 0 20px 50px -20px rgba(36,27,58,0.35);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+    --font-display: "Fraunces", serif;
+    --font-body: "Space Grotesk", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  ::selection{background:var(--marigold);color:var(--ink);}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Focus visibility ---------- */
+  a:focus-visible, button:focus-visible, .check-item:focus-visible{
+    outline:3px solid var(--teal);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Eyebrow / labels ---------- */
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-dark);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 0 0 4px var(--blush);
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    line-height:1.05;
+    margin:0;
+    color:var(--ink);
+  }
+  em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--coral-dark);
+  }
+
+  /* ================= HEADER ================= */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,248,239,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+  .logo-mark{
+    width:38px;height:38px;flex:none;
+  }
+  .logo-text{
+    font-family:var(--font-display);
+    font-size:18px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.1;
+  }
+  .logo-text span{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--teal-dark);
+    font-weight:500;
+    margin-top:2px;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    list-style:none;
+    margin:0;padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    font-weight:500;
+    font-size:15px;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 0;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;left:0;right:0;bottom:-2px;
+    height:2px;background:var(--coral);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav-links a:hover::after{transform:scaleX(1);}
+  .nav-cta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .icon-btn{
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--paper);
+    border:1px solid var(--line);
+    text-decoration:none;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .icon-btn:hover{transform:translateY(-2px);background:var(--blush);}
+  .icon-btn svg{width:18px;height:18px;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    padding:13px 24px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--coral);
+    color:var(--paper);
+    box-shadow:0 10px 24px -10px rgba(255,107,84,0.7);
+  }
+  .btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px);}
+  .btn-dark{
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .btn-dark:hover{background:var(--ink-soft);transform:translateY(-2px);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink);color:var(--cream);}
+
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{display:block;width:24px;height:2.5px;background:var(--ink);margin:5px 0;border-radius:2px;}
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    padding:76px 0 60px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.55;
+    z-index:0;
+  }
+  .blob-1{width:420px;height:420px;background:var(--blush);top:-120px;right:-80px;}
+  .blob-2{width:260px;height:260px;background:var(--marigold);opacity:0.28;bottom:-60px;left:20%;}
+
+  .hero-copy{position:relative;z-index:1;}
+  .hero h1{
+    font-size:clamp(38px, 5vw, 60px);
+    letter-spacing:-0.01em;
+  }
+  .hero-sub{
+    font-size:18px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:480px;
+    margin:22px 0 32px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:34px;
+  }
+  .hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .tag{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.04em;
+    padding:7px 13px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+
+  .hero-visual{
+    position:relative;
+    z-index:1;
+    aspect-ratio:1/1.05;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-visual svg{width:100%;height:100%;}
+
+  .synapse-dot{animation:pulse 3.2s ease-in-out infinite;}
+  .synapse-dot.d2{animation-delay:.5s;}
+  .synapse-dot.d3{animation-delay:1s;}
+  .synapse-dot.d4{animation-delay:1.5s;}
+  .synapse-dot.d5{animation-delay:.8s;}
+  .synapse-dot.d6{animation-delay:2s;}
+  @keyframes pulse{
+    0%,100%{opacity:0.55; r:var(--rr, 6);}
+    50%{opacity:1; r:calc(var(--rr, 6) * 1.35);}
+  }
+  .synapse-line{
+    stroke-dasharray:6 7;
+    animation:dash 9s linear infinite;
+  }
+  @keyframes dash{to{stroke-dashoffset:-260;}}
+
+  /* ================= MARQUEE ================= */
+  .marquee{
+    background:var(--ink);
+    color:var(--cream);
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .marquee-track{
+    display:inline-flex;
+    gap:48px;
+    animation:scroll 26s linear infinite;
+  }
+  .marquee span{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    color:var(--cream);
+    opacity:0.85;
+  }
+  .marquee span::before{content:"✦";color:var(--marigold);}
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ================= SECTION GENERIC ================= */
+  section{padding:96px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(30px, 3.6vw, 44px);
+  }
+  .section-head p{
+    font-size:17px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin-top:16px;
+  }
+
+  /* ================= CHECKLIST (signature) ================= */
+  .checklist-section{
+    background:var(--ink);
+    color:var(--cream);
+    border-radius:var(--radius-lg);
+    margin:0 28px;
+    padding:72px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .checklist-section .wrap{position:relative;z-index:1;}
+  .checklist-section .eyebrow{color:var(--marigold);}
+  .checklist-section .eyebrow::before{background:var(--marigold);box-shadow:0 0 0 4px rgba(255,182,39,0.25);}
+  .checklist-section h2{color:var(--cream);}
+  .checklist-section .section-head p{color:rgba(255,248,239,0.75);}
+
+  .check-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:8px;
+  }
+  .check-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:18px 20px;
+    background:rgba(255,248,239,0.06);
+    border:1px solid rgba(255,248,239,0.14);
+    border-radius:var(--radius-md);
+    cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .check-item:hover{background:rgba(255,248,239,0.1);transform:translateY(-2px);}
+  .check-item.active{
+    background:rgba(255,107,84,0.16);
+    border-color:var(--coral);
+  }
+  .check-box{
+    width:24px;height:24px;flex:none;
+    border-radius:7px;
+    border:2px solid rgba(255,248,239,0.4);
+    display:flex;align-items:center;justify-content:center;
+    margin-top:2px;
+    transition:background .2s ease, border-color .2s ease;
+  }
+  .check-item.active .check-box{
+    background:var(--coral);
+    border-color:var(--coral);
+  }
+  .check-box svg{width:14px;height:14px;opacity:0;transition:opacity .15s ease;}
+  .check-item.active .check-box svg{opacity:1;}
+  .check-item p{
+    margin:0;
+    font-size:15.5px;
+    line-height:1.5;
+    color:rgba(255,248,239,0.92);
+  }
+
+  .check-result{
+    margin-top:36px;
+    padding:24px 28px;
+    background:rgba(255,182,39,0.12);
+    border:1px solid rgba(255,182,39,0.35);
+    border-radius:var(--radius-md);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .check-result-text{font-size:15.5px;line-height:1.5;max-width:520px;}
+  .check-result-count{
+    font-family:var(--font-display);
+    font-size:15px;
+    font-weight:600;
+    color:var(--marigold);
+  }
+  .check-result-count b{font-size:26px;}
+
+  /* ================= SERVICIOS ================= */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .service-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:32px 28px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .service-card .chip{
+    width:52px;height:52px;
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+  }
+  .service-card .chip svg{width:26px;height:26px;color:var(--paper);}
+  .service-card h3{font-size:22px;margin-bottom:10px;}
+  .service-card p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0;}
+  .chip-coral{background:var(--coral);}
+  .chip-teal{background:var(--teal);}
+  .chip-lilac{background:var(--lilac);}
+
+  /* ================= SOBRE MI ================= */
+  .about{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:var(--radius-lg);
+    background:linear-gradient(160deg, var(--blush) 0%, var(--marigold) 55%, var(--coral) 100%);
+    display:flex;
+    align-items:flex-end;
+    padding:28px;
+    overflow:hidden;
+  }
+  .about-visual .initials{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:600;
+    font-size:120px;
+    color:rgba(255,248,239,0.55);
+    position:absolute;
+    top:20px;left:20px;
+    line-height:1;
+  }
+  .about-visual-card{
+    position:relative;
+    z-index:1;
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    width:100%;
+    box-shadow:var(--shadow);
+  }
+  .about-visual-card p{
+    margin:0;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .about-visual-card b{color:var(--ink);}
+
+  .about-body .cred-list{
+    list-style:none;
+    margin:28px 0 34px;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .about-body .cred-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-size:15.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .cred-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--teal);
+    margin-top:8px;flex:none;
+  }
+
+  /* ================= TESTIMONIOS ================= */
+  .testi-track{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .testi-card{
+    background:var(--cream-2);
+    border-radius:var(--radius-lg);
+    padding:30px 26px;
+    border:1px solid var(--line);
+  }
+  .testi-card .quote-mark{
+    font-family:var(--font-display);
+    font-size:52px;
+    font-style:italic;
+    color:var(--coral);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .testi-card p{
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .testi-who{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--ink);
+    font-weight:600;
+    letter-spacing:0.03em;
+  }
+  .testi-note{
+    margin-top:40px;
+    font-size:13px;
+    color:var(--ink-soft);
+    font-family:var(--font-mono);
+    text-align:center;
+    opacity:0.75;
+  }
+
+  /* ================= INSTAGRAM CTA ================= */
+  .social-block{
+    background:linear-gradient(120deg, var(--teal) 0%, var(--teal-dark) 100%);
+    border-radius:var(--radius-lg);
+    margin:0 28px;
+    padding:64px 48px;
+    color:var(--cream);
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:40px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .social-block::after{
+    content:"";
+    position:absolute;
+    width:280px;height:280px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.08);
+    right:-80px;top:-100px;
+  }
+  .social-block h2{color:var(--cream);font-size:clamp(28px,3.2vw,38px);}
+  .social-block p{color:rgba(255,248,239,0.85);font-size:16px;line-height:1.6;margin:16px 0 28px;max-width:460px;}
+  .social-actions{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .social-block .btn-primary{background:var(--marigold);color:var(--ink);box-shadow:0 10px 24px -10px rgba(255,182,39,0.7);}
+  .social-block .btn-primary:hover{background:#ffc659;}
+  .social-block .btn-ghost{border-color:rgba(255,248,239,0.6);color:var(--cream);}
+  .social-block .btn-ghost:hover{background:var(--cream);color:var(--teal-dark);}
+
+  .social-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    position:relative;
+    z-index:1;
+  }
+  .stat-card{
+    background:rgba(255,248,239,0.1);
+    border:1px solid rgba(255,248,239,0.25);
+    border-radius:var(--radius-md);
+    padding:20px;
+    text-align:center;
+  }
+  .stat-card b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:30px;
+    margin-bottom:4px;
+  }
+  .stat-card span{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    opacity:0.85;
+  }
+
+  /* ================= CONTACTO FINAL ================= */
+  .contact{
+    text-align:center;
+  }
+  .contact .wrap{max-width:720px;}
+  .contact h2{font-size:clamp(32px,4.4vw,52px);}
+  .contact p.lead{
+    font-size:17px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin:20px 0 36px;
+  }
+  .contact-actions{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  /* ================= FOOTER ================= */
+  footer{
+    padding:48px 0 32px;
+    border-top:1px solid var(--line);
+    margin-top:40px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .footer-links{
+    display:flex;
+    gap:20px;
+    list-style:none;
+    padding:0;margin:0;
+  }
+  .footer-links a{
+    text-decoration:none;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .footer-links a:hover{color:var(--coral);}
+  .footer-note{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--ink-soft);
+    opacity:0.7;
+    text-align:center;
+    margin-top:28px;
+    line-height:1.6;
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 980px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{order:-1;max-width:340px;margin:0 auto;}
+    .about{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .testi-track{grid-template-columns:1fr;}
+    .social-block{grid-template-columns:1fr;padding:44px 28px;}
+    .check-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 720px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .services-grid{grid-template-columns:1fr;}
+    .checklist-section, .social-block{margin:0 16px;}
+    .wrap{padding:0 20px;}
+    section{padding:68px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="var(--coral)" stroke-width="2"/>
+        <circle cx="13" cy="16" r="3" fill="var(--coral)"/>
+        <circle cx="27" cy="14" r="2.4" fill="var(--marigold)"/>
+        <circle cx="24" cy="27" r="3.2" fill="var(--teal)"/>
+        <path d="M13 16 L24 27 M13 16 L27 14 M24 27 L27 14" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">Dra. Riego Meyer<span>Psiquiatría · TDAH</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#senales">¿Te identificás?</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="icon-btn" href="https://www.instagram.com/dra.vivianariegomeyer/" target="_blank" rel="noopener" aria-label="Instagram de la Dra. Viviana Riego Meyer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+      <a class="icon-btn" href="https://www.facebook.com/profile.php?id=100058006420317" target="_blank" rel="noopener" aria-label="Facebook de la Dra. Viviana Riego Meyer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.7"><path d="M15 8h-2a2 2 0 0 0-2 2v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.4a1 1 0 0 1 1-1H16V8Z"/></svg>
+      </a>
+      <a class="btn btn-primary" href="#contacto">Reservar consulta</a>
+    </div>
+    <button class="burger" aria-label="Abrir menú" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Médica Psiquiatra · Adultos e Infancias</span>
+        <h1>Tu mente no está&nbsp;rota.<br>Está cableada <em>distinto</em>.</h1>
+        <p class="hero-sub">Acompaño a mujeres con TDAH o sospecha de TDAH —y a adultos e infancias en general— a entender su cabeza, poner nombre a lo que sienten y construir una vida que les quede cómoda.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Quiero mi primera consulta</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/dra.vivianariegomeyer/" target="_blank" rel="noopener">Ver Instagram →</a>
+        </div>
+        <div class="hero-tags">
+          <span class="tag">🧠 TDAH en mujeres</span>
+          <span class="tag">👩‍👧 Infancias</span>
+          <span class="tag">🧬 Neurociencia y vínculos</span>
+          <span class="tag">🗣️ Talleres y charlas</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 400 420" fill="none">
+          <path class="synapse-line" d="M90 300 C 60 220, 90 150, 150 110" stroke="var(--coral)" stroke-width="2" opacity="0.55"/>
+          <path class="synapse-line" d="M150 110 C 210 80, 270 100, 300 160" stroke="var(--teal)" stroke-width="2" opacity="0.55"/>
+          <path class="synapse-line" d="M300 160 C 330 220, 300 280, 240 310" stroke="var(--marigold)" stroke-width="2" opacity="0.6"/>
+          <path class="synapse-line" d="M240 310 C 180 340, 120 330, 90 300" stroke="var(--lilac)" stroke-width="2" opacity="0.55"/>
+          <path class="synapse-line" d="M150 110 C 170 190, 210 230, 240 310" stroke="var(--ink)" stroke-width="1.4" opacity="0.25"/>
+          <path class="synapse-line" d="M90 300 C 160 260, 230 230, 300 160" stroke="var(--ink)" stroke-width="1.4" opacity="0.2"/>
+
+          <circle class="synapse-dot" style="--rr:9" cx="90" cy="300" r="9" fill="var(--coral)"/>
+          <circle class="synapse-dot d2" style="--rr:7" cx="150" cy="110" r="7" fill="var(--teal)"/>
+          <circle class="synapse-dot d3" style="--rr:11" cx="300" cy="160" r="11" fill="var(--marigold)"/>
+          <circle class="synapse-dot d4" style="--rr:8" cx="240" cy="310" r="8" fill="var(--lilac)"/>
+          <circle class="synapse-dot d5" style="--rr:6" cx="200" cy="220" r="6" fill="var(--coral)"/>
+          <circle class="synapse-dot d6" style="--rr:5" cx="330" cy="230" r="5" fill="var(--teal)"/>
+
+          <circle cx="200" cy="210" r="118" stroke="var(--ink)" stroke-width="1" stroke-dasharray="2 8" opacity="0.25"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>TDAH en mujeres</span><span>Diagnóstico tardío</span><span>Adultos</span><span>Infancias</span><span>Neurociencia y vínculos</span><span>Talleres y conferencias</span>
+      <span>TDAH en mujeres</span><span>Diagnóstico tardío</span><span>Adultos</span><span>Infancias</span><span>Neurociencia y vínculos</span><span>Talleres y conferencias</span>
+    </div>
+  </div>
+
+  <!-- ================= SEÑALES / CHECKLIST ================= -->
+  <section id="senales">
+    <div class="checklist-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Autoevaluación rápida</span>
+          <h2>¿Te identificás con estas señales?</h2>
+          <p>El TDAH en mujeres suele diagnosticarse tarde porque se disfraza de "desorganización" o "demasiada sensibilidad". Tocá las que te resuenen — es solo para vos, no se envía a ningún lado.</p>
+        </div>
+
+        <div class="check-grid" id="checkGrid">
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>Postergás tareas hasta último momento, aunque sepas que te va a costar caro.</p></div>
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>Te cuesta sostener la atención en reuniones o lecturas, aunque el tema te interese.</p></div>
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>Sentís que "compensás" todo el tiempo para que nadie note que estás perdida.</p></div>
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>Tus emociones suben y bajan más rápido e intenso que las de la gente a tu alrededor.</p></div>
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>Perdés objetos, llaves o citas con frecuencia, y eso te genera vergüenza.</p></div>
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>De chica te decían "inteligente pero distraída" o "podría rendir más".</p></div>
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>El cansancio mental te agota más que el físico, casi todos los días.</p></div>
+          <div class="check-item" tabindex="0" role="checkbox" aria-checked="false"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg></span><p>Empezás muchos proyectos con entusiasmo y te cuesta sostenerlos en el tiempo.</p></div>
+        </div>
+
+        <div class="check-result">
+          <div class="check-result-text">Esto no es un diagnóstico —solo una foto de hoy. Si varias te resonaron, una consulta puede darte claridad real.</div>
+          <div class="check-result-count">Marcaste <b id="checkCount">0</b> de 8</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICIOS ================= -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Cómo te acompaño</span>
+        <h2>Un espacio clínico, cálido y sin juicio.</h2>
+        <p>Consultas presenciales y online, con seguimiento a mediano plazo. Cada proceso arranca escuchando tu historia completa, no solo síntomas sueltos.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="chip chip-coral">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3a6 6 0 0 0-6 6c0 2.5 1.2 3.8 2 5 .6.9 1 1.6 1 3v2h6v-2c0-1.4.4-2.1 1-3 .8-1.2 2-2.5 2-5a6 6 0 0 0-6-6Z"/><path d="M9 21h6"/></svg>
+          </div>
+          <h3>Mujeres con TDAH</h3>
+          <p>Diagnóstico y tratamiento para quienes sospechan que su cabeza siempre funcionó "distinto", con o sin diagnóstico previo en la infancia.</p>
+        </div>
+        <div class="service-card">
+          <div class="chip chip-teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+          </div>
+          <h3>Adultos</h3>
+          <p>Ansiedad, ánimo, atención y vínculos. Evaluación clínica integral y seguimiento farmacológico cuando es necesario, siempre a tu ritmo.</p>
+        </div>
+        <div class="service-card">
+          <div class="chip chip-lilac">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 4c1.5 2 1.5 4-1 6 2.5 1 3.5 3 2 6-3 1-6-1-6-4 0-2 1-3 2-4"/><circle cx="17" cy="7" r="1.4" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <h3>Infancias</h3>
+          <p>Acompañamiento a niñas, niños y sus familias, en conjunto con la escuela cuando hace falta, para que el diagnóstico sea una herramienta y no una etiqueta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOBRE MI ================= -->
+  <section id="sobre-mi">
+    <div class="wrap about">
+      <div class="about-visual">
+        <span class="initials">VR</span>
+        <div class="about-visual-card">
+          <p><b>Dra. Viviana Riego Meyer</b><br>Médica Psiquiatra — Adultos e Infancias</p>
+        </div>
+      </div>
+      <div class="about-body">
+        <span class="eyebrow">Sobre mí</span>
+        <h2>Psiquiatra, divulgadora y mamá que entiende de vínculos.</h2>
+        <p style="font-size:16px;line-height:1.7;color:var(--ink-soft);margin-top:18px;">
+          Trabajo hace años combinando la clínica con la divulgación: comparto neurociencia y salud mental en redes, doy talleres y conferencias, y colaboro con espacios de crianza como <em>@elartedecriarhoy</em>. Mi enfoque parte de una idea simple: entender cómo funciona tu cerebro es el primer paso para dejar de pelearte con vos misma.
+        </p>
+        <ul class="cred-list">
+          <li><span class="cred-dot"></span> Médica especialista en Psiquiatría, con foco en TDAH en adultos e infancias.</li>
+          <li><span class="cred-dot"></span> Enfoque especializado en mujeres con TDAH o sospecha de TDAH y diagnóstico tardío.</li>
+          <li><span class="cred-dot"></span> Divulgación activa en Instagram sobre neurociencia, salud mental y vínculos.</li>
+          <li><span class="cred-dot"></span> Talleres y conferencias para pacientes, familias e instituciones educativas.</li>
+        </ul>
+        <a class="btn btn-dark" href="https://www.instagram.com/dra.vivianariegomeyer/" target="_blank" rel="noopener">Conocer su trabajo en Instagram →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIOS ================= -->
+  <section id="testimonios">
+    <div class="wrap">
+      <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <span class="eyebrow" style="justify-content:center;">Lo que dicen quienes ya dieron el paso</span>
+        <h2>Historias que se parecen a la tuya.</h2>
+      </div>
+      <div class="testi-track">
+        <div class="testi-card">
+          <div class="quote-mark">“</div>
+          <p>Toda mi vida pensé que era desordenada y vaga. Entender que era TDAH me sacó un peso de encima que no sabía que cargaba.</p>
+          <div class="testi-who">Paciente adulta, 34 años</div>
+        </div>
+        <div class="testi-card">
+          <div class="quote-mark">“</div>
+          <p>El acompañamiento con mi hijo fue mucho más allá de una receta: nos ayudó a entenderlo y a acompañarlo mejor en casa.</p>
+          <div class="testi-who">Mamá de paciente, 8 años</div>
+        </div>
+        <div class="testi-card">
+          <div class="quote-mark">“</div>
+          <p>Me escuchó de verdad antes de hablar de diagnósticos. Sentí que por primera vez alguien entendía cómo funciona mi cabeza.</p>
+          <div class="testi-who">Paciente adulta, 29 años</div>
+        </div>
+      </div>
+      <p class="testi-note">Testimonios ilustrativos basados en experiencias frecuentes de consulta · identidades protegidas</p>
+    </div>
+  </section>
+
+  <!-- ================= INSTAGRAM / SOCIAL ================= -->
+  <section>
+    <div class="wrap">
+      <div class="social-block">
+        <div>
+          <span class="eyebrow" style="color:var(--marigold);">Seguime en Instagram</span>
+          <h2>Contenido sobre neurociencia, salud mental y vínculos, cada semana.</h2>
+          <p>En @dra.vivianariegomeyer comparto reflexiones, talleres y recursos pensados para adultos e infancias — con foco especial en mujeres con TDAH.</p>
+          <div class="social-actions">
+            <a class="btn btn-primary" href="https://www.instagram.com/dra.vivianariegomeyer/" target="_blank" rel="noopener">Seguir en Instagram</a>
+            <a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=100058006420317" target="_blank" rel="noopener">Ver en Facebook</a>
+          </div>
+        </div>
+        <div class="social-stats">
+          <div class="stat-card"><b>7.6K+</b><span>Seguidores</span></div>
+          <div class="stat-card"><b>88+</b><span>Publicaciones</span></div>
+          <div class="stat-card"><b>Adultos</b><span>e Infancias</span></div>
+          <div class="stat-card"><b>TDAH</b><span>en mujeres</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section id="contacto" class="contact">
+    <div class="wrap">
+      <span class="eyebrow" style="justify-content:center;">Demos el primer paso</span>
+      <h2>Escribime y coordinamos tu primera consulta.</h2>
+      <p class="lead">La vía más rápida para agendar es por mensaje directo en Instagram o Facebook. Contame brevemente tu situación y te respondo con los próximos pasos.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/dra.vivianariegomeyer/" target="_blank" rel="noopener">Escribir por Instagram</a>
+        <a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=100058006420317" target="_blank" rel="noopener">Escribir por Facebook</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" style="width:30px;height:30px;">
+        <circle cx="20" cy="20" r="19" stroke="var(--coral)" stroke-width="2"/>
+        <circle cx="13" cy="16" r="3" fill="var(--coral)"/>
+        <circle cx="27" cy="14" r="2.4" fill="var(--marigold)"/>
+        <circle cx="24" cy="27" r="3.2" fill="var(--teal)"/>
+      </svg>
+      <span class="logo-text" style="font-size:15px;">Dra. Riego Meyer</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/dra.vivianariegomeyer/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=100058006420317" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+  <p class="footer-note">Este sitio es informativo y no reemplaza una consulta médica. Ante una urgencia de salud mental, acudí al servicio de emergencias más cercano.<br>© 2026 Dra. Viviana Riego Meyer — Médica Psiquiatra.</p>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.check-item');
+  const counter = document.getElementById('checkCount');
+  function toggle(item){
+    const active = item.classList.toggle('active');
+    item.setAttribute('aria-checked', active ? 'true':'false');
+    counter.textContent = document.querySelectorAll('.check-item.active').length;
+  }
+  items.forEach(item=>{
+    item.addEventListener('click', ()=>toggle(item));
+    item.addEventListener('keydown', (e)=>{
+      if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(item); }
+    });
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      if(window.innerWidth<=720){ document.querySelector('.nav-links').style.display='none'; }
+    });
+  });
+</script>
+
+</body>
+</html>

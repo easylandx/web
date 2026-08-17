@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicoterapia en Rosario | Ansiedad, Vínculos y Autoestima — Online y Presencial</title>
+<meta name="description" content="Espacio de psicoterapia en Rosario. Trabajamos ansiedad, vínculos y autoestima, online y presencial. Agendá tu primera sesión.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6EF;
+    --plum:#3B2145;
+    --plum-deep:#241129;
+    --mango:#F3A93B;
+    --coral:#F2707A;
+    --teal:#2FA79B;
+    --lilac:#C9A6E0;
+    --ink:#2B1830;
+    --paper:#FFFDF9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--mango);color:var(--plum-deep);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,246,239,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(59,33,69,0.08);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:78px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.25rem;
+    font-weight:600;
+    color:var(--plum);
+    display:flex;align-items:center;gap:10px;
+  }
+  .brand-dot{
+    width:14px;height:14px;border-radius:50%;
+    background:conic-gradient(var(--mango),var(--coral),var(--teal),var(--mango));
+    box-shadow:0 0 0 3px rgba(59,33,69,0.06);
+  }
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{
+    font-size:0.95rem;font-weight:600;color:var(--plum);
+    opacity:0.75;transition:opacity .2s;
+  }
+  .nav-links a:hover{opacity:1;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:100px;
+    font-weight:700;font-size:0.95rem;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--teal);color:var(--paper);
+    box-shadow:0 8px 20px -6px rgba(47,167,155,0.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 26px -6px rgba(47,167,155,0.7);}
+  .btn-ghost{
+    border:1.5px solid rgba(59,33,69,0.2);color:var(--plum);
+  }
+  .btn-ghost:hover{border-color:var(--plum);}
+  .nav-cta{display:flex;gap:12px;align-items:center;}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  .burger span{display:block;width:24px;height:2.5px;background:var(--plum);margin:5px 0;border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 110px;
+    overflow:hidden;
+  }
+  .hero-blob{
+    position:absolute;border-radius:50%;
+    filter:blur(2px);
+    opacity:0.55;
+  }
+  .blob-1{width:520px;height:520px;background:radial-gradient(circle at 30% 30%, var(--lilac), transparent 70%);top:-180px;right:-160px;}
+  .blob-2{width:380px;height:380px;background:radial-gradient(circle at 40% 40%, var(--mango), transparent 70%);bottom:-140px;left:-120px;opacity:0.35;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.85fr;gap:56px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--paper);
+    border:1px solid rgba(59,33,69,0.12);
+    padding:8px 16px;border-radius:100px;
+    font-size:0.82rem;font-weight:700;letter-spacing:.03em;
+    color:var(--plum);margin-bottom:26px;
+  }
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--coral);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:.5;}}
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.7rem);
+    line-height:1.06;
+    color:var(--plum-deep);
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    background:linear-gradient(100deg,var(--coral),var(--mango) 60%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{
+    font-size:1.15rem;line-height:1.6;
+    color:rgba(43,24,48,0.78);
+    max-width:520px;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px;}
+  .hero-tags{display:flex;gap:10px;flex-wrap:wrap;}
+  .tag{
+    padding:8px 16px;border-radius:100px;font-size:0.85rem;font-weight:700;
+    color:var(--plum-deep);
+  }
+  .tag-1{background:rgba(243,169,59,0.25);}
+  .tag-2{background:rgba(242,112,122,0.22);}
+  .tag-3{background:rgba(47,167,155,0.2);}
+
+  /* signature wheel */
+  .wheel-wrap{
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .wheel{
+    width:min(420px, 85vw);height:min(420px, 85vw);
+    animation:spin 60s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .wheel-center{
+    position:absolute;
+    width:150px;height:150px;border-radius:50%;
+    background:var(--paper);
+    box-shadow:0 20px 50px -14px rgba(59,33,69,0.35);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    animation:spin-rev 60s linear infinite;
+  }
+  @keyframes spin-rev{to{transform:rotate(-360deg);}}
+  .wheel-center span{
+    font-family:'Fraunces', serif;font-style:italic;font-size:1.15rem;color:var(--plum);
+  }
+  .wheel-center small{font-size:0.68rem;font-weight:700;letter-spacing:.08em;color:var(--teal);margin-top:4px;text-transform:uppercase;}
+
+  @media(prefers-reduced-motion: reduce){
+    .wheel,.wheel-center,.eyebrow .pulse{animation:none;}
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    background:var(--plum-deep);color:var(--cream);
+    padding:16px 0;overflow:hidden;white-space:nowrap;
+  }
+  .marquee-track{display:inline-flex;gap:48px;animation:scroll-left 26s linear infinite;}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .marquee-track span{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;opacity:0.9;display:inline-flex;align-items:center;gap:48px;}
+  .marquee-track span::after{content:'✦';color:var(--mango);font-style:normal;}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:100px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head .kicker{
+    color:var(--coral);font-weight:800;font-size:0.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:block;
+  }
+  .section-head h2{font-size:clamp(1.9rem,3vw,2.6rem);color:var(--plum-deep);line-height:1.15;}
+  .section-head p{margin-top:16px;color:rgba(43,24,48,0.7);font-size:1.05rem;line-height:1.6;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper);}
+  .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:64px;align-items:center;}
+  .avatar-card{
+    position:relative;aspect-ratio:1/1.05;border-radius:32px;
+    background:linear-gradient(160deg, var(--lilac) 0%, var(--coral) 55%, var(--mango) 100%);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .avatar-card svg{width:62%;}
+  .avatar-badge{
+    position:absolute;bottom:20px;left:20px;right:20px;
+    background:rgba(255,253,249,0.92);backdrop-filter:blur(6px);
+    border-radius:18px;padding:16px 18px;
+  }
+  .avatar-badge strong{display:block;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--plum-deep);}
+  .avatar-badge span{font-size:0.85rem;color:rgba(43,24,48,0.65);}
+  .about-copy p{font-size:1.05rem;line-height:1.75;color:rgba(43,24,48,0.82);margin-bottom:18px;}
+  .credentials{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap;}
+  .credential{display:flex;align-items:flex-start;gap:12px;max-width:220px;}
+  .credential .ico{
+    width:38px;height:38px;border-radius:12px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(47,167,155,0.15);color:var(--teal);font-size:1.1rem;
+  }
+  .credential p{font-size:0.88rem;color:rgba(43,24,48,0.75);line-height:1.4;}
+
+  /* ---------- SERVICIOS ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .service-card{
+    position:relative;border-radius:26px;padding:36px 30px;
+    background:var(--paper);
+    border:1px solid rgba(59,33,69,0.08);
+    transition:transform .3s ease, box-shadow .3s ease;
+    overflow:hidden;
+  }
+  .service-card:hover{transform:translateY(-8px);box-shadow:0 26px 50px -20px rgba(59,33,69,0.35);}
+  .service-card .blob{
+    position:absolute;width:140px;height:140px;border-radius:50%;
+    top:-50px;right:-50px;opacity:0.28;filter:blur(4px);
+  }
+  .card-1 .blob{background:var(--mango);}
+  .card-2 .blob{background:var(--coral);}
+  .card-3 .blob{background:var(--teal);}
+  .service-num{
+    font-family:'Fraunces',serif;font-style:italic;font-size:0.95rem;
+    color:rgba(43,24,48,0.4);margin-bottom:18px;display:block;
+  }
+  .service-card h3{font-size:1.4rem;color:var(--plum-deep);margin-bottom:12px;}
+  .service-card p{font-size:0.95rem;line-height:1.65;color:rgba(43,24,48,0.72);}
+  .modalities{
+    margin-top:56px;display:flex;gap:20px;flex-wrap:wrap;
+    padding:28px;border-radius:22px;background:var(--plum-deep);color:var(--cream);
+    align-items:center;justify-content:space-between;
+  }
+  .modalities .mod-item{display:flex;align-items:center;gap:12px;font-weight:600;}
+  .modalities .ico-circle{
+    width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,0.1);font-size:1.2rem;
+  }
+
+  /* ---------- PROCESO ---------- */
+  .proceso{background:var(--paper);}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .steps::before{
+    content:'';position:absolute;top:26px;left:6%;right:6%;height:2px;
+    background:repeating-linear-gradient(90deg, rgba(59,33,69,0.18) 0 8px, transparent 8px 16px);
+  }
+  .step{position:relative;padding-right:20px;}
+  .step-dot{
+    width:54px;height:54px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;
+    color:var(--paper);margin-bottom:20px;position:relative;z-index:2;
+  }
+  .step:nth-child(1) .step-dot{background:var(--coral);}
+  .step:nth-child(2) .step-dot{background:var(--mango);}
+  .step:nth-child(3) .step-dot{background:var(--teal);}
+  .step:nth-child(4) .step-dot{background:var(--lilac);color:var(--plum-deep);}
+  .step h3{font-size:1.1rem;color:var(--plum-deep);margin-bottom:8px;}
+  .step p{font-size:0.9rem;color:rgba(43,24,48,0.68);line-height:1.55;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:flex;flex-direction:column;gap:14px;}
+  details{
+    background:var(--paper);border-radius:18px;padding:22px 26px;
+    border:1px solid rgba(59,33,69,0.08);
+  }
+  details summary{
+    cursor:pointer;list-style:none;font-weight:700;font-size:1.02rem;color:var(--plum-deep);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{
+    content:'+';font-size:1.4rem;color:var(--coral);flex:none;transition:transform .25s;font-family:'Fraunces',serif;
+  }
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{margin-top:14px;font-size:0.95rem;color:rgba(43,24,48,0.72);line-height:1.65;}
+
+  /* ---------- CTA / BOOKING ---------- */
+  .booking{
+    position:relative;border-radius:36px;overflow:hidden;
+    background:linear-gradient(135deg, var(--plum) 0%, var(--plum-deep) 100%);
+    color:var(--cream);
+    padding:64px;
+  }
+  .booking-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:center;position:relative;z-index:2;}
+  .booking h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:18px;}
+  .booking p{color:rgba(251,246,239,0.78);font-size:1.05rem;line-height:1.65;max-width:480px;margin-bottom:28px;}
+  .price-card{
+    background:rgba(255,253,249,0.08);
+    border:1px solid rgba(255,253,249,0.18);
+    border-radius:24px;padding:32px;text-align:center;
+  }
+  .price-card .price{
+    font-family:'Fraunces',serif;font-size:3rem;color:var(--mango);line-height:1;margin:12px 0 4px;
+  }
+  .price-card .price sup{font-size:1.4rem;margin-right:2px;}
+  .price-card small{color:rgba(251,246,239,0.6);font-size:0.85rem;}
+  .price-card .btn{width:100%;justify-content:center;margin-top:22px;}
+  .booking-decor{position:absolute;inset:0;opacity:0.5;pointer-events:none;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--plum-deep);color:var(--cream);padding:60px 0 30px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:36px;margin-bottom:44px;}
+  .footer-brand p{color:rgba(251,246,239,0.6);font-size:0.9rem;max-width:280px;margin-top:12px;line-height:1.55;}
+  .footer-social{display:flex;gap:12px;}
+  .social-btn{
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(255,253,249,0.08);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s, transform .2s;
+  }
+  .social-btn:hover{background:var(--coral);transform:translateY(-3px);}
+  .footer-cols{display:flex;gap:60px;flex-wrap:wrap;}
+  .footer-col h4{font-size:0.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mango);margin-bottom:16px;}
+  .footer-col a{display:block;font-size:0.92rem;color:rgba(251,246,239,0.75);margin-bottom:10px;}
+  .footer-bottom{
+    border-top:1px solid rgba(251,246,239,0.12);padding-top:24px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:0.8rem;color:rgba(251,246,239,0.5);
+  }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed;bottom:26px;right:26px;z-index:60;
+    width:64px;height:64px;border-radius:50%;
+    background:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 30px -8px rgba(47,167,155,0.7);
+    animation:float-bob 2.6s ease-in-out infinite;
+  }
+  @keyframes float-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .wa-float svg{width:30px;height:30px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr;}
+    .wheel-wrap{order:-1;margin-bottom:10px;}
+    .about-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;row-gap:36px;}
+    .steps::before{display:none;}
+    .booking-grid{grid-template-columns:1fr;}
+    .booking{padding:40px 28px;}
+  }
+  @media(max-width:720px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .nav-cta .btn-ghost{display:none;}
+    section{padding:70px 0;}
+    .footer-grid{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="brand-dot"></span>Psicoterapia en Rosario</div>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://www.instagram.com/psicoterapiaenrosario/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-primary" href="https://wa.me/5493412526543?text=Hola!%20Quiero%20agendar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener">Agendá tu sesión</a>
+    </div>
+    <button class="burger" aria-label="Abrir menú" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div id="mnav" style="display:none;" class="wrap">
+    <div style="display:flex;flex-direction:column;gap:14px;padding:18px 0;">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#faq">Preguntas</a>
+      <a class="btn btn-primary" style="justify-content:center" href="https://wa.me/5493412526543" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const b=document.querySelector('.burger'), m=document.getElementById('mnav');
+  b.addEventListener('click',()=>{m.style.display = m.style.display==='none' ? 'block':'none';});
+</script>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>Turnos abiertos · Online y presencial en Rosario</div>
+      <h1>Porque merecés estar <em>bien de verdad</em></h1>
+      <p class="lead">Un espacio de escucha real para trabajar la ansiedad, tus vínculos y tu autoestima, a tu ritmo y con acompañamiento profesional. Primera sesión disponible esta semana.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5493412526543?text=Hola!%20Quiero%20agendar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener">
+          Agendá tu primera sesión →
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver cómo te puedo ayudar</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag tag-1">Ansiedad</span>
+        <span class="tag tag-2">Vínculos</span>
+        <span class="tag tag-3">Autoestima</span>
+      </div>
+    </div>
+    <div class="wheel-wrap">
+      <svg class="wheel" viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="185" fill="none" stroke="rgba(59,33,69,0.08)" stroke-width="2"/>
+        <path d="M200 200 L200 15 A185 185 0 0 1 360 110 Z" fill="#F3A93B" opacity="0.85"/>
+        <path d="M200 200 L360 110 A185 185 0 0 1 360 290 Z" fill="#F2707A" opacity="0.85"/>
+        <path d="M200 200 L360 290 A185 185 0 0 1 200 385 Z" fill="#2FA79B" opacity="0.85"/>
+        <path d="M200 200 L200 385 A185 185 0 0 1 40 290 Z" fill="#C9A6E0" opacity="0.85"/>
+        <path d="M200 200 L40 290 A185 185 0 0 1 40 110 Z" fill="#F3A93B" opacity="0.5"/>
+        <path d="M200 200 L40 110 A185 185 0 0 1 200 15 Z" fill="#F2707A" opacity="0.5"/>
+        <text x="285" y="75" fill="#3B2145" font-family="Plus Jakarta Sans" font-weight="700" font-size="15">Ansiedad</text>
+        <text x="300" y="215" fill="#3B2145" font-family="Plus Jakarta Sans" font-weight="700" font-size="15">Vínculos</text>
+        <text x="220" y="345" fill="#FBF6EF" font-family="Plus Jakarta Sans" font-weight="700" font-size="15">Autoestima</text>
+      </svg>
+      <div class="wheel-center">
+        <span>vos,<br>en el centro</span>
+        <small>Psicoterapia</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Terapia online <span>Terapia presencial en Rosario <span>Primera sesión disponible <span>Escucha profesional <span>Terapia online <span>Terapia presencial en Rosario <span>Primera sesión disponible <span>Escucha profesional
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="avatar-card">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="80" r="42" fill="#FFFDF9" opacity="0.92"/>
+        <path d="M40 190 C40 130 70 108 100 108 C130 108 160 130 160 190 Z" fill="#FFFDF9" opacity="0.92"/>
+      </svg>
+      <div class="avatar-badge">
+        <strong>Espacio terapéutico</strong>
+        <span>Rosario, Santa Fe — Online para todo el país</span>
+      </div>
+    </div>
+    <div class="about-copy">
+      <span class="kicker" style="color:var(--coral);font-weight:800;font-size:0.85rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:14px;">Sobre el espacio</span>
+      <h2 style="font-size:clamp(1.9rem,3vw,2.4rem);color:var(--plum-deep);margin-bottom:20px;">Un lugar para pensarte sin apuro</h2>
+      <p>La psicoterapia es un proceso, no una solución mágica: un espacio semanal donde poner en palabras lo que te pasa, entender tus patrones y empezar a moverte distinto.</p>
+      <p>Trabajamos con enfoque en ansiedad, vínculos (pareja, familia, amistades) y autoestima, adaptando el proceso a lo que necesitás en cada etapa. Las sesiones son individuales, online o presenciales en Rosario.</p>
+      <div class="credentials">
+        <div class="credential">
+          <div class="ico">🎓</div>
+          <p>Formación en psicología clínica y actualización continua</p>
+        </div>
+        <div class="credential">
+          <div class="ico">🔒</div>
+          <p>Confidencialidad y ética profesional en cada sesión</p>
+        </div>
+        <div class="credential">
+          <div class="ico">🌐</div>
+          <p>Modalidad online disponible desde cualquier ciudad</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">En qué te puedo acompañar</span>
+      <h2>Tres ejes, un mismo objetivo: que estés mejor</h2>
+      <p>Cada proceso es distinto. Estos son los motivos de consulta más frecuentes en el consultorio, aunque el espacio está abierto a lo que necesites traer.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card card-1">
+        <div class="blob"></div>
+        <span class="service-num">Ansiedad</span>
+        <h3>Calmar la mente acelerada</h3>
+        <p>Herramientas concretas para manejar pensamientos rumiantes, crisis de ansiedad, insomnio y esa sensación de estar siempre "a full" sin poder frenar.</p>
+      </div>
+      <div class="service-card card-2">
+        <div class="blob"></div>
+        <span class="service-num">Vínculos</span>
+        <h3>Relaciones más sanas</h3>
+        <p>Pareja, familia, amistades o trabajo: trabajamos patrones de relación, límites, dependencia emocional y comunicación.</p>
+      </div>
+      <div class="service-card card-3">
+        <div class="blob"></div>
+        <span class="service-num">Autoestima</span>
+        <h3>Reconstruir tu relación con vos</h3>
+        <p>Autocrítica excesiva, inseguridad, perfeccionismo: un proceso para conocerte y tratarte con más amabilidad.</p>
+      </div>
+    </div>
+    <div class="modalities">
+      <div class="mod-item"><span class="ico-circle">🖥️</span> Sesiones online por videollamada, desde donde estés</div>
+      <div class="mod-item"><span class="ico-circle">📍</span> Consultorio presencial en Rosario</div>
+      <a class="btn btn-primary" href="https://wa.me/5493412526543" target="_blank" rel="noopener">Consultar disponibilidad</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section class="proceso" id="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Cómo arrancamos</span>
+      <h2>De la primera sesión al proceso</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <h3>Escribís por WhatsApp</h3>
+        <p>Me contás brevemente qué te trae a terapia y coordinamos día y horario.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <h3>Primera sesión</h3>
+        <p>Nos conocemos, ponemos en palabras tu motivo de consulta y armamos un primer encuadre.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <h3>Encuadre semanal</h3>
+        <p>Definimos frecuencia y modalidad (online o presencial) según lo que necesites.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <h3>Proceso en marcha</h3>
+        <p>Acompañamiento sostenido, a tu ritmo, revisando objetivos en el camino.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Preguntas frecuentes</span>
+      <h2>Todo lo que querés saber antes de escribir</h2>
+    </div>
+    <div class="faq-list">
+      <details open>
+        <summary>¿Cuánto cuesta la primera sesión?</summary>
+        <p>La primera sesión tiene un valor de $2000. Escribime por WhatsApp para confirmar el valor vigente y coordinar el pago.</p>
+      </details>
+      <details>
+        <summary>¿Las sesiones son online o presenciales?</summary>
+        <p>Ambas modalidades están disponibles. Las sesiones presenciales son en Rosario; las online, por videollamada desde cualquier lugar.</p>
+      </details>
+      <details>
+        <summary>¿Con qué frecuencia son las sesiones?</summary>
+        <p>Habitualmente arrancamos con una sesión semanal. La frecuencia se puede ajustar según cómo avance el proceso.</p>
+      </details>
+      <details>
+        <summary>¿Cómo agendo mi turno?</summary>
+        <p>Por WhatsApp. Tocá el botón de "Agendar" en cualquier parte de esta página y coordinamos día y horario.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOOKING / CTA ================= -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="booking">
+      <div class="booking-grid">
+        <div>
+          <h2>Dale el primer paso a estar mejor</h2>
+          <p>No hace falta esperar a estar "peor" para pedir ayuda. Escribime y coordinamos tu primera sesión esta semana.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;">
+            <a class="btn btn-primary" href="https://wa.me/5493412526543?text=Hola!%20Quiero%20agendar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+            <a class="btn" style="border:1.5px solid rgba(251,246,239,0.4);color:var(--cream);" href="https://www.instagram.com/psicoterapiaenrosario/" target="_blank" rel="noopener">Ver Instagram</a>
+          </div>
+        </div>
+        <div class="price-card">
+          <small>Primera sesión</small>
+          <div class="price"><sup>$</sup>2000</div>
+          <small>Online o presencial en Rosario</small>
+          <a class="btn btn-primary" href="https://wa.me/5493412526543?text=Hola!%20Quiero%20agendar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener">Agendar ahora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="color:var(--cream);"><span class="brand-dot"></span>Psicoterapia en Rosario</div>
+        <p>Espacio de psicoterapia online y presencial. Ansiedad, vínculos y autoestima.</p>
+        <div class="footer-social" style="margin-top:18px;">
+          <a class="social-btn" href="https://www.instagram.com/psicoterapiaenrosario/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#FBF6EF" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="#FBF6EF" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="#FBF6EF"/></svg>
+          </a>
+          <a class="social-btn" href="https://facebook.com/psicoterapiaenrosario" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 4h-2.5C10.5 4 9 5.6 9 7.9V10H7v3h2v7h3v-7h2.4l.6-3H12V8.2c0-.8.5-1.2 1.3-1.2H15V4z" fill="#FBF6EF"/></svg>
+          </a>
+          <a class="social-btn" href="https://wa.me/5493412526543" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z" stroke="#FBF6EF" stroke-width="1.5"/><path d="M8.5 8.6c.3-.7.6-.7.9-.7h.6c.2 0 .5 0 .7.5.3.6.9 2 1 2.1.1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.2.7.2.4 1 1.5 2.1 2.4 1.4 1.2 2 1.3 2.3 1.2.3-.1.6-.5.8-.8.2-.3.4-.3.6-.2.2.1 1.6.8 1.9 1 .3.1.5.2.5.4 0 .2 0 .9-.4 1.4-.4.6-1.8 1.1-2.5 1.1-.7 0-2.4-.3-4.4-2.1-2.4-2.2-3.9-4.9-4-5.1-.1-.2-.9-1.3-.9-2.4 0-1.1.6-1.6.8-1.9z" fill="#FBF6EF"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="#servicios">Servicios</a>
+          <a href="#proceso">Cómo trabajamos</a>
+          <a href="#faq">Preguntas frecuentes</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/5493412526543" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/psicoterapiaenrosario/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://facebook.com/psicoterapiaenrosario" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Psicoterapia en Rosario. Todos los derechos reservados.</span>
+      <span>Rosario, Santa Fe, Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5493412526543?text=Hola!%20Quiero%20agendar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z" stroke="#FFFDF9" stroke-width="1.5"/><path d="M8.5 8.6c.3-.7.6-.7.9-.7h.6c.2 0 .5 0 .7.5.3.6.9 2 1 2.1.1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.2.7.2.4 1 1.5 2.1 2.4 1.4 1.2 2 1.3 2.3 1.2.3-.1.6-.5.8-.8.2-.3.4-.3.6-.2.2.1 1.6.8 1.9 1 .3.1.5.2.5.4 0 .2 0 .9-.4 1.4-.4.6-1.8 1.1-2.5 1.1-.7 0-2.4-.3-4.4-2.1-2.4-2.2-3.9-4.9-4-5.1-.1-.2-.9-1.3-.9-2.4 0-1.1.6-1.6.8-1.9z" fill="#FFFDF9"/></svg>
+</a>
+
+</body>
+</html>

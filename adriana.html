@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adriana | Salud Integrativa y Neurodivergencia</title>
+<meta name="description" content="Salud integrativa para cerebros neurodivergentes. Autismo, TDAH y Altas Capacidades. Estrategias reales para cerebro, hormonas y hábitos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFF3E8;
+    --bg-soft: #FDEADC;
+    --rose: #E4577A;
+    --rose-deep: #C63F60;
+    --lavender: #8E7CC3;
+    --sage: #5F9E7F;
+    --ink: #3B2A38;
+    --ink-soft: #6B5768;
+    --cream-card: #FFFBF6;
+    --line: rgba(59,42,56,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* background texture: soft organic blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.35;z-index:0;pointer-events:none;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,243,232,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .logo{font-family:'Fraunces', serif;font-weight:600;font-size:1.25rem;display:flex;align-items:center;gap:8px;}
+  .logo span.dot{color:var(--rose);}
+  .nav-links{display:flex;gap:30px;align-items:center;font-weight:600;font-size:0.95rem;}
+  .nav-links a{color:var(--ink-soft);transition:color .25s;}
+  .nav-links a:hover{color:var(--rose-deep);}
+  .nav-cta{
+    background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:100px;
+    font-weight:700;font-size:0.9rem;display:flex;align-items:center;gap:8px;
+    transition:transform .25s, background .25s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);background:var(--rose-deep);}
+  .burger{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 28px 60px;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1120px;margin:0 auto;
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--cream-card);border:1px solid var(--line);
+    padding:8px 16px;border-radius:100px;font-size:0.82rem;font-weight:700;
+    color:var(--rose-deep);letter-spacing:0.02em;margin-bottom:22px;
+    box-shadow:0 2px 10px rgba(59,42,56,0.05);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.7rem);
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--rose-deep);
+  }
+  .hero p.lead{
+    font-size:1.15rem;color:var(--ink-soft);max-width:520px;margin-bottom:32px;line-height:1.6;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{
+    background:var(--rose-deep);color:#fff;padding:16px 30px;border-radius:100px;
+    font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:10px;
+    box-shadow:0 8px 24px rgba(198,63,96,0.35);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(198,63,96,0.45);}
+  .btn-ghost{
+    padding:16px 26px;border-radius:100px;font-weight:700;font-size:1rem;
+    border:1.5px solid var(--ink); color:var(--ink);
+    transition:background .25s, color .25s;
+  }
+  .btn-ghost:hover{background:var(--ink);color:var(--bg);}
+
+  .hero-tags{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap;}
+  .tag{
+    font-size:0.82rem;font-weight:700;padding:7px 14px;border-radius:100px;
+    background:var(--cream-card);border:1px solid var(--line);color:var(--ink-soft);
+  }
+
+  /* venn signature */
+  .venn-wrap{position:relative;width:100%;aspect-ratio:1/1;max-width:420px;margin:0 auto;}
+  .venn-wrap svg{width:100%;height:100%;overflow:visible;}
+  .venn-circle{mix-blend-mode:multiply;}
+  .venn-label{font-family:'Fraunces', serif;font-weight:600;font-size:15px;fill:var(--ink);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{position:relative;padding:90px 0;z-index:1;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .kicker{
+    font-weight:800;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--sage);margin-bottom:14px;display:block;
+  }
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);}
+  .section-head p{color:var(--ink-soft);margin-top:16px;font-size:1.05rem;line-height:1.6;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- ABOUT / INTEGRATIVE ---------- */
+  .about{background:var(--bg-soft);}
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;}
+  .pillars{display:flex;flex-direction:column;gap:18px;}
+  .pillar{
+    display:flex;gap:16px;align-items:flex-start;background:var(--cream-card);
+    padding:20px 22px;border-radius:18px;border:1px solid var(--line);
+  }
+  .pillar .icon{
+    width:46px;height:46px;border-radius:14px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  }
+  .pillar:nth-child(1) .icon{background:rgba(228,87,122,0.15);}
+  .pillar:nth-child(2) .icon{background:rgba(142,124,195,0.18);}
+  .pillar:nth-child(3) .icon{background:rgba(95,158,127,0.18);}
+  .pillar h3{font-size:1.1rem;margin-bottom:6px;}
+  .pillar p{font-size:0.94rem;color:var(--ink-soft);line-height:1.5;}
+
+  /* ---------- NEURODIVERGENCE CARDS ---------- */
+  .nd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .nd-card{
+    background:var(--cream-card);border-radius:22px;padding:34px 28px;
+    border:1px solid var(--line);position:relative;overflow:hidden;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .nd-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(59,42,56,0.1);}
+  .nd-card .letter{
+    font-family:'Fraunces', serif;font-style:italic;font-size:2.6rem;font-weight:600;
+    opacity:0.9;margin-bottom:18px;
+  }
+  .nd-card:nth-child(1) .letter{color:var(--rose-deep);}
+  .nd-card:nth-child(2) .letter{color:var(--lavender);}
+  .nd-card:nth-child(3) .letter{color:var(--sage);}
+  .nd-card h3{font-size:1.25rem;margin-bottom:10px;}
+  .nd-card p{color:var(--ink-soft);font-size:0.96rem;line-height:1.6;}
+
+  /* ---------- APPROACH ---------- */
+  .approach{background:var(--ink);color:var(--bg);border-radius:32px;margin:0 28px;padding:70px 50px;}
+  .approach-inner{max-width:1120px;margin:0 auto;}
+  .approach .kicker{color:#F0B7C4;}
+  .approach h2{color:var(--bg);font-size:clamp(1.9rem,3.4vw,2.6rem);max-width:640px;}
+  .approach p.lead{color:rgba(255,243,232,0.75);max-width:600px;margin-top:16px;font-size:1.05rem;line-height:1.6;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;}
+  .step{border-top:1px solid rgba(255,243,232,0.25);padding-top:22px;}
+  .step .step-tag{font-weight:700;color:#F0B7C4;font-size:0.85rem;margin-bottom:10px;display:block;}
+  .step h3{color:var(--bg);font-size:1.2rem;margin-bottom:10px;font-family:'Fraunces',serif;}
+  .step p{color:rgba(255,243,232,0.7);font-size:0.94rem;line-height:1.6;}
+
+  /* ---------- BENEFITS STRIP ---------- */
+  .benefits{padding:90px 0;}
+  .benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .benefit{
+    text-align:center;padding:30px 18px;
+  }
+  .benefit .num{
+    font-family:'Fraunces',serif;font-style:italic;font-size:2.2rem;color:var(--rose-deep);margin-bottom:10px;
+  }
+  .benefit p{font-size:0.9rem;color:var(--ink-soft);font-weight:600;}
+
+  /* ---------- CTA / INSTAGRAM ---------- */
+  .cta-section{
+    padding:100px 0;
+    position:relative;
+  }
+  .cta-card{
+    background:linear-gradient(135deg, #F6D9C8 0%, #F3C9D8 50%, #E3D6F2 100%);
+    border-radius:32px;padding:70px 56px;text-align:center;position:relative;overflow:hidden;
+    border:1px solid rgba(59,42,56,0.08);
+  }
+  .cta-card h2{font-size:clamp(2rem,4vw,2.8rem);max-width:700px;margin:0 auto 18px;}
+  .cta-card p{color:var(--ink-soft);max-width:520px;margin:0 auto 34px;font-size:1.05rem;}
+  .ig-btn{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--ink);color:var(--bg);padding:18px 34px;border-radius:100px;
+    font-weight:700;font-size:1.05rem;
+    box-shadow:0 10px 30px rgba(59,42,56,0.25);
+    transition:transform .25s ease;
+  }
+  .ig-btn:hover{transform:translateY(-3px) scale(1.02);}
+  .ig-btn svg{width:22px;height:22px;}
+  .handle{margin-top:18px;color:var(--ink-soft);font-weight:600;font-size:0.95rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:54px 0 30px;border-top:1px solid var(--line);}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;}
+  .footer-links{display:flex;gap:22px;font-size:0.9rem;font-weight:600;color:var(--ink-soft);}
+  .footer-links a:hover{color:var(--rose-deep);}
+  .credit{margin-top:26px;text-align:center;font-size:0.8rem;color:var(--ink-soft);opacity:0.75;}
+
+  /* ---------- FLOATING IG CTA ---------- */
+  .float-ig{
+    position:fixed;bottom:26px;right:26px;z-index:60;
+    background:var(--rose-deep);color:#fff;
+    width:60px;height:60px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(198,63,96,0.4);
+    animation:floatPulse 2.6s ease-in-out infinite;
+    transition:transform .25s ease;
+  }
+  .float-ig:hover{transform:scale(1.08);}
+  .float-ig svg{width:26px;height:26px;}
+  @keyframes floatPulse{
+    0%,100%{box-shadow:0 10px 26px rgba(198,63,96,0.4);}
+    50%{box-shadow:0 10px 38px rgba(198,63,96,0.6);}
+  }
+
+  @media (max-width: 880px){
+    .hero-inner{grid-template-columns:1fr;}
+    .venn-wrap{max-width:300px;margin-top:20px;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-grid .venn-wrap{order:-1;}
+    .nd-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .benefits-grid{grid-template-columns:repeat(2,1fr);}
+    .approach{padding:50px 26px;margin:0 16px;}
+    .nav-links{display:none;}
+    .cta-card{padding:50px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Adriana <span class="dot">●</span> atypical</div>
+    <div class="nav-links">
+      <a href="#integrativa">Enfoque</a>
+      <a href="#neurodivergencia">Para quién</a>
+      <a href="#metodo">Método</a>
+    </div>
+    <a class="nav-cta" href="https://www.instagram.com/atypical.adri/" target="_blank" rel="noopener">
+      Escríbeme →
+    </a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="blob" style="width:480px;height:480px;background:#F0B7C4;top:-120px;right:-100px;"></div>
+  <div class="blob" style="width:380px;height:380px;background:#C9BEEA;bottom:-100px;left:-80px;"></div>
+  <div class="hero-inner">
+    <div class="reveal in">
+      <span class="eyebrow">🧠 Salud integrativa · Neurodivergencia</span>
+      <h1>Un cerebro diferente<br>necesita <em>estrategias diferentes.</em></h1>
+      <p class="lead">Soy Adriana. Acompaño a personas con Autismo, TDAH y Altas Capacidades a entender su cerebro, sus hormonas y sus hábitos — para construir una vida que sí encaje contigo.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://www.instagram.com/atypical.adri/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="white" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="white"/></svg>
+          Sígueme en Instagram
+        </a>
+        <a class="btn-ghost" href="#metodo">Cómo trabajamos</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">Autismo</span>
+        <span class="tag">TDAH</span>
+        <span class="tag">Altas Capacidades (AACC)</span>
+      </div>
+    </div>
+    <div class="reveal in">
+      <div class="venn-wrap">
+        <svg viewBox="0 0 400 400">
+          <circle class="venn-circle" cx="170" cy="150" r="110" fill="#E4577A" opacity="0.55"/>
+          <circle class="venn-circle" cx="230" cy="150" r="110" fill="#8E7CC3" opacity="0.55"/>
+          <circle class="venn-circle" cx="200" cy="230" r="110" fill="#5F9E7F" opacity="0.55"/>
+          <text class="venn-label" x="110" y="105" text-anchor="middle">Cerebro</text>
+          <text class="venn-label" x="290" y="105" text-anchor="middle">Hormonas</text>
+          <text class="venn-label" x="200" y="335" text-anchor="middle">Hábitos</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="integrativa">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="kicker">El enfoque</span>
+        <h2>Salud integrativa, no fragmentada.</h2>
+        <p style="color:var(--ink-soft);margin-top:16px;font-size:1.05rem;line-height:1.6;">
+          La mayoría de la información sobre neurodivergencia mira una sola pieza a la vez. Aquí conectamos las tres: cómo funciona tu cerebro, cómo se mueven tus hormonas y qué hábitos sostienen (o agotan) tu energía día a día.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="pillars">
+          <div class="pillar">
+            <div class="icon">🧠</div>
+            <div>
+              <h3>Cerebro</h3>
+              <p>Entiende tu forma de procesar, atender y regularte — sin patologizar cómo eres.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="icon">🌙</div>
+            <div>
+              <h3>Hormonas</h3>
+              <p>El ciclo, el estrés y la energía influyen directamente en cómo se manifiesta tu neurodivergencia.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="icon">🌱</div>
+            <div>
+              <h3>Hábitos</h3>
+              <p>Rutinas diseñadas a tu medida, no genéricas — las que de verdad puedes sostener.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="neurodivergencia">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Para quién es</span>
+      <h2>Trabajo especialmente con...</h2>
+      <p>Si te reconoces en alguno de estos perfiles, este espacio es para ti.</p>
+    </div>
+    <div class="nd-grid">
+      <div class="nd-card reveal">
+        <div class="letter">Aut.</div>
+        <h3>Autismo</h3>
+        <p>Estrategias sensoriales, sociales y de energía diseñadas para tu perfil autista real, sin máscaras.</p>
+      </div>
+      <div class="nd-card reveal">
+        <div class="letter">TDAH</div>
+        <h3>TDAH</h3>
+        <p>Herramientas para la atención, la impulsividad y la gestión del tiempo que funcionan con tu cerebro, no contra él.</p>
+      </div>
+      <div class="nd-card reveal">
+        <div class="letter">AACC</div>
+        <h3>Altas Capacidades</h3>
+        <p>Acompañamiento para la intensidad emocional, la hiperexcitabilidad y el perfeccionismo de un cerebro superdotado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="approach">
+      <div class="approach-inner reveal">
+        <span class="kicker">Método</span>
+        <h2>Nada de fórmulas mágicas. Estrategias que sí encajan contigo.</h2>
+        <p class="lead">Cada cerebro es distinto — por eso el punto de partida siempre eres tú: tu historia, tu energía y tu forma de funcionar.</p>
+        <div class="steps">
+          <div class="step">
+            <span class="step-tag">Escucha</span>
+            <h3>Te conozco de verdad</h3>
+            <p>Hablamos de tu cerebro, tus hormonas y tus hábitos actuales — sin juicios ni etiquetas rígidas.</p>
+          </div>
+          <div class="step">
+            <span class="step-tag">Diseño</span>
+            <h3>Estrategia a tu medida</h3>
+            <p>Construimos un plan integrativo realista, pensado para tu neurodivergencia específica.</p>
+          </div>
+          <div class="step">
+            <span class="step-tag">Acompañamiento</span>
+            <h3>Ajuste continuo</h3>
+            <p>Vamos ajustando juntas según cómo responde tu cuerpo y tu día a día — nada es fijo ni forzado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:40px;">
+      <span class="kicker">Por qué es diferente</span>
+      <h2>Un espacio sin máscaras.</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit reveal">
+        <div class="num">1</div>
+        <p>Enfoque neuroafirmativo, sin patologizar</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="num">2</div>
+        <p>Cerebro, hormonas y hábitos conectados</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="num">3</div>
+        <p>Estrategias reales, no genéricas</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="num">4</div>
+        <p>Acompañamiento cercano y sin prisa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <span class="eyebrow" style="background:rgba(255,255,255,0.6);">✨ Empecemos</span>
+      <h2>Tu cerebro no necesita arreglarse. Necesita las estrategias correctas.</h2>
+      <p>Escríbeme por Instagram y cuéntame tu caso — desde ahí vemos juntas cómo puedo acompañarte.</p>
+      <a class="ig-btn" href="https://www.instagram.com/atypical.adri/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg>
+        @atypical.adri en Instagram
+      </a>
+      <div class="handle">Adriana 🌹 · Salud Integrativa y Neurodivergencia</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">Adriana · atypical.adri</div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/atypical.adri/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#integrativa">Enfoque</a>
+        <a href="#neurodivergencia">Para quién</a>
+        <a href="#metodo">Método</a>
+      </div>
+    </div>
+    <div class="credit">© 2026 Adriana · atypical.adri — Built by EasyLandX</div>
+  </div>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/atypical.adri/" target="_blank" rel="noopener" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="white" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="white"/></svg>
+</a>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>totally TDAH — Aideé Chavez | Estrategias para tu cerebro TDAH</title>
+<meta name="description" content="Aideé Chavez comparte estrategias reales para tu cerebro TDAH, con humor y sin juicios. Únete a la comunidad en Instagram y descarga tus recursos gratis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#201331;
+    --ink-soft:#514264;
+    --paper:#FFFBF2;
+    --paper-dim:#FFF3E2;
+    --pink:#FF4D80;
+    --pink-deep:#E8306A;
+    --violet:#7C5CFC;
+    --violet-deep:#5F3FE0;
+    --yellow:#FFC933;
+    --mint:#20C997;
+    --mint-deep:#0FA57F;
+    --radius-lg:28px;
+    --radius-md:18px;
+    --shadow-pop:0 14px 0 rgba(32,19,49,0.9);
+    --shadow-soft:0 10px 30px rgba(32,19,49,0.12);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fredoka', sans-serif;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ul{list-style:none;}
+  section{position:relative;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  :focus-visible{outline:3px solid var(--violet); outline-offset:3px; border-radius:6px;}
+
+  /* ---------- decorative confetti dots ---------- */
+  .confetti-dot{
+    position:absolute; border-radius:50%; opacity:0.9; z-index:0;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,251,242,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:78px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fredoka'; font-weight:700; font-size:1.35rem;
+  }
+  .brand svg{width:36px; height:36px; flex-shrink:0;}
+  .nav-links{display:flex; align-items:center; gap:30px;}
+  .nav-links a{
+    font-weight:600; font-size:0.98rem; color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  .nav-links a:hover{color:var(--pink-deep);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'Fredoka'; font-weight:600; font-size:1rem;
+    padding:13px 26px; border-radius:100px;
+    border:2.5px solid var(--ink);
+    cursor:pointer; white-space:nowrap;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--pink); color:var(--ink); box-shadow:4px 4px 0 var(--ink);}
+  .btn-primary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink);}
+  .btn-outline{background:var(--paper); color:var(--ink); box-shadow:4px 4px 0 var(--ink);}
+  .btn-outline:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink);}
+  .btn-dark{background:var(--ink); color:var(--paper); border-color:var(--ink); box-shadow:4px 4px 0 var(--violet);}
+  .btn-dark:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--violet);}
+  .btn-sm{padding:9px 18px; font-size:0.88rem;}
+  .nav-cta{display:none;}
+  @media(min-width:860px){.nav-cta{display:inline-flex;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:86px 0 70px;
+    background:
+      radial-gradient(circle at 14% 20%, rgba(124,92,252,0.18), transparent 40%),
+      radial-gradient(circle at 88% 10%, rgba(255,77,128,0.16), transparent 45%),
+      var(--paper);
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:50px; align-items:center;
+  }
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;}}
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    font-weight:600; font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    padding:8px 16px; border-radius:100px; margin-bottom:22px;
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--yellow);}
+
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.4rem);
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{
+    color:var(--pink-deep);
+    position:relative;
+    display:inline-block;
+  }
+  .hero p.lead{
+    font-size:1.2rem; color:var(--ink-soft); max-width:520px; margin-bottom:34px;
+    font-weight:500;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:16px; margin-bottom:38px;}
+  .stat-row{display:flex; flex-wrap:wrap; gap:28px;}
+  .stat-chip{
+    display:flex; flex-direction:column;
+  }
+  .stat-chip strong{font-family:'Fredoka'; font-size:1.6rem; color:var(--violet-deep);}
+  .stat-chip span{font-size:0.85rem; color:var(--ink-soft); font-weight:600;}
+
+  /* hero visual: brain doodle */
+  .hero-art{
+    position:relative; display:flex; align-items:center; justify-content:center;
+  }
+  .brain-card{
+    position:relative; width:100%; max-width:420px; aspect-ratio:1/1.05;
+    background:var(--violet);
+    border:3px solid var(--ink);
+    border-radius:36px;
+    box-shadow:10px 10px 0 var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    transform:rotate(-2deg);
+  }
+  .brain-card svg{width:78%; height:78%;}
+  .float-badge{
+    position:absolute; background:var(--paper); border:2.5px solid var(--ink);
+    border-radius:16px; padding:10px 14px; font-family:'Fredoka'; font-weight:600;
+    box-shadow:4px 4px 0 var(--ink); font-size:0.9rem;
+    animation:floaty 5s ease-in-out infinite;
+  }
+  .float-badge.b1{top:-18px; left:-24px; background:var(--yellow); animation-delay:0s;}
+  .float-badge.b2{bottom:10px; right:-30px; background:var(--mint); animation-delay:1.4s;}
+  .float-badge.b3{bottom:-22px; left:20px; background:var(--pink); animation-delay:0.7s;}
+  @keyframes floaty{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    background:var(--ink); color:var(--paper); overflow:hidden;
+    border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);
+    padding:14px 0;
+  }
+  .marquee-track{
+    display:flex; gap:48px; white-space:nowrap;
+    animation:scroll 26s linear infinite;
+    font-family:'Fredoka'; font-weight:600; font-size:1.05rem;
+  }
+  .marquee-track span{display:flex; align-items:center; gap:10px;}
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{padding:100px 0; background:var(--paper);}
+  .about .wrap{
+    display:grid; grid-template-columns:0.8fr 1.2fr; gap:60px; align-items:center;
+  }
+  @media(max-width:900px){.about .wrap{grid-template-columns:1fr;}}
+  .avatar-frame{
+    position:relative; border:3px solid var(--ink); border-radius:32px;
+    background:var(--yellow); aspect-ratio:1/1; max-width:380px;
+    box-shadow:10px 10px 0 var(--ink); overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .avatar-frame svg{width:70%; height:70%;}
+  .kicker{
+    font-family:'Fredoka'; font-weight:600; color:var(--pink-deep);
+    text-transform:uppercase; letter-spacing:0.06em; font-size:0.85rem; margin-bottom:12px;
+  }
+  .about h2{font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:20px;}
+  .about p{color:var(--ink-soft); font-size:1.08rem; margin-bottom:16px; max-width:560px;}
+  .about-quote{
+    margin-top:22px; padding:20px 24px; border-left:4px solid var(--violet);
+    background:var(--paper-dim); border-radius:0 16px 16px 0;
+    font-family:'Fredoka'; font-weight:500; font-size:1.15rem; color:var(--ink);
+  }
+
+  /* ---------- PILLARS ---------- */
+  .pillars{padding:90px 0; background:var(--paper-dim); border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 56px;}
+  .section-head h2{font-size:clamp(2rem,3.6vw,2.7rem); margin-bottom:14px;}
+  .section-head p{color:var(--ink-soft); font-size:1.08rem;}
+  .pillar-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  @media(max-width:900px){.pillar-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.pillar-grid{grid-template-columns:1fr;}}
+  .pillar-card{
+    border:2.5px solid var(--ink); border-radius:22px; padding:28px 24px;
+    background:var(--paper); box-shadow:6px 6px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .pillar-card:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--ink);}
+  .pillar-card .icon-badge{
+    width:52px; height:52px; border-radius:14px; border:2.5px solid var(--ink);
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+  }
+  .pillar-card .icon-badge svg{width:26px; height:26px;}
+  .pillar-card h3{font-size:1.2rem; margin-bottom:8px;}
+  .pillar-card p{color:var(--ink-soft); font-size:0.98rem;}
+  .p1 .icon-badge{background:var(--pink);}
+  .p2 .icon-badge{background:var(--violet);}
+  .p3 .icon-badge{background:var(--yellow);}
+  .p4 .icon-badge{background:var(--mint);}
+  .p5 .icon-badge{background:var(--violet);}
+  .p6 .icon-badge{background:var(--pink);}
+
+  /* ---------- STATS BANNER ---------- */
+  .stats-banner{
+    background:var(--violet); color:var(--paper); padding:56px 0;
+  }
+  .stats-banner .wrap{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:30px; text-align:center;
+  }
+  @media(max-width:700px){.stats-banner .wrap{grid-template-columns:1fr; gap:36px;}}
+  .stat-big strong{font-family:'Fredoka'; font-size:clamp(2.2rem,5vw,3.2rem); display:block;}
+  .stat-big span{font-weight:600; opacity:0.9;}
+
+  /* ---------- COMMUNITY / VOICE ---------- */
+  .voice{padding:100px 0; background:var(--paper);}
+  .voice-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media(max-width:900px){.voice-grid{grid-template-columns:1fr;}}
+  .voice-card{
+    border:2.5px solid var(--ink); border-radius:22px; padding:26px;
+    background:var(--paper-dim);
+  }
+  .voice-card .quote-mark{font-family:'Fredoka'; font-size:2.4rem; color:var(--pink-deep); line-height:0.6; display:block; margin-bottom:10px;}
+  .voice-card p{color:var(--ink); font-weight:500; font-size:1.02rem;}
+
+  /* ---------- CTA RESOURCES ---------- */
+  .cta-block{
+    padding:90px 0; background:var(--ink); color:var(--paper); position:relative; overflow:hidden;
+  }
+  .cta-block .wrap{position:relative; z-index:1; text-align:center; max-width:680px;}
+  .cta-block h2{font-size:clamp(2.1rem,4.4vw,3.1rem); margin-bottom:18px;}
+  .cta-block p{color:#D7CBEF; font-size:1.12rem; margin-bottom:34px;}
+  .cta-buttons{display:flex; flex-wrap:wrap; gap:16px; justify-content:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--paper); padding:60px 0 34px; border-top:3px solid var(--ink);}
+  .footer-top{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; margin-bottom:44px;
+  }
+  .footer-brand .brand{margin-bottom:14px;}
+  .footer-brand p{color:var(--ink-soft); max-width:320px; font-size:0.98rem;}
+  .footer-cols{display:flex; gap:60px; flex-wrap:wrap;}
+  .footer-col h4{font-family:'Fredoka'; font-size:1rem; margin-bottom:14px;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col a{color:var(--ink-soft); font-weight:500; font-size:0.96rem; transition:color .15s ease;}
+  .footer-col a:hover{color:var(--pink-deep);}
+  .social-row{display:flex; gap:12px; margin-top:6px;}
+  .social-icon{
+    width:44px; height:44px; border:2.5px solid var(--ink); border-radius:12px;
+    display:flex; align-items:center; justify-content:center; background:var(--paper);
+    box-shadow:3px 3px 0 var(--ink); transition:transform .15s ease;
+  }
+  .social-icon:hover{transform:translate(-2px,-2px);}
+  .social-icon svg{width:20px; height:20px;}
+  .footer-bottom{
+    border-top:2px solid #E7DFF7; padding-top:24px;
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;
+    color:var(--ink-soft); font-size:0.88rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- decorative confetti (fixed, subtle) -->
+<div class="confetti-dot" style="width:14px;height:14px;background:var(--yellow);top:120px;left:6%;"></div>
+<div class="confetti-dot" style="width:10px;height:10px;background:var(--mint);top:300px;right:8%;"></div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#FF4D80" stroke="#201331" stroke-width="3"/><path d="M17 20c0-4 3-7 7-7s7 3 7 7c2 0 4 2 4 4.5S33 29 31 29c0 3-2.5 5-5 5h-4c-2.5 0-5-2-5-5-2 0-4-2-4-4.5S15 20 17 20Z" fill="#FFFBF2" stroke="#201331" stroke-width="2"/></svg>
+      totally TDAH
+    </a>
+    <div class="nav-links">
+      <a href="#about">Sobre mí</a>
+      <a href="#temas">Temas</a>
+      <a href="#comunidad">Comunidad</a>
+    </div>
+    <a class="btn btn-primary btn-sm nav-cta" href="https://stan.store/totallytdah" target="_blank" rel="noopener">Recursos gratis</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span> NYC · Latina · Cerebro TDAH</div>
+      <h1>Let's talk <span class="accent">brain.</span> 🧠</h1>
+      <p class="lead">Soy Aideé Chavez y comparto estrategias reales para tu cerebro TDAH — mientras nos reímos juntas en el proceso. Nada de culpa, puro entendimiento.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/totallytdah/" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#201331" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#201331" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#201331"/></svg>
+          Síguenos en Instagram
+        </a>
+        <a class="btn btn-outline" href="https://stan.store/totallytdah" target="_blank" rel="noopener">
+          Mis recursos gratis ⤵
+        </a>
+      </div>
+      <div class="stat-row">
+        <div class="stat-chip"><strong>183K+</strong><span>comunidad en Instagram</span></div>
+        <div class="stat-chip"><strong>NYC</strong><span>con acento latino</span></div>
+        <div class="stat-chip"><strong>100%</strong><span>sin juicios</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="brain-card">
+        <svg viewBox="0 0 200 200" fill="none">
+          <path d="M70 60c0-16 12-28 30-28s30 12 30 28c14 2 24 14 24 28 0 12-8 22-18 26 0 16-13 28-30 28h-14c-17 0-30-12-30-28-10-4-18-14-18-26 0-14 10-26 24-28 1 0 1-1 2-0Z" fill="#FFFBF2" stroke="#201331" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M85 70c6-6 14-6 18 0M100 70c6-6 14-6 18 0M75 92c8 6 18 6 26 0M96 92c8 6 18 6 26 0M90 110c4 4 10 4 14 0" stroke="#7C5CFC" stroke-width="3.2" stroke-linecap="round"/>
+          <circle cx="76" cy="82" r="3" fill="#FF4D80"/>
+          <circle cx="124" cy="82" r="3" fill="#FF4D80"/>
+        </svg>
+      </div>
+      <div class="float-badge b1">👋 hola cerebro</div>
+      <div class="float-badge b2">jaja se me olvidó 😅</div>
+      <div class="float-badge b3">tú sí puedes ✨</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>🧠 Estrategias con humor</span><span>💗 Comunidad latina TDAH</span><span>📍 NYC</span><span>✨ Recursos gratis</span>
+    <span>🧠 Estrategias con humor</span><span>💗 Comunidad latina TDAH</span><span>📍 NYC</span><span>✨ Recursos gratis</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="avatar-frame">
+      <svg viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="46" r="26" fill="#FF4D80" stroke="#201331" stroke-width="3"/>
+        <path d="M28 108c4-24 16-36 32-36s28 12 32 36" fill="#7C5CFC" stroke="#201331" stroke-width="3"/>
+        <circle cx="50" cy="44" r="3" fill="#201331"/>
+        <circle cx="70" cy="44" r="3" fill="#201331"/>
+        <path d="M50 56c4 4 16 4 20 0" stroke="#201331" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="kicker">Sobre mí</div>
+      <h2>Hola, soy Aideé 👋</h2>
+      <p>Vivo en Nueva York, tengo TDAH y decidí dejar de esconderlo. Comparto lo que me ha funcionado —y lo que definitivamente no— para organizar mi mente, mis relaciones y mi día a día, sin dramatizarlo ni minimizarlo.</p>
+      <p>Como mujer latina, sé que hablar de salud mental en nuestra cultura no siempre es fácil. Por eso mezclo ciencia del cerebro con humor: para que aprendas algo útil y te rías un rato, en lugar de sentirte peor.</p>
+      <div class="about-quote">"Rompiendo estigmas, una carcajada a la vez."</div>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" id="temas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">De qué hablamos</div>
+      <h2>Estrategias para tu cerebro TDAH</h2>
+      <p>Temas reales, explicados sin tecnicismos, pensados para que los apliques hoy mismo.</p>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-card p1">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#201331" stroke-width="2"/><path d="M4 10h16M10 4v16" stroke="#201331" stroke-width="2"/></svg></div>
+        <h3>Organización</h3>
+        <p>Sistemas que sí funcionan para un cerebro que piensa en mil direcciones a la vez.</p>
+      </div>
+      <div class="pillar-card p2">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#201331" stroke-width="2"/><path d="M12 8v4l3 2" stroke="#201331" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Procrastinación</h3>
+        <p>Por qué posponemos —no es flojera— y cómo movernos igual, aunque el cerebro se resista.</p>
+      </div>
+      <div class="pillar-card p3">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-9.5-9C.7 8.3 2.5 4 6.5 4 9 4 11 5.6 12 7.3 13 5.6 15 4 17.5 4 21.5 4 23.3 8.3 21.5 12 19 16.4 12 21 12 21Z" stroke="#201331" stroke-width="2"/></svg></div>
+        <h3>Relaciones</h3>
+        <p>Comunicar lo que sentimos y necesitamos, sin drama ni culpa de por medio.</p>
+      </div>
+      <div class="pillar-card p4">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2" stroke="#201331" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#201331" stroke-width="2"/></svg></div>
+        <h3>Regulación emocional</h3>
+        <p>Herramientas para esos momentos en que todo se siente demasiado, demasiado rápido.</p>
+      </div>
+      <div class="pillar-card p5">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.4-9-9.5C1.6 6.8 3.8 3 7.5 3 9.7 3 11.3 4.3 12 5.6 12.7 4.3 14.3 3 16.5 3 20.2 3 22.4 6.8 21 10.5 19 15.6 12 20 12 20Z" stroke="#201331" stroke-width="2"/></svg></div>
+        <h3>Autocompasión</h3>
+        <p>Aprender a hablarte bonito, incluso —sobre todo— en tus días difíciles.</p>
+      </div>
+      <div class="pillar-card p6">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="9" r="3" stroke="#201331" stroke-width="2"/><circle cx="16" cy="9" r="3" stroke="#201331" stroke-width="2"/><path d="M3 20c0-3.3 2.2-5.5 5-5.5s5 2.2 5 5.5M11 20c0-3.3 2.2-5.5 5-5.5s5 2.2 5 5.5" stroke="#201331" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Comunidad</h3>
+        <p>No estás sol@. Aquí hay miles de personas que piensan —y sienten— como tú.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-banner" id="comunidad">
+  <div class="wrap">
+    <div class="stat-big"><strong>183K+</strong><span>seguidores en Instagram</span></div>
+    <div class="stat-big"><strong>300+</strong><span>guías, reels y recursos publicados</span></div>
+    <div class="stat-big"><strong>1</strong><span>comunidad que sí te entiende</span></div>
+  </div>
+</section>
+
+<section class="voice">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Lo que encontrarás</div>
+      <h2>Contenido pensado para tu cerebro, no en tu contra</h2>
+      <p>Nada de tips genéricos de productividad. Todo explicado desde cómo realmente funciona un cerebro TDAH.</p>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <span class="quote-mark">"</span>
+        <p>Explicaciones cortas y claras que puedes aplicar el mismo día, sin sentirte abrumad@.</p>
+      </div>
+      <div class="voice-card">
+        <span class="quote-mark">"</span>
+        <p>Humor real sobre lo que vivimos a diario: el reloj, los pendientes, el "ya casi lo hago".</p>
+      </div>
+      <div class="voice-card">
+        <span class="quote-mark">"</span>
+        <p>Un espacio en español para hablar de salud mental sin miedo al qué dirán.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="wrap">
+    <h2>¿List@ para conocer tu cerebro?</h2>
+    <p>Descarga tus recursos gratuitos, únete a la comunidad y empieza a entender tu TDAH sin culpa.</p>
+    <div class="cta-buttons">
+      <a class="btn btn-primary" href="https://stan.store/totallytdah" target="_blank" rel="noopener">Quiero mis recursos gratis</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/totallytdah/" target="_blank" rel="noopener">Seguir en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#FFC933" stroke="#201331" stroke-width="3"/><path d="M17 20c0-4 3-7 7-7s7 3 7 7c2 0 4 2 4 4.5S33 29 31 29c0 3-2.5 5-5 5h-4c-2.5 0-5-2-5-5-2 0-4-2-4-4.5S15 20 17 20Z" fill="#FFFBF2" stroke="#201331" stroke-width="2"/></svg>
+          totally TDAH
+        </a>
+        <p>Aideé Chavez · TDAH &amp; Salud Mental. Estrategias para tu cerebro TDAH mientras nos reímos en el proceso.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explora</h4>
+          <ul>
+            <li><a href="#about">Sobre mí</a></li>
+            <li><a href="#temas">Temas</a></li>
+            <li><a href="#comunidad">Comunidad</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:info@totallytdah.com">info@totallytdah.com</a></li>
+            <li><a href="https://stan.store/totallytdah" target="_blank" rel="noopener">stan.store/totallytdah</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <div class="social-row">
+            <a class="social-icon" href="https://www.instagram.com/totallytdah/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#201331" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#201331" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#201331"/></svg>
+            </a>
+            <a class="social-icon" href="https://www.facebook.com/profile.php?id=100064029009581" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v6h3v-6H16l.5-3h-3V9.8c0-.5.3-.8.5-.8Z" stroke="#201331" stroke-width="2" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="social-icon" href="https://stan.store/totallytdah" target="_blank" rel="noopener" aria-label="Stan Store">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.3 5.6 6 .5-4.6 3.9 1.5 5.9L12 16l-5.2 2.9 1.5-5.9-4.6-3.9 6-.5L12 3Z" stroke="#201331" stroke-width="2" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 totally TDAH · Aideé Chavez. Todos los derechos reservados.</span>
+      <span>Hecho con 🧠 y mucho café en NYC.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

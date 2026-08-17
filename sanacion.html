@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sanación en Movimiento | Paula Andrea Quiceno — Bioconstelaciones & Astrología Evolutiva</title>
+<meta name="description" content="Bioconstelaciones familiares, astrología evolutiva y terapias holísticas con Paula Andrea Quiceno. Agenda tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FBF3E6;
+    --champagne:#F4E3C1;
+    --rose:#C24E82;
+    --rose-soft:#E7A8C0;
+    --violet:#6B4692;
+    --gold:#C6963C;
+    --gold-light:#E8C77E;
+    --teal:#2E8F86;
+    --ink:#3A2C2C;
+    --ink-soft:#6B5A56;
+    --shadow:0 20px 50px rgba(107,70,146,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--rose);
+    font-weight:500;
+  }
+
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 6vw;
+  }
+
+  section{position:relative;}
+
+  /* ---------- floating gold particles (ambient) ---------- */
+  .particle{
+    position:absolute;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--gold-light) 0%, transparent 70%);
+    opacity:0.55;
+    pointer-events:none;
+    animation:drift 14s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{transform:translateY(0) translateX(0);}
+    50%{transform:translateY(-26px) translateX(14px);}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 6vw;
+    background:rgba(251,243,230,0.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(198,150,60,0.18);
+    transition:padding .3s ease;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.28rem;
+    color:var(--violet);
+  }
+  .brand span{color:var(--rose);}
+  nav.links{display:flex;gap:34px;align-items:center;}
+  nav.links a{
+    font-size:0.82rem;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+    transition:color .25s ease;
+  }
+  nav.links a:hover{color:var(--rose);}
+  .nav-cta{
+    background:var(--rose);
+    color:var(--ivory)!important;
+    padding:10px 22px;
+    border-radius:100px;
+    font-size:0.8rem!important;
+    letter-spacing:0.04em;
+    box-shadow:0 8px 18px rgba(194,78,130,0.3);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(194,78,130,0.4);}
+  @media(max-width:820px){
+    nav.links a:not(.nav-cta){display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    padding-top:100px;
+    background:
+      radial-gradient(ellipse 70% 55% at 82% 12%, rgba(107,70,146,0.14), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 8% 88%, rgba(46,143,134,0.10), transparent 60%),
+      var(--ivory);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    width:100%;
+  }
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;height:340px;}
+  }
+
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:22px;
+  }
+  .hero-eyebrow .line{width:34px;height:1px;background:var(--gold);}
+
+  .hero h1{
+    font-size:clamp(2.6rem, 5.6vw, 4.4rem);
+    line-height:1.04;
+    color:var(--ink);
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--rose);
+    font-weight:500;
+  }
+  .hero p.lede{
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:480px;
+    margin-bottom:34px;
+  }
+
+  .titles-row{
+    display:flex;flex-wrap:wrap;gap:10px 12px;
+    margin-bottom:34px;
+  }
+  .title-pill{
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:8px 16px;
+    border-radius:100px;
+    border:1px solid rgba(107,70,146,0.25);
+    color:var(--violet);
+    background:rgba(255,255,255,0.5);
+  }
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:16px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 30px;
+    border-radius:100px;
+    font-size:0.92rem;
+    letter-spacing:0.02em;
+    font-weight:500;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--rose), #A8386C);
+    color:var(--ivory);
+    box-shadow:0 14px 30px rgba(194,78,130,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(194,78,130,0.45);}
+  .btn-outline{
+    border:1.5px solid var(--violet);
+    color:var(--violet);
+    background:transparent;
+  }
+  .btn-outline:hover{background:var(--violet);color:var(--ivory);transform:translateY(-3px);}
+
+  /* ---------- SIGNATURE: constellation lotus ---------- */
+  .hero-visual{
+    position:relative;
+    height:520px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lotus-svg{
+    width:100%;height:100%;
+    max-width:480px;
+    animation:breathe 8s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%,100%{transform:scale(1) rotate(0deg);}
+    50%{transform:scale(1.025) rotate(1.2deg);}
+  }
+  .lotus-svg .star{
+    animation:twinkle 3.4s ease-in-out infinite;
+    transform-origin:center;
+  }
+  .lotus-svg .star:nth-child(2n){animation-delay:.6s;}
+  .lotus-svg .star:nth-child(3n){animation-delay:1.3s;}
+  .lotus-svg .star:nth-child(5n){animation-delay:2s;}
+  @keyframes twinkle{
+    0%,100%{opacity:0.35;transform:scale(0.85);}
+    50%{opacity:1;transform:scale(1.15);}
+  }
+  .lotus-svg .link-line{
+    stroke-dasharray:4 3;
+    animation:dash 40s linear infinite;
+  }
+  @keyframes dash{to{stroke-dashoffset:-400;}}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 60px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem,3.6vw,2.7rem);
+    margin-top:14px;
+    color:var(--ink);
+  }
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:1.02rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about{padding:120px 0 100px;}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-frame{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:linear-gradient(155deg, var(--champagne), var(--rose-soft) 60%, var(--gold-light));
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .about-frame svg{position:absolute;inset:0;width:100%;height:100%;}
+  .about-frame::after{
+    content:'';
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35), transparent 55%);
+  }
+  .about-quote{
+    position:absolute;left:24px;right:24px;bottom:24px;
+    background:rgba(251,243,230,0.88);
+    backdrop-filter:blur(6px);
+    border-radius:16px;
+    padding:18px 20px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:0.98rem;
+    color:var(--violet);
+    box-shadow:0 10px 24px rgba(0,0,0,0.08);
+  }
+  .about-copy p{color:var(--ink-soft);margin-bottom:18px;font-size:1.02rem;}
+  .about-copy strong{color:var(--rose);font-weight:500;}
+  .signature-line{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--violet);
+    margin-top:24px;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{
+    padding:100px 0;
+    background:linear-gradient(180deg, transparent, rgba(198,150,60,0.06) 12%, rgba(198,150,60,0.06) 88%, transparent);
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  @media(max-width:980px){.cards{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:#fff;
+    border-radius:22px;
+    padding:32px 26px;
+    box-shadow:0 12px 30px rgba(107,70,146,0.08);
+    border:1px solid rgba(198,150,60,0.14);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(194,78,130,0.16);}
+  .card .icon{
+    width:52px;height:52px;
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .card h3{font-size:1.18rem;margin-bottom:10px;color:var(--ink);}
+  .card p{font-size:0.92rem;color:var(--ink-soft);}
+  .c1 .icon{background:linear-gradient(135deg,var(--rose),#E893B4);}
+  .c2 .icon{background:linear-gradient(135deg,var(--violet),#9673B8);}
+  .c3 .icon{background:linear-gradient(135deg,var(--teal),#5CC0B6);}
+  .c4 .icon{background:linear-gradient(135deg,var(--gold),var(--gold-light));}
+
+  /* ---------- PROCESS ---------- */
+  .process{padding:100px 0;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:20px;
+    position:relative;
+  }
+  @media(max-width:820px){.steps{grid-template-columns:1fr;}}
+  .step{
+    position:relative;
+    padding:34px 28px;
+    background:linear-gradient(165deg,#fff,var(--ivory));
+    border-radius:22px;
+    border:1px solid rgba(198,150,60,0.16);
+  }
+  .step .num{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:2.4rem;
+    color:var(--gold);
+    opacity:0.55;
+    line-height:1;
+    margin-bottom:14px;
+    display:block;
+  }
+  .step h3{font-size:1.1rem;margin-bottom:10px;}
+  .step p{font-size:0.92rem;color:var(--ink-soft);}
+
+  /* ---------- FOR WHOM / BENEFITS ---------- */
+  .benefits{
+    padding:100px 0;
+    background:linear-gradient(135deg, var(--violet), #4E3468);
+    color:var(--ivory);
+    border-radius:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .benefits::before{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(230,199,126,0.18), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(194,78,130,0.22), transparent 45%);
+  }
+  .benefits .container{position:relative;}
+  .benefits .section-head p{color:rgba(251,243,230,0.75);}
+  .benefits .section-head .eyebrow{color:var(--gold-light);}
+  .benefit-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px 40px;
+    max-width:760px;
+    margin:0 auto;
+  }
+  @media(max-width:640px){.benefit-list{grid-template-columns:1fr;}}
+  .benefit-item{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:14px 0;
+    border-bottom:1px solid rgba(251,243,230,0.14);
+  }
+  .benefit-item svg{flex-shrink:0;margin-top:3px;}
+  .benefit-item p{font-size:0.98rem;color:rgba(251,243,230,0.92);}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:100px 0;}
+  .faq-list{max-width:720px;margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid rgba(198,150,60,0.25);
+    padding:26px 0;
+  }
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;
+    cursor:pointer;
+    font-family:'Fraunces',serif;
+    font-size:1.08rem;
+    color:var(--ink);
+    gap:20px;
+  }
+  .faq-q .plus{
+    font-size:1.4rem;
+    color:var(--rose);
+    transition:transform .3s ease;
+    flex-shrink:0;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .4s ease, opacity .4s ease, margin-top .4s ease;
+    opacity:0;
+    color:var(--ink-soft);
+    font-size:0.96rem;
+  }
+  .faq-item.open .faq-a{max-height:220px;opacity:1;margin-top:14px;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    padding:110px 0 130px;
+    text-align:center;
+    position:relative;
+    background:
+      radial-gradient(ellipse 60% 60% at 50% 100%, rgba(194,78,130,0.10), transparent 60%),
+      var(--ivory);
+  }
+  .final-cta h2{
+    font-size:clamp(2rem,4.2vw,3.1rem);
+    max-width:680px;
+    margin:18px auto 20px;
+  }
+  .final-cta p{color:var(--ink-soft);max-width:480px;margin:0 auto 40px;}
+  .social-row{
+    display:flex;justify-content:center;gap:18px;margin-top:34px;flex-wrap:wrap;
+  }
+  .social-pill{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:12px 22px;
+    border-radius:100px;
+    border:1px solid rgba(107,70,146,0.22);
+    font-size:0.86rem;
+    color:var(--violet);
+    background:#fff;
+    transition:all .25s ease;
+  }
+  .social-pill:hover{background:var(--violet);color:#fff;transform:translateY(-2px);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:40px 6vw 34px;
+    text-align:center;
+    border-top:1px solid rgba(198,150,60,0.2);
+    color:var(--ink-soft);
+    font-size:0.82rem;
+  }
+  footer .brand{display:block;margin-bottom:10px;font-size:1.05rem;}
+
+  /* whatsapp floating button */
+  .wa-float{
+    position:fixed;
+    bottom:24px;right:24px;
+    z-index:90;
+    width:60px;height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2E8F86,#25D366);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 28px rgba(37,211,102,0.4);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 12px 28px rgba(37,211,102,0.4);}
+    50%{box-shadow:0 12px 34px rgba(37,211,102,0.65);}
+  }
+
+  ::selection{background:var(--rose-soft);color:var(--ink);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ambient particles -->
+<div class="particle" style="width:120px;height:120px;top:8%;left:4%;"></div>
+<div class="particle" style="width:80px;height:80px;top:60%;left:88%;animation-delay:3s;"></div>
+<div class="particle" style="width:100px;height:100px;top:80%;left:12%;animation-delay:6s;"></div>
+
+<header>
+  <div class="brand">Sanación <span>en Movimiento</span></div>
+  <nav class="links">
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Cómo funciona</a>
+    <a href="#preguntas">Preguntas</a>
+    <a class="nav-cta" href="https://wa.link/axomka" target="_blank" rel="noopener">Agenda tu cita</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span class="eyebrow">Bio-Consteladora · Astróloga Evolutiva</span>
+      </div>
+      <h1>Vuelve al <em>movimiento</em><br>que ya sabe sanarte</h1>
+      <p class="lede">Paula Andrea Quiceno acompaña procesos terapéuticos que integran bioconstelaciones familiares, astrología evolutiva y terapias holísticas para que sueltes lo que pesa y avances con claridad.</p>
+
+      <div class="titles-row">
+        <span class="title-pill">🪷 Terapias Holísticas</span>
+        <span class="title-pill">🕉️ Procesos Terapéuticos</span>
+        <span class="title-pill">📚 Talleres y Formaciones</span>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://wa.link/axomka" target="_blank" rel="noopener">
+          Agenda tu cita por WhatsApp →
+        </a>
+        <a class="btn btn-outline" href="https://www.instagram.com/sanacion.en.movimiento/" target="_blank" rel="noopener">
+          Ver en Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <svg class="lotus-svg" viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- connecting lines forming lotus/constellation -->
+        <g stroke="#C6963C" stroke-width="1" opacity="0.55">
+          <line class="link-line" x1="240" y1="80"  x2="150" y2="200"/>
+          <line class="link-line" x1="240" y1="80"  x2="330" y2="200"/>
+          <line class="link-line" x1="150" y1="200" x2="90" y2="330"/>
+          <line class="link-line" x1="330" y1="200" x2="390" y2="330"/>
+          <line class="link-line" x1="150" y1="200" x2="240" y2="270"/>
+          <line class="link-line" x1="330" y1="200" x2="240" y2="270"/>
+          <line class="link-line" x1="90" y1="330"  x2="240" y2="400"/>
+          <line class="link-line" x1="390" y1="330" x2="240" y2="400"/>
+          <line class="link-line" x1="240" y1="270" x2="240" y2="400"/>
+          <line class="link-line" x1="90" y1="330"  x2="170" y2="440"/>
+          <line class="link-line" x1="390" y1="330" x2="310" y2="440"/>
+          <line class="link-line" x1="170" y1="440" x2="240" y2="400"/>
+          <line class="link-line" x1="310" y1="440" x2="240" y2="400"/>
+        </g>
+        <!-- petals as soft filled shapes -->
+        <g opacity="0.16">
+          <ellipse cx="240" cy="180" rx="46" ry="90" fill="#C24E82"/>
+          <ellipse cx="240" cy="180" rx="46" ry="90" fill="#6B4692" transform="rotate(48 240 180)"/>
+          <ellipse cx="240" cy="180" rx="46" ry="90" fill="#2E8F86" transform="rotate(-48 240 180)"/>
+          <ellipse cx="240" cy="180" rx="46" ry="90" fill="#C6963C" transform="rotate(96 240 180)"/>
+          <ellipse cx="240" cy="180" rx="46" ry="90" fill="#C6963C" transform="rotate(-96 240 180)"/>
+        </g>
+        <!-- stars -->
+        <g fill="#C6963C">
+          <circle class="star" cx="240" cy="80" r="7"/>
+          <circle class="star" cx="150" cy="200" r="6"/>
+          <circle class="star" cx="330" cy="200" r="6"/>
+          <circle class="star" cx="240" cy="270" r="8"/>
+          <circle class="star" cx="90" cy="330" r="5"/>
+          <circle class="star" cx="390" cy="330" r="5"/>
+          <circle class="star" cx="240" cy="400" r="7"/>
+          <circle class="star" cx="170" cy="440" r="5"/>
+          <circle class="star" cx="310" cy="440" r="5"/>
+        </g>
+        <g fill="#C24E82">
+          <circle class="star" cx="60" cy="120" r="3"/>
+          <circle class="star" cx="420" cy="140" r="3"/>
+          <circle class="star" cx="410" cy="470" r="3"/>
+          <circle class="star" cx="55" cy="460" r="3"/>
+          <circle class="star" cx="240" cy="30" r="3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre-paula">
+  <div class="container about-grid">
+    <div class="reveal">
+      <div class="about-frame">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#ffffff" stroke-width="1" opacity="0.5">
+            <circle cx="200" cy="180" r="70"/>
+            <circle cx="200" cy="180" r="100"/>
+            <circle cx="200" cy="180" r="130"/>
+            <line x1="200" y1="50" x2="200" y2="310"/>
+            <line x1="70" y1="180" x2="330" y2="180"/>
+            <line x1="107" y1="87" x2="293" y2="273"/>
+            <line x1="293" y1="87" x2="107" y2="273"/>
+          </g>
+          <g fill="#ffffff" opacity="0.85">
+            <circle cx="200" cy="50" r="3.5"/>
+            <circle cx="330" cy="180" r="3.5"/>
+            <circle cx="200" cy="310" r="3.5"/>
+            <circle cx="70" cy="180" r="3.5"/>
+            <circle cx="293" cy="87" r="2.5"/>
+            <circle cx="293" cy="273" r="2.5"/>
+            <circle cx="107" cy="87" r="2.5"/>
+            <circle cx="107" cy="273" r="2.5"/>
+          </g>
+        </svg>
+        <div class="about-quote">"Cada síntoma es información. Cada carta natal, un mapa. Sanar es volver a moverte con tu propio ritmo."</div>
+      </div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">Sobre Paula</span>
+      <h2 style="margin-top:14px;margin-bottom:22px;font-size:clamp(1.7rem,3vw,2.3rem);">Un acompañamiento que une cuerpo, historia familiar y cosmos</h2>
+      <p>Paula Andrea Quiceno es <strong>bio-consteladora</strong> y <strong>astróloga evolutiva</strong>, dedicada a acompañar procesos de sanación desde una mirada integral: lo que el cuerpo guarda, lo que la familia transmite y lo que el cielo revela en el momento de tu nacimiento.</p>
+      <p>A través de las <strong>bioconstelaciones</strong> se revelan las dinámicas familiares y sistémicas que sostienen patrones repetitivos, mientras que la <strong>astrología evolutiva</strong> ofrece un mapa de conciencia para entender el propósito detrás de cada etapa de tu vida.</p>
+      <p>Su trabajo combina rigor terapéutico con calidez humana, creando un espacio seguro donde el cuerpo, la emoción y el símbolo pueden finalmente encontrarse.</p>
+      <div class="signature-line">Sanación en Movimiento</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2>Caminos para tu proceso</h2>
+      <p>Cada sesión se adapta a lo que estás viviendo hoy. Estas son las puertas de entrada más comunes.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal c1">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="3" stroke="#fff" stroke-width="1.6"/><circle cx="5" cy="17" r="3" stroke="#fff" stroke-width="1.6"/><circle cx="19" cy="17" r="3" stroke="#fff" stroke-width="1.6"/><path d="M12 9v3M8 15l2-2M16 15l-2-2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Bioconstelaciones</h3>
+        <p>Sesiones individuales o grupales para revelar y transformar patrones familiares y sistémicos que se repiten en tu vida.</p>
+      </div>
+      <div class="card reveal c2">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Astrología Evolutiva</h3>
+        <p>Lectura de carta natal como mapa de conciencia: comprende tus ciclos, desafíos y el propósito de tu momento actual.</p>
+      </div>
+      <div class="card reveal c3">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.3-9C1.2 8.5 3 5 6.5 5c2 0 3.4 1.2 4 2.3.6-1.1 2-2.3 4-2.3C18 5 19.8 8.5 18.3 12 16 16.5 12 21 12 21z" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Terapias Holísticas</h3>
+        <p>Espacios de sanación que integran cuerpo, emoción y energía para acompañarte hacia el bienestar profundo.</p>
+      </div>
+      <div class="card reveal c4">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 19.5V5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 19.5Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="#fff" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Talleres y Formaciones</h3>
+        <p>Encuentros grupales y formativos para llevar estas herramientas a tu vida cotidiana y compartirlas con otros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2>Tu primera sesión, paso a paso</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="num">01</span>
+        <h3>Agenda por WhatsApp</h3>
+        <p>Escríbele a Paula, cuéntale brevemente qué te trae y elige el tipo de sesión que resuena contigo.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">02</span>
+        <h3>Sesión de acompañamiento</h3>
+        <p>Presencial u online, cada encuentro se adapta a tu proceso: bioconstelación, lectura astrológica o terapia holística.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">03</span>
+        <h3>Integración y movimiento</h3>
+        <p>Sales con claridad y herramientas concretas para sostener el cambio en tu vida diaria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Para quién es esto</span>
+      <h2>Este espacio es para ti si...</h2>
+    </div>
+    <div class="benefit-list">
+      <div class="benefit-item reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E8C77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Sientes que repites patrones familiares que ya no quieres sostener.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E8C77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Atraviesas un cambio de ciclo y buscas claridad sobre tu propósito.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E8C77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Quieres entender tu carta natal más allá del horóscopo genérico.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E8C77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Buscas herramientas prácticas de terapia holística para tu bienestar diario.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E8C77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Sientes un peso o síntoma que la terapia convencional no ha terminado de resolver.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E8C77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Quieres formarte y aprender estas herramientas en un taller.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="preguntas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Antes de agendar</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q"><span>¿Qué es una bioconstelación?</span><span class="plus">+</span></div>
+        <div class="faq-a">Es una terapia sistémica que permite observar y transformar dinámicas familiares ocultas que influyen en tu presente, ya sea en salud, vínculos o proyectos de vida.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><span>¿Necesito saber mi hora exacta de nacimiento para la lectura astrológica?</span><span class="plus">+</span></div>
+        <div class="faq-a">Es ideal contar con ella para mayor precisión, pero si no la tienes, Paula puede trabajar igualmente con técnicas adaptadas. Puedes preguntarle por WhatsApp.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><span>¿Las sesiones son presenciales u online?</span><span class="plus">+</span></div>
+        <div class="faq-a">Ambas modalidades están disponibles. Escríbele a Paula para coordinar la que mejor se ajuste a ti.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><span>¿Cuánto dura una sesión?</span><span class="plus">+</span></div>
+        <div class="faq-a">Depende del tipo de proceso. Paula te lo explica con detalle al agendar según lo que necesites trabajar.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><span>¿Cómo agendo mi cita?</span><span class="plus">+</span></div>
+        <div class="faq-a">Escribe directamente por WhatsApp usando el botón de esta página y Paula te guiará en los siguientes pasos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container reveal">
+    <span class="eyebrow">Agenda tu cita</span>
+    <h2>Tu proceso de sanación empieza con un mensaje</h2>
+    <p>Escríbele a Paula Andrea y comienza tu camino hacia la claridad, el movimiento y el bienestar.</p>
+    <a class="btn btn-primary" href="https://wa.link/axomka" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+    <div class="social-row">
+      <a class="social-pill" href="https://wa.link/axomka" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.5-8.3zM12 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-3.7 1 1-3.6-.2-.4A9.7 9.7 0 0 1 2.2 12c0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.8-9.8 9.8z"/></svg>
+        wa.link/axomka
+      </a>
+      <a class="social-pill" href="https://www.instagram.com/sanacion.en.movimiento/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.2.28 3 .58a6 6 0 0 1 2.2 1.4 6 6 0 0 1 1.4 2.2c.3.8.5 1.8.6 3 .06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.28 2.2-.58 3a6 6 0 0 1-1.4 2.2 6 6 0 0 1-2.2 1.4c-.8.3-1.8.5-3 .58-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.2-.28-3-.58a6 6 0 0 1-2.2-1.4 6 6 0 0 1-1.4-2.2c-.3-.8-.5-1.8-.58-3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.28-2.2.58-3a6 6 0 0 1 1.4-2.2 6 6 0 0 1 2.2-1.4c.8-.3 1.8-.5 3-.58C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52 0-4.76.07-1 .05-1.55.22-1.9.36-.48.19-.82.4-1.18.76-.36.36-.57.7-.76 1.18-.14.36-.31.9-.36 1.9C3 9.28 3 9.65 3 12s0 3.52.07 4.76c.05 1 .22 1.55.36 1.9.19.48.4.82.76 1.18.36.36.7.57 1.18.76.36.14.9.31 1.9.36 1.24.07 1.61.07 4.76.07s3.52 0 4.76-.07c1-.05 1.55-.22 1.9-.36.48-.19.82-.4 1.18-.76.36-.36.57-.7.76-1.18.14-.36.31-.9.36-1.9.07-1.24.07-1.61.07-4.76s0-3.52-.07-4.76c-.05-1-.22-1.55-.36-1.9a3.1 3.1 0 0 0-.76-1.18 3.1 3.1 0 0 0-1.18-.76c-.36-.14-.9-.31-1.9-.36C15.52 4 15.15 4 12 4zm0 3.4A4.6 4.6 0 1 1 7.4 12 4.6 4.6 0 0 1 12 7.4zm0 1.8a2.8 2.8 0 1 0 2.8 2.8A2.8 2.8 0 0 0 12 9.2zm5.8-2a1.08 1.08 0 1 1-1.08-1.08A1.08 1.08 0 0 1 17.8 7.2z"/></svg>
+        @sanacion.en.movimiento
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">Sanación <span style="color:var(--rose)">en Movimiento</span></span>
+  Paula Andrea Quiceno · Bio-Consteladora & Astróloga Evolutiva · © 2026
+</footer>
+
+<a class="wa-float" href="https://wa.link/axomka" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.5-8.3zM12 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-3.7 1 1-3.6-.2-.4A9.7 9.7 0 0 1 2.2 12c0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.8-9.8 9.8z"/></svg>
+</a>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // faq accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=>o.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

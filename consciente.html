@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Ainhoa Corrales | Emprendimiento Consciente desde la Salud</title>
+<meta name="description" content="Médico especialista en prevención. Te enseño a impulsar tu salud natural y activar tu prevención financiera. Empecemos por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EC;
+    --paper:#FFFDF8;
+    --sage:#2F5233;
+    --sage-light:#6B9071;
+    --sage-pale:#E4EDE2;
+    --coral:#E8734D;
+    --coral-dark:#CC5A36;
+    --gold:#D4A24E;
+    --gold-pale:#F6E7C8;
+    --ink:#20301F;
+    --ink-soft:#4C5C48;
+    --line:#DED0B4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  h1,h2,h3{font-family:'Fraunces',serif;color:var(--sage);letter-spacing:-0.01em;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ambient blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;z-index:0;pointer-events:none;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,248,236,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1080px;margin:0 auto;}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--sage);display:flex;align-items:center;gap:8px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--coral);}
+  .nav-cta{
+    background:var(--coral);color:#fff;padding:10px 20px;border-radius:100px;
+    font-weight:700;font-size:14px;box-shadow:0 6px 16px rgba(232,115,77,.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(232,115,77,.45);}
+
+  /* HERO */
+  .hero{position:relative;padding:72px 0 40px;overflow:hidden;}
+  .hero .blob1{width:420px;height:420px;background:var(--gold);top:-140px;right:-120px;}
+  .hero .blob2{width:320px;height:320px;background:var(--sage-light);bottom:-120px;left:-100px;opacity:.25;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--sage-pale);color:var(--sage);
+    padding:8px 16px;border-radius:100px;font-weight:700;font-size:13px;
+    letter-spacing:.03em;text-transform:uppercase;position:relative;z-index:1;
+  }
+  .eyebrow span.pulse{width:8px;height:8px;border-radius:50%;background:var(--coral);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:.5;}}
+  .hero h1{
+    font-size:clamp(34px,6vw,58px);
+    font-weight:600;line-height:1.08;margin:22px 0 20px;
+    max-width:820px;position:relative;z-index:1;
+  }
+  .hero h1 em{font-style:italic;color:var(--coral);font-weight:500;}
+  .hero p.sub{
+    font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);max-width:560px;
+    margin-bottom:34px;position:relative;z-index:1;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;position:relative;z-index:1;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 28px;border-radius:100px;font-weight:700;font-size:15.5px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    border:2px solid transparent;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(232,115,77,.4);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(232,115,77,.5);}
+  .btn-outline{border-color:var(--sage);color:var(--sage);background:var(--paper);}
+  .btn-outline:hover{background:var(--sage);color:#fff;transform:translateY(-3px);}
+  .btn svg{width:20px;height:20px;flex-shrink:0;}
+
+  /* EKG -> chart signature line */
+  .ekg-wrap{margin-top:56px;position:relative;z-index:1;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px 8px 8px;box-shadow:0 20px 50px -30px rgba(47,82,51,.35);}
+  .ekg-label{display:flex;justify-content:space-between;padding:0 20px 10px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);}
+  .ekg-label .r{color:var(--gold);}
+  .ekg-svg{width:100%;height:auto;display:block;}
+  .ekg-path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s ease forwards .3s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  /* SECTION general */
+  section{position:relative;padding:76px 0;}
+  .kicker{color:var(--coral);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:block;}
+  h2.section-title{font-size:clamp(28px,4vw,40px);font-weight:600;margin-bottom:16px;max-width:640px;}
+  .section-sub{color:var(--ink-soft);max-width:560px;font-size:16.5px;margin-bottom:48px;}
+
+  /* DIAGNOSTICO cards */
+  .diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .diag-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;
+    padding:30px 26px;transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .diag-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px -22px rgba(47,82,51,.35);}
+  .diag-card .ic{width:46px;height:46px;border-radius:12px;background:var(--sage-pale);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .diag-card .ic svg{width:24px;height:24px;stroke:var(--sage);}
+  .diag-card h3{font-size:19px;font-weight:600;margin-bottom:8px;color:var(--ink);}
+  .diag-card p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* RECETA — prescription pad signature section */
+  .receta-section{background:var(--sage);border-radius:28px;margin:0 20px;padding:0;overflow:hidden;position:relative;}
+  .receta-section .wrap{padding:64px 24px;}
+  .receta-section .blob{background:var(--gold);width:300px;height:300px;top:-100px;left:-80px;opacity:.25;}
+  .receta-head{color:var(--cream);text-align:center;margin-bottom:40px;position:relative;z-index:1;}
+  .receta-head .kicker{color:var(--gold-pale);}
+  .receta-head h2{color:#fff;}
+  .receta-head p{color:var(--sage-pale);max-width:520px;margin:12px auto 0;}
+  .rx-pad{
+    background:var(--paper);
+    border-radius:16px;
+    max-width:640px;margin:0 auto;position:relative;z-index:1;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.45);
+    padding:0;
+  }
+  .rx-top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 28px;border-bottom:2px dashed var(--line);
+  }
+  .rx-top .rx-symbol{font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:var(--coral);}
+  .rx-top .rx-name{text-align:right;}
+  .rx-top .rx-name strong{display:block;color:var(--sage);font-size:15px;font-family:'Fraunces',serif;}
+  .rx-top .rx-name span{font-size:12px;color:var(--ink-soft);}
+  .rx-body{padding:28px;}
+  .rx-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--sage-pale);}
+  .rx-item:last-child{border-bottom:none;}
+  .rx-num{font-family:'Fraunces',serif;font-weight:700;color:var(--gold);font-size:22px;width:32px;flex-shrink:0;}
+  .rx-item h4{font-size:16.5px;color:var(--sage);margin-bottom:4px;font-weight:700;}
+  .rx-item p{font-size:14px;color:var(--ink-soft);}
+  .rx-foot{padding:18px 28px;border-top:2px dashed var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-soft);}
+  .rx-foot .sig{font-family:'Fraunces',serif;font-style:italic;color:var(--sage);font-size:16px;}
+
+  /* SOBRE */
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;}
+  .about-badge-wrap{position:relative;}
+  .about-badge{
+    background:var(--gold-pale);border-radius:22px;padding:38px 30px;
+    border:1px solid var(--line);position:relative;
+  }
+  .about-badge .cross{width:52px;height:52px;border-radius:14px;background:var(--coral);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+  .about-badge .cross svg{width:26px;height:26px;stroke:#fff;}
+  .cred-list{list-style:none;margin-top:18px;}
+  .cred-list li{display:flex;gap:10px;padding:8px 0;font-size:14.5px;color:var(--ink-soft);}
+  .cred-list li svg{width:18px;height:18px;stroke:var(--sage);flex-shrink:0;margin-top:2px;}
+  .about-text h2{margin-bottom:18px;}
+  .about-text p{color:var(--ink-soft);margin-bottom:16px;font-size:16px;}
+  .about-text p strong{color:var(--sage);}
+
+  /* PASOS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step;}
+  .step{position:relative;padding-top:10px;}
+  .step .n{
+    font-family:'Fraunces',serif;font-size:52px;font-weight:600;color:var(--sage-pale);
+    -webkit-text-stroke:1.5px var(--sage-light);line-height:1;margin-bottom:14px;
+  }
+  .step h3{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+  .step p{font-size:14.5px;color:var(--ink-soft);}
+  .step:not(:last-child)::after{
+    content:"";position:absolute;top:34px;right:-32px;width:24px;height:2px;
+    background:repeating-linear-gradient(90deg,var(--sage-light) 0 6px,transparent 6px 12px);
+  }
+
+  /* FINAL CTA */
+  .final-cta{
+    background:linear-gradient(135deg,var(--coral),var(--coral-dark));
+    border-radius:28px;margin:0 20px;padding:64px 32px;text-align:center;color:#fff;
+    position:relative;overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 40%),
+               radial-gradient(circle at 85% 80%, rgba(255,255,255,.15), transparent 45%);
+  }
+  .final-cta h2{color:#fff;position:relative;z-index:1;margin-bottom:14px;}
+  .final-cta p{color:rgba(255,255,255,.9);max-width:480px;margin:0 auto 32px;position:relative;z-index:1;font-size:16px;}
+  .final-cta .btn-primary{background:#fff;color:var(--coral-dark);position:relative;z-index:1;box-shadow:0 14px 30px rgba(0,0,0,.2);}
+  .final-cta .btn-primary:hover{background:var(--cream);}
+
+  /* FOOTER */
+  footer{padding:56px 0 40px;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;border-top:1px solid var(--line);padding-top:32px;}
+  .foot-brand{font-family:'Fraunces',serif;color:var(--sage);font-weight:600;font-size:17px;}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap;}
+  .foot-links a{font-size:14px;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;gap:6px;transition:color .2s ease;}
+  .foot-links a:hover{color:var(--coral);}
+  .foot-links svg{width:16px;height:16px;}
+  .foot-note{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:28px;}
+
+  /* WHATSAPP FLOAT */
+  .wa-float{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    background:#25D366;width:60px;height:60px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(37,211,102,.5);
+    animation:float 3s ease-in-out infinite;
+  }
+  .wa-float svg{width:30px;height:30px;fill:#fff;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+  @media(max-width:820px){
+    .diag-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;gap:36px;}
+    .steps{grid-template-columns:1fr;gap:36px;}
+    .step:not(:last-child)::after{display:none;}
+    .receta-section{margin:0 12px;}
+    .final-cta{margin:0 12px;padding:48px 22px;}
+    .rx-top{flex-direction:column;align-items:flex-start;gap:10px;}
+    .rx-top .rx-name{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand"><span class="dot"></span> Ainhoa Corrales</div>
+    <a class="nav-cta" href="https://api.whatsapp.com/send?phone=+34699143176&text=Hola%20Ainhoa%2C%20quiero%20saber%20m%C3%A1s%20sobre%20tu%20acompa%C3%B1amiento%20en%20salud%20y%20prevenci%C3%B3n%20financiera" target="_blank" rel="noopener">Hablemos →</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal in"><span class="pulse"></span> Médico · Emprendimiento Consciente</span>
+    <h1 class="reveal in">Cuido tu <em>salud</em> primero.<br>Impulso tu <em>libertad</em> después.</h1>
+    <p class="sub reveal in">Soy médico especialista en prevención primaria. Te acompaño a construir hábitos de salud natural reales — y a activar una segunda fuente de ingresos, tu propia prevención financiera, sin dejar tu vida actual.</p>
+    <div class="cta-row reveal in">
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=+34699143176&text=Hola%20Ainhoa%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20empezar" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.85 9.85 0 0 0 4.62 1.15h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.57.82 1.98.89 2.12.07.14.12.31.02.5-.1.19-.15.31-.3.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.6 2 1.1.98 2.03 1.29 2.32 1.43.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.65.78 1.93.92.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+        Escríbeme por WhatsApp
+      </a>
+      <a class="btn btn-outline" href="https://www.instagram.com/ainhoacorraleslopez/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        Instagram
+      </a>
+      <a class="btn btn-outline" href="https://linktr.ee/ainhoa_cl_" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.5.4l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.4l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+        Todos mis enlaces
+      </a>
+    </div>
+
+    <div class="ekg-wrap reveal in">
+      <div class="ekg-label"><span>Salud natural</span><span class="r">Libertad financiera</span></div>
+      <svg class="ekg-svg" viewBox="0 0 900 160" preserveAspectRatio="none">
+        <path class="ekg-path" d="M0,90 L120,90 L145,40 L170,130 L195,90 L260,90 L285,70 L305,90 L420,90 L460,90 L500,30 L560,110 L610,90 L900,10"
+          fill="none" stroke="#E8734D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker reveal">El diagnóstico</span>
+    <h2 class="section-title reveal">¿Te reconoces en alguno de estos síntomas?</h2>
+    <p class="section-sub reveal">Antes de recetar cualquier cambio, primero escucho. Esto es lo que más veo en consulta.</p>
+    <div class="diag-grid">
+      <div class="diag-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>
+        <h3>Agotamiento sostenido</h3>
+        <p>Vives en modo supervivencia: poco sueño, alimentación improvisada y cero tiempo para ti.</p>
+      </div>
+      <div class="diag-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M16 8V6a4 4 0 0 0-8 0v2"/></svg></div>
+        <h3>Una sola fuente de ingresos</h3>
+        <p>Todo tu bienestar económico depende de una única nómina o consulta. Cualquier imprevisto lo tambalea.</p>
+      </div>
+      <div class="diag-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Postergas tu salud</h3>
+        <p>Sabes lo que tendrías que cambiar, pero nunca encuentras el momento ni el acompañamiento adecuado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="receta-section">
+  <div class="blob"></div>
+  <div class="wrap">
+    <div class="receta-head">
+      <span class="kicker">La receta</span>
+      <h2>Mi prescripción para ti</h2>
+      <p>No hay atajos, pero sí un método claro. Esto es lo que trabajamos juntas, en este orden.</p>
+    </div>
+    <div class="rx-pad reveal">
+      <div class="rx-top">
+        <div class="rx-symbol">℞</div>
+        <div class="rx-name"><strong>Dra. Ainhoa Corrales López</strong><span>Medicina de Prevención Primaria</span></div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-item">
+          <div class="rx-num">01</div>
+          <div><h4>Salud natural como base</h4><p>Hábitos de alimentación consciente, descanso y movimiento que sí puedes sostener en tu día a día real.</p></div>
+        </div>
+        <div class="rx-item">
+          <div class="rx-num">02</div>
+          <div><h4>Prevención financiera activa</h4><p>Una segunda vía de ingresos que construyes en paralelo a tu trabajo actual, sin ponerlo todo en riesgo.</p></div>
+        </div>
+        <div class="rx-item">
+          <div class="rx-num">03</div>
+          <div><h4>Libertad con propósito</h4><p>El resultado: más tiempo, más salud y más margen económico para decidir cómo vives.</p></div>
+        </div>
+      </div>
+      <div class="rx-foot">
+        <span>Válida desde hoy · Sin fecha de caducidad</span>
+        <span class="sig">A. Corrales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about-grid">
+    <div class="about-badge-wrap reveal">
+      <div class="about-badge">
+        <div class="cross"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 6v12M6 12h12"/></svg></div>
+        <h3 style="font-family:'Fraunces',serif;color:var(--sage);font-size:20px;margin-bottom:6px;">Ainhoa Corrales López</h3>
+        <p style="font-size:14px;color:var(--ink-soft);">Médico · Mentora de emprendimiento consciente</p>
+        <ul class="cred-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Especialista en atención y prevención primaria</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Formación en medicina integrativa y hábitos saludables</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Mentora de emprendimiento y gestión de equipos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <span class="kicker">Sobre mí</span>
+      <h2 class="section-title">Un médico inconformista, a tu lado</h2>
+      <p>Desde la consulta, vi el mismo patrón una y otra vez: personas que enfermaban de estrés económico tanto como de mala alimentación. <strong>La salud y el dinero no son temas separados</strong>, son la misma conversación.</p>
+      <p>Por eso combino mi formación médica con una vía de emprendimiento que ya han recorrido cientos de personas: primero se ordena la salud, después se construye la libertad financiera. Sin promesas mágicas, con acompañamiento real.</p>
+      <div class="cta-row" style="margin-top:8px;">
+        <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=+34699143176&text=Hola%20Ainhoa%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20ti%20y%20tu%20m%C3%A9todo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.85 9.85 0 0 0 4.62 1.15h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.57.82 1.98.89 2.12.07.14.12.31.02.5-.1.19-.15.31-.3.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.6 2 1.1.98 2.03 1.29 2.32 1.43.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.65.78 1.93.92.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+          Quiero conocerte
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker reveal">Cómo empezamos</span>
+    <h2 class="section-title reveal">Tres pasos, sin compromiso</h2>
+    <p class="section-sub reveal">Así es el proceso desde que me escribes hasta que tienes tu plan.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">01</div>
+        <h3>Hablamos por WhatsApp</h3>
+        <p>Me cuentas tu momento actual: salud, tiempo y situación económica. Sin formularios largos.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">02</div>
+        <h3>Sesión de diagnóstico</h3>
+        <p>Revisamos juntas dónde estás y qué pilar necesitas trabajar primero: salud, ingresos o ambos.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">03</div>
+        <h3>Tu plan a medida</h3>
+        <p>Te llevas una hoja de ruta clara y el acompañamiento para sostenerla en el tiempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="final-cta reveal">
+    <h2>¿Empezamos por tu diagnóstico?</h2>
+    <p>Un mensaje es suficiente para dar el primer paso hacia tu salud natural y tu libertad financiera.</p>
+    <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=+34699143176&text=Hola%20Ainhoa%2C%20quiero%20empezar%20mi%20diagn%C3%B3stico" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.85 9.85 0 0 0 4.62 1.15h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.57.82 1.98.89 2.12.07.14.12.31.02.5-.1.19-.15.31-.3.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.6 2 1.1.98 2.03 1.29 2.32 1.43.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.65.78 1.93.92.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+      Sí, quiero empezar
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">Ainhoa Corrales López</div>
+      <div class="foot-links">
+        <a href="https://api.whatsapp.com/send?phone=+34699143176" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/ainhoacorraleslopez/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linktr.ee/ainhoa_cl_" target="_blank" rel="noopener">Linktree</a>
+      </div>
+    </div>
+    <p class="foot-note">© 2026 Ainhoa Corrales López — Médico · Emprendimiento Consciente desde la Salud</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://api.whatsapp.com/send?phone=+34699143176&text=Hola%20Ainhoa%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.85 9.85 0 0 0 4.62 1.15h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.57.82 1.98.89 2.12.07.14.12.31.02.5-.1.19-.15.31-.3.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.6 2 1.1.98 2.03 1.29 2.32 1.43.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.65.78 1.93.92.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+</a>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

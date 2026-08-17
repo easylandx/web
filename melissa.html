@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melissa Zambrano | Terapeuta del Alma & Motivational Speaker</title>
+<meta name="description" content="Melissa Zambrano — Terapeuta del alma, Psicoterapia UCDM, PNL. Recuerda quién eres. Sesiones online en toda Latinoamérica, España y USA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum-deep:#2a0e30;
+    --violet:#4a1942;
+    --orchid:#c64191;
+    --gold:#e8b94a;
+    --cream:#fbf3e7;
+    --coral:#ef7d63;
+    --ink:#241221;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--gold);color:var(--plum-deep);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:.7rem;
+    font-weight:500;
+    color:var(--orchid);
+  }
+
+  /* ============ NAV ============ */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.1rem 6vw;
+    background:rgba(42,14,48,.55);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:background .3s ease;
+  }
+  .nav-brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.3rem;
+    color:var(--cream);
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .nav-brand span{color:var(--gold);}
+  .nav-links{display:flex;gap:1.8rem;align-items:center;}
+  .nav-links a{
+    color:var(--cream);
+    font-size:.82rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    opacity:.85;
+    transition:opacity .2s;
+  }
+  .nav-links a:hover{opacity:1;color:var(--gold);}
+  .nav-cta{
+    background:var(--gold);
+    color:var(--plum-deep) !important;
+    padding:.55rem 1.3rem;
+    border-radius:100px;
+    font-weight:500;
+    opacity:1 !important;
+  }
+  .nav-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;}
+
+  @media (max-width:820px){
+    .nav-links{
+      position:fixed;top:0;right:0;height:100vh;width:72vw;max-width:320px;
+      background:var(--plum-deep);
+      flex-direction:column;justify-content:center;align-items:flex-start;
+      padding:2rem 2.2rem;gap:1.6rem;
+      transform:translateX(100%);
+      transition:transform .4s cubic-bezier(.6,0,.2,1);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-toggle{display:block;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:7rem 6vw 4rem;
+    background:
+      radial-gradient(ellipse 60% 45% at 20% 15%, rgba(230,150,180,.35), transparent 60%),
+      radial-gradient(ellipse 55% 40% at 85% 80%, rgba(232,185,74,.25), transparent 60%),
+      linear-gradient(160deg, var(--plum-deep) 0%, var(--violet) 55%, #6b2050 100%);
+    overflow:hidden;
+  }
+
+  .stars{position:absolute;inset:0;pointer-events:none;}
+  .star{
+    position:absolute;
+    width:3px;height:3px;
+    background:var(--cream);
+    border-radius:50%;
+    opacity:.7;
+    animation:twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:.15; transform:scale(1);}
+    50%{opacity:.9; transform:scale(1.6);}
+  }
+
+  .hero-eyebrow{
+    color:var(--gold);
+    margin-bottom:1.3rem;
+    opacity:0;
+    animation:fadeUp .9s ease forwards .2s;
+  }
+
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(3rem,9vw,6.4rem);
+    line-height:1.02;
+    font-style:italic;
+    font-weight:600;
+    max-width:16ch;
+    opacity:0;
+    animation:fadeUp 1s ease forwards .4s;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(100deg,var(--gold),var(--orchid) 60%,var(--coral));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero-sub{
+    color:var(--cream);
+    opacity:0;
+    max-width:42ch;
+    margin:1.6rem 0 2.4rem;
+    font-size:1.05rem;
+    line-height:1.7;
+    color:rgba(251,243,231,.85);
+    animation:fadeUp 1s ease forwards .6s;
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(24px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .hero-ctas{
+    display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
+    opacity:0;
+    animation:fadeUp 1s ease forwards .8s;
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    padding:.95rem 2rem;
+    border-radius:100px;
+    font-size:.85rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:transform .25s ease, box-shadow .25s ease;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{
+    background:linear-gradient(100deg,#25d366,#1fb855);
+    color:#fff;
+    box-shadow:0 10px 30px -8px rgba(37,211,102,.6);
+  }
+  .btn-ghost{
+    border-color:rgba(251,243,231,.4);
+    color:var(--cream);
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
+
+  .scroll-cue{
+    position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+    color:rgba(251,243,231,.6);
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  }
+  .scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
+  @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+  /* ============ SECTION GENERIC ============ */
+  section{padding:7rem 6vw;position:relative;}
+  .section-head{max-width:640px;margin:0 auto 3.5rem;text-align:center;}
+  .section-head h2{font-size:clamp(2.1rem,4.5vw,3.2rem);margin-top:.6rem;font-style:italic;}
+  .section-head p{margin-top:1rem;color:#5c4256;line-height:1.7;}
+
+  .reveal{
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ============ ABOUT ============ */
+  .about{
+    background:var(--cream);
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:4rem;
+    align-items:center;
+  }
+  @media (max-width:900px){.about{grid-template-columns:1fr;gap:2.5rem;}}
+
+  .about-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(232,185,74,.5), transparent 55%),
+      linear-gradient(150deg, var(--orchid), var(--violet) 70%);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 30px 60px -20px rgba(74,25,66,.45);
+    overflow:hidden;
+  }
+  .about-visual::before{
+    content:"888";
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:9rem;
+    color:rgba(251,243,231,.16);
+    font-weight:600;
+  }
+  .about-visual .verse{
+    position:absolute;bottom:1.6rem;left:1.6rem;right:1.6rem;
+    color:var(--cream);
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.15rem;
+    line-height:1.5;
+    text-shadow:0 2px 12px rgba(0,0,0,.3);
+  }
+  .about-visual .verse small{
+    display:block;margin-top:.5rem;
+    font-family:'Jost',sans-serif;font-style:normal;
+    font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  .about-copy h2{font-size:clamp(2rem,4vw,2.9rem);font-style:italic;margin-bottom:1.3rem;}
+  .about-copy p{line-height:1.85;color:#4a3548;margin-bottom:1.1rem;font-size:1.02rem;}
+  .about-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem;}
+  .about-tags span{
+    border:1px solid rgba(198,65,145,.35);
+    color:var(--violet);
+    padding:.5rem 1.1rem;
+    border-radius:100px;
+    font-size:.78rem;
+    letter-spacing:.03em;
+    background:rgba(198,65,145,.06);
+  }
+
+  /* ============ SERVICES ============ */
+  .services{background:linear-gradient(180deg,var(--cream), #f6e9da);}
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.6rem;
+    max-width:1180px;margin:0 auto;
+  }
+  @media (max-width:900px){.service-grid{grid-template-columns:1fr;}}
+
+  .service-card{
+    background:var(--cream);
+    border-radius:22px;
+    padding:2.4rem 2rem;
+    border:1px solid rgba(74,25,66,.08);
+    box-shadow:0 20px 40px -28px rgba(74,25,66,.35);
+    transition:transform .35s ease, box-shadow .35s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .service-card:hover{transform:translateY(-8px); box-shadow:0 30px 50px -25px rgba(74,25,66,.45);}
+  .service-card .icon{
+    width:52px;height:52px;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.4rem;
+    font-size:1.4rem;
+    background:linear-gradient(135deg,var(--gold),var(--coral));
+    color:var(--plum-deep);
+  }
+  .service-card h3{font-size:1.5rem;font-style:italic;margin-bottom:.7rem;color:var(--violet);}
+  .service-card p{color:#5c4256;line-height:1.7;font-size:.95rem;}
+
+  /* ============ SIGNATURE 888 MOMENT ============ */
+  .signature{
+    background:linear-gradient(160deg,var(--plum-deep), var(--violet) 60%, #5a1a4c);
+    color:var(--cream);
+    text-align:center;
+    padding:8rem 6vw;
+    position:relative;
+    overflow:hidden;
+  }
+  .signature .glow{
+    position:absolute;top:50%;left:50%;
+    width:520px;height:520px;
+    background:radial-gradient(circle, rgba(232,185,74,.35), transparent 65%);
+    transform:translate(-50%,-50%);
+    animation:breathe 6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes breathe{0%,100%{opacity:.5; transform:translate(-50%,-50%) scale(1);}50%{opacity:.9; transform:translate(-50%,-50%) scale(1.15);}}
+
+  .signature-number{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(4rem,14vw,8.5rem);
+    font-style:italic;
+    font-weight:600;
+    background:linear-gradient(100deg,var(--gold),var(--coral));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    line-height:1;
+    position:relative;
+  }
+  .signature p.lead{
+    max-width:520px;margin:1.6rem auto 0;
+    font-size:1.1rem;line-height:1.8;
+    color:rgba(251,243,231,.85);
+    position:relative;
+  }
+  .signature .eyebrow{position:relative;}
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials{background:var(--cream);}
+  .t-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;
+    max-width:1180px;margin:0 auto;
+  }
+  @media (max-width:900px){.t-grid{grid-template-columns:1fr;}}
+  .t-card{
+    background:linear-gradient(160deg,#fff,#fbf3ef);
+    border-radius:22px;
+    padding:2.2rem;
+    border:1px solid rgba(198,65,145,.12);
+  }
+  .t-card .stars-row{color:var(--gold);letter-spacing:.15em;margin-bottom:1rem;font-size:.9rem;}
+  .t-card p{font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.25rem;line-height:1.6;color:var(--ink);}
+  .t-card .who{margin-top:1.2rem;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.05em;color:var(--orchid);text-transform:uppercase;}
+
+  /* ============ FINAL CTA ============ */
+  .final-cta{
+    background:linear-gradient(135deg,var(--coral),var(--orchid) 60%,var(--violet));
+    color:var(--cream);
+    text-align:center;
+    padding:6.5rem 6vw;
+  }
+  .final-cta h2{font-size:clamp(2.2rem,5vw,3.4rem);font-style:italic;max-width:16ch;margin:0 auto 1.2rem;}
+  .final-cta p{max-width:46ch;margin:0 auto 2.2rem;line-height:1.7;color:rgba(251,243,231,.9);}
+  .final-cta .btn-primary{box-shadow:0 15px 40px -10px rgba(0,0,0,.35);}
+
+  .link-row{
+    display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem;
+  }
+  .link-row a{
+    display:flex;align-items:center;gap:.5rem;
+    padding:.7rem 1.3rem;
+    border:1px solid rgba(251,243,231,.5);
+    border-radius:100px;
+    font-size:.82rem;
+    letter-spacing:.03em;
+    transition:background .25s, transform .25s;
+  }
+  .link-row a:hover{background:rgba(251,243,231,.15); transform:translateY(-2px);}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--plum-deep);
+    color:rgba(251,243,231,.7);
+    padding:3.5rem 6vw 2.2rem;
+    text-align:center;
+  }
+  footer .foot-brand{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--cream);
+    margin-bottom:.8rem;
+  }
+  footer .foot-verse{
+    font-size:.85rem;
+    color:var(--gold);
+    margin-bottom:1.8rem;
+    letter-spacing:.02em;
+  }
+  footer .foot-links{display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
+  footer .foot-links a{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;opacity:.75;transition:opacity .2s;}
+  footer .foot-links a:hover{opacity:1;color:var(--gold);}
+  footer .foot-fine{font-size:.72rem;opacity:.45;}
+
+  /* ============ WHATSAPP FLOAT ============ */
+  .wa-float{
+    position:fixed;bottom:1.6rem;right:1.6rem;z-index:90;
+    width:58px;height:58px;border-radius:50%;
+    background:linear-gradient(135deg,#25d366,#1fb855);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px -8px rgba(37,211,102,.65);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 12px 30px -8px rgba(37,211,102,.65);}50%{box-shadow:0 12px 40px -4px rgba(37,211,102,.85);}}
+  .wa-float svg{width:28px;height:28px;fill:#fff;}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="#top" class="nav-brand">Melissa <span>Zambrano</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#sobre">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="https://wa.me/51987333345" target="_blank" rel="noopener" class="nav-cta">Escríbeme</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="stars" id="starsField"></div>
+  <p class="eyebrow hero-eyebrow">Terapeuta del alma · Motivational Speaker</p>
+  <h1>Recuerda <em>quién eres</em></h1>
+  <p class="hero-sub">Acompaño procesos de sanación y transformación interior a través de la Psicoterapia UCDM y la PNL, con la certeza de que primero Dios abre el camino. Proverbios 3:5-6.</p>
+  <div class="hero-ctas">
+    <a href="https://wa.me/51987333345" target="_blank" rel="noopener" class="btn btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.38a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.23 0 4.33.87 5.9 2.44a8.3 8.3 0 0 1 2.45 5.9c0 4.6-3.75 8.35-8.36 8.35a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.14.82.84-3.06-.2-.32a8.26 8.26 0 0 1-1.27-4.45c0-4.61 3.75-8.34 8.32-8.34"/></svg>
+      Agenda tu sesión
+    </a>
+    <a href="https://www.instagram.com/melissazams_coach/" target="_blank" rel="noopener" class="btn btn-ghost">Sígueme en Instagram</a>
+  </div>
+  <div class="scroll-cue"><span>Descubre más</span><span class="line"></span></div>
+</header>
+
+<section class="about" id="sobre">
+  <div class="about-visual reveal">
+    <p class="verse">"Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia."<small>Proverbios 3:5-6</small></p>
+  </div>
+  <div class="about-copy reveal">
+    <p class="eyebrow">Sobre Melissa</p>
+    <h2>Un espacio seguro para reencontrarte contigo misma</h2>
+    <p>Soy Melissa Zambrano, terapeuta del alma y motivational speaker. Combino la Psicoterapia basada en Un Curso de Milagros (UCDM) con herramientas de Programación Neurolingüística (PNL) para ayudarte a soltar lo que ya no te sirve y recordar la persona que realmente eres.</p>
+    <p>Mi propósito nace de una convicción: primero Dios. Cada sesión, cada charla y cada palabra parten de esa fe que sostiene todo el proceso de sanación.</p>
+    <p>Acompaño a personas de Perú, México, España, Argentina, Chile, Estados Unidos, Venezuela, Colombia y Canadá — el alma no tiene fronteras.</p>
+    <div class="about-tags">
+      <span>Psicoterapia UCDM</span>
+      <span>PNL</span>
+      <span>Charlas motivacionales</span>
+      <span>Sesiones online</span>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="section-head reveal">
+    <p class="eyebrow">Acompañamientos</p>
+    <h2>Cómo trabajamos juntas</h2>
+    <p>Cada camino es distinto. Elige el formato que mejor resuene con el momento que estás viviendo.</p>
+  </div>
+  <div class="service-grid">
+    <div class="service-card reveal">
+      <div class="icon">✦</div>
+      <h3>Terapia del alma 1:1</h3>
+      <p>Sesiones individuales de psicoterapia UCDM para trabajar heridas, creencias limitantes y bloqueos emocionales, a tu ritmo y en total confidencialidad.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="icon">◈</div>
+      <h3>Programación Neurolingüística</h3>
+      <p>Herramientas de PNL para reprogramar patrones de pensamiento, elevar tu autoestima y tomar decisiones alineadas con quien quieres ser.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="icon">☀</div>
+      <h3>Charlas motivacionales</h3>
+      <p>Conferencias y espacios grupales, presenciales u online, para comunidades, empresas y eventos que buscan inspirar transformación real.</p>
+    </div>
+  </div>
+</section>
+
+<section class="signature">
+  <div class="glow"></div>
+  <p class="eyebrow">El número que me acompaña</p>
+  <div class="signature-number">888</div>
+  <p class="lead">En numerología, el 888 simboliza abundancia infinita y equilibrio entre lo espiritual y lo material. Es el recordatorio que llevo conmigo: cuando confías en el plan de Dios, todo fluye en tu favor.</p>
+</section>
+
+<section class="testimonials" id="testimonios">
+  <div class="section-head reveal">
+    <p class="eyebrow">Voces del camino</p>
+    <h2>Historias de transformación</h2>
+  </div>
+  <div class="t-grid">
+    <div class="t-card reveal">
+      <div class="stars-row">★★★★★</div>
+      <p>"Llegué sin saber qué esperar y salí de cada sesión sintiéndome más liviana. Melissa tiene un don para acompañar sin juzgar."</p>
+      <div class="who">— Paciente de terapia 1:1</div>
+    </div>
+    <div class="t-card reveal">
+      <div class="stars-row">★★★★★</div>
+      <p>"Su charla motivacional cambió la energía de todo nuestro equipo. Hablar desde la fe y la experiencia real se siente distinto."</p>
+      <div class="who">— Asistente a charla grupal</div>
+    </div>
+    <div class="t-card reveal">
+      <div class="stars-row">★★★★★</div>
+      <p>"Las herramientas de PNL que compartió Melissa las sigo usando cada semana. Recomendada al cien por ciento."</p>
+      <div class="who">— Paciente online</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Es momento de recordar quién eres</h2>
+  <p>Escríbeme por WhatsApp y cuéntame en qué momento de tu camino estás. Con gusto te acompaño a dar el siguiente paso.</p>
+  <a href="https://wa.me/51987333345" target="_blank" rel="noopener" class="btn btn-primary">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.38a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.23 0 4.33.87 5.9 2.44a8.3 8.3 0 0 1 2.45 5.9c0 4.6-3.75 8.35-8.36 8.35a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.14.82.84-3.06-.2-.32a8.26 8.26 0 0 1-1.27-4.45c0-4.61 3.75-8.34 8.32-8.34"/></svg>
+    Escríbeme al WhatsApp
+  </a>
+  <div class="link-row">
+    <a href="https://www.instagram.com/melissazams_coach/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://linkr.bio/Melissazamscoach" target="_blank" rel="noopener">Todos mis enlaces</a>
+    <a href="https://youtube.com/@melissazams_coach" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">Melissa Zambrano</div>
+  <div class="foot-verse">"Primero Dios" — Proverbios 3:5-6</div>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/melissazams_coach/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://linkr.bio/Melissazamscoach" target="_blank" rel="noopener">Linkr.bio</a>
+    <a href="https://youtube.com/@melissazams_coach" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://wa.me/51987333345" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="foot-fine">© 2026 Melissa Zambrano · Terapeuta del alma. Todos los derechos reservados.</div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/51987333345" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.38a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.23 0 4.33.87 5.9 2.44a8.3 8.3 0 0 1 2.45 5.9c0 4.6-3.75 8.35-8.36 8.35a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.14.82.84-3.06-.2-.32a8.26 8.26 0 0 1-1.27-4.45c0-4.61 3.75-8.34 8.32-8.34"/></svg>
+</a>
+
+<script>
+  // Generate starfield
+  const starsField = document.getElementById('starsField');
+  const starCount = window.innerWidth < 700 ? 40 : 80;
+  for (let i = 0; i < starCount; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = (Math.random() * 4) + 's';
+    s.style.width = s.style.height = (Math.random() * 2 + 1.5) + 'px';
+    starsField.appendChild(s);
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.textContent = isOpen ? '✕' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.textContent = '☰';
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Nav background on scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 40 ? 'rgba(42,14,48,.85)' : 'rgba(42,14,48,.55)';
+  });
+</script>
+
+</body>
+</html>

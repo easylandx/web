@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUMI · Heladería Artesanal en La Barrosa, Chiclana</title>
+<meta name="description" content="Heladería BUMI — helados artesanales 100% naturales en La Barrosa, Chiclana de la Frontera. Abrimos todos los días de 19:00 a 01:30.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#FF6F5E;
+    --mango:#FFA23E;
+    --lime:#B7E040;
+    --sea:#2FC2B5;
+    --dusk:#3A2159;
+    --night:#1B1035;
+    --cream:#FFF6E9;
+    --ink:#2A1A3D;
+    --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Quicksand',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2',cursive;
+    line-height:1.05;
+  }
+  a{text-decoration:none;color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,246,233,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid rgba(58,33,89,0.08);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 24px;max-width:1140px;margin:0 auto;
+  }
+  .logo{
+    font-family:'Baloo 2',cursive;font-weight:800;font-size:1.6rem;
+    color:var(--dusk); display:flex; align-items:center; gap:8px;
+    letter-spacing:0.5px;
+  }
+  .logo span{color:var(--coral);}
+  .nav-links{display:flex;align-items:center;gap:22px;}
+  .nav-links a{
+    font-weight:700;font-size:0.95rem;color:var(--dusk);
+  }
+  .nav-cta{
+    background:var(--coral);color:white !important;
+    padding:10px 20px;border-radius:999px;font-weight:700;
+    box-shadow:0 4px 0 #C94C3D;
+    transition:transform .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+  @media(max-width:720px){
+    .nav-links a:not(.nav-cta){display:none;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:120px 0 80px;
+    background:linear-gradient(180deg, #FFD27A 0%, #FF9457 22%, #FF6F5E 42%, #B24E86 62%, #5B2E7A 80%, var(--night) 100%);
+    overflow:hidden;
+  }
+  .stars{
+    position:absolute;inset:0;pointer-events:none;
+  }
+  .star{
+    position:absolute;background:white;border-radius:50%;
+    opacity:0;animation:twinkle 3.5s infinite ease-in-out;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0;}
+    50%{opacity:0.9;}
+  }
+  .sun-moon{
+    position:absolute;
+    width:150px;height:150px;border-radius:50%;
+    right:8%;top:10%;
+    background:radial-gradient(circle at 35% 35%, #FFF3D0, #FFD27A 55%, #FFB35C 100%);
+    box-shadow:0 0 90px 30px rgba(255,200,120,0.55);
+    animation:float 7s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-18px);}
+  }
+  .blob{
+    position:absolute;border-radius:50%;
+    filter:blur(2px);
+    opacity:0.85;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    max-width:1140px;margin:0 auto;padding:0 24px;
+    text-align:center;
+    color:white;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.18);
+    border:1.5px solid rgba(255,255,255,0.5);
+    padding:8px 18px;border-radius:999px;
+    font-weight:700;font-size:0.9rem;letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:26px;
+    backdrop-filter:blur(4px);
+  }
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 6rem);
+    font-weight:800;
+    text-shadow:0 6px 24px rgba(0,0,0,0.25);
+    color:#FFFDF7;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:#FFE29A;
+    position:relative;
+  }
+  .hero-sub{
+    font-size:clamp(1.1rem,2.4vw,1.4rem);
+    max-width:600px;margin:24px auto 40px;
+    font-weight:600;
+    text-shadow:0 2px 10px rgba(0,0,0,0.2);
+  }
+  .hero-ctas{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 32px;border-radius:999px;
+    font-weight:700;font-size:1.05rem;
+    transition:transform .18s ease, box-shadow .18s ease;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,#FF6F5E,#FF965A);
+    color:white;
+    box-shadow:0 8px 0 #C94C3D, 0 14px 26px rgba(0,0,0,0.28);
+  }
+  .btn-primary:hover{transform:translateY(-3px);}
+  .btn-ghost{
+    background:rgba(255,255,255,0.14);
+    color:white;
+    border:2px solid rgba(255,255,255,0.65);
+    backdrop-filter:blur(4px);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,0.26);}
+  .scroll-cue{
+    position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+    color:white;opacity:0.8;font-size:0.85rem;font-weight:700;
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+  }
+  .scroll-cue .dot{
+    width:6px;height:6px;background:white;border-radius:50%;
+    animation:bob 1.6s infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* ===== MARQUEE ===== */
+  .marquee-wrap{
+    background:var(--dusk);
+    padding:14px 0;
+    overflow:hidden;
+    border-top:4px solid var(--coral);
+    border-bottom:4px solid var(--coral);
+  }
+  .marquee{
+    display:flex;white-space:nowrap;
+    animation:scroll 22s linear infinite;
+    width:max-content;
+  }
+  .marquee span{
+    color:#FFE29A;font-family:'Baloo 2',cursive;font-weight:700;
+    font-size:1.2rem;padding:0 28px;
+    display:flex;align-items:center;gap:10px;
+  }
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ===== VALUES ===== */
+  .values{
+    padding:100px 0 70px;
+    background:var(--cream);
+    position:relative;
+  }
+  .section-head{
+    text-align:center;max-width:640px;margin:0 auto 60px;
+  }
+  .section-head .tag{
+    color:var(--coral);font-weight:800;letter-spacing:2px;
+    text-transform:uppercase;font-size:0.85rem;
+  }
+  .section-head h2{
+    font-size:clamp(2rem,4.5vw,2.8rem);
+    color:var(--dusk); margin-top:10px;
+  }
+  .section-head p{
+    margin-top:16px;font-size:1.1rem;color:#5c4a72;font-weight:500;
+  }
+  .value-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  }
+  @media(max-width:820px){.value-grid{grid-template-columns:1fr;}}
+  .value-card{
+    background:white;border-radius:28px;padding:36px 28px;
+    text-align:center;
+    box-shadow:0 10px 0 rgba(58,33,89,0.06), 0 20px 40px rgba(58,33,89,0.06);
+    border:3px solid transparent;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .value-card:hover{transform:translateY(-8px);border-color:var(--lime);}
+  .value-icon{
+    width:74px;height:74px;border-radius:50%;
+    margin:0 auto 20px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.1rem;
+  }
+  .value-card h3{color:var(--dusk);font-size:1.3rem;margin-bottom:10px;}
+  .value-card p{color:#6b5a80;font-size:0.98rem;font-weight:500;}
+
+  /* ===== SIGNATURE: RELOJ BUMI ===== */
+  .clock-section{
+    background:linear-gradient(180deg, var(--night) 0%, #241340 100%);
+    padding:110px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .clock-section .section-head h2,.clock-section .section-head p{color:#F3EBFF;}
+  .clock-section .section-head .tag{color:var(--lime);}
+  .clock-wrap{
+    display:flex;align-items:center;justify-content:center;gap:60px;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .dial-holder{position:relative;width:320px;height:320px;flex-shrink:0;}
+  .flavor-list{
+    max-width:420px;
+    color:#E7DBFF;
+  }
+  .flavor-list ul{list-style:none;}
+  .flavor-list li{
+    display:flex;align-items:center;gap:14px;
+    padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.12);
+    font-weight:600;font-size:1.05rem;
+  }
+  .flavor-list li .dot-flavor{
+    width:14px;height:14px;border-radius:50%;flex-shrink:0;
+  }
+
+  /* ===== GALLERY / SABORES ===== */
+  .sabores{
+    padding:100px 0;background:var(--cream);
+  }
+  .scoop-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+  }
+  @media(max-width:900px){.scoop-row{grid-template-columns:repeat(2,1fr);}}
+  .scoop-card{
+    background:white;border-radius:24px;overflow:hidden;
+    box-shadow:0 14px 30px rgba(58,33,89,0.08);
+    transition:transform .2s ease;
+  }
+  .scoop-card:hover{transform:translateY(-6px) rotate(-1deg);}
+  .scoop-top{
+    height:140px;display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .scoop-top svg{width:90px;height:90px;}
+  .scoop-card p{
+    padding:16px 18px 22px;font-weight:700;color:var(--dusk);text-align:center;
+  }
+
+  /* ===== LOCATION ===== */
+  .location{
+    padding:100px 0;
+    background:linear-gradient(135deg,#FFE7C4,#FFD1C2);
+    position:relative;
+  }
+  .loc-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+  }
+  @media(max-width:860px){.loc-grid{grid-template-columns:1fr;}}
+  .loc-card{
+    background:white;border-radius:28px;padding:40px;
+    box-shadow:0 16px 40px rgba(58,33,89,0.1);
+  }
+  .loc-card h3{color:var(--dusk);font-size:1.8rem;margin-bottom:18px;}
+  .loc-row{
+    display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;
+  }
+  .loc-row .ic{
+    width:40px;height:40px;border-radius:12px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+    background:var(--sea);color:white;
+  }
+  .loc-row div p{font-weight:600;color:#4a3a5f;}
+  .loc-row div .label{font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--coral);font-weight:800;margin-bottom:2px;}
+  .map-frame{
+    border-radius:28px;overflow:hidden;height:400px;
+    box-shadow:0 16px 40px rgba(58,33,89,0.15);
+    border:6px solid white;
+  }
+  .map-frame iframe{width:100%;height:100%;border:0;}
+
+  /* ===== CTA FINAL ===== */
+  .final-cta{
+    padding:110px 0;
+    text-align:center;
+    background:linear-gradient(160deg,#FF6F5E,#B24E86 60%,var(--night));
+    color:white;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta h2{
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    margin-bottom:18px;
+  }
+  .final-cta p{
+    font-size:1.15rem;max-width:520px;margin:0 auto 36px;font-weight:600;opacity:0.95;
+  }
+  .ig-handle{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:700;
+    margin-top:26px;
+  }
+
+  footer{
+    background:var(--night);
+    color:#B5A4CE;
+    text-align:center;
+    padding:34px 20px;
+    font-size:0.9rem;
+  }
+  footer a{color:#FFE29A;font-weight:700;}
+
+  .fade-in{
+    opacity:0;transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">🍦 BUMI</div>
+    <div class="nav-links">
+      <a href="#sabores">Sabores</a>
+      <a href="#horario">Horario</a>
+      <a href="#ubicacion">Cómo llegar</a>
+      <a class="nav-cta" href="https://www.instagram.com/heladeriabumi/" target="_blank" rel="noopener">Síguenos</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="stars" id="stars"></div>
+  <div class="sun-moon"></div>
+  <div class="hero-content">
+    <div class="eyebrow">🌈 100% naturales · Hechos con amor</div>
+    <h1>Tu <em>momento</em><br>feliz</h1>
+    <p class="hero-sub">Helados artesanales en La Barrosa, Chiclana de la Frontera. El broche perfecto para cualquier tarde de playa, todas las noches de 19:00 a 01:30.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.instagram.com/heladeriabumi/" target="_blank" rel="noopener">📸 Ver en Instagram</a>
+      <a class="btn btn-ghost" href="#ubicacion">📍 Cómo llegar</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Descubre BUMI <div class="dot"></div></div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>🍦 100% NATURAL</span>
+    <span>✨ HECHO CON AMOR</span>
+    <span>🌙 ABIERTO HASTA LA 01:30</span>
+    <span>🏖️ A UN PASO DE LA BARROSA</span>
+    <span>🍦 100% NATURAL</span>
+    <span>✨ HECHO CON AMOR</span>
+    <span>🌙 ABIERTO HASTA LA 01:30</span>
+    <span>🏖️ A UN PASO DE LA BARROSA</span>
+  </div>
+</div>
+
+<section class="values" id="sobre">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="tag">Sobre BUMI</div>
+      <h2>Felicidad artesanal, cucharada a cucharada</h2>
+      <p>Elaboramos cada helado como se hacía antes: con ingredientes reales, sin prisas y con muchísimo cariño.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card fade-in">
+        <div class="value-icon" style="background:#FFE3DE;">🍓</div>
+        <h3>100% naturales</h3>
+        <p>Fruta de verdad, leche de calidad y cero atajos. Lo que ves en la etiqueta es lo que hay en el cucurucho.</p>
+      </div>
+      <div class="value-card fade-in">
+        <div class="value-icon" style="background:#FFF0D1;">🧡</div>
+        <h3>Hechos con amor</h3>
+        <p>Cada tanda se elabora de forma artesanal, en pequeñas cantidades, para que sepa igual de bien siempre.</p>
+      </div>
+      <div class="value-card fade-in">
+        <div class="value-icon" style="background:#DFF6EE;">🌙</div>
+        <h3>Horario pensado para ti</h3>
+        <p>Abrimos todos los días de 19:00 a 01:30, justo cuando apetece un helado después de la playa o la cena.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clock-section" id="horario">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="tag">Nuestro horario</div>
+      <h2>De la puesta de sol a la madrugada</h2>
+      <p>BUMI abre justo cuando el día se convierte en noche de playa, y no cierra hasta bien tarde.</p>
+    </div>
+    <div class="clock-wrap">
+      <div class="dial-holder fade-in">
+        <svg viewBox="0 0 320 320" width="320" height="320">
+          <defs>
+            <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FF9457"/>
+              <stop offset="50%" stop-color="#B24E86"/>
+              <stop offset="100%" stop-color="#7A4FD4"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="22"/>
+          <circle cx="160" cy="160" r="140" fill="none" stroke="url(#arcGrad)" stroke-width="22"
+                  stroke-linecap="round"
+                  stroke-dasharray="880"
+                  stroke-dashoffset="220"
+                  transform="rotate(-90 160 160)"/>
+          <text x="160" y="145" text-anchor="middle" fill="#FFE29A" font-family="Baloo 2, cursive" font-size="34" font-weight="800">19:00</text>
+          <text x="160" y="185" text-anchor="middle" fill="#E7DBFF" font-family="Quicksand, sans-serif" font-size="16" font-weight="700">a</text>
+          <text x="160" y="215" text-anchor="middle" fill="#FFE29A" font-family="Baloo 2, cursive" font-size="34" font-weight="800">01:30</text>
+          <circle cx="160" cy="160" r="4" fill="#fff" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="flavor-list fade-in">
+        <h3 style="font-family:'Baloo 2',cursive;color:#FFE29A;font-size:1.6rem;margin-bottom:18px;">Un heladito, cualquier momento de la noche</h3>
+        <ul>
+          <li><span class="dot-flavor" style="background:#FF9457;"></span> Al salir de la playa, antes de cambiarte</li>
+          <li><span class="dot-flavor" style="background:#FF6F5E;"></span> Como postre después de cenar en Chiclana</li>
+          <li><span class="dot-flavor" style="background:#B24E86;"></span> En el paseo nocturno por La Barrosa</li>
+          <li><span class="dot-flavor" style="background:#7A4FD4;"></span> A la 01:00, cuando nadie más abre</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sabores" id="sabores">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="tag">Nuestros sabores</div>
+      <h2>Cada bola, un momento feliz distinto</h2>
+      <p>Clásicos de toda la vida y combinaciones que solo vas a encontrar en BUMI.</p>
+    </div>
+    <div class="scoop-row">
+      <div class="scoop-card fade-in">
+        <div class="scoop-top" style="background:#FFE3DE;">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="30" fill="#FF6F5E"/><path d="M25 55 L50 95 L75 55 Z" fill="#F2C6A0"/></svg>
+        </div>
+        <p>Fresa natural</p>
+      </div>
+      <div class="scoop-card fade-in">
+        <div class="scoop-top" style="background:#FFF0D1;">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="30" fill="#FFA23E"/><path d="M25 55 L50 95 L75 55 Z" fill="#F2C6A0"/></svg>
+        </div>
+        <p>Mango tropical</p>
+      </div>
+      <div class="scoop-card fade-in">
+        <div class="scoop-top" style="background:#EFE6DC;">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="30" fill="#6B4226"/><path d="M25 55 L50 95 L75 55 Z" fill="#F2C6A0"/></svg>
+        </div>
+        <p>Chocolate belga</p>
+      </div>
+      <div class="scoop-card fade-in">
+        <div class="scoop-top" style="background:#E4F3E8;">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="30" fill="#8BB84A"/><path d="M25 55 L50 95 L75 55 Z" fill="#F2C6A0"/></svg>
+        </div>
+        <p>Pistacho</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="ubicacion">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="tag">Encuéntranos</div>
+      <h2>Te esperamos en La Barrosa</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card fade-in">
+        <h3>🍦 Heladería BUMI</h3>
+        <div class="loc-row">
+          <div class="ic">📍</div>
+          <div>
+            <p class="label">Dirección</p>
+            <p>La Barrosa, Chiclana de la Frontera, Cádiz, España 11139</p>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="ic">🕐</div>
+          <div>
+            <p class="label">Horario</p>
+            <p>Todos los días, de 19:00 a 01:30</p>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="ic">📸</div>
+          <div>
+            <p class="label">Instagram</p>
+            <p><a href="https://www.instagram.com/heladeriabumi/" target="_blank" rel="noopener" style="color:var(--coral);font-weight:800;">@heladeriabumi</a></p>
+          </div>
+        </div>
+        <a class="btn btn-primary" style="margin-top:14px;width:100%;justify-content:center;" href="https://www.instagram.com/heladeriabumi/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+      </div>
+      <div class="map-frame fade-in">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=La+Barrosa,+Chiclana+de+la+Frontera,+Spain&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="fade-in">✨ Tu momento feliz te espera ✨</h2>
+    <p class="fade-in">Síguenos en Instagram para ver sabores del día, novedades y todo lo dulce que pasa en BUMI.</p>
+    <a class="btn btn-primary fade-in" href="https://www.instagram.com/heladeriabumi/" target="_blank" rel="noopener">📸 Seguir a @heladeriabumi</a>
+    <div class="ig-handle fade-in">🍨 instagram.com/heladeriabumi</div>
+  </div>
+</section>
+
+<footer>
+  <p>🍦 Heladería BUMI · La Barrosa, Chiclana de la Frontera · <a href="https://www.instagram.com/heladeriabumi/" target="_blank" rel="noopener">@heladeriabumi</a></p>
+</footer>
+
+<script>
+  // Generate stars
+  const starsWrap = document.getElementById('stars');
+  for(let i=0;i<60;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    const size = Math.random()*2.5+1;
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*70+'%';
+    s.style.animationDelay = (Math.random()*3.5)+'s';
+    starsWrap.appendChild(s);
+  }
+
+  // Fade in on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

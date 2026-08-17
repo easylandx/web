@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un Café con tu Doctora · Dra. Marin Berbell</title>
+<meta name="description" content="Médica experta en microbiota y salud femenina. Guías, ciencia y mucho cariño para entender tu cuerpo. Únete al café.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF6EA;
+    --cream-2:#FCEEDA;
+    --berry:#54173A;
+    --berry-2:#7A2050;
+    --coral:#FF6F81;
+    --coral-dark:#E85570;
+    --lemon:#FFC93C;
+    --sage:#7FB37E;
+    --ink:#2B1B2A;
+    --paper:#FFFDF9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 24px;}
+  ::selection{background:var(--lemon); color:var(--berry);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- decorative coffee-ring divider ---------- */
+  .ring-divider{
+    position:relative;
+    height:64px;
+    overflow:hidden;
+  }
+  .ring-divider svg{width:100%; height:100%; display:block;}
+
+  /* ---------- floating blobs (bacteria motif) ---------- */
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(0.5px);
+    opacity:0.9;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,246,234,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(84,23,58,0.08);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    color:var(--berry);
+  }
+  .logo .cup{font-size:1.4rem;}
+  .nav-actions{display:flex; align-items:center; gap:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.92rem;
+    border:2px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+    cursor:pointer;
+  }
+  .btn-primary{
+    background:var(--coral);
+    color:var(--paper);
+    box-shadow:0 6px 0 var(--coral-dark);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 0 var(--coral-dark);}
+  .btn-primary:active{transform:translateY(2px); box-shadow:0 3px 0 var(--coral-dark);}
+  .btn-ghost{
+    border-color:var(--berry);
+    color:var(--berry);
+    background:transparent;
+  }
+  .btn-ghost:hover{background:var(--berry); color:var(--paper);}
+  .btn-lemon{
+    background:var(--lemon);
+    color:var(--berry);
+    box-shadow:0 6px 0 #E0A80F;
+  }
+  .btn-lemon:hover{transform:translateY(-2px); box-shadow:0 8px 0 #E0A80F;}
+  .btn-lemon:active{transform:translateY(2px); box-shadow:0 3px 0 #E0A80F;}
+  .nav-actions .btn-ghost{display:none;}
+  @media(min-width:640px){ .nav-actions .btn-ghost{display:inline-flex;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 40px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  @media(max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--paper);
+    border:1.5px solid rgba(84,23,58,0.15);
+    padding:7px 16px 7px 8px;
+    border-radius:100px;
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--berry-2);
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:22px;height:22px;border-radius:50%;
+    background:var(--lemon);
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.8rem;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.2vw, 3.9rem);
+    line-height:1.04;
+    color:var(--berry);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--coral);
+    font-weight:500;
+  }
+  .hero p.lead{
+    margin-top:22px;
+    font-size:1.18rem;
+    line-height:1.6;
+    color:#5A4552;
+    max-width:520px;
+  }
+  .hero-ctas{
+    margin-top:32px;
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+  .btn-lg{padding:16px 28px; font-size:1rem;}
+
+  .trust-mini{
+    margin-top:30px;
+    display:flex; align-items:center; gap:14px;
+    font-size:0.88rem;
+    color:var(--berry-2);
+    font-weight:600;
+  }
+  .trust-mini .stars{color:var(--lemon); letter-spacing:2px;}
+
+  /* portrait card */
+  .portrait-wrap{position:relative; display:flex; justify-content:center;}
+  .portrait-card{
+    position:relative;
+    width:min(360px, 100%);
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:linear-gradient(160deg, var(--coral) 0%, var(--berry-2) 100%);
+    display:flex; align-items:flex-end; justify-content:center;
+    box-shadow:0 30px 60px -20px rgba(84,23,58,0.45);
+    overflow:hidden;
+  }
+  .portrait-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255,255,255,0.25), transparent 40%),
+      radial-gradient(circle at 80% 85%, rgba(255,201,60,0.35), transparent 45%);
+  }
+  .portrait-initials{
+    position:relative; z-index:2;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:9rem;
+    color:rgba(255,255,255,0.92);
+    line-height:0.8;
+    margin-bottom:-18px;
+    mix-blend-mode:overlay;
+    opacity:0.85;
+  }
+  .portrait-badge{
+    position:absolute; top:18px; left:18px; z-index:3;
+    background:var(--paper);
+    color:var(--berry);
+    padding:8px 14px;
+    border-radius:100px;
+    font-size:0.78rem;
+    font-weight:800;
+    display:flex; align-items:center; gap:6px;
+    box-shadow:0 6px 16px rgba(0,0,0,0.12);
+  }
+  .portrait-tag{
+    position:absolute; bottom:18px; left:18px; right:18px; z-index:3;
+    background:rgba(84,23,58,0.55);
+    backdrop-filter:blur(6px);
+    color:var(--paper);
+    padding:14px 16px;
+    border-radius:16px;
+    font-size:0.85rem;
+    font-weight:600;
+  }
+  .float-lemon{
+    position:absolute;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-14px) rotate(8deg);}
+  }
+
+  /* ---------- STATS / CREDENTIALS STRIP ---------- */
+  .strip{
+    background:var(--berry);
+    color:var(--cream);
+    padding:34px 0;
+  }
+  .strip .wrap{
+    display:flex; flex-wrap:wrap;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .stat{flex:1; min-width:150px; text-align:center;}
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:2.1rem;
+    color:var(--lemon);
+  }
+  .stat .lbl{
+    font-size:0.82rem;
+    color:rgba(255,246,234,0.75);
+    margin-top:4px;
+    font-weight:500;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .kicker{
+    display:inline-block;
+    font-size:0.8rem;
+    font-weight:800;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--coral-dark);
+    margin-bottom:12px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.5vw, 2.6rem);
+    color:var(--berry);
+    line-height:1.15;
+  }
+  .section-head p{
+    margin-top:16px;
+    font-size:1.08rem;
+    color:#5A4552;
+    line-height:1.6;
+  }
+
+  /* ---------- TOPICS GRID ---------- */
+  .topics-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:22px;
+  }
+  .topic-card{
+    background:var(--paper);
+    border-radius:22px;
+    padding:30px 26px;
+    border:1px solid rgba(84,23,58,0.08);
+    transition:transform .25s ease, box-shadow .25s ease;
+    position:relative;
+  }
+  .topic-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px -18px rgba(84,23,58,0.28);
+  }
+  .topic-icon{
+    width:52px; height:52px;
+    border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem;
+    margin-bottom:18px;
+  }
+  .topic-card h3{
+    font-size:1.15rem;
+    color:var(--berry);
+    margin-bottom:10px;
+  }
+  .topic-card p{
+    font-size:0.95rem;
+    color:#6B5764;
+    line-height:1.55;
+  }
+  .ti-1{background:#FFE1E6;} .ti-2{background:#FFF0C4;}
+  .ti-3{background:#DFF0DE;} .ti-4{background:#F1DEEC;}
+
+  /* ---------- LEAD MAGNET ---------- */
+  .lead-magnet{
+    background:linear-gradient(135deg, var(--coral) 0%, #FF9472 100%);
+    border-radius:32px;
+    padding:56px;
+    position:relative;
+    overflow:hidden;
+    color:var(--paper);
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media(max-width:800px){ .lead-magnet{grid-template-columns:1fr; padding:40px 28px; text-align:center;} }
+  .lead-magnet::after{
+    content:"";
+    position:absolute;
+    width:340px; height:340px;
+    border-radius:50%;
+    border:2px dashed rgba(255,255,255,0.35);
+    top:-140px; right:-120px;
+  }
+  .lead-magnet .kicker{color:var(--lemon);}
+  .lead-magnet h2{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    line-height:1.18;
+    margin-bottom:16px;
+  }
+  .lead-magnet p{
+    font-size:1.02rem;
+    line-height:1.6;
+    opacity:0.95;
+    max-width:480px;
+  }
+  @media(max-width:800px){ .lead-magnet p{margin:0 auto;} }
+  .lead-magnet .btn-lemon{margin-top:26px;}
+  .magnet-card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:20px;
+    padding:26px;
+    transform:rotate(-3deg);
+    box-shadow:0 24px 50px -18px rgba(0,0,0,0.35);
+    max-width:280px;
+    margin:0 auto;
+  }
+  .magnet-card .tag{
+    display:inline-block;
+    background:var(--sage);
+    color:#0F3D14;
+    font-size:0.72rem;
+    font-weight:800;
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:12px;
+  }
+  .magnet-card h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.2rem;
+    color:var(--berry);
+    line-height:1.25;
+    margin-bottom:8px;
+  }
+  .magnet-card p{
+    font-size:0.86rem;
+    color:#6B5764;
+  }
+
+  /* ---------- INSTAGRAM SECTION ---------- */
+  .ig-section{
+    background:var(--berry);
+    color:var(--cream);
+    border-radius:32px;
+    margin:0 24px;
+    padding:64px 48px;
+    position:relative;
+    overflow:hidden;
+  }
+  @media(max-width:700px){ .ig-section{padding:48px 24px;} }
+  .ig-inner{
+    max-width:1092px; margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+    position:relative; z-index:2;
+  }
+  @media(max-width:800px){ .ig-inner{grid-template-columns:1fr;} }
+  .ig-section .kicker{color:var(--lemon);}
+  .ig-section h2{font-size:clamp(1.7rem,3vw,2.3rem); line-height:1.18;}
+  .ig-quote{
+    margin-top:22px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.25rem;
+    line-height:1.5;
+    color:var(--lemon);
+    border-left:3px solid var(--coral);
+    padding-left:18px;
+  }
+  .ig-section p.desc{
+    margin-top:20px;
+    color:rgba(255,246,234,0.82);
+    line-height:1.6;
+    font-size:1rem;
+  }
+  .ig-stats-row{
+    display:flex; gap:26px;
+    margin-top:26px;
+  }
+  .ig-stats-row div .n{font-family:'Fraunces',serif; font-weight:600; color:var(--paper); font-size:1.4rem;}
+  .ig-stats-row div .l{font-size:0.78rem; color:rgba(255,246,234,0.65);}
+
+  .ig-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+  }
+  .ig-tile{
+    aspect-ratio:1/1;
+    border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .ig-tile span{position:relative; z-index:2;}
+  .ig-t1{background:linear-gradient(135deg,#FF6F81,#E85570);}
+  .ig-t2{background:linear-gradient(135deg,#FFC93C,#E0A80F);}
+  .ig-t3{background:linear-gradient(135deg,#7FB37E,#4E8F52);}
+  .ig-t4{background:linear-gradient(135deg,#F1DEEC,#C98BB4); color:var(--berry);}
+  .ig-t5{background:linear-gradient(135deg,#7A2050,#54173A);}
+  .ig-t6{background:linear-gradient(135deg,#FF9472,#FF6F81);}
+  .ig-follow{
+    grid-column:1/-1;
+    margin-top:6px;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:22px;
+  }
+  .testi-card{
+    background:var(--paper);
+    border-radius:22px;
+    padding:28px;
+    border:1px solid rgba(84,23,58,0.08);
+  }
+  .testi-stars{color:var(--lemon); font-size:0.95rem; margin-bottom:14px;}
+  .testi-card p{font-size:0.98rem; line-height:1.6; color:#4A3A45;}
+  .testi-who{
+    margin-top:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .testi-avatar{
+    width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:0.85rem; color:var(--paper);
+  }
+  .testi-who .name{font-weight:700; font-size:0.88rem; color:var(--berry);}
+  .testi-who .role{font-size:0.78rem; color:#8A7883;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    text-align:center;
+    padding:100px 0 60px;
+  }
+  .final-cta h2{
+    font-size:clamp(2rem, 4.2vw, 3rem);
+    color:var(--berry);
+    max-width:760px;
+    margin:0 auto;
+    line-height:1.15;
+  }
+  .final-cta h2 em{color:var(--coral); font-style:italic; font-weight:500;}
+  .final-cta p{
+    margin:20px auto 0;
+    max-width:540px;
+    color:#5A4552;
+    font-size:1.08rem;
+    line-height:1.6;
+  }
+  .final-ctas{
+    margin-top:34px;
+    display:flex; justify-content:center; flex-wrap:wrap; gap:14px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(255,246,234,0.7);
+    padding:48px 0 28px;
+  }
+  footer .wrap{
+    display:flex; flex-wrap:wrap;
+    justify-content:space-between;
+    gap:24px;
+    align-items:center;
+  }
+  footer .flogo{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--paper);
+    font-size:1.1rem;
+  }
+  footer .flinks{display:flex; gap:20px; font-size:0.88rem;}
+  footer .flinks a:hover{color:var(--lemon);}
+  .disclaimer{
+    margin-top:28px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,246,234,0.12);
+    font-size:0.78rem;
+    line-height:1.6;
+    color:rgba(255,246,234,0.45);
+  }
+
+  /* Reveal-on-scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo"><span class="cup">☕</span> un café con tu doctora</a>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="https://www.instagram.com/uncafecontudoctora/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-primary" href="https://subscribepage.io/cav5th" target="_blank" rel="noopener">Únete gratis →</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot">🏆</span> Top 50 divulgadores de salud · Forbes</div>
+      <h1>Entiende tu cuerpo <em>como nunca</em> te lo habían explicado</h1>
+      <p class="lead">Soy la Dra. Marin Berbell, médica experta en microbiota y salud femenina. Cada semana te cuento, con ciencia y sin tecnicismos, qué le pasa a tu cuerpo y qué puedes hacer al respecto. Como un café entre amigas, pero con bata.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary btn-lg" href="https://subscribepage.io/cav5th" target="_blank" rel="noopener">☕ Quiero mi café semanal</a>
+        <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/uncafecontudoctora/" target="_blank" rel="noopener">📸 Seguir en Instagram</a>
+      </div>
+      <div class="trust-mini"><span class="stars">★★★★★</span> +2M personas ya cuidan su cuerpo con información real</div>
+    </div>
+
+    <div class="portrait-wrap">
+      <div class="portrait-card">
+        <div class="portrait-badge">🏆 Forbes Top 50</div>
+        <span class="portrait-initials">MB</span>
+        <div class="portrait-tag">Médica experta en microbiota y salud femenina · Colaboradora en @rne</div>
+      </div>
+      <div class="float-lemon" style="top:6%; left:-6%; font-size:2.6rem;">🍋</div>
+      <div class="float-lemon" style="bottom:10%; right:-8%; font-size:2.2rem; animation-delay:1.4s;">💗</div>
+      <div class="float-lemon" style="top:44%; right:-10%; font-size:1.8rem; animation-delay:2.6s;">🦠</div>
+    </div>
+  </div>
+</section>
+
+<!-- coffee ring divider -->
+<div class="ring-divider" aria-hidden="true">
+  <svg viewBox="0 0 1200 64" preserveAspectRatio="none">
+    <circle cx="90" cy="10" r="30" fill="none" stroke="#54173A" stroke-opacity="0.12" stroke-width="10"/>
+    <circle cx="1120" cy="50" r="22" fill="none" stroke="#FF6F81" stroke-opacity="0.18" stroke-width="8"/>
+    <circle cx="600" cy="60" r="14" fill="none" stroke="#FFC93C" stroke-opacity="0.35" stroke-width="6"/>
+  </svg>
+</div>
+
+<!-- ============ CREDENTIALS STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <div class="stat"><div class="num">2M+</div><div class="lbl">Comunidad en Instagram</div></div>
+    <div class="stat"><div class="num">Top 50</div><div class="lbl">Divulgadores de salud, Forbes</div></div>
+    <div class="stat"><div class="num">RNE</div><div class="lbl">Colaboradora habitual</div></div>
+    <div class="stat"><div class="num">477+</div><div class="lbl">Guías y publicaciones</div></div>
+  </div>
+</div>
+
+<!-- ============ TOPICS ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">De qué hablamos en el café</span>
+      <h2>Lo que a tu médico de cabecera no le da tiempo a explicarte</h2>
+      <p>Contenido pensado para mujeres que quieren entender su cuerpo de verdad: sin miedo, sin postureo y con base científica.</p>
+    </div>
+    <div class="topics-grid">
+      <div class="topic-card reveal">
+        <div class="topic-icon ti-1">🦠</div>
+        <h3>Microbiota íntima</h3>
+        <p>Ese "pueblecito de bacterias" que te protege: cómo cuidarlo, qué lo altera y cómo recuperarlo.</p>
+      </div>
+      <div class="topic-card reveal">
+        <div class="topic-icon ti-2">⚖️</div>
+        <h3>Hormonas y ciclo</h3>
+        <p>Estrógenos, cortisol y ese "por qué me siento así" que cambia cada semana del mes.</p>
+      </div>
+      <div class="topic-card reveal">
+        <div class="topic-icon ti-3">🧠</div>
+        <h3>Estrés y cuerpo</h3>
+        <p>Cómo el cortisol alto frena tus defensas, tu digestión y hasta tu piel — y qué hacer.</p>
+      </div>
+      <div class="topic-card reveal">
+        <div class="topic-icon ti-4">📋</div>
+        <h3>Analíticas explicadas</h3>
+        <p>Qué mirar en tu última analítica y cuándo de verdad merece la pena repetirla.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEAD MAGNET ============ -->
+<section>
+  <div class="wrap">
+    <div class="lead-magnet reveal">
+      <div>
+        <span class="kicker">Regalo de bienvenida</span>
+        <h2>Tu guía gratuita de analíticas, directa a tu correo</h2>
+        <p>Apúntate al café semanal y recibe la guía con las analíticas más importantes: cuáles pedir, cuándo y cómo interpretarlas, con casos reales explicados por mí.</p>
+        <a class="btn btn-lemon btn-lg" href="https://subscribepage.io/cav5th" target="_blank" rel="noopener">Quiero la guía gratis →</a>
+      </div>
+      <div class="magnet-card">
+        <span class="tag">GRATIS</span>
+        <h4>Guía: las analíticas que toda mujer debería entender</h4>
+        <p>+ un café nuevo cada semana en tu bandeja de entrada, sin spam, solo lo esencial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section>
+  <div class="ig-section reveal">
+    <div class="ig-inner">
+      <div>
+        <span class="kicker">La consulta también vive en redes</span>
+        <h2>Sígueme donde ya vive tu comunidad favorita</h2>
+        <p class="ig-quote">"La clave no está solo en el virus, sino en cómo está tu cuerpo cuando este entra."</p>
+        <p class="desc">Cada día comparto contenido corto, claro y con humor sobre salud femenina: desde la ropa interior hasta el suplemento que de verdad merece la pena.</p>
+        <div class="ig-stats-row">
+          <div><div class="n">2M+</div><div class="l">Seguidoras</div></div>
+          <div><div class="n">477+</div><div class="l">Publicaciones</div></div>
+          <div><div class="n">Diario</div><div class="l">Contenido nuevo</div></div>
+        </div>
+        <a class="btn btn-primary btn-lg ig-follow" href="https://www.instagram.com/uncafecontudoctora/" target="_blank" rel="noopener">📸 Ver @uncafecontudoctora</a>
+      </div>
+      <div class="ig-grid">
+        <div class="ig-tile ig-t1"><span>🍋</span></div>
+        <div class="ig-tile ig-t2"><span>💗</span></div>
+        <div class="ig-tile ig-t3"><span>🦠</span></div>
+        <div class="ig-tile ig-t4"><span>📋</span></div>
+        <div class="ig-tile ig-t5"><span>☕</span></div>
+        <div class="ig-tile ig-t6"><span>🧬</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Lo que dice la comunidad</span>
+      <h2>Miles de mujeres ya entienden mejor su cuerpo</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Por fin alguien me explicó por qué me sentía tan diferente cada semana del mes. Cambié mi rutina y se nota muchísimo."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:var(--coral);">L</div>
+          <div><div class="name">Laura, 34</div><div class="role">Suscriptora del café</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"La guía de analíticas me ahorró meses de dudas. La llevé a mi médico y hasta ella se sorprendió de lo bien explicada que estaba."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:var(--sage);">C</div>
+          <div><div class="name">Carla, 41</div><div class="role">Instagram</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Cero postureo, toda ciencia y con cariño. Es el único contenido de salud femenina que realmente sigo cada semana."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:var(--lemon); color:var(--berry);">S</div>
+          <div><div class="name">Sofía, 29</div><div class="role">Suscriptora del café</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="wrap">
+    <h2 class="reveal">Tu café semanal <em>con la doctora</em> te está esperando</h2>
+    <p class="reveal">Sin postureo, sin miedo y con ciencia real. Únete gratis y empieza a entender tu cuerpo desde hoy.</p>
+    <div class="final-ctas reveal">
+      <a class="btn btn-primary btn-lg" href="https://subscribepage.io/cav5th" target="_blank" rel="noopener">☕ Apuntarme gratis</a>
+      <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/uncafecontudoctora/" target="_blank" rel="noopener">📸 Seguir en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="flogo">☕ un café con tu doctora</div>
+    <div class="flinks">
+      <a href="https://www.instagram.com/uncafecontudoctora/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://subscribepage.io/cav5th" target="_blank" rel="noopener">Suscribirme</a>
+    </div>
+  </div>
+  <div class="wrap disclaimer">
+    Este contenido es divulgativo y no sustituye una consulta médica. Ante cualquier duda de salud, acude siempre a un profesional sanitario. Dra. Marin Berbell · Médica experta en microbiota y salud femenina.
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  els.forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicina del Alma | Jenny Gamez - Sanación Energética y Vibracional</title>
+<meta name="description" content="Sesiones de sanación energética, limpiezas vibracionales y péndulo con Jenny Gamez. Más de 2.000 terapias realizadas. Libera bloqueos y recupera tu equilibrio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4EC;
+    --cream-2:#F6EADA;
+    --violet-deep:#5B3A78;
+    --violet:#7C5A9B;
+    --gold:#C99A4A;
+    --gold-soft:#E7C589;
+    --rose:#E8B4B0;
+    --plum:#2E2038;
+    --ink:#3C2A46;
+    --white:#FFFDF9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    color:var(--violet-deep);
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--gold-soft);color:var(--plum);}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(251,244,236,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(124,90,155,0.12);
+    transition:padding .3s ease;
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1180px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--violet-deep);letter-spacing:.5px;}
+  .brand-mark{width:30px;height:30px;flex:none;}
+  .nav-links{display:flex;gap:34px;font-size:.92rem;letter-spacing:.03em;}
+  .nav-links a{color:var(--ink);position:relative;padding-bottom:3px;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--violet-deep);color:var(--white);
+    padding:10px 22px;border-radius:30px;font-size:.85rem;letter-spacing:.03em;
+    display:flex;align-items:center;gap:8px;
+    box-shadow:0 6px 18px rgba(91,58,120,0.25);
+  }
+  .burger{display:none;background:none;border:none;cursor:pointer;color:var(--violet-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;align-items:center;
+    padding:130px 0 90px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(233,197,137,0.45) 0%, transparent 45%),
+      radial-gradient(circle at 12% 85%, rgba(124,90,155,0.30) 0%, transparent 50%),
+      linear-gradient(180deg, #FBF4EC 0%, #F5E9DA 100%);
+  }
+  .aura-orb{
+    position:absolute;border-radius:50%;
+    filter:blur(2px);
+    opacity:.55;
+    animation:float 14s ease-in-out infinite;
+  }
+  .aura-orb.o1{width:340px;height:340px;top:-60px;right:-80px;background:radial-gradient(circle,rgba(233,197,137,.65),transparent 70%);animation-delay:0s;}
+  .aura-orb.o2{width:260px;height:260px;bottom:-40px;left:-60px;background:radial-gradient(circle,rgba(124,90,155,.5),transparent 70%);animation-delay:-4s;}
+  .aura-orb.o3{width:160px;height:160px;top:35%;left:8%;background:radial-gradient(circle,rgba(232,180,176,.6),transparent 70%);animation-delay:-8s;}
+  @keyframes float{0%,100%{transform:translateY(0) translateX(0);}50%{transform:translateY(-26px) translateX(14px);}}
+
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+    width:100%;max-width:1180px;margin:0 auto;padding:0 28px;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--violet-deep);background:rgba(124,90,155,0.1);
+    padding:8px 16px;border-radius:30px;margin-bottom:22px;border:1px solid rgba(124,90,155,0.2);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .hero h1{
+    font-size:clamp(2.6rem,5.4vw,4.4rem);
+    line-height:1.05;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--gold);
+    display:block;
+  }
+  .hero p.lead{
+    font-size:1.15rem;line-height:1.65;color:var(--ink);
+    max-width:480px;margin-bottom:34px;opacity:.9;
+  }
+  .hero-stats{display:flex;gap:36px;margin-bottom:38px;}
+  .stat{}
+  .stat .num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--violet-deep);font-weight:600;line-height:1;}
+  .stat .lbl{font-size:.78rem;letter-spacing:.05em;color:var(--ink);opacity:.7;margin-top:4px;text-transform:uppercase;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    padding:16px 30px;border-radius:32px;font-size:.95rem;letter-spacing:.02em;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--violet-deep),var(--violet));
+    color:var(--white);box-shadow:0 12px 26px rgba(91,58,120,0.32);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(91,58,120,0.4);}
+  .btn-outline{
+    background:transparent;border:1.5px solid var(--gold);color:var(--violet-deep);
+  }
+  .btn-outline:hover{background:rgba(201,154,74,0.12);transform:translateY(-3px);}
+
+  /* signature mandala */
+  .mandala-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+  .mandala{width:min(100%,420px);animation:spin 90s linear infinite;}
+  .mandala-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .mandala-core{
+    width:120px;height:120px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,253,249,0.9),rgba(233,197,137,0.35) 70%);
+    box-shadow:0 0 60px rgba(233,197,137,0.6), inset 0 0 30px rgba(124,90,155,0.25);
+  }
+  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @media (prefers-reduced-motion: reduce){
+    .mandala{animation:none;}
+    .aura-orb{animation:none;}
+    .reveal{transition:none;opacity:1;transform:none;}
+  }
+
+  /* ---------- SECTION LABELS ---------- */
+  .section{padding:110px 0;}
+  .section-head{max-width:640px;margin:0 auto 60px;text-align:center;}
+  .kicker{
+    display:block;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+    margin-bottom:14px;font-weight:500;
+  }
+  .section-head h2{font-size:clamp(2rem,4vw,2.9rem);line-height:1.15;}
+  .section-head p{margin-top:18px;font-size:1.05rem;opacity:.8;line-height:1.6;}
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--white);
+    position:relative;
+  }
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center;}
+  .about-visual{
+    position:relative;aspect-ratio:1/1.05;border-radius:28px;
+    background:linear-gradient(160deg,#EFE0F2,#F6EADA 60%,#EAD9F0);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 30px 60px rgba(91,58,120,0.15);
+  }
+  .about-visual .ring{
+    position:absolute;border-radius:50%;border:1.5px solid rgba(124,90,155,0.35);
+  }
+  .about-visual .ring.r1{width:82%;height:82%;}
+  .about-visual .ring.r2{width:60%;height:60%;border-color:rgba(201,154,74,0.4);}
+  .about-visual .quote-badge{
+    position:relative;z-index:2;text-align:center;padding:0 20px;
+  }
+  .about-visual .quote-badge .num{font-family:'Cormorant Garamond',serif;font-size:4.2rem;color:var(--violet-deep);line-height:1;}
+  .about-visual .quote-badge .txt{font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-top:6px;}
+  .about-text h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:22px;}
+  .about-text p{font-size:1.05rem;line-height:1.75;opacity:.85;margin-bottom:18px;}
+  .about-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .badge{
+    display:flex;align-items:center;gap:10px;font-size:.88rem;
+    background:var(--cream-2);padding:10px 16px;border-radius:14px;color:var(--violet-deep);
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{background:linear-gradient(180deg,var(--cream) 0%,#F3E5D6 100%);}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .service-card{
+    background:var(--white);border-radius:24px;padding:40px 30px;
+    box-shadow:0 18px 40px rgba(91,58,120,0.08);
+    transition:transform .35s ease, box-shadow .35s ease;
+    position:relative;overflow:hidden;
+  }
+  .service-card::before{
+    content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;
+    background:radial-gradient(circle,rgba(233,197,137,0.35),transparent 70%);
+  }
+  .service-card:hover{transform:translateY(-10px);box-shadow:0 26px 50px rgba(91,58,120,0.16);}
+  .service-icon{
+    width:58px;height:58px;border-radius:16px;
+    background:linear-gradient(135deg,var(--violet-deep),var(--violet));
+    display:flex;align-items:center;justify-content:center;margin-bottom:24px;
+    color:var(--white);
+  }
+  .service-card h3{font-size:1.5rem;margin-bottom:12px;}
+  .service-card p{font-size:.98rem;line-height:1.6;opacity:.8;}
+
+  /* ---------- PROCESO ---------- */
+  .process{background:var(--white);}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .process-grid::before{
+    content:'';position:absolute;top:34px;left:12%;right:12%;height:1px;
+    background:repeating-linear-gradient(90deg,rgba(124,90,155,0.3) 0 8px,transparent 8px 16px);
+  }
+  .process-step{text-align:center;padding:0 16px;position:relative;}
+  .step-mark{
+    width:68px;height:68px;border-radius:50%;margin:0 auto 22px;
+    background:var(--cream-2);border:1.5px solid var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--violet-deep);
+    position:relative;z-index:2;
+  }
+  .process-step h3{font-size:1.15rem;margin-bottom:10px;}
+  .process-step p{font-size:.92rem;opacity:.75;line-height:1.55;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{background:linear-gradient(160deg,var(--violet-deep),#4A2F63);color:var(--white);position:relative;overflow:hidden;}
+  .testimonials::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 20% 20%,rgba(233,197,137,0.18),transparent 45%),
+               radial-gradient(circle at 85% 80%,rgba(232,180,176,0.15),transparent 45%);
+  }
+  .testimonials .section-head h2{color:var(--white);}
+  .testimonials .kicker{color:var(--gold-soft);}
+  .testimonials .section-head p{color:rgba(255,255,255,0.75);}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative;z-index:2;}
+  .t-card{
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px;padding:32px 28px;backdrop-filter:blur(4px);
+  }
+  .t-stars{color:var(--gold-soft);letter-spacing:2px;margin-bottom:16px;font-size:1rem;}
+  .t-card p{font-size:1rem;line-height:1.65;opacity:.92;margin-bottom:22px;font-style:italic;}
+  .t-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold-soft);}
+  .t-role{font-size:.8rem;opacity:.65;margin-top:2px;}
+
+  /* ---------- SOCIAL ---------- */
+  .social{background:var(--cream);text-align:center;}
+  .social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:900px;margin:0 auto;}
+  .social-card{
+    background:var(--white);border-radius:24px;padding:38px 26px;
+    box-shadow:0 18px 40px rgba(91,58,120,0.08);
+    display:flex;flex-direction:column;align-items:center;gap:16px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .social-card:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(91,58,120,0.15);}
+  .social-icon{
+    width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--white);
+  }
+  .social-icon.ig{background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);}
+  .social-icon.tt{background:linear-gradient(135deg,#25F4EE,#000,#FE2C55);}
+  .social-icon.fb{background:linear-gradient(135deg,#1877F2,#3b5998);}
+  .social-card h3{font-size:1.2rem;color:var(--violet-deep);}
+  .social-card span.handle{font-size:.9rem;opacity:.7;}
+  .social-card .go{font-size:.82rem;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-top:4px;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:linear-gradient(135deg,#2E2038,#5B3A78);
+    color:var(--white);text-align:center;position:relative;overflow:hidden;
+    padding:130px 0;
+  }
+  .final-cta::before{
+    content:'';position:absolute;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(233,197,137,0.16),transparent 70%);
+    top:-200px;left:50%;transform:translateX(-50%);
+  }
+  .final-cta h2{color:var(--white);font-size:clamp(2.1rem,4.5vw,3.2rem);margin-bottom:20px;position:relative;z-index:2;}
+  .final-cta p{max-width:520px;margin:0 auto 38px;opacity:.85;font-size:1.08rem;line-height:1.6;position:relative;z-index:2;}
+  .final-cta .btn-primary{
+    background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:var(--plum);
+    box-shadow:0 16px 34px rgba(201,154,74,0.35);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--plum);color:rgba(255,255,255,0.75);padding:56px 0 26px;}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:36px;margin-bottom:40px;}
+  .footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--white);margin-bottom:10px;}
+  .footer-brand + p{font-size:.92rem;max-width:280px;line-height:1.6;opacity:.7;}
+  .footer-links{display:flex;gap:60px;flex-wrap:wrap;}
+  .footer-col h4{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px;}
+  .footer-col a{display:block;font-size:.92rem;margin-bottom:10px;opacity:.75;transition:opacity .2s;}
+  .footer-col a:hover{opacity:1;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);padding-top:26px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;opacity:.6;
+  }
+  .footer-bottom a{opacity:1;color:var(--gold-soft);}
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed;bottom:26px;right:26px;z-index:200;
+    width:60px;height:60px;border-radius:50%;
+    background:#25D366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px rgba(37,211,102,0.45);
+    animation:pulse-wa 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-wa{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;text-align:center;}
+    .hero p.lead{margin-left:auto;margin-right:auto;}
+    .hero-stats{justify-content:center;}
+    .hero-ctas{justify-content:center;}
+    .mandala-wrap{order:-1;margin-bottom:10px;}
+    .mandala{width:280px;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-visual{max-width:340px;margin:0 auto;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .process-grid{grid-template-columns:1fr 1fr;row-gap:50px;}
+    .process-grid::before{display:none;}
+    .t-grid{grid-template-columns:1fr;}
+    .social-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:1fr;}
+    .footer-grid{flex-direction:column;}
+    .hero{padding-top:110px;}
+    .section{padding:80px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#C99A4A" stroke-width="1.2"/>
+        <circle cx="20" cy="20" r="12" stroke="#7C5A9B" stroke-width="1.2"/>
+        <circle cx="20" cy="20" r="5" fill="#E8B4B0"/>
+      </svg>
+      Medicina del Alma
+    </a>
+    <nav class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#redes">Redes</a>
+    </nav>
+    <a href="https://wa.me/34600000000" target="_blank" rel="noopener" class="nav-cta">Reservar sesión</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="aura-orb o1"></div>
+  <div class="aura-orb o2"></div>
+  <div class="aura-orb o3"></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span> +2.000 terapias realizadas</div>
+      <h1>Libera bloqueos.<em>Recupera tu equilibrio.</em></h1>
+      <p class="lead">Soy Jenny Gamez. A través de la sanación energética y vibracional te acompaño a soltar lo que ya no te sirve, reconectar con tu bienestar y volver a sentirte en paz contigo misma/o.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">2.000+</div><div class="lbl">Terapias realizadas</div></div>
+        <div class="stat"><div class="num">600K</div><div class="lbl">Comunidad en Instagram</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Online y presencial</div></div>
+      </div>
+      <div class="hero-ctas">
+        <a href="https://wa.me/34600000000" target="_blank" rel="noopener" class="btn btn-primary">
+          Agenda tu limpieza energética →
+        </a>
+        <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+      </div>
+    </div>
+    <div class="mandala-wrap reveal">
+      <svg class="mandala" viewBox="0 0 400 400" fill="none">
+        <g opacity="0.9">
+          <circle cx="200" cy="200" r="190" stroke="#7C5A9B" stroke-opacity="0.25" stroke-width="1"/>
+          <circle cx="200" cy="200" r="150" stroke="#C99A4A" stroke-opacity="0.35" stroke-width="1"/>
+          <circle cx="200" cy="200" r="110" stroke="#E8B4B0" stroke-opacity="0.45" stroke-width="1"/>
+          <g stroke="#7C5A9B" stroke-opacity="0.4" stroke-width="1">
+            <path d="M200 10 L200 390"/>
+            <path d="M10 200 L390 200"/>
+            <path d="M67 67 L333 333"/>
+            <path d="M333 67 L67 333"/>
+          </g>
+          <g fill="none" stroke="#C99A4A" stroke-width="1.4" stroke-opacity="0.6">
+            <circle cx="200" cy="90" r="26"/>
+            <circle cx="310" cy="200" r="26"/>
+            <circle cx="200" cy="310" r="26"/>
+            <circle cx="90" cy="200" r="26"/>
+            <circle cx="277" cy="123" r="18"/>
+            <circle cx="277" cy="277" r="18"/>
+            <circle cx="123" cy="277" r="18"/>
+            <circle cx="123" cy="123" r="18"/>
+          </g>
+        </g>
+      </svg>
+      <div class="mandala-inner"><div class="mandala-core"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about section" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="quote-badge">
+        <div class="num">💜</div>
+        <div class="txt">Sanación con propósito</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <span class="kicker">Sobre mí</span>
+      <h2>Terapeuta de sanación energética y vibracional</h2>
+      <p>Durante años he acompañado a cientos de personas a través de limpiezas energéticas, trabajo con péndulo y lectura vibracional, ayudándolas a identificar y liberar aquello que frena su bienestar físico, emocional y espiritual.</p>
+      <p>Cada sesión está pensada para restablecer tu equilibrio energético, aportar claridad a tu camino y devolverte esa sensación de paz que a veces se pierde en el día a día. No estás solo/a en este proceso: te acompaño con calidez, escucha y respeto por tu momento de vida.</p>
+      <div class="about-badges">
+        <div class="badge">✨ Sesiones de péndulo</div>
+        <div class="badge">🌿 Limpiezas energéticas</div>
+        <div class="badge">💫 Mensajes y reflexiones</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services section" id="servicios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Servicios</span>
+      <h2>Terapias para reconectar con tu equilibrio</h2>
+      <p>Cada terapia se adapta a lo que tu energía necesita en este momento de tu vida.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 L14 9 L21 12 L14 15 L12 22 L10 15 L3 12 L10 9 Z"/></svg>
+        </div>
+        <h3>Sesión de péndulo</h3>
+        <p>Una lectura energética profunda que identifica bloqueos y desequilibrios, guiándote hacia claridad y dirección en tu proceso personal.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 4 v4 M12 16 v4 M4 12 h4 M16 12 h4"/></svg>
+        </div>
+        <h3>Limpieza energética</h3>
+        <p>Libera cargas y energías densas acumuladas para recuperar ligereza, vitalidad y bienestar en cuerpo y mente.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4-3-8-6-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5-4 8-8 11Z"/></svg>
+        </div>
+        <h3>Mensajes y reflexiones</h3>
+        <p>Acompañamiento continuo a través de reflexiones y mensajes que iluminan tu camino entre sesión y sesión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="process section" id="proceso">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Cómo funciona</span>
+      <h2>Tu proceso de sanación en 4 pasos</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal"><div class="step-mark">1</div><h3>Contacto</h3><p>Escríbeme por WhatsApp o Instagram y cuéntame qué necesitas sanar.</p></div>
+      <div class="process-step reveal"><div class="step-mark">2</div><h3>Diagnóstico</h3><p>Realizamos una lectura energética inicial para identificar bloqueos.</p></div>
+      <div class="process-step reveal"><div class="step-mark">3</div><h3>Sesión</h3><p>Vivimos juntas/os la terapia de limpieza o sanación adecuada para ti.</p></div>
+      <div class="process-step reveal"><div class="step-mark">4</div><h3>Acompañamiento</h3><p>Recibes reflexiones y seguimiento para sostener tu equilibrio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials section" id="testimonios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Testimonios</span>
+      <h2>Historias de equilibrio recuperado</h2>
+      <p>Estas son experiencias representativas del tipo de acompañamiento que reciben quienes hacen su proceso de sanación.</p>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p>"Sentí un cambio real después de la primera sesión. Jenny tiene una energía que transmite calma desde el primer minuto."</p>
+        <div class="t-name">María T.</div>
+        <div class="t-role">Sesión de limpieza energética</div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p>"La lectura con péndulo me ayudó a entender bloqueos que llevaba arrastrando años. Muy recomendable y profesional."</p>
+        <div class="t-name">Camila R.</div>
+        <div class="t-role">Sesión de péndulo</div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p>"Sus mensajes y reflexiones me acompañan cada semana. Es un espacio de conexión y paz que agradezco mucho."</p>
+        <div class="t-name">Valentina G.</div>
+        <div class="t-role">Acompañamiento continuo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDES -->
+<section class="social section" id="redes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Sígueme</span>
+      <h2>Encuéntrame en redes sociales</h2>
+      <p>Contenido diario de reflexiones, sanación y bienestar energético.</p>
+    </div>
+    <div class="social-grid">
+      <a href="https://www.instagram.com/medicina_del_alma/" target="_blank" rel="noopener" class="social-card reveal">
+        <div class="social-icon ig"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <h3>Instagram</h3>
+        <span class="handle">@medicina_del_alma</span>
+        <span class="go">600K seguidores →</span>
+      </a>
+      <a href="https://www.tiktok.com/@medicina_del_alma" target="_blank" rel="noopener" class="social-card reveal">
+        <div class="social-icon tt"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M16.5 3c.4 2 1.8 3.4 4 3.7v3c-1.5 0-2.9-.4-4-1.2v6.6c0 3.4-2.7 6-6 6s-6-2.6-6-6 2.7-6 6-6c.4 0 .7 0 1 .1v3.1a3 3 0 1 0 2 2.8V3h3Z"/></svg></div>
+        <h3>TikTok</h3>
+        <span class="handle">@medicina_del_alma</span>
+        <span class="go">Ver videos →</span>
+      </a>
+      <a href="https://www.facebook.com/medicinadelalmafcb" target="_blank" rel="noopener" class="social-card reveal">
+        <div class="social-icon fb"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5h2.5l.4-3H13.5V8.3c0-.9.3-1.5 1.6-1.5h1.7V4.2C16.5 4.1 15.4 4 14.2 4c-2.6 0-4.4 1.6-4.4 4.5v2H7.3v3h2.5V21h3.7Z"/></svg></div>
+        <h3>Facebook</h3>
+        <span class="handle">Medicina del Alma</span>
+        <span class="go">Seguir página →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta">
+  <div class="wrap">
+    <span class="kicker" style="color:#E7C589;">Empieza hoy</span>
+    <h2 class="reveal">Tu bienestar te está esperando</h2>
+    <p class="reveal">Da el primer paso hacia tu equilibrio energético. Escríbeme y agenda tu sesión personalizada.</p>
+    <a href="https://wa.me/34600000000" target="_blank" rel="noopener" class="btn btn-primary reveal">Escríbeme por WhatsApp →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Medicina del Alma</div>
+        <p>Sanación energética y vibracional con Jenny Gamez. Limpiezas, péndulo y acompañamiento para tu bienestar.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#testimonios">Testimonios</a>
+        </div>
+        <div class="footer-col">
+          <h4>Redes</h4>
+          <a href="https://www.instagram.com/medicina_del_alma/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@medicina_del_alma" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/medicinadelalmafcb" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Medicina del Alma. Todos los derechos reservados.</span>
+      <span>Built by <a href="#">EasyLandX</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34600000000" target="_blank" rel="noopener" class="float-wa" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.2.2-.4.1-.2 0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.4 3.8 3.4.5.2.9.4 1.3.5.5.2 1 .1 1.3.1.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+</a>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Header shrink on scroll (subtle)
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 40){
+      header.style.boxShadow = '0 6px 24px rgba(91,58,120,0.08)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>

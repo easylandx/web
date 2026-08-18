@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jimena González — Un espacio seguro para ser divergente</title>
+<meta name="description" content="Jimena González: neurodivergente, altas capacidades y autista. Libro, podcast y YouTube sobre neurodivergencia. Únete a un espacio seguro para ser tú.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFBF5;
+    --bg-soft: #FFF4E8;
+    --ink: #2B2438;
+    --ink-soft: #5C5468;
+    --blue: #5B8DEF;
+    --purple: #9B6BD6;
+    --pink: #F2679E;
+    --red: #EF5B5B;
+    --orange: #F5934A;
+    --yellow: #F7C948;
+    --green: #4FBF8B;
+    --line: rgba(43,36,56,0.1);
+    --radius: 22px;
+    --shadow: 0 10px 30px -12px rgba(43,36,56,0.18);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,251,245,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav-links{
+    display: flex;
+    gap: 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .nav-links a { opacity: 0.75; transition: opacity .2s ease; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta{
+    background: var(--ink);
+    color: var(--bg);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  @media (max-width: 720px){ .nav-links{ display:none; } }
+
+  /* ---------- Rainbow motif ---------- */
+  .divider{
+    width: 100%;
+    height: 28px;
+    display: block;
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding: 84px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 860px){ .hero-grid{ grid-template-columns: 1fr; gap: 40px; } }
+
+  .badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .badge .dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: conic-gradient(var(--blue), var(--purple), var(--pink), var(--red), var(--orange), var(--yellow), var(--green), var(--blue));
+  }
+
+  h1.hero-title{
+    font-size: clamp(2.5rem, 5vw, 3.6rem);
+    margin-bottom: 22px;
+  }
+  h1.hero-title .accent{
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-sub{
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+    border: 2px solid transparent;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    color: #fff;
+    box-shadow: 0 12px 24px -10px rgba(155,107,214,0.55);
+  }
+  .btn-secondary{
+    background: transparent;
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn-secondary:hover{ background: var(--ink); color: var(--bg); }
+
+  .hero-visual{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .avatar-orb{
+    width: min(340px, 100%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(from 200deg, var(--blue), var(--purple), var(--pink), var(--red), var(--orange), var(--yellow), var(--green), var(--blue));
+    padding: 8px;
+    position: relative;
+  }
+  .avatar-orb::before{
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: var(--bg);
+  }
+  .avatar-inner{
+    position: relative;
+    z-index: 1;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 4.5rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .hearts-float{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hearts-float span{
+    position: absolute;
+    font-size: 1.4rem;
+    opacity: 0.9;
+  }
+
+  /* ---------- Trust strip ---------- */
+  .trust{
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .trust-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .trust-item{ display:flex; align-items:center; gap: 10px; }
+  .trust-item .swatch{ width: 10px; height: 10px; border-radius: 3px; }
+
+  /* ---------- Section shared ---------- */
+  section{ padding: 88px 0; }
+  .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--purple);
+    margin-bottom: 14px;
+  }
+  .section-title{
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    max-width: 20ch;
+    margin-bottom: 18px;
+  }
+  .section-sub{
+    color: var(--ink-soft);
+    max-width: 60ch;
+    font-size: 1.05rem;
+  }
+
+  /* ---------- About ---------- */
+  .about{
+    background: var(--bg-soft);
+    border-radius: 32px;
+    margin: 0 20px;
+  }
+  .about .wrap{ padding-top: 0; padding-bottom: 0; }
+  .about-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 860px){ .about-grid{ grid-template-columns: 1fr; gap: 36px; } }
+  .about-card{
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+  }
+  .about-card p{ margin: 0 0 14px; color: var(--ink-soft); }
+  .about-card p:last-child{ margin-bottom: 0; }
+  .about-card strong{ color: var(--ink); }
+
+  .pill-row{ display:flex; flex-wrap:wrap; gap: 10px; margin-top: 22px; }
+  .pill{
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* ---------- Resources ---------- */
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 48px;
+  }
+  @media (max-width: 980px){ .cards{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px){ .cards{ grid-template-columns: 1fr; } }
+
+  .card{
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform .25s ease, box-shadow .25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height: 6px;
+    background: var(--accent, var(--purple));
+  }
+  .card:hover{ transform: translateY(-6px); box-shadow: var(--shadow); }
+  .card-icon{
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: color-mix(in srgb, var(--accent, var(--purple)) 16%, white);
+  }
+  .card h3{ font-size: 1.2rem; }
+  .card p{ color: var(--ink-soft); font-size: 0.95rem; margin: 0; flex-grow: 1; }
+  .card-link{
+    font-weight: 800;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent, var(--purple));
+  }
+  .card-link span{ transition: transform .2s ease; }
+  .card:hover .card-link span{ transform: translateX(4px); }
+
+  /* ---------- Manifesto / why ---------- */
+  .manifesto{
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 32px;
+    margin: 0 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto .wrap{ padding-top: 0; padding-bottom: 0; position: relative; z-index: 1; }
+  .manifesto .eyebrow{ color: var(--yellow); }
+  .manifesto .section-title{ color: var(--bg); }
+  .manifesto-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 44px;
+  }
+  @media (max-width: 860px){ .manifesto-grid{ grid-template-columns: 1fr; } }
+  .manifesto-item{
+    padding: 26px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .manifesto-item .heart{ font-size: 1.6rem; margin-bottom: 12px; display:block; }
+  .manifesto-item h3{ font-size: 1.05rem; margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+  .manifesto-item p{ color: rgba(255,251,245,0.72); font-size: 0.92rem; margin: 0; }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    text-align: center;
+  }
+  .final-cta .section-title{ margin-left: auto; margin-right: auto; }
+  .final-cta .section-sub{ margin-left: auto; margin-right: auto; }
+  .link-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 640px;
+    margin: 40px auto 0;
+  }
+  @media (max-width: 600px){ .link-grid{ grid-template-columns: 1fr; } }
+  .link-btn{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    font-weight: 700;
+    text-align: left;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .link-btn:hover{ transform: translateY(-3px); box-shadow: var(--shadow); border-color: transparent; }
+  .link-btn .ic{
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items:center; justify-content:center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .link-btn small{ display:block; font-weight: 500; color: var(--ink-soft); font-size: 0.8rem; }
+
+  .big-cta{
+    margin-top: 36px;
+    display: inline-flex;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 48px 0 40px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo{ font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; }
+  .footer-links{ display: flex; gap: 22px; font-size: 0.9rem; font-weight: 600; }
+  .footer-links a{ opacity: 0.7; }
+  .footer-links a:hover{ opacity: 1; }
+  .footer-note{ color: var(--ink-soft); font-size: 0.85rem; margin-top: 18px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+    html{ scroll-behavior: auto; }
+  }
+
+  :focus-visible{
+    outline: 3px solid var(--purple);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span aria-hidden="true">🧩</span> Jimena González
+    </div>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#espacio">El espacio</a>
+    </div>
+    <a class="nav-cta" href="https://www.instagram.com/jimenagonzalez.in/" target="_blank" rel="noopener">Seguir en Instagram</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">
+        <span class="dot" aria-hidden="true"></span>
+        Neurodivergente · Altas Capacidades + Autista
+      </div>
+      <h1 class="hero-title">Un espacio seguro<br>para ser <span class="accent">divergente</span></h1>
+      <p class="hero-sub">Hola, soy Jimena. Comparto lo que significa vivir, pensar y sentir distinto — sin máscaras y sin tener que explicarme dos veces. Aquí encuentras mi libro, mi podcast, mi canal y una comunidad que ya no se siente sola.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/jimenagonzalez.in/" target="_blank" rel="noopener">
+          📸 Seguir en Instagram
+        </a>
+        <a class="btn btn-secondary" href="https://bio.site/jimenagonzalez.in" target="_blank" rel="noopener">
+          Ver todos mis enlaces →
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-orb">
+        <div class="avatar-inner">JG</div>
+        <div class="hearts-float" aria-hidden="true">
+          <span style="top:2%; left:48%; color:var(--blue);">💙</span>
+          <span style="top:18%; left:82%; color:var(--purple);">💜</span>
+          <span style="top:50%; left:94%; color:var(--pink);">🩷</span>
+          <span style="top:82%; left:80%; color:var(--red);">❤️</span>
+          <span style="top:96%; left:46%; color:var(--orange);">🧡</span>
+          <span style="top:80%; left:10%; color:var(--yellow);">💛</span>
+          <span style="top:48%; left:0%; color:var(--green);">💚</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<svg class="divider" viewBox="0 0 1080 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M0 14 Q 40 2, 80 14 T 160 14 T 240 14 T 320 14 T 400 14 T 480 14 T 560 14 T 640 14 T 720 14 T 800 14 T 880 14 T 960 14 T 1040 14" fill="none" stroke="url(#rainbow)" stroke-width="3" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="rainbow" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5B8DEF"/>
+      <stop offset="17%" stop-color="#9B6BD6"/>
+      <stop offset="34%" stop-color="#F2679E"/>
+      <stop offset="50%" stop-color="#EF5B5B"/>
+      <stop offset="66%" stop-color="#F5934A"/>
+      <stop offset="83%" stop-color="#F7C948"/>
+      <stop offset="100%" stop-color="#4FBF8B"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><span class="swatch" style="background:var(--blue)"></span> Libro publicado</div>
+    <div class="trust-item"><span class="swatch" style="background:var(--purple)"></span> Podcast en Spotify</div>
+    <div class="trust-item"><span class="swatch" style="background:var(--pink)"></span> Canal en YouTube</div>
+    <div class="trust-item"><span class="swatch" style="background:var(--orange)"></span> Comunidad en Instagram</div>
+  </div>
+</div>
+
+<section class="about" id="sobre-mi">
+  <div class="wrap" style="padding-top:88px; padding-bottom:88px;">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">Sobre mí</div>
+        <h2 class="section-title">No tienes que encajar. Tienes que entenderte.</h2>
+        <p class="section-sub">Durante años intenté encajar en un molde que no era el mío. Descubrir que soy neurodivergente —altas capacidades y autismo— no me dio una etiqueta: me dio un idioma para explicarme por fin.</p>
+        <div class="pill-row">
+          <span class="pill" style="background:var(--blue)">Autismo</span>
+          <span class="pill" style="background:var(--purple)">Altas capacidades</span>
+          <span class="pill" style="background:var(--pink)">Sensibilidad</span>
+          <span class="pill" style="background:var(--orange)">Comunidad</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <p><strong>Hoy comparto ese idioma</strong> a través de un libro, un podcast y un canal de YouTube, para que quien se sienta "distinto" encuentre aquí un lugar donde no tiene que traducirse.</p>
+        <p>Si alguna vez sentiste que pensabas demasiado, sentías demasiado o no encajabas del todo — este espacio es para ti.</p>
+        <p>💙💜🩷❤️🧡💛💚 — un color por cada forma de ser divergente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recursos">
+  <div class="wrap">
+    <div class="eyebrow">Recursos</div>
+    <h2 class="section-title">Elige por dónde empezar</h2>
+    <p class="section-sub">Todo lo que comparto está pensado para acompañar, no para diagnosticar. Explora el formato que mejor te encaje hoy.</p>
+
+    <div class="cards">
+      <div class="card" style="--accent: var(--blue)">
+        <div class="card-icon">📖</div>
+        <h3>El libro</h3>
+        <p>"Así que era eso, soy neurodivergente" — mi historia y una guía para entenderte, disponible en Penguin Libros.</p>
+        <a class="card-link" href="https://www.penguinlibros.com/es/ciencia-y-tecnologia/460119-libro-asi-que-era-eso-soy-neurodivergente-9788427254602" target="_blank" rel="noopener">Comprar el libro <span>→</span></a>
+      </div>
+
+      <div class="card" style="--accent: var(--orange)">
+        <div class="card-icon">🛍️</div>
+        <h3>Mi selección en Amazon</h3>
+        <p>Los libros, recursos y objetos que uso y recomiendo para el día a día neurodivergente.</p>
+        <a class="card-link" href="https://www.amazon.es/shop/jimenagonzalez.in/list/32KAD838SAX08" target="_blank" rel="noopener">Ver la lista <span>→</span></a>
+      </div>
+
+      <div class="card" style="--accent: var(--purple)">
+        <div class="card-icon">🎧</div>
+        <h3>El podcast</h3>
+        <p>Conversaciones honestas sobre neurodivergencia, altas capacidades y autismo. Nuevos episodios cada semana.</p>
+        <a class="card-link" href="https://open.spotify.com/show/5I0ZpBZILDQ4HH7pWx8J0P" target="_blank" rel="noopener">Escuchar en Spotify <span>→</span></a>
+      </div>
+
+      <div class="card" style="--accent: var(--pink)">
+        <div class="card-icon">▶️</div>
+        <h3>YouTube</h3>
+        <p>Vídeos donde profundizo, respondo preguntas de la comunidad y comparto lo que voy aprendiendo.</p>
+        <a class="card-link" href="https://www.youtube.com/@Jimena_Gonz" target="_blank" rel="noopener">Ver el canal <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto" id="espacio">
+  <div class="wrap" style="padding-top:80px; padding-bottom:80px;">
+    <div class="eyebrow">Por qué este espacio</div>
+    <h2 class="section-title">Un lugar sin máscaras</h2>
+    <div class="manifesto-grid">
+      <div class="manifesto-item">
+        <span class="heart">💙</span>
+        <h3>Sin juicios</h3>
+        <p>Aquí no hay una forma "correcta" de ser. Cada neurodivergencia se vive distinto, y eso está bien.</p>
+      </div>
+      <div class="manifesto-item">
+        <span class="heart">🩷</span>
+        <h3>Con información real</h3>
+        <p>Hablo desde mi experiencia y desde lo que voy aprendiendo, sin promesas vacías ni diagnósticos improvisados.</p>
+      </div>
+      <div class="manifesto-item">
+        <span class="heart">💚</span>
+        <h3>En comunidad</h3>
+        <p>No estás sola ni solo en esto. Miles de personas comparten aquí lo que antes solo se decían en silencio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center;">Empieza aquí</div>
+    <h2 class="section-title">Todos mis enlaces, en un solo lugar</h2>
+    <p class="section-sub">Sígueme, escucha, mira o lee — como prefieras empezar a formar parte de este espacio.</p>
+
+    <div class="link-grid">
+      <a class="link-btn" href="https://www.instagram.com/jimenagonzalez.in/" target="_blank" rel="noopener">
+        <span class="ic" style="background:color-mix(in srgb, var(--pink) 18%, white); color:var(--pink);">📸</span>
+        <span>Instagram<small>@jimenagonzalez.in</small></span>
+      </a>
+      <a class="link-btn" href="https://bio.site/jimenagonzalez.in" target="_blank" rel="noopener">
+        <span class="ic" style="background:color-mix(in srgb, var(--purple) 18%, white); color:var(--purple);">🔗</span>
+        <span>Bio.site<small>Todos mis enlaces</small></span>
+      </a>
+      <a class="link-btn" href="https://www.penguinlibros.com/es/ciencia-y-tecnologia/460119-libro-asi-que-era-eso-soy-neurodivergente-9788427254602" target="_blank" rel="noopener">
+        <span class="ic" style="background:color-mix(in srgb, var(--blue) 18%, white); color:var(--blue);">📖</span>
+        <span>Penguin Libros<small>Comprar el libro</small></span>
+      </a>
+      <a class="link-btn" href="https://www.amazon.es/shop/jimenagonzalez.in/list/32KAD838SAX08" target="_blank" rel="noopener">
+        <span class="ic" style="background:color-mix(in srgb, var(--orange) 18%, white); color:var(--orange);">🛍️</span>
+        <span>Amazon<small>Mi selección</small></span>
+      </a>
+      <a class="link-btn" href="https://open.spotify.com/show/5I0ZpBZILDQ4HH7pWx8J0P" target="_blank" rel="noopener">
+        <span class="ic" style="background:color-mix(in srgb, var(--green) 18%, white); color:var(--green);">🎧</span>
+        <span>Spotify<small>Escuchar el podcast</small></span>
+      </a>
+      <a class="link-btn" href="https://www.youtube.com/@Jimena_Gonz" target="_blank" rel="noopener">
+        <span class="ic" style="background:color-mix(in srgb, var(--red) 18%, white); color:var(--red);">▶️</span>
+        <span>YouTube<small>Ver el canal</small></span>
+      </a>
+    </div>
+
+    <a class="btn btn-primary big-cta" href="https://www.instagram.com/jimenagonzalez.in/" target="_blank" rel="noopener">
+      💙 Seguir a Jimena en Instagram
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">Jimena González</div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/jimenagonzalez.in/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://bio.site/jimenagonzalez.in" target="_blank" rel="noopener">Bio.site</a>
+        <a href="https://open.spotify.com/show/5I0ZpBZILDQ4HH7pWx8J0P" target="_blank" rel="noopener">Podcast</a>
+        <a href="https://www.youtube.com/@Jimena_Gonz" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <p class="footer-note">Hecho con 💙💜🩷❤️🧡💛💚 para la comunidad neurodivergente.</p>
+  </div>
+</footer>
+
+</body>
+</html>

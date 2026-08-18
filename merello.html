@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paloma Merello · Altas Capacidades y Talento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F8F3EA;
+    --paper-2:#F1E9DA;
+    --ink:#221A38;
+    --ink-soft:#4A4066;
+    --amber:#FFB627;
+    --coral:#FF5D73;
+    --teal:#1FAF9E;
+    --lavender:#B8A6FF;
+    --line: rgba(34,26,56,0.12);
+    --radius: 20px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px; height:8px;
+    background:var(--amber);
+    border-radius:50%;
+    display:inline-block;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; line-height:1.05; letter-spacing:-0.01em;}
+  .container{ max-width:1160px; margin:0 auto; padding:0 28px;}
+  section{ padding:100px 0; position:relative;}
+  @media (max-width:720px){ section{padding:68px 0;} }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(248,243,234,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1160px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.15rem;
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+  }
+  .brand-mark{
+    width:34px; height:34px; border-radius:50%;
+    background:conic-gradient(from 180deg, var(--amber), var(--coral), var(--lavender), var(--teal), var(--amber));
+    display:grid; place-items:center;
+    box-shadow: inset 0 0 0 3px var(--paper);
+  }
+  .nav-links{ display:flex; gap:30px; align-items:center; font-size:0.94rem; font-weight:600;}
+  .nav-links a{ text-decoration:none; opacity:0.8; transition:opacity .2s;}
+  .nav-links a:hover{ opacity:1; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:999px;
+    font-weight:700; font-size:0.92rem;
+    text-decoration:none; border:2px solid transparent;
+    cursor:pointer; transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--ink); color:var(--paper); box-shadow:0 6px 0 var(--coral);}
+  .btn-primary:hover{ box-shadow:0 4px 0 var(--coral); transform:translateY(0px);}
+  .btn-ghost{ background:transparent; border-color:var(--ink); color:var(--ink);}
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+  .nav .btn{ padding:10px 18px; font-size:0.85rem;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top:170px;
+    padding-bottom:80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .synapse-field{
+    position:absolute; inset:0; z-index:0; opacity:0.55;
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:50px; align-items:center;
+    position:relative; z-index:2;
+  }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{
+    font-size:clamp(2.5rem, 5.2vw, 4.1rem);
+    margin:18px 0 22px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--coral); }
+  .hero p.lead{
+    font-size:1.18rem; color:var(--ink-soft); max-width:52ch; margin-bottom:32px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-portrait{
+    position:relative;
+    aspect-ratio: 4/5;
+    border-radius: 32px;
+    background: linear-gradient(155deg, var(--lavender) 0%, var(--coral) 48%, var(--amber) 100%);
+    display:grid; place-items:center;
+    box-shadow: 0 30px 60px -20px rgba(34,26,56,0.35);
+  }
+  .hero-portrait-inner{
+    width:88%; height:88%; border-radius:24px;
+    background:var(--paper);
+    display:grid; place-items:center;
+    text-align:center;
+    padding:24px;
+  }
+  .hero-portrait-inner .icon{
+    font-size:4.2rem; margin-bottom:12px;
+  }
+  .hero-portrait-inner .tag{
+    font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--ink-soft); letter-spacing:0.05em;
+  }
+  .float-badge{
+    position:absolute; background:var(--ink); color:var(--paper);
+    border-radius:16px; padding:12px 16px; font-family:'Space Mono',monospace;
+    font-size:0.78rem; box-shadow:0 12px 24px -8px rgba(0,0,0,0.35);
+  }
+  .badge-1{ top:-14px; left:-24px; background:var(--teal); }
+  .badge-2{ bottom:20px; right:-26px; background:var(--coral); }
+  @media (max-width:900px){ .float-badge{ display:none; } }
+
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:34px; margin-top:64px;
+    padding-top:34px; border-top:1px solid var(--line);
+    position:relative; z-index:2;
+  }
+  .trust-item{ min-width:150px; }
+  .trust-item .num{ font-family:'Fraunces',serif; font-size:2rem; font-weight:700; color:var(--ink);}
+  .trust-item .label{ font-size:0.86rem; color:var(--ink-soft); }
+
+  /* ---------- MYTHS (signature) ---------- */
+  .myths-head{ max-width:640px; margin-bottom:52px; }
+  .myths-head h2{ font-size:clamp(2rem,3.6vw,2.8rem); margin-top:14px;}
+  .myths-head p{ color:var(--ink-soft); margin-top:14px; font-size:1.05rem;}
+  .myth-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:22px;
+  }
+  .myth-card{
+    perspective:1400px;
+    height:260px;
+  }
+  .myth-card-inner{
+    position:relative; width:100%; height:100%;
+    transform-style:preserve-3d;
+    transition:transform 0.6s cubic-bezier(.4,.2,.2,1);
+    cursor:pointer;
+  }
+  .myth-card.flipped .myth-card-inner{ transform:rotateY(180deg); }
+  .myth-face{
+    position:absolute; inset:0; border-radius:var(--radius);
+    padding:26px; display:flex; flex-direction:column;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+  }
+  .myth-front{
+    background:var(--ink); color:var(--paper);
+  }
+  .myth-front .k{ font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; color:var(--amber); text-transform:uppercase;}
+  .myth-front p{ font-family:'Fraunces',serif; font-size:1.28rem; margin-top:16px; font-weight:500; line-height:1.25;}
+  .myth-front .tap{ margin-top:auto; font-size:0.78rem; color:var(--paper); opacity:0.6; }
+  .myth-back{
+    background:var(--teal); color:var(--ink);
+    transform:rotateY(180deg);
+  }
+  .myth-back .k{ font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink);}
+  .myth-back p{ font-size:0.96rem; margin-top:14px; }
+  .myth-card:nth-child(2) .myth-back{ background:var(--coral); }
+  .myth-card:nth-child(3) .myth-back{ background:var(--amber); }
+  .myth-card:nth-child(4) .myth-back{ background:var(--lavender); }
+  .myth-card:nth-child(5) .myth-back{ background:var(--teal); }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--ink); color:var(--paper); border-radius:40px; margin:0 20px; }
+  .about .container{ padding-top:0; padding-bottom:0; }
+  .about-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:center;
+  }
+  @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; } }
+  .about h2{ font-size:clamp(1.9rem,3.4vw,2.6rem); }
+  .about p.lead{ color:rgba(248,243,234,0.75); font-size:1.08rem; margin-top:18px; max-width:56ch;}
+  .credentials{ margin-top:30px; display:flex; flex-direction:column; gap:16px; }
+  .credential{ display:flex; gap:14px; align-items:flex-start; }
+  .credential .dot{
+    width:10px; height:10px; border-radius:50%; margin-top:7px; flex-shrink:0;
+    background:var(--amber);
+  }
+  .credential:nth-child(2) .dot{ background:var(--coral); }
+  .credential:nth-child(3) .dot{ background:var(--teal); }
+  .credential:nth-child(4) .dot{ background:var(--lavender); }
+  .credential b{ display:block; font-size:0.98rem; }
+  .credential span{ color:rgba(248,243,234,0.68); font-size:0.9rem; }
+  .about-visual{
+    border-radius:28px; background:linear-gradient(160deg, rgba(184,166,255,0.25), rgba(255,182,39,0.18));
+    border:1px solid rgba(248,243,234,0.18);
+    padding:36px; height:100%;
+  }
+  .stat-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .stat-box{ background:rgba(248,243,234,0.06); border-radius:18px; padding:20px; }
+  .stat-box .num{ font-family:'Fraunces',serif; font-size:1.9rem; font-weight:700; color:var(--amber);}
+  .stat-box .label{ font-size:0.82rem; color:rgba(248,243,234,0.7); margin-top:6px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-head{ max-width:640px; margin-bottom:48px; }
+  .services-head h2{ font-size:clamp(2rem,3.6vw,2.8rem); margin-top:14px;}
+  .services-head p{ color:var(--ink-soft); margin-top:14px; font-size:1.05rem;}
+  .service-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:22px;
+  }
+  .service-card{
+    background:var(--paper-2); border-radius:var(--radius); padding:30px;
+    border:1px solid var(--line);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .service-card:hover{ transform:translateY(-6px); box-shadow:0 20px 34px -18px rgba(34,26,56,0.28); background:var(--paper);}
+  .service-icon{
+    width:48px; height:48px; border-radius:14px;
+    display:grid; place-items:center; font-size:1.4rem; margin-bottom:18px;
+  }
+  .service-card:nth-child(1) .service-icon{ background:var(--amber); }
+  .service-card:nth-child(2) .service-icon{ background:var(--coral); }
+  .service-card:nth-child(3) .service-icon{ background:var(--teal); }
+  .service-card:nth-child(4) .service-icon{ background:var(--lavender); }
+  .service-card h3{ font-size:1.25rem; margin-bottom:10px; }
+  .service-card p{ color:var(--ink-soft); font-size:0.94rem; }
+
+  /* ---------- PRESS ---------- */
+  .press{ }
+  .press-head{ text-align:center; max-width:600px; margin:0 auto 40px; }
+  .press-head h2{ font-size:clamp(1.8rem,3vw,2.3rem); margin-top:14px; }
+  .press-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px;
+  }
+  .press-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:26px;
+  }
+  .press-card p{ font-family:'Fraunces',serif; font-style:italic; font-size:1.02rem; color:var(--ink); line-height:1.5; }
+  .press-card .src{ margin-top:16px; font-family:'Space Mono',monospace; font-size:0.74rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em;}
+
+  /* ---------- INSTAGRAM CTA ---------- */
+  .ig-band{
+    background:linear-gradient(120deg, var(--lavender), var(--coral) 50%, var(--amber));
+    border-radius:36px; margin:0 20px;
+    padding:70px 40px; text-align:center; color:var(--ink);
+    position:relative; overflow:hidden;
+  }
+  .ig-band h2{ font-size:clamp(2rem,4vw,2.9rem); }
+  .ig-band p{ max-width:52ch; margin:16px auto 30px; font-size:1.05rem; color:rgba(34,26,56,0.82);}
+  .ig-handle{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ink); color:var(--paper);
+    padding:14px 26px; border-radius:999px; font-weight:700;
+    text-decoration:none; font-size:1rem;
+    box-shadow:0 8px 0 rgba(34,26,56,0.25);
+    transition:transform .18s ease;
+  }
+  .ig-handle:hover{ transform:translateY(-3px); }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  @media (max-width:900px){ .contact{ grid-template-columns:1fr; } }
+  .contact h2{ font-size:clamp(2rem,3.6vw,2.7rem); }
+  .contact p.lead{ color:var(--ink-soft); margin-top:16px; font-size:1.05rem; max-width:48ch;}
+  .contact-cards{ display:flex; flex-direction:column; gap:16px; }
+  .contact-card{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:22px 24px; border-radius:18px; border:1px solid var(--line);
+    background:var(--paper-2); text-decoration:none; color:var(--ink);
+    transition:transform .18s ease, background .18s ease;
+  }
+  .contact-card:hover{ transform:translateX(4px); background:var(--paper); }
+  .contact-card .ct-t{ font-weight:700; font-size:1.02rem; }
+  .contact-card .ct-s{ font-size:0.86rem; color:var(--ink-soft); margin-top:2px;}
+  .arrow{ font-size:1.3rem; }
+
+  footer{
+    padding:40px 0 50px; text-align:center;
+    color:var(--ink-soft); font-size:0.86rem;
+  }
+  footer a{ text-decoration:underline; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="brand-mark"></span> Paloma Merello</a>
+    <div class="nav-links">
+      <a href="#mitos">Ciencia sin mitos</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto" class="btn btn-primary">Hablemos</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="synapse-field" viewBox="0 0 1160 620" preserveAspectRatio="xMidYMid slice">
+      <g stroke="#221A38" stroke-opacity="0.15" stroke-width="1.4">
+        <line x1="80" y1="90" x2="260" y2="180"/>
+        <line x1="260" y1="180" x2="200" y2="330"/>
+        <line x1="260" y1="180" x2="430" y2="120"/>
+        <line x1="430" y1="120" x2="600" y2="220"/>
+        <line x1="600" y1="220" x2="780" y2="140"/>
+        <line x1="600" y1="220" x2="650" y2="380"/>
+        <line x1="780" y1="140" x2="960" y2="200"/>
+        <line x1="960" y1="200" x2="1080" y2="110"/>
+        <line x1="200" y1="330" x2="380" y2="420"/>
+        <line x1="380" y1="420" x2="600" y2="480"/>
+        <line x1="600" y1="480" x2="820" y2="430"/>
+        <line x1="650" y1="380" x2="820" y2="430"/>
+        <line x1="820" y1="430" x2="990" y2="500"/>
+      </g>
+      <g fill="#FFB627">
+        <circle cx="80" cy="90" r="5"/>
+        <circle cx="430" cy="120" r="4"/>
+        <circle cx="780" cy="140" r="5"/>
+        <circle cx="600" cy="480" r="4"/>
+      </g>
+      <g fill="#FF5D73">
+        <circle cx="260" cy="180" r="6"/>
+        <circle cx="600" cy="220" r="5"/>
+        <circle cx="820" cy="430" r="5"/>
+        <circle cx="380" cy="420" r="4"/>
+      </g>
+      <g fill="#1FAF9E">
+        <circle cx="200" cy="330" r="5"/>
+        <circle cx="960" cy="200" r="5"/>
+        <circle cx="650" cy="380" r="4"/>
+        <circle cx="990" cy="500" r="4"/>
+      </g>
+      <g fill="#B8A6FF">
+        <circle cx="1080" cy="110" r="5"/>
+      </g>
+    </svg>
+
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Ciencia sobre altas capacidades · sin mitos</span>
+          <h1>Entender el talento tal y como lo explica <em>la evidencia</em>, no el estereotipo.</h1>
+          <p class="lead">Soy Paloma Merello, profesora de la Universitat de València e investigadora del desarrollo del talento. Ayudo a familias, docentes y centros educativos a identificar y acompañar las altas capacidades desde el rigor científico, sin mitos ni etiquetas fáciles.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://www.instagram.com/paloma_merello/" target="_blank" rel="noopener">Sígueme en Instagram ↗</a>
+            <a class="btn btn-ghost" href="#contacto">Solicitar charla o asesoría</a>
+          </div>
+        </div>
+        <div class="hero-portrait">
+          <div class="float-badge badge-1">🎓 2 doctorados</div>
+          <div class="float-badge badge-2">📚 26K comunidad</div>
+          <div class="hero-portrait-inner">
+            <div class="icon">🧠</div>
+            <div class="tag">PALOMA MERELLO GIMÉNEZ<br>Profesora Titular · Universitat de València</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-strip">
+        <div class="trust-item"><div class="num">26K</div><div class="label">Comunidad en Instagram</div></div>
+        <div class="trust-item"><div class="num">2</div><div class="label">Doctorados (ADE y Estadística)</div></div>
+        <div class="trust-item"><div class="num">UV</div><div class="label">Profesora titular, Universitat de València</div></div>
+        <div class="trust-item"><div class="num">DACIU</div><div class="label">Coordinadora de mentoría de talento universitario</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MYTHS -->
+  <section id="mitos">
+    <div class="container">
+      <div class="myths-head">
+        <span class="eyebrow">El signo de la casa</span>
+        <h2>Toca la tarjeta. Cambia el mito por la evidencia.</h2>
+        <p>Cinco ideas muy extendidas sobre las altas capacidades, contrastadas con lo que muestra realmente la investigación.</p>
+      </div>
+      <div class="myth-grid">
+
+        <div class="myth-card" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+          <div class="myth-card-inner">
+            <div class="myth-face myth-front">
+              <span class="k">Mito 01</span>
+              <p>"Las personas con altas capacidades destacan en todo lo que hacen."</p>
+              <span class="tap">Toca para ver la evidencia →</span>
+            </div>
+            <div class="myth-face myth-back">
+              <span class="k">Evidencia</span>
+              <p>El talento no suele repartirse por igual en todas las áreas: lo habitual es un perfil con puntos fuertes concretos, no una excelencia generalizada en cualquier tarea.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="myth-card" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+          <div class="myth-card-inner">
+            <div class="myth-face myth-front">
+              <span class="k">Mito 02</span>
+              <p>"Son genios inadaptados, con más problemas emocionales que el resto."</p>
+              <span class="tap">Toca para ver la evidencia →</span>
+            </div>
+            <div class="myth-face myth-back">
+              <span class="k">Evidencia</span>
+              <p>Casi dos tercios de la población asocia altas capacidades con dificultades socioemocionales, pero la investigación no encuentra que este colectivo presente más problemas de este tipo que el resto.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="myth-card" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+          <div class="myth-card-inner">
+            <div class="myth-face myth-front">
+              <span class="k">Mito 03</span>
+              <p>"Las altas capacidades son cosa de la infancia; de adultos ya no se habla de esto."</p>
+              <span class="tap">Toca para ver la evidencia →</span>
+            </div>
+            <div class="myth-face myth-back">
+              <span class="k">Evidencia</span>
+              <p>Los adultos con altas capacidades existen y siguen ahí, aunque se hable mucho menos de ellos: el foco casi exclusivo en la infancia deja fuera a toda una etapa vital.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="myth-card" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+          <div class="myth-card-inner">
+            <div class="myth-face myth-front">
+              <span class="k">Mito 04</span>
+              <p>"Alta capacidad es sinónimo de buena persona y de éxito garantizado."</p>
+              <span class="tap">Toca para ver la evidencia →</span>
+            </div>
+            <div class="myth-face myth-back">
+              <span class="k">Evidencia</span>
+              <p>Tener alta capacidad no implica ser mejor persona ni triunfar automáticamente. Es una condición cognitiva, no una garantía moral ni de rendimiento.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="myth-card" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+          <div class="myth-card-inner">
+            <div class="myth-face myth-front">
+              <span class="k">Mito 05</span>
+              <p>"Si el talento no se potenció de pequeño, ya se ha perdido para siempre."</p>
+              <span class="tap">Toca para ver la evidencia →</span>
+            </div>
+            <div class="myth-face myth-back">
+              <span class="k">Evidencia</span>
+              <p>El talento no desaparece sin más. La personalidad, el entorno y las oportunidades de cada etapa influyen mucho, y desarrollarlo más tarde puede costar más, pero sigue siendo posible.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="sobre-mi">
+    <div class="container">
+      <div class="about">
+        <div class="container" style="padding:64px 40px;">
+          <div class="about-grid">
+            <div>
+              <span class="eyebrow" style="color:var(--amber)">Sobre mí</span>
+              <h2>Investigo el talento desde dentro de la universidad, y lo cuento fuera de ella.</h2>
+              <p class="lead">Soy Profesora Titular del Departamento de Contabilidad y Finanzas de la Universitat de València. Además de mi investigación en modelización aplicada, coordino proyectos sobre identificación y desarrollo del talento en el ámbito universitario y participo en la docencia del Máster en altas capacidades y desarrollo del talento de la UV.</p>
+              <div class="credentials">
+                <div class="credential"><span class="dot"></span><div><b>Doble doctorado</b><span>Administración y Dirección de Empresas (2013) y Estadística e Investigación Operativa (2015).</span></div></div>
+                <div class="credential"><span class="dot"></span><div><b>Coordinadora del proyecto DACIU</b><span>Mentoría universitaria para el alumnado con altas capacidades en la Universitat de València.</span></div></div>
+                <div class="credential"><span class="dot"></span><div><b>Docente e investigadora</b><span>Publica y participa en congresos sobre altas capacidades, identificación del talento y equidad educativa.</span></div></div>
+                <div class="credential"><span class="dot"></span><div><b>Divulgadora</b><span>Comparte ciencia sobre altas capacidades en medios, podcasts y redes sociales, alejada de mitos y etiquetas.</span></div></div>
+              </div>
+            </div>
+            <div class="about-visual">
+              <div class="stat-row">
+                <div class="stat-box"><div class="num">26K</div><div class="label">Seguidores en Instagram interesados en talento y altas capacidades</div></div>
+                <div class="stat-box"><div class="num">606+</div><div class="label">Publicaciones de divulgación científica sin mitos</div></div>
+                <div class="stat-box"><div class="num">UV</div><div class="label">Universitat de València, Dpto. Contabilidad y Finanzas</div></div>
+                <div class="stat-box"><div class="num">2015</div><div class="label">Doctorado internacional en Estadística e Investigación Operativa</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios">
+    <div class="container">
+      <div class="services-head">
+        <span class="eyebrow">Cómo puedo ayudarte</span>
+        <h2>Ciencia del talento, aplicada a tu centro, tu familia o tu medio.</h2>
+        <p>Formación y acompañamiento con base en la investigación, no en el mito, para quienes conviven a diario con las altas capacidades.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">🎤</div>
+          <h3>Charlas y formación</h3>
+          <p>Sesiones para AMPAs, claustros, congresos y asociaciones sobre identificación y desarrollo del talento, adaptadas a cada público.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👨‍👩‍👧</div>
+          <h3>Orientación a familias y docentes</h3>
+          <p>Acompañamiento para comprender el perfil de un niño, niña o adulto con altas capacidades y ajustar expectativas desde la evidencia.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏛️</div>
+          <h3>Colaboración con centros y universidades</h3>
+          <p>Diseño y asesoría de programas de identificación y mentoría de talento en entornos educativos, inspirados en el proyecto DACIU.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎙️</div>
+          <h3>Medios y divulgación</h3>
+          <p>Entrevistas, artículos y colaboraciones para llevar la ciencia sobre altas capacidades a audiencias amplias, sin mitos ni sensacionalismo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="press">
+    <div class="container">
+      <div class="press-head">
+        <span class="eyebrow">Presencia y prensa</span>
+        <h2>Con quién ha compartido esta conversación</h2>
+      </div>
+      <div class="press-grid">
+        <div class="press-card">
+          <p>Referente invitada en el I Congreso Internacional de Altas Capacidades, junto a especialistas en educación y psicología del talento.</p>
+          <div class="src">Congreso de Altas Capacidades · Córdoba</div>
+        </div>
+        <div class="press-card">
+          <p>Entrevistada sobre su propuesta de un modelo multidimensional para entender el desarrollo del talento más allá del rendimiento.</p>
+          <div class="src">Podcast Bea Sánchez · Mamá Valiente</div>
+        </div>
+        <div class="press-card">
+          <p>Autora de divulgación científica sobre altas capacidades y sensibilidad, publicado originalmente en The Conversation.</p>
+          <div class="src">The Conversation / Gaseta de la Recerca, UV</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM CTA -->
+  <section>
+    <div class="container">
+      <div class="ig-band">
+        <span class="eyebrow" style="color:var(--ink)">Cada semana, ciencia sin mitos</span>
+        <h2>Únete a la comunidad que ya entiende el talento de otra manera.</h2>
+        <p>Contenido divulgativo sobre altas capacidades, familia y educación, contrastado con investigación real, no con estereotipos.</p>
+        <a class="ig-handle" href="https://www.instagram.com/paloma_merello/" target="_blank" rel="noopener">📸 @paloma_merello en Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto">
+    <div class="container">
+      <div class="contact">
+        <div>
+          <span class="eyebrow">Trabajemos juntas</span>
+          <h2>¿Charla, asesoría o colaboración? Empecemos por aquí.</h2>
+          <p class="lead">Cuéntame qué necesita tu centro, tu familia o tu medio. Respondo primero por Instagram; para consultas académicas, puedes también localizarme en mi ficha de la Universitat de València.</p>
+        </div>
+        <div class="contact-cards">
+          <a class="contact-card" href="https://www.instagram.com/paloma_merello/" target="_blank" rel="noopener">
+            <div><div class="ct-t">Escríbeme por Instagram</div><div class="ct-s">@paloma_merello · charlas, dudas y colaboraciones</div></div>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="contact-card" href="https://www.uv.es/uvweb/universidad/es/ficha-persona-1285950309813.html" target="_blank" rel="noopener">
+            <div><div class="ct-t">Ficha académica UV</div><div class="ct-s">Universitat de València · Dpto. Contabilidad y Finanzas</div></div>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    Paloma Merello Giménez · Altas capacidades y talento · <a href="https://www.instagram.com/paloma_merello/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.uv.es/uvweb/universidad/es/ficha-persona-1285950309813.html" target="_blank" rel="noopener">Universitat de València</a>
+  </div>
+</footer>
+
+</body>
+</html>

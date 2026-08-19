@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soy Maru y Tengo TDAH | Coaching Neurodivergente</title>
+<meta name="description" content="Coaching neurodivergente adaptado para personas con TDAH. Únete al Club TDAH todos los domingos con Maru, fundadora y creadora de contenido con más de 118K seguidores.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EC;
+    --peach:#FFE7D2;
+    --orange:#FF7A3D;
+    --orange-deep:#E85D2A;
+    --coral:#FF4D6D;
+    --yellow:#FFC93C;
+    --ink:#3A2A2E;
+    --ink-soft:#6B5158;
+    --white:#FFFFFF;
+    --line: rgba(58,42,46,0.12);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    line-height:1.08;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+  section{position:relative;}
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--orange-deep);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,248,236,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:1.35rem;
+    display:flex; align-items:center; gap:8px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .logo span{
+    background:var(--orange);
+    color:var(--white);
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;
+    transform:rotate(-8deg);
+  }
+  nav.links{display:flex; gap:28px; align-items:center;}
+  nav.links a{
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  nav.links a:hover{color:var(--orange-deep);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:0.98rem;
+    text-decoration:none;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--orange);
+    color:var(--white);
+    box-shadow:0 6px 0 var(--orange-deep);
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-primary:active{transform:translateY(2px); box-shadow:0 2px 0 var(--orange-deep);}
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--cream);}
+  .btn-sm{padding:9px 16px; font-size:0.85rem;}
+  header .btn{display:none;}
+  @media(min-width:860px){ header .btn{display:inline-flex;} }
+  .burger{display:block; background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);}
+  @media(min-width:860px){ .burger{display:none;} nav.links{display:flex;} }
+  @media(max-width:859px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 120px;
+    overflow:hidden;
+  }
+  .hero-inner{
+    display:grid;
+    gap:40px;
+    align-items:center;
+  }
+  @media(min-width:900px){ .hero-inner{grid-template-columns:1.1fr 0.9fr;} }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--white);
+    border:2px solid var(--line);
+    padding:7px 16px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:0.82rem;
+    letter-spacing:0.02em;
+    color:var(--orange-deep);
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"🏆"; font-size:0.95rem;}
+
+  h1.hero-title{
+    font-size:clamp(2.4rem, 5.4vw, 3.6rem);
+    color:var(--ink);
+  }
+  h1.hero-title em{
+    font-style:normal;
+    color:var(--orange-deep);
+    position:relative;
+    white-space:nowrap;
+  }
+  h1.hero-title .u{
+    text-decoration:underline;
+    text-decoration-color:var(--yellow);
+    text-decoration-thickness:10px;
+    text-underline-offset:-4px;
+    text-decoration-skip-ink:none;
+  }
+
+  .hero-sub{
+    margin-top:20px;
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-ctas{
+    margin-top:32px;
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+  .stat-row{
+    margin-top:38px;
+    display:flex; gap:28px; flex-wrap:wrap;
+  }
+  .stat b{
+    display:block;
+    font-family:'Baloo 2', sans-serif;
+    font-size:1.6rem;
+    color:var(--ink);
+  }
+  .stat span{font-size:0.85rem; color:var(--ink-soft); font-weight:700;}
+
+  /* hero visual: floating adhd-brain sticky thoughts */
+  .brainzone{
+    position:relative;
+    height:420px;
+  }
+  .brain-core{
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    width:190px;height:190px;
+    background:linear-gradient(135deg, var(--orange), var(--coral));
+    border-radius:46% 54% 58% 42% / 50% 45% 55% 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:4.2rem;
+    box-shadow:0 20px 40px rgba(255,122,61,0.35);
+    animation:blob 7s ease-in-out infinite;
+  }
+  @keyframes blob{
+    0%,100%{border-radius:46% 54% 58% 42% / 50% 45% 55% 50%;}
+    50%{border-radius:58% 42% 46% 54% / 42% 55% 45% 58%;}
+  }
+  .note{
+    position:absolute;
+    background:var(--white);
+    border:1px solid var(--line);
+    box-shadow:0 10px 22px rgba(58,42,46,0.10);
+    padding:10px 14px;
+    border-radius:10px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    color:var(--ink);
+    animation:float 6s ease-in-out infinite;
+  }
+  .note:nth-child(2){top:2%; left:0%; background:var(--yellow); transform:rotate(-7deg); animation-delay:0s;}
+  .note:nth-child(3){top:8%; right:0%; transform:rotate(6deg); animation-delay:0.6s;}
+  .note:nth-child(4){bottom:16%; left:-4%; background:var(--peach); transform:rotate(4deg); animation-delay:1.2s;}
+  .note:nth-child(5){bottom:2%; right:6%; transform:rotate(-5deg); animation-delay:1.8s;}
+  .note:nth-child(6){top:42%; left:-8%; background:var(--coral); color:var(--white); transform:rotate(-4deg); animation-delay:0.3s;}
+  .note:nth-child(7){top:46%; right:-6%; background:var(--white); transform:rotate(8deg); animation-delay:1.5s;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(var(--r,0deg));}
+    50%{transform:translateY(-10px) rotate(var(--r,0deg));}
+  }
+  @media(max-width:899px){
+    .brainzone{height:340px;}
+    .note{font-size:0.72rem; padding:7px 10px;}
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-tag{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    color:var(--orange-deep);
+    font-size:0.9rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.8rem, 3.4vw, 2.5rem);
+    max-width:22ch;
+  }
+  .section-lead{
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin-top:14px;
+    font-size:1.05rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{padding:100px 0; background:var(--peach);}
+  .about-grid{
+    display:grid; gap:48px; align-items:center;
+  }
+  @media(min-width:900px){ .about-grid{grid-template-columns:0.8fr 1.2fr;} }
+  .avatar-wrap{
+    position:relative;
+    width:240px; height:240px;
+    margin:0 auto;
+  }
+  .avatar{
+    width:100%; height:100%;
+    border-radius:50%;
+    background:linear-gradient(160deg, var(--yellow), var(--orange));
+    display:flex; align-items:center; justify-content:center;
+    font-size:5rem;
+    border:6px solid var(--white);
+    box-shadow:0 16px 30px rgba(58,42,46,0.18);
+  }
+  .badge-float{
+    position:absolute;
+    background:var(--white);
+    border-radius:999px;
+    padding:8px 14px;
+    font-weight:800;
+    font-size:0.78rem;
+    font-family:'Baloo 2',sans-serif;
+    box-shadow:0 8px 18px rgba(58,42,46,0.15);
+  }
+  .badge-float.b1{top:-6px; right:-14px; color:var(--coral);}
+  .badge-float.b2{bottom:6px; left:-24px; color:var(--orange-deep);}
+
+  .tag-list{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;}
+  .tag{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:7px 14px;
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{padding:100px 0;}
+  .services-head{max-width:640px; margin-bottom:52px;}
+  .cards{display:grid; gap:24px;}
+  @media(min-width:760px){ .cards{grid-template-columns:repeat(3, 1fr);} }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:32px 26px;
+    display:flex; flex-direction:column; gap:14px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:0 18px 34px rgba(58,42,46,0.12);}
+  .card .icon{
+    width:54px;height:54px;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;
+  }
+  .card:nth-child(1) .icon{background:#FFE4D1;}
+  .card:nth-child(2) .icon{background:#FFE1E7;}
+  .card:nth-child(3) .icon{background:#FFF3CC;}
+  .card h3{font-size:1.25rem;}
+  .card p{color:var(--ink-soft); font-size:0.96rem; margin:0;}
+  .card ul{margin:6px 0 0; padding-left:18px; color:var(--ink-soft); font-size:0.92rem;}
+  .card li{margin-bottom:4px;}
+
+  /* ---------- CLUB TDAH BANNER ---------- */
+  .club{
+    padding:90px 0;
+    background:linear-gradient(120deg, var(--orange) 0%, var(--coral) 100%);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+  }
+  .club::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 85% 20%, rgba(255,255,255,0.18), transparent 45%);
+  }
+  .club-inner{position:relative; display:grid; gap:36px;}
+  @media(min-width:900px){ .club-inner{grid-template-columns:1.1fr 0.9fr; align-items:center;} }
+  .club .section-tag{color:var(--white); opacity:0.9;}
+  .club h2{color:var(--white);}
+  .club p{color:rgba(255,255,255,0.92);}
+  .club-schedule{
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:20px;
+    padding:28px;
+  }
+  .club-schedule .day{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:1.6rem;
+  }
+  .club-schedule ul{padding-left:20px; margin:14px 0 0;}
+  .club-schedule li{margin-bottom:8px;}
+  .club .btn-primary{background:var(--white); color:var(--orange-deep); box-shadow:0 6px 0 rgba(0,0,0,0.18);}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{padding:100px 0;}
+  .testi-grid{display:grid; gap:22px; margin-top:48px;}
+  @media(min-width:760px){ .testi-grid{grid-template-columns:repeat(3,1fr);} }
+  .testi-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:26px;
+    font-size:0.95rem;
+  }
+  .testi-card .quote{font-size:1.6rem; color:var(--orange); font-family:'Baloo 2',sans-serif; line-height:1;}
+  .testi-card p{color:var(--ink-soft); margin:10px 0 16px;}
+  .testi-card .who{font-weight:800; font-size:0.85rem; color:var(--ink);}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{
+    padding:100px 0 110px;
+    text-align:center;
+  }
+  .final h2{font-size:clamp(2rem,4vw,2.8rem); max-width:18ch; margin:0 auto;}
+  .final .section-lead{margin-left:auto; margin-right:auto;}
+  .final-ctas{
+    margin-top:34px;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+  }
+  .link-row{
+    margin-top:28px;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:20px;
+    font-weight:800;
+    font-size:0.92rem;
+  }
+  .link-row a{text-decoration:none; color:var(--orange-deep); border-bottom:2px solid var(--yellow); padding-bottom:2px;}
+  .link-row a:hover{color:var(--coral);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:#F3E4E8;
+    padding:44px 0 30px;
+  }
+  .foot-inner{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px;
+    align-items:center;
+  }
+  .foot-inner a{color:#F3E4E8; text-decoration:none; font-size:0.88rem; opacity:0.85;}
+  .foot-inner a:hover{opacity:1;}
+  .foot-links{display:flex; gap:22px; flex-wrap:wrap;}
+  .foot-bottom{
+    margin-top:26px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,0.14);
+    font-size:0.8rem;
+    opacity:0.7;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#top" class="logo"><span>🧡</span>Soy Maru</a>
+    <nav class="links">
+      <a href="#sobre-mi">Quién soy</a>
+      <a href="#coaching">Coaching</a>
+      <a href="#club">Club TDAH</a>
+      <a href="#testimonios">Comunidad</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="https://whatsapp.com/channel/0029Vb6aK4n4SpkNWhXWbt1Q" target="_blank" rel="noopener">Únete al canal</a>
+    <button class="burger" aria-label="Abrir menú" onclick="document.getElementById('mnav').classList.toggle('open')">☰</button>
+  </div>
+  <nav id="mnav" class="links" style="display:none; flex-direction:column; padding:0 24px 18px; gap:14px;">
+    <a href="#sobre-mi">Quién soy</a>
+    <a href="#coaching">Coaching</a>
+    <a href="#club">Club TDAH</a>
+    <a href="#testimonios">Comunidad</a>
+    <a class="btn btn-primary btn-sm" style="width:fit-content;" href="https://whatsapp.com/channel/0029Vb6aK4n4SpkNWhXWbt1Q" target="_blank" rel="noopener">Únete al canal</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">Distinción Consejo Publicitario Argentino</span>
+        <h1 class="hero-title">Tu cabeza no está <span class="u">rota</span>.<br>Está <em>en modo TDAH</em>.</h1>
+        <p class="hero-sub">Soy Maru: disléxica, TDAH y fundadora de un espacio de coaching neurodivergente adaptado a cómo funciona realmente tu mente — sin culpa, sin máscaras y con una comunidad de más de 118K personas que te entienden.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://whatsapp.com/channel/0029Vb6aK4n4SpkNWhXWbt1Q" target="_blank" rel="noopener">💬 Sumate al canal de WhatsApp</a>
+          <a class="btn btn-ghost" href="#coaching">Ver el coaching</a>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b>118K</b><span>Seguidores en Instagram</span></div>
+          <div class="stat"><b>281</b><span>Posts sobre TDAH real</span></div>
+          <div class="stat"><b>Domingos</b><span>Club TDAH en vivo</span></div>
+        </div>
+      </div>
+      <div class="brainzone" aria-hidden="true">
+        <div class="brain-core">🧠</div>
+        <div class="note">¿dónde dejé<br>las llaves?</div>
+        <div class="note">24 tabs abiertas<br>en mi cabeza</div>
+        <div class="note">hiperfoco<br>activado 🔥</div>
+        <div class="note">"ya lo hago"<br>(hace 3 días)</div>
+        <div class="note">esto sí me<br>importa: todo</div>
+        <div class="note">no es flojera,<br>es TDAH</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap about-grid">
+      <div class="avatar-wrap">
+        <div class="avatar">🧡</div>
+        <span class="badge-float b1">Disléxica 🙃</span>
+        <span class="badge-float b2">Founder</span>
+      </div>
+      <div>
+        <span class="section-tag">Sobre mí</span>
+        <h2 class="section-title">Hablo de TDAH desde adentro, no desde un libro</h2>
+        <p class="section-lead">Soy Maru: creadora de contenido, figura pública dentro de la comunidad neurodivergente hispanohablante y fundadora de un método de coaching pensado por y para cerebros TDAH. Uso el humor para desarmar el estigma y la experiencia — la mía y la de miles de personas que me escriben cada semana — para construir herramientas que realmente funcionan.</p>
+        <div class="tag-list">
+          <span class="tag">🧠 TDAH / ADHD</span>
+          <span class="tag">📖 Dislexia</span>
+          <span class="tag">🎙️ Figura pública</span>
+          <span class="tag">🌎 España · LatAm</span>
+          <span class="tag">🏆 Premio Consejo Publicitario Argentino</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services" id="coaching">
+    <div class="wrap">
+      <div class="services-head">
+        <span class="section-tag">Qué podés encontrar acá</span>
+        <h2 class="section-title">Herramientas reales para un cerebro que no funciona en modo "estándar"</h2>
+        <p class="section-lead">Nada de fórmulas genéricas de productividad. Todo pensado desde la neurodivergencia, para que dejes de pelearte con vos misma.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>Coaching neurodivergente 1:1</h3>
+          <p>Sesiones personalizadas para organizar tu día a día, tu energía y tu autoestima desde una mirada que entiende cómo pensás.</p>
+          <ul>
+            <li>Estrategias adaptadas, no genéricas</li>
+            <li>Foco en funciones ejecutivas</li>
+            <li>Acompañamiento sin juicio</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="icon">🧡</div>
+          <h3>Club TDAH — Domingos</h3>
+          <p>Un espacio en vivo, semanal y en comunidad para compartir, aprender y sentirte entendida junto a otras personas neurodivergentes.</p>
+          <ul>
+            <li>Encuentros todos los domingos</li>
+            <li>Charlas guiadas por Maru</li>
+            <li>Comunidad activa todo el año</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="icon">📱</div>
+          <h3>Contenido y comunidad</h3>
+          <p>Educación diaria sobre TDAH y neurodiversidad, con humor, honestidad y +118K personas que ya forman parte.</p>
+          <ul>
+            <li>Contenido diario en Instagram</li>
+            <li>Recursos en Linktree</li>
+            <li>Canal de WhatsApp exclusivo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLUB TDAH -->
+  <section class="club" id="club">
+    <div class="wrap club-inner">
+      <div>
+        <span class="section-tag">Comunidad en vivo</span>
+        <h2>Todos los domingos, un ratito para tu cabeza</h2>
+        <p style="max-width:48ch; margin-top:14px;">El Club TDAH es el encuentro semanal donde la comunidad de Maru se junta a hablar sin filtros sobre lo que implica vivir con un cerebro neurodivergente. Sin diagnósticos de manual, sin recetas mágicas — solo estrategias que se sienten reales.</p>
+        <div class="hero-ctas" style="margin-top:28px;">
+          <a class="btn btn-primary" href="https://whatsapp.com/channel/0029Vb6aK4n4SpkNWhXWbt1Q" target="_blank" rel="noopener">💬 Sumate al canal para no perdértelo</a>
+        </div>
+      </div>
+      <div class="club-schedule">
+        <span class="day">🗓️ Domingos</span>
+        <ul>
+          <li>Charlas en vivo con Maru</li>
+          <li>Espacio abierto de preguntas</li>
+          <li>Tips aplicables a tu semana</li>
+          <li>Red de contención neurodivergente</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testi" id="testimonios">
+    <div class="wrap">
+      <span class="section-tag">Lo que dice la comunidad</span>
+      <h2 class="section-title">No estás sola pensando esto</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="quote">"</div>
+          <p>Por primera vez sentí que alguien explicaba el TDAH sin hacerme sentir rota. Cambié la forma en que me hablo a mí misma.</p>
+          <div class="who">— Miembro del Club TDAH</div>
+        </div>
+        <div class="testi-card">
+          <div class="quote">"</div>
+          <p>Las sesiones de coaching me dieron herramientas concretas, no teoría. Por fin algo que se adapta a cómo pienso.</p>
+          <div class="who">— Seguidora en Instagram</div>
+        </div>
+        <div class="testi-card">
+          <div class="quote">"</div>
+          <p>Los domingos con el Club TDAH se volvieron mi cita favorita de la semana. Encontré a mi gente.</p>
+          <div class="who">— Comunidad del canal de WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final">
+    <div class="wrap">
+      <span class="section-tag">Empezá hoy</span>
+      <h2>Tu cerebro merece herramientas hechas a su medida</h2>
+      <p class="section-lead">Sumate a la comunidad, conocé el coaching o simplemente empezá por seguir el contenido de todos los días.</p>
+      <div class="final-ctas">
+        <a class="btn btn-primary" href="https://whatsapp.com/channel/0029Vb6aK4n4SpkNWhXWbt1Q" target="_blank" rel="noopener">💬 Canal de WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/soymaruytengotdah/" target="_blank" rel="noopener">📸 Ver Instagram</a>
+      </div>
+      <div class="link-row">
+        <a href="https://www.instagram.com/soymaruytengotdah/" target="_blank" rel="noopener">instagram.com/soymaruytengotdah</a>
+        <a href="https://linktr.ee/soymaruytengotdah" target="_blank" rel="noopener">linktr.ee/soymaruytengotdah</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <a href="#top" class="logo" style="color:#F3E4E8;">🧡 Soy Maru y tengo TDAH</a>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/soymaruytengotdah/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linktr.ee/soymaruytengotdah" target="_blank" rel="noopener">Linktree</a>
+        <a href="https://whatsapp.com/channel/0029Vb6aK4n4SpkNWhXWbt1Q" target="_blank" rel="noopener">Canal de WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom wrap" style="padding-left:0;padding-right:0;">
+      <span>© 2026 Soy Maru y Tengo TDAH. Todos los derechos reservados.</span>
+      <span>Built by EasyLandX</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

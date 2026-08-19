@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofía Mora · LIMBO TOUR 2026</title>
+<meta name="description" content="Sofía Mora presenta LIMBO TOUR 2026. Entradas y toda la info en un solo lugar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF4EA;
+    --cream2:#FFEADB;
+    --peach:#FF8A65;
+    --coral:#FF5F6D;
+    --plum:#43213D;
+    --plum2:#6B3358;
+    --lav:#C9A0DC;
+    --gold:#F5B942;
+    --rose:#F2A6C0;
+    --line:rgba(67,33,61,0.14);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background:var(--cream);
+    color:var(--plum);
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .display{font-family:'Fraunces', serif;}
+
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,244,234,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1100px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.25rem;
+    letter-spacing:0.01em;
+  }
+  .nav-links{display:flex; gap:26px; align-items:center;}
+  .nav-links a{font-size:0.85rem; font-weight:500; letter-spacing:0.03em; text-transform:uppercase; opacity:0.75; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--plum); color:var(--cream) !important;
+    padding:10px 20px; border-radius:100px;
+    font-size:0.82rem; font-weight:600; letter-spacing:0.02em;
+    text-transform:uppercase; opacity:1 !important;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .nav-cta:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(67,33,61,0.25);}
+  @media (max-width:720px){ .nav-links a:not(.nav-cta){display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:120px 0 80px;
+    background:
+      radial-gradient(ellipse 90% 60% at 20% 0%, rgba(255,138,101,0.35), transparent 60%),
+      radial-gradient(ellipse 70% 55% at 85% 15%, rgba(201,160,220,0.4), transparent 55%),
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(245,185,66,0.28), transparent 60%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(120deg, rgba(255,95,109,0.10), rgba(201,160,220,0.10) 45%, rgba(245,185,66,0.10));
+    background-size:300% 300%;
+    animation:driftGradient 18s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes driftGradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.78rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--coral);
+    background:rgba(255,255,255,0.55);
+    border:1px solid rgba(255,95,109,0.3);
+    padding:8px 16px; border-radius:100px;
+    margin-bottom:28px;
+    width:fit-content;
+    animation:fadeUp .8s ease both;
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--coral); animation:pulseDot 1.8s ease-in-out infinite;}
+  @keyframes pulseDot{0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.4; transform:scale(0.7);}}
+
+  .hero h1{
+    position:relative; z-index:2;
+    font-size:clamp(3.2rem, 9vw, 7.5rem);
+    font-weight:600;
+    line-height:0.92;
+    letter-spacing:-0.01em;
+    animation:fadeUp .9s ease both .1s;
+  }
+  .hero h1 em{
+    font-style:italic; font-weight:500;
+    background:linear-gradient(100deg, var(--coral), var(--peach) 40%, var(--lav) 75%, var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  .hero-sub{
+    max-width:520px; margin-top:26px;
+    font-size:1.08rem; line-height:1.6; color:var(--plum2);
+    animation:fadeUp .9s ease both .22s;
+  }
+
+  .hero-ctas{
+    margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;
+    animation:fadeUp .9s ease both .34s;
+  }
+
+  .btn-primary{
+    background:var(--plum); color:var(--cream);
+    padding:17px 34px; border-radius:100px;
+    font-weight:600; font-size:0.95rem; letter-spacing:0.02em;
+    display:inline-flex; align-items:center; gap:10px;
+    box-shadow:0 10px 30px rgba(67,33,61,0.25);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 16px 36px rgba(67,33,61,0.32);}
+
+  .btn-ghost{
+    background:transparent; color:var(--plum);
+    border:1.5px solid var(--plum);
+    padding:16px 30px; border-radius:100px;
+    font-weight:600; font-size:0.95rem;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:background .25s ease, color .25s ease, transform .25s ease;
+  }
+  .btn-ghost:hover{background:var(--plum); color:var(--cream); transform:translateY(-3px);}
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(22px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .hero-tag{
+    position:absolute; right:6%; bottom:8%;
+    font-family:'Fraunces', serif; font-style:italic; font-size:1rem;
+    color:var(--plum2); opacity:0.65;
+    max-width:220px; text-align:right; line-height:1.4;
+    display:none;
+  }
+  @media(min-width:900px){ .hero-tag{display:block;} }
+
+  /* ---------- MARQUEE / SIGNATURE LIMBO BAND ---------- */
+  .limbo-band{
+    position:relative;
+    padding:22px 0;
+    background:linear-gradient(90deg, #FF5F6D, #FF8A65 25%, #F5B942 50%, #C9A0DC 75%, #FF5F6D 100%);
+    background-size:200% 100%;
+    animation:bandShift 12s linear infinite;
+    overflow:hidden;
+  }
+  @keyframes bandShift{ from{background-position:0% 0;} to{background-position:200% 0;} }
+  .limbo-band .track{
+    display:flex; gap:48px; white-space:nowrap;
+    animation:scrollTrack 26s linear infinite;
+    width:max-content;
+  }
+  @keyframes scrollTrack{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .limbo-band span{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:1.3rem; color:#FFF4EA; letter-spacing:0.02em;
+    display:inline-flex; align-items:center; gap:48px;
+  }
+  .limbo-band span::after{content:"✦"; font-style:normal; opacity:0.7;}
+
+  /* ---------- SECTIONS shared ---------- */
+  section{padding:110px 0;}
+  .section-head{max-width:640px; margin-bottom:64px;}
+  .kicker{
+    font-size:0.78rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--coral); margin-bottom:16px; display:block;
+  }
+  h2{
+    font-size:clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight:600; line-height:1.06; letter-spacing:-0.01em;
+  }
+  .section-head p{margin-top:18px; color:var(--plum2); font-size:1.05rem; line-height:1.65;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- ERAS (bio / eras timeline) ---------- */
+  .eras{background:var(--cream);}
+  .era-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media(max-width:860px){ .era-grid{grid-template-columns:1fr;} }
+  .era-card{
+    position:relative;
+    border-radius:26px;
+    padding:38px 30px 32px;
+    min-height:340px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    overflow:hidden;
+    transition:transform .35s ease;
+    border:1px solid var(--line);
+  }
+  .era-card:hover{transform:translateY(-8px);}
+  .era-card .era-year{
+    position:absolute; top:26px; left:30px;
+    font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    opacity:0.7;
+  }
+  .era-card h3{font-family:'Fraunces', serif; font-size:1.7rem; font-weight:600; margin-bottom:10px;}
+  .era-card p{font-size:0.94rem; line-height:1.55; color:var(--plum2);}
+  .era-1{background:linear-gradient(155deg,#FFE3D1,#FFD3B0 60%,#FFC59A);}
+  .era-2{background:linear-gradient(155deg,#FBDCE9,#F5B9D2 60%,#F2A6C0);}
+  .era-3{background:linear-gradient(155deg,#E7D4EF,#D3B3E3 60%,#C9A0DC);}
+  .era-card::after{
+    content:""; position:absolute; right:-30px; bottom:-30px;
+    width:150px; height:150px; border-radius:50%;
+    background:rgba(255,255,255,0.35); filter:blur(8px);
+  }
+
+  .limbo-note{
+    margin-top:56px; text-align:center; max-width:700px; margin-left:auto; margin-right:auto;
+  }
+  .limbo-note p{
+    font-family:'Fraunces', serif; font-style:italic; font-size:1.35rem; line-height:1.55;
+    color:var(--plum);
+  }
+
+  /* ---------- TOUR DATES ---------- */
+  .tour{
+    background:linear-gradient(180deg, var(--cream), var(--cream2));
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .date-list{display:flex; flex-direction:column;}
+  .date-row{
+    display:grid; grid-template-columns:100px 1fr auto; align-items:center; gap:20px;
+    padding:26px 8px;
+    border-bottom:1px solid var(--line);
+    transition:padding-left .25s ease, background .25s ease;
+  }
+  .date-row:hover{padding-left:14px; background:rgba(255,255,255,0.5);}
+  .date-row:first-child{border-top:1px solid var(--line);}
+  .date-day{
+    font-family:'Fraunces', serif; font-size:1.6rem; font-weight:600; color:var(--coral);
+  }
+  .date-city{font-weight:600; font-size:1.15rem;}
+  .date-venue{font-size:0.9rem; color:var(--plum2); margin-top:2px;}
+  .date-status{
+    font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    padding:8px 16px; border-radius:100px; white-space:nowrap;
+  }
+  .status-open{background:rgba(46,140,90,0.12); color:#2E8C5A;}
+  .status-soon{background:rgba(245,185,66,0.22); color:#9A6B12;}
+  @media(max-width:640px){
+    .date-row{grid-template-columns:70px 1fr; row-gap:6px;}
+    .date-status{grid-column:1 / -1; justify-self:start;}
+  }
+
+  .tour-cta{
+    margin-top:48px; display:flex; justify-content:center;
+  }
+
+  /* ---------- LISTEN / FOLLOW ---------- */
+  .follow{
+    background:var(--plum);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .follow::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,138,101,0.25), transparent 60%),
+               radial-gradient(ellipse 60% 50% at 15% 85%, rgba(201,160,220,0.28), transparent 60%);
+  }
+  .follow .wrap{position:relative; z-index:2;}
+  .follow .section-head p{color:rgba(255,244,234,0.72);}
+  .follow .kicker{color:var(--gold);}
+
+  .follow-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
+  @media(max-width:860px){ .follow-grid{grid-template-columns:1fr;} }
+
+  .ig-card{
+    background:rgba(255,244,234,0.06);
+    border:1px solid rgba(255,244,234,0.18);
+    border-radius:28px;
+    padding:36px;
+    backdrop-filter:blur(6px);
+  }
+  .ig-top{display:flex; align-items:center; gap:16px; margin-bottom:22px;}
+  .ig-avatar{
+    width:64px; height:64px; border-radius:50%;
+    background:conic-gradient(from 200deg, #FF5F6D, #F5B942, #C9A0DC, #FF5F6D);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .ig-avatar-inner{
+    width:56px; height:56px; border-radius:50%; background:var(--plum);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.3rem; color:var(--cream);
+  }
+  .ig-handle{font-weight:700; font-size:1.05rem;}
+  .ig-name{font-size:0.85rem; opacity:0.65;}
+  .ig-bio{font-size:0.95rem; line-height:1.6; opacity:0.85; margin-bottom:26px;}
+  .ig-bio a{color:var(--gold); font-weight:600;}
+  .ig-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(90deg,#FF5F6D,#F5B942,#C9A0DC);
+    color:var(--plum); font-weight:700; font-size:0.92rem;
+    padding:14px 26px; border-radius:100px; width:100%; justify-content:center;
+    transition:transform .25s ease, filter .25s ease;
+  }
+  .ig-btn:hover{transform:translateY(-2px); filter:brightness(1.05);}
+
+  .linktree-card{
+    background:linear-gradient(160deg,#FF8A65,#FF5F6D 55%,#C9A0DC);
+    border-radius:28px; padding:40px 34px;
+    text-align:left;
+  }
+  .linktree-card h3{font-family:'Fraunces', serif; font-size:1.9rem; font-weight:600; margin-bottom:12px; color:#fff;}
+  .linktree-card p{font-size:0.95rem; line-height:1.6; color:rgba(255,255,255,0.9); margin-bottom:26px;}
+  .linktree-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; color:var(--plum);
+    font-weight:700; font-size:0.95rem;
+    padding:15px 28px; border-radius:100px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .linktree-btn:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,0.25);}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    text-align:center;
+    background:
+      radial-gradient(ellipse 70% 70% at 50% 0%, rgba(255,138,101,0.3), transparent 60%),
+      var(--cream);
+  }
+  .final-cta h2{max-width:720px; margin:0 auto 30px;}
+  .final-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--cream2);
+    border-top:1px solid var(--line);
+    padding:48px 0 32px;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+  }
+  .footer-brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem;}
+  .footer-links{display:flex; gap:24px; font-size:0.85rem; opacity:0.75;}
+  .footer-links a:hover{opacity:1; text-decoration:underline;}
+  .footer-credit{
+    margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
+    font-size:0.8rem; opacity:0.6; text-align:center;
+  }
+  .footer-credit a{font-weight:600; opacity:1;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">Sofía Mora</div>
+    <div class="nav-links">
+      <a href="#eras">Universo</a>
+      <a href="#fechas">Fechas</a>
+      <a href="#seguir">Seguir</a>
+      <a class="nav-cta" href="https://linktr.ee/SofiaMora" target="_blank" rel="noopener">Entradas</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>Entradas ya disponibles</div>
+    <h1 class="display">LIMBO<br><em>Tour 2026</em></h1>
+    <p class="hero-sub">Sofía Mora recorre las canciones que la definieron — de <strong>XOXO</strong> a <strong>Mi lado cursi</strong> y <strong>El mundo real</strong> — en un show que vive en el medio de todo. Ni el cuento ideal, ni el mundo real: una pausa antes de lo que sigue.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="https://linktr.ee/SofiaMora" target="_blank" rel="noopener">
+        Conseguí tus entradas ↗
+      </a>
+      <a class="btn-ghost" href="https://www.instagram.com/sofiamor.a/" target="_blank" rel="noopener">
+        Seguir en Instagram
+      </a>
+    </div>
+  </div>
+  <div class="hero-tag">"donde el dolor<br>convive con la belleza"</div>
+</section>
+
+<div class="limbo-band">
+  <div class="track">
+    <span>LIMBO TOUR 2026</span>
+    <span>ENTRADAS DISPONIBLES</span>
+    <span>SOFÍA MORA</span>
+    <span>LIMBO TOUR 2026</span>
+    <span>ENTRADAS DISPONIBLES</span>
+    <span>SOFÍA MORA</span>
+  </div>
+</div>
+
+<section class="eras" id="eras">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Tres mundos, un mismo escenario</span>
+      <h2 class="display">El universo detrás de Limbo</h2>
+      <p>Cantante, compositora y productora argentina de 23 años. Cada disco de Sofía abrió una puerta distinta — Limbo es el punto exacto donde todas esas puertas se cruzan.</p>
+    </div>
+    <div class="era-grid">
+      <div class="era-card era-1 reveal">
+        <span class="era-year">2022 · Álbum</span>
+        <h3 class="display">XOXO</h3>
+        <p>El debut que la llevó a los escenarios en vivo por primera vez: pop luminoso, directo y confesional.</p>
+      </div>
+      <div class="era-card era-2 reveal">
+        <span class="era-year">2024 · Álbum</span>
+        <h3 class="display">Mi lado cursi &lt;3</h3>
+        <p>Super Cursi presentado en gira por Argentina, Chile y Uruguay — cerrada a sala llena en el Teatro Vorterix.</p>
+      </div>
+      <div class="era-card era-3 reveal">
+        <span class="era-year">2025 · EP</span>
+        <h3 class="display">El mundo real</h3>
+        <p>La contracara del universo cursi: desamor, tristeza y una faceta más íntima y emocional.</p>
+      </div>
+    </div>
+    <div class="limbo-note reveal">
+      <p>"LIMBO es ese lugar en el medio: donde el cuento se rompe pero todavía no termina — un espacio de detención antes de la próxima etapa."</p>
+    </div>
+  </div>
+</section>
+
+<section class="tour" id="fechas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Gira 2026</span>
+      <h2 class="display">Fechas confirmadas</h2>
+      <p>Un recorrido íntimo por Argentina y la región. Las entradas se consiguen todas desde el mismo enlace.</p>
+    </div>
+    <div class="date-list reveal">
+      <div class="date-row">
+        <div class="date-day">04/09</div>
+        <div>
+          <div class="date-city">La Plata</div>
+          <div class="date-venue">Teatro Ópera</div>
+        </div>
+        <div class="date-status status-open">Entradas</div>
+      </div>
+      <div class="date-row">
+        <div class="date-day">17/09</div>
+        <div>
+          <div class="date-city">Tucumán</div>
+          <div class="date-venue">Teatro Alberdi</div>
+        </div>
+        <div class="date-status status-open">Entradas</div>
+      </div>
+      <div class="date-row">
+        <div class="date-day">25/09</div>
+        <div>
+          <div class="date-city">Córdoba</div>
+          <div class="date-venue">Studio Theater</div>
+        </div>
+        <div class="date-status status-open">Entradas</div>
+      </div>
+      <div class="date-row">
+        <div class="date-day">26/09</div>
+        <div>
+          <div class="date-city">Rosario</div>
+          <div class="date-venue">Jaguar Haus</div>
+        </div>
+        <div class="date-status status-open">Entradas</div>
+      </div>
+      <div class="date-row">
+        <div class="date-day">09/10</div>
+        <div>
+          <div class="date-city">Mar del Plata</div>
+          <div class="date-venue">Roxy</div>
+        </div>
+        <div class="date-status status-open">Entradas</div>
+      </div>
+      <div class="date-row">
+        <div class="date-day">24/10</div>
+        <div>
+          <div class="date-city">Montevideo</div>
+          <div class="date-venue">Sala Zitarrosa</div>
+        </div>
+        <div class="date-status status-open">Entradas</div>
+      </div>
+      <div class="date-row">
+        <div class="date-day">·</div>
+        <div>
+          <div class="date-city">Buenos Aires</div>
+          <div class="date-venue">A confirmar</div>
+        </div>
+        <div class="date-status status-soon">Muy pronto</div>
+      </div>
+    </div>
+    <div class="tour-cta reveal">
+      <a class="btn-primary" href="https://linktr.ee/SofiaMora" target="_blank" rel="noopener">Ver todas las entradas ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="follow" id="seguir">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">No te pierdas nada</span>
+      <h2 class="display">Seguí de cerca cada etapa</h2>
+      <p>Fotos del backstage, adelantos y todo lo nuevo se comparte primero acá.</p>
+    </div>
+    <div class="follow-grid">
+      <div class="ig-card reveal">
+        <div class="ig-top">
+          <div class="ig-avatar"><div class="ig-avatar-inner">SM</div></div>
+          <div>
+            <div class="ig-handle">@sofiamor.a</div>
+            <div class="ig-name">Sofía Mora · Musician</div>
+          </div>
+        </div>
+        <div class="ig-bio">@laflaca_tv · @sofiamora_store<br>ENTRADAS PARA LIMBO TOUR YA DISPONIBLES 🎫</div>
+        <a class="ig-btn" href="https://www.instagram.com/sofiamor.a/" target="_blank" rel="noopener">Seguir @sofiamor.a</a>
+      </div>
+      <div class="linktree-card reveal">
+        <h3 class="display">Todo en un solo link</h3>
+        <p>Entradas, música y tienda oficial — todo lo que necesitás está en un mismo lugar.</p>
+        <a class="linktree-btn" href="https://linktr.ee/SofiaMora" target="_blank" rel="noopener">linktr.ee/SofiaMora ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <span class="kicker" style="display:block; text-align:center;">Limbo Tour 2026</span>
+    <h2 class="display">Nos vemos en el medio.</h2>
+    <div class="final-actions">
+      <a class="btn-primary" href="https://linktr.ee/SofiaMora" target="_blank" rel="noopener">Conseguí tus entradas ↗</a>
+      <a class="btn-ghost" href="https://www.instagram.com/sofiamor.a/" target="_blank" rel="noopener">@sofiamor.a en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">Sofía Mora</div>
+      <div class="footer-links">
+        <a href="#eras">Universo</a>
+        <a href="#fechas">Fechas</a>
+        <a href="https://www.instagram.com/sofiamor.a/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linktr.ee/SofiaMora" target="_blank" rel="noopener">Entradas</a>
+      </div>
+    </div>
+    <div class="footer-credit">
+      © 2026 Sofía Mora. Todos los derechos reservados. · Built by <a href="https://easypagex.github.io" target="_blank" rel="noopener">EasyLandX</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

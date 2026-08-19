@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julieta Rivadulla — Dirección de Fotografía & com.audiovisual</title>
+<meta name="description" content="Julieta Rivadulla, directora de fotografía y creadora de com.audiovisual. Filmmaking, fotografía de eventos y cursos en Academia Resu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0a0f;
+    --void-2:#141320;
+    --panel:#1b1a29;
+    --paper:#f4f2ea;
+    --amber:#ff7a3d;
+    --magenta:#ff2e93;
+    --cyan:#29d9ff;
+    --lime:#c3fe00;
+    --text:#f5f3ff;
+    --text-dim:#a9a6c2;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--void);
+    color:var(--text);
+    font-family:var(--font-body);
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  :focus-visible{
+    outline:3px solid var(--lime);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--lime);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px;
+    height:1px;
+    background:var(--lime);
+    display:inline-block;
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    letter-spacing:0.01em;
+    line-height:0.95;
+    text-transform:uppercase;
+  }
+
+  /* ===== BACKGROUND GEL BLOOMS ===== */
+  .gel-field{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .gel{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:0.55;
+    mix-blend-mode:screen;
+  }
+  .gel.amber{width:520px;height:520px;background:var(--amber);top:-160px;left:-120px;animation:driftA 22s ease-in-out infinite;}
+  .gel.magenta{width:460px;height:460px;background:var(--magenta);top:20%;right:-160px;animation:driftB 26s ease-in-out infinite;}
+  .gel.cyan{width:480px;height:480px;background:var(--cyan);bottom:-180px;left:10%;animation:driftC 24s ease-in-out infinite;}
+
+  @keyframes driftA{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(60px,40px);}
+  }
+  @keyframes driftB{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(-50px,60px);}
+  }
+  @keyframes driftC{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(40px,-50px);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .gel{animation:none !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,10,15,0.72);
+    border-bottom:1px solid rgba(245,243,255,0.08);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:74px;
+  }
+  .logo{
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    letter-spacing:0.04em;
+  }
+  .logo span{color:var(--lime);}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-family:var(--font-mono);
+    font-size:0.82rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .nav-links a{
+    opacity:0.85;
+    transition:opacity 0.2s, color 0.2s;
+    padding:4px 0;
+    border-bottom:1px solid transparent;
+  }
+  .nav-links a:hover{opacity:1;color:var(--lime);border-color:var(--lime);}
+  .nav-cta{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    background:var(--lime);
+    color:#0a0a0f;
+    padding:10px 18px;
+    border-radius:2px;
+    font-weight:700;
+    transition:transform 0.2s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+
+  @media(max-width:760px){
+    .nav-links{display:none;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    z-index:1;
+    padding:160px 0 100px;
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .slate{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:28px;
+  }
+  .slate-tag{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    border:1px solid rgba(245,243,255,0.25);
+    color:var(--text-dim);
+    padding:6px 12px;
+    border-radius:2px;
+    text-transform:uppercase;
+  }
+  .slate-tag b{color:var(--cyan);font-weight:700;}
+
+  .hero h1{
+    font-size:clamp(3.4rem, 9vw, 8.5rem);
+    background:linear-gradient(100deg, #fff 30%, var(--cyan) 55%, var(--magenta) 75%, var(--amber) 95%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero-sub{
+    font-family:var(--font-mono);
+    font-size:clamp(1rem,2.2vw,1.3rem);
+    color:var(--text-dim);
+    margin-top:18px;
+    max-width:640px;
+    border-left:2px solid var(--magenta);
+    padding-left:16px;
+  }
+
+  .hero-quote{
+    font-size:clamp(1.1rem,2.6vw,1.6rem);
+    max-width:600px;
+    margin-top:30px;
+    color:var(--text);
+    font-weight:500;
+  }
+  .hero-quote::before{content:"“";color:var(--lime);}
+  .hero-quote::after{content:"”";color:var(--lime);}
+
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-top:44px;
+  }
+
+  .btn{
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:16px 28px;
+    border-radius:2px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform 0.2s, box-shadow 0.2s;
+    font-weight:700;
+  }
+  .btn-primary{
+    background:var(--lime);
+    color:#0a0a0f;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(195,254,0,0.25);}
+  .btn-ghost{
+    border:1px solid rgba(245,243,255,0.35);
+    color:var(--text);
+  }
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px);}
+
+  /* ===== CLAPPER SIGNATURE ===== */
+  .clapper{
+    position:absolute;
+    right:6%;
+    top:130px;
+    width:220px;
+    opacity:0.9;
+    animation:clap 5s ease-in-out infinite;
+    transform-origin:top left;
+  }
+  @keyframes clap{
+    0%,80%,100%{transform:rotate(0deg);}
+    85%{transform:rotate(-14deg);}
+    90%{transform:rotate(0deg);}
+  }
+  @media(max-width:900px){.clapper{display:none;}}
+  @media (prefers-reduced-motion: reduce){ .clapper{animation:none;} }
+
+  /* ===== SECTION SHARED ===== */
+  section{
+    position:relative;
+    z-index:1;
+    padding:110px 0;
+  }
+  .section-head{
+    margin-bottom:56px;
+    max-width:720px;
+  }
+  .section-head h2{
+    font-size:clamp(2.4rem,5vw,4rem);
+    margin-top:14px;
+  }
+  .section-head p{
+    color:var(--text-dim);
+    margin-top:16px;
+    font-size:1.05rem;
+    max-width:560px;
+  }
+
+  /* ===== SOBRE MI ===== */
+  .about{
+    background:linear-gradient(180deg, transparent, rgba(255,255,255,0.02) 20%, transparent 90%);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-frame{
+    aspect-ratio:4/5;
+    border-radius:6px;
+    position:relative;
+    background:
+      radial-gradient(circle at 30% 20%, var(--amber), transparent 55%),
+      radial-gradient(circle at 75% 75%, var(--magenta), transparent 55%),
+      radial-gradient(circle at 20% 85%, var(--cyan), transparent 50%),
+      var(--panel);
+    overflow:hidden;
+    border:1px solid rgba(245,243,255,0.1);
+  }
+  .about-frame::after{
+    content:"REC ● 00:00:24:11";
+    position:absolute;
+    bottom:18px;left:18px;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    background:rgba(0,0,0,0.5);
+    padding:6px 10px;
+    border-radius:2px;
+    letter-spacing:0.04em;
+  }
+  .about-frame::before{
+    content:"⊕";
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    font-size:3rem;
+    color:rgba(255,255,255,0.35);
+  }
+  .about-text p{
+    color:var(--text-dim);
+    margin-bottom:18px;
+    font-size:1.05rem;
+  }
+  .about-text strong{color:var(--text);}
+  .handles{
+    display:flex;
+    gap:14px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+  .handle{
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    padding:8px 14px;
+    border:1px solid rgba(245,243,255,0.2);
+    border-radius:20px;
+    transition:border-color 0.2s, color 0.2s;
+  }
+  .handle:hover{border-color:var(--magenta);color:var(--magenta);}
+
+  @media(max-width:860px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ===== SERVICIOS ===== */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    background:rgba(245,243,255,0.1);
+    border:1px solid rgba(245,243,255,0.1);
+  }
+  .service-card{
+    background:var(--void);
+    padding:38px 30px;
+    transition:background 0.25s;
+  }
+  .service-card:hover{background:var(--void-2);}
+  .service-tag{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--cyan);
+    letter-spacing:0.05em;
+  }
+  .service-card h3{
+    font-size:1.7rem;
+    margin-top:12px;
+    margin-bottom:12px;
+  }
+  .service-card p{
+    color:var(--text-dim);
+    font-size:0.96rem;
+  }
+  @media(max-width:860px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  .cta-strip{
+    margin-top:50px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    padding:36px;
+    border:1px solid rgba(195,254,0,0.3);
+    background:rgba(195,254,0,0.05);
+    border-radius:6px;
+  }
+  .cta-strip p{
+    font-family:var(--font-mono);
+    font-size:1.05rem;
+    max-width:480px;
+  }
+
+  /* ===== CURSOS ===== */
+  .courses{
+    background:var(--void-2);
+  }
+  .course-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+  .course-card{
+    background:var(--panel);
+    border:1px solid rgba(245,243,255,0.08);
+    border-radius:8px;
+    padding:36px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+  }
+  .course-card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+  }
+  .course-card.c1::before{background:linear-gradient(90deg,var(--amber),var(--magenta));}
+  .course-card.c2::before{background:linear-gradient(90deg,var(--cyan),var(--lime));}
+
+  .course-badge{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    letter-spacing:0.06em;
+    margin-bottom:16px;
+  }
+  .course-card h3{
+    font-size:1.9rem;
+    text-transform:none;
+    letter-spacing:0;
+    line-height:1.1;
+    margin-bottom:16px;
+  }
+  .course-card p.desc{
+    color:var(--text-dim);
+    font-size:0.98rem;
+    margin-bottom:22px;
+    flex-grow:1;
+  }
+  .module-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:26px;
+  }
+  .module-chip{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    padding:5px 10px;
+    background:rgba(245,243,255,0.06);
+    border-radius:12px;
+    color:var(--text-dim);
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:20px;
+  }
+  .price-now{
+    font-family:var(--font-display);
+    font-size:2rem;
+    color:var(--lime);
+  }
+  .price-old{
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    color:var(--text-dim);
+    text-decoration:line-through;
+  }
+  .price-off{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    background:var(--magenta);
+    padding:3px 8px;
+    border-radius:10px;
+    color:#fff;
+  }
+  .course-card .btn{width:100%;justify-content:center;}
+
+  @media(max-width:860px){
+    .course-grid{grid-template-columns:1fr;}
+  }
+
+  /* ===== BLOG / SUBSTACK ===== */
+  .blog-panel{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+    border:1px solid rgba(245,243,255,0.1);
+    border-radius:8px;
+    padding:48px;
+    background:linear-gradient(120deg, rgba(41,217,255,0.08), rgba(255,46,147,0.08));
+  }
+  .blog-panel h3{font-size:2.2rem;margin-bottom:14px;}
+  .blog-panel p{color:var(--text-dim);max-width:460px;}
+
+  /* ===== REDES / FOOTER ===== */
+  footer{
+    position:relative;
+    z-index:1;
+    border-top:1px solid rgba(245,243,255,0.1);
+    padding:90px 0 40px;
+  }
+  .footer-cta{
+    text-align:center;
+    margin-bottom:80px;
+  }
+  .footer-cta h2{
+    font-size:clamp(2.6rem,7vw,5.5rem);
+    margin:20px 0 40px;
+  }
+  .social-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(245,243,255,0.1);
+    border:1px solid rgba(245,243,255,0.1);
+    margin-bottom:60px;
+  }
+  .social-item{
+    background:var(--void);
+    padding:26px 20px;
+    text-align:center;
+    transition:background 0.2s, color 0.2s;
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+  }
+  .social-item .label{
+    display:block;
+    font-size:0.68rem;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .social-item:hover{background:var(--void-2);color:var(--lime);}
+  @media(max-width:760px){
+    .social-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  .foot-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--text-dim);
+  }
+</style>
+</head>
+<body>
+
+<div class="gel-field">
+  <div class="gel amber"></div>
+  <div class="gel magenta"></div>
+  <div class="gel cyan"></div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">JULI<span>·</span>RIVADULLA</div>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#redes">Redes</a>
+    </div>
+    <a class="nav-cta" href="https://www.instagram.com/julirivadulla/" target="_blank" rel="noopener">Escribime</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="slate">
+        <span class="slate-tag">DIRECCIÓN DE FOTOGRAFÍA</span>
+        <span class="slate-tag"><b>f/1.8</b> · ISO 800</span>
+        <span class="slate-tag">24 FPS · 5600K</span>
+      </div>
+
+      <h1>Julieta<br>Rivadulla</h1>
+
+      <p class="hero-sub">com.audiovisual — dirección de fotografía, filmmaking y contenido para marcas, artistas y medios.</p>
+
+      <p class="hero-quote">te muestro cómo usar tu cámara</p>
+
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/julirivadulla/" target="_blank" rel="noopener">Ver Instagram →</a>
+        <a class="btn btn-ghost" href="https://readymag.website/u923498573/6269697" target="_blank" rel="noopener">Ver portfolio / reel</a>
+      </div>
+
+      <svg class="clapper" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="10" y="50" width="180" height="100" rx="6" fill="#1b1a29" stroke="#f5f3ff" stroke-opacity="0.2"/>
+        <rect x="10" y="10" width="180" height="30" rx="4" fill="#1b1a29" stroke="#f5f3ff" stroke-opacity="0.2"/>
+        <g>
+          <rect x="10" y="10" width="20" height="30" fill="#ff7a3d"/>
+          <rect x="30" y="10" width="20" height="30" fill="#0a0a0f"/>
+          <rect x="50" y="10" width="20" height="30" fill="#ff2e93"/>
+          <rect x="70" y="10" width="20" height="30" fill="#0a0a0f"/>
+          <rect x="90" y="10" width="20" height="30" fill="#29d9ff"/>
+          <rect x="110" y="10" width="20" height="30" fill="#0a0a0f"/>
+          <rect x="130" y="10" width="20" height="30" fill="#c3fe00"/>
+          <rect x="150" y="10" width="20" height="30" fill="#0a0a0f"/>
+          <rect x="170" y="10" width="20" height="30" fill="#ff7a3d"/>
+        </g>
+        <text x="100" y="105" text-anchor="middle" fill="#f5f3ff" font-family="Space Mono, monospace" font-size="13">JULI · RIVADULLA</text>
+        <text x="100" y="128" text-anchor="middle" fill="#a9a6c2" font-family="Space Mono, monospace" font-size="11">TAKE 01 — ACTION</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="about" id="sobre-mi">
+    <div class="wrap about-grid">
+      <div class="about-frame" role="img" aria-label="Retrato conceptual de Julieta Rivadulla en set, con luces de color"></div>
+      <div class="about-text">
+        <span class="eyebrow">Quién dirige la imagen</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.2rem); margin:16px 0 24px;">Cámara en mano, criterio en cada plano.</h2>
+        <p>Soy <strong>Julieta</strong>, directora de fotografía y creadora de <strong>com.audiovisual</strong>. Trabajo la imagen en movimiento para marcas, artistas y medios, y comparto en redes cómo usar la cámara con intención: composición, luz y narrativa antes que técnica sola.</p>
+        <p>Además de filmar, formo parte del equipo docente de <strong>Academia Resu</strong>, donde enseño dirección de fotografía y cobertura de eventos a la próxima generación de creadores audiovisuales.</p>
+        <div class="handles">
+          <a class="handle" href="https://www.instagram.com/julirivadulla/" target="_blank" rel="noopener">@julirivadulla</a>
+          <a class="handle" href="https://www.instagram.com/resumidoinfo" target="_blank" rel="noopener">@resumidoinfo</a>
+          <a class="handle" href="https://www.instagram.com/academia.resu" target="_blank" rel="noopener">@academia.resu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Trabajemos juntos</span>
+        <h2>Servicios de<br>dirección de fotografía</h2>
+        <p>Si necesitás una mirada audiovisual para tu marca, evento o proyecto, esto es lo que puedo resolver.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-tag">SET</span>
+          <h3>Filmmaking de estudio</h3>
+          <p>Piezas con diseño visual, iluminación y puesta en escena pensadas de punta a punta, para contenido de marca y redes.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-tag">EN VIVO</span>
+          <h3>Cobertura de eventos</h3>
+          <p>Registro de shows, lanzamientos y coberturas para artistas y medios, con entrega ágil y criterio narrativo.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-tag">POST</span>
+          <h3>Dirección y edición</h3>
+          <p>Construcción final de la pieza: montaje, ritmo y color, con foco en lo que cada marca necesita comunicar.</p>
+        </div>
+      </div>
+
+      <div class="cta-strip">
+        <p>¿Tenés un proyecto, evento o campaña en mente? Contame qué necesitás filmar.</p>
+        <a class="btn btn-primary" href="https://www.instagram.com/julirivadulla/" target="_blank" rel="noopener">Escribime por Instagram →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="courses" id="cursos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Academia Resu</span>
+        <h2>Aprendé con Juli</h2>
+        <p>Dos cursos donde vuelco todo el proceso de dirección de fotografía y filmmaking, de la idea al corte final.</p>
+      </div>
+
+      <div class="course-grid">
+        <article class="course-card c1">
+          <span class="course-badge">Curso online · 4 módulos</span>
+          <h3>Filmmaking de Estudio: El Control de la Imagen</h3>
+          <p class="desc">Para fotógrafos y creadores que quieren llevar su trabajo audiovisual a otro nivel: diseño visual, puesta en escena, edición y planificación profesional de un proyecto.</p>
+          <div class="module-list">
+            <span class="module-chip">Diseño visual</span>
+            <span class="module-chip">Puesta en escena</span>
+            <span class="module-chip">Edición</span>
+            <span class="module-chip">Producción</span>
+          </div>
+          <div class="price-row">
+            <span class="price-now">$185.000</span>
+            <span class="price-old">$220.000</span>
+            <span class="price-off">-16%</span>
+          </div>
+          <a class="btn btn-primary" href="https://academiaresu.com/curso-de-filmmaking-de-estudio-el-control-de-la-imagen" target="_blank" rel="noopener">Ver curso →</a>
+        </article>
+
+        <article class="course-card c2">
+          <span class="course-badge">Curso online · 6 módulos + TP final</span>
+          <h3>Fotografía y Filmmaking de Eventos para Redes Sociales</h3>
+          <p class="desc">Ideal para registrar shows, coberturas y lanzamientos: cómo moverte en eventos reales, filmar con criterio y entregar material profesional, incluso con poco equipo.</p>
+          <div class="module-list">
+            <span class="module-chip">Equipos y cámara</span>
+            <span class="module-chip">Trabajo con artistas</span>
+            <span class="module-chip">Resolver con lo que hay</span>
+            <span class="module-chip">Portfolio y precio</span>
+          </div>
+          <div class="price-row">
+            <span class="price-now">$185.000</span>
+            <span class="price-old">$220.000</span>
+            <span class="price-off">-16%</span>
+          </div>
+          <a class="btn btn-primary" href="https://academiaresu.com/curso-de-fotografia-y-filmmaking-de-eventos-para-redes-sociales" target="_blank" rel="noopener">Ver curso →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="blog-panel">
+        <div>
+          <span class="eyebrow">Blog personal</span>
+          <h3>Julieta Rivadulla en Substack</h3>
+          <p>Notas, procesos y reflexiones sobre imagen, cámara y trabajo audiovisual, directo a tu correo.</p>
+        </div>
+        <a class="btn btn-ghost" href="https://julietarivadulla.substack.com" target="_blank" rel="noopener">Leer Substack →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="redes">
+  <div class="wrap">
+    <div class="footer-cta">
+      <span class="eyebrow">Corte final</span>
+      <h2>¿Filmamos<br>algo juntos?</h2>
+      <a class="btn btn-primary" href="https://www.instagram.com/julirivadulla/" target="_blank" rel="noopener">Mandame un DM →</a>
+    </div>
+
+    <div class="social-grid">
+      <a class="social-item" href="https://www.instagram.com/julirivadulla/" target="_blank" rel="noopener"><span class="label">Personal</span>@julirivadulla</a>
+      <a class="social-item" href="https://www.instagram.com/resumidoinfo" target="_blank" rel="noopener"><span class="label">Proyecto</span>@resumidoinfo</a>
+      <a class="social-item" href="https://www.instagram.com/academia.resu" target="_blank" rel="noopener"><span class="label">Academia</span>@academia.resu</a>
+      <a class="social-item" href="https://julietarivadulla.substack.com" target="_blank" rel="noopener"><span class="label">Blog</span>Substack</a>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Julieta Rivadulla — com.audiovisual</span>
+      <a href="https://readymag.website/u923498573/6269697" target="_blank" rel="noopener">Portfolio completo →</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pupina Plomer — Depende: el pasado no es el problema</title>
+<meta name="description" content="Pupina Plomer, historiadora y divulgadora, presenta su stand-up histórico 'Depende: el pasado no es el problema'. Mirá las fechas de la gira y conseguí tu entrada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EAD2;
+    --paper-2:#EADFBC;
+    --paper-3:#E3D6AC;
+    --ink:#241F16;
+    --ink-soft:#5B5136;
+    --wine:#8C2F2B;
+    --wine-dark:#6E2320;
+    --mustard:#C99A2E;
+    --olive:#5C6B3F;
+    --redact:#1C1712;
+    --card:#FBF7EA;
+    --radius:2px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',sans-serif;
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(0,0,0,0.025) 0, transparent 45%),
+      radial-gradient(circle at 85% 60%, rgba(0,0,0,0.03) 0, transparent 50%),
+      repeating-linear-gradient(115deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    line-height:1.02;
+  }
+
+  .mono{
+    font-family:'Space Mono',monospace;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  section{position:relative;}
+
+  ::selection{background:var(--wine);color:var(--paper);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(243,234,210,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--ink);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .brand{
+    font-family:'Archivo Black',sans-serif;
+    font-size:1.25rem;
+    letter-spacing:-0.01em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .brand .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--wine);
+    display:inline-block;
+  }
+  .nav-links{
+    display:flex;gap:32px;
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .nav-links a{position:relative;padding-bottom:3px;}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;
+    width:0;height:2px;background:var(--wine);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:'Space Mono',monospace;
+    font-size:0.75rem;text-transform:uppercase;letter-spacing:0.06em;
+    background:var(--wine);color:var(--paper);
+    padding:10px 18px;border:2px solid var(--ink);
+    box-shadow:3px 3px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);}
+  @media(max-width:780px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:110px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    position:relative;z-index:2;
+    display:flex;flex-direction:column;align-items:flex-start;
+  }
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;letter-spacing:0.18em;
+    color:var(--wine);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";width:26px;height:2px;background:var(--wine);
+  }
+  .stamp-title{
+    font-size:clamp(3.2rem, 11vw, 8.2rem);
+    color:var(--wine);
+    display:inline-block;
+    transform:rotate(-2.5deg);
+    border:5px solid var(--wine);
+    padding:0.1em 0.28em;
+    position:relative;
+    margin-bottom:10px;
+    line-height:0.92;
+  }
+  .stamp-title::before,.stamp-title::after{
+    content:"";position:absolute;
+    border:1px solid var(--wine);
+  }
+  .stamp-title::before{inset:6px;}
+  .subtitle-line{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(0.95rem,2vw,1.25rem);
+    text-transform:uppercase;letter-spacing:0.12em;
+    margin:26px 0 22px;
+    color:var(--ink);
+    border-top:2px solid var(--ink);
+    border-bottom:2px solid var(--ink);
+    padding:10px 0;
+    display:inline-block;
+  }
+  .hero-desc{
+    max-width:540px;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:44px;}
+  .btn{
+    font-family:'Space Mono',monospace;
+    font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;
+    padding:14px 26px;
+    border:2px solid var(--ink);
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .btn-primary{background:var(--wine);color:var(--paper);}
+  .btn-secondary{background:transparent;color:var(--ink);}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+
+  .hero-stats{
+    display:flex;gap:40px;flex-wrap:wrap;
+    padding-top:28px;border-top:1px dashed var(--ink-soft);
+    width:100%;
+  }
+  .hstat b{
+    font-family:'Archivo Black',sans-serif;
+    font-size:1.7rem;color:var(--wine);display:block;
+  }
+  .hstat span{
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);
+  }
+
+  .ticket-shape{
+    position:absolute;
+    border:2px dashed var(--ink);
+    opacity:0.35;
+  }
+  .t1{width:120px;height:60px;top:90px;right:6%;transform:rotate(12deg);border-radius:30px;display:none;}
+  @media(min-width:900px){.t1{display:block;}}
+
+  /* ---------- REDACT REVEAL ---------- */
+  .redact-wrap{position:relative;display:inline-block;overflow:hidden;}
+  .redact-bar{
+    position:absolute;inset:0;
+    background:var(--redact);
+    transform-origin:right center;
+    transition:transform 0.9s cubic-bezier(.65,0,.35,1);
+    z-index:2;
+  }
+  .redact-wrap.revealed .redact-bar{transform:scaleX(0);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .sec-head{
+    margin-bottom:52px;
+    max-width:640px;
+  }
+  .sec-tag{
+    font-family:'Space Mono',monospace;
+    font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;
+    color:var(--wine);margin-bottom:14px;display:block;
+  }
+  .sec-title{
+    font-size:clamp(1.9rem,4.5vw,3rem);
+  }
+
+  section.pad{padding:96px 0;}
+
+  /* ---------- SOBRE ---------- */
+  .sobre{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .sobre-grid{
+    display:grid;grid-template-columns:340px 1fr;gap:56px;
+    align-items:start;
+  }
+  @media(max-width:820px){.sobre-grid{grid-template-columns:1fr;}}
+
+  .ficha{
+    background:var(--card);
+    border:2px solid var(--ink);
+    box-shadow:6px 6px 0 var(--ink);
+    padding:26px;
+  }
+  .ficha-head{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:12px;margin-bottom:16px;
+  }
+  .ficha-head span{font-family:'Space Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;}
+  .ficha-avatar{
+    width:100%;aspect-ratio:4/5;
+    background:
+      repeating-linear-gradient(45deg, var(--wine) 0, var(--wine) 2px, transparent 2px, transparent 14px),
+      var(--mustard);
+    border:2px solid var(--ink);
+    margin-bottom:16px;
+    display:flex;align-items:flex-end;
+    position:relative;
+    overflow:hidden;
+  }
+  .ficha-avatar .initials{
+    font-family:'Archivo Black',sans-serif;
+    font-size:5rem;color:var(--paper);
+    padding:10px 14px;
+    mix-blend-mode:normal;
+    text-shadow:3px 3px 0 rgba(0,0,0,0.25);
+  }
+  .ficha dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:0.9rem;}
+  .ficha dt{font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--ink-soft);text-transform:uppercase;}
+  .ficha dd{font-weight:600;}
+
+  .sobre-copy p{margin-bottom:18px;color:var(--ink-soft);font-size:1.03rem;max-width:60ch;}
+  .sobre-copy strong{color:var(--ink);}
+
+  .stat-row{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:18px;margin-top:32px;
+  }
+  @media(max-width:600px){.stat-row{grid-template-columns:1fr;}}
+  .stat-card{
+    border:2px solid var(--ink);background:var(--card);
+    padding:18px;
+  }
+  .stat-card b{
+    font-family:'Archivo Black',sans-serif;
+    color:var(--wine);font-size:1.6rem;display:block;margin-bottom:4px;
+  }
+  .stat-card span{font-family:'Space Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);}
+
+  /* ---------- EL SHOW ---------- */
+  .show-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  @media(max-width:820px){.show-grid{grid-template-columns:1fr;}}
+  .questions{display:flex;flex-direction:column;gap:22px;}
+  .q-item{
+    border-left:4px solid var(--wine);
+    padding-left:18px;
+  }
+  .q-item p{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:none;
+    font-size:1.28rem;
+    line-height:1.25;
+    color:var(--ink);
+  }
+  .show-copy p{color:var(--ink-soft);margin-bottom:16px;font-size:1.02rem;}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .badge{
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;
+    border:2px solid var(--ink);padding:7px 14px;
+    background:var(--paper-3);
+  }
+  .special-note{
+    margin-top:28px;
+    background:var(--card);
+    border:2px dashed var(--wine);
+    padding:18px 20px;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  .special-note b{color:var(--wine);}
+
+  /* ---------- FECHAS ---------- */
+  .fechas{background:var(--ink);color:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .fechas .sec-tag{color:var(--mustard);}
+  .fechas .sec-title{color:var(--paper);}
+  .fechas .sec-head p{color:#C9BFA0;margin-top:14px;font-size:1rem;}
+
+  .ticket-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:22px;
+  }
+  .ticket{
+    background:var(--paper);
+    color:var(--ink);
+    border:2px solid var(--paper);
+    display:flex;
+    position:relative;
+    box-shadow:5px 5px 0 rgba(255,255,255,0.15);
+    transition:transform .18s ease;
+  }
+  .ticket:hover{transform:translateY(-4px);}
+  .ticket-date{
+    background:var(--wine);color:var(--paper);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:16px 14px;min-width:82px;
+    font-family:'Space Mono',monospace;
+    border-right:2px dashed var(--paper);
+  }
+  .ticket-date .day{font-family:'Archivo Black',sans-serif;font-size:1.9rem;line-height:1;}
+  .ticket-date .mon{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;}
+  .ticket-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;gap:8px;}
+  .ticket-city{font-family:'Archivo Black',sans-serif;font-size:1.15rem;text-transform:uppercase;}
+  .ticket-show{
+    font-family:'Space Mono',monospace;font-size:0.68rem;text-transform:uppercase;
+    letter-spacing:0.05em;color:var(--wine-dark);width:fit-content;
+    border:1px solid var(--wine-dark);padding:3px 8px;
+  }
+  .ticket-show.brujas{color:var(--olive);border-color:var(--olive);}
+  .ticket-link{
+    margin-top:auto;
+    font-family:'Space Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;
+    display:flex;align-items:center;gap:6px;color:var(--ink);
+    padding-top:8px;border-top:1px dashed var(--ink-soft);
+  }
+  .ticket-link svg{width:13px;height:13px;transition:transform .15s ease;}
+  .ticket:hover .ticket-link svg{transform:translate(3px,-3px);}
+
+  /* ---------- REDES ---------- */
+  .redes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:820px){.redes-grid{grid-template-columns:1fr;}}
+  .red-card{
+    background:var(--card);border:2px solid var(--ink);
+    padding:26px;
+    box-shadow:5px 5px 0 var(--ink);
+    display:flex;flex-direction:column;gap:12px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .red-card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink);}
+  .red-icon{
+    width:44px;height:44px;border:2px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--mustard);
+  }
+  .red-card h3{font-size:1.15rem;letter-spacing:0;}
+  .red-card p{color:var(--ink-soft);font-size:0.92rem;}
+  .red-card .go{
+    font-family:'Space Mono',monospace;font-size:0.75rem;
+    text-transform:uppercase;letter-spacing:0.05em;
+    color:var(--wine);display:flex;align-items:center;gap:6px;margin-top:auto;
+  }
+
+  .extra-links{
+    margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;
+    font-family:'Space Mono',monospace;font-size:0.82rem;
+  }
+  .extra-links a{
+    border-bottom:1px solid var(--ink-soft);
+    padding-bottom:2px;
+  }
+  .extra-links a:hover{border-color:var(--wine);color:var(--wine);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--paper-3);border-top:2px solid var(--ink);padding:52px 0 32px;}
+  .foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand{font-family:'Archivo Black',sans-serif;font-size:1.4rem;}
+  .foot-contact{font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--ink-soft);}
+  .foot-contact a{color:var(--wine);}
+  .foot-bottom{
+    margin-top:40px;padding-top:20px;border-top:1px dashed var(--ink-soft);
+    font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    text-transform:uppercase;letter-spacing:0.04em;
+  }
+
+  /* ---------- FLOATING CTA ---------- */
+  .float-cta{
+    position:fixed;bottom:22px;right:22px;z-index:200;
+    background:var(--wine);color:var(--paper);
+    font-family:'Space Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;
+    padding:14px 20px;border:2px solid var(--ink);
+    display:flex;align-items:center;gap:8px;
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+    opacity:0;transform:translateY(20px);pointer-events:none;
+  }
+  .float-cta.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .float-cta:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;animation:none !important;}
+    .reveal{opacity:1;transform:none;}
+    .redact-bar{transform:scaleX(0) !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="dot"></span>Pupina Plomer</div>
+    <div class="nav-links">
+      <a href="#show">El show</a>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#fechas">Fechas</a>
+      <a href="#redes">Redes</a>
+    </div>
+    <a class="nav-cta" href="#fechas">Entradas →</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="ticket-shape t1"></div>
+  <div class="wrap">
+    <span class="eyebrow">Stand-up histórico · Gira nacional 2026</span>
+    <div class="stamp-title">Depende</div>
+    <div class="subtitle-line">El pasado no es el problema</div>
+    <p class="hero-desc">Un unipersonal de Pupina Plomer —profesora y licenciada en Historia— que mezcla investigación, humor y preguntas incómodas sobre quién decide qué se recuerda y qué se olvida. No es una clase. No es una conferencia. Es otra cosa.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#fechas">Ver fechas y entradas</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/pupinaplomer/" target="_blank" rel="noopener">Seguir en Instagram</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><b>230K+</b><span>Seguidores en Instagram</span></div>
+      <div class="hstat"><b>11</b><span>Ciudades en gira</span></div>
+      <div class="hstat"><b>2017</b><span>Primer viral: la Revolución de Mayo en memes</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sobre pad" id="sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <div class="ficha reveal">
+        <div class="ficha-head">
+          <span>Ficha</span>
+          <span>N° 01</span>
+        </div>
+        <div class="ficha-avatar"><span class="initials">PP</span></div>
+        <dl>
+          <dt>Nombre</dt><dd>Florencia "Pupina" Plomer</dd>
+          <dt>Título</dt><dd>Prof. y Lic. en Historia</dd>
+          <dt>Origen</dt><dd>Córdoba, Argentina</dd>
+          <dt>Enfoque</dt><dd>Historia con perspectiva de género</dd>
+          <dt>Canal</dt><dd>Redes, YouTube y escenarios</dd>
+        </dl>
+      </div>
+      <div class="sobre-copy">
+        <span class="sec-tag">Quién es</span>
+        <h2 class="sec-title reveal" style="margin-bottom:22px;">La historia contada distinto</h2>
+        <p>Pupina Plomer empezó dentro del aula: en 2017 les propuso a sus alumnos estudiar la Revolución de Mayo a través de memes, y esa idea le abrió la puerta a la divulgación masiva. De ahí en más no paró: colaboró en medios digitales, se volcó a crear contenido propio durante la pandemia y hoy es una de las voces más seguidas de la historia en redes de habla hispana.</p>
+        <p>Su trabajo se enfoca en recuperar a quienes quedaron afuera del relato oficial —sobre todo mujeres y sectores invisibilizados— y en mostrar que el pasado nunca se cuenta desde un solo lugar. Todo esto, con el humor como herramienta para acercar una disciplina que muchas veces se siente lejana o solemne.</p>
+        <div class="stat-row">
+          <div class="stat-card"><b>230K+</b><span>Seguidores IG</span></div>
+          <div class="stat-card"><b>2020</b><span>Contenido propio desde casa</span></div>
+          <div class="stat-card"><b>Hoy</b><span>Gira nacional con "Depende"</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="show">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">El espectáculo</span>
+      <h2 class="sec-title">Preguntas que incomodan, con humor de por medio</h2>
+    </div>
+    <div class="show-grid">
+      <div class="questions">
+        <div class="q-item reveal"><p>¿Qué recordamos y qué elegimos olvidar?</p></div>
+        <div class="q-item reveal"><p>¿Quién decide qué entra en los libros de historia?</p></div>
+        <div class="q-item reveal"><p>Si conocemos el pasado, ¿por qué repetimos los mismos conflictos?</p></div>
+      </div>
+      <div class="show-copy">
+        <p>"Depende: el pasado no es el problema" es el nuevo unipersonal de Pupina Plomer, un show que ella misma define como stand-up histórico. No busca dar cátedra: propone dudar de las certezas absolutas y pensar quién construye la memoria colectiva, con investigación real detrás de cada chiste.</p>
+        <p>La obra pone en discusión una frase muy repetida en las aulas —que la historia sirve para no repetir errores— y tira del hilo hasta los usos políticos del pasado, la educación y los discursos negacionistas actuales.</p>
+        <div class="badges">
+          <span class="badge">Historia</span>
+          <span class="badge">Humor</span>
+          <span class="badge">Género</span>
+          <span class="badge">Política</span>
+          <span class="badge">Unipersonal</span>
+        </div>
+        <div class="special-note">
+          <b>Edición especial —</b> en Rosario y La Plata, la gira presenta "Especial Brujas", una versión de temporada del mismo espectáculo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fechas pad" id="fechas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">Gira 2026</span>
+      <h2 class="sec-title">Fechas y entradas</h2>
+      <p>Cada ciudad vende sus entradas en una boletería distinta. Elegí la tuya y comprá directo desde ahí.</p>
+    </div>
+    <div class="ticket-grid">
+
+      <a class="ticket reveal" href="https://www.plateanet.com/obra/34568?obra=PUPINA%20PLOMER%20PRESENTA%20DEPENDE%20-%20EL%20%20PASADO%20NO%20ES%20EL%20PROBLEMA&paso=inicio" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">21</span><span class="mon">Ago</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Ushuaia</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://centralticket.net/PupinaPlomer-RG" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">22</span><span class="mon">Ago</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Río Grande</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://www.plateanet.com/obra/34600?obra=PUPINA-PLOMER--DEPENDE--EL-PASADO-NO-ES-EL-PR&paso=inicio" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">25</span><span class="mon">Sep</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Mar del Plata</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://alpogo.com/evento/pupina-plomer-26619" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">16</span><span class="mon">Oct</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Comodoro Rivadavia</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://alpogo.com/evento/pupina-plomer-26620" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">17</span><span class="mon">Oct</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Puerto Madryn</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://redtickets.uy/evento/PUPINA-PLOMER/30593" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">24</span><span class="mon">Oct</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Montevideo, UY</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://alpogo.com/evento/pupina-plomer-27963" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">29</span><span class="mon">Oct</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Córdoba</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://entradaslavarden.com/Pupina-Plomer-presenta-Especial-Brujas" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">30</span><span class="mon">Oct</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Rosario</span>
+          <span class="ticket-show brujas">Especial Brujas</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://www.plateanet.com/obra/35137?obra=PUPINA%20PLOMER%20-%20ESPECIAL%20BRUJAS&paso=inicio" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">31</span><span class="mon">Oct</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">La Plata</span>
+          <span class="ticket-show brujas">Especial Brujas</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://entradas.cckonex.org/event/pupina-plomer" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">01</span><span class="mon">Nov</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">CABA</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+      <a class="ticket reveal" href="https://bibliotecasarmiento.org.ar/producto/depende-el-pasado-no-es-el-problema" target="_blank" rel="noopener">
+        <div class="ticket-date"><span class="day">07</span><span class="mon">Nov</span></div>
+        <div class="ticket-body">
+          <span class="ticket-city">Bariloche</span>
+          <span class="ticket-show">Depende</span>
+          <span class="ticket-link">Conseguir entrada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="redes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">Seguila</span>
+      <h2 class="sec-title">Más historia todos los días</h2>
+    </div>
+    <div class="redes-grid">
+      <a class="red-card reveal" href="https://www.instagram.com/pupinaplomer/" target="_blank" rel="noopener">
+        <div class="red-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--ink)"/></svg>
+        </div>
+        <h3>Instagram</h3>
+        <p>@pupinaplomer — videos cortos de historia y género, todo el detrás de escena de la gira.</p>
+        <span class="go">Ir al perfil →</span>
+      </a>
+      <a class="red-card reveal" href="https://www.youtube.com/@pupinaplomer" target="_blank" rel="noopener">
+        <div class="red-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3V9z" fill="var(--ink)" stroke="none"/></svg>
+        </div>
+        <h3>YouTube</h3>
+        <p>Videos más largos para meterse de lleno en cada tema, sin el límite del reel.</p>
+        <span class="go">Ver canal →</span>
+      </a>
+      <a class="red-card reveal" href="https://linktr.ee/pupinaplomer" target="_blank" rel="noopener">
+        <div class="red-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M12 2v20M7 7l5-5 5 5M7 17l5 5 5-5"/></svg>
+        </div>
+        <h3>Linktree</h3>
+        <p>Todos los links en un solo lugar: entradas, redes y canal, siempre actualizado.</p>
+        <span class="go">linktr.ee/pupinaplomer →</span>
+      </a>
+    </div>
+    <div class="extra-links">
+      <a href="https://www.instagram.com/caliciflora/" target="_blank" rel="noopener">@caliciflora — su otro proyecto</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Pupina Plomer</div>
+        <p class="foot-contact" style="margin-top:8px;">Prof. y Lic. en Historia · Córdoba, Argentina</p>
+      </div>
+      <div class="foot-contact">
+        Contacto y prensa<br>
+        <a href="mailto:florenciaplomer@gmail.com">florenciaplomer@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Pupina Plomer</span>
+      <span>Depende: el pasado no es el problema</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-cta" id="floatCta" href="#fechas">
+  Entradas
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+</a>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Floating CTA appears after hero
+  const floatCta = document.getElementById('floatCta');
+  const hero = document.querySelector('.hero');
+  const io2 = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting){ floatCta.classList.add('show'); }
+      else { floatCta.classList.remove('show'); }
+    });
+  },{threshold:0});
+  io2.observe(hero);
+
+  // Hide floating CTA once fechas section is fully in view
+  const fechasSection = document.getElementById('fechas');
+  const io3 = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && e.intersectionRatio > 0.4){ floatCta.classList.remove('show'); }
+    });
+  },{threshold:[0.4]});
+  io3.observe(fechasSection);
+</script>
+
+</body>
+</html>

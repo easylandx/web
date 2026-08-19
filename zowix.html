@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>zowix — Zoe Dunsmore | Creadora de contenido de viajes</title>
+<meta name="description" content="Zoe Dunsmore (@zowix___) — creadora de contenido de viajes y lifestyle. +90K seguidores. Colaboraciones y contenido de marca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10262B;
+    --paper:#F5EFE0;
+    --paper-2:#EFE6D2;
+    --petrol:#123C44;
+    --petrol-2:#0C2B31;
+    --sunset:#E8613D;
+    --sunset-2:#C94B2B;
+    --gold:#D9A441;
+    --sky:#7FB8C4;
+    --rose:#F2967D;
+    --line: rgba(16,38,43,0.16);
+    --radius: 22px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:0.98;
+    margin:0;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; }
+  img{max-width:100%;display:block;}
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  /* subtle paper texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(16,38,43,0.045) 1px, transparent 0);
+    background-size: 22px 22px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,239,224,0.9);
+    backdrop-filter: blur(8px);
+    border-bottom:1.5px dashed var(--line);
+  }
+  .navrow{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Anton', sans-serif; font-size:22px; letter-spacing:0.02em;
+    text-decoration:none; color:var(--ink);
+  }
+  .logo .stamp-dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--sunset);
+    box-shadow:0 0 0 3px rgba(232,97,61,0.18);
+  }
+  nav.links{ display:flex; gap:28px; align-items:center; }
+  nav.links a{
+    text-decoration:none; font-size:14px; font-weight:600;
+    letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--petrol);
+    padding-bottom:3px;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  nav.links a:hover{ border-color:var(--sunset); color:var(--sunset-2); }
+  .nav-cta{
+    background:var(--petrol); color:var(--paper) !important;
+    padding:10px 18px; border-radius:999px;
+    border-bottom:none !important; letter-spacing:0.04em;
+  }
+  .nav-cta:hover{ background:var(--sunset) !important; }
+  .burger{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; z-index:1;
+    padding:64px 24px 40px;
+  }
+  .hero-grid{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--sunset-2); background:rgba(232,97,61,0.1);
+    border:1px dashed var(--sunset); padding:6px 12px; border-radius:999px;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(40px, 5.4vw, 70px);
+    color:var(--petrol);
+  }
+  .hero h1 em{ font-style:normal; color:var(--sunset); }
+  .hero p.lede{
+    margin-top:22px; font-size:18px; max-width:46ch; color:rgba(16,38,43,0.82);
+  }
+  .hero-ctas{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; font-size:14.5px; letter-spacing:0.03em;
+    text-transform:uppercase; text-decoration:none;
+    padding:15px 26px; border-radius:999px;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    border:2px solid transparent;
+  }
+  .btn-primary{ background:var(--sunset); color:var(--paper); box-shadow:0 8px 0 var(--sunset-2); }
+  .btn-primary:hover{ transform:translateY(-3px); }
+  .btn-primary:active{ transform:translateY(2px); box-shadow:0 3px 0 var(--sunset-2); }
+  .btn-ghost{ border-color:var(--petrol); color:var(--petrol); }
+  .btn-ghost:hover{ background:var(--petrol); color:var(--paper); }
+
+  .handles{ margin-top:28px; display:flex; gap:18px; flex-wrap:wrap; }
+  .handle{
+    display:flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:13px;
+    color:var(--petrol); text-decoration:none; font-weight:500;
+  }
+  .handle .dot{ width:6px;height:6px;border-radius:50%; background:var(--gold); }
+  .handle:hover{ color:var(--sunset-2); }
+
+  /* ---------- BOARDING PASS ---------- */
+  .pass{
+    background:var(--petrol);
+    color:var(--paper);
+    border-radius:20px;
+    position:relative;
+    display:grid; grid-template-columns:1fr 118px;
+    box-shadow:0 30px 60px -20px rgba(16,38,43,0.55);
+    transform:rotate(2deg);
+  }
+  .pass:hover{ transform:rotate(0deg); transition:transform .35s ease; }
+  .pass-main{ padding:26px 24px 22px; }
+  .pass-top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .pass-brand{ font-family:'Anton',sans-serif; font-size:20px; letter-spacing:0.03em; }
+  .pass-tag{
+    font-family:'JetBrains Mono',monospace; font-size:10.5px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    background:rgba(245,239,224,0.12); padding:5px 9px; border-radius:6px;
+    border:1px solid rgba(245,239,224,0.25);
+  }
+  .route{
+    display:flex; align-items:center; gap:14px; margin:26px 0 22px;
+  }
+  .route .city{ font-family:'Anton',sans-serif; font-size:34px; }
+  .route .code{ font-family:'JetBrains Mono',monospace; font-size:11px; opacity:0.65; letter-spacing:0.08em; margin-top:2px;}
+  .route .plane{
+    flex:1; height:1px; background:repeating-linear-gradient(90deg, rgba(245,239,224,0.55) 0 6px, transparent 6px 12px);
+    position:relative;
+  }
+  .route .plane::after{
+    content:"✈"; position:absolute; right:-2px; top:50%; transform:translateY(-50%);
+    font-size:16px;
+  }
+  .pass-fields{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+    border-top:1px dashed rgba(245,239,224,0.35); padding-top:18px;
+  }
+  .pass-fields div p{ margin:0; }
+  .field-label{ font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.6; }
+  .field-value{ font-family:'JetBrains Mono',monospace; font-size:13.5px; margin-top:4px; font-weight:500;}
+  .pass-stub{
+    border-left:2px dashed rgba(245,239,224,0.35);
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    padding:22px 10px;
+    position:relative;
+  }
+  .pass-stub::before, .pass-stub::after{
+    content:""; position:absolute; width:22px; height:22px; border-radius:50%;
+    background:var(--paper); left:-13px;
+  }
+  .pass-stub::before{ top:-11px; }
+  .pass-stub::after{ bottom:-11px; }
+  .barcode{ display:flex; gap:2px; align-items:flex-end; height:54px; }
+  .barcode span{ width:3px; background:var(--paper); opacity:0.85; }
+  .seat{ text-align:center; }
+  .seat .field-value{ font-size:16px; }
+
+  /* ---------- STAMP STRIP ---------- */
+  .stampstrip{
+    position:relative; z-index:1;
+    padding:30px 24px 10px;
+  }
+  .stamp-row{
+    max-width:1180px; margin:0 auto;
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px;
+  }
+  .stamp{
+    flex:1 1 200px;
+    text-align:center;
+    border:2px dashed var(--gold);
+    border-radius:50%;
+    aspect-ratio:1/1;
+    max-width:170px; margin:0 auto;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:var(--petrol);
+    transform:rotate(-4deg);
+    padding:10px;
+  }
+  .stamp:nth-child(2){ transform:rotate(3deg); border-color:var(--sunset); }
+  .stamp:nth-child(3){ transform:rotate(-2deg); border-color:var(--sky); }
+  .stamp:nth-child(4){ transform:rotate(4deg); border-color:var(--gold); }
+  .stamp .num{ font-family:'Anton',sans-serif; font-size:30px; }
+  .stamp .lab{ font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; max-width:120px; margin-top:4px; }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ position:relative; z-index:1; padding:96px 24px; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .kicker{
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--sunset-2); display:block; margin-bottom:12px;
+  }
+  .section-head h2{ font-size:clamp(30px,4vw,46px); color:var(--petrol); }
+  .section-head p{ margin-top:16px; font-size:16.5px; color:rgba(16,38,43,0.75); }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--paper-2); border-top:1.5px dashed var(--line); border-bottom:1.5px dashed var(--line); }
+  .about-grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center; }
+  .polaroid{
+    background:#fff; padding:14px 14px 54px; border-radius:6px;
+    box-shadow:0 20px 40px -18px rgba(16,38,43,0.4);
+    transform:rotate(-3deg);
+    max-width:340px;
+  }
+  .polaroid .frame{
+    aspect-ratio:4/5; border-radius:2px;
+    background:
+      radial-gradient(circle at 30% 20%, #ffd98e, transparent 55%),
+      radial-gradient(circle at 75% 75%, #e8613d, transparent 60%),
+      linear-gradient(160deg, #123c44, #0c2b31);
+    position:relative; overflow:hidden;
+  }
+  .frame svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .polaroid figcaption{
+    font-family:'JetBrains Mono',monospace; font-size:13px; text-align:center;
+    margin-top:14px; color:var(--ink);
+  }
+  .about-copy p{ font-size:17px; color:rgba(16,38,43,0.85); margin:0 0 16px; }
+  .about-copy p:last-child{ margin-bottom:0; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  .pill{
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.04em;
+    background:var(--paper); border:1px solid var(--line); padding:7px 14px; border-radius:999px;
+  }
+
+  /* ---------- ITINERARY / SERVICES ---------- */
+  .itinerary{ counter-reset:stop; }
+  .stop{
+    counter-increment:stop;
+    display:grid; grid-template-columns:90px 1fr; gap:22px;
+    padding:30px 0; border-top:1.5px dashed var(--line);
+  }
+  .itinerary .stop:last-child{ border-bottom:1.5px dashed var(--line); }
+  .stop-code{ font-family:'JetBrains Mono',monospace; }
+  .stop-code::before{
+    content: counter(stop, decimal-leading-zero);
+    font-family:'Anton',sans-serif; font-size:34px; color:var(--sunset);
+  }
+  .stop-code .time{ display:block; font-size:11px; color:var(--petrol); opacity:0.6; margin-top:4px; letter-spacing:0.06em;}
+  .stop h3{ font-size:22px; color:var(--petrol); font-family:'Space Grotesk',sans-serif; font-weight:700; text-transform:none; letter-spacing:0; }
+  .stop p{ margin:8px 0 0; color:rgba(16,38,43,0.78); max-width:60ch; }
+
+  /* ---------- WHY / VISA STAMPS ---------- */
+  .why{ background:var(--petrol); color:var(--paper); }
+  .why .section-head h2{ color:var(--paper); }
+  .why .kicker{ color:var(--rose); }
+  .why .section-head p{ color:rgba(245,239,224,0.75); }
+  .why-grid{
+    max-width:1180px; margin:0 auto; display:grid;
+    grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  .visa{
+    border:1.5px solid rgba(245,239,224,0.25);
+    border-radius:16px; padding:28px 24px;
+    background:rgba(245,239,224,0.04);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .visa:hover{ transform:translateY(-6px); background:rgba(245,239,224,0.09); }
+  .visa .icon{ font-size:26px; }
+  .visa h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; text-transform:none; letter-spacing:0; margin-top:14px; }
+  .visa p{ margin-top:8px; font-size:14.5px; color:rgba(245,239,224,0.75); }
+
+  /* ---------- PLATFORMS ---------- */
+  .platforms-grid{
+    max-width:1180px; margin:0 auto; display:grid;
+    grid-template-columns:1fr 1fr; gap:26px;
+  }
+  .platform-card{
+    border-radius:var(--radius); padding:34px;
+    border:1.5px solid var(--line);
+    background:var(--paper);
+    display:flex; flex-direction:column; gap:16px;
+    position:relative; overflow:hidden;
+  }
+  .platform-card.ig{ background:linear-gradient(135deg, #fff4ea, #ffe3d6); }
+  .platform-card.yt{ background:linear-gradient(135deg, #eaf6f5, #dcebe6); }
+  .platform-top{ display:flex; align-items:center; gap:14px; }
+  .platform-icon{
+    width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    font-size:24px; color:#fff;
+  }
+  .ig .platform-icon{ background:linear-gradient(135deg,#E8613D,#D9A441); }
+  .yt .platform-icon{ background:#123C44; }
+  .platform-top h3{ font-family:'Anton',sans-serif; font-size:22px; color:var(--petrol); }
+  .platform-top span{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:rgba(16,38,43,0.6); }
+  .platform-card p{ font-size:15px; color:rgba(16,38,43,0.78); margin:0; }
+  .platform-card .btn{ align-self:flex-start; margin-top:6px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:var(--paper-2); border-top:1.5px dashed var(--line); }
+  .contact-pass{
+    max-width:900px; margin:0 auto;
+    background:var(--sunset);
+    color:var(--paper);
+    border-radius:26px;
+    padding:56px 48px;
+    position:relative;
+    box-shadow:0 30px 60px -24px rgba(232,97,61,0.55);
+  }
+  .contact-pass::before, .contact-pass::after{
+    content:""; position:absolute; width:34px; height:34px; border-radius:50%; background:var(--paper-2);
+    top:50%; transform:translateY(-50%);
+  }
+  .contact-pass::before{ left:-17px; }
+  .contact-pass::after{ right:-17px; }
+  .contact-pass h2{ font-size:clamp(30px,4.4vw,48px); }
+  .contact-pass p.lede{ margin-top:16px; font-size:17px; max-width:52ch; color:rgba(245,239,224,0.9); }
+  .contact-grid{
+    margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    border-top:1.5px dashed rgba(245,239,224,0.45); padding-top:28px;
+  }
+  .contact-item .field-label{ opacity:0.75; }
+  .contact-item a{ text-decoration:none; }
+  .contact-item .field-value{ font-size:15px; word-break:break-word; }
+  .contact-actions{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+  .contact-actions .btn-primary{ background:var(--paper); color:var(--sunset-2); box-shadow:0 8px 0 rgba(18,60,68,0.3); }
+  .contact-actions .btn-ghost{ border-color:var(--paper); color:var(--paper); }
+  .contact-actions .btn-ghost:hover{ background:var(--paper); color:var(--sunset-2); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:40px 24px; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    color:rgba(16,38,43,0.55);
+  }
+  footer a{ color:var(--petrol); text-decoration:none; }
+  footer a:hover{ color:var(--sunset-2); }
+
+  @media (max-width: 920px){
+    .hero-grid, .about-grid{ grid-template-columns:1fr; }
+    .why-grid{ grid-template-columns:1fr; }
+    .platforms-grid{ grid-template-columns:1fr; }
+    .pass-fields{ grid-template-columns:repeat(2,1fr); }
+    nav.links{ display:none; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .polaroid{ margin:0 auto; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; animation:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navrow">
+    <a href="#top" class="logo"><span class="stamp-dot"></span>zowix</a>
+    <nav class="links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contenido">Contenido</a>
+      <a href="#por-que">Por qué colaborar</a>
+      <a href="#redes">Redes</a>
+      <a href="#contacto" class="nav-cta">Reservar colaboración</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:64px;">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">✈ Creadora de contenido · Viajes &amp; Lifestyle</span>
+        <h1>Contenido que hace<br>que la gente <em>reserve<br>el vuelo.</em></h1>
+        <p class="lede">Soy Zoe — <span class="mono">@zowix___</span>. Cuento historias de viaje que la gente realmente mira hasta el final, y las marcas que confían en mí obtienen algo mejor que alcance: obtienen ganas de viajar.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contacto">Trabajemos juntos</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/zowix___/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+        <div class="handles">
+          <a class="handle" href="https://www.instagram.com/zowix___/" target="_blank" rel="noopener"><span class="dot"></span>instagram.com/zowix___</a>
+          <a class="handle" href="https://m.youtube.com/@zowixxx" target="_blank" rel="noopener"><span class="dot"></span>youtube.com/@zowixxx</a>
+          <a class="handle" href="mailto:zowix@lfcreator.com"><span class="dot"></span>zowix@lfcreator.com</a>
+        </div>
+      </div>
+
+      <div class="pass">
+        <div class="pass-main">
+          <div class="pass-top">
+            <span class="pass-brand">Boarding Pass</span>
+            <span class="pass-tag">Creator Class</span>
+          </div>
+          <div class="route">
+            <div>
+              <div class="city">TU MARCA</div>
+              <div class="code">ORIGEN · BRIEF</div>
+            </div>
+            <div class="plane"></div>
+            <div style="text-align:right;">
+              <div class="city">FEED</div>
+              <div class="code">DESTINO · ENGAGEMENT</div>
+            </div>
+          </div>
+          <div class="pass-fields">
+            <div>
+              <p class="field-label">Pasajera</p>
+              <p class="field-value">Z. Dunsmore</p>
+            </div>
+            <div>
+              <p class="field-label">Base</p>
+              <p class="field-value mono">🇦🇷 Argentina</p>
+            </div>
+            <div>
+              <p class="field-label">Especialidad</p>
+              <p class="field-value">Viajes / UGC</p>
+            </div>
+            <div>
+              <p class="field-label">Management</p>
+              <p class="field-value">@contentttttttttttttt</p>
+            </div>
+          </div>
+        </div>
+        <div class="pass-stub">
+          <div class="seat">
+            <p class="field-label">Seguidores</p>
+            <p class="field-value">90K+</p>
+          </div>
+          <div class="barcode">
+            <span style="height:100%"></span><span style="height:60%"></span><span style="height:85%"></span><span style="height:40%"></span><span style="height:100%"></span><span style="height:70%"></span><span style="height:50%"></span><span style="height:90%"></span><span style="height:65%"></span>
+          </div>
+          <div class="seat">
+            <p class="field-label">Gate</p>
+            <p class="field-value">IG · YT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAMP STATS -->
+  <div class="stampstrip">
+    <div class="stamp-row">
+      <div class="stamp">
+        <span class="num">90K+</span>
+        <span class="lab">Seguidores en Instagram</span>
+      </div>
+      <div class="stamp">
+        <span class="num">149</span>
+        <span class="lab">Publicaciones con identidad propia</span>
+      </div>
+      <div class="stamp">
+        <span class="num">2</span>
+        <span class="lab">Plataformas activas: IG &amp; YouTube</span>
+      </div>
+      <div class="stamp">
+        <span class="num">1</span>
+        <span class="lab">Voz auténtica, cero relleno</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="sobre-mi">
+    <div class="about-grid">
+      <figure class="polaroid">
+        <div class="frame">
+          <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="230" cy="60" r="46" fill="#ffd98e" opacity="0.9"/>
+            <path d="M0 300 Q 80 230 160 280 T 300 250 L 300 375 L 0 375 Z" fill="#0c2b31" opacity="0.85"/>
+            <path d="M0 330 Q 90 280 170 320 T 300 300 L 300 375 L 0 375 Z" fill="#123c44"/>
+            <g stroke="#F5EFE0" stroke-width="2" opacity="0.55">
+              <path d="M40 150 h30 M40 158 h20" />
+              <path d="M230 200 h34 M230 208 h22" />
+            </g>
+            <text x="150" y="345" font-family="Anton" font-size="22" fill="#F5EFE0" text-anchor="middle" letter-spacing="2">ZOWIX</text>
+          </svg>
+        </div>
+        <figcaption>zowix___ · en algún lugar del mapa</figcaption>
+      </figure>
+
+      <div class="about-copy">
+        <span class="kicker">Quién soy</span>
+        <h2 style="font-size:clamp(28px,3.6vw,40px); color:var(--petrol); margin-bottom:18px;">La creadora que convierte un viaje en una campaña.</h2>
+        <p>Soy Zoe Dunsmore, argentina 🇦🇷, y hago de viajar mi trabajo y mi contenido. Detrás de cada reel hay un guion pensado, una edición cuidada y una comunidad que vuelve a mirar porque le hablo de igual a igual.</p>
+        <p>No vendo destinos: vendo la sensación de querer estar ahí. Eso es lo que las marcas de turismo, aerolíneas, hoteles, moda de viaje y lifestyle buscan cuando trabajan conmigo — contenido que no se salta.</p>
+        <div class="tag-row">
+          <span class="pill">Reels de viaje</span>
+          <span class="pill">Contenido de marca</span>
+          <span class="pill">UGC</span>
+          <span class="pill">Lifestyle</span>
+          <span class="pill">Storytelling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARY / SERVICES -->
+  <section id="contenido">
+    <div class="section-head">
+      <span class="kicker">Itinerario de colaboración</span>
+      <h2>Así se ve trabajar conmigo</h2>
+      <p>Cada colaboración sigue una ruta clara, de la misma forma que planeo un viaje: con propósito, ritmo y un destino final que se nota en los resultados.</p>
+    </div>
+    <div class="wrap itinerary">
+      <div class="stop">
+        <div class="stop-code"><span class="time">PASO 01</span></div>
+        <div>
+          <h3>Reels &amp; contenido de viaje de marca</h3>
+          <p>Piezas cortas grabadas en destino, con guion, ritmo de edición y una narrativa pensada para retener y generar deseo de conocer el lugar o producto.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-code"><span class="time">PASO 02</span></div>
+        <div>
+          <h3>UGC para pauta y redes de marca</h3>
+          <p>Contenido nativo, grabado como si lo compartiera con una amiga, listo para usar en la cuenta de tu marca o en campañas pagas.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-code"><span class="time">PASO 03</span></div>
+        <div>
+          <h3>Presencia en destino / press trips</h3>
+          <p>Cobertura completa de una experiencia, hotel, aerolínea o destino: desde la llegada hasta la última puesta de sol, contada en tiempo real.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-code"><span class="time">PASO 04</span></div>
+        <div>
+          <h3>Colaboraciones a largo plazo</h3>
+          <p>Alianzas continuas con marcas de viaje y lifestyle que quieren una voz consistente durante todo el año, no una sola publicación aislada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="por-que">
+    <div class="section-head">
+      <span class="kicker">Por qué colaborar conmigo</span>
+      <h2>Menos ruido. Más ganas de viajar.</h2>
+      <p>No busco vistas vacías. Busco que quien mira mi contenido termine con la app de la aerolínea abierta.</p>
+    </div>
+    <div class="why-grid">
+      <div class="visa">
+        <span class="icon">🎬</span>
+        <h3>Contenido cuidado, no improvisado</h3>
+        <p>Guion, luz y edición pensados antes de grabar. Cada pieza representa tu marca tan bien como representa la mía.</p>
+      </div>
+      <div class="visa">
+        <span class="icon">🗣️</span>
+        <h3>Voz cercana y creíble</h3>
+        <p>Mi comunidad me sigue por cómo cuento las cosas. Eso hace que una recomendación mía se sienta real, no publicitada.</p>
+      </div>
+      <div class="visa">
+        <span class="icon">🌎</span>
+        <h3>Nicho claro: viajes y lifestyle</h3>
+        <p>Todo mi contenido gira en torno a viajar, así que tu marca llega a una audiencia que ya está en modo "dónde voy ahora".</p>
+      </div>
+      <div class="visa">
+        <span class="icon">📆</span>
+        <h3>Entregas a tiempo</h3>
+        <p>Trabajo con briefs, fechas y aprobaciones claras. Sabés qué vas a recibir y cuándo.</p>
+      </div>
+      <div class="visa">
+        <span class="icon">🤝</span>
+        <h3>Gestión profesional</h3>
+        <p>Coordinación de campañas a través de <span class="mono">@contentttttttttttttt</span>, para que todo el proceso sea simple de tu lado.</p>
+      </div>
+      <div class="visa">
+        <span class="icon">📈</span>
+        <h3>Doble plataforma</h3>
+        <p>Instagram y YouTube activos, así tu campaña puede vivir en formato reel corto y en formato más extendido.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section id="redes">
+    <div class="section-head">
+      <span class="kicker">Dónde encontrarme</span>
+      <h2>Seguime el rastro</h2>
+      <p>Mirá el contenido antes de escribirme — es la forma más rápida de saber si encajamos.</p>
+    </div>
+    <div class="platforms-grid">
+      <a class="platform-card ig" href="https://www.instagram.com/zowix___/" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="platform-top">
+          <div class="platform-icon">📷</div>
+          <div>
+            <h3>Instagram</h3>
+            <span>@zowix___ · +90K seguidores</span>
+          </div>
+        </div>
+        <p>Reels de viaje, momentos lifestyle y el día a día detrás del contenido. Acá vive la comunidad principal.</p>
+        <span class="btn btn-primary">Ir a Instagram ↗</span>
+      </a>
+      <a class="platform-card yt" href="https://m.youtube.com/@zowixxx" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="platform-top">
+          <div class="platform-icon">▶</div>
+          <div>
+            <h3>YouTube</h3>
+            <span>@zowixxx</span>
+          </div>
+        </div>
+        <p>Contenido más largo para historias de viaje completas, vlogs y colaboraciones con más espacio para contar.</p>
+        <span class="btn btn-primary" style="background:var(--petrol); box-shadow:0 8px 0 #081f24;">Ir a YouTube ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contacto">
+    <div class="contact-pass">
+      <span class="eyebrow" style="border-color:rgba(245,239,224,0.5); color:var(--paper); background:rgba(245,239,224,0.12);">✉ Check-in abierto</span>
+      <h2>Armemos tu próxima<br>campaña de viaje.</h2>
+      <p class="lede">Contame qué necesitás — un reel, una cobertura de destino, una alianza a largo plazo — y coordinamos los detalles junto a mi management.</p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <p class="field-label">Email</p>
+          <a href="mailto:zowix@lfcreator.com"><p class="field-value">zowix@lfcreator.com</p></a>
+        </div>
+        <div class="contact-item">
+          <p class="field-label">Management</p>
+          <p class="field-value">@contentttttttttttttt</p>
+        </div>
+        <div class="contact-item">
+          <p class="field-label">Redes</p>
+          <a href="https://www.instagram.com/zowix___/" target="_blank" rel="noopener"><p class="field-value">Instagram ↗</p></a>
+        </div>
+      </div>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:zowix@lfcreator.com?subject=Propuesta%20de%20colaboraci%C3%B3n">Escribir email</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/zowix___/" target="_blank" rel="noopener">Escribir por Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>zowix — Zoe Dunsmore · Creadora de contenido de viajes ·
+    <a href="https://www.instagram.com/zowix___/" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://m.youtube.com/@zowixxx" target="_blank" rel="noopener">YouTube</a> ·
+    <a href="mailto:zowix@lfcreator.com">zowix@lfcreator.com</a>
+  </p>
+</footer>
+
+</body>
+</html>

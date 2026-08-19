@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pía Scarnato ❣️ — Digital Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#ff2e7e;
+    --violet:#7b2ff7;
+    --yellow:#ffc93c;
+    --ink:#120019;
+    --cream:#fff6ee;
+    --cream2:#ffffff;
+    --muted:#6b5b73;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Unbounded',sans-serif;
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--pink);color:#fff;}
+
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--pink);
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,5vw,64px);
+    background:rgba(18,0,25,0.55);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+  .nav-logo{
+    font-family:'Unbounded',sans-serif;
+    font-weight:700;
+    color:#fff;
+    font-size:1.05rem;
+    letter-spacing:.02em;
+  }
+  .nav-logo span{color:var(--pink);}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{
+    color:#fdeaf4;
+    font-size:.85rem;
+    font-weight:600;
+    opacity:.85;
+    transition:opacity .2s;
+  }
+  .nav-links a:hover{opacity:1;color:var(--yellow);}
+  .nav-cta{
+    background:var(--pink);
+    color:#fff !important;
+    padding:9px 20px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:.82rem !important;
+    opacity:1 !important;
+  }
+  .nav-cta:hover{background:var(--yellow);color:var(--ink) !important;}
+  .burger{display:none;color:#fff;font-size:1.5rem;background:none;border:none;cursor:pointer;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    background:var(--ink);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+    padding-top:70px;
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:.55;
+    z-index:0;
+  }
+  .blob1{width:520px;height:520px;background:var(--pink);top:-160px;left:-120px;animation:float1 14s ease-in-out infinite;}
+  .blob2{width:460px;height:460px;background:var(--violet);bottom:-180px;right:-100px;animation:float2 16s ease-in-out infinite;}
+  .blob3{width:320px;height:320px;background:var(--yellow);top:40%;left:60%;opacity:.35;animation:float1 11s ease-in-out infinite reverse;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,60px) scale(1.12);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-50px,-30px) scale(1.08);}}
+
+  .hero-inner{
+    position:relative;z-index:2;
+    padding:0 clamp(20px,6vw,80px);
+    text-align:center;
+  }
+  .hero-tag{
+    color:#ffd6ea;
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .hero-tag::before{content:"❣️ ";}
+  .hero-title{
+    font-size:clamp(3.2rem,11vw,8.5rem);
+    line-height:.92;
+    font-weight:900;
+    color:#fff;
+    letter-spacing:-.01em;
+  }
+  .hero-title .grad{
+    background:linear-gradient(92deg,var(--pink) 0%,var(--yellow) 50%,var(--violet) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-sub{
+    max-width:560px;
+    margin:26px auto 0;
+    color:#e8d9e6;
+    font-size:1.05rem;
+    line-height:1.6;
+  }
+  .hero-btns{
+    margin-top:38px;
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:15px 30px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:.92rem;
+    transition:transform .25s ease, box-shadow .25s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{
+    background:var(--pink);color:#fff;
+    box-shadow:0 10px 30px -8px rgba(255,46,126,.7);
+  }
+  .btn-primary:hover{box-shadow:0 14px 34px -6px rgba(255,46,126,.9);}
+  .btn-outline{
+    border-color:rgba(255,255,255,.4);
+    color:#fff;
+  }
+  .btn-outline:hover{border-color:var(--yellow);color:var(--yellow);}
+
+  /* marquee */
+  .marquee-wrap{
+    position:relative;z-index:2;
+    margin-top:64px;
+    border-top:2px solid rgba(255,255,255,.12);
+    border-bottom:2px solid rgba(255,255,255,.12);
+    padding:16px 0;
+    background:linear-gradient(90deg,var(--pink),var(--violet));
+    overflow:hidden;
+    transform:rotate(-1.2deg);
+  }
+  .marquee{
+    display:flex;
+    width:max-content;
+    animation:scroll 22s linear infinite;
+  }
+  .marquee span{
+    font-family:'Unbounded',sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    color:#fff;
+    padding:0 28px;
+    white-space:nowrap;
+    display:flex;align-items:center;gap:20px;
+  }
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  .scroll-cue{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    z-index:2;color:#fff;opacity:.6;font-size:1.4rem;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:110px clamp(20px,6vw,80px);}
+  .section-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+  .section-head h2{
+    font-size:clamp(2.1rem,4.5vw,3.2rem);
+    font-weight:700;
+    margin-top:10px;
+    line-height:1.1;
+  }
+  .section-head p{color:var(--muted);margin-top:16px;font-size:1.05rem;line-height:1.6;}
+  .center{text-align:center;}
+
+  /* ===== ABOUT ===== */
+  .about{
+    background:var(--cream2);
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+    padding:100px clamp(20px,6vw,80px);
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio:1/1.05;
+    border-radius:32px;
+    background:linear-gradient(155deg,var(--violet),var(--pink) 60%,var(--yellow));
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .about-visual svg{width:56%;height:56%;}
+  .about-visual .ring{
+    position:absolute;inset:14px;
+    border:2px dashed rgba(255,255,255,.5);
+    border-radius:24px;
+  }
+  .about-badge{
+    position:absolute;bottom:18px;left:18px;right:18px;
+    background:rgba(18,0,25,.55);
+    backdrop-filter:blur(8px);
+    border-radius:16px;
+    padding:14px 18px;
+    color:#fff;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:.8rem;font-weight:700;
+  }
+  .about-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);display:inline-block;margin-right:6px;}
+  .about-copy .eyebrow{margin-bottom:14px;}
+  .about-copy h2{font-size:clamp(2rem,4vw,2.8rem);line-height:1.12;margin-bottom:20px;}
+  .about-copy p{color:var(--muted);font-size:1.05rem;line-height:1.75;margin-bottom:16px;}
+  .about-copy p strong{color:var(--ink);}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
+  .pill{
+    background:#fdeef6;
+    color:var(--pink);
+    border:1.5px solid #ffd0e5;
+    padding:8px 16px;
+    border-radius:100px;
+    font-size:.82rem;font-weight:700;
+  }
+
+  /* ===== STATS ===== */
+  .stats{
+    background:var(--ink);
+    color:#fff;
+    padding:80px clamp(20px,6vw,80px);
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    max-width:1100px;margin:0 auto;
+  }
+  .stat{
+    text-align:center;
+    padding:20px 12px;
+    border-left:1px solid rgba(255,255,255,.14);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{
+    font-family:'Unbounded',sans-serif;
+    font-weight:900;
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    background:linear-gradient(90deg,var(--pink),var(--yellow));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .stat .label{
+    margin-top:8px;font-size:.82rem;color:#d9c8d6;
+    text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  }
+
+  /* ===== SERVICES ===== */
+  .services{background:var(--cream);}
+  .cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+    max-width:1200px;margin:0 auto;
+  }
+  .card{
+    background:#fff;
+    border-radius:24px;
+    padding:36px 30px;
+    border:1px solid #f0e2ec;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--pink),var(--violet));
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .card:hover{transform:translateY(-8px);box-shadow:0 22px 45px -18px rgba(123,47,247,.35);border-color:transparent;}
+  .card:hover::before{transform:scaleX(1);}
+  .card .icon{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#fdeaf4,#f4e9ff);
+    font-size:1.5rem;margin-bottom:20px;
+  }
+  .card h3{font-size:1.2rem;margin-bottom:10px;font-weight:700;}
+  .card p{color:var(--muted);font-size:.95rem;line-height:1.6;}
+
+  /* ===== REDES ===== */
+  .redes{background:var(--cream2);}
+  .redes-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:26px;
+    max-width:1000px;margin:0 auto;
+  }
+  .social-card{
+    border-radius:26px;
+    padding:38px 34px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    min-height:230px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .3s ease;
+  }
+  .social-card:hover{transform:translateY(-6px);}
+  .social-card.ig{background:linear-gradient(135deg,#ff2e7e 0%,#c026d3 45%,#7b2ff7 100%);}
+  .social-card.yt{background:linear-gradient(135deg,#1a1a2e 0%,#3a0a4a 55%,#ff2e7e 130%);}
+  .social-card .top{display:flex;justify-content:space-between;align-items:flex-start;}
+  .social-card .icon-badge{
+    width:46px;height:46px;border-radius:14px;
+    background:rgba(255,255,255,.18);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .social-card .icon-badge svg{width:24px;height:24px;fill:#fff;}
+  .social-card h3{font-family:'Unbounded',sans-serif;font-size:1.5rem;margin-top:18px;}
+  .social-card p.handle{opacity:.85;font-size:.9rem;margin-top:4px;}
+  .social-card .go{
+    margin-top:20px;display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-size:.9rem;
+    background:rgba(255,255,255,.16);
+    padding:11px 20px;border-radius:100px;
+    width:fit-content;
+    transition:background .25s ease;
+  }
+  .social-card:hover .go{background:rgba(255,255,255,.32);}
+
+  /* ===== CONTACT ===== */
+  .contact{
+    background:linear-gradient(160deg,#1c0026,var(--ink) 60%);
+    color:#fff;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact .blob{opacity:.35;}
+  .contact-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
+  .contact h2{font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.1;margin:14px 0 18px;}
+  .contact p{color:#dccbe0;font-size:1.05rem;line-height:1.6;margin-bottom:36px;}
+  .contact-email{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fff;color:var(--ink);
+    padding:18px 32px;border-radius:100px;
+    font-weight:800;font-size:1.05rem;
+    box-shadow:0 16px 40px -10px rgba(255,46,126,.5);
+    transition:transform .25s ease;
+  }
+  .contact-email:hover{transform:translateY(-4px) scale(1.02);}
+  .contact-socials{margin-top:34px;display:flex;gap:16px;justify-content:center;}
+  .social-round{
+    width:52px;height:52px;border-radius:50%;
+    border:1.5px solid rgba(255,255,255,.25);
+    display:flex;align-items:center;justify-content:center;
+    transition:all .25s ease;
+  }
+  .social-round svg{width:22px;height:22px;fill:#fff;}
+  .social-round:hover{background:var(--pink);border-color:var(--pink);transform:translateY(-4px);}
+
+  footer{
+    background:var(--ink);
+    color:#8a7690;
+    text-align:center;
+    padding:26px 20px;
+    font-size:.82rem;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  footer span{color:var(--pink);}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .about{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:30px;}
+    .stat{border-left:none;}
+    .cards{grid-template-columns:1fr;}
+    .redes-grid{grid-template-columns:1fr;}
+    section{padding:80px 20px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">PÍA<span>.</span>SCARNATO</a>
+  <div class="nav-links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#redes">Redes</a>
+    <a href="#contacto" class="nav-cta">Trabajemos juntas</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="hero-inner">
+    <p class="hero-tag">Digital Creator · Argentina 🇦🇷</p>
+    <h1 class="hero-title">PÍA<br><span class="grad">SCARNATO</span></h1>
+    <p class="hero-sub">Bailo, actúo y canto para conectar marcas con más de un millón de personas. Contenido que se mira, se comparte y se recuerda.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn btn-primary">💌 Quiero trabajar con Pía</a>
+      <a href="https://www.instagram.com/piascarnato/" target="_blank" rel="noopener" class="btn btn-outline">Ver Instagram</a>
+    </div>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>✦ BAILO ✦ ACTÚO ✦ CANTO ✦ BAILO ✦ ACTÚO ✦ CANTO ✦ BAILO ✦ ACTÚO ✦ CANTO ✦</span>
+      <span>✦ BAILO ✦ ACTÚO ✦ CANTO ✦ BAILO ✦ ACTÚO ✦ CANTO ✦ BAILO ✦ ACTÚO ✦ CANTO ✦</span>
+    </div>
+  </div>
+  <div class="scroll-cue">↓</div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-mi">
+  <div class="about-visual reveal">
+    <div class="ring"></div>
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="50" r="22" fill="#fff" fill-opacity="0.9"/>
+      <path d="M100 74 C70 90 60 130 70 170 C80 175 90 172 92 160 L96 110 L104 110 L108 160 C110 172 120 175 130 170 C140 130 130 90 100 74Z" fill="#fff" fill-opacity="0.9"/>
+      <path d="M96 96 C60 100 30 90 15 60" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+      <path d="M104 96 C140 80 155 40 150 15" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+    </svg>
+    <div class="about-badge"><span><span class="dot"></span>Live desde Buenos Aires</span><span>@piascarnato</span></div>
+  </div>
+  <div class="about-copy reveal">
+    <p class="eyebrow">Sobre mí</p>
+    <h2>Empecé bailando frente a una cámara en cuarentena. Hoy es mi trabajo.</h2>
+    <p>Soy <strong>Pía Scarnato</strong>, creadora de contenido argentina especializada en danza, actuación y música. Lo que arrancó como videos caseros se convirtió en una comunidad de más de <strong>un millón de personas</strong> que esperan cada publicación.</p>
+    <p>Trabajo con marcas que buscan algo más que alcance: buscan contenido que la gente realmente mira hasta el final, comenta y comparte. Si tu marca necesita esa energía, hablemos.</p>
+    <div class="pill-row">
+      <span class="pill">🎬 Producción propia</span>
+      <span class="pill">💃 Contenido de baile</span>
+      <span class="pill">🎤 Voz & canto</span>
+      <span class="pill">🎭 Actuación</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal"><div class="num">1M+</div><div class="label">Seguidores Instagram</div></div>
+    <div class="stat reveal"><div class="num">2M+</div><div class="label">Comunidad en TikTok</div></div>
+    <div class="stat reveal"><div class="num">800K+</div><div class="label">Suscriptores YouTube</div></div>
+    <div class="stat reveal"><div class="num">1200+</div><div class="label">Publicaciones creadas</div></div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services" id="servicios">
+  <div class="section-head reveal">
+    <p class="eyebrow">Servicios</p>
+    <h2>¿Qué puedo hacer por tu marca?</h2>
+    <p>Cada campaña se piensa a medida: del guion a la edición, con la estética que ya conecta con mi audiencia.</p>
+  </div>
+  <div class="cards">
+    <div class="card reveal">
+      <div class="icon">💃</div>
+      <h3>Contenido de baile viral</h3>
+      <p>Reels y TikToks coreografiados pensados para retención y viralidad, con tu producto integrado de forma natural.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🛍️</div>
+      <h3>Colaboraciones de marca</h3>
+      <p>Sponsoreos, unboxings y pauta usuaria (UGC) para moda, belleza, tecnología y lifestyle.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🎤</div>
+      <h3>Música & covers</h3>
+      <p>Contenido cantado y sonorizaciones originales, ideal para jingles, lanzamientos musicales y sound branding.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🎭</div>
+      <h3>Actuación & sketches</h3>
+      <p>Micro-historias y sketches actuados que comunican el mensaje de tu marca sin sonar a publicidad.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">📅</div>
+      <h3>Eventos & presencia en vivo</h3>
+      <p>Apariciones, activaciones de marca y cobertura en vivo desde el evento para tus redes y las mías.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">📈</div>
+      <h3>Estrategia de contenido</h3>
+      <p>Asesoría creativa para que tu campaña hable el idioma real de las redes, no el del brief.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REDES -->
+<section class="redes" id="redes">
+  <div class="section-head reveal">
+    <p class="eyebrow">Encontrame acá</p>
+    <h2>Mis redes</h2>
+    <p>Seguí el contenido diario en Instagram y las producciones completas en YouTube.</p>
+  </div>
+  <div class="redes-grid">
+    <a href="https://www.instagram.com/piascarnato/" target="_blank" rel="noopener" class="social-card ig reveal">
+      <div class="top">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2c-2.72 0-3.06.01-4.12.06-1.06.05-1.79.22-2.43.47a4.9 4.9 0 0 0-1.77 1.15A4.9 4.9 0 0 0 2.53 5.45c-.25.64-.42 1.37-.47 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.15 1.77.55.55 1.11.89 1.77 1.15.64.25 1.37.42 2.43.47C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.06-.05 1.79-.22 2.43-.47a4.9 4.9 0 0 0 1.77-1.15 4.9 4.9 0 0 0 1.15-1.77c.25-.64.42-1.37.47-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.06-.22-1.79-.47-2.43a4.9 4.9 0 0 0-1.15-1.77A4.9 4.9 0 0 0 18.55 2.53c-.64-.25-1.37-.42-2.43-.47C15.06 2.01 14.72 2 12 2Zm0 1.8c2.67 0 2.99.01 4.04.06.98.04 1.5.21 1.86.34.47.18.8.4 1.15.75.35.35.57.68.75 1.15.13.36.29.88.34 1.86.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.98-.21 1.5-.34 1.86-.18.47-.4.8-.75 1.15-.35.35-.68.57-1.15.75-.36.13-.88.29-1.86.34-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.98-.04-1.5-.21-1.86-.34a3.1 3.1 0 0 1-1.15-.75 3.1 3.1 0 0 1-.75-1.15c-.13-.36-.29-.88-.34-1.86C3.81 14.99 3.8 14.67 3.8 12s.01-2.99.06-4.04c.04-.98.21-1.5.34-1.86.18-.47.4-.8.75-1.15.35-.35.68-.57 1.15-.75.36-.13.88-.29 1.86-.34C8.01 3.81 8.33 3.8 12 3.8Zm0 3.05a5.15 5.15 0 1 0 0 10.3 5.15 5.15 0 0 0 0-10.3Zm0 8.5a3.35 3.35 0 1 1 0-6.7 3.35 3.35 0 0 1 0 6.7Zm5.35-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>
+        </div>
+        <span style="font-size:.8rem;opacity:.8;">↗</span>
+      </div>
+      <div>
+        <h3>Instagram</h3>
+        <p class="handle">@piascarnato · 1M+ seguidores</p>
+        <span class="go">Seguir en Instagram →</span>
+      </div>
+    </a>
+    <a href="https://youtube.com/@piascarnato" target="_blank" rel="noopener" class="social-card yt reveal">
+      <div class="top">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.51 3.5 12 3.5 12 3.5s-7.51 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.49 20.5 12 20.5 12 20.5s7.51 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+        </div>
+        <span style="font-size:.8rem;opacity:.8;">↗</span>
+      </div>
+      <div>
+        <h3>YouTube</h3>
+        <p class="handle">@piascarnato · producciones completas</p>
+        <span class="go">Ver canal →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="blob blob1" style="top:-200px;left:10%;"></div>
+  <div class="blob blob2" style="bottom:-220px;right:5%;"></div>
+  <div class="contact-inner reveal">
+    <p class="eyebrow" style="color:var(--yellow);">Trabajemos juntas</p>
+    <h2>¿Tenés una marca y una idea?</h2>
+    <p>Contame tu proyecto y armamos una propuesta de contenido a medida. Respondo personalmente cada consulta.</p>
+    <a class="contact-email" href="mailto:piascarnato@bigagency.com.ar?subject=Propuesta%20de%20colaboraci%C3%B3n">✉️ piascarnato@bigagency.com.ar</a>
+    <div class="contact-socials">
+      <a class="social-round" href="https://www.instagram.com/piascarnato/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2c-2.72 0-3.06.01-4.12.06-1.06.05-1.79.22-2.43.47a4.9 4.9 0 0 0-1.77 1.15A4.9 4.9 0 0 0 2.53 5.45c-.25.64-.42 1.37-.47 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.15 1.77.55.55 1.11.89 1.77 1.15.64.25 1.37.42 2.43.47C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.06-.05 1.79-.22 2.43-.47a4.9 4.9 0 0 0 1.77-1.15 4.9 4.9 0 0 0 1.15-1.77c.25-.64.42-1.37.47-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.06-.22-1.79-.47-2.43a4.9 4.9 0 0 0-1.15-1.77A4.9 4.9 0 0 0 18.55 2.53c-.64-.25-1.37-.42-2.43-.47C15.06 2.01 14.72 2 12 2Zm0 1.8c2.67 0 2.99.01 4.04.06.98.04 1.5.21 1.86.34.47.18.8.4 1.15.75.35.35.57.68.75 1.15.13.36.29.88.34 1.86.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.98-.21 1.5-.34 1.86-.18.47-.4.8-.75 1.15-.35.35-.68.57-1.15.75-.36.13-.88.29-1.86.34-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.98-.04-1.5-.21-1.86-.34a3.1 3.1 0 0 1-1.15-.75 3.1 3.1 0 0 1-.75-1.15c-.13-.36-.29-.88-.34-1.86C3.81 14.99 3.8 14.67 3.8 12s.01-2.99.06-4.04c.04-.98.21-1.5.34-1.86.18-.47.4-.8.75-1.15.35-.35.68-.57 1.15-.75.36-.13.88-.29 1.86-.34C8.01 3.81 8.33 3.8 12 3.8Zm0 3.05a5.15 5.15 0 1 0 0 10.3 5.15 5.15 0 0 0 0-10.3Zm0 8.5a3.35 3.35 0 1 1 0-6.7 3.35 3.35 0 0 1 0 6.7Zm5.35-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>
+      </a>
+      <a class="social-round" href="https://youtube.com/@piascarnato" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.51 3.5 12 3.5 12 3.5s-7.51 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.49 20.5 12 20.5 12 20.5s7.51 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Pía Scarnato. Hecho con <span>❣️</span> para marcas que se animan a algo distinto.
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

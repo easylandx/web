@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniela Kompel · Cocinera & Escribana — Clases y Eventos Privados</title>
+<meta name="description" content="Daniela Kompel, cocinera y finalista de MasterChef Argentina. Clases privadas y eventos a medida, con el sello de aprobación del paladar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paprika:#B8432E;
+    --paprika-deep:#8F3223;
+    --saffron:#E4A83B;
+    --basil:#445939;
+    --basil-deep:#313f27;
+    --cream:#FAF1DE;
+    --ink:#2A2118;
+    --terracotta:#E8785A;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+
+  .script{
+    font-family:'Caveat', cursive;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(184,67,46,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:3px solid var(--saffron);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-weight:900; font-size:1.35rem;
+    color:var(--cream); display:flex; align-items:center; gap:10px;
+  }
+  .brand .dot{width:9px; height:9px; border-radius:50%; background:var(--saffron); display:inline-block;}
+  nav.links{display:flex; gap:28px; align-items:center;}
+  nav.links a{
+    color:var(--cream); font-size:.93rem; font-weight:600;
+    opacity:.9; transition:opacity .2s ease, color .2s ease;
+  }
+  nav.links a:hover{opacity:1; color:var(--saffron);}
+  .nav-ig{
+    display:flex; align-items:center; gap:8px;
+    background:var(--saffron); color:var(--ink) !important;
+    padding:9px 16px; border-radius:100px; font-weight:700 !important; font-size:.85rem !important;
+    opacity:1 !important;
+  }
+  .nav-ig:hover{background:#f0ba5e; color:var(--ink) !important;}
+  .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .burger span{width:24px; height:2.5px; background:var(--cream); border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(228,168,59,0.35), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(68,89,57,0.45), transparent 50%),
+      linear-gradient(160deg, var(--paprika) 0%, var(--paprika-deep) 65%, #6f2a1c 100%);
+    color:var(--cream);
+    padding:100px 0 120px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 26px);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.8rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--saffron); margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; font-size:.6rem;}
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.4rem);
+    color:var(--cream);
+  }
+  .hero h1 em{
+    font-style:italic; font-weight:500; color:var(--saffron);
+  }
+  .hero p.lede{
+    margin-top:24px; font-size:1.15rem; line-height:1.6; max-width:46ch; color:rgba(250,241,222,0.9);
+  }
+  .cta-row{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; border-radius:100px; font-weight:700; font-size:.98rem;
+    border:2px solid transparent; cursor:pointer; transition:transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{background:var(--saffron); color:var(--ink);}
+  .btn-primary:hover{transform:translateY(-2px); background:#f0ba5e;}
+  .btn-ghost{border-color:rgba(250,241,222,0.5); color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--cream); transform:translateY(-2px);}
+
+  .stat-row{display:flex; gap:36px; margin-top:48px; flex-wrap:wrap;}
+  .stat b{display:block; font-family:'Fraunces',serif; font-size:1.9rem; color:var(--saffron);}
+  .stat span{font-size:.82rem; color:rgba(250,241,222,0.75); text-transform:uppercase; letter-spacing:.06em;}
+
+  /* Seal / stamp signature element */
+  .seal-wrap{position:relative; display:flex; justify-content:center; align-items:center;}
+  .seal{
+    width:290px; height:290px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff6e4, var(--cream) 60%);
+    border:3px dashed rgba(42,33,24,0.35);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg);} 50%{transform:translateY(-14px) rotate(2deg);}}
+  .seal-inner{
+    width:230px; height:230px; border-radius:50%;
+    border:2.5px solid var(--paprika);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:14px; position:relative;
+  }
+  .seal-inner::before, .seal-inner::after{
+    content:"★ ★ ★ ★ ★";
+    position:absolute; color:var(--paprika); font-size:.6rem; letter-spacing:3px; opacity:.7;
+  }
+  .seal-inner::before{top:26px;}
+  .seal-inner::after{bottom:26px;}
+  .seal-title{font-family:'Fraunces',serif; font-weight:900; font-size:1.05rem; color:var(--paprika); line-height:1.2;}
+  .seal-sub{font-family:'Caveat',cursive; font-size:1.6rem; color:var(--basil); margin-top:4px;}
+  .seal-tag{font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); margin-top:10px; opacity:.7;}
+  .seal-badge{
+    position:absolute; bottom:-14px; right:6px;
+    background:var(--basil); color:var(--cream);
+    font-size:.72rem; font-weight:700; padding:8px 16px; border-radius:100px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.25);
+    transform:rotate(4deg);
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .kicker{
+    font-family:'Caveat', cursive; font-size:1.5rem; color:var(--paprika);
+    display:block; margin-bottom:6px;
+  }
+  .section-head h2{font-size:clamp(2rem, 3.6vw, 2.8rem); color:var(--ink);}
+  .section-head p{margin-top:16px; font-size:1.05rem; line-height:1.65; color:#4a3d30;}
+
+  /* ---------- BIO ---------- */
+  .bio{background:var(--cream);}
+  .bio-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; align-items:start;}
+  .bio-card{
+    background:linear-gradient(155deg, #fffaf0, var(--cream));
+    border:1px solid rgba(42,33,24,0.12);
+    border-radius:22px; padding:34px;
+    box-shadow:0 20px 40px rgba(42,33,24,0.06);
+    position:relative;
+  }
+  .bio-card .script{color:var(--paprika); font-size:2.1rem; line-height:1;}
+  .bio-card p{margin-top:14px; font-size:.98rem; line-height:1.6; color:#4a3d30;}
+  .timeline{list-style:none; margin-top:26px; border-left:2px solid rgba(184,67,46,0.25); padding-left:22px;}
+  .timeline li{position:relative; padding-bottom:22px; font-size:.92rem; color:#4a3d30;}
+  .timeline li:last-child{padding-bottom:0;}
+  .timeline li::before{
+    content:""; position:absolute; left:-28px; top:4px;
+    width:11px; height:11px; border-radius:50%; background:var(--saffron); border:2px solid var(--paprika);
+  }
+  .timeline b{display:block; font-family:'Fraunces',serif; color:var(--ink); font-size:1rem;}
+
+  .bio-text h3{font-size:1.5rem; color:var(--paprika); margin-bottom:14px;}
+  .bio-text p{font-size:1.03rem; line-height:1.75; color:#4a3d30; margin-bottom:18px;}
+  .bio-text p b{color:var(--ink);}
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;}
+  .chip{
+    background:var(--basil); color:var(--cream); font-size:.8rem; font-weight:600;
+    padding:8px 16px; border-radius:100px;
+  }
+  .chip.alt{background:var(--saffron); color:var(--ink);}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--basil); color:var(--cream); position:relative; overflow:hidden;}
+  .services::before{
+    content:""; position:absolute; top:-120px; right:-120px; width:340px; height:340px;
+    background:radial-gradient(circle, rgba(228,168,59,0.25), transparent 70%);
+  }
+  .services .kicker{color:var(--saffron);}
+  .services .section-head h2{color:var(--cream);}
+  .services .section-head p{color:rgba(250,241,222,0.85);}
+  .service-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; position:relative; z-index:2;}
+  .service-card{
+    background:rgba(250,241,222,0.06);
+    border:1px solid rgba(250,241,222,0.18);
+    border-radius:20px; padding:32px 26px;
+    transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .service-card:hover{transform:translateY(-8px); background:rgba(250,241,222,0.1); border-color:var(--saffron);}
+  .service-num{
+    font-family:'Fraunces',serif; font-weight:900; font-size:.85rem; color:var(--saffron);
+    letter-spacing:.08em;
+  }
+  .service-card h3{font-size:1.35rem; margin-top:14px; color:var(--cream);}
+  .service-card p{margin-top:12px; font-size:.94rem; line-height:1.6; color:rgba(250,241,222,0.82);}
+  .service-card .price-tag{
+    margin-top:18px; display:inline-block; font-family:'Caveat',cursive; font-size:1.3rem;
+    color:var(--saffron);
+  }
+
+  /* ---------- STAMPS / GUARANTEE STRIP ---------- */
+  .stamps{background:var(--cream); padding:70px 0;}
+  .stamp-strip{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;
+  }
+  .stamp-item{
+    text-align:center; padding:26px 14px;
+    border:2px dashed rgba(184,67,46,0.35); border-radius:18px;
+    position:relative; background:#fffaf0;
+  }
+  .stamp-item .ic{
+    width:52px; height:52px; margin:0 auto 14px; border-radius:50%;
+    background:var(--paprika); color:var(--cream);
+    display:flex; align-items:center; justify-content:center; font-size:1.4rem;
+    box-shadow:0 8px 16px rgba(184,67,46,0.3);
+  }
+  .stamp-item h4{font-family:'Fraunces',serif; font-size:1.02rem; color:var(--ink);}
+  .stamp-item p{font-size:.82rem; color:#6a5b4a; margin-top:6px; line-height:1.4;}
+
+  /* ---------- SOCIAL PROOF ---------- */
+  .social{
+    background:linear-gradient(160deg, var(--terracotta), var(--paprika));
+    color:var(--cream); text-align:center; position:relative; overflow:hidden;
+  }
+  .social::before{
+    content:"@danielakompel"; position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%) rotate(-8deg);
+    font-family:'Fraunces',serif; font-weight:900; font-size:9rem;
+    color:rgba(255,255,255,0.05); white-space:nowrap; pointer-events:none;
+  }
+  .social-inner{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center;}
+  .social .kicker{color:var(--saffron);}
+  .social h2{font-size:clamp(1.9rem,3.6vw,2.6rem); max-width:680px;}
+  .ig-stats{display:flex; gap:50px; margin:38px 0; flex-wrap:wrap; justify-content:center;}
+  .ig-stats .stat b{color:var(--saffron); font-size:2.3rem;}
+  .ig-stats .stat span{color:rgba(250,241,222,0.85);}
+  .ig-btn{
+    display:inline-flex; align-items:center; gap:12px;
+    background:var(--cream); color:var(--paprika-deep);
+    padding:17px 34px; border-radius:100px; font-weight:800; font-size:1.02rem;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    transition:transform .2s ease;
+  }
+  .ig-btn:hover{transform:translateY(-3px) scale(1.02);}
+  .ig-btn svg{width:22px; height:22px;}
+
+  /* ---------- TESTIMONIAL-LIKE QUOTE ---------- */
+  .quote-band{background:var(--cream); padding:80px 0 100px;}
+  .quote-card{
+    max-width:760px; margin:0 auto; text-align:center;
+    background:#fffaf0; border-radius:26px; padding:52px 44px;
+    border:1px solid rgba(42,33,24,0.1); box-shadow:0 24px 50px rgba(42,33,24,0.08);
+    position:relative;
+  }
+  .quote-mark{font-family:'Fraunces',serif; font-size:4.5rem; color:var(--saffron); line-height:0.6; display:block; margin-bottom:10px;}
+  .quote-card p.q{font-family:'Fraunces',serif; font-style:italic; font-size:1.4rem; line-height:1.5; color:var(--ink);}
+  .quote-card .who{margin-top:22px; font-size:.9rem; color:#6a5b4a; font-weight:600;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--ink); color:var(--cream); text-align:center; position:relative; overflow:hidden;
+  }
+  .final-cta::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(228,168,59,0.18), transparent 55%);
+  }
+  .final-cta-inner{position:relative; z-index:2;}
+  .final-cta h2{font-size:clamp(2.1rem,4vw,3rem); color:var(--cream);}
+  .final-cta p{margin:20px auto 0; max-width:50ch; color:rgba(250,241,222,0.78); font-size:1.05rem; line-height:1.6;}
+  .contact-block{
+    margin-top:44px; display:flex; gap:20px; justify-content:center; flex-wrap:wrap;
+  }
+  .contact-card{
+    background:rgba(250,241,222,0.06); border:1px solid rgba(250,241,222,0.2);
+    border-radius:18px; padding:24px 30px; text-align:left; min-width:260px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .contact-card:hover{border-color:var(--saffron); transform:translateY(-4px);}
+  .contact-card span.lbl{font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--saffron); font-weight:700;}
+  .contact-card .val{display:block; margin-top:8px; font-family:'Fraunces',serif; font-size:1.15rem; color:var(--cream);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#1c1610; color:rgba(250,241,222,0.6); padding:34px 0; text-align:center; font-size:.85rem;}
+  footer a{color:var(--saffron); font-weight:600;}
+
+  /* ---------- FLOATING BUTTON ---------- */
+  .float-ig{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:linear-gradient(135deg, var(--saffron), var(--paprika));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 28px rgba(0,0,0,0.35);
+    transition:transform .2s ease;
+  }
+  .float-ig:hover{transform:scale(1.08);}
+  .float-ig svg{width:28px; height:28px; fill:var(--cream);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    nav.links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+    .seal-wrap{margin-top:20px;}
+    .bio-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr;}
+    .stamp-strip{grid-template-columns:repeat(2,1fr);}
+    .ig-stats{gap:30px;}
+  }
+  @media (max-width:520px){
+    .hero{padding:70px 0 90px;}
+    .seal{width:230px; height:230px;}
+    .seal-inner{width:180px; height:180px;}
+    section{padding:70px 0;}
+    .stamp-strip{grid-template-columns:1fr 1fr;}
+    .contact-card{min-width:0; width:100%;}
+  }
+
+  :focus-visible{outline:3px solid var(--saffron); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="dot"></span>Daniela Kompel</a>
+    <nav class="links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sellos">Especialidades</a>
+      <a href="#contacto">Contacto</a>
+      <a class="nav-ig" href="https://www.instagram.com/danielakompel/" target="_blank" rel="noopener">Seguime en IG →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Cocinera · Escribana · Finalista MasterChef Argentina</span>
+      <h1>Cocina con <em>historia</em>,<br>servida con sello propio.</h1>
+      <p class="lede">Soy Daniela Kompel: aprendí a discutir contratos antes que a hacer un buen risotto, y hoy hago las dos cosas — pero solo cobro por la segunda. Clases privadas y eventos a medida, con recetas que traje de mis viajes por el mundo.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contacto">Reservar clase o evento</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/danielakompel/" target="_blank" rel="noopener">Ver en Instagram</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>216K</b><span>Seguidores en IG</span></div>
+        <div class="stat"><b>Top 5</b><span>MasterChef Arg. 2023</span></div>
+        <div class="stat"><b>+30</b><span>Países que inspiran su cocina</span></div>
+      </div>
+    </div>
+    <div class="seal-wrap">
+      <div class="seal">
+        <div class="seal-inner">
+          <span class="seal-title">CERTIFICADO<br>DE BUEN GUSTO</span>
+          <span class="seal-sub">Daniela Kompel</span>
+          <span class="seal-tag">Escribana de profesión, cocinera de corazón</span>
+        </div>
+        <span class="seal-badge">100% aprobado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bio" id="sobre-mi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Mi historia, en resumen</span>
+      <h2>De los expedientes a los fuegos.</h2>
+      <p>Estudié abogacía, ejerzo como escribana y un día decidí anotarme a MasterChef "para probar". Terminé entre los finalistas de 2023, y descubrí que lo mío no era una casualidad de cuarentena: era vocación.</p>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-card reveal">
+        <span class="script">Un poco de mi camino</span>
+        <ul class="timeline">
+          <li><b>La formación</b>Abogacía en la Universidad de Belgrano. Hoy trabajo como escribana.</li>
+          <li><b>El giro</b>Entré a MasterChef Argentina 2023 sin experiencia formal en cocina — y llegué a las instancias finales.</li>
+          <li><b>El sello</b>Mis platos mezclan lo que aprendí viajando: de lo vegetariano a lo más arriesgado con carnes.</li>
+          <li><b>Hoy</b>Mamá de Laila, cocino para eventos y doy clases privadas a mi manera: sin solemnidad, con mucho sabor.</li>
+        </ul>
+      </div>
+      <div class="bio-text reveal">
+        <h3>¿Por qué cocinar conmigo?</h3>
+        <p>Porque no vengo de una cocina de restaurante ni de una escuela gastronómica clásica — vengo de <b>viajar, probar y equivocarme</b> hasta encontrar el punto justo de cada plato. Eso es lo que llevo a cada clase y a cada evento: nada de fórmulas de manual, todo receta con historia real detrás.</p>
+        <p>En el jurado de MasterChef aprendieron a reconocer mis peinados tanto como mis platos. En tus eventos, quiero que se reconozca lo mismo: que hay una persona detrás de cada bocado, no un catering genérico.</p>
+        <div class="chip-row">
+          <span class="chip">Especialidad vegetariana</span>
+          <span class="chip alt">Cocina de autor</span>
+          <span class="chip">Recetas de viaje</span>
+          <span class="chip alt">Sin miedo a las carnes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Lo que podés reservar</span>
+      <h2>Servicios pensados para tu mesa (o la de tus invitados).</h2>
+      <p>Cada propuesta se arma a medida: contame el evento o el objetivo de la clase y armamos el menú y el formato juntas.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <span class="service-num">CLASE 01</span>
+        <h3>Clases privadas individuales</h3>
+        <p>Una tarde en tu cocina o la mía, aprendiendo una receta o un menú completo a tu ritmo. Ideal para regalar o regalarte.</p>
+        <span class="price-tag">a medida ✎</span>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">CLASE 02</span>
+        <h3>Clases grupales / cumpleaños</h3>
+        <p>Para despedidas de soltera, cumpleaños o encuentros entre amigos: cocinamos juntos y después nos sentamos a comer lo que hicimos.</p>
+        <span class="price-tag">grupos desde 4 ✎</span>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">EVENTO 03</span>
+        <h3>Eventos y menú a cargo de Daniela</h3>
+        <p>Cumpleaños, cenas privadas o eventos de empresa con menú diseñado y cocinado por mí, con opción vegetariana siempre disponible.</p>
+        <span class="price-tag">consultar fecha ✎</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stamps" id="sellos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Mis sellos de garantía</span>
+      <h2>Lo que se repite en cada plato que sale de mi cocina.</h2>
+    </div>
+    <div class="stamp-strip">
+      <div class="stamp-item reveal">
+        <div class="ic">🌍</div>
+        <h4>Recetas de viaje</h4>
+        <p>Sabores que traje de recorrer el mundo, adaptados a lo local.</p>
+      </div>
+      <div class="stamp-item reveal">
+        <div class="ic">🌿</div>
+        <h4>Opción vegetariana</h4>
+        <p>Es mi especialidad, no un "también tenemos".</p>
+      </div>
+      <div class="stamp-item reveal">
+        <div class="ic">🔥</div>
+        <h4>Carnes sin miedo</h4>
+        <p>Del asado al horno: sé sacarles el jugo a todos los cortes.</p>
+      </div>
+      <div class="stamp-item reveal">
+        <div class="ic">✍️</div>
+        <h4>Ojo de escribana</h4>
+        <p>Cada detalle del evento, chequeado con la misma precisión de un contrato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap">
+    <div class="quote-card reveal">
+      <span class="quote-mark">"</span>
+      <p class="q">No teme enfrentarse a los desafíos que presentan los diferentes tipos de carne, y sabe cómo resaltar sus sabores de manera excepcional.</p>
+      <p class="who">— Sobre el paso de Daniela por MasterChef Argentina</p>
+    </div>
+  </div>
+</section>
+
+<section class="social">
+  <div class="wrap social-inner">
+    <span class="kicker reveal">Mi cocina también vive acá</span>
+    <h2 class="reveal">Seguime en Instagram para ver recetas, bloopers de cocina y a Laila robando cámara.</h2>
+    <div class="ig-stats reveal">
+      <div class="stat"><b>216K</b><span>Seguidores</span></div>
+      <div class="stat"><b>226</b><span>Publicaciones</span></div>
+      <div class="stat"><b>513</b><span>Cuentas que sigo</span></div>
+    </div>
+    <a class="ig-btn reveal" href="https://www.instagram.com/danielakompel/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 448 512" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      <span>@danielakompel</span>
+    </a>
+  </div>
+</section>
+
+<section class="final-cta" id="contacto">
+  <div class="wrap final-cta-inner">
+    <h2 class="reveal">¿Le ponemos fecha a tu evento o tu clase?</h2>
+    <p class="reveal">Escribime contando qué estás imaginando — cumpleaños, cena de a dos, evento de empresa o una clase de regalo — y armamos la propuesta juntas.</p>
+    <div class="contact-block reveal">
+      <a class="contact-card" href="mailto:danukompel@gmail.com">
+        <span class="lbl">Escribime por mail</span>
+        <span class="val">danukompel@gmail.com</span>
+      </a>
+      <a class="contact-card" href="https://www.instagram.com/danielakompel/" target="_blank" rel="noopener">
+        <span class="lbl">O mandame un DM</span>
+        <span class="val">@danielakompel</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Daniela Kompel · Cocinera & Escribana · Eventos y clases privadas · <a href="mailto:danukompel@gmail.com">danukompel@gmail.com</a>
+  </div>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/danielakompel/" target="_blank" rel="noopener" aria-label="Instagram de Daniela Kompel">
+  <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+</a>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

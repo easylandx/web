@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofía Gonet — De Buenos Aires al mundo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF2E7;
+    --cream-2:#F7E8D8;
+    --blush:#F3D3CE;
+    --berry:#A8365A;
+    --berry-deep:#7C2745;
+    --coffee:#3D2A22;
+    --coffee-soft:#6B4F42;
+    --gold:#BE9A54;
+    --gold-light:#E4CE9C;
+    --line:rgba(61,42,34,0.16);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--coffee);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- decorative bg blobs ---------- */
+  .bg-deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .bg-deco span{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;}
+  .bg-deco .b1{width:420px;height:420px;background:var(--blush);top:-140px;right:-120px;}
+  .bg-deco .b2{width:340px;height:340px;background:var(--gold-light);bottom:-100px;left:-120px;opacity:.5;}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(251,242,231,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:1120px;margin:0 auto;
+  }
+  .nav-logo{
+    font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:.02em;
+  }
+  .nav-logo em{font-style:italic;color:var(--berry);}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:600;}
+  .nav-links a{text-decoration:none;opacity:.75;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--coffee);color:var(--cream);
+    padding:10px 20px;border-radius:100px;font-weight:700;font-size:13.5px;
+    text-decoration:none;white-space:nowrap;
+  }
+  @media(max-width:720px){ .nav-links a:not(.nav-cta){display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;z-index:1;padding:74px 0 40px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--berry-deep);background:rgba(168,54,90,0.09);
+    padding:8px 16px;border-radius:100px;margin-bottom:26px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--berry);}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  @media(max-width:880px){ .hero-grid{grid-template-columns:1fr;gap:40px;} }
+
+  .hero h1{
+    font-size:clamp(46px,7.4vw,88px);
+    font-weight:600;line-height:.96;
+    margin-bottom:22px;
+  }
+  .hero h1 .it{font-style:italic;font-weight:500;color:var(--berry);display:block;}
+  .hero p.lead{
+    font-size:19px;line-height:1.55;color:var(--coffee-soft);max-width:480px;margin-bottom:32px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+  .btn-primary{
+    background:var(--berry);color:#fff;padding:15px 30px;border-radius:100px;
+    text-decoration:none;font-weight:700;font-size:15px;
+    box-shadow:0 10px 24px -8px rgba(168,54,90,0.55);
+    transition:transform .2s ease, box-shadow .2s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(168,54,90,0.6);}
+  .btn-secondary{
+    border:1.5px solid var(--coffee);color:var(--coffee);padding:14px 28px;border-radius:100px;
+    text-decoration:none;font-weight:700;font-size:15px;transition:.2s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-secondary:hover{background:var(--coffee);color:var(--cream);}
+
+  .stat-row{display:flex;gap:34px;flex-wrap:wrap;}
+  .stat-row div{display:flex;flex-direction:column;}
+  .stat-row .num{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--coffee);}
+  .stat-row .lbl{font-size:12.5px;color:var(--coffee-soft);text-transform:uppercase;letter-spacing:.08em;font-weight:700;}
+
+  /* hero visual: passport-style photo card stack */
+  .hero-visual{position:relative;height:460px;}
+  .polaroid{
+    position:absolute;background:#fff;border-radius:14px;padding:14px 14px 46px;
+    box-shadow:0 24px 50px -18px rgba(61,42,34,0.35);
+  }
+  .polaroid .ph{
+    width:100%;height:100%;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-style:italic;color:#fff;font-size:15px;text-align:center;
+  }
+  .p1{width:230px;height:290px;top:0;left:40px;transform:rotate(-7deg);z-index:2;}
+  .p1 .ph{background:linear-gradient(150deg,#C6577A,#7C2745);}
+  .p2{width:190px;height:240px;top:120px;right:0;transform:rotate(9deg);z-index:1;}
+  .p2 .ph{background:linear-gradient(150deg,#BE9A54,#8A6A2F);}
+  .p3{width:170px;height:210px;bottom:0;left:0;transform:rotate(5deg);z-index:3;}
+  .p3 .ph{background:linear-gradient(150deg,#3D2A22,#6B4F42);}
+  .stamp{
+    position:absolute;top:14px;right:30px;z-index:4;
+    width:96px;height:96px;border:2px dashed var(--coffee);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:'Fraunces',serif;font-size:11px;font-weight:600;letter-spacing:.06em;
+    transform:rotate(14deg);color:var(--coffee);background:var(--cream);
+  }
+  @media(max-width:520px){ .hero-visual{height:360px;} .p1{width:180px;height:230px;left:10px;} .p2{width:150px;height:190px;} .p3{width:130px;height:160px;} .stamp{right:6px;width:80px;height:80px;font-size:9.5px;} }
+
+  /* ---------- marquee ---------- */
+  .marquee{
+    background:var(--coffee);color:var(--cream-2);overflow:hidden;padding:16px 0;
+    position:relative;z-index:1;margin-top:56px;
+  }
+  .marquee-track{display:flex;gap:48px;white-space:nowrap;animation:scroll 26s linear infinite;width:max-content;}
+  .marquee-track span{
+    font-family:'Fraunces',serif;font-style:italic;font-size:19px;font-weight:500;
+    display:flex;align-items:center;gap:48px;
+  }
+  .marquee-track span::after{content:"✦";font-style:normal;color:var(--gold);opacity:.8;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- section shell ---------- */
+  section{position:relative;z-index:1;padding:104px 0;}
+  .kicker{
+    font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--berry);margin-bottom:14px;
+  }
+  .sec-title{font-size:clamp(30px,4.2vw,46px);font-weight:600;line-height:1.08;max-width:680px;}
+  .sec-title em{font-style:italic;color:var(--berry);}
+  .sec-sub{font-size:17px;color:var(--coffee-soft);max-width:560px;margin-top:16px;line-height:1.6;}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start;margin-top:52px;}
+  @media(max-width:880px){ .about-grid{grid-template-columns:1fr;gap:36px;} }
+  .about-card{
+    background:linear-gradient(155deg,var(--blush),var(--cream-2));
+    border-radius:var(--radius);padding:44px 34px;text-align:center;
+    border:1px solid var(--line);
+  }
+  .monogram{
+    width:104px;height:104px;border-radius:50%;margin:0 auto 22px;
+    background:linear-gradient(150deg,var(--berry),var(--berry-deep));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-style:italic;font-size:38px;color:#fff;
+    box-shadow:0 14px 30px -10px rgba(168,54,90,0.5);
+  }
+  .about-card h3{font-size:22px;margin-bottom:6px;}
+  .about-card .role{font-size:13px;color:var(--coffee-soft);font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+  .about-card .divider{width:40px;height:2px;background:var(--gold);margin:22px auto;}
+  .about-social{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    background:var(--coffee);color:var(--cream);padding:12px 22px;border-radius:100px;
+    font-weight:700;font-size:14px;margin-top:6px;
+  }
+  .about-text p{font-size:17.5px;line-height:1.75;color:var(--coffee-soft);margin:0 0 20px;}
+  .about-text strong{color:var(--coffee);}
+  .tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .tag-row span{
+    border:1px solid var(--line);padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;color:var(--coffee-soft);
+  }
+
+  /* ---------- pillars ---------- */
+  .pillars{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  @media(max-width:880px){ .pillars{grid-template-columns:1fr;} }
+  .pillar{
+    background:#fff;border-radius:var(--radius);padding:38px 30px;border:1px solid var(--line);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .pillar:hover{transform:translateY(-6px);box-shadow:0 20px 40px -20px rgba(61,42,34,0.25);}
+  .pillar .icon{
+    width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+    font-size:24px;margin-bottom:22px;
+  }
+  .pillar:nth-child(1) .icon{background:var(--blush);}
+  .pillar:nth-child(2) .icon{background:var(--gold-light);}
+  .pillar:nth-child(3) .icon{background:#EFE1D2;}
+  .pillar h3{font-size:21px;margin-bottom:10px;}
+  .pillar p{font-size:15.3px;color:var(--coffee-soft);line-height:1.6;margin:0;}
+
+  /* ---------- why work with me ---------- */
+  .why{background:var(--coffee);color:var(--cream);border-radius:32px;padding:64px 44px;margin-top:0;}
+  .why .kicker{color:var(--gold-light);}
+  .why .sec-title{color:var(--cream);}
+  .why .sec-title em{color:var(--gold-light);}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 44px;margin-top:44px;}
+  @media(max-width:720px){ .why-grid{grid-template-columns:1fr;} }
+  .why-item{display:flex;gap:16px;}
+  .why-item .n{
+    font-family:'Fraunces',serif;font-style:italic;font-size:26px;color:var(--gold-light);flex-shrink:0;width:38px;
+  }
+  .why-item h4{font-size:17.5px;margin-bottom:6px;font-weight:700;}
+  .why-item p{font-size:14.8px;color:rgba(251,242,231,0.72);line-height:1.6;margin:0;}
+
+  /* ---------- boarding pass CTA (signature element) ---------- */
+  .pass-wrap{margin-top:0;}
+  .pass{
+    background:#fff;border-radius:26px;overflow:hidden;
+    box-shadow:0 40px 80px -30px rgba(61,42,34,0.35);
+    border:1px solid var(--line);
+    display:grid;grid-template-columns:1fr 220px;
+    position:relative;
+  }
+  @media(max-width:720px){ .pass{grid-template-columns:1fr;} }
+  .pass-main{padding:44px 44px 40px;position:relative;}
+  .pass-main::after{
+    content:"";position:absolute;right:0;top:0;bottom:0;width:0;
+    border-right:2px dashed var(--line);
+  }
+  @media(max-width:720px){ .pass-main::after{display:none;border-bottom:2px dashed var(--line);width:auto;left:0;right:0;bottom:0;top:auto;height:0;content:"";} }
+  .pass-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;flex-wrap:wrap;gap:14px;}
+  .pass-brand{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--berry);font-weight:600;}
+  .pass-class{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--coffee-soft);}
+  .pass-route{display:flex;align-items:center;gap:18px;margin-bottom:30px;flex-wrap:wrap;}
+  .pass-city{font-family:'Fraunces',serif;font-size:32px;font-weight:600;}
+  .pass-code{font-size:12px;color:var(--coffee-soft);font-weight:700;letter-spacing:.05em;}
+  .pass-plane{color:var(--gold);font-size:20px;}
+  .pass-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .pass-fields div{display:flex;flex-direction:column;gap:4px;}
+  .pass-fields .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--coffee-soft);font-weight:700;}
+  .pass-fields .v{font-size:15px;font-weight:700;color:var(--coffee);}
+  .pass-stub{
+    background:var(--cream-2);padding:38px 30px;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;gap:16px;position:relative;
+  }
+  .pass-stub .qr{
+    width:76px;height:76px;border-radius:12px;
+    background:repeating-linear-gradient(45deg,var(--coffee) 0 4px, transparent 4px 8px),
+               repeating-linear-gradient(-45deg,var(--coffee) 0 4px, transparent 4px 8px);
+    background-blend-mode:multiply;background-color:#fff;opacity:.85;
+  }
+  .pass-stub p{font-size:12.5px;font-weight:700;color:var(--coffee-soft);margin:0;text-transform:uppercase;letter-spacing:.05em;}
+  .notch{position:absolute;width:26px;height:26px;background:var(--cream);border-radius:50%;top:50%;transform:translateY(-50%);}
+  .notch.l{left:calc(100% - 220px - 13px);}
+  @media(max-width:720px){ .notch{display:none;} }
+
+  .pass-cta-row{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+
+  /* ---------- footer ---------- */
+  footer{position:relative;z-index:1;padding:54px 0 34px;border-top:1px solid var(--line);margin-top:40px;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .foot-logo{font-family:'Fraunces',serif;font-style:italic;font-size:19px;}
+  .foot-links{display:flex;gap:22px;font-size:14px;font-weight:600;}
+  .foot-links a{text-decoration:none;opacity:.75;}
+  .foot-links a:hover{opacity:1;}
+  .foot-bottom{
+    margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:12.5px;color:var(--coffee-soft);
+  }
+
+  ::selection{background:var(--berry);color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="bg-deco"><span class="b1"></span><span class="b2"></span></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Sofía <em>Gonet</em></div>
+    <nav class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contenido">Contenido</a>
+      <a href="#colaborar">Colaborar</a>
+      <a class="nav-cta" href="#contacto">Trabajemos juntos</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:0;">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">De Buenos Aires · para el mundo</span>
+        <h1>La Reini<span class="it">llegó para tu marca.</span></h1>
+        <p class="lead">Moda, viajes y café contados con estilo propio. Una comunidad de más de un millón de personas que confía en cada recomendación — ahora disponible para colaboraciones de marca.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#contacto">Quiero colaborar con Sofía ✦</a>
+          <a class="btn-secondary" href="https://www.instagram.com/sofiagonet/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+        <div class="stat-row">
+          <div><span class="num">1M+</span><span class="lbl">Seguidoras/es</span></div>
+          <div><span class="num">Arg · Uy · Chile · Es</span><span class="lbl">Alcance regional</span></div>
+          <div><span class="num">Moda · Viajes · Café</span><span class="lbl">Pilares de contenido</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="stamp">CAFÉ · MODA<br>✈ VIAJES</div>
+        <div class="polaroid p1"><div class="ph">Buenos<br>Aires</div></div>
+        <div class="polaroid p2"><div class="ph">Café ☕</div></div>
+        <div class="polaroid p3"><div class="ph">Old<br>Money</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>MODA <span>VIAJES <span>CAFÉ <span>OLD MONEY STYLE <span>MODA <span>VIAJES <span>CAFÉ <span>OLD MONEY STYLE <span>MODA <span>VIAJES <span>CAFÉ <span>OLD MONEY STYLE</span>
+    </div>
+  </div>
+
+  <!-- SOBRE MI -->
+  <section id="sobre-mi">
+    <p class="kicker">Sobre mí</p>
+    <h2 class="sec-title">Contenido con estilo propio, pensado <em>para conectar de verdad.</em></h2>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="monogram">SG</div>
+        <h3>Sofía Gonet</h3>
+        <div class="role">"La Reini"</div>
+        <div class="divider"></div>
+        <a class="about-social" href="https://www.instagram.com/sofiagonet/" target="_blank" rel="noopener">
+          @sofiagonet ↗
+        </a>
+      </div>
+
+      <div class="about-text">
+        <p>Desde Buenos Aires y por el mundo, Sofía construyó una de las comunidades más queridas de habla hispana alrededor de la <strong>moda</strong>, los <strong>viajes</strong> y su gran pasión: el <strong>café</strong>. Su estilo old money y su forma genuina de mostrarse la convirtieron en una referencia para miles de personas a la hora de elegir qué vestir, dónde viajar y qué probar.</p>
+        <p>Cada publicación combina estética editorial con cercanía real — la razón por la que su audiencia no solo la sigue, sino que <strong>confía y actúa</strong> según lo que ella recomienda.</p>
+        <div class="tag-row">
+          <span>Moda & indumentaria</span>
+          <span>Viajes & hotelería</span>
+          <span>Café & gastronomía</span>
+          <span>Belleza & lifestyle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO / PILARES -->
+  <section id="contenido" style="padding-top:0;">
+    <p class="kicker">Pilares de contenido</p>
+    <h2 class="sec-title">Tres mundos, <em>una sola voz</em> que tu marca puede aprovechar.</h2>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon">👗</div>
+        <h3>Moda</h3>
+        <p>Outfits, tendencias e indumentaria de marcas propias y aliadas, con una estética old money reconocible al instante.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon">✈️</div>
+        <h3>Viajes</h3>
+        <p>Destinos, hoteles y experiencias en Argentina y el mundo — contenido aspiracional que inspira a planear el próximo viaje.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon">☕</div>
+        <h3>Café</h3>
+        <p>Reseñas de cafeterías y momentos cotidianos que humanizan la marca y generan cercanía real con la audiencia.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WORK WITH ME -->
+  <section id="colaborar">
+    <div class="why">
+      <p class="kicker">Por qué colaborar</p>
+      <h2 class="sec-title">Una comunidad que <em>escucha, confía y compra.</em></h2>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="n">01</span>
+          <div>
+            <h4>Comunidad masiva y activa</h4>
+            <p>Más de un millón de personas siguiendo cada publicación, con fuerte presencia en Argentina, Uruguay, Chile y España.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="n">02</span>
+          <div>
+            <h4>Contenido con calidad editorial</h4>
+            <p>Producción cuidada de moda, viajes y lifestyle que eleva la percepción de cualquier marca asociada.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="n">03</span>
+          <div>
+            <h4>Trayectoria en marca propia</h4>
+            <p>Detrás de cada recomendación hay experiencia real construyendo y lanzando productos — sabe lo que una marca necesita.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="n">04</span>
+          <div>
+            <h4>Voz auténtica, cercana y querida</h4>
+            <p>Una relación genuina con su audiencia, que se traduce en confianza real hacia lo que ella recomienda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOARDING PASS -->
+  <section id="contacto" class="pass-wrap">
+    <p class="kicker">Colaboraciones</p>
+    <h2 class="sec-title">Tu marca, <em>con destino a un millón de personas.</em></h2>
+    <p class="sec-sub">Coordiná la colaboración a través de su representante. Respuesta directa, sin intermediarios innecesarios.</p>
+
+    <div class="pass" style="margin-top:44px;">
+      <div class="notch l"></div>
+      <div class="pass-main">
+        <div class="pass-top">
+          <span class="pass-brand">Sofía Gonet · Media Pass</span>
+          <span class="pass-class">Clase colaboración</span>
+        </div>
+        <div class="pass-route">
+          <span class="pass-city">BUE</span>
+          <span class="pass-plane">✈</span>
+          <span class="pass-city">Tu marca</span>
+        </div>
+        <div class="pass-fields">
+          <div><span class="k">Pasajera</span><span class="v">Sofía Gonet</span></div>
+          <div><span class="k">Contacto</span><span class="v">Nicolás Diraimondo</span></div>
+          <div><span class="k">Gate</span><span class="v">Instagram / Email</span></div>
+        </div>
+        <div class="pass-cta-row">
+          <a class="btn-primary" href="mailto:nicolas@diraimondopr.com">Escribir a nicolas@diraimondopr.com</a>
+          <a class="btn-secondary" href="https://www.instagram.com/sofiagonet/" target="_blank" rel="noopener">@sofiagonet en Instagram</a>
+        </div>
+      </div>
+      <div class="pass-stub">
+        <div class="qr"></div>
+        <p>Boarding<br>colaboración</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">Sofía Gonet</div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/sofiagonet/" target="_blank" rel="noopener">Instagram @sofiagonet</a>
+        <a href="mailto:nicolas@diraimondopr.com">nicolas@diraimondopr.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Sofía Gonet. Todos los derechos reservados.</span>
+      <span>Built by EasyLandX</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

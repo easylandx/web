@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julieta Coria — Actriz | INDEPENDENCIA en cartel</title>
+<meta name="description" content="Julieta Coria, actriz. Mirá su obra INDEPENDENCIA y conseguí tus entradas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose: #F7DCD4;
+    --rose-deep: #F2C1B6;
+    --wine: #9C2B4E;
+    --wine-deep: #7A1F3D;
+    --gold: #C9962E;
+    --gold-light: #E7B95A;
+    --cream: #FFF6EC;
+    --ink: #3B1E28;
+    --ink-soft: #6B4655;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost', sans-serif;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(231,185,90,0.18), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(156,43,78,0.12), transparent 45%),
+      linear-gradient(160deg, var(--rose) 0%, var(--rose-deep) 55%, #F0BBAE 100%);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .marquee-border{
+    background-image: radial-gradient(circle, var(--gold-light) 2.6px, transparent 2.8px);
+    background-size: 22px 22px;
+    background-position: center;
+  }
+  .marquee-border.top{height:14px;}
+  .marquee-border.bottom{height:14px;}
+
+  /* NAV */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 22px 6vw;
+    position:relative; z-index:5;
+  }
+  .brand{
+    font-family:'Abril Fatface', serif;
+    font-size:1.3rem;
+    color:var(--wine-deep);
+    letter-spacing:0.5px;
+  }
+  .brand span{color:var(--gold);}
+  header a.ig-btn{
+    border:1.5px solid var(--wine-deep);
+    padding:9px 18px;
+    border-radius:999px;
+    font-size:0.85rem;
+    font-weight:500;
+    letter-spacing:0.3px;
+    transition: all .25s ease;
+    color:var(--wine-deep);
+  }
+  header a.ig-btn:hover{background:var(--wine-deep); color:var(--cream);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    text-align:center;
+    padding: 40px 6vw 90px;
+    overflow:hidden;
+  }
+  .spotlight{
+    position:absolute;
+    top:-120px; left:50%; transform:translateX(-50%);
+    width:900px; height:900px;
+    background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 35%, transparent 65%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .eyebrow{
+    position:relative; z-index:2;
+    display:inline-block;
+    font-size:0.8rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--wine);
+    font-weight:600;
+    margin-bottom:22px;
+    padding: 7px 20px;
+    border:1px solid rgba(156,43,78,0.35);
+    border-radius:999px;
+    background:rgba(255,255,255,0.35);
+  }
+  h1.title{
+    position:relative; z-index:2;
+    font-family:'Abril Fatface', serif;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height:0.98;
+    color:var(--wine-deep);
+    text-shadow: 3px 3px 0 rgba(255,255,255,0.4);
+  }
+  h1.title .accent{color:var(--gold); font-style:normal;}
+  .hero-sub{
+    position:relative; z-index:2;
+    max-width:560px;
+    margin: 26px auto 0;
+    font-size:1.15rem;
+    font-weight:300;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .stats-row{
+    position:relative; z-index:2;
+    display:flex; justify-content:center; gap: 46px;
+    margin-top:38px;
+    flex-wrap:wrap;
+  }
+  .stat{text-align:center;}
+  .stat .num{font-family:'Abril Fatface', serif; font-size:1.9rem; color:var(--wine-deep);}
+  .stat .lbl{font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-soft);}
+
+  .hero-cta{
+    position:relative; z-index:2;
+    margin-top:44px;
+    display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding: 16px 34px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:1rem;
+    letter-spacing:0.3px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:var(--wine-deep);
+    box-shadow: 0 10px 24px rgba(201,150,46,0.4);
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgba(201,150,46,0.5);}
+  .btn-outline{
+    border:1.5px solid var(--wine-deep);
+    color:var(--wine-deep);
+  }
+  .btn-outline:hover{background:var(--wine-deep); color:var(--cream); transform:translateY(-3px);}
+
+  /* CURTAIN DIVIDER */
+  .curtain{
+    height:60px;
+    background: repeating-linear-gradient(90deg, var(--wine) 0px, var(--wine-deep) 26px, var(--wine) 52px);
+    position:relative;
+    box-shadow: inset 0 10px 18px rgba(0,0,0,0.25);
+  }
+  .curtain::after{
+    content:'';
+    position:absolute; bottom:-1px; left:0; right:0; height:14px;
+    background-image: radial-gradient(circle, var(--gold-light) 3px, transparent 3.2px);
+    background-size: 30px 20px;
+    background-position: center top;
+  }
+
+  /* SECTION SHARED */
+  section{padding: 90px 6vw;}
+  .section-head{text-align:center; max-width:680px; margin: 0 auto 56px;}
+  .section-head .kicker{
+    font-size:0.78rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--gold); font-weight:700; margin-bottom:14px; display:block;
+  }
+  .section-head h2{
+    font-family:'Abril Fatface', serif;
+    font-size:clamp(2rem, 4.5vw, 3rem);
+    color:var(--wine-deep);
+    line-height:1.1;
+  }
+
+  /* ABOUT */
+  .about{
+    background: var(--cream);
+    border-radius: 28px;
+    margin: 0 4vw;
+    padding: 70px 6vw;
+    display:grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-frame{
+    aspect-ratio: 4/5;
+    border-radius:20px;
+    background:
+      linear-gradient(160deg, var(--rose-deep), var(--gold-light));
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 20px 40px rgba(156,43,78,0.18);
+  }
+  .about-frame::before{
+    content:'';
+    position:absolute; inset:14px;
+    border:2px solid rgba(255,255,255,0.55);
+    border-radius:14px;
+  }
+  .about-frame .mask-icon{
+    font-family:'Abril Fatface', serif;
+    font-size:5rem;
+    color:rgba(255,255,255,0.85);
+  }
+  .about-text p{
+    font-size:1.08rem;
+    line-height:1.75;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+    font-weight:300;
+  }
+  .about-text p strong{color:var(--wine-deep); font-weight:600;}
+  .tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
+  .tag{
+    padding:8px 16px;
+    background: var(--rose);
+    color:var(--wine-deep);
+    border-radius:999px;
+    font-size:0.82rem;
+    font-weight:500;
+  }
+
+  /* PLAY */
+  .play-wrap{
+    background: linear-gradient(150deg, var(--wine-deep), var(--wine) 60%, #B84167);
+    border-radius:28px;
+    margin: 0 4vw;
+    padding: 4px;
+    box-shadow: 0 30px 60px rgba(122,31,61,0.35);
+  }
+  .play-inner{
+    border-radius:24px;
+    padding: 70px 6vw;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(231,185,90,0.25), transparent 45%),
+      transparent;
+    text-align:center;
+    color:var(--cream);
+  }
+  .play-eyebrow{
+    font-size:0.8rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold-light); font-weight:700; margin-bottom:18px;
+  }
+  .play-title{
+    font-family:'Abril Fatface', serif;
+    font-size:clamp(2.6rem, 7vw, 5rem);
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .play-venue{
+    font-size:1rem; letter-spacing:1px; color:rgba(255,246,236,0.75);
+    margin-bottom:34px;
+  }
+  .play-desc{
+    max-width:560px; margin:0 auto 40px;
+    font-size:1.08rem; line-height:1.7; font-weight:300;
+    color:rgba(255,246,236,0.92);
+  }
+  .ticket-box{
+    display:inline-flex; align-items:center; gap:16px;
+    background: rgba(255,246,236,0.1);
+    border:1px solid rgba(255,246,236,0.3);
+    border-radius:18px;
+    padding: 20px 26px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .ticket-box .tb-label{font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; color:rgba(255,246,236,0.7);}
+  .ticket-box .tb-site{font-family:'Jost',sans-serif; font-weight:600; font-size:1.05rem;}
+
+  /* INSTAGRAM CTA */
+  .ig-section{
+    text-align:center;
+  }
+  .ig-card{
+    max-width:640px; margin:0 auto;
+    background: var(--cream);
+    border-radius:28px;
+    padding:64px 6vw;
+    box-shadow: 0 20px 44px rgba(156,43,78,0.15);
+    position:relative;
+  }
+  .ig-icon{
+    width:64px; height:64px;
+    margin:0 auto 24px;
+    border-radius:18px;
+    background: linear-gradient(135deg, #F5C97A, var(--wine) 55%, #833A5C);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .ig-icon svg{width:32px; height:32px; fill:var(--cream);}
+  .ig-card h3{
+    font-family:'Abril Fatface', serif;
+    font-size:2rem;
+    color:var(--wine-deep);
+    margin-bottom:14px;
+  }
+  .ig-card p{
+    color:var(--ink-soft); font-weight:300; font-size:1.05rem;
+    max-width:440px; margin:0 auto 32px; line-height:1.6;
+  }
+  .ig-handle{
+    font-weight:600; color:var(--wine-deep);
+  }
+
+  /* FOOTER */
+  footer{
+    text-align:center;
+    padding: 50px 6vw 40px;
+    color: var(--ink-soft);
+    font-size:0.85rem;
+  }
+  footer .foot-brand{
+    font-family:'Abril Fatface', serif;
+    color:var(--wine-deep);
+    font-size:1rem;
+    margin-bottom:10px;
+  }
+  footer .foot-brand span{color:var(--gold);}
+
+  @media (max-width: 800px){
+    .about{grid-template-columns:1fr; padding:44px 6vw;}
+    section{padding:64px 6vw;}
+    .about, .play-wrap{margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="marquee-border top"></div>
+
+<header>
+  <div class="brand">Julieta <span>Coria</span></div>
+  <a class="ig-btn" href="https://www.instagram.com/julicoriaa/" target="_blank" rel="noopener">@julicoriaa</a>
+</header>
+
+<section class="hero">
+  <div class="spotlight"></div>
+  <span class="eyebrow">Actriz · Artista</span>
+  <h1 class="title">Julieta<br><span class="accent">Coria</span></h1>
+  <p class="hero-sub">Actriz de raíz y presencia escénica. Hoy en cartel con <strong>INDEPENDENCIA</strong>, la obra que la tiene arriba del escenario contando una historia que no te vas a querer perder.</p>
+
+  <div class="stats-row">
+    <div class="stat"><div class="num">1M+</div><div class="lbl">Seguidores</div></div>
+    <div class="stat"><div class="num">490</div><div class="lbl">Publicaciones</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl">Obra en cartel</div></div>
+  </div>
+
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="https://plateanet.com/obra/31321" target="_blank" rel="noopener">Conseguir entradas</a>
+    <a class="btn btn-outline" href="https://www.instagram.com/julicoriaa/" target="_blank" rel="noopener">Seguir en Instagram</a>
+  </div>
+</section>
+
+<div class="curtain"></div>
+
+<section class="about">
+  <div class="about-frame"><div class="mask-icon">🌸</div></div>
+  <div class="about-text">
+    <span class="section-head kicker" style="display:block; text-align:left; margin-bottom:14px;">Sobre ella</span>
+    <p><strong>Julieta Coria</strong> es actriz, y su trabajo en escena es el motivo por el que más de un millón de personas la siguen de cerca. Cada proyecto que encara lleva su sello: intensidad, calidez y una conexión genuina con el público.</p>
+    <p>Está representada por <strong>@vanepellizzeri</strong>, y actualmente su foco está puesto en <strong>INDEPENDENCIA</strong>, la obra que estrenó y que ya está generando el boca en boca que toda buena puesta en escena merece.</p>
+    <div class="tags">
+      <span class="tag">Actriz</span>
+      <span class="tag">Artista</span>
+      <span class="tag">Teatro en vivo</span>
+    </div>
+  </div>
+</section>
+
+<section id="obra">
+  <div class="play-wrap">
+    <div class="play-inner">
+      <span class="play-eyebrow">En cartel ahora</span>
+      <h1 class="play-title">INDEPENDENCIA</h1>
+      <div class="play-venue">en @hacela.shorta</div>
+      <p class="play-desc">Julieta Coria sube al escenario en una obra que no pasa desapercibida. Una experiencia teatral pensada para vivirse en vivo, de esas que se comentan a la salida y se recomiendan al día siguiente.</p>
+      <div class="ticket-box">
+        <span class="tb-label">Entradas en</span>
+        <span class="tb-site">plateanet.com/obra/31321</span>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="https://plateanet.com/obra/31321" target="_blank" rel="noopener">Comprar mis entradas →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ig-section">
+  <div class="ig-card">
+    <div class="ig-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.73.07-1.03.05-1.6.22-1.97.36-.5.2-.85.42-1.22.79-.37.37-.6.72-.79 1.22-.14.37-.31.94-.36 1.97-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.05 1.03.22 1.6.36 1.97.2.5.42.85.79 1.22.37.37.72.6 1.22.79.37.14.94.31 1.97.36 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c1.03-.05 1.6-.22 1.97-.36.5-.2.85-.42 1.22-.79.37-.37.6-.72.79-1.22.14-.37.31-.94.36-1.97.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.05-1.03-.22-1.6-.36-1.97-.2-.5-.42-.85-.79-1.22a2.1 2.1 0 0 0-1.22-.79c-.37-.14-.94-.31-1.97-.36-1.23-.06-1.58-.07-4.73-.07zm0 4.13a5.09 5.09 0 1 1 0 10.18 5.09 5.09 0 0 1 0-10.18zm0 1.62a3.47 3.47 0 1 0 0 6.94 3.47 3.47 0 0 0 0-6.94zm5.29-1.8a1.19 1.19 0 1 1-2.38 0 1.19 1.19 0 0 1 2.38 0z"/></svg>
+    </div>
+    <h3>Seguila en Instagram</h3>
+    <p>Backstage, avisos de funciones y todo lo nuevo de <span class="ig-handle">@julicoriaa</span>, directo desde su cuenta.</p>
+    <a class="btn btn-primary" href="https://www.instagram.com/julicoriaa/" target="_blank" rel="noopener">Ir al perfil</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">Julieta <span>Coria</span></div>
+  <p>© 2026 Julieta Coria. Todos los derechos reservados.</p>
+  <p style="margin-top:6px;">Built by EasyLandX</p>
+</footer>
+
+<div class="marquee-border bottom"></div>
+
+</body>
+</html>

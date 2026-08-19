@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Pasamos Comiendo · Jessica Santillan · Colaboraciones</title>
+<meta name="description" content="Jessica Santillan (@lapasamoscomiendo) — Creadora de contenido gastronómico con +5M de comunidad. Colaborá con una voz auténtica de la cocina casera argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Kalam:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF6E7;
+    --paper:#FFFDF8;
+    --tomate:#E6512C;
+    --tomate-dark:#C33F1F;
+    --mostaza:#F2A900;
+    --palta:#5C7A3E;
+    --palta-dark:#3F5A29;
+    --cafe:#3B2417;
+    --cafe-soft:#6B4A34;
+    --crema-linea:#EBD9B8;
+    --rosa:#F8D9C4;
+    --shadow: 0 10px 30px rgba(59,36,23,0.15);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--cafe);
+    font-family:'Nunito',sans-serif;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(230,81,44,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 90% 20%, rgba(92,122,62,0.08) 0%, transparent 35%),
+      radial-gradient(circle at 50% 90%, rgba(242,169,0,0.08) 0%, transparent 40%);
+  }
+  h1,h2,h3,.display{ font-family:'Fredoka',sans-serif; }
+  .hand{ font-family:'Kalam',cursive; }
+  a{ text-decoration:none; color:inherit; }
+  img{max-width:100%;display:block;}
+  section{position:relative;}
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,246,231,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:2px dashed var(--crema-linea);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-size:1.25rem; font-weight:700; color:var(--tomate-dark);}
+  .logo span.emoji{ font-size:1.6rem; }
+  .navlinks{ display:flex; gap:28px; align-items:center; }
+  .navlinks a{ font-weight:700; font-size:.95rem; color:var(--cafe-soft); transition:color .2s; }
+  .navlinks a:hover{ color:var(--tomate); }
+  .nav-cta{
+    background:var(--tomate); color:#fff !important; padding:10px 20px; border-radius:100px;
+    font-weight:800; box-shadow:var(--shadow); transition:transform .2s, background .2s;
+  }
+  .nav-cta:hover{ background:var(--tomate-dark); transform:translateY(-2px); }
+  .burger{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:70px 0 40px; position:relative; }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--rosa); color:var(--tomate-dark); font-weight:800; font-size:.8rem;
+    padding:7px 16px; border-radius:100px; letter-spacing:.03em; text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.05; color:var(--cafe);
+    margin-bottom:18px; font-weight:700;
+  }
+  .hero h1 .accent{ color:var(--tomate); position:relative; display:inline-block; }
+  .hero h1 .accent svg{ position:absolute; left:0; bottom:-6px; width:100%; height:14px; }
+  .hero p.lead{ font-size:1.15rem; color:var(--cafe-soft); max-width:520px; margin-bottom:30px; line-height:1.6; }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:15px 26px; border-radius:100px;
+    font-weight:800; font-size:1rem; transition:transform .2s, box-shadow .2s, background .2s;
+    cursor:pointer; border:none;
+  }
+  .btn-primary{ background:var(--tomate); color:#fff; box-shadow:0 8px 20px rgba(230,81,44,0.35); }
+  .btn-primary:hover{ background:var(--tomate-dark); transform:translateY(-3px); box-shadow:0 12px 24px rgba(230,81,44,0.4); }
+  .btn-outline{ background:var(--paper); color:var(--cafe); border:2px solid var(--cafe); }
+  .btn-outline:hover{ background:var(--cafe); color:var(--paper); transform:translateY(-3px); }
+
+  .hero-visual{ position:relative; display:flex; align-items:center; justify-content:center; }
+  .plate{
+    width:340px; height:340px; border-radius:50%;
+    background: conic-gradient(from 180deg, #FFFDF8, #FFF3DC, #FFFDF8);
+    box-shadow: 0 20px 50px rgba(59,36,23,0.25), inset 0 0 0 14px #FFFDF8, inset 0 0 0 16px var(--crema-linea);
+    display:flex; align-items:center; justify-content:center; position:relative;
+    animation: floaty 6s ease-in-out infinite;
+  }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0) rotate(0deg);} 50%{ transform:translateY(-14px) rotate(2deg);} }
+  .plate .center-emoji{ font-size:6rem; filter:drop-shadow(0 10px 12px rgba(0,0,0,0.15)); }
+  .orbit-icon{
+    position:absolute; background:var(--paper); border-radius:50%; box-shadow:var(--shadow);
+    display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+  }
+  .oi1{ width:64px; height:64px; top:-10px; right:20px; animation: floaty 5s ease-in-out infinite; }
+  .oi2{ width:56px; height:56px; bottom:10px; left:-20px; animation: floaty 7s ease-in-out infinite 1s; }
+  .oi3{ width:50px; height:50px; bottom:60px; right:-30px; background:var(--mostaza); animation: floaty 5.5s ease-in-out infinite .5s; }
+
+  .steam{ position:absolute; top:-40px; left:50%; transform:translateX(-50%); opacity:.5; }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats-strip{
+    background:var(--cafe); color:var(--cream); padding:28px 0; margin-top:20px;
+    border-top:3px solid var(--tomate); border-bottom:3px solid var(--tomate);
+  }
+  .stats-strip .wrap{ display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px; text-align:center; }
+  .stat{ min-width:140px; }
+  .stat .num{ font-family:'Fredoka',sans-serif; font-size:2.1rem; font-weight:700; color:var(--mostaza); }
+  .stat .lbl{ font-size:.85rem; opacity:.85; text-transform:uppercase; letter-spacing:.04em; font-weight:700; }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{ padding:90px 0; }
+  .sec-head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .sec-head .eyebrow{ margin-bottom:14px; }
+  .sec-head h2{ font-size:clamp(1.8rem,3.5vw,2.6rem); margin-bottom:14px; }
+  .sec-head p{ color:var(--cafe-soft); font-size:1.05rem; line-height:1.6; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--paper); }
+  .about-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:50px; align-items:center; }
+  .about-card{
+    background:var(--cream); border-radius:24px; padding:40px; box-shadow:var(--shadow);
+    border:2px solid var(--crema-linea); position:relative;
+  }
+  .about-card .quote-mark{ font-size:4rem; color:var(--tomate); font-family:'Fredoka',sans-serif; line-height:.5; margin-bottom:10px; display:block;}
+  .about-card p.hand{ font-size:1.35rem; line-height:1.5; color:var(--cafe); }
+  .about-signature{ margin-top:24px; font-weight:800; color:var(--tomate-dark); }
+  .about-points{ display:flex; flex-direction:column; gap:22px; }
+  .point{ display:flex; gap:16px; align-items:flex-start; }
+  .point .ico{
+    width:48px; height:48px; min-width:48px; border-radius:14px; display:flex; align-items:center;
+    justify-content:center; font-size:1.4rem; background:var(--rosa);
+  }
+  .point:nth-child(2) .ico{ background:#E4EAD8; }
+  .point:nth-child(3) .ico{ background:#FDE6B8; }
+  .point h3{ font-size:1.1rem; margin-bottom:4px; }
+  .point p{ color:var(--cafe-soft); font-size:.95rem; line-height:1.5; }
+
+  /* ---------- RECIPE CARDS (services) ---------- */
+  .services{ background:var(--cream); }
+  .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+  .recipe-card{
+    background:var(--paper); border-radius:6px; padding:30px 26px; position:relative;
+    box-shadow:var(--shadow); transform:rotate(var(--rot,0deg)); transition:transform .25s;
+    border-top:10px solid var(--tomate);
+  }
+  .recipe-card:nth-child(2){ --rot:0.6deg; border-top-color:var(--mostaza); }
+  .recipe-card:nth-child(3){ --rot:-0.8deg; border-top-color:var(--palta); }
+  .recipe-card:nth-child(4){ --rot:0.5deg; border-top-color:var(--tomate); }
+  .recipe-card:nth-child(5){ --rot:-0.5deg; border-top-color:var(--mostaza); }
+  .recipe-card:nth-child(6){ --rot:0.8deg; border-top-color:var(--palta); }
+  .recipe-card:hover{ transform:rotate(0deg) translateY(-8px); }
+  .recipe-card .tape{
+    position:absolute; top:-12px; left:50%; transform:translateX(-50%) rotate(-3deg);
+    width:70px; height:24px; background:rgba(242,169,0,0.55); border:1px solid rgba(242,169,0,0.7);
+  }
+  .recipe-card .ico{ font-size:2rem; margin-bottom:14px; }
+  .recipe-card h3{ font-size:1.15rem; margin-bottom:8px; }
+  .recipe-card p{ color:var(--cafe-soft); font-size:.92rem; line-height:1.55; }
+
+  /* ---------- BRANDS MARQUEE ---------- */
+  .brands{ background:var(--paper); padding:60px 0; border-top:2px dashed var(--crema-linea); border-bottom:2px dashed var(--crema-linea); }
+  .brands .sec-head{ margin-bottom:36px; }
+  .marquee{ overflow:hidden; position:relative; }
+  .marquee-track{
+    display:flex; gap:60px; width:max-content; animation:scroll 22s linear infinite; align-items:center;
+  }
+  .marquee-track span{ font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:600; color:var(--cafe-soft); opacity:.75; white-space:nowrap;}
+  @keyframes scroll{ 0%{ transform:translateX(0);} 100%{ transform:translateX(-50%);} }
+
+  /* ---------- PROCESS ---------- */
+  .process{ background:var(--cream); }
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; counter-reset: step; }
+  .step{ text-align:center; position:relative; }
+  .step .circle{
+    width:64px; height:64px; border-radius:50%; background:var(--tomate); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif;
+    font-weight:700; font-size:1.4rem; margin:0 auto 18px; box-shadow:var(--shadow);
+  }
+  .step:nth-child(2) .circle{ background:var(--mostaza); }
+  .step:nth-child(3) .circle{ background:var(--palta); }
+  .step:nth-child(4) .circle{ background:var(--tomate-dark); }
+  .step h3{ font-size:1.05rem; margin-bottom:8px; }
+  .step p{ color:var(--cafe-soft); font-size:.9rem; line-height:1.5; }
+
+  /* ---------- TESTIMONIAL-ish stat cards ---------- */
+  .why-strip{ background:var(--palta); color:#fff; padding:70px 0; }
+  .why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+  .why-card{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:28px; }
+  .why-card .big{ font-family:'Fredoka',sans-serif; font-size:2rem; margin-bottom:8px; color:var(--mostaza); }
+  .why-card p{ font-size:.95rem; line-height:1.5; opacity:.95; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:var(--cafe); color:var(--cream); text-align:center; padding:100px 0; position:relative; overflow:hidden;}
+  .contact::before{
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(circle at 20% 20%, rgba(230,81,44,0.25), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(242,169,0,0.2), transparent 45%);
+  }
+  .contact .wrap{ position:relative; }
+  .contact h2{ font-size:clamp(2rem,4vw,2.8rem); margin-bottom:16px; }
+  .contact p{ color:#E9DCCB; max-width:520px; margin:0 auto 34px; font-size:1.05rem; line-height:1.6;}
+  .contact-ctas{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:44px; }
+  .email-pill{
+    display:inline-flex; align-items:center; gap:10px; background:var(--paper); color:var(--cafe);
+    padding:16px 26px; border-radius:100px; font-weight:800; font-size:1rem; box-shadow:var(--shadow);
+    transition:transform .2s;
+  }
+  .email-pill:hover{ transform:translateY(-3px); }
+  .social-row{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+  .social-btn{
+    display:inline-flex; align-items:center; gap:10px; border:2px solid rgba(255,246,231,0.35);
+    padding:12px 22px; border-radius:100px; font-weight:700; color:var(--cream); transition:all .2s;
+  }
+  .social-btn:hover{ background:var(--cream); color:var(--cafe); border-color:var(--cream); }
+
+  footer{ background:#2A1810; color:#C8B49E; text-align:center; padding:26px 0; font-size:.85rem; }
+  footer a{ color:var(--mostaza); font-weight:700; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.show{ opacity:1; transform:translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .navlinks{ display:none; }
+    .hero-grid, .about-grid{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; }
+    .card-grid{ grid-template-columns:repeat(2,1fr); }
+    .steps{ grid-template-columns:repeat(2,1fr); }
+    .why-grid{ grid-template-columns:1fr; }
+    .stats-strip .wrap{ gap:26px; }
+  }
+  @media (max-width: 560px){
+    .card-grid{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; }
+    .plate{ width:260px; height:260px; }
+    .plate .center-emoji{ font-size:4.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="emoji">🍲</span> La Pasamos Comiendo</div>
+    <div class="navlinks">
+      <a href="#sobre">Sobre Jessi</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#marcas">Marcas</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto" class="nav-cta">Quiero colaborar</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">✨ Media Kit · Colaboraciones de marca</div>
+      <h1>Con lo que hay en <span class="accent">tu marca</span>,<br>hacemos magia en la cocina.</h1>
+      <p class="lead">Soy Jessi, creadora de contenido gastronómico. Le muestro a más de <strong>5 millones de personas</strong> cómo cocinar rico y fácil con lo que tienen a mano — y puedo hacer lo mismo con tus productos.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn btn-primary">📩 Hablemos de tu marca</a>
+        <a href="https://www.instagram.com/lapasamoscomiendo/" target="_blank" rel="noopener" class="btn btn-outline">Ver Instagram</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="plate">
+        <div class="center-emoji">👩🏻‍🍳</div>
+        <div class="orbit-icon oi1">🍞</div>
+        <div class="orbit-icon oi2">🥘</div>
+        <div class="orbit-icon oi3">❤️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="wrap">
+    <div class="stat"><div class="num">2M+</div><div class="lbl">Instagram</div></div>
+    <div class="stat"><div class="num">1M+</div><div class="lbl">TikTok</div></div>
+    <div class="stat"><div class="num">2M+</div><div class="lbl">Facebook</div></div>
+    <div class="stat"><div class="num">2.200+</div><div class="lbl">Recetas publicadas</div></div>
+    <div class="stat"><div class="num">🇦🇷🌎</div><div class="lbl">Alcance LatAm</div></div>
+  </div>
+</div>
+
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="about-card">
+        <span class="quote-mark">"</span>
+        <p class="hand">Con lo que tenemos en casa, hacemos magia.</p>
+        <div class="about-signature">— Jessi, @lapasamoscomiendo</div>
+      </div>
+    </div>
+    <div class="reveal about-points">
+      <div class="sec-head" style="text-align:left; margin:0 0 10px;">
+        <div class="eyebrow">👋 Quién soy</div>
+        <h2>Cocina casera, cercana y de verdad.</h2>
+      </div>
+      <div class="point">
+        <div class="ico">🏠</div>
+        <div>
+          <h3>Contenido 100% auténtico</h3>
+          <p>Recetas caseras, prácticas y accesibles, grabadas en mi propia cocina — la misma que ven mis seguidores todos los días.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="ico">👨‍👩‍👧</div>
+        <div>
+          <h3>Audiencia familiar y fiel</h3>
+          <p>Una comunidad que cocina en casa, que confía en mis recomendaciones y que repite mis recetas cada semana.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="ico">📈</div>
+        <div>
+          <h3>Alcance real, sin humo</h3>
+          <p>Más de 5 millones de personas entre Instagram, TikTok y Facebook, con contenido que se comparte y se guarda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">🍽️ Qué puedo hacer por tu marca</div>
+      <h2>Un menú de colaboraciones a tu medida</h2>
+      <p>Cada campaña se cocina distinto. Elegí el formato que mejor le sienta a tu producto.</p>
+    </div>
+    <div class="card-grid">
+      <div class="recipe-card reveal"><div class="tape"></div>
+        <div class="ico">🎥</div>
+        <h3>Reels y videos de recetas</h3>
+        <p>Integro tu producto en una receta real, de principio a fin, tal como lo haría en mi propia cocina.</p>
+      </div>
+      <div class="recipe-card reveal"><div class="tape"></div>
+        <div class="ico">📦</div>
+        <h3>Unboxing y reseñas</h3>
+        <p>Presento tu producto a mi comunidad con una opinión honesta y cercana, generando confianza real.</p>
+      </div>
+      <div class="recipe-card reveal"><div class="tape"></div>
+        <div class="ico">🏷️</div>
+        <h3>Presencia de marca</h3>
+        <p>Mención y exhibición de tu producto en el contenido diario, de forma natural y no invasiva.</p>
+      </div>
+      <div class="recipe-card reveal"><div class="tape"></div>
+        <div class="ico">🎁</div>
+        <h3>Sorteos y giveaways</h3>
+        <p>Activaciones que generan alcance, interacción y nuevos seguidores para tu marca.</p>
+      </div>
+      <div class="recipe-card reveal"><div class="tape"></div>
+        <div class="ico">📅</div>
+        <h3>Campañas a largo plazo</h3>
+        <p>Embajadora de marca con contenido recurrente, para construir presencia sostenida en el tiempo.</p>
+      </div>
+      <div class="recipe-card reveal"><div class="tape"></div>
+        <div class="ico">🛍️</div>
+        <h3>Contenido para tu tienda</h3>
+        <p>Fotos y videos de tu producto pensados para que los uses en tus propias redes o e-commerce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brands" id="marcas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">🤝 Confían en mí</div>
+      <h2>Marcas con las que ya cociné</h2>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>🥩 Carne Argentina</span>
+      <span>⚓ Dos Anclas</span>
+      <span>🫒 Orali Argentina</span>
+      <span>🍞 Marcas de alimentos</span>
+      <span>🍳 Utensilios de cocina</span>
+      <span>🏠 Electrodomésticos</span>
+      <span>🥩 Carne Argentina</span>
+      <span>⚓ Dos Anclas</span>
+      <span>🫒 Orali Argentina</span>
+      <span>🍞 Marcas de alimentos</span>
+      <span>🍳 Utensilios de cocina</span>
+      <span>🏠 Electrodomésticos</span>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">👩‍🍳 La receta de una colaboración</div>
+      <h2>Así trabajamos juntos</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="circle">1</div>
+        <h3>Contame tu idea</h3>
+        <p>Me escribís por mail o Instagram y me contás qué producto o campaña tenés en mente.</p>
+      </div>
+      <div class="step reveal">
+        <div class="circle">2</div>
+        <h3>Armamos la propuesta</h3>
+        <p>Definimos formato, tiempos y entregables según tu objetivo y presupuesto.</p>
+      </div>
+      <div class="step reveal">
+        <div class="circle">3</div>
+        <h3>Cocinamos el contenido</h3>
+        <p>Grabo la receta o pieza de contenido con tu producto, con mi estilo cercano de siempre.</p>
+      </div>
+      <div class="step reveal">
+        <div class="circle">4</div>
+        <h3>Publicamos y medimos</h3>
+        <p>Compartimos el contenido con mi comunidad y te paso resultados de alcance e interacción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-strip">
+  <div class="wrap">
+    <div class="sec-head reveal" style="color:#fff;">
+      <div class="eyebrow" style="background:rgba(255,255,255,0.15); color:#fff;">💡 Por qué invertir en esta colaboración</div>
+      <h2>Resultados que se sienten en la cocina de cada casa</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="big">Alto engagement</div>
+        <p>Contenido que se guarda y se comparte porque resuelve algo real: qué cocinar hoy.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="big">Confianza real</div>
+        <p>Años construyendo una comunidad que cocina conmigo, no solo mira desde afuera.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="big">Contenido reusable</div>
+        <p>Videos y fotos de calidad que también podés usar en tus propios canales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <h2>¿Cocinamos algo juntos? 🍳</h2>
+    <p>Contame sobre tu marca y tu producto, y armamos una propuesta a medida. Respondo todos los mensajes de colaboración.</p>
+    <div class="contact-ctas">
+      <a class="email-pill" href="mailto:contacto.lapasamoscomiendo@gmail.com">✉️ contacto.lapasamoscomiendo@gmail.com</a>
+    </div>
+    <div class="social-row">
+      <a class="social-btn" href="https://www.instagram.com/lapasamoscomiendo/" target="_blank" rel="noopener">📸 Instagram</a>
+      <a class="social-btn" href="https://youtube.com/@lapasamoscomiendo" target="_blank" rel="noopener">▶️ YouTube</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 La Pasamos Comiendo · Jessica Santillan · <a href="mailto:contacto.lapasamoscomiendo@gmail.com">contacto.lapasamoscomiendo@gmail.com</a>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>

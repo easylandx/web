@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chini Astro · Método AstroAkasha</title>
+<meta name="description" content="Astrología del alma + Registros Akáshicos. Un acompañamiento para recordar quién sos. Chini Astro — Creadora del Método AstroAkasha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF1DE;
+    --bg-soft: #F6E7C9;
+    --bg-deep: #F1DBAE;
+    --ink: #3A2145;
+    --ink-soft: #6B4E78;
+    --gold: #B98A2E;
+    --gold-light: #E4C075;
+    --gold-deep: #8C6821;
+    --rose: #B5726F;
+    --line: rgba(58,33,69,0.16);
+    --paper: #FFFBF2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    color: var(--ink);
+    letter-spacing:0.01em;
+  }
+  em{font-style:italic; color:var(--gold-deep);}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  img,svg{display:block; max-width:100%;}
+
+  /* subtle star texture background */
+  .stars{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.5;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, var(--gold-light) 40%, transparent 41%),
+      radial-gradient(1.5px 1.5px at 70% 15%, var(--gold-light) 40%, transparent 41%),
+      radial-gradient(1px 1px at 40% 70%, var(--gold) 40%, transparent 41%),
+      radial-gradient(1px 1px at 85% 55%, var(--gold) 40%, transparent 41%),
+      radial-gradient(1.5px 1.5px at 55% 85%, var(--gold-light) 40%, transparent 41%),
+      radial-gradient(1px 1px at 10% 90%, var(--gold) 40%, transparent 41%),
+      radial-gradient(1.5px 1.5px at 92% 80%, var(--gold-light) 40%, transparent 41%);
+    background-repeat:no-repeat;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,241,222,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .logo{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem; font-weight:600;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .spark{color:var(--gold); font-size:1.1rem;}
+  .nav-cta{
+    background:var(--ink);
+    color:var(--bg);
+    padding:10px 22px;
+    border-radius:100px;
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    transition:transform .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--gold-deep); transform:translateY(-2px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; z-index:1;
+    padding:70px 0 60px;
+  }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr;
+    gap:50px; align-items:center;
+  }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:0.22em; font-size:0.72rem;
+    color:var(--gold-deep); font-weight:500; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:28px; height:1px; background:var(--gold);}
+  h1.headline{
+    font-size:clamp(2.6rem, 5vw, 3.8rem);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .sub{
+    font-size:1.08rem; color:var(--ink-soft); max-width:480px; margin-bottom:34px;
+    font-weight:300;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:26px;}
+  .btn{
+    padding:15px 30px;
+    border-radius:100px;
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease;
+    font-weight:500;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:var(--paper);
+    box-shadow:0 10px 24px -8px rgba(185,138,46,0.55);
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 28px -8px rgba(185,138,46,0.65);}
+  .btn-outline{
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink); color:var(--bg); transform:translateY(-3px);}
+  .handle{
+    font-size:0.85rem; color:var(--ink-soft);
+  }
+  .handle a{border-bottom:1px solid var(--gold); padding-bottom:1px;}
+
+  /* celestial wheel signature */
+  .wheel-box{position:relative; display:flex; align-items:center; justify-content:center;}
+  .wheel{
+    width:100%; max-width:420px;
+    animation: spin 90s linear infinite;
+  }
+  .wheel-inner{ animation: spin-rev 60s linear infinite; transform-origin:center; }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+  @keyframes spin-rev{ to{ transform:rotate(-360deg);} }
+  @media (prefers-reduced-motion: reduce){
+    .wheel, .wheel-inner{animation:none;}
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{position:relative; z-index:1; padding:90px 0;}
+  .tag{
+    text-transform:uppercase; letter-spacing:0.2em; font-size:0.72rem;
+    color:var(--gold-deep); font-weight:500; margin-bottom:14px;
+  }
+  h2.title{font-size:clamp(2rem, 3.6vw, 2.7rem); margin-bottom:18px; max-width:640px;}
+  .lead{color:var(--ink-soft); max-width:560px; font-size:1.02rem; margin-bottom:50px;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* method section */
+  .method-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .method-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:40px 34px;
+    position:relative;
+    overflow:hidden;
+  }
+  .method-card::after{
+    content:''; position:absolute; top:-40px; right:-40px;
+    width:140px; height:140px; border-radius:50%;
+    background:radial-gradient(circle, rgba(228,192,117,0.5), transparent 70%);
+  }
+  .method-card .icon{margin-bottom:20px;}
+  .method-card h3{font-size:1.55rem; margin-bottom:12px;}
+  .method-card p{color:var(--ink-soft); font-size:0.96rem; font-weight:300;}
+
+  /* who its for */
+  .who{background:var(--bg-soft);}
+  .who-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+  .who-item{
+    padding:30px 26px;
+    background:var(--paper);
+    border-radius:18px;
+    border:1px solid var(--line);
+  }
+  .who-item .mark{font-family:'Cormorant Garamond', serif; font-size:1.6rem; color:var(--gold); margin-bottom:10px; display:block;}
+  .who-item p{font-size:0.95rem; color:var(--ink-soft);}
+
+  /* process */
+  .process-list{display:flex; flex-direction:column; gap:0; max-width:680px;}
+  .process-item{
+    display:grid; grid-template-columns:70px 1fr;
+    gap:24px; padding:30px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .process-item:first-child{border-top:1px solid var(--line);}
+  .process-num{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:2.2rem; color:var(--gold); line-height:1;
+  }
+  .process-item h3{font-size:1.3rem; margin-bottom:6px;}
+  .process-item p{color:var(--ink-soft); font-size:0.95rem;}
+
+  /* final CTA */
+  .final-cta{
+    background:linear-gradient(150deg, var(--gold-deep), var(--gold) 45%, var(--rose) 110%);
+    border-radius:32px;
+    padding:70px 50px;
+    text-align:center;
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:'✦'; position:absolute; top:24px; left:34px; font-size:1.4rem; opacity:0.5;
+  }
+  .final-cta::after{
+    content:'✦'; position:absolute; bottom:24px; right:34px; font-size:1.4rem; opacity:0.5;
+  }
+  .final-cta h2{color:var(--paper); font-size:clamp(2rem,4vw,2.9rem); margin-bottom:16px;}
+  .final-cta p{color:rgba(255,251,242,0.9); max-width:520px; margin:0 auto 34px; font-size:1.02rem;}
+  .final-cta .cta-row{justify-content:center;}
+  .final-cta .btn-primary{background:var(--paper); color:var(--ink-deep, var(--ink)); box-shadow:0 12px 26px -8px rgba(0,0,0,0.25);}
+  .final-cta .btn-outline{border-color:var(--paper); color:var(--paper);}
+  .final-cta .btn-outline:hover{background:var(--paper); color:var(--gold-deep);}
+
+  /* footer */
+  footer{
+    padding:50px 0 40px;
+    text-align:center;
+    position:relative; z-index:1;
+  }
+  footer .flogo{font-family:'Cormorant Garamond', serif; font-size:1.2rem; margin-bottom:10px;}
+  footer .flinks{display:flex; gap:22px; justify-content:center; margin-bottom:20px; font-size:0.85rem;}
+  footer .flinks a{color:var(--ink-soft); border-bottom:1px solid transparent; transition:border-color .2s ease, color .2s ease;}
+  footer .flinks a:hover{color:var(--gold-deep); border-color:var(--gold-deep);}
+  footer .credit{font-size:0.78rem; color:var(--ink-soft); opacity:0.8;}
+
+  /* floating buttons */
+  .float-stack{
+    position:fixed; right:20px; bottom:22px; z-index:60;
+    display:flex; flex-direction:column; gap:12px; align-items:flex-end;
+  }
+  .float-btn{
+    display:flex; align-items:center; gap:10px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    color:var(--ink);
+    padding:12px 18px;
+    border-radius:100px;
+    font-size:0.82rem;
+    box-shadow:0 8px 22px -6px rgba(58,33,69,0.28);
+    transition:transform .25s ease, background .25s ease, color .25s ease;
+  }
+  .float-btn.gold{background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:var(--paper); border:none;}
+  .float-btn:hover{transform:translateY(-3px) scale(1.03);}
+  .float-btn svg{width:18px; height:18px; flex-shrink:0;}
+
+  /* responsive */
+  @media (max-width: 880px){
+    .hero .wrap{grid-template-columns:1fr; text-align:center;}
+    .eyebrow{justify-content:center;}
+    .eyebrow::before{display:none;}
+    .sub{margin-left:auto; margin-right:auto;}
+    .cta-row{justify-content:center;}
+    .wheel-box{order:-1; margin-bottom:10px;}
+    .wheel{max-width:280px;}
+    .method-grid{grid-template-columns:1fr;}
+    .who-grid{grid-template-columns:1fr;}
+    .process-item{grid-template-columns:50px 1fr;}
+    .final-cta{padding:50px 26px;}
+    .nav-cta{padding:9px 16px; font-size:0.72rem;}
+    .logo{font-size:1.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="spark">✦</span> Chini Astro</div>
+    <a href="https://walink.co/1834c9" target="_blank" rel="noopener" class="nav-cta">Agendar sesión</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">Método AstroAkasha</div>
+      <h1 class="headline">Te acompaño a <em>recordar</em><br>quién sos.</h1>
+      <p class="sub">Astrología del alma + Registros Akáshicos. Un espacio de encuentro con tu carta natal y tu historia energética, para que vuelvas a vos con más claridad.</p>
+      <div class="cta-row">
+        <a href="https://walink.co/1834c9" target="_blank" rel="noopener" class="btn btn-primary">Agenda abierta ✦</a>
+        <a href="https://www.instagram.com/chini.astroakasha/" target="_blank" rel="noopener" class="btn btn-outline">Ver en Instagram</a>
+      </div>
+      <div class="handle">✨ <a href="https://www.instagram.com/chini.astroakasha/" target="_blank" rel="noopener">@chini.astroakasha</a> — Cintia Andrada · Chini</div>
+    </div>
+    <div class="wheel-box">
+      <svg class="wheel" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="190" fill="none" stroke="var(--gold-light)" stroke-width="1" opacity="0.6"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.7"/>
+        <circle cx="200" cy="200" r="110" fill="none" stroke="var(--rose)" stroke-width="1" opacity="0.5"/>
+        <g class="wheel-inner">
+          <g stroke="var(--gold-deep)" stroke-width="1" opacity="0.55">
+            <line x1="200" y1="10" x2="200" y2="390"/>
+            <line x1="10" y1="200" x2="390" y2="200"/>
+            <line x1="55" y1="55" x2="345" y2="345"/>
+            <line x1="345" y1="55" x2="55" y2="345"/>
+          </g>
+          <g fill="var(--gold)">
+            <circle cx="200" cy="20" r="3.5"/>
+            <circle cx="200" cy="380" r="3.5"/>
+            <circle cx="20" cy="200" r="3.5"/>
+            <circle cx="380" cy="200" r="3.5"/>
+            <circle cx="80" cy="80" r="2.8"/>
+            <circle cx="320" cy="80" r="2.8"/>
+            <circle cx="80" cy="320" r="2.8"/>
+            <circle cx="320" cy="320" r="2.8"/>
+          </g>
+          <g fill="none" stroke="var(--rose)" stroke-width="1.4" opacity="0.75">
+            <path d="M200,90 L260,150 L200,310 L140,150 Z"/>
+          </g>
+        </g>
+        <circle cx="200" cy="200" r="46" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/>
+        <text x="200" y="207" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" font-style="italic" fill="var(--ink)">✦</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="tag reveal">El método</div>
+    <h2 class="title reveal">Dos caminos, un mismo propósito: acompañarte a volver a tu esencia.</h2>
+    <p class="lead reveal">AstroAkasha combina la lectura simbólica de tu carta natal con la sabiduría de los Registros Akáshicos, para mirar tu presente con raíces más profundas.</p>
+    <div class="method-grid">
+      <div class="method-card reveal">
+        <div class="icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 8.9 10.4A7 7 0 0 1 12 3Z" stroke="#B98A2E" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Astrología del Alma</h3>
+        <p>Leemos tu carta natal como un mapa simbólico: no para predecir, sino para comprender los patrones que venís repitiendo y los dones que ya son tuyos.</p>
+      </div>
+      <div class="method-card reveal">
+        <div class="icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 2C9 6 6 8 6 12c0 4 3 8 6 10 3-2 6-6 6-10 0-4-3-6-6-10Z" stroke="#B5726F" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Registros Akáshicos</h3>
+        <p>Un canal de conexión con la memoria de tu alma: información, patrones y aprendizajes que explican el porqué de tu camino actual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="wrap">
+    <div class="tag reveal">¿Es para vos?</div>
+    <h2 class="title reveal">Este acompañamiento es para quienes sienten el llamado a mirar hacia adentro.</h2>
+    <div class="who-grid">
+      <div class="who-item reveal">
+        <span class="mark">✦</span>
+        <p>Sentís que estás en un momento de cambio y necesitás claridad sobre el camino a seguir.</p>
+      </div>
+      <div class="who-item reveal">
+        <span class="mark">✦</span>
+        <p>Querés entender tu carta natal más allá del horóscopo genérico, con una lectura real y personal.</p>
+      </div>
+      <div class="who-item reveal">
+        <span class="mark">✦</span>
+        <p>Buscás herramientas espirituales para conocerte, sanar patrones y conectar con tu propósito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="tag reveal">Cómo es el proceso</div>
+    <h2 class="title reveal">Tres pasos para tu sesión con Chini.</h2>
+    <div class="process-list">
+      <div class="process-item reveal">
+        <div class="process-num">01</div>
+        <div>
+          <h3>Agendás tu espacio</h3>
+          <p>Elegís el día y horario que mejor te queda desde el link de agenda abierta.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">02</div>
+        <div>
+          <h3>Nos encontramos</h3>
+          <p>En la sesión exploramos tu carta natal y/o abrimos tus Registros Akáshicos, según lo que necesites en este momento.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">03</div>
+        <div>
+          <h3>Volvés a vos</h3>
+          <p>Salís del encuentro con más claridad, herramientas concretas y una mirada más amable sobre tu propio proceso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agenda">
+  <div class="wrap">
+    <div class="final-cta reveal">
+      <h2>Agenda abierta ✦</h2>
+      <p>Si sentís el llamado, este es el momento. Reservá tu sesión con Chini y empezá tu camino de vuelta a vos.</p>
+      <div class="cta-row">
+        <a href="https://walink.co/1834c9" target="_blank" rel="noopener" class="btn btn-primary">Reservar mi sesión</a>
+        <a href="https://www.instagram.com/chini.astroakasha/" target="_blank" rel="noopener" class="btn btn-outline">Seguir en Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flogo">✦ Chini Astro · Método AstroAkasha</div>
+    <div class="flinks">
+      <a href="https://www.instagram.com/chini.astroakasha/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://walink.co/1834c9" target="_blank" rel="noopener">Agendar sesión</a>
+    </div>
+    <div class="credit">© 2026 Chini Astro. Built by EasyLandX.</div>
+  </div>
+</footer>
+
+<div class="float-stack">
+  <a class="float-btn gold" href="https://walink.co/1834c9" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 14.4 9.6 22 12 14.4 14.4 12 22 9.6 14.4 2 12 9.6 9.6 12 2Z" fill="currentColor"/></svg>
+    Agendar
+  </a>
+  <a class="float-btn" href="https://www.instagram.com/chini.astroakasha/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+    Instagram
+  </a>
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

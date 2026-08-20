@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flor de Luna · Pualani — Tarot Terapéutico & Sanación Holística</title>
+<meta name="description" content="Lecturas de tarot terapéutico, sanación holística e informes astrológicos personalizados. Agendá tu sesión con Pualani.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#132920;
+    --bg-mid:#1c3a2b;
+    --bg-card:#233f2d;
+    --sage:#9FBE9F;
+    --sage-soft:#C4DAC0;
+    --blush:#EFC2C6;
+    --blush-soft:#F6DADD;
+    --moon:#F8F2E4;
+    --lilac:#C9BCE4;
+    --gold:#CDA35F;
+    --gold-soft:#E1C289;
+    --line: rgba(205,163,95,.3);
+    --shadow: 0 22px 60px rgba(6,16,10,.5);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg-deep);
+    color:var(--moon);
+    font-family:'Nunito',sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{list-style:none;}
+  ::selection{background:var(--blush);color:var(--bg-deep);}
+
+  /* ---------- Drifting petals background ---------- */
+  #petals{
+    position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  }
+  .petal{
+    position:absolute;
+    width:14px;height:14px;
+    border-radius:50% 50% 50% 0;
+    background:var(--blush);
+    opacity:.28;
+    animation:drift linear infinite;
+  }
+  @keyframes drift{
+    from{transform:translateY(-10vh) rotate(0deg);}
+    to{transform:translateY(110vh) rotate(320deg);}
+  }
+
+  .wrap{position:relative;z-index:1;}
+  .container{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:20px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header.scrolled{
+    background:rgba(19,41,32,0.9);
+    backdrop-filter:blur(10px);
+    padding:13px 0;
+    box-shadow:0 8px 30px rgba(0,0,0,.3);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .logo{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:1.4rem;
+    color:var(--sage-soft);
+    display:flex;align-items:center;gap:9px;
+  }
+  nav.links{display:flex;gap:32px;font-size:.9rem;}
+  nav.links a{opacity:.85;position:relative;padding-bottom:4px;transition:opacity .25s ease;}
+  nav.links a:hover{opacity:1;}
+  nav.links a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0%;height:1px;
+    background:var(--gold);transition:width .3s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 26px;border-radius:999px;
+    font-size:.9rem;font-weight:600;letter-spacing:.01em;
+    cursor:pointer;border:1px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--sage), var(--gold-soft));
+    color:#14261b;
+    box-shadow:0 10px 28px rgba(159,190,159,.3);
+  }
+  .btn-primary:hover{box-shadow:0 16px 34px rgba(159,190,159,.42);}
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--gold-soft);
+    background:rgba(205,163,95,0.07);
+  }
+  .btn-ghost:hover{background:rgba(205,163,95,0.15);}
+  .btn-small{padding:9px 18px;font-size:.82rem;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    position:relative;
+    padding:150px 0 90px;
+    background:
+      radial-gradient(ellipse at 80% 15%, rgba(159,190,159,0.18), transparent 45%),
+      radial-gradient(ellipse at 8% 88%, rgba(239,194,198,0.14), transparent 45%),
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-soft);
+    border:1px solid var(--line);padding:8px 16px;border-radius:999px;
+    margin-bottom:26px;background:rgba(205,163,95,0.07);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--blush);box-shadow:0 0 10px var(--blush);}
+
+  .hero h1{
+    font-size:clamp(2.5rem, 4.8vw, 3.9rem);
+    line-height:1.1;font-style:italic;
+    background:linear-gradient(120deg, var(--moon) 15%, var(--sage-soft) 55%, var(--blush) 92%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:22px;
+  }
+  .hero p.lead{
+    font-size:1.1rem;line-height:1.75;color:var(--sage-soft);
+    max-width:520px;margin-bottom:34px;opacity:.92;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:34px;}
+  .trust{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--sage-soft);opacity:.85;}
+  .trust .leaf{font-size:1rem;}
+
+  /* Hero visual: blooming moonflower */
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:500px;}
+  .glow-orb{
+    position:absolute;width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff8ea, var(--sage-soft) 42%, transparent 74%);
+    opacity:.22;filter:blur(8px);
+    animation:pulse 5s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.2;}50%{transform:scale(1.07);opacity:.3;}}
+
+  .flower{position:relative;width:260px;height:260px;}
+  .flower .petal-el{
+    position:absolute;top:50%;left:50%;
+    width:90px;height:130px;
+    background:linear-gradient(160deg, var(--blush-soft), var(--blush));
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform-origin:50% 100%;
+    opacity:.92;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+  }
+  .flower .petal-el:nth-child(1){transform:translate(-50%,-100%) rotate(0deg);}
+  .flower .petal-el:nth-child(2){transform:translate(-50%,-100%) rotate(72deg);background:linear-gradient(160deg, var(--sage-soft), var(--sage));}
+  .flower .petal-el:nth-child(3){transform:translate(-50%,-100%) rotate(144deg);}
+  .flower .petal-el:nth-child(4){transform:translate(-50%,-100%) rotate(216deg);background:linear-gradient(160deg, var(--sage-soft), var(--sage));}
+  .flower .petal-el:nth-child(5){transform:translate(-50%,-100%) rotate(288deg);}
+  .flower .center{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:64px;height:64px;border-radius:50%;
+    background:radial-gradient(circle at 38% 32%, #fffaf0, var(--gold-soft) 60%, var(--gold) 100%);
+    box-shadow:0 0 40px rgba(205,163,95,.5);
+    z-index:2;
+  }
+
+  /* organic wave divider */
+  .wave{display:block;width:100%;line-height:0;}
+  .wave svg{width:100%;height:70px;display:block;}
+
+  section{position:relative;padding:100px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 60px;}
+  .section-head .eyebrow{margin-bottom:18px;}
+  .section-head h2{
+    font-size:clamp(1.9rem,3.2vw,2.6rem);font-style:italic;color:var(--moon);margin-bottom:16px;
+  }
+  .section-head p{color:var(--sage-soft);font-size:1rem;line-height:1.7;opacity:.9;}
+
+  /* ---------- Sobre Pualani ---------- */
+  .about{background:var(--bg-mid);}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;}
+  .astro-wheel-wrap{display:flex;justify-content:center;align-items:center;height:320px;}
+  .astro-wheel{
+    width:280px;height:280px;position:relative;
+    animation:spin 60s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .astro-wheel .ring{
+    position:absolute;inset:0;border-radius:50%;
+    border:1px dashed rgba(205,163,95,.4);
+  }
+  .astro-wheel .ring2{inset:26px;border:1px solid rgba(159,190,159,.35);}
+  .astro-wheel .glyph{
+    position:absolute;width:26px;height:26px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.95rem;color:var(--gold-soft);
+    transform-origin:140px 140px;
+  }
+  .astro-wheel .core{
+    position:absolute;inset:90px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff8ea, var(--lilac) 60%, #7f6ea8 100%);
+    box-shadow:0 0 40px rgba(201,188,228,.4);
+  }
+
+  .about-text h2{font-size:clamp(1.8rem,3vw,2.4rem);font-style:italic;margin-bottom:20px;}
+  .about-text p{color:var(--sage-soft);line-height:1.85;margin-bottom:16px;opacity:.92;}
+  .about-badges{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;}
+  .badge{
+    border:1px solid var(--line);background:rgba(205,163,95,.07);
+    padding:10px 18px;border-radius:14px;font-size:.85rem;color:var(--gold-soft);
+  }
+  .badge b{color:var(--moon);font-weight:700;}
+
+  /* ---------- Servicios: petal bloom cards ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .bloom-card{
+    background:linear-gradient(165deg, var(--bg-card), #1a2f22);
+    border:1.5px solid var(--line);
+    border-radius:34px 34px 34px 8px;
+    padding:34px 30px;
+    cursor:pointer;
+    transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+  }
+  .bloom-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:var(--shadow);}
+  .bloom-top{display:flex;align-items:center;gap:16px;}
+  .bloom-icon{
+    width:56px;height:56px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;
+    background:radial-gradient(circle at 35% 30%, var(--sage-soft), var(--sage));
+    flex-shrink:0;
+    transition:transform .4s ease;
+  }
+  .bloom-card.open .bloom-icon{transform:rotate(180deg) scale(1.05);}
+  .bloom-top h3{font-style:italic;font-size:1.28rem;color:var(--moon);}
+  .bloom-plus{
+    margin-left:auto;font-size:1.3rem;color:var(--gold-soft);
+    transition:transform .35s ease;
+  }
+  .bloom-card.open .bloom-plus{transform:rotate(45deg);}
+  .bloom-desc{
+    max-height:0;overflow:hidden;
+    transition:max-height .5s ease, margin-top .5s ease;
+    color:var(--sage-soft);font-size:.95rem;line-height:1.7;opacity:.92;
+  }
+  .bloom-card.open .bloom-desc{max-height:220px;margin-top:18px;}
+
+  /* ---------- Cómo agendar ---------- */
+  .how{background:var(--bg-mid);}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
+  .steps::before{
+    content:'';position:absolute;top:36px;left:12%;right:12%;height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);opacity:.5;
+  }
+  .step{text-align:center;padding:0 22px;position:relative;}
+  .step-icon{
+    width:74px;height:74px;margin:0 auto 22px;border-radius:50%;
+    background:var(--bg-deep);border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+    position:relative;z-index:2;box-shadow:0 0 22px rgba(205,163,95,.22);
+  }
+  .step h3{font-style:italic;font-size:1.25rem;color:var(--moon);margin-bottom:10px;}
+  .step p{color:var(--sage-soft);font-size:.94rem;line-height:1.65;opacity:.9;}
+
+  /* ---------- Testimonios ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .testi-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    border-radius:24px 24px 24px 6px;padding:28px;
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .testi-card .stars{color:var(--gold);letter-spacing:3px;font-size:.9rem;}
+  .testi-card p{color:var(--sage-soft);font-size:.96rem;line-height:1.7;font-style:italic;opacity:.95;}
+  .testi-card .who{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--moon);margin-top:auto;}
+  .who .avatar{
+    width:34px;height:34px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blush),var(--sage));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-style:italic;font-weight:600;color:#14261b;
+  }
+
+  /* ---------- CTA final ---------- */
+  .final-cta{padding:100px 0;}
+  .cta-panel{
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(159,190,159,.22), transparent 55%),
+      radial-gradient(ellipse at 85% 80%, rgba(239,194,198,.2), transparent 55%),
+      linear-gradient(150deg, #1e3a2c, #12241b);
+    border:1.5px solid var(--gold);
+    border-radius:34px 34px 34px 10px;
+    padding:70px 40px;text-align:center;box-shadow:var(--shadow);
+  }
+  .cta-panel h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-style:italic;margin-bottom:18px;}
+  .cta-panel p{color:var(--sage-soft);max-width:520px;margin:0 auto 32px;line-height:1.75;opacity:.92;}
+  .cta-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:8px;}
+  .cta-socials{display:flex;justify-content:center;gap:16px;margin-top:28px;flex-wrap:wrap;}
+  .social-pill{
+    display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;
+    border:1px solid var(--line);font-size:.84rem;color:var(--sage-soft);transition:all .25s ease;
+  }
+  .social-pill:hover{border-color:var(--gold);color:var(--gold-soft);background:rgba(205,163,95,.08);transform:translateY(-2px);}
+
+  /* ---------- Footer ---------- */
+  footer{padding:50px 0 30px;border-top:1px solid var(--line);background:var(--bg-deep);}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:var(--sage-soft);}
+  .footer-note{color:var(--sage-soft);font-size:.8rem;opacity:.7;margin-top:6px;}
+  .footer-socials{display:flex;gap:14px;}
+  .footer-socials a{
+    width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;transition:all .25s ease;
+  }
+  .footer-socials a:hover{border-color:var(--gold);background:rgba(205,163,95,.1);transform:translateY(-3px);}
+
+  /* ---------- Floating WhatsApp ---------- */
+  .float-wa{
+    position:fixed;bottom:26px;right:26px;z-index:60;
+    width:60px;height:60px;border-radius:50%;
+    background:linear-gradient(135deg,#25D366,#1aa64f);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(37,211,102,.42);
+    animation:float-bounce 3s ease-in-out infinite;
+  }
+  @keyframes float-bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .float-wa svg{width:29px;height:29px;}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:920px){
+    nav.links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:340px;order:-1;}
+    .about-grid{grid-template-columns:1fr;}
+    .astro-wheel-wrap{height:260px;}
+    .services-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;gap:46px;}
+    .steps::before{display:none;}
+    .testi-grid{grid-template-columns:1fr;}
+    .footer-inner{flex-direction:column;text-align:center;}
+  }
+  @media(max-width:520px){
+    .hero{padding-top:126px;}
+    .hero-ctas{flex-direction:column;align-items:stretch;}
+    .hero-ctas .btn{justify-content:center;}
+    .cta-panel{padding:48px 22px;}
+    .cta-row{flex-direction:column;align-items:stretch;}
+    section{padding:76px 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<div class="wrap">
+
+  <header id="siteHeader">
+    <div class="container nav-inner">
+      <a href="#top" class="logo">🌙 Flor de Luna</a>
+      <nav class="links">
+        <a href="#servicios">Servicios</a>
+        <a href="#astrologia">Astrología</a>
+        <a href="#como-agendar">Cómo agendar</a>
+        <a href="#testimonios">Testimonios</a>
+      </nav>
+      <a href="https://forms.gle/pP6XD1Jdo5Y28EXQ9" target="_blank" rel="noopener" class="btn btn-primary btn-small">Agendá tu sesión</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Flor de Luna · Pualani</div>
+          <h1>Saná, mirá hacia adentro<br>y florecé</h1>
+          <p class="lead">
+            Tarot terapéutico, sanación holística e informes astrológicos
+            personalizados para acompañarte a entender tus procesos y
+            reconectar con vos misma. Sesiones online, a tu ritmo.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://forms.gle/pP6XD1Jdo5Y28EXQ9" target="_blank" rel="noopener" class="btn btn-primary">
+              🌙 Agendá tu sesión
+            </a>
+            <a href="https://wa.me/573133387519" target="_blank" rel="noopener" class="btn btn-ghost">
+              💬 Escribime por WhatsApp
+            </a>
+          </div>
+          <div class="trust">
+            <span class="leaf">🌿</span>
+            <span>Un espacio cálido para mirar de frente lo que sentís y sanar a tu propio ritmo</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="glow-orb"></div>
+          <div class="flower">
+            <div class="petal-el"></div>
+            <div class="petal-el"></div>
+            <div class="petal-el"></div>
+            <div class="petal-el"></div>
+            <div class="petal-el"></div>
+            <div class="center"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave" style="background:var(--bg-deep);">
+      <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,40 C300,90 900,0 1200,40 L1200,70 L0,70 Z" fill="#1c3a2b"/></svg>
+    </div>
+
+    <!-- SOBRE PUALANI -->
+    <section class="about" id="sobre">
+      <div class="container about-grid">
+        <div class="astro-wheel-wrap">
+          <div class="astro-wheel">
+            <div class="ring"></div>
+            <div class="ring2"></div>
+            <div class="core"></div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2>Soy Pualani, y acompaño procesos de sanación desde el tarot y las estrellas</h2>
+          <p>
+            Trabajo el tarot desde una mirada terapéutica: no se trata solo de
+            predecir, sino de usar las cartas como espejo para entender lo que
+            estás atravesando y encontrar herramientas concretas para sanarlo.
+          </p>
+          <p>
+            Combino esas lecturas con sanación holística e informes
+            astrológicos personalizados, para que puedas ver tu mapa interior
+            desde distintos ángulos y avanzar con más conciencia y calma.
+          </p>
+          <div class="about-badges">
+            <div class="badge">Tarot <b>terapéutico</b></div>
+            <div class="badge">Sanación <b>holística</b></div>
+            <div class="badge">Informes <b>astrológicos</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="dot"></span> Servicios</div>
+          <h2>Tres caminos para encontrarte</h2>
+          <p>Tocá cada tarjeta para que se abra, como una flor, y ver de qué se trata.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="bloom-card">
+            <div class="bloom-top">
+              <div class="bloom-icon">🔮</div>
+              <h3>Tarot Terapéutico</h3>
+              <span class="bloom-plus">+</span>
+            </div>
+            <div class="bloom-desc">
+              Lecturas que van más allá de la predicción: miramos juntas tus
+              vínculos, bloqueos y decisiones, y salís con una comprensión más
+              profunda de lo que estás viviendo.
+            </div>
+          </div>
+
+          <div class="bloom-card">
+            <div class="bloom-top">
+              <div class="bloom-icon">🌿</div>
+              <h3>Sanación Holística</h3>
+              <span class="bloom-plus">+</span>
+            </div>
+            <div class="bloom-desc">
+              Un espacio de trabajo energético y emocional para soltar cargas,
+              liberar tensiones acumuladas y reconectar con tu bienestar de
+              manera integral.
+            </div>
+          </div>
+
+          <div class="bloom-card">
+            <div class="bloom-top">
+              <div class="bloom-icon">🌌</div>
+              <h3>Informes Astrológicos</h3>
+              <span class="bloom-plus">+</span>
+            </div>
+            <div class="bloom-desc">
+              Tu carta natal explicada de forma clara y personalizada: rasgos,
+              ciclos y momentos clave, para que entiendas tu mapa interior con
+              más profundidad.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="wave" style="background:var(--bg-mid);">
+      <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,30 C300,-10 900,90 1200,30 L1200,70 L0,70 Z" fill="#1c3a2b"/></svg>
+    </div>
+
+    <!-- ASTROLOGIA -->
+    <section class="how" id="astrologia">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="dot"></span> Informes astrológicos</div>
+          <h2>Tu carta natal, contada como una historia</h2>
+          <p>
+            Cada informe astrológico es personalizado: tomamos la fecha, hora
+            y lugar de tu nacimiento para armar un recorrido claro por tus
+            planetas, casas y ciclos, sin tecnicismos innecesarios.
+          </p>
+        </div>
+        <div style="text-align:center;">
+          <a href="https://forms.gle/pP6XD1Jdo5Y28EXQ9" target="_blank" rel="noopener" class="btn btn-primary">
+            🌌 Pedí tu informe astrológico
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO AGENDAR -->
+    <section id="como-agendar">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="dot"></span> Así de simple</div>
+          <h2>Cómo agendar tu sesión</h2>
+          <p>Tres pasos para empezar tu proceso de sanación.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon">📝</div>
+            <h3>Completá el formulario</h3>
+            <p>Contame qué tipo de sesión buscás: tarot, sanación o informe astrológico, y tus datos de contacto.</p>
+          </div>
+          <div class="step">
+            <div class="step-icon">📲</div>
+            <h3>Coordinamos por WhatsApp</h3>
+            <p>Te escribo para confirmar día, horario y cualquier detalle que necesites compartirme antes de la sesión.</p>
+          </div>
+          <div class="step">
+            <div class="step-icon">🌸</div>
+            <h3>Vivís tu sesión</h3>
+            <p>Nos encontramos online y te llevás claridad, herramientas concretas y, si corresponde, tu informe escrito.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave" style="background:var(--bg-deep);">
+      <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,40 C300,90 900,0 1200,40 L1200,70 L0,70 Z" fill="#1c3a2b"/></svg>
+    </div>
+
+    <!-- TESTIMONIOS -->
+    <section class="about" id="testimonios">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="dot"></span> Testimonios</div>
+          <h2>Lo que dicen quienes ya vivieron una sesión</h2>
+        </div>
+
+        <div class="testi-grid">
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"La lectura de tarot terapéutico me ayudó a entender un vínculo
+              que me costaba soltar. Pualani acompaña con mucha calma y respeto."</p>
+            <div class="who"><div class="avatar">S</div> S., 29 años</div>
+          </div>
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"Mi informe astrológico fue súper claro, sentí que por fin
+              entendía patrones que venía repitiendo hace años."</p>
+            <div class="who"><div class="avatar">N</div> N., 33 años</div>
+          </div>
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"La sesión de sanación holística fue un antes y un después.
+              Salí liviana, con más claridad y menos ansiedad."</p>
+            <div class="who"><div class="avatar">V</div> V., 25 años</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>Es momento de florecer</h2>
+          <p>
+            Agendá tu sesión de tarot terapéutico, sanación holística o tu
+            informe astrológico personalizado, y empezá a mirar tu proceso
+            con más claridad.
+          </p>
+          <div class="cta-row">
+            <a href="https://forms.gle/pP6XD1Jdo5Y28EXQ9" target="_blank" rel="noopener" class="btn btn-primary">
+              🌙 Agendá tu sesión
+            </a>
+            <a href="https://wa.me/573133387519" target="_blank" rel="noopener" class="btn btn-ghost">
+              💬 WhatsApp
+            </a>
+          </div>
+          <div class="cta-socials">
+            <a href="https://www.instagram.com/flor_de_luna_sanacion/" target="_blank" rel="noopener" class="social-pill">📷 Instagram</a>
+            <a href="https://youtube.com/@juanitapualani?si=54yF670tMtHeaf9i" target="_blank" rel="noopener" class="social-pill">▶️ YouTube</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-logo">🌙 Flor de Luna · Pualani</div>
+        <div class="footer-note">Tarot terapéutico · Sanación holística · Informes astrológicos</div>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/flor_de_luna_sanacion/" target="_blank" rel="noopener" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a href="https://youtube.com/@juanitapualani?si=54yF670tMtHeaf9i" target="_blank" rel="noopener" title="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.5-5.3c-.3-1-.9-1.7-1.9-2C18.9 4.2 12 4.2 12 4.2s-6.9 0-8.6.5c-1 .3-1.6 1-1.9 2C1 8.4 1 12 1 12s0 3.6.5 5.3c.3 1 .9 1.7 1.9 2 1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5c1-.3 1.6-1 1.9-2 .5-1.7.5-5.3.5-5.3zM9.8 15.5V8.5l6 3.5-6 3.5z"/></svg>
+        </a>
+        <a href="https://forms.gle/pP6XD1Jdo5Y28EXQ9" target="_blank" rel="noopener" title="Agendar sesión">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 9h16M9 4v5"/></svg>
+        </a>
+        <a href="https://wa.me/573133387519" target="_blank" rel="noopener" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17L2 22l5.1-1.6A11 11 0 1 0 20.5 3.5zM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-3 1 1-2.9-.2-.3A9 9 0 1 1 12 20zm4.9-6.7c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/573133387519" target="_blank" rel="noopener" class="float-wa" title="Escribime por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.5 3.5A11 11 0 0 0 3.6 17L2 22l5.1-1.6A11 11 0 1 0 20.5 3.5zM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-3 1 1-2.9-.2-.3A9 9 0 1 1 12 20zm4.9-6.7c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/></svg>
+  </a>
+
+</div>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  document.querySelectorAll('.bloom-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('open'));
+  });
+
+  // Drifting petals
+  const petalsWrap = document.getElementById('petals');
+  const colors = ['#EFC2C6', '#9FBE9F', '#CDA35F'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.background = colors[i % colors.length];
+    p.style.width = p.style.height = (8 + Math.random() * 10) + 'px';
+    p.style.animationDuration = (14 + Math.random() * 16) + 's';
+    p.style.animationDelay = (Math.random() * -20) + 's';
+    petalsWrap.appendChild(p);
+  }
+
+  // Zodiac glyphs around the wheel
+  const glyphs = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+  document.querySelectorAll('.astro-wheel').forEach(wheel => {
+    glyphs.forEach((g, i) => {
+      const el = document.createElement('div');
+      el.className = 'glyph';
+      const angle = (i / glyphs.length) * 360;
+      el.style.transform = `rotate(${angle}deg) translate(140px) rotate(-${angle}deg)`;
+      el.textContent = g;
+      wheel.appendChild(el);
+    });
+  });
+</script>
+
+</body>
+</html>

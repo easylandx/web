@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Julieta Suárez Valente · Astrología Arquetipal, Tarot & Mitos</title>
+<meta name="description" content="Astrología Arquetipal, Tarot y Mitos con Julieta Suárez Valente. Sagrado Femenino Intenso. Cursos 2026 abiertos — anotate por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF4E6;
+    --champagne: #F1DFC0;
+    --parchment: #EAD9B8;
+    --plum: #4A1942;
+    --plum-deep: #32102D;
+    --wine: #8C3A52;
+    --gold: #B98A2C;
+    --gold-bright: #D9A93B;
+    --ink: #3A2A1E;
+    --line: rgba(74,25,66,0.16);
+    --shadow: 0 20px 50px rgba(74,25,66,0.14);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection{ background: var(--gold-bright); color: var(--plum-deep); }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width:100%; display:block; }
+
+  .container{
+    width: min(1100px, 90%);
+    margin: 0 auto;
+  }
+
+  .eyebrow{
+    font-family:'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--wine);
+  }
+
+  h1,h2,h3{
+    font-family: 'Cinzel', serif;
+    color: var(--plum-deep);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .accent-serif{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--wine);
+  }
+
+  /* ===== reveal ===== */
+  .reveal{ opacity:0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.is-visible{ opacity:1; transform: translateY(0); }
+
+  /* ===== NAV ===== */
+  nav{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 500;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px clamp(20px,5vw,60px);
+    background: rgba(251,244,230,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo{
+    font-family:'Cinzel', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
+    color: var(--plum-deep);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .nav-logo .glyph{ color: var(--gold); font-size:1.1rem; }
+  .nav-cta{
+    font-family:'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--plum-deep);
+    color: var(--cream);
+    border: 1px solid var(--plum-deep);
+    transition: all .3s ease;
+  }
+  .nav-cta:hover{ background: var(--wine); border-color: var(--wine); }
+
+  /* ===== HERO ===== */
+  .hero{
+    position: relative;
+    min-height: 100dvh;
+    display:flex;
+    align-items:center;
+    padding: 130px clamp(20px,5vw,60px) 80px;
+    overflow: hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(217,169,59,0.24), transparent 45%),
+      radial-gradient(circle at 12% 85%, rgba(140,58,82,0.18), transparent 50%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position: relative;
+    z-index: 2;
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items:center;
+    width: min(1180px, 92%);
+    margin: 0 auto;
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 5.4vw, 4.4rem);
+    line-height: 1.08;
+    margin: 18px 0 26px;
+  }
+  .hero h1 em{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--wine);
+    font-weight: 500;
+  }
+  .hero p.lede{
+    font-size: 1.12rem;
+    max-width: 46ch;
+    color: #5B4636;
+    margin-bottom: 34px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 15px 30px;
+    border-radius: 999px;
+    font-family:'Jost', sans-serif;
+    font-size: 0.92rem;
+    letter-spacing: 0.03em;
+    transition: all .3s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--wine), var(--plum-deep));
+    color: var(--cream);
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 24px 40px rgba(74,25,66,0.24); }
+  .btn-ghost{
+    border-color: var(--plum-deep);
+    color: var(--plum-deep);
+  }
+  .btn-ghost:hover{ background: var(--plum-deep); color: var(--cream); }
+
+  .hero-tags{
+    margin-top: 34px;
+    display:flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--wine);
+    font-size: 1.05rem;
+  }
+
+  /* zodiac wheel */
+  .wheel-wrap{
+    position: relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .wheel-wrap svg{ width: min(420px, 90%); height:auto; }
+  .wheel-ring-outer{ transform-origin: 250px 250px; animation: spin 90s linear infinite; }
+  .wheel-ring-inner{ transform-origin: 250px 250px; animation: spin-rev 60s linear infinite; }
+  @keyframes spin{ to{ transform: rotate(360deg);} }
+  @keyframes spin-rev{ to{ transform: rotate(-360deg);} }
+  .wheel-center-label{
+    font-family:'Cinzel', serif;
+    font-size: 11px;
+    fill: var(--plum-deep);
+    letter-spacing: 2px;
+  }
+
+  /* ===== SECTION SHARED ===== */
+  section{ position:relative; padding: 110px clamp(20px,5vw,60px); }
+  .section-head{ max-width: 640px; margin-bottom: 56px; }
+  .section-head h2{ font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-top: 14px; }
+
+  /* divider - moon phases instead of numbers */
+  .moon-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 14px;
+    padding: 6px 0 60px;
+  }
+  .moon-divider span{
+    width: 9px; height:9px; border-radius:50%;
+    background: var(--parchment);
+    border: 1px solid var(--gold);
+  }
+  .moon-divider span.full{ background: var(--gold); }
+  .moon-divider::before, .moon-divider::after{
+    content:''; height:1px; width: 60px;
+    background: var(--line);
+  }
+
+  /* ===== ABOUT ===== */
+  .about{ background: var(--champagne); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 60px;
+    align-items:center;
+  }
+  .about-portrait{
+    aspect-ratio: 4/5;
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(217,169,59,0.35), transparent 55%),
+      linear-gradient(160deg, var(--plum-deep), var(--wine) 70%);
+    position:relative;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+    display:flex;
+    align-items:flex-end;
+    padding: 26px;
+  }
+  .about-portrait .sym{
+    font-size: 2.4rem;
+    color: rgba(251,244,230,0.85);
+    letter-spacing: 10px;
+  }
+  .about-body p{ color:#5B4636; margin-bottom: 18px; max-width: 56ch; }
+  .about-body .signature-line{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--wine);
+    margin-top: 22px;
+  }
+
+  /* ===== SERVICES ===== */
+  .services-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 26px;
+  }
+  .service-card{
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 34px 28px;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+  .service-card:hover{
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: var(--gold);
+  }
+  .service-glyph{
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 18px;
+    display:block;
+  }
+  .service-card h3{ font-size: 1.15rem; margin-bottom: 10px; }
+  .service-card p{ color:#6B5847; font-size: 0.96rem; }
+
+  /* ===== QUOTE / SAGRADO FEMENINO ===== */
+  .quote-section{
+    background: linear-gradient(160deg, var(--plum-deep), var(--plum) 55%, var(--wine));
+    color: var(--cream);
+    text-align:center;
+    padding: 130px clamp(20px,5vw,60px);
+  }
+  .quote-section .eyebrow{ color: var(--gold-bright); }
+  .quote-section blockquote{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+    max-width: 780px;
+    margin: 26px auto 30px;
+    line-height: 1.35;
+  }
+  .quote-section .attribution{
+    font-family:'Jost', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(251,244,230,0.75);
+  }
+  .stars-row{
+    display:flex; justify-content:center; gap: 10px; margin-bottom: 20px; opacity: 0.8;
+  }
+  .stars-row span{ color: var(--gold-bright); }
+
+  /* ===== CURSOS 2026 ===== */
+  .courses{
+    text-align:center;
+  }
+  .courses .section-head{ margin: 0 auto 46px; text-align:center; }
+  .course-panel{
+    background: var(--champagne);
+    border-radius: 26px;
+    padding: 60px clamp(24px,6vw,80px);
+    display:grid;
+    gap: 30px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gold);
+  }
+  .course-panel h3{
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+  }
+  .course-panel p{ color:#5B4636; max-width: 60ch; margin: 0 auto; }
+  .course-pill{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    margin: 0 auto;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(185,138,44,0.14);
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family:'Jost', sans-serif;
+    width: fit-content;
+  }
+  .course-pill::before{ content:'✦'; }
+
+  /* ===== FOOTER / CONTACT ===== */
+  footer{
+    background: var(--plum-deep);
+    color: var(--cream);
+    padding: 80px clamp(20px,5vw,60px) 40px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(251,244,230,0.14);
+  }
+  .footer-logo{
+    font-family:'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+  .footer-col h4{
+    font-family:'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 16px;
+  }
+  .footer-links{ display:flex; flex-direction:column; gap: 10px; }
+  .footer-links a{
+    color: rgba(251,244,230,0.8);
+    font-size: 0.95rem;
+    transition: color .25s ease;
+  }
+  .footer-links a:hover{ color: var(--gold-bright); }
+  .footer-bottom{
+    padding-top: 26px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: rgba(251,244,230,0.55);
+  }
+
+  /* ===== FLOATING WHATSAPP ===== */
+  .float-wa{
+    position: fixed;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    right: 22px;
+    z-index: 600;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    background: var(--plum-deep);
+    color: var(--cream);
+    padding: 14px 20px 14px 16px;
+    border-radius: 999px;
+    box-shadow: 0 14px 30px rgba(50,16,45,0.4);
+    font-family:'Jost', sans-serif;
+    font-size: 0.88rem;
+    transition: transform .3s ease, background .3s ease;
+  }
+  .float-wa:hover{ transform: translateY(-3px); background: var(--wine); }
+  .float-wa svg{ width: 20px; height:20px; flex-shrink:0; }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; text-align:center; }
+    .hero p.lede{ margin-inline:auto; }
+    .hero-actions{ justify-content:center; }
+    .hero-tags{ justify-content:center; }
+    .wheel-wrap{ order:-1; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-portrait{ max-width: 320px; margin: 0 auto; }
+    .footer-grid{ grid-template-columns: 1fr; gap:32px; }
+    .section-head{ margin-left:auto; margin-right:auto; text-align:center; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .wheel-ring-outer, .wheel-ring-inner{ animation: none; }
+    .reveal{ transition: none; opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span class="glyph">✦</span> JULIETA SUÁREZ VALENTE</div>
+  <a class="nav-cta" href="https://api.whatsapp.com/send?phone=5491162785341&text=Hola%20Julieta%2C%20quiero%20saber%20m%C3%A1s%20sobre%20los%20cursos%202026" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow reveal is-visible">Astrología Arquetipal · Tarot · Mitos</p>
+      <h1 class="reveal is-visible">Despertá <em>lo que ya sos</em></h1>
+      <p class="lede reveal is-visible">Trabajo con lo profundo. Un espacio de Sagrado Femenino Intenso donde tu carta natal, el tarot y los mitos se vuelven lenguaje para nombrar lo que ya sabías por dentro.</p>
+      <div class="hero-actions reveal is-visible">
+        <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=5491162785341&text=Hola%20Julieta%2C%20quiero%20anotarme%20en%20los%20cursos%202026" target="_blank" rel="noopener">
+          Anotarme a Cursos 2026
+        </a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/astrologia_y_consciencia/" target="_blank" rel="noopener">Ver en Instagram</a>
+      </div>
+      <div class="hero-tags reveal is-visible">
+        <span>♓ Piscis</span><span>♐ Sagitario</span><span>🌍 Tierra</span><span>👑 Portal</span>
+      </div>
+    </div>
+
+    <div class="wheel-wrap reveal is-visible">
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rueda astrológica ilustrativa">
+        <circle cx="250" cy="250" r="230" fill="none" stroke="#B98A2C" stroke-width="1" opacity="0.35"/>
+        <g class="wheel-ring-outer">
+          <circle cx="250" cy="250" r="196" fill="none" stroke="#8C3A52" stroke-width="1.2" opacity="0.55" stroke-dasharray="2 8"/>
+          <g fill="#8C3A52" font-family="Cinzel, serif" font-size="15">
+            <text x="250" y="60" text-anchor="middle">♈</text>
+            <text x="381" y="99" text-anchor="middle">♉</text>
+            <text x="440" y="220" text-anchor="middle">♊</text>
+            <text x="440" y="290" text-anchor="middle">♋</text>
+            <text x="381" y="410" text-anchor="middle">♌</text>
+            <text x="250" y="452" text-anchor="middle">♍</text>
+            <text x="120" y="410" text-anchor="middle">♎</text>
+            <text x="62" y="290" text-anchor="middle">♏</text>
+            <text x="62" y="220" text-anchor="middle">♐</text>
+            <text x="120" y="99" text-anchor="middle">♑</text>
+            <text x="196" y="65" text-anchor="middle">♒</text>
+            <text x="315" y="65" text-anchor="middle">♓</text>
+          </g>
+        </g>
+        <g class="wheel-ring-inner">
+          <circle cx="250" cy="250" r="140" fill="none" stroke="#B98A2C" stroke-width="1" opacity="0.5"/>
+          <circle cx="250" cy="250" r="140" fill="none" stroke="#4A1942" stroke-width="0.6" stroke-dasharray="1 10" opacity="0.6"/>
+        </g>
+        <circle cx="250" cy="250" r="78" fill="#FBF4E6" stroke="#B98A2C" stroke-width="1"/>
+        <text x="250" y="244" text-anchor="middle" class="wheel-center-label">SAGRADO</text>
+        <text x="250" y="262" text-anchor="middle" class="wheel-center-label">FEMENINO</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container about-grid">
+    <div class="about-portrait reveal">
+      <span class="sym">♓ ♐<br>🌍 👑</span>
+    </div>
+    <div class="about-body">
+      <p class="eyebrow reveal">Quién guía este viaje</p>
+      <h2 class="reveal">Julieta Suárez Valente</h2>
+      <p class="reveal">Astróloga arquetipal, tarotista y narradora de mitos. Su trabajo cruza la carta natal con las historias antiguas que explican por qué sentimos lo que sentimos — un puente entre el cielo y el cuerpo.</p>
+      <p class="reveal">Guía el Sagrado Femenino Intenso: un modo de mirar la propia historia sin endulzarla, con la astrología y el tarot como herramientas para nombrar ciclos, heridas y potencias.</p>
+      <p class="reveal">Es fundadora del portal <strong>@multiespacioevolutivo</strong>, donde el trabajo individual se expande en comunidad.</p>
+      <p class="signature-line reveal">"Despierto lo que ya sos."</p>
+    </div>
+  </div>
+</section>
+
+<div class="moon-divider"><span></span><span></span><span class="full"></span><span></span><span></span></div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Cómo trabajamos juntas</p>
+      <h2>Tres lenguajes, un mismo mapa</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-glyph">☉</span>
+        <h3>Astrología Arquetipal</h3>
+        <p>Lectura de carta natal desde los arquetipos: planetas, casas y aspectos como personajes de tu propia historia.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-glyph">🃏</span>
+        <h3>Tarot</h3>
+        <p>Sesiones para leer el momento presente con claridad — preguntas concretas, respuestas que se sostienen.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-glyph">🐉</span>
+        <h3>Mitos</h3>
+        <p>Relatos antiguos como espejo: diosas, dragonas y ciclos que explican patrones que se repiten en tu vida.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-glyph">🌜</span>
+        <h3>Sagrado Femenino Intenso</h3>
+        <p>Un proceso profundo para habitar el propio poder — sin atajos, con acompañamiento sostenido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="eyebrow reveal">Portal · @multiespacioevolutivo</p>
+  <div class="stars-row reveal"><span>✦</span><span>✦</span><span>✦</span></div>
+  <blockquote class="reveal">"Trabajo con lo profundo, para que despiertes lo que ya sos."</blockquote>
+  <p class="attribution reveal">Julieta Suárez Valente</p>
+</section>
+
+<!-- CURSOS 2026 -->
+<section class="courses">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Anotando ahora</p>
+      <h2>Cursos 2026</h2>
+    </div>
+    <div class="course-panel reveal">
+      <div class="course-pill">Cupos abiertos para 2026</div>
+      <h3>Sumate al próximo ciclo de Astrología Arquetipal, Tarot y Mitos</h3>
+      <p>Los cursos 2026 ya están anotando lugares. Escribime por WhatsApp y te cuento fechas, modalidad y cómo empezar tu proceso de Sagrado Femenino Intenso.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=5491162785341&text=Hola%20Julieta%2C%20quiero%20informaci%C3%B3n%20de%20los%20cursos%202026" target="_blank" rel="noopener">Quiero anotarme</a>
+        <a class="btn btn-ghost" href="https://linktr.ee/Julisuarezvalente" target="_blank" rel="noopener">Ver todos los links</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">✦ Julieta Suárez Valente</div>
+        <p style="color:rgba(251,244,230,0.7); max-width:34ch; font-size:0.92rem;">Astro Arquetipal · Tarot · Mitos. Sagrado Femenino Intenso. Portal @multiespacioevolutivo.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Encontrame</h4>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/astrologia_y_consciencia/" target="_blank" rel="noopener">Instagram · @astrologia_y_consciencia</a>
+          <a href="https://linktr.ee/Julisuarezvalente" target="_blank" rel="noopener">Linktree · todos los links</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Escribime</h4>
+        <div class="footer-links">
+          <a href="https://api.whatsapp.com/send?phone=5491162785341&text=Hola%20Julieta%2C%20quiero%20consultar" target="_blank" rel="noopener">WhatsApp directo</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Julieta Suárez Valente</span>
+      <span>Astrología Arquetipal · Tarot · Mitos</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="float-wa" href="https://api.whatsapp.com/send?phone=5491162785341&text=Hola%20Julieta%2C%20quiero%20consultar%20sobre%20los%20cursos%202026" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.68 1.44 5.2L2 22l4.94-1.4A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm5.6 14.2c-.24.68-1.38 1.3-1.9 1.36-.5.06-1.1.28-3.7-.78-3.12-1.26-5.1-4.4-5.26-4.6-.15-.2-1.24-1.66-1.24-3.16 0-1.5.78-2.24 1.06-2.54.28-.3.6-.36.8-.36h.58c.19 0 .44-.03.68.52.24.55.82 2.04.9 2.19.08.15.13.32.02.52-.1.2-.16.32-.32.5-.16.18-.34.4-.48.54-.16.15-.33.32-.14.62.19.3.86 1.42 1.85 2.3 1.27 1.13 2.34 1.48 2.64 1.65.3.16.48.14.66-.08.18-.22.76-.88.96-1.18.2-.3.4-.25.66-.15.28.1 1.76.83 2.06.98.3.15.5.22.58.35.08.13.08.75-.16 1.43Z"/></svg>
+  <span>Escribime</span>
+</a>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

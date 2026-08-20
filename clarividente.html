@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Lectura Tarot Clarividente · Consultá tu destino</title>
+<meta name="description" content="Lectura de tarot, baños, despojos, limpiezas y amarres. Absoluta seriedad, discreción y privacidad garantizada. Escribí por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=EB+Garamond:ital@1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF6E9;
+    --parchment: #F1E6C8;
+    --emerald: #0F5C3F;
+    --emerald-deep: #0A3D2A;
+    --gold: #C79A3C;
+    --gold-bright: #E4BE63;
+    --amethyst: #6B4E8E;
+    --ink: #2B2418;
+    --muted: #665B45;
+    --line: rgba(15,92,63,0.16);
+    --shadow: 0 22px 48px rgba(15,92,63,0.16);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection{ background: var(--gold-bright); color: var(--emerald-deep); }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width:100%; display:block; }
+
+  .container{ width: min(1100px, 90%); margin: 0 auto; }
+
+  .eyebrow{
+    font-family:'Outfit', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  h1,h2,h3{
+    font-family: 'Marcellus', serif;
+    font-weight: 400;
+    color: var(--emerald-deep);
+    letter-spacing: 0.005em;
+  }
+
+  .accent-serif{
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: var(--amethyst);
+  }
+
+  .reveal{ opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+
+  /* ===== NAV ===== */
+  nav{
+    position: fixed; top:0; left:0; right:0; z-index:500;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px clamp(20px,5vw,60px);
+    background: rgba(251,246,233,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo{
+    font-family:'Marcellus', serif;
+    font-size: 0.98rem;
+    color: var(--emerald-deep);
+    display:flex; align-items:center; gap:9px;
+  }
+  .nav-logo .glyph{ color: var(--gold); font-size: 1.15rem; }
+  .nav-cta{
+    font-family:'Outfit', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    padding: 10px 22px; border-radius: 999px;
+    background: var(--emerald-deep);
+    color: var(--cream);
+    border: 1px solid var(--emerald-deep);
+    transition: all .3s ease;
+  }
+  .nav-cta:hover{ background: var(--gold); border-color: var(--gold); color: var(--emerald-deep); }
+
+  /* ===== HERO ===== */
+  .hero{
+    position: relative; min-height: 100dvh;
+    display:flex; align-items:center;
+    padding: 130px clamp(20px,5vw,60px) 80px;
+    overflow: hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 84% 16%, rgba(196,158,60,0.26), transparent 45%),
+      radial-gradient(circle at 10% 88%, rgba(107,78,142,0.16), transparent 50%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: 44px; align-items:center;
+    width:min(1180px,92%); margin:0 auto;
+  }
+  .hero h1{
+    font-size: clamp(2.5rem, 5.2vw, 4.2rem);
+    line-height: 1.08;
+    margin: 18px 0 24px;
+  }
+  .hero h1 em{ font-family:'EB Garamond', serif; font-style:italic; color: var(--amethyst); font-weight:400; }
+  .hero p.lede{ font-size: 1.1rem; max-width: 46ch; color: var(--muted); margin-bottom: 32px; }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 15px 30px; border-radius: 999px;
+    font-family:'Outfit', sans-serif; font-size: 0.92rem; font-weight:500;
+    transition: all .3s ease; border: 1px solid transparent;
+  }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-deep));
+    color: var(--cream);
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 26px 42px rgba(10,61,42,0.26); }
+  .btn-ghost{ border-color: var(--emerald-deep); color: var(--emerald-deep); }
+  .btn-ghost:hover{ background: var(--emerald-deep); color: var(--cream); }
+
+  .hero-tags{
+    margin-top: 30px; display:flex; gap:20px; flex-wrap:wrap;
+    font-family:'EB Garamond', serif; font-style: italic;
+    color: var(--emerald); font-size: 1.02rem;
+  }
+
+  /* orb signature graphic */
+  .orb-wrap{ position:relative; display:flex; align-items:center; justify-content:center; }
+  .orb-wrap svg{ width: min(400px,88%); height:auto; }
+  .orb-swirl{ transform-origin: 250px 260px; animation: swirl 16s linear infinite; }
+  @keyframes swirl{ to{ transform: rotate(360deg); } }
+  .orb-glow{ animation: pulse 4.5s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:0.55;} 50%{ opacity:0.95;} }
+  .orb-stars circle{ animation: twinkle 3.2s ease-in-out infinite; }
+  .orb-stars circle:nth-child(2n){ animation-delay: 1s; }
+  .orb-stars circle:nth-child(3n){ animation-delay: 1.8s; }
+  @keyframes twinkle{ 0%,100%{ opacity:0.2;} 50%{ opacity:1;} }
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip{
+    background: var(--parchment);
+    padding: 30px clamp(20px,5vw,60px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .trust-row{
+    display:flex; justify-content:center; gap: 46px; flex-wrap: wrap;
+    text-align:center;
+  }
+  .trust-item{
+    display:flex; align-items:center; gap: 10px;
+    font-family:'Outfit', sans-serif; font-size: 0.92rem; font-weight:500;
+    color: var(--emerald-deep);
+  }
+  .trust-item .ic{ font-size: 1.2rem; }
+
+  /* ===== SECTION SHARED ===== */
+  section{ position:relative; padding: 108px clamp(20px,5vw,60px); }
+  .section-head{ max-width: 620px; margin-bottom: 54px; }
+  .section-head h2{ font-size: clamp(1.9rem, 3.3vw, 2.5rem); margin-top: 12px; }
+
+  .clover-divider{
+    display:flex; align-items:center; justify-content:center; gap: 14px;
+    padding: 6px 0 56px;
+    font-size: 1rem; color: var(--gold);
+  }
+  .clover-divider::before, .clover-divider::after{
+    content:''; height:1px; width: 60px; background: var(--line);
+  }
+
+  /* ===== SERVICIOS ===== */
+  .services-grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+    gap: 24px;
+  }
+  .service-card{
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 34px 26px;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+  .service-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--gold); }
+  .service-glyph{ font-size: 1.8rem; margin-bottom: 16px; display:block; }
+  .service-card h3{ font-size: 1.1rem; margin-bottom: 10px; }
+  .service-card p{ color: var(--muted); font-size: 0.92rem; }
+
+  /* ===== TRUST / QUOTE ===== */
+  .quote-section{
+    background: linear-gradient(160deg, var(--emerald-deep), var(--emerald) 65%, #1B6B4A);
+    color: var(--cream);
+    text-align:center;
+    padding: 120px clamp(20px,5vw,60px);
+  }
+  .quote-section .eyebrow{ color: var(--gold-bright); }
+  .quote-section blockquote{
+    font-family:'EB Garamond', serif; font-style: italic;
+    font-size: clamp(1.5rem, 3.4vw, 2.3rem);
+    max-width: 760px; margin: 24px auto 30px;
+    line-height: 1.4;
+  }
+  .quote-section .badges{
+    display:flex; justify-content:center; gap: 30px; flex-wrap: wrap;
+    margin-top: 10px;
+    font-family:'Outfit', sans-serif; font-size: 0.88rem;
+    color: rgba(251,246,233,0.85);
+  }
+  .quote-section .badges span{ display:flex; align-items:center; gap:8px; }
+
+  /* ===== CTA FINAL ===== */
+  .cta-final{ text-align:center; }
+  .cta-panel{
+    background: var(--parchment);
+    border-radius: 26px;
+    padding: 60px clamp(24px,6vw,80px);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gold);
+  }
+  .cta-panel h3{ font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 16px; }
+  .cta-panel p{ color: var(--muted); max-width: 58ch; margin: 0 auto 30px; }
+
+  /* ===== FOOTER ===== */
+  footer{ background: var(--emerald-deep); color: var(--cream); padding: 76px clamp(20px,5vw,60px) 40px; }
+  .footer-grid{
+    display:grid; grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 40px; padding-bottom: 46px;
+    border-bottom: 1px solid rgba(251,246,233,0.14);
+  }
+  .footer-logo{ font-family:'Marcellus', serif; font-size: 1.2rem; margin-bottom: 14px; }
+  .footer-col h4{
+    font-family:'Outfit', sans-serif; font-size: 0.78rem; font-weight:600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 16px;
+  }
+  .footer-links{ display:flex; flex-direction:column; gap:10px; }
+  .footer-links a{ color: rgba(251,246,233,0.8); font-size: 0.95rem; transition: color .25s ease; }
+  .footer-links a:hover{ color: var(--gold-bright); }
+  .footer-bottom{
+    padding-top: 24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size: 0.8rem; color: rgba(251,246,233,0.55);
+  }
+
+  /* ===== FLOATING WHATSAPP ===== */
+  .float-wa{
+    position: fixed; bottom: max(24px, env(safe-area-inset-bottom)); right: 22px; z-index: 600;
+    display:flex; align-items:center; gap:10px;
+    background: var(--emerald-deep); color: var(--cream);
+    padding: 14px 20px 14px 16px; border-radius: 999px;
+    box-shadow: 0 14px 30px rgba(10,61,42,0.4);
+    font-family:'Outfit', sans-serif; font-size: 0.88rem; font-weight:500;
+    transition: transform .3s ease, background .3s ease;
+  }
+  .float-wa:hover{ transform: translateY(-3px); background: var(--gold); color: var(--emerald-deep); }
+  .float-wa svg{ width:20px; height:20px; flex-shrink:0; }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; text-align:center; }
+    .hero p.lede{ margin-inline:auto; }
+    .hero-actions, .hero-tags{ justify-content:center; }
+    .orb-wrap{ order:-1; }
+    .trust-row{ gap: 24px; }
+    .footer-grid{ grid-template-columns: 1fr; gap:32px; }
+    .section-head{ margin-left:auto; margin-right:auto; text-align:center; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .orb-swirl, .orb-glow, .orb-stars circle{ animation:none; }
+    .reveal{ transition:none; opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span class="glyph">🔮</span> LECTURA TAROT CLARIVIDENTE</div>
+  <a class="nav-cta" href="https://wa.me/584129959252?text=Hola%2C%20quiero%20consultar%20mi%20destino" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow reveal is-visible">Astrología · Clarividencia · Tarot</p>
+      <h1 class="reveal is-visible">Consultá <em>tu destino</em></h1>
+      <p class="lede reveal is-visible">Lectura de tarot, baños, despojos, limpiezas y amarres. Cada consulta se atiende con absoluta seriedad, discreción y privacidad garantizada.</p>
+      <div class="hero-actions reveal is-visible">
+        <a class="btn btn-primary" href="https://wa.me/584129959252?text=Hola%2C%20quiero%20agendar%20una%20consulta%20de%20tarot" target="_blank" rel="noopener">Agendar mi consulta</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/lectura_tarot_clarividente_/" target="_blank" rel="noopener">Ver en Instagram</a>
+      </div>
+      <div class="hero-tags reveal is-visible">
+        <span>☘️ Protección</span><span>🔮 Claridad</span><span>✨ Guía</span>
+      </div>
+    </div>
+
+    <div class="orb-wrap reveal is-visible">
+      <svg viewBox="0 0 500 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bola de cristal mística con estrellas">
+        <g class="orb-stars">
+          <circle cx="60" cy="70" r="2.2" fill="#E4BE63"/>
+          <circle cx="430" cy="90" r="2" fill="#6B4E8E"/>
+          <circle cx="90" cy="180" r="1.8" fill="#E4BE63"/>
+          <circle cx="440" cy="210" r="2" fill="#0F5C3F"/>
+          <circle cx="70" cy="400" r="1.8" fill="#E4BE63"/>
+          <circle cx="420" cy="410" r="2" fill="#6B4E8E"/>
+          <circle cx="250" cy="40" r="2.2" fill="#E4BE63"/>
+        </g>
+        <ellipse class="orb-glow" cx="250" cy="270" rx="150" ry="26" fill="#0F5C3F" opacity="0.7"/>
+        <circle class="orb-glow" cx="250" cy="260" r="120" fill="url(#orbGrad)"/>
+        <g class="orb-swirl" opacity="0.55">
+          <path d="M140 210 Q250 150 360 210 Q300 260 360 310 Q250 370 140 310 Q200 260 140 210 Z" fill="none" stroke="#E4BE63" stroke-width="1.3"/>
+        </g>
+        <circle cx="250" cy="260" r="120" fill="none" stroke="#C79A3C" stroke-width="1.4"/>
+        <path d="M170 400 Q250 370 330 400 L345 430 Q250 410 155 430 Z" fill="#6B4E8E" opacity="0.85"/>
+        <defs>
+          <radialGradient id="orbGrad" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#FBF6E9" stop-opacity="0.95"/>
+            <stop offset="55%" stop-color="#C6E3D3" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#0F5C3F" stop-opacity="0.25"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-row reveal">
+    <div class="trust-item"><span class="ic">🤍</span> Absoluta seriedad</div>
+    <div class="trust-item"><span class="ic">🔒</span> Discreción garantizada</div>
+    <div class="trust-item"><span class="ic">✨</span> Privacidad total</div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Cómo puedo ayudarte</p>
+      <h2>Servicios de consulta</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-glyph">🔮</span>
+        <h3>Lectura de tarot</h3>
+        <p>Respuestas claras sobre tu presente y lo que se viene, carta por carta.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-glyph">🕯️</span>
+        <h3>Baños</h3>
+        <p>Rituales de purificación para renovar tu energía y abrir camino.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-glyph">🌿</span>
+        <h3>Despojos</h3>
+        <p>Limpieza energética profunda para soltar cargas que ya no te sirven.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-glyph">☘️</span>
+        <h3>Limpiezas</h3>
+        <p>Trabajos para armonizar tu espacio y tu energía personal.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-glyph">💞</span>
+        <h3>Amarres</h3>
+        <p>Trabajos de unión y fortalecimiento de vínculos, con acompañamiento cercano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE / TRUST -->
+<section class="quote-section">
+  <p class="eyebrow reveal">Compromiso con vos</p>
+  <blockquote class="reveal">"Cada consulta es un espacio seguro — lo que se habla acá, se queda acá."</blockquote>
+  <div class="badges reveal">
+    <span>🤍 Absoluta seriedad</span>
+    <span>🔒 Discreción</span>
+    <span>✨ Privacidad garantizada</span>
+  </div>
+</section>
+
+<div class="clover-divider">☘️ ✦ ☘️</div>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <h3>Tu consulta te está esperando</h3>
+      <p>Escribime por WhatsApp y contame qué necesitás resolver. Te respondo con calma, en privado, sin apuros.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a class="btn btn-primary" href="https://wa.me/584129959252?text=Hola%2C%20quiero%20agendar%20una%20consulta" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/lectura_tarot_clarividente_/" target="_blank" rel="noopener">Ver en Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">🔮 Lectura Tarot Clarividente</div>
+        <p style="color:rgba(251,246,233,0.7); max-width:34ch; font-size:0.92rem;">Astrología, clarividencia y tarot. Baños, despojos, limpiezas y amarres, con absoluta seriedad y discreción.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Encontrame</h4>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/lectura_tarot_clarividente_/" target="_blank" rel="noopener">Instagram · @lectura_tarot_clarividente_</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Escribime</h4>
+        <div class="footer-links">
+          <a href="https://wa.me/584129959252?text=Hola%2C%20quiero%20consultar" target="_blank" rel="noopener">WhatsApp directo</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Lectura Tarot Clarividente</span>
+      <span>Absoluta seriedad · Discreción · Privacidad garantizada</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="float-wa" href="https://wa.me/584129959252?text=Hola%2C%20quiero%20consultar" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.68 1.44 5.2L2 22l4.94-1.4A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm5.6 14.2c-.24.68-1.38 1.3-1.9 1.36-.5.06-1.1.28-3.7-.78-3.12-1.26-5.1-4.4-5.26-4.6-.15-.2-1.24-1.66-1.24-3.16 0-1.5.78-2.24 1.06-2.54.28-.3.6-.36.8-.36h.58c.19 0 .44-.03.68.52.24.55.82 2.04.9 2.19.08.15.13.32.02.52-.1.2-.16.32-.32.5-.16.18-.34.4-.48.54-.16.15-.33.32-.14.62.19.3.86 1.42 1.85 2.3 1.27 1.13 2.34 1.48 2.64 1.65.3.16.48.14.66-.08.18-.22.76-.88.96-1.18.2-.3.4-.25.66-.15.28.1 1.76.83 2.06.98.3.15.5.22.58.35.08.13.08.75-.16 1.43Z"/></svg>
+  <span>Escribime</span>
+</a>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

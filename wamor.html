@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot by Wamor · Lecturas de Tarot Online</title>
+<meta name="description" content="Tarot predictivo y evolutivo + trabajos energéticos. Claridad en vínculos, dudas y caminos. Reservá tu lectura por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#130b28;
+    --bg-mid:#1c1240;
+    --bg-card:#241a4d;
+    --gold:#e3b24c;
+    --gold-soft:#f2d38a;
+    --rose:#d6446d;
+    --rose-soft:#f0708f;
+    --cream:#f5ecdd;
+    --lavender:#b6a9d9;
+    --line: rgba(227,178,76,0.28);
+    --shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg-deep);
+    color:var(--cream);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{list-style:none;}
+
+  ::selection{background:var(--rose);color:var(--cream);}
+
+  /* ---------- Starfield background ---------- */
+  #stars{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.9) 0, transparent 60%),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,.7) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,255,255,.8) 0, transparent 60%),
+      radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,.6) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 90% 60%, rgba(255,255,255,.9) 0, transparent 60%),
+      radial-gradient(1px 1px at 10% 55%, rgba(255,255,255,.5) 0, transparent 60%),
+      radial-gradient(1px 1px at 45% 15%, rgba(255,255,255,.7) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 75% 85%, rgba(255,255,255,.6) 0, transparent 60%);
+    animation: twinkle 6s ease-in-out infinite alternate;
+  }
+  @keyframes twinkle{
+    from{opacity:.5;}
+    to{opacity:1;}
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+  }
+
+  .container{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    padding:18px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header.scrolled{
+    background:rgba(19,11,40,0.88);
+    backdrop-filter:blur(10px);
+    padding:12px 0;
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .logo{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:1.45rem;
+    letter-spacing:.02em;
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .mark{font-size:1.3rem;}
+  nav.links{
+    display:flex;
+    gap:34px;
+    font-size:.92rem;
+    letter-spacing:.03em;
+  }
+  nav.links a{
+    opacity:.85;
+    position:relative;
+    padding-bottom:4px;
+    transition:opacity .25s ease;
+  }
+  nav.links a:hover{opacity:1;}
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0%;height:1px;
+    background:var(--gold);
+    transition:width .3s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 26px;
+    border-radius:999px;
+    font-size:.9rem;
+    letter-spacing:.03em;
+    font-weight:500;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--rose), var(--gold));
+    color:#1a0f2e;
+    box-shadow:0 10px 30px rgba(214,68,109,.35);
+    font-weight:600;
+  }
+  .btn-primary:hover{box-shadow:0 16px 36px rgba(214,68,109,.5);}
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--gold-soft);
+    background:rgba(227,178,76,0.06);
+  }
+  .btn-ghost:hover{background:rgba(227,178,76,0.14);}
+  .btn-small{padding:9px 18px;font-size:.82rem;}
+
+  .header-cta{display:flex;align-items:center;gap:14px;}
+  .burger{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    padding:150px 0 90px;
+    background:
+      radial-gradient(ellipse at 78% 12%, rgba(227,178,76,0.18), transparent 45%),
+      radial-gradient(ellipse at 10% 90%, rgba(214,68,109,0.16), transparent 45%),
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:50px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:.78rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    border:1px solid var(--line);
+    padding:8px 16px;
+    border-radius:999px;
+    margin-bottom:26px;
+    background:rgba(227,178,76,0.06);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--rose);box-shadow:0 0 10px var(--rose);}
+
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.1rem);
+    line-height:1.08;
+    font-style:italic;
+    background:linear-gradient(120deg, var(--cream) 20%, var(--gold-soft) 55%, var(--rose-soft) 90%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom:24px;
+  }
+  .hero p.lead{
+    font-size:1.12rem;
+    line-height:1.7;
+    color:var(--lavender);
+    max-width:520px;
+    margin-bottom:36px;
+    font-weight:300;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px;}
+
+  .trust{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:.86rem;
+    color:var(--lavender);
+  }
+  .trust .stars{color:var(--gold);letter-spacing:2px;}
+  .trust strong{color:var(--cream);font-weight:500;}
+
+  /* Hero card visual */
+  .hero-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:520px;
+  }
+  .moon-glow{
+    position:absolute;
+    width:340px;height:340px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff6dd, var(--gold-soft) 40%, transparent 72%);
+    opacity:.25;
+    filter:blur(10px);
+    animation:pulse 5s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);opacity:.22;}
+    50%{transform:scale(1.06);opacity:.32;}
+  }
+  .tarot-stack{
+    position:relative;
+    width:230px;
+    height:360px;
+  }
+  .tarot-stack .card{
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+    border:1.5px solid var(--gold);
+    background:
+      repeating-linear-gradient(135deg, rgba(227,178,76,.12) 0 2px, transparent 2px 14px),
+      linear-gradient(160deg, #2a1b57, #1a1038);
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .tarot-stack .card:nth-child(1){transform:rotate(-14deg) translateX(-40px);}
+  .tarot-stack .card:nth-child(2){transform:rotate(8deg) translateX(30px);}
+  .tarot-stack .card:nth-child(3){
+    transform:rotate(-2deg);
+    background:linear-gradient(160deg, #2f1e5e, #1c1140);
+    z-index:2;
+  }
+  .tarot-stack .card .glyph{
+    font-size:3.4rem;
+    filter:drop-shadow(0 0 12px rgba(227,178,76,.5));
+  }
+  .card-frame{
+    position:absolute;
+    inset:14px;
+    border:1px solid rgba(227,178,76,.5);
+    border-radius:10px;
+  }
+
+  section{position:relative;padding:110px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 64px;
+  }
+  .section-head .eyebrow{margin-bottom:18px;}
+  .section-head h2{
+    font-size:clamp(2rem,3.4vw,2.8rem);
+    font-style:italic;
+    color:var(--cream);
+    margin-bottom:16px;
+  }
+  .section-head p{
+    color:var(--lavender);
+    font-size:1.02rem;
+    line-height:1.7;
+  }
+
+  /* ---------- Sobre Wamor ---------- */
+  .about{
+    background:var(--bg-mid);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+  }
+  .moon-phases{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:340px;
+    position:relative;
+  }
+  .phase-ring{
+    position:relative;
+    width:260px;height:260px;
+  }
+  .phase-ring .center-moon{
+    position:absolute;
+    inset:0;
+    margin:auto;
+    width:120px;height:120px;
+    border-radius:50%;
+    background:radial-gradient(circle at 38% 32%, #fff8e6, var(--gold-soft) 45%, #b98d3c 100%);
+    box-shadow:0 0 60px rgba(227,178,76,.45);
+  }
+  .phase-ring .satellite{
+    position:absolute;
+    width:34px;height:34px;
+    border-radius:50%;
+    background:var(--rose-soft);
+    box-shadow:0 0 18px rgba(214,68,109,.6);
+  }
+  .phase-ring .satellite:nth-child(2){top:0;left:50%;transform:translate(-50%,-50%);}
+  .phase-ring .satellite:nth-child(3){top:50%;right:0;transform:translate(50%,-50%);background:var(--gold);}
+  .phase-ring .satellite:nth-child(4){bottom:0;left:50%;transform:translate(-50%,50%);}
+  .phase-ring .satellite:nth-child(5){top:50%;left:0;transform:translate(-50%,-50%);background:var(--gold);}
+  .orbit-line{
+    position:absolute;inset:0;
+    border:1px dashed rgba(227,178,76,.35);
+    border-radius:50%;
+  }
+
+  .about-text h2{
+    font-size:clamp(1.9rem,3vw,2.5rem);
+    font-style:italic;
+    margin-bottom:20px;
+    color:var(--cream);
+  }
+  .about-text p{
+    color:var(--lavender);
+    line-height:1.8;
+    margin-bottom:16px;
+    font-size:1.02rem;
+  }
+  .about-badges{
+    display:flex;
+    gap:14px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+  .badge{
+    border:1px solid var(--line);
+    background:rgba(227,178,76,.06);
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:.85rem;
+    color:var(--gold-soft);
+  }
+  .badge b{color:var(--cream);font-weight:500;}
+
+  /* ---------- Servicios (flip cards) ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .flip-card{
+    perspective:1400px;
+    height:340px;
+  }
+  .flip-inner{
+    position:relative;
+    width:100%;height:100%;
+    transition:transform .7s cubic-bezier(.4,.2,.2,1);
+    transform-style:preserve-3d;
+  }
+  .flip-card:hover .flip-inner, .flip-card.flipped .flip-inner{
+    transform:rotateY(180deg);
+  }
+  .flip-face{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    border-radius:20px;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:var(--shadow);
+    border:1.5px solid var(--gold);
+  }
+  .flip-front{
+    background:
+      repeating-linear-gradient(135deg, rgba(227,178,76,.1) 0 2px, transparent 2px 16px),
+      linear-gradient(160deg, #251a4d, #17102f);
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:18px;
+  }
+  .flip-front .glyph{font-size:3rem;}
+  .flip-front h3{
+    font-style:italic;
+    font-size:1.5rem;
+    color:var(--gold-soft);
+  }
+  .flip-front .tap-hint{
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--lavender);
+    opacity:.7;
+  }
+  .flip-back{
+    background:linear-gradient(160deg, var(--rose), #b3305a);
+    transform:rotateY(180deg);
+    justify-content:center;
+    color:#241033;
+  }
+  .flip-back h4{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.3rem;
+    margin-bottom:12px;
+    font-weight:600;
+  }
+  .flip-back p{
+    font-size:.95rem;
+    line-height:1.6;
+    font-weight:400;
+    opacity:.95;
+  }
+  .flip-back .price-tag{
+    margin-top:16px;
+    font-size:.82rem;
+    font-weight:600;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- Como funciona ---------- */
+  .how{background:var(--bg-mid);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    position:relative;
+  }
+  .steps::before{
+    content:'';
+    position:absolute;
+    top:36px;left:12%;right:12%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:.5;
+  }
+  .step{
+    text-align:center;
+    padding:0 22px;
+    position:relative;
+  }
+  .step-icon{
+    width:74px;height:74px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    background:var(--bg-deep);
+    border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+    position:relative;
+    z-index:2;
+    box-shadow:0 0 24px rgba(227,178,76,.25);
+  }
+  .step h3{
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--cream);
+    margin-bottom:10px;
+  }
+  .step p{color:var(--lavender);font-size:.95rem;line-height:1.65;}
+  .step .num{
+    position:absolute;
+    top:-6px; left:calc(50% + 30px);
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1rem;
+    color:var(--rose-soft);
+    z-index:3;
+  }
+
+  /* ---------- Testimonios ---------- */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .testi-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .testi-card .stars{color:var(--gold);letter-spacing:3px;font-size:.95rem;}
+  .testi-card p{color:var(--lavender);font-size:.98rem;line-height:1.7;font-style:italic;}
+  .testi-card .who{
+    display:flex;align-items:center;gap:10px;
+    font-size:.85rem;
+    color:var(--cream);
+    margin-top:auto;
+  }
+  .who .avatar{
+    width:34px;height:34px;border-radius:50%;
+    background:linear-gradient(135deg,var(--rose),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:#241033;
+  }
+
+  /* ---------- CTA final ---------- */
+  .final-cta{
+    padding:100px 0;
+  }
+  .cta-panel{
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(227,178,76,.25), transparent 55%),
+      radial-gradient(ellipse at 85% 80%, rgba(214,68,109,.28), transparent 55%),
+      linear-gradient(150deg, #241a4d, #150b30);
+    border:1.5px solid var(--gold);
+    border-radius:28px;
+    padding:70px 40px;
+    text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .cta-panel h2{
+    font-size:clamp(2rem,3.6vw,2.9rem);
+    font-style:italic;
+    margin-bottom:18px;
+  }
+  .cta-panel p{
+    color:var(--lavender);
+    max-width:520px;
+    margin:0 auto 34px;
+    line-height:1.7;
+  }
+  .cta-socials{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:30px;
+  }
+  .social-pill{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 20px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    font-size:.85rem;
+    color:var(--lavender);
+    transition:all .25s ease;
+  }
+  .social-pill:hover{
+    border-color:var(--gold);
+    color:var(--gold-soft);
+    background:rgba(227,178,76,.08);
+    transform:translateY(-2px);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:50px 0 30px;
+    border-top:1px solid var(--line);
+    background:var(--bg-deep);
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .footer-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.2rem;
+    color:var(--gold-soft);
+  }
+  .footer-note{
+    color:var(--lavender);
+    font-size:.8rem;
+    opacity:.75;
+    margin-top:6px;
+  }
+  .footer-socials{display:flex;gap:16px;}
+  .footer-socials a{
+    width:40px;height:40px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    transition:all .25s ease;
+  }
+  .footer-socials a:hover{
+    border-color:var(--gold);
+    background:rgba(227,178,76,.1);
+    transform:translateY(-3px);
+  }
+
+  /* ---------- Floating WhatsApp ---------- */
+  .float-wa{
+    position:fixed;
+    bottom:26px;right:26px;
+    z-index:60;
+    width:60px;height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#25D366,#1aa64f);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(37,211,102,.45);
+    animation:float-bounce 3s ease-in-out infinite;
+  }
+  @keyframes float-bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+  }
+  .float-wa svg{width:30px;height:30px;}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:920px){
+    nav.links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:380px;order:-1;}
+    .about-grid{grid-template-columns:1fr;}
+    .moon-phases{height:240px;}
+    .services-grid{grid-template-columns:1fr;}
+    .flip-card{height:300px;}
+    .steps{grid-template-columns:1fr;gap:50px;}
+    .steps::before{display:none;}
+    .testi-grid{grid-template-columns:1fr;}
+    .footer-inner{flex-direction:column;text-align:center;}
+  }
+  @media(max-width:520px){
+    .hero{padding-top:130px;}
+    .hero-ctas{flex-direction:column;align-items:stretch;}
+    .hero-ctas .btn{justify-content:center;}
+    .cta-panel{padding:50px 22px;}
+    section{padding:80px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="wrap">
+
+  <header id="siteHeader">
+    <div class="container nav-inner">
+      <a href="#top" class="logo"><span class="mark">🔮</span> Tarot by Wamor</a>
+      <nav class="links">
+        <a href="#servicios">Servicios</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="header-cta">
+        <a href="https://wa.me/541159332464" target="_blank" rel="noopener" class="btn btn-primary btn-small">Reservá ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Tarot online · Wamor Energy</div>
+          <h1>Claridad en tus vínculos,<br>tus dudas y tu camino</h1>
+          <p class="lead">
+            Lecturas de tarot predictivo y evolutivo, más trabajos energéticos para
+            acompañarte a ver con más calma lo que hoy sentís confuso. Consultas
+            100% online, por WhatsApp o videollamada.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/541159332464" target="_blank" rel="noopener" class="btn btn-primary">
+              💬 Reservá tu lectura por WhatsApp
+            </a>
+            <a href="https://www.instagram.com/tarotbywamor/" target="_blank" rel="noopener" class="btn btn-ghost">
+              Seguime en Instagram
+            </a>
+          </div>
+          <div class="trust">
+            <span class="stars">★★★★★</span>
+            <span><strong>+3.000</strong> personas ya se guiaron con las cartas</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="moon-glow"></div>
+          <div class="tarot-stack">
+            <div class="card"><div class="card-frame"></div><span class="glyph">☾</span></div>
+            <div class="card"><div class="card-frame"></div><span class="glyph">✦</span></div>
+            <div class="card"><div class="card-frame"></div><span class="glyph">🔮</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE WAMOR -->
+    <section class="about" id="sobre">
+      <div class="container about-grid">
+        <div class="moon-phases">
+          <div class="phase-ring">
+            <div class="orbit-line"></div>
+            <div class="center-moon"></div>
+            <div class="satellite"></div>
+            <div class="satellite"></div>
+            <div class="satellite"></div>
+            <div class="satellite"></div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2>Soy Wamor, y las cartas son mi herramienta para acompañarte</h2>
+          <p>
+            Hace años que leo tarot de forma predictiva y evolutiva, combinando la
+            lectura de cartas con trabajos energéticos que ayudan a soltar lo que
+            pesa y abrir camino a lo que buscás.
+          </p>
+          <p>
+            No busco asustarte ni darte respuestas genéricas. Cada consulta es un
+            espacio para mirar de frente el amor, el trabajo, la familia o las
+            decisiones que te tienen dando vueltas, y salir con algo concreto para
+            accionar.
+          </p>
+          <div class="about-badges">
+            <div class="badge"><b>+3.000</b> consultas realizadas</div>
+            <div class="badge">100% <b>online</b></div>
+            <div class="badge">Tarot <b>predictivo & evolutivo</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="dot"></span> Servicios</div>
+          <h2>Elegí la lectura que tu momento necesita</h2>
+          <p>Tocá o pasá el mouse sobre cada carta para ver de qué se trata.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <span class="glyph">🌙</span>
+                <h3>Tarot Predictivo</h3>
+                <span class="tap-hint">Tocá para ver más</span>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>Tarot Predictivo</h4>
+                <p>Respuestas concretas sobre lo que se viene en el amor, el trabajo
+                  o esa decisión que no podés sacarte de la cabeza. Ideal para
+                  preguntas puntuales y urgentes.</p>
+                <span class="price-tag">Consultá disponibilidad →</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <span class="glyph">✨</span>
+                <h3>Tarot Evolutivo</h3>
+                <span class="tap-hint">Tocá para ver más</span>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>Tarot Evolutivo</h4>
+                <p>Un recorrido hacia adentro para entender patrones que se repiten,
+                  sanar vínculos y conectar con tu propio camino, más allá de la
+                  respuesta inmediata.</p>
+                <span class="price-tag">Consultá disponibilidad →</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <span class="glyph">🕯️</span>
+                <h3>Trabajos Energéticos</h3>
+                <span class="tap-hint">Tocá para ver más</span>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>Trabajos Energéticos</h4>
+                <p>Rituales y trabajos personalizados para limpiar bloqueos,
+                  proteger tu energía y potenciar aquello que estás buscando
+                  atraer a tu vida.</p>
+                <span class="price-tag">Consultá disponibilidad →</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="how" id="como-funciona">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="dot"></span> Así de simple</div>
+          <h2>Cómo funciona tu consulta</h2>
+          <p>Tres pasos, sin vueltas, para tener tu lectura en tus manos.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="num">i</span>
+            <div class="step-icon">🌑</div>
+            <h3>Reservá por WhatsApp</h3>
+            <p>Me escribís, contamos con qué tipo de consulta te sentís identificada y coordinamos día y horario.</p>
+          </div>
+          <div class="step">
+            <span class="num">ii</span>
+            <div class="step-icon">🌕</div>
+            <h3>Contame tu consulta</h3>
+            <p>Me compartís tu duda o el tema que querés trabajar, para preparar una lectura enfocada en vos.</p>
+          </div>
+          <div class="step">
+            <span class="num">iii</span>
+            <div class="step-icon">🌗</div>
+            <h3>Recibí tu lectura</h3>
+            <p>Hacemos la consulta online y te llevás respuestas claras, junto con recomendaciones para accionar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="dot"></span> Testimonios</div>
+          <h2>Lo que dicen quienes ya consultaron</h2>
+        </div>
+
+        <div class="testi-grid">
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"Llegué con muchas dudas sobre una relación y salí con una claridad
+              que no tenía hace meses. Todo muy respetuoso y sin vueltas."</p>
+            <div class="who"><div class="avatar">L</div> L., 27 años</div>
+          </div>
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"La lectura evolutiva me ayudó a entender por qué repetía los mismos
+              patrones. Sentí que era mucho más que una predicción."</p>
+            <div class="who"><div class="avatar">M</div> M., 34 años</div>
+          </div>
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"Súper puntual, cálida y directa. El trabajo energético que hicimos
+              se sintió de verdad en los días siguientes."</p>
+            <div class="who"><div class="avatar">C</div> C., 22 años</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="final-cta" id="contacto">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>¿Lista para ver más claro?</h2>
+          <p>
+            Reservá tu lectura hoy y llevate respuestas concretas sobre lo que
+            estás atravesando. Te espero en WhatsApp.
+          </p>
+          <a href="https://wa.me/541159332464" target="_blank" rel="noopener" class="btn btn-primary">
+            💬 Reservar por WhatsApp
+          </a>
+          <div class="cta-socials">
+            <a href="https://www.instagram.com/tarotbywamor/" target="_blank" rel="noopener" class="social-pill">📷 Instagram</a>
+            <a href="https://www.tiktok.com/@tarotbywamor" target="_blank" rel="noopener" class="social-pill">🎵 TikTok</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-logo">🔮 Tarot by Wamor</div>
+        <div class="footer-note">Claridad en vínculos, dudas y caminos · Tarot Online</div>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/tarotbywamor/" target="_blank" rel="noopener" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@tarotbywamor" target="_blank" rel="noopener" title="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 2h2.7c.3 1.9 1.6 3.4 3.5 3.8v2.7c-1.4-.1-2.7-.6-3.8-1.4v6.6c0 3.1-2.5 5.6-5.6 5.6S5.7 16.8 5.7 13.7c0-3 2.4-5.5 5.4-5.6v2.8c-1.5.1-2.7 1.3-2.7 2.8 0 1.5 1.3 2.8 2.8 2.8s2.8-1.3 2.8-2.8V2z"/></svg>
+        </a>
+        <a href="https://wa.me/541159332464" target="_blank" rel="noopener" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17L2 22l5.1-1.6A11 11 0 1 0 20.5 3.5zM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-3 1 1-2.9-.2-.3A9 9 0 1 1 12 20zm4.9-6.7c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/541159332464" target="_blank" rel="noopener" class="float-wa" title="Escribime por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.5 3.5A11 11 0 0 0 3.6 17L2 22l5.1-1.6A11 11 0 1 0 20.5 3.5zM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-3 1 1-2.9-.2-.3A9 9 0 1 1 12 20zm4.9-6.7c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/></svg>
+  </a>
+
+</div>
+
+<script>
+  // Header background on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // Tap-to-flip for touch devices
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+</script>
+
+</body>
+</html>

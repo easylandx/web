@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluir — Yoga y Movimiento Somático · Bogotá</title>
+<meta name="description" content="Fluir con Eli: clases personalizadas de yoga y movimiento somático, terapias en agua Janzú y cerámica ritual en Bogotá.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FAF3E6;
+    --cream-2: #F3E9D6;
+    --ink: #3A2E22;
+    --ink-soft: #6B5D4C;
+    --sage: #7C8B5F;
+    --sage-deep: #5C6B45;
+    --clay: #BE6640;
+    --clay-deep: #9C4E2F;
+    --gold: #D6A64B;
+    --blush: #E8B7A0;
+    --line: rgba(58,46,34,0.14);
+    --shadow: 0 20px 50px rgba(90,70,40,0.12);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family:'Karla', sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color: var(--ink);
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+  ::selection{ background: var(--gold); color: var(--cream); }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--clay-deep);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background: rgba(250,243,230,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:1.35rem; letter-spacing:0.02em; color: var(--clay-deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand svg{ width:22px; height:22px; }
+  nav.links{ display:flex; gap:28px; font-size:0.92rem; letter-spacing:0.02em; }
+  nav.links a{ color: var(--ink-soft); transition: color .25s ease; position:relative; }
+  nav.links a:hover{ color: var(--clay-deep); }
+  .nav-cta{
+    background: var(--clay-deep); color:#fff !important; padding:9px 18px;
+    border-radius:100px; font-size:0.85rem; font-weight:600; letter-spacing:0.02em;
+    transition: background .25s ease, transform .25s ease;
+  }
+  .nav-cta:hover{ background:var(--ink); transform:translateY(-1px); }
+  .menu-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .menu-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
+
+  @media (max-width: 780px){
+    nav.links{ display:none; }
+    .menu-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; padding: 168px 0 100px; overflow:hidden;
+    background: radial-gradient(circle at 15% 15%, rgba(232,183,160,0.35), transparent 55%),
+                radial-gradient(circle at 85% 80%, rgba(124,139,95,0.18), transparent 50%);
+  }
+  .hero-wave{
+    position:absolute; inset:0; width:100%; height:100%;
+    z-index:0; opacity:0.9; pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:2; text-align:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase;
+    color: var(--sage-deep); font-weight:600; margin-bottom:26px;
+  }
+  .eyebrow::before, .eyebrow::after{ content:'𖦹'; font-size:1rem; }
+  .hero h1{
+    font-size: clamp(3.4rem, 10vw, 7.2rem);
+    line-height:0.95; font-style:italic; font-weight:400;
+    color: var(--clay-deep);
+  }
+  .hero .sub{
+    margin-top:22px; font-family:'Fraunces', serif; font-weight:400; font-style:normal;
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem); color: var(--ink);
+    letter-spacing:0.02em;
+  }
+  .hero .sub em{ font-style:italic; color:var(--clay-deep); }
+  .hero p.tag{
+    max-width:520px; margin: 22px auto 0; color: var(--ink-soft);
+    font-size:1.05rem; line-height:1.7;
+  }
+  .hero-ctas{
+    margin-top:42px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:15px 30px; border-radius:100px; font-size:0.95rem; font-weight:600;
+    letter-spacing:0.01em; transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    cursor:pointer; border:none;
+  }
+  .btn-primary{ background: var(--clay-deep); color:#fff; box-shadow: var(--shadow); }
+  .btn-primary:hover{ transform:translateY(-2px); background:var(--clay); }
+  .btn-outline{ background:transparent; color:var(--ink); border:1.5px solid var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:var(--cream); transform:translateY(-2px); }
+  .btn svg{ width:18px; height:18px; }
+
+  .hero-signature{ margin-top: 90px; display:flex; justify-content:center; }
+
+  /* breathing circle - signature element */
+  .breath-wrap{
+    position:relative; width:220px; height:220px; display:flex; align-items:center; justify-content:center;
+  }
+  .breath-ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:1px solid var(--line);
+  }
+  .breath-ring.r2{ inset:18px; }
+  .breath-circle{
+    width:120px; height:120px; border-radius:50%;
+    background: linear-gradient(160deg, var(--blush), var(--gold));
+    animation: breathe 8s ease-in-out infinite;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 10px 40px rgba(190,102,64,0.35);
+  }
+  .breath-circle span{
+    font-family:'Fraunces', serif; font-style:italic; font-size:0.85rem;
+    color: rgba(58,46,34,0.75); animation: breatheText 8s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%, 100% { transform: scale(0.72); }
+    45% { transform: scale(1.08); }
+    55% { transform: scale(1.08); }
+  }
+  @keyframes breatheText{
+    0%, 8% { content: 'inhala'; }
+  }
+
+  /* ---------- SECTION BASE ---------- */
+  section{ position:relative; padding: 110px 0; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 64px; }
+  .section-head .eyebrow{ margin-bottom:16px; }
+  .section-head h2{
+    font-size: clamp(2.2rem, 5vw, 3.1rem); font-style:italic; font-weight:400;
+    color: var(--clay-deep);
+  }
+  .section-head p{ margin-top:16px; color:var(--ink-soft); font-size:1.05rem; line-height:1.7; }
+
+  .reveal{ opacity:0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background: var(--cream-2); }
+  .about-grid{
+    display:grid; grid-template-columns: 0.85fr 1.15fr; gap:64px; align-items:center;
+  }
+  .about-visual{
+    position:relative; aspect-ratio: 4/5; border-radius: 40% 60% 55% 45% / 55% 45% 60% 40%;
+    background: linear-gradient(150deg, var(--sage) 0%, var(--sage-deep) 100%);
+    overflow:hidden; box-shadow: var(--shadow);
+  }
+  .about-visual svg{ width:100%; height:100%; }
+  .about-copy .kicker{
+    font-family:'Fraunces', serif; font-style:italic; font-size:1.6rem; color:var(--clay-deep); margin-bottom:18px;
+  }
+  .about-copy p{ color: var(--ink-soft); font-size:1.05rem; line-height:1.85; margin-bottom:18px; }
+  .about-copy p:last-child{ margin-bottom:0; }
+  .about-copy strong{ color:var(--ink); font-weight:600; }
+  .mantra-line{
+    margin-top: 30px; display:flex; gap:0; flex-wrap:wrap; font-family:'Fraunces', serif;
+    font-style:italic; font-size:1.15rem; color:var(--sage-deep);
+  }
+  .mantra-line span{ padding-right:14px; margin-right:14px; border-right:1px solid var(--line); }
+  .mantra-line span:last-child{ border-right:none; }
+
+  @media (max-width: 860px){
+    .about-grid{ grid-template-columns:1fr; gap:44px; }
+    .about-visual{ max-width:340px; margin:0 auto; }
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  }
+  .service-card{
+    background: var(--cream); border:1px solid var(--line); border-radius:28px;
+    padding: 40px 32px; display:flex; flex-direction:column; height:100%;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    position:relative; overflow:hidden;
+  }
+  .service-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow); border-color:transparent; }
+  .service-icon{
+    width:58px; height:58px; border-radius:18px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:26px;
+  }
+  .service-icon svg{ width:28px; height:28px; }
+  .icon-a{ background: rgba(190,102,64,0.14); color: var(--clay-deep); }
+  .icon-b{ background: rgba(124,139,95,0.16); color: var(--sage-deep); }
+  .icon-c{ background: rgba(214,166,75,0.2); color: #8a6a1f; }
+  .service-card h3{ font-size:1.35rem; font-style:italic; font-weight:500; margin-bottom:12px; }
+  .service-card p{ color:var(--ink-soft); font-size:0.97rem; line-height:1.7; flex-grow:1; margin-bottom:24px; }
+  .service-link{
+    display:inline-flex; align-items:center; gap:8px; font-size:0.9rem; font-weight:600;
+    color:var(--ink); border-bottom:1.5px solid var(--gold); padding-bottom:2px; width:fit-content;
+    transition: gap .25s ease, color .25s ease;
+  }
+  .service-link:hover{ gap:12px; color:var(--clay-deep); }
+  .service-link svg{ width:15px; height:15px; }
+
+  @media (max-width: 900px){
+    .services-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- RIBBON DIVIDER ---------- */
+  .ribbon-divider{ width:100%; height:90px; overflow:hidden; }
+  .ribbon-divider svg{ width:100%; height:100%; display:block; }
+
+  /* ---------- COMMUNITY / WHATSAPP ---------- */
+  .community{
+    background: var(--clay-deep); color: var(--cream);
+    border-radius: 40px; margin: 0 28px; padding: 80px 48px;
+    text-align:center; position:relative; overflow:hidden;
+  }
+  .community::before{
+    content:''; position:absolute; inset:0; opacity:0.15;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px);
+    background-size: 26px 26px;
+  }
+  .community-inner{ position:relative; z-index:2; max-width:600px; margin:0 auto; }
+  .community h2{ color:#fff; font-style:italic; font-size:clamp(2rem,4.5vw,2.7rem); margin-bottom:18px; }
+  .community p{ color: rgba(255,255,255,0.85); font-size:1.05rem; line-height:1.7; margin-bottom:34px; }
+  .btn-whatsapp{
+    background:#fff; color: var(--clay-deep);
+  }
+  .btn-whatsapp:hover{ background: var(--gold); color:#fff; }
+
+  /* ---------- INSTAGRAM STRIP ---------- */
+  .insta-head{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:20px; }
+  .insta-head h2{ font-size:clamp(1.9rem,4vw,2.5rem); font-style:italic; color:var(--clay-deep); }
+  .insta-head a{ font-size:0.92rem; font-weight:600; display:flex; align-items:center; gap:8px; color:var(--ink); }
+  .insta-head a svg{ width:16px; height:16px; }
+  .insta-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .insta-tile{
+    aspect-ratio:1; border-radius:20px; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .insta-tile svg{ width:34px; height:34px; opacity:0.85; }
+  .insta-tile .tag{
+    position:absolute; bottom:14px; left:14px; font-size:0.72rem; font-weight:700;
+    letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.92);
+  }
+  .insta-tile::after{
+    content:''; position:absolute; inset:0; background:rgba(0,0,0,0.06); opacity:0;
+    transition:opacity .3s ease;
+  }
+  .insta-tile:hover::after{ opacity:1; }
+  .t1{ background: linear-gradient(150deg, var(--clay), var(--clay-deep)); }
+  .t2{ background: linear-gradient(150deg, var(--sage), var(--sage-deep)); }
+  .t3{ background: linear-gradient(150deg, var(--gold), var(--clay)); }
+  .t4{ background: linear-gradient(150deg, var(--blush), var(--gold)); }
+  .t1 svg, .t2 svg, .t3 svg, .t4 svg{ color: rgba(255,255,255,0.9); }
+
+  @media (max-width: 780px){
+    .insta-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 90px 0 50px; text-align:center; }
+  footer .brand{ justify-content:center; font-size:1.6rem; margin-bottom:18px; }
+  footer p.desc{ color:var(--ink-soft); max-width:400px; margin:0 auto 30px; line-height:1.7; }
+  .foot-links{ display:flex; justify-content:center; gap:26px; flex-wrap:wrap; margin-bottom:40px; }
+  .foot-links a{
+    display:flex; align-items:center; gap:8px; font-size:0.9rem; font-weight:600; color:var(--ink-soft);
+    transition:color .25s ease;
+  }
+  .foot-links a:hover{ color:var(--clay-deep); }
+  .foot-links svg{ width:17px; height:17px; }
+  footer .fine{ font-size:0.8rem; color: var(--ink-soft); opacity:0.7; }
+
+  /* whatsapp float */
+  .float-wa{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    width:58px; height:58px; border-radius:50%; background: var(--sage-deep);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 10px 30px rgba(58,46,34,0.28);
+    transition: transform .25s ease;
+  }
+  .float-wa:hover{ transform: scale(1.08); }
+  .float-wa svg{ width:26px; height:26px; color:#fff; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Fluir — inicio">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M2 12c3-4 5-4 8 0s5 4 8 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Fluir
+    </a>
+    <nav class="links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#comunidad">Comunidad</a>
+      <a href="#instagram">Instagram</a>
+    </nav>
+    <a class="nav-cta" href="https://eliblue.my.canva.site/clases-de-yoga" target="_blank" rel="noopener">Reservar clase</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-wave" viewBox="0 0 1200 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="wave1" d="M-100,420 C 150,300 350,540 600,420 C 850,300 1050,540 1300,420 L1300,750 L-100,750 Z" fill="#7C8B5F" opacity="0.16"/>
+      <path id="wave2" d="M-100,470 C 200,370 400,570 650,470 C 900,370 1080,570 1300,470 L1300,750 L-100,750 Z" fill="#D6A64B" opacity="0.14"/>
+      <path id="wave3" d="M-100,520 C 180,600 420,440 650,520 C 900,610 1080,430 1300,520 L1300,750 L-100,750 Z" fill="#BE6640" opacity="0.12"/>
+    </svg>
+
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Yoga · Movimiento · Somática — Bogotá</div>
+      <h1>Fluir</h1>
+      <p class="sub">Soltar <em>·</em> Fluir <em>·</em> Confiar</p>
+      <p class="tag">Clases personalizadas de yoga y movimiento consciente con Eli, aprendiz de ser humana. Un espacio para volver al cuerpo, a la respiración y a tu propio ritmo.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://eliblue.my.canva.site/clases-de-yoga" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8l7-5 7 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Reservar una clase
+        </a>
+        <a class="btn btn-outline" href="https://www.instagram.com/fluir.eli" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
+          @fluir.eli
+        </a>
+      </div>
+
+      <div class="hero-signature">
+        <div class="breath-wrap">
+          <div class="breath-ring"></div>
+          <div class="breath-ring r2"></div>
+          <div class="breath-circle"><span id="breathLabel">inhala</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap about-grid">
+      <div class="about-visual reveal">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#E8B7A0" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#5C6B45" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="500" fill="url(#glow)"/>
+          <g stroke="#FAF3E6" stroke-width="1.4" fill="none" opacity="0.55">
+            <path d="M40 340 Q 200 220 360 340" />
+            <path d="M40 380 Q 200 270 360 380" />
+            <path d="M40 420 Q 200 320 360 420" />
+          </g>
+          <circle cx="200" cy="150" r="58" fill="#FAF3E6" opacity="0.9"/>
+          <path d="M170 190 Q200 260 230 190" stroke="#5C6B45" stroke-width="2" fill="none" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="about-copy reveal">
+        <p class="kicker">Aprendiz de ser humana</p>
+        <p>Soy Eli. Acompaño procesos de <strong>yoga y movimiento somático</strong> en Bogotá, con clases pensadas para tu cuerpo, tu momento y tu historia — no hay una sola forma de practicar, hay la tuya.</p>
+        <p>Cada sesión combina movimiento consciente, respiración y presencia. A veces se trabaja en silencio, a veces con agua, a veces con barro entre las manos: todo apunta al mismo lugar, <strong>volver a casa en el propio cuerpo</strong>.</p>
+        <p>Fuera del tapete, exploro la cerámica como ritual — piezas hechas a mano, despacio, con las mismas manos que enseñan a soltar.</p>
+        <div class="mantra-line">
+          <span>Soltar</span><span>Fluir</span><span>Confiar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIBBON DIVIDER -->
+  <div class="ribbon-divider">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,45 C150,10 300,80 450,45 C600,10 750,80 900,45 C1000,20 1100,60 1200,45" stroke="#BE6640" stroke-width="2" fill="none" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Cómo fluir juntas</div>
+        <h2>Tres caminos, un mismo cuerpo</h2>
+        <p>Clases personalizadas según lo que tu cuerpo y tu momento pidan — en el tapete, en el agua o con las manos en el barro.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon icon-a">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="2.2" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5m0 0-4 7m4-7 4 7M8 12H4m12 0h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Yoga & Movimiento Somático</h3>
+          <p>Clases personalizadas de yoga, respiración consciente y movimiento somático, adaptadas a tu cuerpo y tu proceso — individuales o en grupos pequeños.</p>
+          <a class="service-link" href="https://eliblue.my.canva.site/clases-de-yoga" target="_blank" rel="noopener">
+            Ver clases y reservar
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon icon-b">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 18c2-1 3 1 5 0s3 1 5 0 3 1 5 0 3 1 3 1M3 13c2-1 3 1 5 0s3 1 5 0 3 1 5 0 3 1 3 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="6" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Terapias en Agua · Janzú</h3>
+          <p>Sesiones de terapia acuática Janzú: flotación, contención y movimiento suave en el agua para liberar tensión profunda y regular el sistema nervioso.</p>
+          <a class="service-link" href="https://eliblue.my.canva.site/terapias-en-agua-janzu" target="_blank" rel="noopener">
+            Conocer Janzú
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon icon-c">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 3c-1 3-2 4-2 7a6 6 0 0 0 12 0c0-3-1-4-2-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21h6M10 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Cerámica Ritual</h3>
+          <p>Piezas hechas a mano como extensión de la práctica: vasijas y objetos con intención, moldeados despacio, con las manos presentes.</p>
+          <a class="service-link" href="https://www.instagram.com/eliblue.ceramica" target="_blank" rel="noopener">
+            Ver @eliblue.ceramica
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="comunidad">
+    <div class="community reveal">
+      <div class="community-inner">
+        <h2>Únete al círculo de Fluir</h2>
+        <p>Un grupo de WhatsApp para avisos de clases, cupos disponibles y encuentros especiales de movimiento, respiración y comunidad en Bogotá.</p>
+        <a class="btn btn-whatsapp" href="https://chat.whatsapp.com/HNfy9ZgX1hWKvaeQchFSzv" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.87 9.87 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.68 8.22-8.22 8.22a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.15 8.15 0 0 1-1.26-4.36c0-4.53 3.69-8.19 8.26-8.19Zm-4.42 4.24c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.71 2.73 4.24 3.72 2.1.82 2.52.66 2.98.62.46-.04 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.19-.07-.11-.24-.17-.5-.3-.27-.13-1.58-.78-1.83-.87-.24-.09-.42-.13-.6.13-.17.26-.68.87-.83 1.04-.15.18-.31.2-.57.07-.27-.13-1.13-.42-2.16-1.34-.8-.71-1.34-1.6-1.5-1.86-.15-.26-.02-.4.12-.53.12-.12.27-.31.4-.47.14-.16.18-.26.28-.44.09-.18.05-.33-.02-.47-.07-.13-.6-1.5-.83-2.04-.21-.53-.44-.46-.6-.47-.16-.01-.34-.01-.52-.01Z"/></svg>
+          Unirme al grupo de WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram">
+    <div class="wrap">
+      <div class="insta-head reveal">
+        <h2>𖦹 fluir.eli</h2>
+        <a href="https://www.instagram.com/fluir.eli" target="_blank" rel="noopener">
+          Seguir en Instagram
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="insta-grid reveal">
+        <a class="insta-tile t1" href="https://www.instagram.com/fluir.eli" target="_blank" rel="noopener" aria-label="Ver publicación de yoga en Instagram">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4m0 0-4 8m4-8 4 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="tag">Yoga</span>
+        </a>
+        <a class="insta-tile t2" href="https://www.instagram.com/fluir.eli" target="_blank" rel="noopener" aria-label="Ver publicación de movimiento en Instagram">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12c3-5 5-5 8 0s5 5 8 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="tag">Movimiento</span>
+        </a>
+        <a class="insta-tile t3" href="https://eliblue.my.canva.site/terapias-en-agua-janzu" target="_blank" rel="noopener" aria-label="Ver terapias en agua Janzú">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 17c2-1 3 1 5 0s3 1 5 0 3 1 5 0 3 1 3 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 3c-1.5 2.5-3 4-3 6.5a3 3 0 0 0 6 0C15 7 13.5 5.5 12 3Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span class="tag">Janzú</span>
+        </a>
+        <a class="insta-tile t4" href="https://www.instagram.com/eliblue.ceramica" target="_blank" rel="noopener" aria-label="Ver cerámica ritual en Instagram">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 3c-1 3-2 4-2 7a6 6 0 0 0 12 0c0-3-1-4-2-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag">Cerámica</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px"><path d="M2 12c3-4 5-4 8 0s5 4 8 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Fluir
+    </a>
+    <p class="desc">Yoga y movimiento en Bogotá, con Eli. Soltar, fluir, confiar — a tu propio ritmo.</p>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/fluir.eli" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/></svg>
+        Instagram
+      </a>
+      <a href="https://chat.whatsapp.com/HNfy9ZgX1hWKvaeQchFSzv" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.87 9.87 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
+        Comunidad WhatsApp
+      </a>
+      <a href="https://eliblue.my.canva.site/clases-de-yoga" target="_blank" rel="noopener">Clases de yoga</a>
+      <a href="https://eliblue.my.canva.site/terapias-en-agua-janzu" target="_blank" rel="noopener">Terapias Janzú</a>
+    </div>
+    <p class="fine">© 2026 Fluir — Eli · Bogotá, Colombia</p>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://chat.whatsapp.com/HNfy9ZgX1hWKvaeQchFSzv" target="_blank" rel="noopener" aria-label="Unirse al grupo de WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.87 9.87 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.68 8.22-8.22 8.22a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.15 8.15 0 0 1-1.26-4.36c0-4.53 3.69-8.19 8.26-8.19Z"/></svg>
+</a>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // breathing label sync (8s cycle: 4s inhala / 4s exhala)
+  const label = document.getElementById('breathLabel');
+  let breathing = true;
+  function cycleBreath(){
+    if(!label) return;
+    label.textContent = breathing ? 'inhala' : 'exhala';
+    breathing = !breathing;
+  }
+  cycleBreath();
+  setInterval(cycleBreath, 4000);
+
+  // gentle parallax on hero waves via requestAnimationFrame (no CSS keyframe reliance for smoother desktop perf)
+  const waves = [document.getElementById('wave1'), document.getElementById('wave2'), document.getElementById('wave3')];
+  let t = 0;
+  function animateWaves(){
+    t += 0.006;
+    waves.forEach((w, i) => {
+      if(!w) return;
+      const offset = Math.sin(t + i * 1.4) * 14;
+      w.style.transform = `translateY(${offset}px)`;
+    });
+    requestAnimationFrame(animateWaves);
+  }
+  requestAnimationFrame(animateWaves);
+
+  // mobile menu (simple toggle fallback - links already hidden on small screens via CTA emphasis)
+</script>
+
+</body>
+</html>

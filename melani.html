@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melani Tapia | Coach Ontológico — Transformá tu relación con el mundo</title>
+<meta name="description" content="Acompaño a mujeres a transformar su relación con el mundo a través del coaching ontológico. Sesiones 1:1 online. Argentina, Uruguay, Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --aubergine: #2B1331;
+    --aubergine-deep: #1C0B21;
+    --magenta: #E63979;
+    --coral: #FF8A65;
+    --gold: #D4AF37;
+    --gold-light: #F0C858;
+    --cream: #FBEFE3;
+    --ink: #24101F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+  }
+  a{text-decoration:none;color:inherit;}
+  .container{max-width: 1080px; margin: 0 auto; padding: 0 28px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: radial-gradient(120% 90% at 50% 0%, #4A1942 0%, var(--aubergine) 45%, var(--aubergine-deep) 100%);
+    color: var(--cream);
+    overflow:hidden;
+    padding: 100px 24px 60px;
+  }
+  .portal{
+    position:absolute;
+    width: 620px; height:620px;
+    border-radius:50%;
+    top:50%; left:50%;
+    transform: translate(-50%,-52%);
+    background: conic-gradient(from 0deg, var(--magenta), var(--coral), var(--gold-light), var(--magenta));
+    filter: blur(70px);
+    opacity:.35;
+    animation: spin 26s linear infinite;
+  }
+  @keyframes spin{ to{ transform: translate(-50%,-52%) rotate(360deg);} }
+  .ring{
+    position:absolute;
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:50%;
+    top:50%; left:50%;
+  }
+  .ring.r1{ width:340px;height:340px; transform:translate(-50%,-50%);}
+  .ring.r2{ width:460px;height:460px; transform:translate(-50%,-50%); border-color: rgba(230,57,121,.25);}
+  .ring.r3{ width:580px;height:580px; transform:translate(-50%,-50%); border-color: rgba(255,138,101,.18);}
+
+  .hero-content{ position:relative; z-index:2; text-align:center; max-width: 760px;}
+  .flags{ font-size: 1.1rem; letter-spacing: .12em; opacity:.85; margin-bottom: 18px;}
+  .eyebrow{
+    font-family:'Jost';
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:.72rem;
+    color: var(--gold-light);
+    margin-bottom: 22px;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.12;
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero p.lead{
+    font-size: 1.15rem;
+    line-height:1.7;
+    color: rgba(251,239,227,.85);
+    margin-bottom: 40px;
+    font-weight:300;
+  }
+  .cta-row{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 15px 30px;
+    border-radius: 999px;
+    font-size: .95rem;
+    letter-spacing:.02em;
+    font-weight:500;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background: linear-gradient(120deg, var(--gold-light), var(--gold));
+    color: var(--ink);
+    box-shadow: 0 10px 30px rgba(212,175,55,.35);
+  }
+  .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 14px 34px rgba(212,175,55,.5);}
+  .btn-outline{
+    border: 1px solid rgba(251,239,227,.5);
+    color: var(--cream);
+  }
+  .btn-outline:hover{ background: rgba(251,239,227,.1); transform: translateY(-3px);}
+
+  .scroll-cue{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+    font-size:.7rem; letter-spacing:.3em; text-transform:uppercase;
+    color: rgba(251,239,227,.55); z-index:2;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform: translateY(28px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in-view{ opacity:1; transform:none; }
+
+  /* ---------- SECTION: SOBRE ---------- */
+  section{ padding: 110px 0; }
+  .sobre{ background: var(--cream); }
+  .tag{
+    display:inline-block;
+    font-size:.7rem;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color: var(--magenta);
+    font-weight:600;
+    margin-bottom: 18px;
+  }
+  .sobre h2{
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-style: italic;
+    color: var(--aubergine);
+    max-width: 680px;
+    line-height:1.25;
+    margin-bottom: 26px;
+  }
+  .sobre p{
+    max-width: 620px;
+    line-height:1.85;
+    font-size:1.05rem;
+    color: #4A2E42;
+    font-weight:300;
+  }
+  .sobre p + p{ margin-top:16px; }
+
+  .pillars{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+  }
+  .pillar{
+    border-top: 2px solid var(--gold);
+    padding-top: 18px;
+  }
+  .pillar .glyph{ font-size:1.6rem; margin-bottom:10px; display:block;}
+  .pillar h3{ font-size:1.3rem; font-style:italic; color:var(--aubergine); margin-bottom:8px; font-weight:500;}
+  .pillar p{ font-size:.92rem; line-height:1.65; color:#5a3f52; font-weight:300; max-width:none;}
+
+  /* ---------- FORMULA / SIGNATURE ---------- */
+  .formula-section{
+    background: var(--aubergine-deep);
+    color: var(--cream);
+    text-align:center;
+  }
+  .formula-section .tag{ color: var(--gold-light); }
+  .formula-section h2{
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-style:italic;
+    margin-bottom: 14px;
+  }
+  .formula-section > .container > p.sub{
+    max-width:600px; margin: 0 auto 60px; color: rgba(251,239,227,.75); font-weight:300; line-height:1.7;
+  }
+  .equation{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 20px;
+    flex-wrap:wrap;
+    font-size: 1.6rem;
+    margin-bottom: 70px;
+    color: var(--gold-light);
+  }
+  .equation .box{
+    background: rgba(251,239,227,.06);
+    border: 1px solid rgba(212,175,55,.3);
+    border-radius: 16px;
+    padding: 18px 22px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color: var(--cream);
+    min-width: 160px;
+  }
+  .equation .sym{ font-size:1.4rem; color:var(--gold-light); }
+
+  .flip-hint{
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color: rgba(251,239,227,.5);
+    margin-bottom: 30px;
+  }
+  .flip-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 22px;
+    text-align:left;
+  }
+  .flip-card{
+    perspective: 1200px;
+    height: 210px;
+    cursor:pointer;
+  }
+  .flip-inner{
+    position:relative;
+    width:100%; height:100%;
+    transition: transform .7s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-inner{ transform: rotateY(180deg); }
+  .flip-face{
+    position:absolute; inset:0;
+    backface-visibility:hidden;
+    border-radius: 18px;
+    padding: 24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .flip-front{
+    background: rgba(251,239,227,.05);
+    border: 1px solid rgba(230,57,121,.35);
+  }
+  .flip-front .label{ font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color: var(--magenta);}
+  .flip-front p{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.15rem; line-height:1.4; color: var(--cream); font-weight:400;}
+  .flip-back{
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: var(--ink);
+    transform: rotateY(180deg);
+  }
+  .flip-back .label{ font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color: var(--ink); opacity:.65;}
+  .flip-back p{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.15rem; line-height:1.4; font-weight:500;}
+  .flip-card .tapicon{ align-self:flex-end; font-size:.85rem; opacity:.6; }
+
+  /* ---------- COMO TRABAJAMOS ---------- */
+  .proceso{ background: var(--cream); }
+  .proceso .tag{ color: var(--coral); }
+  .proceso h2{
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-style:italic;
+    color: var(--aubergine);
+    margin-bottom: 50px;
+    max-width:600px;
+  }
+  .pasos{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .paso{
+    background: #fff;
+    border-radius: 20px;
+    padding: 34px 26px;
+    box-shadow: 0 12px 30px rgba(43,19,49,.06);
+    border-bottom: 3px solid var(--gold);
+  }
+  .paso .num{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size: 2.2rem;
+    color: var(--magenta);
+    display:block;
+    margin-bottom: 12px;
+  }
+  .paso h3{ font-size:1.2rem; color:var(--aubergine); margin-bottom:10px; font-style:italic; font-weight:500;}
+  .paso p{ font-size:.92rem; line-height:1.65; color:#5a3f52; font-weight:300;}
+
+  /* ---------- PARA QUIEN ---------- */
+  .paraquien{
+    background: var(--magenta);
+    color: var(--cream);
+  }
+  .paraquien .tag{ color: var(--gold-light); }
+  .paraquien h2{
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-style: italic;
+    margin-bottom: 40px;
+    max-width: 640px;
+  }
+  .lista-check{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+  }
+  .lista-check div{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    font-weight:300;
+    line-height:1.6;
+    font-size:1.02rem;
+  }
+  .lista-check span.mark{
+    color: var(--gold-light);
+    font-size:1.2rem;
+    line-height:1;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .final{
+    background: radial-gradient(120% 100% at 50% 100%, #4A1942 0%, var(--aubergine-deep) 60%);
+    color: var(--cream);
+    text-align:center;
+    padding: 130px 0;
+  }
+  .final .tag{ color: var(--gold-light);}
+  .final h2{
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto 26px;
+    line-height:1.25;
+  }
+  .final p{
+    color: rgba(251,239,227,.75);
+    max-width: 520px;
+    margin: 0 auto 44px;
+    font-weight:300;
+    line-height:1.7;
+  }
+
+  footer{
+    background: var(--aubergine-deep);
+    color: rgba(251,239,227,.5);
+    text-align:center;
+    padding: 30px 20px;
+    font-size:.8rem;
+  }
+  footer a{ color: var(--gold-light); }
+
+  /* ---------- FLOATING BUTTONS ---------- */
+  .floaters{
+    position:fixed;
+    right: 22px;
+    bottom: 22px;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    z-index: 999;
+  }
+  .float-btn{
+    width: 56px; height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    transition: transform .2s ease;
+  }
+  .float-btn:hover{ transform: scale(1.08); }
+  .float-wa{ background:#25D366; color:#fff; }
+  .float-ig{
+    background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
+    color:#fff;
+  }
+
+  @media (max-width: 860px){
+    .pillars{ grid-template-columns: 1fr; gap: 34px; }
+    .pasos{ grid-template-columns: 1fr; }
+    .lista-check{ grid-template-columns: 1fr; }
+    section{ padding: 80px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="portal"></div>
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="hero-content">
+    <div class="flags">🇦🇷 🇺🇾 🇧🇷</div>
+    <div class="eyebrow">Coaching Ontológico · Sesiones 1:1 online</div>
+    <h1>Observás tus <em>creencias</em>.<br>Creás tu <em>realidad</em>.</h1>
+    <p class="lead">Acompaño a mujeres a transformar su relación con el mundo. Un espacio para mirar de otra manera lo que creés posible — y empezar a construirlo.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/59899197674" target="_blank" rel="noopener">💬 Reservar una sesión</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/melanitapia_coachontologico/" target="_blank" rel="noopener">Seguime en Instagram</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Descubrí más ↓</div>
+</div>
+
+<section class="sobre">
+  <div class="container reveal">
+    <span class="tag">Sobre el acompañamiento</span>
+    <h2>El coaching ontológico no te da respuestas. Te devuelve la pregunta que estabas evitando.</h2>
+    <p>Soy Melani Tapia. Trabajo con mujeres que sienten que algo puede ser distinto — en el dinero, en los vínculos, en el cuerpo, en el tiempo — pero no encuentran por dónde empezar.</p>
+    <p>La propuesta es simple y profunda a la vez: observamos las creencias que sostienen tu realidad actual, y desde ahí, creamos juntas nuevas posibilidades. No se trata de pensar positivo. Se trata de ver con claridad.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="glyph">👁️</span>
+        <h3>Observar creencias</h3>
+        <p>Identificamos los supuestos invisibles que están definiendo lo que hoy considerás posible para vos.</p>
+      </div>
+      <div class="pillar">
+        <span class="glyph">🌀</span>
+        <h3>Crear posibilidades</h3>
+        <p>Diseñamos, desde esa nueva mirada, caminos de acción que antes no estaban disponibles.</p>
+      </div>
+      <div class="pillar">
+        <span class="glyph">🧠</span>
+        <h3>Conciencia + acción</h3>
+        <p>Unimos el trabajo interno con pasos concretos, para que la transformación se sostenga en el tiempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="formula-section">
+  <div class="container reveal">
+    <span class="tag">La fórmula</span>
+    <h2>Conciencia + Observación = la realidad que elegís</h2>
+    <p class="sub">Es la base de cada sesión: cambiar la mirada sobre una creencia abre posibilidades que antes no existían. Tocá cada tarjeta y probalo.</p>
+
+    <div class="equation">
+      <div class="box">🧠 Conciencia</div>
+      <span class="sym">+</span>
+      <div class="box">👁️ Observación</div>
+      <span class="sym">=</span>
+      <div class="box">✨ Realidad deseada</div>
+    </div>
+
+    <div class="flip-hint">Tocá una tarjeta para transformarla</div>
+    <div class="flip-grid" id="flipGrid">
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Creencia</span>
+            <p>"No tengo tiempo para mí."</p>
+            <span class="tapicon">tocar ↻</span>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="label">Nueva posibilidad</span>
+            <p>"Elijo en qué pongo mi atención cada día."</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Creencia</span>
+            <p>"El dinero es escaso y difícil."</p>
+            <span class="tapicon">tocar ↻</span>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="label">Nueva posibilidad</span>
+            <p>"Puedo construir una relación distinta con el dinero."</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Creencia</span>
+            <p>"Mi cuerpo es un problema a resolver."</p>
+            <span class="tapicon">tocar ↻</span>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="label">Nueva posibilidad</span>
+            <p>"Mi cuerpo es un lugar desde el cual habitar mi vida."</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Creencia</span>
+            <p>"Ya es tarde para cambiar."</p>
+            <span class="tapicon">tocar ↻</span>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="label">Nueva posibilidad</span>
+            <p>"Cada conversación puede abrir un comienzo nuevo."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proceso">
+  <div class="container reveal">
+    <span class="tag">Cómo trabajamos</span>
+    <h2>Un proceso simple, sostenido y a tu ritmo</h2>
+    <div class="pasos">
+      <div class="paso">
+        <span class="num">I</span>
+        <h3>Primer encuentro</h3>
+        <p>Conversamos por WhatsApp para entender qué te trae a este espacio y cómo puedo acompañarte.</p>
+      </div>
+      <div class="paso">
+        <span class="num">II</span>
+        <h3>Sesiones 1:1 online</h3>
+        <p>Encuentros individuales, a tu ritmo, desde donde estés — Argentina, Uruguay, Brasil o cualquier lugar del mundo.</p>
+      </div>
+      <div class="paso">
+        <span class="num">III</span>
+        <h3>Transformación sostenida</h3>
+        <p>Cada sesión suma una nueva mirada y una acción concreta, para que el cambio se vuelva parte de tu vida cotidiana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paraquien">
+  <div class="container reveal">
+    <span class="tag">¿Es para vos?</span>
+    <h2>Este espacio es para mujeres que sienten que es momento de mirar distinto</h2>
+    <div class="lista-check">
+      <div><span class="mark">✦</span> Sentís que repetís los mismos patrones en tus vínculos o decisiones.</div>
+      <div><span class="mark">✦</span> Querés una relación más consciente con tu cuerpo, tu tiempo o tu dinero.</div>
+      <div><span class="mark">✦</span> Buscás acompañamiento real, no fórmulas genéricas.</div>
+      <div><span class="mark">✦</span> Estás lista para observarte con honestidad y crear algo nuevo.</div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="container reveal">
+    <span class="tag">Comencemos</span>
+    <h2>Tu realidad puede ser distinta desde la primera conversación</h2>
+    <p>Escribime por WhatsApp y coordinamos tu primera sesión. Sin fórmulas prearmadas: un espacio pensado para vos.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/59899197674" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/melanitapia_coachontologico/" target="_blank" rel="noopener">📷 Ver Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Melani Tapia · Coach Ontológico &nbsp;|&nbsp; <a href="https://www.instagram.com/melanitapia_coachontologico/" target="_blank" rel="noopener">@melanitapia_coachontologico</a>
+</footer>
+
+<div class="floaters">
+  <a class="float-btn float-wa" href="https://wa.me/59899197674" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a class="float-btn float-ig" href="https://www.instagram.com/melanitapia_coachontologico/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: .15 });
+  reveals.forEach(el=> io.observe(el));
+
+  // Flip cards
+  document.querySelectorAll('.flip-card').forEach(card=>{
+    card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+  });
+</script>
+
+</body>
+</html>

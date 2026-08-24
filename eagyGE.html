@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio Web EasyLandX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover-border: rgba(99, 102, 241, 0.5);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #818cf8;
+            --accent-gradient: linear-gradient(135deg, #a855f7, #6366f1, #3b82f6);
+            --glow: rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        /* Nav Quick Links */
+        .category-nav {
+            display: flex;
+            wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .cat-chip {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .cat-chip:hover {
+            color: #fff;
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .category-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .category-icon {
+            font-size: 1.5rem;
+        }
+
+        .count-badge {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Grid & Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--card-hover-border);
+            box-shadow: 0 12px 24px -10px var(--glow);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-emoji {
+            font-size: 1.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .card-footer span {
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover .card-footer span {
+            transform: translateX(4px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="badge">Directorio Web</div>
+            <h1>Explora EasyLandX</h1>
+            <p class="subtitle">Una colección organizada de sitios web, portafolios, consultorías y recursos divididos por áreas de interés.</p>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar por sitio, descripción o categoría...">
+            </div>
+        </header>
+
+        <div class="category-nav">
+            <a href="#astrología-y-espiritualidad" class="cat-chip">✨ Astrología y Espiritualidad</a>
+            <a href="#salud-holística-y-bienestar" class="cat-chip">🌿 Salud Holística y Bienestar</a>
+            <a href="#psicología-y-mente" class="cat-chip">🧠 Psicología y Mente</a>
+            <a href="#nutrición-y-gastronomía" class="cat-chip">🥑 Nutrición y Gastronomía</a>
+            <a href="#estilo-de-vida-y-servicios" class="cat-chip">💎 Estilo de Vida y Servicios</a>
+            <a href="#ayuda-social-y-solidaridad" class="cat-chip">🤝 Ayuda Social y Solidaridad</a>
+            <a href="#perfiles-y-blogs-personales" class="cat-chip">👤 Perfiles y Blogs Personales</a>
+        </div>
+
+        <main id="directoryContent">
+
+            <section class="category-section" id="astrología-y-espiritualidad">
+                <div class="category-header">
+                    <span class="category-icon">✨</span>
+                    <h2>Astrología y Espiritualidad</h2>
+                    <span class="count-badge">10 sitios</span>
+                </div>
+                <div class="grid">
+
+                    <a href="https://easylandx.github.io/web/astrocla.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Astro Cla" data-desc="Astrología, cartas natales y lecturas de mapas celestes." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">✨</div>
+                            <div class="card-title">Astro Cla</div>
+                        </div>
+                        <div class="card-desc">Astrología, cartas natales y lecturas de mapas celestes.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/astrologiaconsciencia.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Astrología Consciencia" data-desc="Espacio de astrología evolutiva y desarrollo de consciencia." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">🔮</div>
+                            <div class="card-title">Astrología Consciencia</div>
+                        </div>
+                        <div class="card-desc">Espacio de astrología evolutiva y desarrollo de consciencia.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/astrologysol.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Astrology Sol" data-desc="Perspectivas astrológicas, tránsitos solares y energía de los astros." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">☀️</div>
+                            <div class="card-title">Astrology Sol</div>
+                        </div>
+                        <div class="card-desc">Perspectivas astrológicas, tránsitos solares y energía de los astros.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/chiniastro.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Chini Astro" data-desc="Lecturas astrológicas, horóscopos y consultoría esotérica." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">🌟</div>
+                            <div class="card-title">Chini Astro</div>
+                        </div>
+                        <div class="card-desc">Lecturas astrológicas, horóscopos y consultoría esotérica.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/clarividente.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Clarividente" data-desc="Servicios de clarividencia, guía espiritual y canalizaciones." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">👁️</div>
+                            <div class="card-title">Clarividente</div>
+                        </div>
+                        <div class="card-desc">Servicios de clarividencia, guía espiritual y canalizaciones.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/deiakashica.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Dei Akáshica" data-desc="Lectura de registros akáshicos y sanación del alma." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">📖</div>
+                            <div class="card-title">Dei Akáshica</div>
+                        </div>
+                        <div class="card-desc">Lectura de registros akáshicos y sanación del alma.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/despertares.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Despertares" data-desc="Contenido sobre despertar espiritual, elevación de frecuencia y conciencia." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">🌅</div>
+                            <div class="card-title">Despertares</div>
+                        </div>
+                        <div class="card-desc">Contenido sobre despertar espiritual, elevación de frecuencia y conciencia.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/magiacancer.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Magia Cáncer" data-desc="Astrología focalizada en el signo de Cáncer y energías lunares." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">♋</div>
+                            <div class="card-title">Magia Cáncer</div>
+                        </div>
+                        <div class="card-desc">Astrología focalizada en el signo de Cáncer y energías lunares.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/naytarot.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Nay Tarot" data-desc="Lecturas de cartas de tarot, tiradas intuitivas y guía personal." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">🃏</div>
+                            <div class="card-title">Nay Tarot</div>
+                        </div>
+                        <div class="card-desc">Lecturas de cartas de tarot, tiradas intuitivas y guía personal.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/venusandmars.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Venus &amp; Mars" data-desc="Astrología vinculat, relaciones de pareja y dinámica planetaria." data-cat="Astrología y Espiritualidad">
+                        <div class="card-header">
+                            <div class="card-emoji">♀️♂️</div>
+                            <div class="card-title">Venus &amp; Mars</div>
+                        </div>
+                        <div class="card-desc">Astrología vinculat, relaciones de pareja y dinámica planetaria.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="category-section" id="salud-holística-y-bienestar">
+                <div class="category-header">
+                    <span class="category-icon">🌿</span>
+                    <h2>Salud Holística y Bienestar</h2>
+                    <span class="count-badge">7 sitios</span>
+                </div>
+                <div class="grid">
+
+                    <a href="https://easylandx.github.io/web/calmando.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Calmando" data-desc="Técnicas de relajación, manejo de ansiedad y paz interior." data-cat="Salud Holística y Bienestar">
+                        <div class="card-header">
+                            <div class="card-emoji">🧘</div>
+                            <div class="card-title">Calmando</div>
+                        </div>
+                        <div class="card-desc">Técnicas de relajación, manejo de ansiedad y paz interior.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/doctora.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Doctora" data-desc="Consejos médicos, prevención y salud integral." data-cat="Salud Holística y Bienestar">
+                        <div class="card-header">
+                            <div class="card-emoji">👩‍⚕️</div>
+                            <div class="card-title">Doctora</div>
+                        </div>
+                        <div class="card-desc">Consejos médicos, prevención y salud integral.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/flordeluna.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Flor de Luna" data-desc="Remedios naturales, medicina holística y herbolaria." data-cat="Salud Holística y Bienestar">
+                        <div class="card-header">
+                            <div class="card-emoji">🌙</div>
+                            <div class="card-title">Flor de Luna</div>
+                        </div>
+                        <div class="card-desc">Remedios naturales, medicina holística y herbolaria.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/fluireli.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Fluir Eli" data-desc="Movimiento consciente, bienestar emocional y fluidez vital." data-cat="Salud Holística y Bienestar">
+                        <div class="card-header">
+                            <div class="card-emoji">🌊</div>
+                            <div class="card-title">Fluir Eli</div>
+                        </div>
+                        <div class="card-desc">Movimiento consciente, bienestar emocional y fluidez vital.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/salud.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Salud" data-desc="Recursos para el cuidado de la salud física y mental." data-cat="Salud Holística y Bienestar">
+                        <div class="card-header">
+                            <div class="card-emoji">🍃</div>
+                            <div class="card-title">Salud</div>
+                        </div>
+                        <div class="card-desc">Recursos para el cuidado de la salud física y mental.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/sanacion.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Sanación" data-desc="Espacio dedicado a terapias energéticas y sanación interior." data-cat="Salud Holística y Bienestar">
+                        <div class="card-header">
+                            <div class="card-emoji">💖</div>
+                            <div class="card-title">Sanación</div>
+                        </div>
+                        <div class="card-desc">Espacio dedicado a terapias energéticas y sanación interior.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/vientos.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Vientos" data-desc="Terapia de respiración, pranayama y limpieza energética." data-cat="Salud Holística y Bienestar">
+                        <div class="card-header">
+                            <div class="card-emoji">🌬️</div>
+                            <div class="card-title">Vientos</div>
+                        </div>
+                        <div class="card-desc">Terapia de respiración, pranayama y limpieza energética.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="category-section" id="psicología-y-mente">
+                <div class="category-header">
+                    <span class="category-icon">🧠</span>
+                    <h2>Psicología y Mente</h2>
+                    <span class="count-badge">6 sitios</span>
+                </div>
+                <div class="grid">
+
+                    <a href="https://easylandx.github.io/web/mindset.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Mindset" data-desc="Crecimiento personal, desarrollo de mentalidad positiva y metas." data-cat="Psicología y Mente">
+                        <div class="card-header">
+                            <div class="card-emoji">🧠</div>
+                            <div class="card-title">Mindset</div>
+                        </div>
+                        <div class="card-desc">Crecimiento personal, desarrollo de mentalidad positiva y metas.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/psicoalas.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Psico Alas" data-desc="Acompañamiento psicológico, psicoterapia y crecimiento personal." data-cat="Psicología y Mente">
+                        <div class="card-header">
+                            <div class="card-emoji">🕊️</div>
+                            <div class="card-title">Psico Alas</div>
+                        </div>
+                        <div class="card-desc">Acompañamiento psicológico, psicoterapia y crecimiento personal.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/psicojai.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Psico Jai" data-desc="Consulta de psicología integral y salud emocional." data-cat="Psicología y Mente">
+                        <div class="card-header">
+                            <div class="card-emoji">🌱</div>
+                            <div class="card-title">Psico Jai</div>
+                        </div>
+                        <div class="card-desc">Consulta de psicología integral y salud emocional.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/psicorosario.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Psico Rosario" data-desc="Servicios de psicología y terapias en la región de Rosario." data-cat="Psicología y Mente">
+                        <div class="card-header">
+                            <div class="card-emoji">💭</div>
+                            <div class="card-title">Psico Rosario</div>
+                        </div>
+                        <div class="card-desc">Servicios de psicología y terapias en la región de Rosario.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/totallytdah.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Totally TDAH" data-desc="Recursos, estrategias y divulgación sobre el TDAH." data-cat="Psicología y Mente">
+                        <div class="card-header">
+                            <div class="card-emoji">⚡</div>
+                            <div class="card-title">Totally TDAH</div>
+                        </div>
+                        <div class="card-desc">Recursos, estrategias y divulgación sobre el TDAH.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/consciente.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Consciente" data-desc="Reflexiones sobre mindfulness y vida con propósito." data-cat="Psicología y Mente">
+                        <div class="card-header">
+                            <div class="card-emoji">💡</div>
+                            <div class="card-title">Consciente</div>
+                        </div>
+                        <div class="card-desc">Reflexiones sobre mindfulness y vida con propósito.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="category-section" id="nutrición-y-gastronomía">
+                <div class="category-header">
+                    <span class="category-icon">🥑</span>
+                    <h2>Nutrición y Gastronomía</h2>
+                    <span class="count-badge">2 sitios</span>
+                </div>
+                <div class="grid">
+
+                    <a href="https://easylandx.github.io/web/comiendo.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Comiendo" data-desc="Recetas, hábitos de alimentación consciente y cocina saludable." data-cat="Nutrición y Gastronomía">
+                        <div class="card-header">
+                            <div class="card-emoji">🍽️</div>
+                            <div class="card-title">Comiendo</div>
+                        </div>
+                        <div class="card-desc">Recetas, hábitos de alimentación consciente y cocina saludable.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/sococina.html" target="_blank" rel="noopener noreferrer" class="card" data-title="So Cocina" data-desc="Ideas culinarias, recetas deliciosas y secretos de cocina." data-cat="Nutrición y Gastronomía">
+                        <div class="card-header">
+                            <div class="card-emoji">👩‍🍳</div>
+                            <div class="card-title">So Cocina</div>
+                        </div>
+                        <div class="card-desc">Ideas culinarias, recetas deliciosas y secretos de cocina.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="category-section" id="estilo-de-vida-y-servicios">
+                <div class="category-header">
+                    <span class="category-icon">💎</span>
+                    <h2>Estilo de Vida y Servicios</h2>
+                    <span class="count-badge">5 sitios</span>
+                </div>
+                <div class="grid">
+
+                    <a href="https://easylandx.github.io/web/agenda3c.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Agenda 3C" data-desc="Eventos, agenda cultural y actividades comunitarias." data-cat="Estilo de Vida y Servicios">
+                        <div class="card-header">
+                            <div class="card-emoji">📅</div>
+                            <div class="card-title">Agenda 3C</div>
+                        </div>
+                        <div class="card-desc">Eventos, agenda cultural y actividades comunitarias.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/conurbano.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Conurbano" data-desc="Novedades, cultura local y guía comunitaria del Conurbano." data-cat="Estilo de Vida y Servicios">
+                        <div class="card-header">
+                            <div class="card-emoji">🏙️</div>
+                            <div class="card-title">Conurbano</div>
+                        </div>
+                        <div class="card-desc">Novedades, cultura local y guía comunitaria del Conurbano.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/estilistas3c.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Estilistas 3C" data-desc="Cuidado del cabello, cortes, peinados y tendencias de belleza." data-cat="Estilo de Vida y Servicios">
+                        <div class="card-header">
+                            <div class="card-emoji">✂️</div>
+                            <div class="card-title">Estilistas 3C</div>
+                        </div>
+                        <div class="card-desc">Cuidado del cabello, cortes, peinados y tendencias de belleza.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/onlinemami.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Online Mami" data-desc="Maternidad moderna, crianza consciente y comunidad para mamás." data-cat="Estilo de Vida y Servicios">
+                        <div class="card-header">
+                            <div class="card-emoji">🤱</div>
+                            <div class="card-title">Online Mami</div>
+                        </div>
+                        <div class="card-desc">Maternidad moderna, crianza consciente y comunidad para mamás.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/mundo.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Mundo" data-desc="Perspectivas globales, viajes y cultura alrededor del mundo." data-cat="Estilo de Vida y Servicios">
+                        <div class="card-header">
+                            <div class="card-emoji">🌍</div>
+                            <div class="card-title">Mundo</div>
+                        </div>
+                        <div class="card-desc">Perspectivas globales, viajes y cultura alrededor del mundo.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="category-section" id="ayuda-social-y-solidaridad">
+                <div class="category-header">
+                    <span class="category-icon">🤝</span>
+                    <h2>Ayuda Social y Solidaridad</h2>
+                    <span class="count-badge">3 sitios</span>
+                </div>
+                <div class="grid">
+
+                    <a href="https://easylandx.github.io/web/ayuda1.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Ayuda 1" data-desc="Iniciativa solidaria, voluntariado y soporte comunitario." data-cat="Ayuda Social y Solidaridad">
+                        <div class="card-header">
+                            <div class="card-emoji">🤝</div>
+                            <div class="card-title">Ayuda 1</div>
+                        </div>
+                        <div class="card-desc">Iniciativa solidaria, voluntariado y soporte comunitario.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/ayuda2.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Ayuda 2" data-desc="Recursos de asistencia, apoyo social y red solidaria." data-cat="Ayuda Social y Solidaridad">
+                        <div class="card-header">
+                            <div class="card-emoji">🎗️</div>
+                            <div class="card-title">Ayuda 2</div>
+                        </div>
+                        <div class="card-desc">Recursos de asistencia, apoyo social y red solidaria.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/ayudacolombia.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Ayuda Colombia" data-desc="Iniciativas humanitarias y proyectos de soporte en Colombia." data-cat="Ayuda Social y Solidaridad">
+                        <div class="card-header">
+                            <div class="card-emoji">🇨🇴</div>
+                            <div class="card-title">Ayuda Colombia</div>
+                        </div>
+                        <div class="card-desc">Iniciativas humanitarias y proyectos de soporte en Colombia.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="category-section" id="perfiles-y-blogs-personales">
+                <div class="category-header">
+                    <span class="category-icon">👤</span>
+                    <h2>Perfiles y Blogs Personales</h2>
+                    <span class="count-badge">38 sitios</span>
+                </div>
+                <div class="grid">
+
+                    <a href="https://easylandx.github.io/web/adriana.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Adriana" data-desc="Espacio personal, proyectos y blog de Adriana." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌷</div>
+                            <div class="card-title">Adriana</div>
+                        </div>
+                        <div class="card-desc">Espacio personal, proyectos y blog de Adriana.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/alma.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Alma" data-desc="Página personal y proyectos creativos de Alma." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">✨</div>
+                            <div class="card-title">Alma</div>
+                        </div>
+                        <div class="card-desc">Página personal y proyectos creativos de Alma.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/anab.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Ana B" data-desc="Sitio personal y portafolio de Ana B." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌺</div>
+                            <div class="card-title">Ana B</div>
+                        </div>
+                        <div class="card-desc">Sitio personal y portafolio de Ana B.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/anakaren.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Ana Karen" data-desc="Blog personal y espacio creativo de Ana Karen." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌸</div>
+                            <div class="card-title">Ana Karen</div>
+                        </div>
+                        <div class="card-desc">Blog personal y espacio creativo de Ana Karen.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/bumi.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Bumi" data-desc="Página personal, ideas y proyectos de Bumi." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🐾</div>
+                            <div class="card-title">Bumi</div>
+                        </div>
+                        <div class="card-desc">Página personal, ideas y proyectos de Bumi.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/daniela.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Daniela" data-desc="Espacio creativo y reflexiones de Daniela." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌻</div>
+                            <div class="card-title">Daniela</div>
+                        </div>
+                        <div class="card-desc">Espacio creativo y reflexiones de Daniela.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/denu.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Denu" data-desc="Arte, diario personal y publicaciones de Denu." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎨</div>
+                            <div class="card-title">Denu</div>
+                        </div>
+                        <div class="card-desc">Arte, diario personal y publicaciones de Denu.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/diana.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Diana" data-desc="Sitio personal y notas reflexivas de Diana." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">💫</div>
+                            <div class="card-title">Diana</div>
+                        </div>
+                        <div class="card-desc">Sitio personal y notas reflexivas de Diana.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/divergente.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Divergente" data-desc="Proyectos alternativos, ideas divergentes y notas." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🔀</div>
+                            <div class="card-title">Divergente</div>
+                        </div>
+                        <div class="card-desc">Proyectos alternativos, ideas divergentes y notas.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/edna.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Edna" data-desc="Página personal y creaciones de Edna." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌼</div>
+                            <div class="card-title">Edna</div>
+                        </div>
+                        <div class="card-desc">Página personal y creaciones de Edna.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/ivana.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Ivana" data-desc="Espacio personal, escritos y proyectos de Ivana." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🦋</div>
+                            <div class="card-title">Ivana</div>
+                        </div>
+                        <div class="card-desc">Espacio personal, escritos y proyectos de Ivana.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/jimena.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Jimena" data-desc="Blog personal y reflexiones de Jimena." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌿</div>
+                            <div class="card-title">Jimena</div>
+                        </div>
+                        <div class="card-desc">Blog personal y reflexiones de Jimena.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/julieta.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Julieta" data-desc="Contenido personal y experiencias de Julieta." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎀</div>
+                            <div class="card-title">Julieta</div>
+                        </div>
+                        <div class="card-desc">Contenido personal y experiencias de Julieta.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/julirivadulla.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Juli Rivadulla" data-desc="Portafolio profesional y blog de Julieta Rivadulla." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">⭐</div>
+                            <div class="card-title">Juli Rivadulla</div>
+                        </div>
+                        <div class="card-desc">Portafolio profesional y blog de Julieta Rivadulla.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/lareini.html" target="_blank" rel="noopener noreferrer" class="card" data-title="La Reini" data-desc="Espacio de contenido exclusivo y blog personal de La Reini." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">👑</div>
+                            <div class="card-title">La Reini</div>
+                        </div>
+                        <div class="card-desc">Espacio de contenido exclusivo y blog personal de La Reini.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/marchant.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Marchant" data-desc="Portafolio artístico y proyectos visuales de Marchant." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎨</div>
+                            <div class="card-title">Marchant</div>
+                        </div>
+                        <div class="card-desc">Portafolio artístico y proyectos visuales de Marchant.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/margarita.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Margarita" data-desc="Espacio personal y publicaciones de Margarita." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌼</div>
+                            <div class="card-title">Margarita</div>
+                        </div>
+                        <div class="card-desc">Espacio personal y publicaciones de Margarita.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/maria.html" target="_blank" rel="noopener noreferrer" class="card" data-title="María" data-desc="Blog personal y rincón creativo de María." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌹</div>
+                            <div class="card-title">María</div>
+                        </div>
+                        <div class="card-desc">Blog personal y rincón creativo de María.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/melani.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Melani" data-desc="Sitio web personal y reflexiones de Melani." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🦄</div>
+                            <div class="card-title">Melani</div>
+                        </div>
+                        <div class="card-desc">Sitio web personal y reflexiones de Melani.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/melissa.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Melissa" data-desc="Portafolio y pensamientos de Melissa." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">✨</div>
+                            <div class="card-title">Melissa</div>
+                        </div>
+                        <div class="card-desc">Portafolio y pensamientos de Melissa.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/merello.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Merello" data-desc="Espacio personal y creaciones creativas de Merello." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎭</div>
+                            <div class="card-title">Merello</div>
+                        </div>
+                        <div class="card-desc">Espacio personal y creaciones creativas de Merello.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/merycaporale.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Mery Caporale" data-desc="Entrenamiento, fitness y bienestar con Mery Caporale." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">💪</div>
+                            <div class="card-title">Mery Caporale</div>
+                        </div>
+                        <div class="card-desc">Entrenamiento, fitness y bienestar con Mery Caporale.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/natalia.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Natalia" data-desc="Página personal y proyectos de Natalia." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌿</div>
+                            <div class="card-title">Natalia</div>
+                        </div>
+                        <div class="card-desc">Página personal y proyectos de Natalia.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/nina.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Nina" data-desc="Blog y notas personales de Nina." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🕊️</div>
+                            <div class="card-title">Nina</div>
+                        </div>
+                        <div class="card-desc">Blog y notas personales de Nina.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/pia.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Pía" data-desc="Espacio web personal y reflexiones de Pía." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">⭐</div>
+                            <div class="card-title">Pía</div>
+                        </div>
+                        <div class="card-desc">Espacio web personal y reflexiones de Pía.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/pilu.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Pilu" data-desc="Blog creativo y experiencias personales de Pilu." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎈</div>
+                            <div class="card-title">Pilu</div>
+                        </div>
+                        <div class="card-desc">Blog creativo y experiencias personales de Pilu.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/pupina.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Pupina" data-desc="Espacio personal y contenido diario de Pupina." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🐾</div>
+                            <div class="card-title">Pupina</div>
+                        </div>
+                        <div class="card-desc">Espacio personal y contenido diario de Pupina.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/riegomeyer.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Riego Meyer" data-desc="Proyectos personales y profesionales de Riego Meyer." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌱</div>
+                            <div class="card-title">Riego Meyer</div>
+                        </div>
+                        <div class="card-desc">Proyectos personales y profesionales de Riego Meyer.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/sodupe.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Sodupe" data-desc="Sitio personal y novedades de Sodupe." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">📌</div>
+                            <div class="card-title">Sodupe</div>
+                        </div>
+                        <div class="card-desc">Sitio personal y novedades de Sodupe.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/sofiamora.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Sofía Mora" data-desc="Música, arte y proyectos de Sofía Mora." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎵</div>
+                            <div class="card-title">Sofía Mora</div>
+                        </div>
+                        <div class="card-desc">Música, arte y proyectos de Sofía Mora.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/sofiaroca.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Sofía Roca" data-desc="Diseño, arte y portafolio de Sofía Roca." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎨</div>
+                            <div class="card-title">Sofía Roca</div>
+                        </div>
+                        <div class="card-desc">Diseño, arte y portafolio de Sofía Roca.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/soymaru.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Soy Maru" data-desc="Blog de vida, vivencias y proyectos de Maru." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">💃</div>
+                            <div class="card-title">Soy Maru</div>
+                        </div>
+                        <div class="card-desc">Blog de vida, vivencias y proyectos de Maru.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/tatew.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Tatew" data-desc="Espacio personal y pensamientos de Tatew." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🔮</div>
+                            <div class="card-title">Tatew</div>
+                        </div>
+                        <div class="card-desc">Espacio personal y pensamientos de Tatew.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/tiara.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Tiara" data-desc="Página personal y publicaciones de Tiara." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">👑</div>
+                            <div class="card-title">Tiara</div>
+                        </div>
+                        <div class="card-desc">Página personal y publicaciones de Tiara.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/titi.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Titi" data-desc="Rincón personal y proyectos de Titi." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🌼</div>
+                            <div class="card-title">Titi</div>
+                        </div>
+                        <div class="card-desc">Rincón personal y proyectos de Titi.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/unpocodenash.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Un Poco de Nash" data-desc="Reflexiones, podcasts y escritos de Nash." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🎙️</div>
+                            <div class="card-title">Un Poco de Nash</div>
+                        </div>
+                        <div class="card-desc">Reflexiones, podcasts y escritos de Nash.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/wamor.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Wamor" data-desc="Mensajes de amor, inspiración y escritos." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">❤️</div>
+                            <div class="card-title">Wamor</div>
+                        </div>
+                        <div class="card-desc">Mensajes de amor, inspiración y escritos.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                    <a href="https://easylandx.github.io/web/zowix.html" target="_blank" rel="noopener noreferrer" class="card" data-title="Zowix" data-desc="Proyectos digitales, innovación y portal personal de Zowix." data-cat="Perfiles y Blogs Personales">
+                        <div class="card-header">
+                            <div class="card-emoji">🚀</div>
+                            <div class="card-title">Zowix</div>
+                        </div>
+                        <div class="card-desc">Proyectos digitales, innovación y portal personal de Zowix.</div>
+                        <div class="card-footer">
+                            <span>Visitar sitio &rarr;</span>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Directorio EasyLandX &bull; Todos los enlaces categorizados con precisión</p>
+        </footer>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.card');
+        const sections = document.querySelectorAll('.category-section');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            sections.forEach(section => {
+                let hasVisibleCards = false;
+                const sectionCards = section.querySelectorAll('.card');
+
+                sectionCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const desc = card.getAttribute('data-desc').toLowerCase();
+                    const cat = card.getAttribute('data-cat').toLowerCase();
+
+                    if (title.includes(query) || desc.includes(query) || cat.includes(query)) {
+                        card.style.display = 'flex';
+                        hasVisibleCards = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (hasVisibleCards) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

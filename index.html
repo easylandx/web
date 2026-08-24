@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧲 EasyLandX — Landing Pages That Actually Work</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --primary: #ffeb3b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: #0a2540;           /* Navy Blue */
+            color: #ffeb3b;                /* Bright Yellow */
+            line-height: 1.6;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 37, 64, 0.97);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 3px solid #ffeb3b;
+        }
+        
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 600;
+            letter-spacing: -0.05em;
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #ffeb80;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffeb3b;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .hero-content {
+            max-width: 720px;
+        }
+        
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.35rem;
+            color: #ffeb99;
+            margin-bottom: 2.5rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ffeb3b;
+            color: #0a2540;
+            font-weight: 700;
+            padding: 1rem 2.25rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .emoji-grid {
+            padding: 6rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.03em;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.75rem;
+        }
+        
+        .card {
+            background: #112b4f;
+            border: 3px solid #ffeb3b;
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: #ffeb3b;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px);
+            background: #1a3560;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+        
+        .card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .card p {
+            color: #ffeb99;
+            font-size: 1.05rem;
+        }
+        
+        .path {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #ffeb80;
+            margin-top: 1.75rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ffeb3b;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #ffeb99;
+            background: #0a2540;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">EasyLandX</a>
+            <ul class="nav-links">
+                <li><a href="https://easylandx.github.io" target="_blank">EasyLandX</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Landing pages that convert.<br></h1>
+            <p>EasyLandX is a collection of principles, frameworks, and battle-tested patterns for creating high-converting web pages based on behavioral science and real results.</p>
+            <a href="#pages" class="cta-button">Explore All Modules →</a>
+        </div>
+    </section>
+
+    <section class="emoji-grid" id="pages">
+        <h2 class="section-title">The EasyLandX Library</h2>
+        
+        <div class="cards">
+            <a href="https://easylandx.github.io/all/work.html" class="card" target="_blank">
+                <span class="card-emoji">🍕</span>
+                <h3>We write the ending first</h3>
+                <p>Start with the result you want and work backwards.</p>
+                <div class="path">/work/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/make.html" class="card" target="_blank">
+                <span class="card-emoji">🛠️</span>
+                <h3>How people actually use the web</h3>
+                <p>Real user behavior beats best practices.</p>
+                <div class="path">/make/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/how.html" class="card" target="_blank">
+                <span class="card-emoji">🏗️</span>
+                <h3>Why people say yes</h3>
+                <p>The psychology behind conversion decisions.</p>
+                <div class="path">/how/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/give.html" class="card" target="_blank">
+                <span class="card-emoji">🧲</span>
+                <h3>Give your customer a guide</h3>
+                <p>Make the journey obvious and effortless.</p>
+                <div class="path">/give/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/brai.html" class="card" target="_blank">
+                <span class="card-emoji">🚢</span>
+                <h3>Built on behavioral science</h3>
+                <p>Principles that actually work on human brains.</p>
+                <div class="path">/brai/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/magi.html" class="card" target="_blank">
+                <span class="card-emoji">🧙</span>
+                <h3>Magic</h3>
+                <p>The moments that feel effortless and delightful.</p>
+                <div class="path">/magi/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/swan.html" class="card" target="_blank">
+                <span class="card-emoji">🦢</span>
+                <h3>Build enough of them to find out</h3>
+                <p>Iteration beats perfection.</p>
+                <div class="path">/swan/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/rebe.html" class="card" target="_blank">
+                <span class="card-emoji">✍️</span>
+                <h3>Landing pages worth talking about</h3>
+                <p>Create shareable, remarkable experiences.</p>
+                <div class="path">/rebe/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/pers.html" class="card" target="_blank">
+                <span class="card-emoji">👀</span>
+                <h3>Mechanics of attention</h3>
+                <p>How to capture and keep focus.</p>
+                <div class="path">/pers/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/parad.html" class="card" target="_blank">
+                <span class="card-emoji">🚀</span>
+                <h3>Start shipping</h3>
+                <p>Momentum is everything.</p>
+                <div class="path">/parad/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/disc.html" class="card" target="_blank">
+                <span class="card-emoji">🎯</span>
+                <h3>Start saying the one thing that converts</h3>
+                <p>Clarity over cleverness.</p>
+                <div class="path">/disc/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/flow.html" class="card" target="_blank">
+                <span class="card-emoji">🌊</span>
+                <h3>Put your visitor in flow</h3>
+                <p>Remove friction. Create momentum.</p>
+                <div class="path">/flow/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/blin.html" class="card" target="_blank">
+                <span class="card-emoji">😉</span>
+                <h3>One blink</h3>
+                <p>What people understand in the first second.</p>
+                <div class="path">/blin/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/clic.html" class="card" target="_blank">
+                <span class="card-emoji">🖱️</span>
+                <h3>Just click</h3>
+                <p>Make the next step obvious.</p>
+                <div class="path">/clic/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/core.html" class="card" target="_blank">
+                <span class="card-emoji">⭐️</span>
+                <h3>The Volume Rule</h3>
+                <p>More attempts = more learning.</p>
+                <div class="path">/core/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/proo.html" class="card" target="_blank">
+                <span class="card-emoji">🤱🏻</span>
+                <h3>Action</h3>
+                <p>Turn interest into movement.</p>
+                <div class="path">/proo/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/grea.html" class="card" target="_blank">
+                <span class="card-emoji">🚀</span>
+                <h3>Push Momentum</h3>
+                <p>Keep the energy going.</p>
+                <div class="path">/grea/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/scou.html" class="card" target="_blank">
+                <span class="card-emoji">⚜️</span>
+                <h3>Scout Mindset</h3>
+                <p>Stay curious and open to what works.</p>
+                <div class="path">/scou/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/copy.html" class="card" target="_blank">
+                <span class="card-emoji">🙋‍♂️</span>
+                <h3>Microcopy rules</h3>
+                <p>A mini voice guide.</p>
+                <div class="path">/copy/</div>
+            </a>
+            
+            <a href="https://easylandx.github.io/all/trig.html" class="card" target="_blank">
+                <span class="card-emoji">👉</span>
+                <h3>The Mechanism</h3>
+                <p>Turning a visitor into a customer.</p>
+                <div class="path">/trig/</div>
+            </a>       
+
+            <a href="https://easylandx.github.io/all/cognitive.html" class="card" target="_blank">
+                <span class="card-emoji">🧠</span>
+                <h3>Digital consumption</h3>
+                <p>One call to action.</p>
+                <div class="path">/cognitive/</div>
+            </a>   
+
+                        <a href="https://easylandx.github.io/all/medium.html" class="card" target="_blank">
+                <span class="card-emoji">📰</span>
+                <h3>The Medium</h3>
+                <p>The Medium is the Message.</p>
+                <div class="path">/medium/</div>
+            </a>   
+                        <a href="https://easylandx.github.io/all/human.html" class="card" target="_blank">
+                <span class="card-emoji">🧑🏻</span>
+                <h3>Human</h3>
+                <p>Instinct in web design.</p>
+                <div class="path">/human/</div>
+            </a>   
+                                    <a href="https://easylandx.github.io/all/writing.html" class="card" target="_blank">
+                <span class="card-emoji">👋</span>
+                <h3>Writing</h3>
+                <p>Icons as digital gestures.</p>
+                <div class="path">/writing/</div>
+            </a>   
+                                    <a href="https://easylandx.github.io/all/almanack.html" class="card" target="_blank">
+                <span class="card-emoji">📙</span>
+                <h3>Almanack</h3>
+                <p>The Almanack of Landing Pages.</p>
+                <div class="path">//</div>
+            </a>   
+                                                <a href="https://easylandx.github.io/all/therapy.html" class="card" target="_blank">
+                <span class="card-emoji">👩🏼‍⚕️</span>
+                <h3>Therapy</h3>
+                <p>Your website isn't broken.</p>
+                <div class="path">//</div>
+            </a>  
+                                                            <a href="https://easylandx.github.io/all/traction.html" class="card" target="_blank">
+                <span class="card-emoji">📈</span>
+                <h3>Traction</h3>
+                <p>Six disciplines.</p>
+                <div class="path">//</div>
+            </a>  
+                                                            <a href="https://easylandx.github.io/all/emyth.html" class="card" target="_blank">
+                <span class="card-emoji">🏗️</span>
+                <h3>E-Myth</h3>
+                <p>The landing page myth.</p>
+                <div class="path">//</div>
+            </a>  
+                                                            <a href="https://easylandx.github.io/all/animal.html" class="card" target="_blank">
+                <span class="card-emoji">🧠</span>
+                <h3>Social Animal</h3>
+                <p>The Social Animal.</p>
+                <div class="path">//</div>
+            </a> 
+
+                                                                        <a href="https://easylandx.github.io/all/quiet.html" class="card" target="_blank">
+                <span class="card-emoji">🤫</span>
+                <h3>Quiet</h3>
+                <p>Silence.</p>
+                <div class="path">//</div>
+            </a> 
+
+
+  <a href="https://easylandx.github.io/all/predict.html" class="card" target="_blank">
+                <span class="card-emoji">🔮</span>
+                <h3>Predict</h3>
+                <p>Predictably.</p>
+                <div class="path">//</div>
+            </a> 
+
+              <a href="https://easylandx.github.io/all/influence.html" class="card" target="_blank">
+                <span class="card-emoji">🗣️</span>
+                <h3>Influence</h3>
+                <p>Argument.</p>
+                <div class="path">//</div>
+            </a> 
+
+              <a href="https://easylandx.github.io/all/change.html" class="card" target="_blank">
+                <span class="card-emoji">🧬</span>
+                <h3>Change</h3>
+                <p>Behavioral science.</p>
+                <div class="path">//</div>
+            </a> 
+
+              <a href="https://easylandx.github.io/all/automatic.html" class="card" target="_blank">
+                <span class="card-emoji">🤖</span>
+                <h3>Autopilot</h3>
+                <p>Decision-making.</p>
+                <div class="path">//</div>
+            </a>   
+            
+              <a href="https://easylandx.github.io/all/inmmunity.html" class="card" target="_blank">
+                <span class="card-emoji">🛡️</span>
+                <h3>Inmmunity</h3>
+                <p>Inmmune system.</p>
+                <div class="path">//</div>
+            </a>   
+            
+              <a href="https://easylandx.github.io/all/rethink.html" class="card" target="_blank">
+                <span class="card-emoji">🔍</span>
+                <h3>Rethink</h3>
+                <p>Research on motivation.</p>
+                <div class="path">//</div>
+            </a>   
+
+            
+            
+              <a href="https://easylandx.github.io/all/willpower.html" class="card" target="_blank">
+                <span class="card-emoji">🧠</span>
+                <h3>Willpower</h3>
+                <p>Prefrontal cortex.</p>
+                <div class="path">//</div>
+            </a>   
+
+            
+              <a href="https://easylandx.github.io/all/small.html" class="card" target="_blank">
+                <span class="card-emoji">⛵</span>
+                <h3>Small</h3>
+                <p>Stay independent.</p>
+                <div class="path">//</div>
+            </a>   
+            
+              <a href="https://easylandx.github.io/all/profit.html" class="card" target="_blank">
+                <span class="card-emoji">💰</span>
+                <h3>Profit</h3>
+                <p>Conversion allocated first.</p>
+                <div class="path">//</div>
+            </a>   
+            
+              <a href="https://easylandx.github.io/all/simple.html" class="card" target="_blank">
+                <span class="card-emoji">📊</span>
+                <h3>Simple</h3>
+                <p>Numbers that matter.</p>
+                <div class="path">//</div>
+            </a>   
+            
+              <a href="https://easylandx.github.io/all/awesome.html" class="card" target="_blank">
+                <span class="card-emoji">🚀</span>
+                <h3>Awesome</h3>
+                <p>Start shipping launches.</p>
+                <div class="path">//</div>
+            </a>  
+
+
+              <a href="https://easylandx.github.io/all/smart.html" class="card" target="_blank">
+                <span class="card-emoji">💼</span>
+                <h3>Smart</h3>
+                <p>Sales cure all.</p>
+                <div class="path">//</div>
+            </a>              
+            
+
+              <a href="https://easylandx.github.io/all/one.html" class="card" target="_blank">
+                <span class="card-emoji">📄</span>
+                <h3>One</h3>
+                <p>One sheet of paper.</p>
+                <div class="path">//</div>
+            </a>        
+
+              <a href="https://easylandx.github.io/all/sold.html" class="card" target="_blank">
+                <span class="card-emoji">📅</span>
+                <h3>Sold</h3>
+                <p>Zero to booked.</p>
+                <div class="path">//</div>
+                  
+            </a>      
+              <a href="https://easylandx.github.io/all/mom.html" class="card" target="_blank">
+                <span class="card-emoji">🕵️</span>
+                <h3>Mom Test</h3>
+                <p>What's actually happening.</p>
+                <div class="path">//</div>
+            
+            </a>   
+
+               <a href="https://easylandx.github.io/all/startup.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>Startup</h3>
+                <p>A page that sells.</p>
+                <div class="path">//</div>
+            </a>   
+
+               <a href="https://easylandx.github.io/all/sweat.html" class="card" target="_blank">
+                <span class="card-emoji">🏋️‍♂️</span>
+                <h3>Sweat</h3>
+                <p>Built to win.</p>
+                <div class="path">//</div>
+
+            </a>   
+
+               <a href="https://easylandx.github.io/all/customer.html" class="card" target="_blank">
+                <span class="card-emoji">🤝</span>
+                <h3>Customer</h3>
+                <p>Fund the business.</p>
+                <div class="path">//</div>
+
+            </a>   
+
+               <a href="https://easylandx.github.io/all/willfly.html" class="card" target="_blank">
+                <span class="card-emoji">🦅</span>
+                <h3>Will Fly</h3>
+                <p>We find out.</p>
+                <div class="path">//</div>
+
+            </a>   
+
+               <a href="https://easylandx.github.io/all/minimalist.html" class="card" target="_blank">
+                <span class="card-emoji">📐</span>
+                <h3>Minimalist</h3>
+                <p>Do more.</p>
+                <div class="path">//</div>
+            </a>   
+
+               <a href="https://easylandx.github.io/all/art.html" class="card" target="_blank">
+                <span class="card-emoji">⚔️</span>
+                <h3>Art</h3>
+                <p>Art of winning.</p>
+                <div class="path">//</div>
+                   
+            </a>   
+
+               <a href="https://easylandx.github.io/all/later.html" class="card" target="_blank">
+                <span class="card-emoji">⏳</span>
+                <h3>Later</h3>
+                <p>Now is where your business lives.</p>
+                <div class="path">//</div>
+
+            </a>   
+
+               <a href="https://easylandx.github.io/all/lazy.html" class="card" target="_blank">
+                <span class="card-emoji">🛡️</span>
+                <h3>Discipline</h3>
+                <p>Reshape the habit.</p>
+                <div class="path">//</div>
+
+                   
+            </a>   
+
+               <a href="https://easylandx.github.io/all/uncertainty.html" class="card" target="_blank">
+                <span class="card-emoji">🎲</span>
+                <h3>Uncertainty</h3>
+                <p>Uncertainty and possibility.</p>
+                <div class="path">//</div>
+            </a>   
+
+               <a href="https://easylandx.github.io/all/hyperfocus.html" class="card" target="_blank">
+                <span class="card-emoji">🎯</span>
+                <h3>Hyperfocus</h3>
+                <p>One clear focus.</p>
+                <div class="path">//</div>
+            </a>   
+
+               <a href="https://easylandx.github.io/all/smallbig.html" class="card" target="_blank">
+                <span class="card-emoji">🔍</span>
+                <h3>Small Big</h3>
+                <p>Stay small. Convert big.</p>
+                <div class="path">//</div>                   
+
+
+            </a>        
+               <a href="https://easylandx.github.io/all/conversion.html" class="card" target="_blank">
+                <span class="card-emoji">🧍‍♀️</span>
+                <h3>Human Nature</h3>
+                <p>Behavioral principle.</p>
+                <div class="path">//</div>                   
+ </a>        
+               <a href="https://easylandx.github.io/all/warofart.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>War of Art</h3>
+                <p>The invisible force.</p>
+                <div class="path">//</div>                                         
+</a>        
+               <a href="https://easylandx.github.io/all/canthurt.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>Cant Hurt</h3>
+                <p>Stop making excuses.</p>
+                <div class="path">//</div>                                      
+
+  </a>        
+               <a href="https://easylandx.github.io/all/sisyphus.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>Sisyphus</h3>
+                <p>Reach the top.</p>
+                <div class="path">//</div>                                
+               
+  </a>        
+               <a href="https://easylandx.github.io/all/goodvibes.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>Good Vibes</h3>
+                <p>Best frequency.</p>
+                <div class="path">//</div>                                
+
+</a>        
+               <a href="https://easylandx.github.io/all/deepwork.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>Deep Work</h3>
+                <p>Focus deeply.</p>
+                <div class="path">//</div>                   
+</a>        
+               <a href="https://easylandx.github.io/all/breakthrough.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>Breakthrough</h3>
+                <p>Visitor Awareness.</p>
+                <div class="path">//</div>                   
+                   
+</a>        
+               <a href="https://easylandx.github.io/all/thechoice.html" class="card" target="_blank">
+                <span class="card-emoji">💵</span>
+                <h3>The Choice</h3>
+                <p>Why people buy.</p>
+                <div class="path">//</div>                                  
+            </a>   
+            
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ for better landing pages</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://easylandx.github.io" style="color: #ffeb3b; text-decoration: none;">EasyLandX</a> • 
+            easylandx.github.io
+        </p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

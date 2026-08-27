@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solidarity with Nepal — Flood Relief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --himalaya-blue:#1b3a4b;
+    --river:#3d7d8c;
+    --clay:#c65d3b;
+    --mist:#eef2f1;
+    --paper:#faf7f2;
+    --ink:#1a1a1a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    margin:0 0 0.4em;
+  }
+  a{color:inherit;}
+
+  header{
+    position:relative;
+    padding:5.5rem 1.5rem 4rem;
+    background:
+      linear-gradient(180deg, rgba(11,26,34,0.55), rgba(11,26,34,0.82)),
+      repeating-linear-gradient(115deg, #16323f 0 40px, #1b3a4b 40px 80px);
+    color:#fdfbf7;
+    text-align:center;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    bottom:0; left:0; right:0;
+    height:70px;
+    background:linear-gradient(180deg, transparent, var(--paper));
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.35);
+    padding:0.35em 0.9em;
+    border-radius:999px;
+    margin-bottom:1.4rem;
+  }
+  header h1{
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    max-width:16ch;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.15;
+  }
+  header p.sub{
+    max-width:52ch;
+    margin:1.1rem auto 0;
+    font-size:1.05rem;
+    color:#e4e9e7;
+  }
+  .cta-row{
+    display:flex;
+    gap:0.9rem;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:2.2rem;
+    position:relative;
+    z-index:2;
+  }
+  .btn{
+    display:inline-block;
+    padding:0.85em 1.7em;
+    border-radius:8px;
+    font-weight:600;
+    text-decoration:none;
+    font-size:0.95rem;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:var(--clay);
+    color:#fff;
+    box-shadow:0 6px 18px rgba(198,93,59,0.35);
+  }
+  .btn-ghost{
+    background:transparent;
+    border-color:rgba(255,255,255,0.55);
+    color:#fdfbf7;
+  }
+
+  main{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+
+  section{
+    padding:3.5rem 0;
+    border-bottom:1px solid #e3ddd2;
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .context p{ max-width:65ch; }
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1.2rem;
+    margin-top:2rem;
+  }
+  .stat{
+    background:var(--mist);
+    border-radius:12px;
+    padding:1.3rem 1rem;
+    text-align:center;
+  }
+  .stat .num{
+    font-family:'Fraunces',serif;
+    font-size:2rem;
+    color:var(--himalaya-blue);
+    font-weight:700;
+  }
+  .stat .label{
+    font-size:0.82rem;
+    color:#555;
+    margin-top:0.2rem;
+  }
+  .stats-note{
+    font-size:0.8rem;
+    color:#777;
+    margin-top:0.8rem;
+  }
+
+  .org-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:1.2rem;
+    margin-top:2rem;
+  }
+  .org-card{
+    background:#fff;
+    border:1px solid #e3ddd2;
+    border-radius:14px;
+    padding:1.5rem;
+    display:flex;
+    flex-direction:column;
+    gap:0.7rem;
+  }
+  .org-card h3{ font-size:1.15rem; }
+  .org-card p{ font-size:0.92rem; color:#444; flex-grow:1; margin:0; }
+  .org-card a.link-btn{
+    align-self:flex-start;
+    font-weight:600;
+    font-size:0.88rem;
+    padding:0.55em 1.1em;
+    border-radius:7px;
+    background:var(--himalaya-blue);
+    color:#fff;
+    text-decoration:none;
+  }
+  .org-card a.link-btn:hover{ background:var(--river); }
+
+  .collab-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:1.4rem;
+    margin-top:2rem;
+  }
+  .collab-card{
+    padding:1.4rem 1.5rem;
+    border-radius:14px;
+    background:linear-gradient(155deg, #fff, var(--mist));
+    border:1px solid #e3ddd2;
+  }
+  .collab-card h3{ font-size:1.05rem; color:var(--himalaya-blue); }
+  .collab-card p{ font-size:0.9rem; color:#444; margin:0.3em 0 0.8em; }
+
+  .verify-box{
+    background:#fff4ec;
+    border:1px solid #edcdb6;
+    border-radius:12px;
+    padding:1.2rem 1.4rem;
+    font-size:0.92rem;
+    margin-top:2rem;
+  }
+  .verify-box strong{ color:var(--clay); }
+
+  footer{
+    text-align:center;
+    padding:3rem 1.5rem 4rem;
+    font-size:0.85rem;
+    color:#777;
+  }
+  footer a{ color:var(--river); }
+
+  .divider-word{
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--river);
+    font-size:1.1rem;
+    margin:0 0 0.6rem;
+  }
+
+  @media (max-width:520px){
+    header{padding:4rem 1.2rem 3.2rem;}
+    .cta-row{flex-direction:column; align-items:stretch;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">In Solidarity</span>
+  <h1>Standing with Nepal after the Bhote Koshi flash floods</h1>
+  <p class="sub">On August 26, 2026, a catastrophic glacial-lake flash flood swept down from Tibet through Nepal's Rasuwa and Nuwakot districts — destroying homes, bridges, and hydropower infrastructure. Communities need urgent help, and sustained support in the months ahead.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#donate">Donate now</a>
+    <a class="btn btn-ghost" href="#collaborate">Ways to help &amp; collaborate</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="context">
+    <h2>What happened</h2>
+    <p>A sudden flash flood tore down the Bhote Koshi river from the Tibetan side of the border, sweeping through Timure and Syabrubesi before surging into the Trishuli river system and triggering high alerts across Nuwakot, Dhading, Gorkha, and Chitwan districts. Roads and bridges have been cut off, complicating rescue efforts, and thousands remain affected as search-and-rescue and needs assessments continue.</p>
+    <p>Relief organizations warn that once the immediate rescue phase passes, Nepal will need sustained support for rebuilding homes, restoring infrastructure, and mental health care — a recovery process that, after past floods, has taken months to years.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">100s</div><div class="label">confirmed dead across reports</div></div>
+      <div class="stat"><div class="num">1,000+</div><div class="label">reported missing</div></div>
+      <div class="stat"><div class="num">4+</div><div class="label">districts on high alert</div></div>
+    </div>
+    <p class="stats-note">Figures are still changing rapidly as rescue efforts continue — treat exact numbers as provisional and check current news for the latest.</p>
+  </section>
+
+  <section id="donate">
+    <p class="divider-word">give</p>
+    <h2>Donate to verified relief efforts</h2>
+    <p>These organizations are actively responding on the ground or coordinating emergency funding for the Nepal flood response.</p>
+
+    <div class="org-grid">
+      <div class="org-card">
+        <h3>IFRC / Nepal Red Cross</h3>
+        <p>Released emergency funding through its Disaster Response Emergency Fund to support the Nepal Red Cross Society's on-the-ground response in the hardest-hit districts.</p>
+        <a class="link-btn" href="https://www.ifrc.org/emergencies/nepal-flash-floods" target="_blank" rel="noopener">Support the IFRC response ↗</a>
+      </div>
+      <div class="org-card">
+        <h3>GlobalGiving — Nepal Flood Relief Fund</h3>
+        <p>A vetted, transparent fund (Charity Navigator four-star, BBB accredited) channeling donations to local organizations providing emergency response and long-term recovery.</p>
+        <a class="link-btn" href="https://www.globalgiving.org/projects/nepal-flood-relief-fund/" target="_blank" rel="noopener">Give via GlobalGiving ↗</a>
+      </div>
+      <div class="org-card">
+        <h3>CARE Nepal</h3>
+        <p>Coordinating with Nepal's government and local partners to mobilize shelter, hygiene, and dignity kits for affected families.</p>
+        <a class="link-btn" href="https://www.care.org/media-and-press/care-nepal-stands-ready-to-support-communities-affected-by-bhote-koshi-river-flash-flood/" target="_blank" rel="noopener">Support CARE Nepal ↗</a>
+      </div>
+      <div class="org-card">
+        <h3>Catholic Relief Services</h3>
+        <p>Coordinating with Caritas Nepal and local partners on emergency shelter, food, water, and hygiene supplies for affected communities.</p>
+        <a class="link-btn" href="https://www.crs.org/donate/nepal-flood" target="_blank" rel="noopener">Donate to CRS ↗</a>
+      </div>
+      <div class="org-card">
+        <h3>Action Against Hunger</h3>
+        <p>Long-standing presence in Nepal focused on nutrition, water, sanitation, and hygiene — mobilizing emergency support for communities hit by the flood.</p>
+        <a class="link-btn" href="https://www.actionagainsthunger.org.uk/nepal-flash-flood-appeal" target="_blank" rel="noopener">Donate to AAH ↗</a>
+      </div>
+      <div class="org-card">
+        <h3>Nepal PM Disaster Relief Fund</h3>
+        <p>The Government of Nepal's official mechanism, administered by the Office of the Prime Minister and Council of Ministers, for channeling relief and rehabilitation funds.</p>
+        <a class="link-btn" href="https://www.opmcm.gov.np/" target="_blank" rel="noopener">Visit official site ↗</a>
+      </div>
+    </div>
+
+    <div class="verify-box">
+      <strong>A note on verification:</strong> Aid officials and the Nepali government have specifically asked people to share verified information and current donation links rather than old or unconfirmed ones, to avoid diverting resources during this fast-moving crisis. Before giving, double-check each link above still leads to an active campaign.
+    </div>
+  </section>
+
+  <section id="collaborate">
+    <p class="divider-word">act</p>
+    <h2>Ways to collaborate beyond donating</h2>
+    <div class="collab-grid">
+      <div class="collab-card">
+        <h3>Volunteer with local NGOs</h3>
+        <p>If you're in or near the affected districts, local and government-coordinated relief efforts need help with shelter management, relief distribution, and medical support.</p>
+      </div>
+      <div class="collab-card">
+        <h3>Amplify verified updates</h3>
+        <p>Share confirmed information from official sources (government, IFRC, established NGOs) rather than unverified reports — misinformation actively slows down relief efforts.</p>
+      </div>
+      <div class="collab-card">
+        <h3>Support the long recovery</h3>
+        <p>Rebuilding homes, infrastructure, and providing mental health support will take months to years. Consider recurring donations or checking back with relief organizations later this year.</p>
+      </div>
+      <div class="collab-card">
+        <h3>Skills-based help</h3>
+        <p>Designers, developers, translators, and logistics volunteers can often plug into diaspora and NGO coordination efforts — reach out directly to the organizations above to ask how to contribute skills.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Made in solidarity with the people of Nepal. Information current as of August 27, 2026 — please verify details with the linked organizations before donating, as the situation is evolving quickly.
+</footer>
+
+</body>
+</html>

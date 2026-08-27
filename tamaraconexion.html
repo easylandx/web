@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamara Conexión — Tarot, Registros Akáshicos, Reiki & Medium</title>
+<meta name="description" content="Tamara Solís Villar. Tarot, Registros Akáshicos, Reiki, Vidas pasadas y Medium. Atención presencial y sesiones online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0B0616;
+    --night-2:#170C2C;
+    --night-3:#1F1238;
+    --gold:#E8C468;
+    --gold-dim:#8A7648;
+    --amethyst:#9B6BFF;
+    --rose:#E8618C;
+    --paper:#F4EEFF;
+    --muted:#9089A8;
+    --line:rgba(244,238,255,0.10);
+    --line-soft:rgba(244,238,255,0.05);
+    --ease:cubic-bezier(.16,.84,.44,1);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--night);
+    color:var(--muted);
+    font-family:'Jost', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  ::selection{ background:var(--amethyst); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  button{ font-family:inherit; background:none; border:none; color:inherit; cursor:pointer; }
+
+  /* starfield */
+  .stars{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, rgba(244,238,255,.55), transparent),
+      radial-gradient(1px 1px at 65% 12%, rgba(244,238,255,.4), transparent),
+      radial-gradient(1.5px 1.5px at 85% 60%, rgba(244,238,255,.5), transparent),
+      radial-gradient(1px 1px at 40% 78%, rgba(244,238,255,.35), transparent),
+      radial-gradient(1.5px 1.5px at 10% 88%, rgba(244,238,255,.45), transparent),
+      radial-gradient(1px 1px at 92% 90%, rgba(244,238,255,.4), transparent),
+      radial-gradient(1.5px 1.5px at 55% 45%, rgba(244,238,255,.3), transparent),
+      radial-gradient(1px 1px at 30% 55%, rgba(244,238,255,.3), transparent);
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  h1,h2,h3{
+    font-family:'Cinzel', serif;
+    font-weight:500;
+    color:var(--paper);
+    line-height:1.15;
+  }
+
+  .accent{ color:var(--rose); }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+
+  /* ---------------- NAV ---------------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    border-bottom:1px solid transparent;
+    transition:border-color .4s, background .4s, backdrop-filter .4s;
+  }
+  nav.scrolled{
+    background:rgba(11,6,22,.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Cinzel', serif; font-size:19px; letter-spacing:.03em; color:var(--paper);
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .moon{ font-size:16px; color:var(--gold); }
+  .nav-links{ display:flex; align-items:center; gap:30px; font-size:13px; }
+  .nav-links .set{ display:flex; gap:30px; }
+  @media(max-width:820px){ .nav-links .set{ display:none; } }
+  .nav-links a.link{ color:var(--muted); transition:color .3s; }
+  .nav-links a.link:hover{ color:var(--paper); }
+  .pill{
+    border:1px solid var(--line);
+    padding:9px 18px; border-radius:100px;
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px;
+    letter-spacing:.06em; text-transform:uppercase;
+    transition:border-color .3s, background .3s;
+    white-space:nowrap;
+  }
+  .pill:hover{ border-color:var(--paper); }
+  .pill.solid{ background:linear-gradient(120deg,var(--rose),var(--gold)); border-color:transparent; color:#1a0f14; font-weight:600; }
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    position:relative; min-height:100svh;
+    display:flex; align-items:center;
+    padding:150px 0 90px;
+  }
+  .hero-glow{
+    position:absolute; inset:-10%; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 42% 38% at 15% 25%, rgba(155,107,255,.35), transparent 60%),
+      radial-gradient(ellipse 38% 34% at 90% 15%, rgba(232,196,104,.18), transparent 60%),
+      radial-gradient(ellipse 45% 40% at 80% 85%, rgba(232,97,140,.22), transparent 60%);
+    filter:blur(20px);
+  }
+  .hero-inner{
+    display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center;
+  }
+  @media(max-width:920px){ .hero-inner{ grid-template-columns:1fr; gap:70px; } }
+
+  .hero h1{
+    font-size:clamp(34px,5.2vw,60px);
+    margin:20px 0 24px;
+  }
+  .hero p.sub{
+    font-size:16px; line-height:1.75; max-width:480px; margin-bottom:30px;
+  }
+  .stat-row{ display:flex; gap:26px; margin-bottom:36px; flex-wrap:wrap; }
+  .stat{ display:flex; flex-direction:column; gap:2px; }
+  .stat .n{ font-family:'Cinzel', serif; font-size:20px; color:var(--paper); }
+  .stat .l{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:15px 24px; border-radius:100px;
+    font-size:13.5px; font-weight:500; letter-spacing:.01em;
+    transition:transform .35s var(--ease), box-shadow .4s;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg, var(--amethyst), var(--rose));
+    color:#fff;
+    box-shadow:0 10px 34px -10px rgba(155,107,255,.55);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--paper); transform:translateY(-2px); }
+
+  /* tarot card */
+  .card-stage{
+    display:flex; flex-direction:column; align-items:center; gap:16px;
+    perspective:1400px;
+  }
+  .tarot-card{
+    width:220px; height:340px;
+    position:relative;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:transform .9s var(--ease);
+  }
+  .tarot-card.flipped{ transform:rotateY(180deg); }
+  .card-face{
+    position:absolute; inset:0;
+    border-radius:18px;
+    backface-visibility:hidden;
+    border:1px solid rgba(232,196,104,.4);
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    padding:22px 16px;
+    box-shadow:0 30px 60px -25px rgba(0,0,0,.7);
+  }
+  .card-back{
+    background:
+      repeating-linear-gradient(45deg, rgba(232,196,104,.06) 0 2px, transparent 2px 14px),
+      linear-gradient(160deg, var(--night-3), var(--night-2));
+  }
+  .card-back .frame{
+    position:absolute; inset:10px; border:1px solid rgba(232,196,104,.35); border-radius:12px;
+  }
+  .card-front{
+    background:
+      radial-gradient(circle at 50% 32%, rgba(232,196,104,.28), transparent 55%),
+      linear-gradient(160deg, var(--night-3), var(--night-2));
+    transform:rotateY(180deg);
+  }
+  .glyph-sun{
+    width:96px; height:96px; margin-top:20px;
+  }
+  .card-num{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gold); letter-spacing:.15em; }
+  .card-title{ font-family:'Cinzel', serif; font-size:19px; color:var(--paper); letter-spacing:.08em; text-align:center; }
+  .card-sub{ font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); text-align:center; }
+  .card-hint{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+
+  /* ---------------- SECTION GENERIC ---------------- */
+  section{ padding:120px 0; position:relative; }
+  .section-head{ max-width:620px; margin:0 auto 70px; text-align:center; }
+  .section-head .eyebrow{ display:block; margin-bottom:16px; }
+  .section-head h2{ font-size:clamp(28px,4vw,44px); }
+  .section-head p{ margin-top:18px; font-size:15px; line-height:1.7; }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* ---------------- PENTAGRAM SERVICES ---------------- */
+  .pentagram-wrap{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  }
+  @media(max-width:900px){ .pentagram-wrap{ grid-template-columns:1fr; } }
+
+  .pentagram{
+    position:relative; width:100%; max-width:520px; aspect-ratio:1/1; margin:0 auto;
+  }
+  .pentagram svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .pent-line{
+    fill:none; stroke:rgba(155,107,255,.35); stroke-width:1;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    transition:stroke .5s;
+  }
+  .pentagram.in-view .pent-line{ animation:draw 2.4s var(--ease) forwards; }
+  .pent-line:nth-child(2){ animation-delay:.1s !important; }
+  .pent-line:nth-child(3){ animation-delay:.25s !important; }
+  .pent-line:nth-child(4){ animation-delay:.4s !important; }
+  .pent-line:nth-child(5){ animation-delay:.55s !important; }
+  .pent-line:nth-child(6){ animation-delay:.7s !important; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .pent-circle{ fill:none; stroke:var(--line); stroke-width:1; }
+
+  .pent-center{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:88px; height:88px; border-radius:50%;
+    background:radial-gradient(circle, rgba(232,196,104,.18), transparent 70%);
+    border:1px solid rgba(232,196,104,.3);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel', serif; font-size:12px; color:var(--gold); letter-spacing:.1em;
+    text-align:center;
+  }
+
+  .pent-node{
+    position:absolute; transform:translate(-50%,-50%);
+    width:64px; height:64px; border-radius:50%;
+    background:var(--night-2);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px;
+    transition:transform .4s var(--ease), border-color .4s, box-shadow .4s, background .4s;
+  }
+  .pent-node:hover{ transform:translate(-50%,-50%) scale(1.08); }
+  .pent-node.active{
+    border-color:var(--gold);
+    background:var(--night-3);
+    box-shadow:0 0 0 6px rgba(232,196,104,.08), 0 0 30px -6px rgba(232,196,104,.5);
+  }
+
+  .service-panel{
+    border:1px solid var(--line); border-radius:20px; padding:44px 40px;
+    background:linear-gradient(160deg, rgba(155,107,255,.05), transparent);
+  }
+  .service-panel .eyebrow{ margin-bottom:10px; display:block; }
+  .service-panel h3{ font-size:28px; margin-bottom:16px; }
+  .service-panel p{ font-size:15px; line-height:1.8; }
+  .service-dots{ display:flex; gap:8px; margin-top:28px; }
+  .service-dots span{ width:6px; height:6px; border-radius:50%; background:var(--line); transition:background .3s, transform .3s; }
+  .service-dots span.active{ background:var(--gold); transform:scale(1.4); }
+
+  /* ---------------- COMO TRABAJO ---------------- */
+  .work-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:20px; overflow:hidden; }
+  @media(max-width:760px){ .work-grid{ grid-template-columns:1fr; } }
+  .work-card{ background:var(--night); padding:52px 44px; }
+  .work-card .eyebrow{ display:block; margin-bottom:14px; }
+  .work-card h3{ font-size:26px; margin-bottom:14px; }
+  .work-card p{ font-size:14.5px; line-height:1.75; margin-bottom:26px; }
+
+  /* ---------------- RECURSO DESTACADO ---------------- */
+  .resource-card{
+    position:relative; border-radius:24px; border:1px solid rgba(232,196,104,.3);
+    padding:64px 50px; overflow:hidden;
+    background:linear-gradient(135deg, rgba(155,107,255,.10), rgba(232,196,104,.06));
+    display:grid; grid-template-columns:auto 1fr auto; gap:36px; align-items:center;
+  }
+  @media(max-width:760px){ .resource-card{ grid-template-columns:1fr; text-align:center; } }
+  .resource-icon{ font-size:52px; }
+  .resource-card h3{ font-size:26px; margin-bottom:10px; }
+  .resource-card p{ font-size:14.5px; line-height:1.7; max-width:420px; }
+
+  /* ---------------- FOOTER ---------------- */
+  footer{ border-top:1px solid var(--line); padding:44px 0; }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px; }
+  .fine{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.04em; }
+  .footer-links{ display:flex; gap:22px; flex-wrap:wrap; }
+  .footer-links a{ font-size:13px; color:var(--muted); transition:color .3s; }
+  .footer-links a:hover{ color:var(--gold); }
+
+  @media(prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    .pent-line{ stroke-dashoffset:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="moon">☾</span>Tamara Conexión</div>
+    <div class="nav-links">
+      <div class="set">
+        <a class="link" href="#servicios">Servicios</a>
+        <a class="link" href="#trabajo">Cómo trabajo</a>
+        <a class="link" href="#angeles">Ángeles</a>
+      </div>
+      <a class="pill" href="https://www.instagram.com/tamaraconexion/" target="_blank" rel="noopener">Instagram</a>
+      <a class="pill solid" href="https://encuadrado.com/p/tamara-conexion" target="_blank" rel="noopener">Agendar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Tarot · Registros Akáshicos · Reiki · Vidas Pasadas · Medium</span>
+      <h1>Todo lo que no ves,<br>también te está <span class="accent">guiando</span>.</h1>
+      <p class="sub">Tamara Solís Villar te acompaña a leer las señales, sanar lo que quedó pendiente y conectar con lo que no se ve a simple vista. Atención presencial por DM o mail, y sesiones online agendables.</p>
+
+      <div class="stat-row">
+        <div class="stat"><span class="n">1.485</span><span class="l">Publicaciones</span></div>
+        <div class="stat"><span class="n">185K</span><span class="l">Seguidores</span></div>
+        <div class="stat"><span class="n">✦ Medium</span><span class="l">Digital creator</span></div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://encuadrado.com/p/tamara-conexion" target="_blank" rel="noopener">🔮 Agendar sesión online</a>
+        <a class="btn btn-ghost" href="https://wa.me/56987124943" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="card-stage reveal in-view">
+      <div class="tarot-card" id="tarotCard">
+        <div class="card-face card-back">
+          <div class="frame"></div>
+          <span class="card-num" style="margin-top:26px;">✦ ✦ ✦</span>
+          <svg class="glyph-sun" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="14" fill="none" stroke="#E8C468" stroke-width="1.4"/>
+            <g stroke="#E8C468" stroke-width="1.4">
+              <line x1="50" y1="6" x2="50" y2="22"/>
+              <line x1="50" y1="78" x2="50" y2="94"/>
+              <line x1="6" y1="50" x2="22" y2="50"/>
+              <line x1="78" y1="50" x2="94" y2="50"/>
+              <line x1="18" y1="18" x2="29" y2="29"/>
+              <line x1="71" y1="71" x2="82" y2="82"/>
+              <line x1="82" y1="18" x2="71" y2="29"/>
+              <line x1="29" y1="71" x2="18" y2="82"/>
+            </g>
+          </svg>
+          <span class="card-sub">Tocá la carta</span>
+        </div>
+        <div class="card-face card-front">
+          <span class="card-num">0</span>
+          <svg class="glyph-sun" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="30" fill="none" stroke="#E8618C" stroke-width="1.2" opacity=".7"/>
+            <path d="M38 34 a16 16 0 1 0 0 32 a12 12 0 1 1 0 -32" fill="none" stroke="#E8C468" stroke-width="1.6"/>
+            <path d="M62 34 a16 16 0 1 1 0 32 a12 12 0 1 0 0 -32" fill="none" stroke="#9B6BFF" stroke-width="1.6"/>
+          </svg>
+          <div>
+            <div class="card-title">LA CONEXIÓN</div>
+            <div class="card-sub" style="margin-top:6px;">Claridad · Guía · Encuentro</div>
+          </div>
+        </div>
+      </div>
+      <span class="card-hint">✦ Una carta para empezar ✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cinco caminos, una conexión</span>
+      <h2>Servicios</h2>
+      <p>Cada camino se apoya en los otros. Elegí uno para empezar — muchas veces, una sesión abre la puerta a la siguiente.</p>
+    </div>
+
+    <div class="pentagram-wrap reveal">
+      <div class="pentagram" id="pentagram">
+        <svg viewBox="0 0 600 600">
+          <circle class="pent-circle" cx="300" cy="300" r="230"/>
+          <path class="pent-line" d="M300,70 L435.2,486.1"/>
+          <path class="pent-line" d="M435.2,486.1 L81.3,228.9"/>
+          <path class="pent-line" d="M81.3,228.9 L518.7,228.9"/>
+          <path class="pent-line" d="M518.7,228.9 L164.8,486.1"/>
+          <path class="pent-line" d="M164.8,486.1 L300,70"/>
+        </svg>
+        <div class="pent-center">TAMARA<br>CONEXIÓN</div>
+        <button class="pent-node active" style="left:50%; top:11.7%;" data-i="0">🔮</button>
+        <button class="pent-node" style="left:86.5%; top:38.2%;" data-i="1">🖐️</button>
+        <button class="pent-node" style="left:72.5%; top:81%;" data-i="2">⏳</button>
+        <button class="pent-node" style="left:27.5%; top:81%;" data-i="3">🕯️</button>
+        <button class="pent-node" style="left:13.5%; top:38.2%;" data-i="4">📖</button>
+      </div>
+
+      <div class="service-panel">
+        <span class="eyebrow" id="svcEyebrow">Servicio 01</span>
+        <h3 id="svcTitle">Tarot</h3>
+        <p id="svcDesc">Lectura de cartas para iluminar decisiones, vínculos y caminos posibles. Una mirada clara sobre lo que estás atravesando y hacia dónde puede llevarte.</p>
+        <div class="service-dots" id="svcDots">
+          <span class="active"></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO TRABAJO -->
+<section id="trabajo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Dos formas de encontrarnos</span>
+      <h2>Cómo trabajo</h2>
+    </div>
+
+    <div class="work-grid reveal">
+      <div class="work-card">
+        <span class="eyebrow">Presencial</span>
+        <h3>En persona</h3>
+        <p>Las sesiones presenciales se coordinan por mensaje directo o mail, según disponibilidad. Ideal para reiki y encuentros que piden estar cara a cara.</p>
+        <a class="btn btn-ghost" href="https://www.instagram.com/tamaraconexion/" target="_blank" rel="noopener">Escribir por Instagram ↗</a>
+      </div>
+      <div class="work-card">
+        <span class="eyebrow">Online</span>
+        <h3>Sesión online</h3>
+        <p>Tarot, registros akáshicos, vidas pasadas y conexión medium también se pueden hacer a distancia. Elegí tu horario y agendá directamente.</p>
+        <a class="btn btn-primary" href="https://encuadrado.com/p/tamara-conexion" target="_blank" rel="noopener">Agendar aquí →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANGELES / RECURSO DESTACADO -->
+<section id="angeles">
+  <div class="wrap">
+    <div class="resource-card reveal">
+      <span class="resource-icon">👼</span>
+      <div>
+        <span class="eyebrow" style="display:block; margin-bottom:10px;">Recurso destacado</span>
+        <h3>Conecta con tus ángeles</h3>
+        <p>Un espacio pensado para acercarte a tus guías espirituales y aprender a reconocer sus señales en tu día a día.</p>
+      </div>
+      <a class="btn btn-primary" href="https://encuadrado.com/s/tamara-conexion/conecta-con-tus-angeles" target="_blank" rel="noopener">Descubrir ✦</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="fine">© 2026 Tamara Conexión · Tarot · Registros Akáshicos · Reiki · Vidas Pasadas · Medium</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/tamaraconexion/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/56987124943" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://encuadrado.com/p/tamara-conexion" target="_blank" rel="noopener">Encuadrado</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  // tarot card flip
+  const card = document.getElementById('tarotCard');
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+
+  // pentagram service data
+  const services = [
+    { icon:'🔮', title:'Tarot', num:'Servicio 01', desc:'Lectura de cartas para iluminar decisiones, vínculos y caminos posibles. Una mirada clara sobre lo que estás atravesando y hacia dónde puede llevarte.' },
+    { icon:'🖐️', title:'Reiki', num:'Servicio 02', desc:'Armonización energética para liberar bloqueos, bajar la ansiedad del cuerpo y recuperar el equilibrio entre lo físico y lo emocional.' },
+    { icon:'⏳', title:'Vidas Pasadas', num:'Servicio 03', desc:'Regresión para comprender el origen de patrones, miedos o vínculos que se repiten en tu vida actual, y empezar a soltarlos.' },
+    { icon:'🕯️', title:'Medium', num:'Servicio 04', desc:'Conexión con mensajes y presencias para traer claridad, respuestas y, muchas veces, un cierre que se estaba necesitando.' },
+    { icon:'📖', title:'Registros Akáshicos', num:'Servicio 05', desc:'Acceso al registro de tu alma: patrones profundos, aprendizajes de vidas y el propósito que atraviesa esta etapa.' },
+  ];
+
+  const nodes = document.querySelectorAll('.pent-node');
+  const dots = document.querySelectorAll('#svcDots span');
+  const svcTitle = document.getElementById('svcTitle');
+  const svcDesc = document.getElementById('svcDesc');
+  const svcEyebrow = document.getElementById('svcEyebrow');
+
+  function setActive(i){
+    nodes.forEach(n => n.classList.toggle('active', n.dataset.i == i));
+    dots.forEach((d, idx) => d.classList.toggle('active', idx == i));
+    const s = services[i];
+    svcTitle.textContent = s.title;
+    svcDesc.textContent = s.desc;
+    svcEyebrow.textContent = s.num;
+  }
+  nodes.forEach(n => n.addEventListener('click', () => setActive(n.dataset.i)));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

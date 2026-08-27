@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josefa Paz — Coach de Mentalidad y Manifestación</title>
+<meta name="description" content="Josefa Paz. Coach de Mentalidad y Manifestación, Speaker y Facilitadora. Del piloto automático a tu autenticidad y libertad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F0C1A;
+    --ink-2:#171227;
+    --paper:#F6F2FF;
+    --paper-dim:#C9C4DC;
+    --muted:#736F87;
+    --line:rgba(246,242,255,0.10);
+    --line-soft:rgba(246,242,255,0.06);
+
+    /* dormant (piloto automático) palette — desaturated */
+    --violet:#5B5870;
+    --coral:#635E70;
+    --gold:#6E6A7C;
+    --violet-soft:#3A3648;
+
+    --glow-a:0;
+    --glow-b:0;
+    --grain-op:0.05;
+
+    --ease:cubic-bezier(.16,.84,.44,1);
+  }
+
+  body.awake{
+    --violet:#8B5CF6;
+    --coral:#FF6B8B;
+    --gold:#FFC24B;
+    --violet-soft:#4C2E8F;
+    --glow-a:.55;
+    --glow-b:.4;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--paper-dim);
+    font-family:'Manrope', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    transition:background 1s var(--ease);
+  }
+
+  ::selection{ background:var(--violet); color:#fff; }
+
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    transition:color .8s var(--ease);
+  }
+
+  h1,h2,h3{
+    font-family:'Instrument Serif', serif;
+    font-weight:400;
+    color:var(--paper);
+    line-height:1.05;
+  }
+
+  em{
+    font-style:italic;
+    color:var(--coral);
+    transition:color .8s var(--ease);
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------------- NAV ---------------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    border-bottom:1px solid transparent;
+    transition:border-color .5s var(--ease), background .5s var(--ease), backdrop-filter .5s var(--ease);
+  }
+  nav.scrolled{
+    background:rgba(15,12,26,.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Instrument Serif', serif;
+    font-size:22px;
+    letter-spacing:.02em;
+    color:var(--paper);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--coral);
+    transition:background .8s var(--ease), box-shadow .8s var(--ease);
+    box-shadow:0 0 calc(var(--glow-a)*16px) var(--coral);
+  }
+  .nav-links{
+    display:flex; align-items:center; gap:36px;
+    font-size:13px; letter-spacing:.03em;
+  }
+  .nav-links a{
+    color:var(--paper-dim);
+    position:relative;
+    transition:color .3s;
+  }
+  .nav-links a:hover{ color:var(--paper); }
+  .nav-links a:not(.pill)::after{
+    content:'';
+    position:absolute; left:0; bottom:-5px; width:0; height:1px;
+    background:var(--coral);
+    transition:width .3s var(--ease);
+  }
+  .nav-links a:not(.pill):hover::after{ width:100%; }
+  .pill{
+    border:1px solid var(--line);
+    padding:9px 18px;
+    border-radius:100px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    transition:border-color .4s, background .4s, color .4s;
+  }
+  .pill.solid{
+    background:var(--coral);
+    border-color:var(--coral);
+    color:#1a0f14;
+    font-weight:500;
+  }
+  .pill:hover{ border-color:var(--paper-dim); }
+  .nav-mobile-hide{ display:flex; }
+  @media(max-width:760px){ .nav-mobile-hide{ display:none; } }
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex; align-items:center;
+    padding:140px 0 80px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:-10%;
+    background:
+      radial-gradient(ellipse 50% 40% at 18% 20%, color-mix(in srgb, var(--violet) calc(var(--glow-a)*100%), transparent), transparent 60%),
+      radial-gradient(ellipse 45% 40% at 85% 75%, color-mix(in srgb, var(--coral) calc(var(--glow-b)*100%), transparent), transparent 60%),
+      radial-gradient(ellipse 40% 35% at 90% 10%, color-mix(in srgb, var(--gold) calc(var(--glow-b)*70%), transparent), transparent 65%);
+    filter:blur(10px);
+    transition:all 1.2s var(--ease);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media(max-width:900px){ .hero-inner{ grid-template-columns:1fr; } }
+
+  .hero h1{
+    font-size:clamp(42px,6.4vw,84px);
+    margin:18px 0 26px;
+    letter-spacing:-.01em;
+  }
+  .hero p.sub{
+    font-size:17px;
+    max-width:480px;
+    line-height:1.65;
+    color:var(--paper-dim);
+    margin-bottom:38px;
+  }
+
+  /* toggle */
+  .toggle-block{
+    display:flex; align-items:center; gap:16px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  .toggle{
+    position:relative;
+    width:150px; height:56px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:var(--ink-2);
+    cursor:pointer;
+    display:flex; align-items:center;
+    padding:5px;
+    transition:border-color .6s var(--ease), background .6s var(--ease);
+  }
+  .toggle-knob{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:linear-gradient(160deg, var(--gold), var(--coral));
+    display:flex; align-items:center; justify-content:center;
+    font-size:19px;
+    transform:translateX(0);
+    transition:transform .6s var(--ease), background .8s var(--ease), box-shadow .8s var(--ease);
+    box-shadow:0 0 calc(var(--glow-a)*22px) var(--coral);
+  }
+  body.awake .toggle-knob{ transform:translateX(94px); }
+  .toggle-track-label{
+    position:absolute;
+    font-family:'JetBrains Mono', monospace;
+    font-size:9.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+    transition:opacity .4s;
+  }
+  .toggle-track-label.moon{ left:16px; }
+  .toggle-track-label.sun{ right:14px; }
+  body:not(.awake) .toggle-track-label.moon{ opacity:1; color:var(--paper-dim); }
+  body:not(.awake) .toggle-track-label.sun{ opacity:.35; }
+  body.awake .toggle-track-label.moon{ opacity:.35; }
+  body.awake .toggle-track-label.sun{ opacity:1; color:var(--paper-dim); }
+
+  .toggle-caption{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.03em;
+    color:var(--muted);
+    max-width:190px;
+    line-height:1.5;
+  }
+  .toggle-caption b{ color:var(--paper-dim); font-weight:500; }
+
+  .cta-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:15px 26px;
+    border-radius:100px;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.01em;
+    transition:transform .35s var(--ease), box-shadow .5s var(--ease), background .6s var(--ease), border-color .6s;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg, var(--coral), var(--gold));
+    color:#1a0f14;
+    box-shadow:0 8px 30px -8px color-mix(in srgb, var(--coral) calc(var(--glow-a)*80%), transparent);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--paper);
+  }
+  .btn-ghost:hover{ border-color:var(--paper-dim); transform:translateY(-2px); }
+
+  /* orbit */
+  .orbit-wrap{
+    position:relative;
+    aspect-ratio:1/1;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .orbit-wrap svg{ width:100%; height:100%; }
+  .ring{
+    fill:none;
+    stroke:var(--line);
+    transition:stroke .8s var(--ease);
+  }
+  .ring.accent{ stroke:color-mix(in srgb, var(--violet) 55%, transparent); }
+  .orbit-dot{
+    fill:var(--coral);
+    filter:drop-shadow(0 0 calc(var(--glow-a)*10px) var(--coral));
+    transition:fill .8s var(--ease);
+  }
+  .spin-slow{ animation:spin 40s linear infinite; transform-origin:center; }
+  .spin-slow.rev{ animation-direction:reverse; animation-duration:60s; }
+  .spin-mid{ animation:spin 24s linear infinite; transform-origin:center; }
+  .core-label{
+    position:absolute;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    text-align:center;
+    line-height:1.8;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* ---------------- MARQUEE ---------------- */
+  .marquee-section{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:20px 0;
+    overflow:hidden;
+    background:var(--ink-2);
+    transition:background 1s var(--ease), border-color .8s var(--ease);
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    animation:scroll 32s linear infinite;
+    gap:0;
+  }
+  .marquee-track span{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size:28px;
+    color:var(--paper-dim);
+    padding:0 28px;
+    white-space:nowrap;
+    display:flex; align-items:center; gap:28px;
+  }
+  .marquee-track span::after{
+    content:'✦';
+    font-style:normal;
+    font-size:13px;
+    color:var(--gold);
+    transition:color .8s var(--ease);
+  }
+  @keyframes scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---------------- SECTION GENERIC ---------------- */
+  section{ padding:130px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:70px; }
+  .section-head .eyebrow{ margin-bottom:16px; display:block; }
+  .section-head h2{ font-size:clamp(32px,4.4vw,52px); }
+  .section-head p{ margin-top:18px; color:var(--muted); font-size:15.5px; line-height:1.7; }
+
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* ---------------- PILARES ---------------- */
+  .pillars-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    transition:border-color .8s, background .8s;
+  }
+  @media(max-width:820px){ .pillars-grid{ grid-template-columns:1fr; } }
+  .pillar{
+    background:var(--ink);
+    padding:48px 38px;
+    transition:background .5s var(--ease);
+  }
+  .pillar:hover{ background:var(--ink-2); }
+  .pillar .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.1em;
+  }
+  .pillar .icon{
+    font-size:34px;
+    margin:20px 0 22px;
+    filter:grayscale(calc(1 - var(--glow-a)));
+    transition:filter .8s var(--ease);
+  }
+  .pillar h3{ font-size:26px; margin-bottom:12px; color:var(--paper); }
+  .pillar p{ font-size:14.5px; line-height:1.7; color:var(--muted); }
+
+  /* ---------------- SOBRE MI ---------------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:70px;
+    align-items:center;
+  }
+  @media(max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:50px; } }
+  .about-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:22px;
+    border:1px solid var(--line);
+    background:
+      radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--violet) calc(var(--glow-a)*90%), transparent), transparent 55%),
+      radial-gradient(circle at 75% 80%, color-mix(in srgb, var(--coral) calc(var(--glow-b)*90%), transparent), transparent 55%),
+      var(--ink-2);
+    overflow:hidden;
+    transition:background 1s var(--ease), border-color .8s;
+    display:flex; align-items:flex-end;
+  }
+  .about-visual .quote{
+    padding:36px;
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size:24px;
+    color:var(--paper);
+    line-height:1.35;
+  }
+  .about-visual .quote span{ color:var(--gold); transition:color .8s var(--ease); }
+  .about-text p{ font-size:16px; line-height:1.85; color:var(--paper-dim); margin-bottom:20px; }
+  .about-text .cred-row{
+    display:flex; gap:28px; margin-top:36px; flex-wrap:wrap;
+    padding-top:30px; border-top:1px solid var(--line);
+  }
+  .cred{ display:flex; flex-direction:column; gap:4px; }
+  .cred .k{
+    font-family:'Instrument Serif', serif; font-size:15px; color:var(--paper);
+  }
+  .cred .v{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ---------------- RECURSOS / CTA ---------------- */
+  .resources{
+    padding:0 0 140px;
+  }
+  .cta-card{
+    position:relative;
+    border-radius:28px;
+    border:1px solid var(--line);
+    padding:80px 60px;
+    text-align:center;
+    overflow:hidden;
+    background:var(--ink-2);
+    transition:border-color .8s, background 1s;
+  }
+  .cta-card::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 60% 70% at 20% 0%, color-mix(in srgb, var(--violet) calc(var(--glow-a)*70%), transparent), transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 100%, color-mix(in srgb, var(--coral) calc(var(--glow-b)*70%), transparent), transparent 60%);
+    transition:opacity 1s var(--ease);
+  }
+  .cta-card > *{ position:relative; z-index:1; }
+  .cta-card h2{ font-size:clamp(30px,4.4vw,50px); margin-bottom:18px; }
+  .cta-card p{ color:var(--muted); max-width:460px; margin:0 auto 40px; font-size:15px; line-height:1.7; }
+  .cta-buttons{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+  /* ---------------- FOOTER ---------------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 0;
+    transition:border-color .8s;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  .footer-inner .fine{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.04em;
+  }
+  .footer-links{ display:flex; gap:22px; }
+  .footer-links a{ font-size:13px; color:var(--paper-dim); transition:color .3s; }
+  .footer-links a:hover{ color:var(--coral); }
+
+  @media(prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+  }
+
+  @media(max-width:600px){
+    section{ padding:90px 0; }
+    .hero{ padding-top:120px; }
+    .cta-card{ padding:56px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>Josefa Paz</div>
+    <div class="nav-links">
+      <div class="nav-mobile-hide" style="display:flex; gap:36px;">
+        <a href="#pilares">Pilares</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#recursos">Recursos</a>
+      </div>
+      <a class="pill" href="https://www.instagram.com/josefapaz333/" target="_blank" rel="noopener">Instagram</a>
+      <a class="pill solid" href="https://linktr.ee/josefapaz333" target="_blank" rel="noopener">Linktree</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Coach de Mentalidad y Manifestación · Speaker · Facilitadora</span>
+      <h1>Del piloto<br>automático a tu <em>autenticidad</em>.</h1>
+      <p class="sub">Josefa Paz te acompaña a salir del modo automático y volver a elegir desde la consciencia: tu visión, tu identidad y tu libertad. Un espacio de trabajo interior real, sin fórmulas mágicas.</p>
+
+      <div class="toggle-block">
+        <button class="toggle" id="modeToggle" role="switch" aria-checked="false" aria-label="Cambiar entre piloto automático y autenticidad">
+          <span class="toggle-track-label moon">Auto</span>
+          <span class="toggle-track-label sun">Real</span>
+          <span class="toggle-knob" id="toggleKnob">🌙</span>
+        </button>
+        <p class="toggle-caption">Tocá el interruptor. <b>Así se siente</b> salir del piloto automático.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://linktr.ee/josefapaz333" target="_blank" rel="noopener">🪞 Ver recursos y comunidad</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/josefapaz333/" target="_blank" rel="noopener">Seguir en Instagram ↗</a>
+      </div>
+    </div>
+
+    <div class="orbit-wrap reveal in-view">
+      <svg viewBox="0 0 400 400">
+        <g class="spin-slow rev">
+          <circle class="ring" cx="200" cy="200" r="188"/>
+        </g>
+        <g class="spin-mid">
+          <circle class="ring accent" cx="200" cy="200" r="140" stroke-dasharray="2 10"/>
+        </g>
+        <g class="spin-slow">
+          <circle class="ring" cx="200" cy="200" r="96"/>
+          <circle class="orbit-dot" cx="200" cy="104" r="6"/>
+        </g>
+        <circle class="ring accent" cx="200" cy="200" r="52"/>
+      </svg>
+      <div class="core-label">Visión<br>Consciencia<br>Identidad</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>
+      <span>Visión</span><span>Consciencia</span><span>Identidad</span><span>Libertad</span><span>Presencia</span><span>Autenticidad</span>
+      <span>Visión</span><span>Consciencia</span><span>Identidad</span><span>Libertad</span><span>Presencia</span><span>Autenticidad</span>
+    </span>
+  </div>
+</div>
+
+<!-- PILARES -->
+<section id="pilares">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Los tres pilares</span>
+      <h2>Todo cambio real empieza en el mismo lugar.</h2>
+      <p>No son pasos que se completan una vez. Son tres lugares a los que vas a volver, una y otra vez, cada vez que decidas salir del automático.</p>
+    </div>
+
+    <div class="pillars-grid reveal">
+      <div class="pillar">
+        <span class="num">01</span>
+        <div class="icon">🧠</div>
+        <h3>Visión</h3>
+        <p>Definir hacia dónde vas cuando dejás de reaccionar y empezás a diseñar. Claridad sobre qué querés construir, y por qué.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">02</span>
+        <div class="icon">🪽</div>
+        <h3>Consciencia</h3>
+        <p>Observar el patrón antes de repetirlo. El espacio entre el estímulo y la respuesta, donde realmente se elige.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">03</span>
+        <div class="icon">🫀</div>
+        <h3>Identidad</h3>
+        <p>Volver a quién sos cuando nadie te dice quién ser. La base desde donde toda manifestación se sostiene.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <div class="quote">“Vivir en piloto automático<br>no es vivir en <span>paz</span>.<br>Es solo no darte cuenta.”</div>
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow" style="display:block; margin-bottom:18px;">Sobre Josefa</span>
+      <h2 style="font-size:clamp(28px,3.6vw,42px); margin-bottom:24px;">Coach de mentalidad, facilitadora y acompañante de procesos de consciencia.</h2>
+      <p>Josefa Paz trabaja con personas que sienten que están funcionando en automático: cumpliendo, avanzando, resolviendo, pero desconectadas de lo que realmente quieren y de quiénes son.</p>
+      <p>A través de la mentalidad, la manifestación y el trabajo de consciencia, facilita el paso de vivir reaccionando a vivir eligiendo — con herramientas concretas, no promesas vacías.</p>
+      <div class="cred-row">
+        <div class="cred"><span class="k">Coaching</span><span class="v">Mentalidad &amp; manifestación</span></div>
+        <div class="cred"><span class="k">Speaker</span><span class="v">Charlas &amp; espacios en vivo</span></div>
+        <div class="cred"><span class="k">Facilitación</span><span class="v">Procesos de consciencia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section id="recursos" class="resources">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <span class="eyebrow">Recursos y comunidad</span>
+      <h2 style="margin-top:18px;">Tu comunidad te está esperando.</h2>
+      <p>Todos los recursos, programas y espacios de Josefa están reunidos en un solo lugar. Empezá por donde quieras.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://linktr.ee/josefapaz333" target="_blank" rel="noopener">🪞 linktr.ee/josefapaz333</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/josefapaz333/" target="_blank" rel="noopener">@josefapaz333 en Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="fine">© 2026 Josefa Paz · Coach de mentalidad y manifestación</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/josefapaz333/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://linktr.ee/josefapaz333" target="_blank" rel="noopener">Linktree</a>
+      <a href="#pilares">Pilares</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // nav blur on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // mode toggle — the site's signature interaction
+  const toggle = document.getElementById('modeToggle');
+  const knob = document.getElementById('toggleKnob');
+  toggle.addEventListener('click', () => {
+    const awake = document.body.classList.toggle('awake');
+    toggle.setAttribute('aria-checked', awake);
+    knob.textContent = awake ? '☀️' : '🌙';
+  });
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

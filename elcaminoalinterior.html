@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Camino al Interior — Vero Milanés</title>
+<meta name="description" content="Vero Milanés. Sanación emocional y espiritual, terapias holísticas. Deja que tu alma muestre lo que debes transformar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#FFF8EF;
+    --crema2:#FCEEDD;
+    --crema3:#F8E2CB;
+    --tinta:#2B231F;
+    --tinta-dim:rgba(43,35,31,0.66);
+    --linea:rgba(43,35,31,0.14);
+    --raiz:#E5484D;
+    --sacro:#F2790C;
+    --plexo:#F0B100;
+    --corazon:#3F9B6E;
+    --garganta:#2E9BC7;
+    --tercerojo:#6C63D8;
+    --corona:#A968D6;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:'Outfit',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--corona); color:#fff; }
+  h1,h2,h3,.display{ font-family:'Newsreader',serif; font-weight:500; letter-spacing:-0.01em; color:var(--tinta); }
+  .hand{ font-family:'Gochi Hand',cursive; }
+  em{ font-style:italic; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+  svg,img{ display:block; max-width:100%; }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .rainbow-text{
+    background:linear-gradient(90deg, var(--raiz), var(--sacro), var(--plexo), var(--corazon), var(--garganta), var(--tercerojo), var(--corona));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .tag{
+    display:inline-flex; align-items:center; gap:9px; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase;
+    padding:8px 18px; border-radius:100px; border:1px solid var(--linea); color:var(--tinta-dim); margin-bottom:20px;
+    background:rgba(255,255,255,0.5);
+  }
+  .tag .dot{ width:7px; height:7px; border-radius:50%; background:var(--sacro); }
+
+  /* ===== NAV ===== */
+  header{ position:fixed; top:0; left:0; right:0; z-index:100; padding:24px 0; transition:background .3s, padding .3s, box-shadow .3s;}
+  header.scrolled{ background:rgba(255,248,239,0.92); backdrop-filter:blur(10px); padding:14px 0; box-shadow:0 1px 0 var(--linea); }
+  nav{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Newsreader',serif; font-size:1.2rem; font-style:italic; }
+  .brand svg{ width:28px; height:28px; }
+  nav .links{ display:flex; gap:28px; font-size:.9rem; align-items:center; }
+  nav .links a{ opacity:.8; }
+  nav .links a:hover{ opacity:1; color:var(--sacro); }
+  .nav-cta{
+    background:var(--tinta); color:var(--crema); padding:10px 20px; border-radius:100px; font-size:.82rem; font-weight:500;
+  }
+  .nav-cta:hover{ background:var(--sacro); }
+  @media(max-width:820px){ nav .links a:not(.nav-cta){ display:none; } }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; min-height:100vh; display:flex; align-items:center; padding:150px 0 90px; overflow:hidden; }
+  .blob{ position:absolute; border-radius:50%; filter:blur(80px); opacity:.45; z-index:0; }
+  .blob1{ width:460px; height:460px; background:var(--corona); top:-140px; right:-100px; }
+  .blob2{ width:380px; height:380px; background:var(--sacro); bottom:-140px; left:-100px; opacity:.3; }
+  .blob3{ width:260px; height:260px; background:var(--garganta); top:20%; left:38%; opacity:.2; }
+
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
+  @media(max-width:940px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:clamp(2.6rem,6vw,4.3rem); line-height:1.06; margin-bottom:20px; }
+  .hero h1 em{ font-style:italic; }
+  .hero p.lead{ color:var(--tinta-dim); font-size:1.12rem; max-width:48ch; margin-bottom:32px; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ padding:15px 28px; border-radius:100px; font-size:.92rem; font-weight:500; display:inline-flex; align-items:center; gap:8px; transition:transform .3s, background .3s, box-shadow .3s; }
+  .btn-solid{ background:var(--sacro); color:#fff; box-shadow:0 10px 30px -12px rgba(242,121,12,0.6); }
+  .btn-solid:hover{ transform:translateY(-3px); background:#d9670a; }
+  .btn-outline{ border:1.5px solid var(--linea); color:var(--tinta); }
+  .btn-outline:hover{ border-color:var(--tinta); transform:translateY(-3px); }
+
+  .lotus-stage{ position:relative; display:flex; align-items:center; justify-content:center; }
+  #lotus{ width:100%; max-width:380px; }
+  .petal{ transform-origin:200px 230px; animation:sway 7s ease-in-out infinite; }
+  @keyframes sway{ 0%,100%{ transform:rotate(0deg);} 50%{ transform:rotate(1.4deg);} }
+
+  /* ===== SECTION shared ===== */
+  section{ position:relative; padding:110px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(2rem,3.6vw,2.7rem); }
+  .section-head p{ color:var(--tinta-dim); margin-top:16px; font-size:1.02rem; }
+
+  /* ===== INTRO ===== */
+  .intro{ background:var(--crema2); }
+  .intro-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center; }
+  @media(max-width:900px){ .intro-grid{ grid-template-columns:1fr; gap:40px; } }
+  .vero-badge{
+    width:100%; aspect-ratio:1/1; max-width:320px; border-radius:50%;
+    background:conic-gradient(from 180deg, var(--raiz), var(--sacro), var(--plexo), var(--corazon), var(--garganta), var(--tercerojo), var(--corona), var(--raiz));
+    display:flex; align-items:center; justify-content:center; padding:14px;
+  }
+  .vero-badge-inner{
+    width:100%; height:100%; border-radius:50%; background:var(--crema2);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .vero-badge-inner svg{ width:56%; }
+  .intro-text .hand{ color:var(--sacro); font-size:1.7rem; display:block; margin-bottom:8px; }
+  .intro-text p{ color:var(--tinta-dim); margin-bottom:16px; font-size:1.03rem; }
+  .stat-row{ display:flex; gap:30px; margin-top:28px; flex-wrap:wrap; }
+  .stat{ border-left:3px solid var(--sacro); padding-left:14px; }
+  .stat b{ display:block; font-family:'Newsreader',serif; font-size:1.5rem; }
+  .stat span{ font-size:.78rem; color:var(--tinta-dim); text-transform:uppercase; letter-spacing:.06em; }
+
+  /* ===== CHAKRAS — signature ===== */
+  .chakras{ background:var(--crema); }
+  .chakra-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:center; }
+  @media(max-width:940px){ .chakra-grid{ grid-template-columns:1fr; gap:40px; } }
+
+  .chakra-column{ display:flex; flex-direction:column; align-items:center; gap:0; position:relative; padding:20px 0; }
+  .chakra-column::before{
+    content:''; position:absolute; top:36px; bottom:36px; width:2px;
+    background:linear-gradient(var(--raiz),var(--sacro),var(--plexo),var(--corazon),var(--garganta),var(--tercerojo),var(--corona));
+    opacity:.35; z-index:0;
+  }
+  .chakra-node{
+    width:52px; height:52px; border-radius:50%; margin:9px 0; cursor:pointer; position:relative; z-index:1;
+    border:3px solid var(--crema); box-shadow:0 4px 14px rgba(0,0,0,0.12);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .chakra-node:hover{ transform:scale(1.14); }
+  .chakra-node.active{ transform:scale(1.22); box-shadow:0 0 0 4px rgba(0,0,0,0.06), 0 8px 22px rgba(0,0,0,0.18); }
+
+  .chakra-panel{
+    border-radius:24px; padding:36px; min-height:230px; display:flex; flex-direction:column; justify-content:center;
+    background:var(--crema2); border:1px solid var(--linea); transition:background .5s ease, border-color .5s ease;
+  }
+  .chakra-panel .ch-top{ display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+  .ch-dot{ width:44px; height:44px; border-radius:50%; flex-shrink:0; }
+  .chakra-panel b{ display:block; font-family:'Newsreader',serif; font-size:1.5rem; }
+  .chakra-panel .ch-sub{ font-size:.85rem; color:var(--tinta-dim); text-transform:uppercase; letter-spacing:.06em; }
+  .chakra-panel .ch-q{ font-family:'Gochi Hand',cursive; font-size:1.35rem; line-height:1.4; margin-top:6px; }
+  .chakra-hint{ margin-top:20px; font-family:'Gochi Hand',cursive; color:var(--sacro); font-size:1.2rem; text-align:center; }
+
+  /* ===== PILLARS ===== */
+  .pillars{ background:var(--crema2); }
+  .pillar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  @media(max-width:880px){ .pillar-grid{ grid-template-columns:1fr; } }
+  .pillar{
+    background:var(--crema); border-radius:24px; padding:36px; border:1px solid var(--linea);
+    transition:transform .35s ease;
+  }
+  .pillar:hover{ transform:translateY(-6px); }
+  .pillar .p-icon{ width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+  .pillar .p-icon svg{ width:28px; height:28px; }
+  .pillar h3{ font-size:1.3rem; margin-bottom:10px; }
+  .pillar p{ color:var(--tinta-dim); font-size:.95rem; }
+
+  /* ===== QUOTE ===== */
+  .stripe{
+    padding:110px 0; text-align:center;
+    background:linear-gradient(120deg, var(--corazon), var(--garganta) 55%, var(--tercerojo));
+    color:#fff;
+  }
+  .stripe .display{ font-size:clamp(1.7rem,3.8vw,2.6rem); max-width:820px; margin:0 auto; line-height:1.4; color:#fff; }
+  .stripe .hand{ margin-top:20px; display:block; font-size:1.3rem; color:rgba(255,255,255,0.9); }
+
+  /* ===== CONTACT ===== */
+  footer{ background:var(--crema); padding:100px 0 40px; }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+  @media(max-width:820px){ .contact-grid{ grid-template-columns:1fr; gap:40px; } }
+  .contact-grid h2{ font-size:clamp(2rem,3.8vw,2.6rem); margin-bottom:18px; }
+  .contact-grid p{ color:var(--tinta-dim); max-width:44ch; }
+  .whatsapp-cta{
+    margin-top:30px; display:flex; align-items:center; gap:16px; padding:22px 26px; border-radius:20px;
+    background:#25D366; color:#fff; transition:transform .3s ease, box-shadow .3s ease; box-shadow:0 14px 34px -14px rgba(37,211,102,0.55);
+  }
+  .whatsapp-cta:hover{ transform:translateY(-3px); }
+  .whatsapp-cta svg{ width:30px; height:30px; flex-shrink:0; }
+  .whatsapp-cta b{ display:block; font-size:1.05rem; }
+  .whatsapp-cta span{ font-size:.85rem; opacity:.9; }
+
+  .contact-links{ display:flex; flex-direction:column; margin-top:26px; }
+  .contact-link{
+    display:flex; align-items:center; justify-content:space-between; padding:20px 0;
+    border-top:1px solid var(--linea); font-size:1.02rem; transition:padding-left .3s, color .3s;
+  }
+  .contact-link:last-child{ border-bottom:1px solid var(--linea); }
+  .contact-link:hover{ padding-left:10px; color:var(--sacro); }
+  .contact-link small{ color:var(--tinta-dim); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
+  .contact-link .arrow{ transition:transform .3s; }
+  .contact-link:hover .arrow{ transform:translateX(6px); }
+
+  .foot-bottom{
+    margin-top:70px; padding-top:24px; border-top:1px solid var(--linea);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.8rem; color:var(--tinta-dim);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  }
+  :focus-visible{ outline:2px solid var(--sacro); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand">
+        <svg viewBox="0 0 40 40"><path d="M20 30c-8 0-13-6-13-12 4 2 8 1 13-5 5 6 9 7 13 5 0 6-5 12-13 12z" fill="#A968D6"/><path d="M20 30c-5 0-9-3-9-8 3 1 6 0 9-4 3 4 6 5 9 4 0 5-4 8-9 8z" fill="#F2790C"/></svg>
+        el camino al interior
+      </a>
+      <div class="links">
+        <a href="#vero">Vero</a>
+        <a href="#chakras">Autoexploración</a>
+        <a href="#terapias">Terapias</a>
+        <a href="https://www.instagram.com/elcaminoalinterior/" target="_blank" rel="noopener" class="nav-cta">Instagram ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag"><span class="dot"></span> Sanación emocional y espiritual</span>
+        <h1>Deja que tu alma<br>muestre lo que <em class="rainbow-text">debes transformar</em></h1>
+        <p class="lead">Soy Vero Milanés. Acompaño procesos de sanación emocional y espiritual a través de terapias holísticas, sosteniendo un espacio seguro para que tu propia luz te guíe hacia adentro.</p>
+        <div class="cta-row">
+          <a href="https://wa.me/523333793012" target="_blank" rel="noopener" class="btn btn-solid">📲 Agendar por WhatsApp</a>
+          <a href="https://www.instagram.com/elcaminoalinterior/" target="_blank" rel="noopener" class="btn btn-outline">Seguir en Instagram</a>
+        </div>
+      </div>
+      <div class="lotus-stage">
+        <svg id="lotus" viewBox="0 0 400 400">
+          <g class="petal">
+            <path d="M200 230 C160 200 140 150 160 100 C180 140 195 180 200 230Z" fill="#E5484D" opacity="0.85"/>
+            <path d="M200 230 C240 200 260 150 240 100 C220 140 205 180 200 230Z" fill="#F2790C" opacity="0.85"/>
+            <path d="M200 230 C150 215 105 190 90 145 C135 150 175 175 200 230Z" fill="#F0B100" opacity="0.85"/>
+            <path d="M200 230 C250 215 295 190 310 145 C265 150 225 175 200 230Z" fill="#3F9B6E" opacity="0.85"/>
+            <path d="M200 230 C145 235 95 225 65 190 C110 180 155 190 200 230Z" fill="#2E9BC7" opacity="0.85"/>
+            <path d="M200 230 C255 235 305 225 335 190 C290 180 245 190 200 230Z" fill="#6C63D8" opacity="0.85"/>
+            <path d="M200 230 C165 250 130 260 100 250 C130 235 165 228 200 230Z" fill="#A968D6" opacity="0.9"/>
+            <path d="M200 230 C235 250 270 260 300 250 C270 235 235 228 200 230Z" fill="#A968D6" opacity="0.9"/>
+          </g>
+          <circle cx="200" cy="232" r="16" fill="#FFF8EF"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VERO / INTRO ===== -->
+  <section class="intro" id="vero">
+    <div class="wrap intro-grid">
+      <div class="reveal">
+        <div class="vero-badge">
+          <div class="vero-badge-inner">
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="36" r="18" fill="#2B231F" opacity="0.85"/>
+              <path d="M22 90c0-16 12-28 28-28s28 12 28 28Z" fill="#2B231F" opacity="0.85"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="intro-text reveal">
+        <span class="hand">hola, soy Vero</span>
+        <h2 style="margin-bottom:18px;">Un espacio para volver a vos</h2>
+        <p>Creo en la sanación como un proceso de reencuentro, no de reparación. No venís rota a una sesión: venís a recordar algo que tu alma ya sabe.</p>
+        <p>Combino distintas herramientas holísticas para sostenerte mientras eso que necesita transformarse se muestra, se nombra y se suelta — a tu ritmo, sin forzar nada.</p>
+        <div class="stat-row">
+          <div class="stat"><b>35K+</b><span>comunidad en Instagram</span></div>
+          <div class="stat"><b>🪷</b><span>terapias holísticas</span></div>
+          <div class="stat"><b>1:1</b><span>por WhatsApp</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHAKRAS — signature interactive ===== -->
+  <section class="chakras" id="chakras">
+    <div class="wrap chakra-grid">
+      <div class="reveal">
+        <span class="tag"><span class="dot"></span> autoexploración</span>
+        <h2>¿Qué parte de vos<br>está pidiendo atención?</h2>
+        <p style="color:var(--tinta-dim); margin-top:16px;">Tocá cada punto de energía y quedate con la pregunta que más te remueva. No hay respuesta correcta — solo la tuya.</p>
+        <div class="chakra-column" id="chakraColumn"></div>
+      </div>
+
+      <div class="chakra-panel reveal" id="chakraPanel">
+        <p style="color:var(--tinta-dim);">Elegí un punto de energía para empezar ✦</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PILLARS / TERAPIAS ===== -->
+  <section class="pillars" id="terapias">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag"><span class="dot"></span> cómo acompaño</span>
+        <h2>Terapias holísticas</h2>
+        <p>Cada sesión se adapta a lo que estés atravesando — no hay dos procesos iguales.</p>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar reveal">
+          <div class="p-icon" style="background:rgba(229,72,77,0.16); color:var(--raiz);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-8-4.5-8-11a5 5 0 019-3 5 5 0 019 3c0 6.5-8 11-8 11z"/></svg>
+          </div>
+          <h3>Sanación emocional</h3>
+          <p>Un espacio para procesar lo que quedó guardado — duelos, vínculos, patrones que se repiten sin que los elijas.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="p-icon" style="background:rgba(169,104,214,0.16); color:var(--corona);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M12 18v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M2 12h4M18 12h4M4.2 19.8L7 17M17 7l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <h3>Acompañamiento espiritual</h3>
+          <p>Herramientas para reconectar con tu intuición y tu propósito, más allá del ruido de afuera.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="p-icon" style="background:rgba(63,155,110,0.16); color:var(--corazon);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c4 3 7 7 7 11a7 7 0 01-14 0c0-4 3-8 7-11z"/></svg>
+          </div>
+          <h3>Terapias holísticas</h3>
+          <p>Un abordaje que integra cuerpo, emoción y energía — porque sanar rara vez es solo mental.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE ===== -->
+  <section class="stripe">
+    <div class="wrap">
+      <p class="display reveal">No necesitás tener todas las respuestas hoy. Solo el permiso de empezar a mirar hacia adentro.</p>
+      <span class="hand reveal">— Vero</span>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <footer id="contacto">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <span class="tag"><span class="dot"></span> agendemos</span>
+        <h2>Empecemos tu camino</h2>
+        <p>Las sesiones se agendan por WhatsApp. Escribime cuando sientas que es el momento — no hace falta tener todo resuelto para dar el primer paso.</p>
+        <a href="https://wa.me/523333793012" target="_blank" rel="noopener" class="whatsapp-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 004.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2m0 1.67c2.24 0 4.35.87 5.94 2.46a8.2 8.2 0 012.42 5.78c0 4.55-3.71 8.25-8.36 8.25a8.3 8.3 0 01-4.21-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 01-1.28-4.42c0-4.55 3.71-8.18 8.29-8.18m-4.6 4.7c-.15 0-.4.06-.61.3-.21.24-.8.78-.8 1.9s.82 2.2.93 2.36c.12.15 1.6 2.5 3.97 3.4 1.96.75 2.36.6 2.79.56.42-.04 1.36-.55 1.55-1.09.19-.54.19-1 .13-1.09-.06-.1-.21-.15-.43-.27-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.52.12-.15.24-.6.75-.73.9-.13.15-.27.17-.5.06-.23-.12-.96-.35-1.83-1.13-.68-.6-1.13-1.35-1.27-1.58-.13-.23-.01-.36.1-.47.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.52-1.26-.72-1.72-.19-.45-.38-.39-.52-.4-.13-.01-.28-.01-.43-.01z"/></svg>
+          <span>
+            <b>Escribime por WhatsApp</b>
+            <span>Respondo personalmente para agendar tu sesión</span>
+          </span>
+        </a>
+        <div class="contact-links">
+          <a class="contact-link" href="https://www.instagram.com/elcaminoalinterior/" target="_blank" rel="noopener">
+            <span><small>Instagram</small><br>@elcaminoalinterior</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <svg viewBox="0 0 300 300" style="max-width:280px; margin-left:auto;">
+          <circle cx="150" cy="150" r="130" fill="none" stroke="var(--corona)" stroke-width="1" opacity="0.25"/>
+          <circle cx="150" cy="150" r="95" fill="none" stroke="var(--garganta)" stroke-width="1" opacity="0.3"/>
+          <circle cx="150" cy="150" r="60" fill="none" stroke="var(--sacro)" stroke-width="1" opacity="0.35"/>
+          <path d="M150 190c-30 0-48-22-48-42 15 8 30 4 48-18 18 22 33 26 48 18 0 20-18 42-48 42z" fill="var(--corona)" opacity="0.8"/>
+        </svg>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© <span id="year"></span> El Camino al Interior · Vero Milanés</span>
+      <span>Sanación emocional y espiritual</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', ()=> header.classList.toggle('scrolled', window.scrollY>40));
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold:0.15 });
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===================== CHAKRAS ===================== */
+const chakras = [
+  { name:'Corona', sub:'Espiritualidad · Conexión', color:'#A968D6', q:'¿Dónde puedo confiar un poco más y controlar un poco menos?' },
+  { name:'Tercer ojo', sub:'Intuición · Visión interior', color:'#6C63D8', q:'¿Qué me está mostrando mi alma que todavía no quiero ver?' },
+  { name:'Garganta', sub:'Expresión · Verdad propia', color:'#2E9BC7', q:'¿Qué verdad estoy callando por miedo a incomodar?' },
+  { name:'Corazón', sub:'Amor · Conexión', color:'#3F9B6E', q:'¿A quién —incluida yo misma— necesito perdonar?' },
+  { name:'Plexo solar', sub:'Poder personal · Voluntad', color:'#F0B100', q:'¿En qué parte de mi vida estoy cediendo mi poder a otros?' },
+  { name:'Sacro', sub:'Placer · Creatividad', color:'#F2790C', q:'¿Qué parte de mi gozo dejé en pausa sin darme cuenta?' },
+  { name:'Raíz', sub:'Seguridad · Arraigo', color:'#E5484D', q:'¿Dónde necesito sentirme más sostenida hoy?' },
+];
+
+const column = document.getElementById('chakraColumn');
+const panel = document.getElementById('chakraPanel');
+let activeIdx = null;
+
+chakras.forEach((c,i)=>{
+  const node = document.createElement('div');
+  node.className = 'chakra-node';
+  node.style.background = c.color;
+  node.setAttribute('role','button');
+  node.setAttribute('tabindex','0');
+  node.setAttribute('aria-label', c.name);
+  node.addEventListener('click', ()=> selectChakra(i));
+  node.addEventListener('keypress', (e)=>{ if(e.key==='Enter') selectChakra(i); });
+  column.appendChild(node);
+});
+
+function selectChakra(i){
+  activeIdx = i;
+  [...column.children].forEach((n,idx)=> n.classList.toggle('active', idx===i));
+  const c = chakras[i];
+  panel.innerHTML = `
+    <div class="ch-top">
+      <div class="ch-dot" style="background:${c.color};"></div>
+      <div>
+        <b>${c.name}</b>
+        <div class="ch-sub">${c.sub}</div>
+      </div>
+    </div>
+    <p class="ch-q">"${c.q}"</p>
+  `;
+  panel.style.background = `${c.color}18`;
+  panel.style.borderColor = `${c.color}55`;
+}
+</script>
+
+</body>
+</html>

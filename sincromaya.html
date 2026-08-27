@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sincro Maya — Pau · Astróloga Maya</title>
+<meta name="description" content="Sincro Maya. Descubre tu Kin a través del Tzolkin Maya. Cartas natales, revoluciones, cursos y terapia cuántica con Pau.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Sora:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noche:#140B2E;
+    --noche2:#1E1148;
+    --noche3:#281a5e;
+    --rojo:#E64A33;
+    --blanco:#F7F1E1;
+    --azul:#2FA8B8;
+    --amarillo:#F4B400;
+    --violeta:#9B6BFF;
+    --texto:#F7F1E1;
+    --texto-dim:rgba(247,241,225,0.72);
+    --line:rgba(247,241,225,0.16);
+    --maxw:1200px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--noche);
+    color:var(--texto);
+    font-family:'Sora',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--amarillo); color:var(--noche); }
+  h1,h2,h3,.display{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; letter-spacing:-0.01em; color:var(--blanco);}
+  .hand{ font-family:'Kalam',cursive; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+  img,svg{ display:block; max-width:100%; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; letter-spacing:.09em; text-transform:uppercase;
+    padding:7px 16px; border-radius:100px; border:1px solid var(--line);
+    color:var(--texto-dim); margin-bottom:18px;
+  }
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--amarillo); }
+
+  /* ===== NAV ===== */
+  header{ position:fixed; top:0; left:0; right:0; z-index:100; padding:22px 0; transition:background .3s, padding .3s;}
+  header.scrolled{ background:rgba(20,11,46,0.9); backdrop-filter:blur(10px); padding:14px 0; border-bottom:1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:10px; font-size:1.2rem; }
+  .brand .kin-mark{ width:30px; height:30px; }
+  nav .links{ display:flex; gap:26px; font-size:.9rem; align-items:center; }
+  nav .links a{ opacity:.85; }
+  nav .links a:hover{ opacity:1; color:var(--amarillo); }
+  .nav-cta{
+    background:var(--rojo); color:var(--blanco); padding:9px 18px; border-radius:100px; font-size:.82rem; font-weight:600;
+  }
+  .nav-cta:hover{ background:var(--amarillo); color:var(--noche); }
+  @media(max-width:820px){ nav .links a:not(.nav-cta){ display:none; } }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; min-height:100vh; display:flex; align-items:center; padding:150px 0 90px; overflow:hidden; }
+  .blob{ position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; z-index:0; }
+  .blob1{ width:480px; height:480px; background:var(--violeta); top:-120px; right:-100px; }
+  .blob2{ width:360px; height:360px; background:var(--azul); bottom:-100px; left:-80px; opacity:.35;}
+  .blob3{ width:260px; height:260px; background:var(--rojo); bottom:10%; right:8%; opacity:.25; }
+
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
+  @media(max-width:940px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:clamp(2.6rem,6.4vw,4.4rem); line-height:1.02; margin-bottom:20px; }
+  .hero h1 .colorline{ background:linear-gradient(90deg,var(--rojo),var(--amarillo),var(--azul)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p.lead{ color:var(--texto-dim); font-size:1.1rem; max-width:48ch; margin-bottom:32px; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ padding:15px 28px; border-radius:100px; font-size:.92rem; font-weight:600; display:inline-flex; align-items:center; gap:8px; transition:transform .3s, background .3s;}
+  .btn-solid{ background:var(--amarillo); color:var(--noche); }
+  .btn-solid:hover{ transform:translateY(-3px); background:var(--blanco); }
+  .btn-outline{ border:1.5px solid var(--line); color:var(--blanco); }
+  .btn-outline:hover{ border-color:var(--azul); color:var(--azul); transform:translateY(-3px); }
+
+  .wheel-stage{ position:relative; display:flex; align-items:center; justify-content:center; }
+  #tzolkinWheel{ width:100%; max-width:440px; animation:spin 90s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .wheel-center{
+    position:absolute; width:130px; height:130px; border-radius:50%;
+    background:radial-gradient(circle, var(--noche2), var(--noche));
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    border:1px solid var(--line); flex-direction:column; gap:2px;
+  }
+  .wheel-center span{ font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--texto-dim); }
+  .wheel-center b{ font-family:'Bricolage Grotesque',sans-serif; font-size:1.1rem; }
+
+  /* ===== SECTION shared ===== */
+  section{ position:relative; padding:110px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(2rem,3.6vw,2.8rem); }
+  .section-head p{ color:var(--texto-dim); margin-top:16px; font-size:1.02rem; }
+
+  /* ===== INTRO / PAU ===== */
+  .intro{ background:var(--noche2); }
+  .intro-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center; }
+  @media(max-width:900px){ .intro-grid{ grid-template-columns:1fr; gap:40px; } }
+  .pau-badge{
+    width:100%; aspect-ratio:1/1; max-width:340px; border-radius:32px;
+    background:linear-gradient(155deg, var(--rojo), var(--violeta) 60%, var(--azul));
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+  }
+  .pau-badge svg{ width:62%; }
+  .intro-text p{ color:var(--texto-dim); margin-bottom:16px; font-size:1.02rem; }
+  .intro-text .hand{ color:var(--amarillo); font-size:1.5rem; margin-bottom:6px; display:block;}
+  .stat-row{ display:flex; gap:28px; margin-top:30px; flex-wrap:wrap; }
+  .stat{ border-left:3px solid var(--amarillo); padding-left:14px; }
+  .stat b{ display:block; font-size:1.5rem; font-family:'Bricolage Grotesque',sans-serif; }
+  .stat span{ font-size:.78rem; color:var(--texto-dim); text-transform:uppercase; letter-spacing:.06em; }
+
+  /* ===== KIN CALCULATOR — signature ===== */
+  .calc{ background:var(--noche); }
+  .calc-grid{ display:grid; grid-template-columns:.95fr 1.05fr; gap:60px; align-items:start; }
+  @media(max-width:940px){ .calc-grid{ grid-template-columns:1fr; gap:44px; } }
+  .calc-copy p{ color:var(--texto-dim); margin-bottom:16px; }
+  .date-form{
+    margin-top:26px; display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end;
+  }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field label{ font-size:.75rem; text-transform:uppercase; letter-spacing:.07em; color:var(--texto-dim); }
+  .field input{
+    background:var(--noche2); border:1px solid var(--line); border-radius:10px; color:var(--blanco);
+    padding:12px 14px; font-family:'Sora',sans-serif; font-size:.95rem; width:92px;
+  }
+  .field input:focus{ outline:2px solid var(--amarillo); border-color:var(--amarillo); }
+  .calc-btn{
+    background:var(--rojo); color:var(--blanco); border:none; padding:13px 24px; border-radius:10px;
+    font-family:'Sora',sans-serif; font-weight:600; font-size:.92rem; cursor:pointer; transition:background .3s, transform .3s;
+  }
+  .calc-btn:hover{ background:var(--amarillo); color:var(--noche); transform:translateY(-2px); }
+
+  .kin-result{
+    margin-top:34px; border-radius:22px; padding:34px; position:relative; overflow:hidden;
+    background:var(--noche2); border:1px solid var(--line); min-height:230px;
+    display:flex; flex-direction:column; justify-content:center;
+    transition:background .5s ease;
+  }
+  .kin-result.empty{ align-items:center; text-align:center; color:var(--texto-dim); }
+  .kin-result .kin-top{ display:flex; align-items:center; gap:18px; margin-bottom:18px; }
+  .kin-glyph{ width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .kin-glyph svg{ width:36px; height:36px; }
+  .kin-titles b{ display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:1.5rem; }
+  .kin-titles span{ font-size:.85rem; color:var(--texto-dim); }
+  .kin-number{
+    font-family:'Bricolage Grotesque',sans-serif; font-size:.85rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--amarillo); margin-bottom:8px;
+  }
+  .kin-msg{ font-family:'Kalam',cursive; font-size:1.25rem; line-height:1.4; color:var(--blanco); }
+
+  /* seal color helpers */
+  .c-rojo{ background:rgba(230,74,51,0.22); color:var(--rojo); }
+  .c-blanco{ background:rgba(247,241,225,0.16); color:var(--blanco); }
+  .c-azul{ background:rgba(47,168,184,0.22); color:var(--azul); }
+  .c-amarillo{ background:rgba(244,180,0,0.22); color:var(--amarillo); }
+
+  /* ===== SERVICES ===== */
+  .services{ background:var(--noche2); }
+  .service-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  @media(max-width:900px){ .service-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:620px){ .service-grid{ grid-template-columns:1fr; } }
+  .service{
+    background:var(--noche); border:1px solid var(--line); border-radius:22px; padding:32px;
+    transition:transform .35s ease, border-color .35s ease;
+  }
+  .service:hover{ transform:translateY(-6px); border-color:var(--amarillo); }
+  .service .icon{ width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+  .service .icon svg{ width:28px; height:28px; }
+  .service h3{ font-size:1.2rem; margin-bottom:10px; }
+  .service p{ color:var(--texto-dim); font-size:.92rem; }
+
+  /* ===== SISTER PROJECT STRIP ===== */
+  .sister{
+    background:linear-gradient(100deg, var(--rojo), var(--violeta) 55%, var(--azul));
+    padding:60px 0;
+  }
+  .sister .wrap{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; }
+  .sister h3{ font-size:1.5rem; }
+  .sister p{ color:rgba(247,241,225,0.85); margin-top:6px; }
+  .sister .btn-solid{ background:var(--noche); color:var(--blanco); }
+  .sister .btn-solid:hover{ background:var(--blanco); color:var(--noche); }
+
+  /* ===== QUOTE ===== */
+  .stripe{ padding:100px 0; text-align:center; }
+  .stripe .display{ font-size:clamp(1.6rem,3.6vw,2.4rem); max-width:820px; margin:0 auto; line-height:1.4; }
+  .stripe .display .hl{ color:var(--amarillo); }
+
+  /* ===== CONTACT ===== */
+  footer{ background:var(--noche2); padding:90px 0 40px; border-top:1px solid var(--line); }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  @media(max-width:820px){ .contact-grid{ grid-template-columns:1fr; gap:40px; } }
+  .contact-grid h2{ font-size:clamp(2rem,3.8vw,2.6rem); margin-bottom:18px; }
+  .contact-grid p{ color:var(--texto-dim); max-width:44ch; }
+  .contact-links{ display:flex; flex-direction:column; }
+  .contact-link{
+    display:flex; align-items:center; justify-content:space-between; padding:20px 0;
+    border-top:1px solid var(--line); font-size:1.02rem; transition:padding-left .3s, color .3s;
+  }
+  .contact-link:last-child{ border-bottom:1px solid var(--line); }
+  .contact-link:hover{ padding-left:10px; color:var(--amarillo); }
+  .contact-link small{ color:var(--texto-dim); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
+  .contact-link .arrow{ transition:transform .3s; }
+  .contact-link:hover .arrow{ transform:translateX(6px); }
+  .foot-bottom{
+    margin-top:70px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.8rem; color:var(--texto-dim);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
+  }
+  :focus-visible{ outline:2px solid var(--amarillo); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand">
+        <svg class="kin-mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#F4B400" stroke-width="2"/><circle cx="20" cy="20" r="9" fill="#E64A33"/><circle cx="20" cy="20" r="3" fill="#F7F1E1"/></svg>
+        Sincro Maya
+      </a>
+      <div class="links">
+        <a href="#pau">Pau</a>
+        <a href="#kin">Tu Kin</a>
+        <a href="#servicios">Servicios</a>
+        <a href="https://wa.me/" onclick="return false;" style="display:none"></a>
+        <a href="https://www.instagram.com/sincromaya/" target="_blank" rel="noopener" class="nav-cta">Instagram ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag"><span class="dot"></span> Comunidad · Astrología Maya</span>
+        <h1>Descúbrete a través<br class="lgonly"> del <span class="colorline">Tzolkin Maya</span></h1>
+        <p class="lead">Soy Pau 📍🇦🇷, astróloga maya. Te acompaño a leer tu Kin, tu carta natal y tus ciclos con el calendario sagrado de 260 días, según el legado de Argüelles.</p>
+        <div class="cta-row">
+          <a href="#kin" class="btn btn-solid">Calcular mi Kin</a>
+          <a href="https://www.instagram.com/sincromaya/" target="_blank" rel="noopener" class="btn btn-outline">Seguir la comunidad</a>
+        </div>
+      </div>
+      <div class="wheel-stage">
+        <svg id="tzolkinWheel" viewBox="0 0 400 400">
+          <circle cx="200" cy="200" r="188" fill="none" stroke="rgba(247,241,225,0.12)" stroke-width="1"/>
+          <g id="wheelSeals"></g>
+        </svg>
+        <div class="wheel-center">
+          <span>Tzolkin</span>
+          <b>260 kin</b>
+          <span>13 × 20</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAU / INTRO ===== -->
+  <section class="intro" id="pau">
+    <div class="wrap intro-grid">
+      <div class="reveal">
+        <div class="pau-badge">
+          <svg viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="38" r="20" fill="#F7F1E1"/>
+            <path d="M20 92c0-18 13-32 30-32s30 14 30 32Z" fill="#F7F1E1"/>
+            <circle cx="50" cy="38" r="20" fill="none" stroke="#140B2E" stroke-width="1.5" opacity="0.15"/>
+          </svg>
+        </div>
+      </div>
+      <div class="intro-text reveal">
+        <span class="hand">hola, soy Pau</span>
+        <h2 style="margin-bottom:18px;">Una guía, no una receta</h2>
+        <p>Trabajo con el Tzolkin Maya según la lectura de José Argüelles: un mapa de 260 días que combina 20 sellos solares y 13 tonos galácticos para leer tu esencia, tus ciclos y el momento que estás atravesando.</p>
+        <p>Cada sesión es un espacio de escucha — no busco decirte quién sos, sino ayudarte a reconocer lo que tu propio Kin ya te está mostrando.</p>
+        <div class="stat-row">
+          <div class="stat"><b>1:1</b><span>sesiones personalizadas</span></div>
+          <div class="stat"><b>260</b><span>días del Tzolkin</span></div>
+          <div class="stat"><b>©️</b><span>Terapia Cuántica</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KIN CALCULATOR — signature ===== -->
+  <section class="calc" id="kin">
+    <div class="wrap calc-grid">
+      <div class="calc-copy reveal">
+        <span class="tag"><span class="dot"></span> herramienta interactiva</span>
+        <h2>¿Cuál es tu Kin?</h2>
+        <p>Ingresá tu fecha de nacimiento y descubrí tu sello solar y tu tono galáctico según el conteo Tzolkin. Es solo el punto de partida — en una sesión 1:1 vamos mucho más profundo.</p>
+        <div class="date-form">
+          <div class="field">
+            <label for="d">Día</label>
+            <input type="number" id="d" min="1" max="31" placeholder="26">
+          </div>
+          <div class="field">
+            <label for="m">Mes</label>
+            <input type="number" id="m" min="1" max="12" placeholder="7">
+          </div>
+          <div class="field">
+            <label for="y">Año</label>
+            <input type="number" id="y" min="1900" max="2026" placeholder="1994">
+          </div>
+          <button class="calc-btn" id="calcBtn">Ver mi Kin</button>
+        </div>
+      </div>
+
+      <div class="kin-result empty reveal" id="kinResult">
+        <p>Tu sello y tono galáctico van a aparecer acá ✦</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="servicios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag"><span class="dot"></span> cómo trabajamos juntas</span>
+        <h2>Servicios</h2>
+      </div>
+      <div class="service-grid">
+        <div class="service reveal">
+          <div class="icon c-rojo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+          <h3>Sesión 1:1</h3>
+          <p>Un espacio individual para leer tu Kin en profundidad y conectarlo con el momento que estás viviendo.</p>
+        </div>
+        <div class="service reveal">
+          <div class="icon c-azul"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Carta Natal</h3>
+          <p>Tu mapa completo: sello, tono, familia y guías según el Tzolkin, explicado de forma clara y aplicable.</p>
+        </div>
+        <div class="service reveal">
+          <div class="icon c-amarillo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <h3>Revo (Revolución Solar)</h3>
+          <p>La lectura energética de tu nuevo año personal: qué se abre, qué se cierra y hacia dónde mirar.</p>
+        </div>
+        <div class="service reveal">
+          <div class="icon c-blanco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5a2 2 0 012-2h12a2 2 0 012 2v14l-4-2-4 2-4-2-4 2z"/></svg></div>
+          <h3>Cursos</h3>
+          <p>Formación grupal para aprender a leer el Tzolkin por vos misma, a tu ritmo y en comunidad.</p>
+        </div>
+        <div class="service reveal">
+          <div class="icon c-rojo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg></div>
+          <h3>Terapia Cuántica©️</h3>
+          <p>Un trabajo energético complementario para acompañar procesos de sanación y transformación.</p>
+        </div>
+        <div class="service reveal">
+          <div class="icon c-azul"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Comunidad</h3>
+          <p>Un canal vivo donde compartimos energías del día, sincronicidades y acompañamiento constante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SISTER PROJECT ===== -->
+  <section class="sister">
+    <div class="wrap">
+      <div>
+        <h3>@casaviento369</h3>
+        <p>El proyecto hermano de Sincro Maya — conocé más en Instagram.</p>
+      </div>
+      <a href="https://www.instagram.com/casaviento369/" target="_blank" rel="noopener" class="btn btn-solid">Ver @casaviento369 ↗</a>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE ===== -->
+  <section class="stripe">
+    <div class="wrap">
+      <p class="display reveal">Tu Kin no te dice quién tenés que ser. <span class="hl">Te recuerda quién ya sos.</span></p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <footer id="contacto">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <span class="tag"><span class="dot"></span> conectemos</span>
+        <h2>Sumate a Sincro Maya</h2>
+        <p>Para sesiones, cursos o simplemente para sincronizar energías del día, encontrame en estos espacios.</p>
+      </div>
+      <div class="reveal">
+        <div class="contact-links">
+          <a class="contact-link" href="https://www.instagram.com/sincromaya/" target="_blank" rel="noopener">
+            <span><small>Instagram</small><br>@sincromaya</span>
+            <span class="arrow">→</span>
+          </a>
+          <a class="contact-link" href="https://msha.ke/sincromaya" target="_blank" rel="noopener">
+            <span><small>Todos los enlaces</small><br>msha.ke/sincromaya</span>
+            <span class="arrow">→</span>
+          </a>
+          <a class="contact-link" href="https://whatsapp.com/channel/0029VbCldcWHQbS0swqmnE0W" target="_blank" rel="noopener">
+            <span><small>Canal de WhatsApp</small><br>Energías del día, en vivo</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© <span id="year"></span> Sincro Maya · Pau</span>
+      <span>Astrología Maya · Comunidad</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', ()=> header.classList.toggle('scrolled', window.scrollY>40));
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold:0.15 });
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===================== TZOLKIN DATA ===================== */
+const seals = [
+  {n:'Dragón',       color:'rojo',     icon:'M6 18c4-10 12-10 12-2-4-2-8 2-8 8', msg:'Nutrís lo que sostenés. Hoy tocá el origen de las cosas.'},
+  {n:'Viento',       color:'blanco',   icon:'M4 8h10a3 3 0 100-6M4 14h14a3 3 0 110 6M4 20h8', msg:'Tu voz es tu herramienta. Comunicá lo que sentís.'},
+  {n:'Noche',        color:'azul',     icon:'M18 14a7 7 0 11-8-11 6 6 0 108 11z', msg:'Confiá en lo que aparece en la oscuridad. Ahí también hay respuestas.'},
+  {n:'Semilla',      color:'amarillo', icon:'M12 3c4 3 4 9 0 12-4-3-4-9 0-12zM12 15v6', msg:'Estás plantando algo que todavía no ves crecer. Sostenelo igual.'},
+  {n:'Serpiente',    color:'rojo',     icon:'M4 18c3-3 3-6 0-9s3-6 6-6 6 3 3 6 3 6 0 9-6 3-9 0z', msg:'La energía vital te pide movimiento, no quietud. Animate a soltar.'},
+  {n:'Enlazador de Mundos', color:'blanco', icon:'M4 12h6M14 12h6M9 6l-5 6 5 6M15 6l5 6-5 6', msg:'Sos puente entre lo que fue y lo que viene. Cruzalo con calma.'},
+  {n:'Mano',         color:'azul',     icon:'M8 21V11a2 2 0 114 0v2M12 13V9a2 2 0 114 0v4M16 13a2 2 0 114 0v3a6 6 0 01-6 6H9', msg:'Es momento de hacer, no solo de pensar. Tus manos saben.'},
+  {n:'Estrella',     color:'amarillo', icon:'M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z', msg:'Hay belleza en lo que ya hiciste. Permitite mirarlo hoy.'},
+  {n:'Luna',         color:'rojo',     icon:'M17 18a7 7 0 11-6-11 6 6 0 106 11z', msg:'Algo pide ser purificado. Soltalo sin juzgarte por sentirlo.'},
+  {n:'Perro',        color:'blanco',   icon:'M4 10c2-4 6-4 8-1 2-3 6-3 8 1-1 5-6 9-8 9s-7-4-8-9z', msg:'El corazón sabe el camino aunque la mente dude. Seguilo.'},
+  {n:'Mono',         color:'azul',     icon:'M8 8a4 4 0 118 0c0 2-1 3-2 4M12 12v9M8 21h8', msg:'No todo tiene que ser serio. Jugá con lo que estás creando.'},
+  {n:'Humano',       color:'amarillo', icon:'M12 3a4 4 0 110 8 4 4 0 010-8zM5 21c0-5 3-8 7-8s7 3 7 8', msg:'Tu sabiduría no viene de afuera. Confiá en tu propio criterio.'},
+  {n:'Caminante del Cielo', color:'rojo', icon:'M12 2v14M6 10l6-8 6 8M6 20h12', msg:'Estás explorando terreno nuevo. Está bien no tener el mapa completo.'},
+  {n:'Mago',         color:'blanco',   icon:'M12 3l1.8 4.5L18 9l-4.2 1.5L12 15l-1.8-4.5L6 9l4.2-1.5z', msg:'Hay magia en lo cotidiano si le prestás atención. Hoy, mirá dos veces.'},
+  {n:'Águila',       color:'azul',     icon:'M2 12c4-4 8-4 10 0 2-4 6-4 10 0-4 4-8 4-10 0-2 4-6 4-10 0z', msg:'Tomá distancia para ver el panorama completo antes de decidir.'},
+  {n:'Guerrero',     color:'amarillo', icon:'M12 2l3 5-3 5-3-5zM12 12v10M8 22h8', msg:'Las preguntas incómodas también son un camino. No las evites.'},
+  {n:'Tierra',       color:'rojo',     icon:'M12 3a9 9 0 100 18 9 9 0 000-18zM3 12h18M12 3c3 4 3 14 0 18', msg:'Volvé al cuerpo, al ritmo simple de los días. Ahí también hay evolución.'},
+  {n:'Espejo',       color:'blanco',   icon:'M12 3l9 9-9 9-9-9z', msg:'Lo que te molesta del otro suele hablarte de vos. Mirá sin dureza.'},
+  {n:'Tormenta',     color:'azul',     icon:'M13 3L4 14h6l-1 7 9-11h-6z', msg:'Un cambio abrupto puede ser justo lo que necesitabas. No lo frenes.'},
+  {n:'Sol',          color:'amarillo', icon:'M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1M12 8a4 4 0 100 8 4 4 0 000-8z', msg:'Ilumina lo que ya sos, sin necesidad de agregar nada más.'}
+];
+const tones = ['Magnético','Lunar','Eléctrico','Autoexistente','Entonado','Rítmico','Resonante','Galáctico','Solar','Planetario','Espectral','Cristal','Cósmico'];
+
+/* Wheel: place 20 seal glyphs around the circle */
+const wheelG = document.getElementById('wheelSeals');
+const colorHex = {rojo:'#E64A33', blanco:'#F7F1E1', azul:'#2FA8B8', amarillo:'#F4B400'};
+seals.forEach((s,i)=>{
+  const angle = (i/20)*2*Math.PI - Math.PI/2;
+  const r = 160;
+  const x = 200 + r*Math.cos(angle);
+  const y = 200 + r*Math.sin(angle);
+  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.setAttribute('transform', `translate(${x-11},${y-11})`);
+  const circ = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  circ.setAttribute('cx',11); circ.setAttribute('cy',11); circ.setAttribute('r',11);
+  circ.setAttribute('fill', 'rgba(20,11,46,0.9)');
+  circ.setAttribute('stroke', colorHex[s.color]); circ.setAttribute('stroke-width','1.2');
+  g.appendChild(circ);
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  path.setAttribute('d', s.icon);
+  path.setAttribute('transform', 'translate(3.2,3.2) scale(0.35)');
+  path.setAttribute('fill','none');
+  path.setAttribute('stroke', colorHex[s.color]);
+  path.setAttribute('stroke-width','2');
+  path.setAttribute('stroke-linecap','round');
+  path.setAttribute('stroke-linejoin','round');
+  g.appendChild(path);
+  wheelG.appendChild(g);
+});
+
+/* Dreamspell-style Kin calculation (public-domain Tzolkin math, reference: 26 jul 1987 = Kin 34) */
+function calcKin(day, month, year){
+  const ref = Date.UTC(1987,6,26); // 26 julio 1987 = Kin 34
+  const target = Date.UTC(year, month-1, day);
+  const diffDays = Math.floor((target - ref)/86400000);
+  let kin = ((diffDays + 34 - 1) % 260 + 260) % 260 + 1;
+  const tone = ((kin-1) % 13) + 1;
+  const sealIndex = ((kin-1) % 20);
+  return { kin, tone, seal: seals[sealIndex] };
+}
+
+const resultBox = document.getElementById('kinResult');
+document.getElementById('calcBtn').addEventListener('click', ()=>{
+  const d = parseInt(document.getElementById('d').value);
+  const m = parseInt(document.getElementById('m').value);
+  const y = parseInt(document.getElementById('y').value);
+  if(!d || !m || !y || d<1 || d>31 || m<1 || m>12 || y<1900){
+    resultBox.classList.add('empty');
+    resultBox.innerHTML = '<p>Revisá la fecha — probá de nuevo con día, mes y año completos ✦</p>';
+    return;
+  }
+  const {kin, tone, seal} = calcKin(d,m,y);
+  resultBox.classList.remove('empty');
+  resultBox.style.background = `linear-gradient(155deg, rgba(20,11,46,0.95), rgba(20,11,46,0.6))`;
+  resultBox.innerHTML = `
+    <div class="kin-top">
+      <div class="kin-glyph c-${seal.color}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${seal.icon}"/></svg>
+      </div>
+      <div class="kin-titles">
+        <b>${seal.n}</b>
+        <span>Tono ${tone} · ${tones[tone-1]}</span>
+      </div>
+    </div>
+    <div class="kin-number">Kin ${kin} de 260</div>
+    <p class="kin-msg">"${seal.msg}"</p>
+  `;
+});
+</script>
+
+</body>
+</html>

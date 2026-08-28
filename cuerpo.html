@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuerpo Conciente — Alquimia · Astrología · Kundalini</title>
+<meta name="description" content="Cuerpo Conciente: Alquimia Iniciática, Activación ADN Cristal, Kundalini y Astrología Alquímica. Alinea tus 4 cuerpos y recuerda tu poder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#170B2E;
+    --void-2:#210F3E;
+    --violet:#5B2A86;
+    --fuchsia:#C43F8C;
+    --gold:#E7B750;
+    --gold-light:#F3CE83;
+    --aqua:#33B7A6;
+    --cream:#F7EFDD;
+    --text-soft:#c9bcd6;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Jost', sans-serif;
+    background:var(--cream);
+    color:#2a2038;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    letter-spacing:0;
+  }
+  em{ font-style:italic; font-weight:500; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 32px;
+  }
+  .topbar .mark{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:1.2rem;
+    color:var(--cream);
+  }
+  .topbar .badge{
+    font-size:0.7rem;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--void);
+    background:var(--gold-light);
+    padding:7px 16px;
+    border-radius:100px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(196,63,140,0.35), transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(51,183,166,0.22), transparent 55%),
+      linear-gradient(160deg, var(--void) 0%, var(--void-2) 55%, #2a1245 100%);
+    color:var(--cream);
+    padding:150px 28px 110px;
+    overflow:hidden;
+  }
+
+  .stars{
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, rgba(247,239,221,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 70% 20%, rgba(247,239,221,0.5), transparent),
+      radial-gradient(1px 1px at 40% 70%, rgba(247,239,221,0.6), transparent),
+      radial-gradient(1.5px 1.5px at 85% 60%, rgba(247,239,221,0.5), transparent),
+      radial-gradient(1px 1px at 10% 80%, rgba(247,239,221,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 60% 45%, rgba(247,239,221,0.55), transparent),
+      radial-gradient(1px 1px at 92% 15%, rgba(247,239,221,0.45), transparent);
+    background-repeat:repeat;
+    background-size:100% 100%;
+    opacity:0.9;
+    pointer-events:none;
+  }
+
+  .merkaba{
+    position:relative;
+    width:min(220px, 46vw);
+    height:min(220px, 46vw);
+    margin-bottom:30px;
+  }
+  .merkaba svg{ width:100%; height:100%; }
+  .tri-up{
+    transform-origin:110px 110px;
+    animation:spin-cw 26s linear infinite;
+  }
+  .tri-down{
+    transform-origin:110px 110px;
+    animation:spin-ccw 26s linear infinite;
+  }
+  @keyframes spin-cw{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  @keyframes spin-ccw{ from{transform:rotate(0deg);} to{transform:rotate(-360deg);} }
+
+  .hero-eyebrow{
+    font-size:0.82rem;
+    font-weight:500;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    margin-bottom:22px;
+  }
+
+  .hero h1{
+    position:relative;
+    font-size:clamp(2.5rem, 6.4vw, 4.7rem);
+    line-height:1.1;
+    max-width:840px;
+    font-weight:600;
+  }
+  .hero h1 em{ color:var(--gold-light); }
+
+  .hero p.sub{
+    position:relative;
+    margin-top:26px;
+    max-width:580px;
+    font-size:1.14rem;
+    line-height:1.7;
+    color:var(--text-soft);
+  }
+
+  .hero-meta{
+    position:relative;
+    margin-top:34px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+  }
+  .pill{
+    font-size:0.85rem;
+    padding:9px 18px;
+    border-radius:100px;
+    background:rgba(247,239,221,0.08);
+    border:1px solid rgba(231,183,80,0.35);
+    color:var(--cream);
+  }
+
+  .cta{
+    position:relative;
+    margin-top:40px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:linear-gradient(120deg, var(--gold), var(--gold-light));
+    color:var(--void);
+    font-weight:600;
+    font-size:1rem;
+    padding:17px 32px;
+    border-radius:100px;
+    box-shadow:0 16px 32px -10px rgba(231,183,80,0.55);
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .cta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 36px -8px rgba(231,183,80,0.7);
+  }
+
+  /* ---------- section shell ---------- */
+  section{ position:relative; padding:110px 0; }
+  .eyebrow{
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--fuchsia);
+    margin-bottom:16px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.8rem, 3.6vw, 2.6rem);
+    max-width:660px;
+    line-height:1.22;
+    font-weight:600;
+  }
+
+  /* ---------- about ---------- */
+  .about{ background:var(--cream); }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-copy p{
+    font-size:1.1rem;
+    line-height:1.85;
+    color:#3a2c48;
+    margin-bottom:20px;
+  }
+  .about-copy p:last-child{ margin-bottom:0; }
+  .signature-line{
+    width:64px; height:2px;
+    background:var(--gold);
+    margin:26px 0 0;
+  }
+
+  /* ---------- services ---------- */
+  .services{
+    background:linear-gradient(180deg, var(--violet) 0%, #431f6b 100%);
+    color:var(--cream);
+  }
+  .services .eyebrow{ color:var(--gold-light); }
+  .services .section-title{ color:var(--cream); }
+
+  .cards{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .card{
+    background:rgba(247,239,221,0.06);
+    border:1px solid rgba(247,239,221,0.16);
+    border-radius:20px;
+    padding:36px 28px;
+    transition:transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    background:rgba(247,239,221,0.1);
+    border-color:rgba(231,183,80,0.55);
+  }
+  .card .glyph{
+    width:42px; height:42px;
+    margin-bottom:22px;
+  }
+  .card h3{ font-size:1.4rem; margin-bottom:12px; color:var(--gold-light); }
+  .card p{
+    font-size:0.98rem;
+    line-height:1.7;
+    color:#ddd2e6;
+  }
+
+  /* ---------- four bodies ---------- */
+  .bodies{ background:var(--cream); }
+  .bodies-grid{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+  }
+  .body-item{
+    text-align:center;
+    padding:34px 18px;
+    border-radius:20px;
+    background:var(--void-2)10;
+  }
+  .body-item .ring{
+    width:64px; height:64px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;
+    font-weight:600;
+    color:var(--cream);
+  }
+  .body-item:nth-child(1) .ring{ background:linear-gradient(135deg, var(--aqua), #1f8377); }
+  .body-item:nth-child(2) .ring{ background:linear-gradient(135deg, var(--fuchsia), #8c2c63); }
+  .body-item:nth-child(3) .ring{ background:linear-gradient(135deg, var(--violet), #3a1a5c); }
+  .body-item:nth-child(4) .ring{ background:linear-gradient(135deg, var(--gold), #b9862f); }
+  .body-item h4{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:1.2rem;
+    margin-bottom:8px;
+  }
+  .body-item p{
+    font-size:0.9rem;
+    line-height:1.6;
+    color:#5b4d68;
+  }
+
+  /* ---------- book ---------- */
+  .book{
+    background:var(--void);
+    color:var(--cream);
+  }
+  .book-grid{
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:60px;
+    align-items:center;
+  }
+  .book-cover{
+    aspect-ratio:3/4;
+    border-radius:20px;
+    background:linear-gradient(155deg, var(--fuchsia) 0%, var(--violet) 55%, var(--void-2) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:34px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+  }
+  .book-cover::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(231,183,80,0.35), transparent 60%);
+  }
+  .book-cover span{
+    position:relative;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.7rem;
+    text-align:center;
+    color:var(--cream);
+    line-height:1.35;
+  }
+  .book .eyebrow{ color:var(--gold-light); }
+  .book h2{ color:var(--cream); }
+  .book p{
+    margin-top:20px;
+    font-size:1.05rem;
+    line-height:1.8;
+    color:var(--text-soft);
+    max-width:480px;
+  }
+  .book-cta{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid var(--gold);
+    color:var(--gold-light);
+    font-weight:500;
+    font-size:0.95rem;
+    padding:13px 26px;
+    border-radius:100px;
+    transition:background 0.3s ease, color 0.3s ease;
+  }
+  .book-cta:hover{ background:var(--gold); color:var(--void); }
+
+  /* ---------- quote ---------- */
+  .quote-section{
+    background:var(--cream);
+    text-align:center;
+    padding:130px 0;
+  }
+  .quote-section blockquote{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.6rem, 3.6vw, 2.3rem);
+    line-height:1.5;
+    max-width:780px;
+    margin:0 auto;
+    color:#2a2038;
+  }
+  .quote-section .dash{
+    width:44px; height:2px;
+    background:var(--fuchsia);
+    margin:32px auto 0;
+  }
+
+  /* ---------- contact ---------- */
+  .contact{
+    background:linear-gradient(160deg, var(--void) 0%, #2a1245 100%);
+    color:var(--cream);
+    text-align:center;
+  }
+  .contact .eyebrow{ color:var(--gold-light); }
+  .contact .section-title{ color:var(--cream); margin:0 auto; max-width:600px; }
+  .contact p.sub{
+    max-width:480px;
+    margin:20px auto 0;
+    color:var(--text-soft);
+    line-height:1.7;
+    font-size:1rem;
+  }
+
+  .contact-links{
+    margin-top:48px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+  .contact-link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 24px;
+    border:1px solid rgba(247,239,221,0.2);
+    border-radius:14px;
+    font-size:0.95rem;
+    transition:border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  }
+  .contact-link:hover{
+    border-color:var(--gold);
+    background:rgba(231,183,80,0.08);
+    transform:translateY(-3px);
+  }
+  .contact-link svg{ width:20px; height:20px; flex:none; }
+  .contact-link .label{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    line-height:1.3;
+  }
+  .contact-link .label small{
+    color:#a89bb5;
+    font-size:0.74rem;
+    letter-spacing:0.03em;
+  }
+
+  footer{
+    background:#120826;
+    color:#8b7f97;
+    text-align:center;
+    padding:36px 24px;
+    font-size:0.85rem;
+  }
+  footer .display{ color:#d8c9e2; font-style:italic; }
+
+  /* ---------- floating buttons ---------- */
+  .floaters{
+    position:fixed;
+    bottom:26px;
+    right:26px;
+    z-index:60;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .floater{
+    width:56px; height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 22px -6px rgba(0,0,0,0.45);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .floater:hover{ transform:translateY(-4px) scale(1.06); }
+  .floater.wa{ background:#25D366; }
+  .floater.ig{ background:linear-gradient(135deg, var(--fuchsia), var(--gold)); }
+  .floater svg{ width:26px; height:26px; color:#fff; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .about-grid, .book-grid{ grid-template-columns:1fr; gap:38px; }
+    .cards{ grid-template-columns:1fr; }
+    .bodies-grid{ grid-template-columns:repeat(2, 1fr); }
+    .book-cover{ max-width:280px; margin:0 auto; }
+    .topbar{ padding:16px 20px; }
+    section{ padding:80px 0; }
+    .hero{ padding-top:120px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span class="mark">Cuerpo Conciente</span>
+    <span class="badge">Alquimia Iniciática</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="stars"></div>
+
+    <div class="merkaba">
+      <svg viewBox="0 0 220 220" fill="none">
+        <polygon class="tri-up" points="110,20 190,165 30,165" stroke="#F3CE83" stroke-width="2"/>
+        <polygon class="tri-down" points="110,200 30,55 190,55" stroke="#33B7A6" stroke-width="2"/>
+        <circle cx="110" cy="110" r="98" stroke="#E7B750" stroke-width="1" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <span class="hero-eyebrow">Alquimia · Astrología · Kundalini</span>
+    <h1>Despierta tu <em>mago interior</em>.</h1>
+    <p class="sub">Activación ADN Cristal, Kundalini y Astrología Alquímica para alinear tus 4 cuerpos y recordar tu poder.</p>
+    <div class="hero-meta">
+      <span class="pill">💎 ADN Cristal</span>
+      <span class="pill">🔥 Kundalini</span>
+      <span class="pill">✨ Astrología Alquímica</span>
+    </div>
+    <a class="cta" href="https://chat.whatsapp.com/HuhVx1PEvp00dhmSfLWWgm" target="_blank" rel="noopener">Sumate a la comunidad →</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container about-grid">
+      <div class="reveal">
+        <span class="eyebrow">Qué es Cuerpo Conciente</span>
+        <h2 class="section-title display">Un espacio de alquimia iniciática para recordar quién sos.</h2>
+        <div class="signature-line"></div>
+      </div>
+      <div class="reveal about-copy">
+        <p>Cuerpo Conciente es un espacio de acompañamiento energético donde la astrología, la alquimia y el trabajo con la kundalini se combinan para activar tu proceso de despertar.</p>
+        <p>Cada encuentro es una oportunidad para desprogramar viejas creencias, activar tu ADN cristal y reconectar con la magia que ya habita en vos.</p>
+        <p>No se trata de aprender algo nuevo, sino de recordar: tu cuerpo guarda la memoria de tu propio poder.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <span class="eyebrow reveal">Activaciones</span>
+      <h2 class="section-title display reveal">Tres caminos de activación para tu alquimia interior.</h2>
+
+      <div class="cards">
+        <div class="card reveal">
+          <svg class="glyph" viewBox="0 0 40 40" fill="none" stroke="#E7B750" stroke-width="1.4">
+            <path d="M20 4 34 20 20 36 6 20Z"/>
+            <path d="M20 4v32M6 20h28" opacity="0.5"/>
+          </svg>
+          <h3>ADN Cristal</h3>
+          <p>Activación energética para despertar el potencial dormido en tu código genético y elevar tu frecuencia vibracional.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="glyph" viewBox="0 0 40 40" fill="none" stroke="#E7B750" stroke-width="1.4">
+            <path d="M20 4c0 8-8 8-8 16s8 8 8 16c0-8 8-8 8-16s-8-8-8-16Z"/>
+          </svg>
+          <h3>Kundalini</h3>
+          <p>Trabajo directo con tu energía vital, ayudándola a ascender libremente por tus centros energéticos.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="glyph" viewBox="0 0 40 40" fill="none" stroke="#E7B750" stroke-width="1.4">
+            <circle cx="20" cy="20" r="15"/>
+            <circle cx="20" cy="8" r="1.6" fill="#E7B750" stroke="none"/>
+            <circle cx="32" cy="20" r="1.6" fill="#E7B750" stroke="none"/>
+            <circle cx="20" cy="32" r="1.6" fill="#E7B750" stroke="none"/>
+            <circle cx="8" cy="20" r="1.6" fill="#E7B750" stroke="none"/>
+          </svg>
+          <h3>Astrología Alquímica</h3>
+          <p>Lectura de tu carta natal como mapa de transformación, para comprender tus ciclos y tu propósito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR BODIES -->
+  <section class="bodies">
+    <div class="container">
+      <span class="eyebrow reveal">El propósito</span>
+      <h2 class="section-title display reveal">Alinea tus 4 cuerpos y recordá tu poder.</h2>
+
+      <div class="bodies-grid">
+        <div class="body-item reveal">
+          <div class="ring">F</div>
+          <h4>Físico</h4>
+          <p>El vehículo que sostiene todo el proceso.</p>
+        </div>
+        <div class="body-item reveal">
+          <div class="ring">E</div>
+          <h4>Emocional</h4>
+          <p>Donde se guardan y se sanan las memorias.</p>
+        </div>
+        <div class="body-item reveal">
+          <div class="ring">M</div>
+          <h4>Mental</h4>
+          <p>Las creencias que moldean tu realidad.</p>
+        </div>
+        <div class="body-item reveal">
+          <div class="ring">E</div>
+          <h4>Espiritual</h4>
+          <p>La conexión con tu propósito y tu magia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="book">
+    <div class="container book-grid">
+      <div class="book-cover reveal">
+        <span>El Espejo<br>Invisible</span>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Para seguir profundizando</span>
+        <h2 class="display">Un libro para acompañar tu proceso de despertar.</h2>
+        <p>"El Espejo Invisible" es una guía para adentrarte en tu propia alquimia interior, disponible en Libella Ediciones.</p>
+        <a class="book-cta" href="https://libellaediciones.com.ar/productos/el-espejo-invisible-1wyjp" target="_blank" rel="noopener">Ver el libro →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="reveal">"No hay nada que aprender que no hayas olvidado ya. Solo hay que recordar tu propia magia."</blockquote>
+      <div class="dash reveal"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="container">
+      <span class="eyebrow reveal">Info</span>
+      <h2 class="section-title display reveal">¿Lista para tu proceso de alquimia?</h2>
+      <p class="sub reveal">Sumate a la comunidad, seguí el proceso en Instagram o encontrá todos los enlaces en un solo lugar.</p>
+
+      <div class="contact-links reveal">
+        <a class="contact-link" href="https://chat.whatsapp.com/HuhVx1PEvp00dhmSfLWWgm" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E7B750" stroke-width="1.6"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19L4 20z"/></svg>
+          <span class="label">Comunidad<small>Grupo de WhatsApp</small></span>
+        </a>
+        <a class="contact-link" href="https://www.instagram.com/cuerpo_conciente/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E7B750" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="#E7B750" stroke="none"/></svg>
+          <span class="label">@cuerpo_conciente<small>Instagram</small></span>
+        </a>
+        <a class="contact-link" href="https://linktr.ee/cuerpo_conciente" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E7B750" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18" opacity="0.5"/></svg>
+          <span class="label">linktr.ee/cuerpo_conciente<small>Todos los enlaces</small></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="display">Cuerpo Conciente</span> · Alquimia · Astrología · Kundalini
+  </footer>
+
+  <div class="floaters">
+    <a class="floater wa" href="https://chat.whatsapp.com/HuhVx1PEvp00dhmSfLWWgm" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19L4 20z"/></svg>
+    </a>
+    <a class="floater ig" href="https://www.instagram.com/cuerpo_conciente/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    </a>
+  </div>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el=> io.observe(el));
+  </script>
+
+</body>
+</html>

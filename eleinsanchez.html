@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elein Sánchez — Psicóloga | Encuentros para sanar y crecer</title>
+<meta name="description" content="Elein Sánchez, psicóloga FPV 6096. Consultas, talleres y terapias grupales. Terapia psicológica online. Agenda tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --berry:#A23E60;
+    --berry-2:#7E2E4A;
+    --teal:#137A6C;
+    --teal-2:#0E5C51;
+    --marigold:#F2A93B;
+    --marigold-2:#F7C266;
+    --cream:#FFF7EA;
+    --cream-2:#FBEBD2;
+    --ink:#2B2130;
+    --text-soft:#5b4f56;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'DM Sans', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 32px;
+  }
+  .topbar .mark{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    font-size:1.1rem;
+    color:var(--cream);
+  }
+  .topbar .badge{
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--marigold-2);
+    padding:7px 16px;
+    border-radius:100px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(160deg, var(--berry-2) 0%, var(--berry) 42%, var(--teal) 100%);
+    color:var(--cream);
+    padding:150px 28px 110px;
+    overflow:hidden;
+  }
+
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(50px);
+    opacity:0.55;
+  }
+  .blob-1{
+    width:420px; height:420px;
+    top:-120px; left:-100px;
+    background:var(--marigold);
+    animation:float1 12s ease-in-out infinite;
+  }
+  .blob-2{
+    width:480px; height:480px;
+    bottom:-160px; right:-140px;
+    background:var(--teal-2);
+    animation:float2 14s ease-in-out infinite;
+  }
+  @keyframes float1{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(40px,30px) scale(1.08); }
+  }
+  @keyframes float2{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(-30px,-20px) scale(1.1); }
+  }
+
+  .bloom{
+    position:relative;
+    width:min(240px, 50vw);
+    height:min(240px, 50vw);
+    margin-bottom:34px;
+  }
+  .bloom svg{ width:100%; height:100%; }
+  .bloom circle{
+    transform-origin:center;
+    animation:pulse-ring 5s ease-in-out infinite;
+  }
+  .bloom circle:nth-child(2){ animation-delay:0.4s; }
+  .bloom circle:nth-child(3){ animation-delay:0.8s; }
+  .bloom circle:nth-child(4){ animation-delay:1.2s; }
+  @keyframes pulse-ring{
+    0%,100%{ opacity:0.35; transform:scale(0.9); }
+    50%{ opacity:1; transform:scale(1.02); }
+  }
+
+  .hero-eyebrow{
+    font-size:0.85rem;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--marigold-2);
+    margin-bottom:20px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.3rem, 6vw, 4.3rem);
+    line-height:1.08;
+    max-width:820px;
+  }
+  .hero h1 span{ color:var(--marigold-2); }
+
+  .hero p.sub{
+    margin-top:24px;
+    max-width:540px;
+    font-size:1.12rem;
+    line-height:1.65;
+    color:#f5e4d3;
+  }
+
+  .hero-meta{
+    margin-top:34px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+  }
+  .pill{
+    font-size:0.85rem;
+    font-weight:500;
+    padding:9px 18px;
+    border-radius:100px;
+    background:rgba(255,247,234,0.14);
+    border:1px solid rgba(255,247,234,0.3);
+  }
+
+  .cta{
+    margin-top:40px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--marigold);
+    color:#2B2130;
+    font-weight:700;
+    font-size:1rem;
+    padding:17px 32px;
+    border-radius:100px;
+    box-shadow:0 16px 32px -10px rgba(242,169,59,0.6);
+    transition:transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  }
+  .cta:hover{
+    transform:translateY(-3px);
+    background:var(--marigold-2);
+    box-shadow:0 20px 36px -8px rgba(242,169,59,0.7);
+  }
+
+  /* ---------- section shell ---------- */
+  section{ position:relative; padding:110px 0; }
+  .eyebrow{
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--berry);
+    margin-bottom:16px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.7rem, 3.4vw, 2.5rem);
+    max-width:640px;
+    line-height:1.2;
+  }
+
+  /* ---------- about ---------- */
+  .about{ background:var(--cream); }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-card{
+    background:var(--cream-2);
+    border-radius:24px;
+    padding:38px 32px;
+  }
+  .about-name{ font-size:1.8rem; margin-top:6px; }
+  .about-role{
+    color:var(--text-soft);
+    font-size:0.95rem;
+    margin-top:8px;
+  }
+  .fpv-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    background:var(--berry);
+    color:var(--cream);
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+    padding:8px 16px;
+    border-radius:100px;
+  }
+  .about-copy p{
+    font-size:1.08rem;
+    line-height:1.8;
+    color:#40323b;
+    margin-bottom:20px;
+  }
+  .about-copy p:last-child{ margin-bottom:0; }
+
+  /* ---------- services ---------- */
+  .services{ background:var(--ink); color:var(--cream); }
+  .services .eyebrow{ color:var(--marigold-2); }
+  .services .section-title{ color:var(--cream); }
+
+  .cards{
+    margin-top:54px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .card{
+    background:rgba(255,247,234,0.05);
+    border:1px solid rgba(255,247,234,0.14);
+    border-radius:20px;
+    padding:34px 28px;
+    transition:transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,247,234,0.09);
+    border-color:rgba(242,169,59,0.55);
+  }
+  .card .num{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--marigold-2);
+    margin-bottom:20px;
+    letter-spacing:0.06em;
+  }
+  .card h3{ font-size:1.28rem; margin-bottom:12px; }
+  .card p{
+    font-size:0.97rem;
+    line-height:1.7;
+    color:#d9cdd3;
+  }
+
+  /* ---------- steps ---------- */
+  .steps{ background:var(--cream-2); }
+  .steps-row{
+    margin-top:54px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    position:relative;
+  }
+  .step{
+    text-align:center;
+    padding:0 24px;
+    position:relative;
+  }
+  .step-num{
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--teal);
+    color:var(--cream);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    font-size:1.2rem;
+    margin:0 auto 20px;
+  }
+  .step h4{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    font-size:1.1rem;
+    margin-bottom:10px;
+  }
+  .step p{
+    font-size:0.95rem;
+    line-height:1.65;
+    color:var(--text-soft);
+  }
+  .step-connector{
+    position:absolute;
+    top:28px;
+    left:calc(50% + 46px);
+    width:calc(100% - 92px);
+    height:2px;
+    background:repeating-linear-gradient(to right, var(--teal) 0 8px, transparent 8px 16px);
+  }
+
+  /* ---------- quote ---------- */
+  .quote-section{
+    background:linear-gradient(140deg, var(--teal-2), var(--teal));
+    color:var(--cream);
+    text-align:center;
+    padding:120px 0;
+  }
+  .quote-section blockquote{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:600;
+    font-size:clamp(1.5rem, 3.2vw, 2.15rem);
+    line-height:1.5;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .quote-section .dash{
+    width:44px; height:3px;
+    background:var(--marigold);
+    margin:32px auto 0;
+    border-radius:4px;
+  }
+
+  /* ---------- contact ---------- */
+  .contact{
+    background:linear-gradient(160deg, var(--berry-2), var(--ink));
+    color:var(--cream);
+    text-align:center;
+  }
+  .contact .eyebrow{ color:var(--marigold-2); }
+  .contact .section-title{ color:var(--cream); margin:0 auto; max-width:600px; }
+  .contact p.sub{
+    max-width:480px;
+    margin:20px auto 0;
+    color:#e6d3da;
+    line-height:1.7;
+    font-size:1rem;
+  }
+
+  .contact-links{
+    margin-top:46px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+  .contact-link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 26px;
+    border:1px solid rgba(255,247,234,0.22);
+    border-radius:14px;
+    font-size:0.95rem;
+    font-weight:500;
+    transition:border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  }
+  .contact-link:hover{
+    border-color:var(--marigold);
+    background:rgba(242,169,59,0.1);
+    transform:translateY(-3px);
+  }
+  .contact-link svg{ width:20px; height:20px; flex:none; }
+  .contact-link .label{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    line-height:1.3;
+  }
+  .contact-link .label small{
+    color:#c9b7bf;
+    font-size:0.74rem;
+    letter-spacing:0.03em;
+  }
+
+  footer{
+    background:#1c1520;
+    color:#9a8b93;
+    text-align:center;
+    padding:36px 24px;
+    font-size:0.85rem;
+  }
+  footer .display{ color:#e2d5db; font-weight:700; }
+
+  /* ---------- floating buttons ---------- */
+  .floaters{
+    position:fixed;
+    bottom:26px;
+    right:26px;
+    z-index:60;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .floater{
+    width:56px; height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 22px -6px rgba(0,0,0,0.4);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .floater:hover{ transform:translateY(-4px) scale(1.06); }
+  .floater.wa{ background:#25D366; }
+  .floater.ig{ background:linear-gradient(135deg, var(--berry), var(--marigold)); }
+  .floater svg{ width:26px; height:26px; color:#fff; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .about-grid{ grid-template-columns:1fr; gap:36px; }
+    .cards{ grid-template-columns:1fr; }
+    .steps-row{ grid-template-columns:1fr; gap:44px; }
+    .step-connector{ display:none; }
+    .topbar{ padding:16px 20px; }
+    section{ padding:80px 0; }
+    .hero{ padding-top:120px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span class="mark">Elein Sánchez</span>
+    <span class="badge">FPV 6096</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="bloom">
+      <svg viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="30" stroke="#F7C266" stroke-width="2"/>
+        <circle cx="100" cy="100" r="55" stroke="#F7C266" stroke-width="2" opacity="0.75"/>
+        <circle cx="100" cy="100" r="80" stroke="#F7C266" stroke-width="2" opacity="0.5"/>
+        <circle cx="100" cy="100" r="98" stroke="#F7C266" stroke-width="1.5" opacity="0.3"/>
+      </svg>
+    </div>
+
+    <span class="hero-eyebrow">Psicóloga · Terapia online</span>
+    <h1>Encuentros que ayudan a <span>sanar y crecer</span>.</h1>
+    <p class="sub">Consultas, talleres y terapias grupales para acompañarte en tu proceso, estés donde estés.</p>
+    <div class="hero-meta">
+      <span class="pill">🎓 FPV 6096</span>
+      <span class="pill">🌎 Terapia online</span>
+      <span class="pill">👥 Talleres y grupos</span>
+    </div>
+    <a class="cta" href="https://wa.me/56936107481" target="_blank" rel="noopener">Agenda tu cita por WhatsApp →</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container about-grid">
+      <div class="reveal about-card">
+        <span class="eyebrow">Quién te acompaña</span>
+        <h2 class="about-name display">Elein Sánchez</h2>
+        <p class="about-role">Psicóloga</p>
+        <span class="fpv-badge">🎓 FPV 6096</span>
+      </div>
+      <div class="reveal about-copy">
+        <p>Creo en la terapia como un encuentro: un lugar donde ponernos en contacto con lo que sentimos, entender nuestra historia y encontrar nuevas formas de estar en el mundo.</p>
+        <p>Trabajo desde la calidez y la escucha activa, combinando espacios individuales con instancias grupales, porque muchas veces sanar también se hace en comunidad.</p>
+        <p>Atiendo de forma 100% online, para que puedas acceder a tu proceso desde cualquier lugar donde estés.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <span class="eyebrow reveal">Qué encontrás acá</span>
+      <h2 class="section-title display reveal">Distintos formatos, un mismo propósito: acompañarte a crecer.</h2>
+
+      <div class="cards">
+        <div class="card reveal">
+          <div class="num">01</div>
+          <h3>Consultas</h3>
+          <p>Sesiones individuales online, pensadas para tu momento y tu ritmo. Un espacio propio para revisar lo que necesites trabajar.</p>
+        </div>
+        <div class="card reveal">
+          <div class="num">02</div>
+          <h3>Talleres</h3>
+          <p>Encuentros temáticos donde aprender herramientas concretas junto a otras personas que atraviesan procesos similares.</p>
+        </div>
+        <div class="card reveal">
+          <div class="num">03</div>
+          <h3>Terapias grupales</h3>
+          <p>Espacios compartidos donde escuchar y ser escuchado. La experiencia de grupo potencia el proceso de sanación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps">
+    <div class="container">
+      <span class="eyebrow reveal">Cómo empezar</span>
+      <h2 class="section-title display reveal">Tres pasos para agendar tu primer encuentro.</h2>
+
+      <div class="steps-row">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h4>Escríbenos</h4>
+          <p>Mándanos un mensaje por WhatsApp o Instagram contándonos qué buscás.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <h4>Agendamos</h4>
+          <p>Coordinamos día y horario para tu primera sesión, consulta o taller.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <h4>Comenzamos</h4>
+          <p>Iniciamos el proceso juntas, a tu tiempo y con el formato que mejor te acomode.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="reveal">"Crecer no siempre es un camino solitario. A veces, el primer paso es solo animarse a pedir un encuentro."</blockquote>
+      <div class="dash reveal"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="container">
+      <span class="eyebrow reveal">Agenda tu cita</span>
+      <h2 class="section-title display reveal">¿Nos encontramos?</h2>
+      <p class="sub reveal">Escríbenos por WhatsApp o Instagram y te contamos cómo empezar tu proceso.</p>
+
+      <div class="contact-links reveal">
+        <a class="contact-link" href="https://wa.me/56936107481" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F2A93B" stroke-width="1.6"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19L4 20z"/></svg>
+          <span class="label">+56 9 3610 7481<small>WhatsApp</small></span>
+        </a>
+        <a class="contact-link" href="https://www.instagram.com/psic.eleinsanchez/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F2A93B" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="#F2A93B" stroke="none"/></svg>
+          <span class="label">@psic.eleinsanchez<small>Instagram</small></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="display">Elein Sánchez</span> · Psicóloga FPV 6096 · Terapia psicológica online
+  </footer>
+
+  <div class="floaters">
+    <a class="floater wa" href="https://wa.me/56936107481" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19L4 20z"/></svg>
+    </a>
+    <a class="floater ig" href="https://www.instagram.com/psic.eleinsanchez/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    </a>
+  </div>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el=> io.observe(el));
+  </script>
+
+</body>
+</html>

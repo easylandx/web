@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicole Flower Co. — Handcrafted Florals from Moultrie, GA</title>
+<meta name="description" content="Nicole Flower Co. creates custom, handcrafted floral arrangements in Moultrie, Georgia, shipped anywhere in the US. DM on Instagram or TikTok to order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FBF6EF;
+    --ivory-deep:#F4EBDF;
+    --forest:#243F32;
+    --forest-deep:#182A22;
+    --blush:#F3D6DC;
+    --rose:#C97B86;
+    --rose-deep:#B2606C;
+    --gold:#C6972B;
+    --plum:#2A1B22;
+    --line:rgba(36,63,50,0.16);
+    --max:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--plum);
+    font-family:'Manrope', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--forest-deep);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  /* ---------- Motion & focus ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(251,246,239,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:var(--max); margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-size:1.28rem; font-weight:600; color:var(--forest-deep);
+    text-decoration:none;
+  }
+  .brand svg{width:26px;height:26px;flex-shrink:0;}
+  .top-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--forest-deep); color:var(--ivory);
+    padding:10px 18px; border-radius:100px;
+    font-size:0.92rem; font-weight:600; text-decoration:none;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .top-cta:hover{background:var(--rose-deep); transform:translateY(-1px);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 90px;
+    overflow:hidden;
+  }
+  .hero-blob{
+    position:absolute; top:-140px; right:-160px; width:560px; height:560px;
+    background:radial-gradient(circle at 35% 35%, var(--blush) 0%, rgba(243,214,220,0) 70%);
+    z-index:0;
+  }
+  .hero-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .eyebrow-pin{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.9rem; color:var(--forest); font-weight:600;
+    margin-bottom:22px;
+  }
+  .eyebrow-pin svg{width:16px;height:16px;}
+  h1.hero-title{
+    font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+    line-height:1.08;
+    max-width:12ch;
+  }
+  h1.hero-title em{
+    font-style:italic; color:var(--rose-deep);
+  }
+  .hero-sub{
+    max-width:46ch;
+    margin:22px 0 32px;
+    font-size:1.08rem;
+    color:#4A3B41;
+  }
+  .hero-actions{
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:14px 26px; border-radius:100px;
+    font-weight:700; font-size:0.98rem; text-decoration:none;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn svg{width:19px;height:19px;}
+  .btn-primary{
+    background:var(--rose-deep); color:var(--ivory);
+    box-shadow:0 10px 24px -10px rgba(178,96,108,0.65);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(178,96,108,0.75);}
+  .btn-secondary{
+    background:transparent; color:var(--forest-deep);
+    border:1.5px solid var(--forest-deep);
+  }
+  .btn-secondary:hover{background:var(--forest-deep); color:var(--ivory);}
+  .hero-note{
+    margin-top:20px; font-size:0.88rem; color:#6B5A5F;
+  }
+
+  .hero-art{position:relative;}
+  .hero-art svg{width:100%; height:auto;}
+
+  /* ---------- Trust strip ---------- */
+  .trust{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--ivory-deep);
+  }
+  .trust-inner{
+    display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between;
+    padding:26px 0;
+  }
+  .trust-item{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.94rem; font-weight:600; color:var(--forest-deep);
+    flex:1 1 220px;
+  }
+  .trust-item svg{width:20px;height:20px;color:var(--rose-deep);flex-shrink:0;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:640px; margin-bottom:52px;
+  }
+  .section-tag{
+    font-weight:700; color:var(--rose-deep); font-size:0.92rem; margin-bottom:12px; display:block;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3vw, 2.5rem); line-height:1.15;
+  }
+  .section-head p{
+    margin-top:16px; color:#4A3B41; max-width:56ch;
+  }
+
+  /* ---------- Occasions ---------- */
+  .occasions{background:var(--forest-deep); color:var(--ivory);}
+  .occasions .section-head h2{color:var(--ivory);}
+  .occasions .section-head p{color:#CBD8CF;}
+  .occ-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:rgba(251,246,239,0.16);
+    border:1px solid rgba(251,246,239,0.16);
+  }
+  .occ-card{
+    background:var(--forest-deep);
+    padding:34px 28px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .occ-card svg{width:30px;height:30px;color:var(--gold);}
+  .occ-card h3{color:var(--ivory); font-size:1.18rem;}
+  .occ-card p{margin:0; color:#B9C8BE; font-size:0.95rem;}
+
+  /* ---------- How to order ---------- */
+  .order-flow{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:36px;
+    counter-reset: step;
+  }
+  .step{
+    position:relative; padding-top:8px;
+  }
+  .step-num{
+    font-family:'Fraunces', serif; font-size:2.6rem; color:var(--blush);
+    -webkit-text-stroke:1.5px var(--rose-deep);
+    color:transparent;
+    line-height:1; margin-bottom:16px; display:block;
+  }
+  .step h3{font-size:1.2rem; margin-bottom:10px;}
+  .step p{margin:0; color:#4A3B41; font-size:0.97rem;}
+  .step-link{
+    margin-top:14px; display:inline-flex; align-items:center; gap:6px;
+    font-weight:700; font-size:0.92rem; color:var(--rose-deep); text-decoration:none;
+  }
+  .step-link svg{width:15px;height:15px;}
+
+  /* ---------- Gallery / illustration band ---------- */
+  .gallery{background:var(--ivory-deep);}
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:18px;
+  }
+  .gallery-tile{
+    aspect-ratio:3/4; border-radius:14px; overflow:hidden;
+    background:var(--ivory);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+  }
+  .gallery-tile svg{width:72%; height:72%;}
+  .gallery-tile.tall{grid-row:span 2; aspect-ratio:auto;}
+
+  /* ---------- Social band ---------- */
+  .social{
+    background:linear-gradient(180deg, var(--blush) 0%, var(--ivory) 100%);
+  }
+  .social-inner{
+    display:grid; grid-template-columns:1fr 1fr; gap:28px;
+  }
+  .social-card{
+    background:var(--ivory);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:36px;
+    display:flex; flex-direction:column; gap:18px;
+    box-shadow:0 18px 40px -28px rgba(42,27,34,0.35);
+  }
+  .social-card-top{display:flex; align-items:center; gap:14px;}
+  .platform-icon{
+    width:48px; height:48px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ivory);
+    flex-shrink:0;
+  }
+  .platform-icon.ig{background:linear-gradient(135deg,#f9c46b,#e15a7d,#7742b2);}
+  .platform-icon.tt{background:#0d0d0d;}
+  .platform-icon svg{width:24px;height:24px;}
+  .social-card h3{font-size:1.15rem;}
+  .social-card .handle{color:var(--rose-deep); font-weight:700; font-size:0.95rem;}
+  .social-card p.desc{margin:0; color:#4A3B41; font-size:0.96rem;}
+  .social-card .btn{align-self:flex-start; margin-top:6px;}
+
+  /* ---------- Location / footer CTA ---------- */
+  .location{
+    background:var(--forest-deep); color:var(--ivory);
+  }
+  .location-inner{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  .location h2{color:var(--ivory); font-size:clamp(1.8rem,3vw,2.4rem);}
+  .location p{color:#CBD8CF; max-width:48ch; margin-top:16px;}
+  .location-pin{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; color:var(--gold); margin-bottom:16px; font-size:0.95rem;
+  }
+  .location-actions{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .location-actions .btn-secondary{border-color:var(--ivory); color:var(--ivory);}
+  .location-actions .btn-secondary:hover{background:var(--ivory); color:var(--forest-deep);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--plum); color:#D8C7CC;
+    padding:44px 0 32px;
+    font-size:0.88rem;
+  }
+  .footer-inner{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px;
+    align-items:center;
+  }
+  .footer-links{display:flex; gap:22px; flex-wrap:wrap;}
+  .footer-links a{text-decoration:none; color:#D8C7CC; transition:color 0.2s ease;}
+  .footer-links a:hover{color:var(--gold);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1; max-width:320px; margin:0 auto;}
+    .occ-grid{grid-template-columns:1fr;}
+    .order-flow{grid-template-columns:1fr; gap:44px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-tile.tall{grid-row:span 1;}
+    .social-inner{grid-template-columns:1fr;}
+    .location-inner{grid-template-columns:1fr;}
+    .trust-inner{flex-direction:column; gap:16px;}
+  }
+  @media (max-width:520px){
+    section{padding:64px 0;}
+    .hero{padding:48px 0 60px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="5.5" fill="#C6972B"/>
+        <ellipse cx="20" cy="9" rx="6" ry="9" fill="#C97B86" transform="rotate(0 20 9)"/>
+        <ellipse cx="20" cy="9" rx="6" ry="9" fill="#C97B86" transform="rotate(72 20 20)"/>
+        <ellipse cx="20" cy="9" rx="6" ry="9" fill="#E7A4AE" transform="rotate(144 20 20)"/>
+        <ellipse cx="20" cy="9" rx="6" ry="9" fill="#C97B86" transform="rotate(216 20 20)"/>
+        <ellipse cx="20" cy="9" rx="6" ry="9" fill="#E7A4AE" transform="rotate(288 20 20)"/>
+      </svg>
+      Nicole Flower Co.
+    </a>
+    <a class="top-cta" href="https://www.instagram.com/nicoleflowerco" target="_blank" rel="noopener">
+      DM to order
+    </a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:76px;">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.3-9C1 8.4 2.6 4 7 4c2 0 3.7 1.2 5 3 1.3-1.8 3-3 5-3 4.4 0 6 4.4 4.3 8-2.3 4.4-9.3 9-9.3 9z"/></svg>
+          Moultrie, Georgia
+        </span>
+        <h1 class="hero-title">Flowers arranged for the moments <em>worth stopping for.</em></h1>
+        <p class="hero-sub">
+          Nicole Flower Co. hand-ties every bouquet in small batches out of Moultrie, GA — then ships it to your door anywhere in the US. No storefront to browse, no cart to abandon: you tell us the occasion, we build something beautiful around it.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://www.instagram.com/nicoleflowerco" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            DM on Instagram
+          </a>
+          <a class="btn btn-secondary" href="https://www.tiktok.com/@nicoleflowerco" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v10.3a3.7 3.7 0 1 1-3-3.63"/><path d="M14 3c.5 2.6 2.3 4.4 5 4.7"/></svg>
+            See it on TikTok
+          </a>
+        </div>
+        <p class="hero-note">Every order starts as a direct message — quick reply, real photos, no bots.</p>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="240" cy="470" rx="150" ry="26" fill="#EADFCF"/>
+          <path d="M170 470 C160 340 175 270 200 210 C210 250 215 340 210 470 Z" fill="#2F4A3D"/>
+          <path d="M230 470 C222 310 235 220 240 150 C252 220 258 320 250 470 Z" fill="#3A5B49"/>
+          <path d="M290 470 C300 340 285 270 260 210 C250 250 245 340 250 470 Z" fill="#2F4A3D"/>
+          <!-- left bloom -->
+          <g transform="translate(160,190)">
+            <circle r="9" fill="#C6972B"/>
+            <ellipse rx="10" ry="16" fill="#C97B86" transform="rotate(0)"/>
+            <ellipse rx="10" ry="16" fill="#C97B86" transform="rotate(60)"/>
+            <ellipse rx="10" ry="16" fill="#E7A4AE" transform="rotate(120)"/>
+            <ellipse rx="10" ry="16" fill="#C97B86" transform="rotate(180)"/>
+            <ellipse rx="10" ry="16" fill="#E7A4AE" transform="rotate(240)"/>
+            <ellipse rx="10" ry="16" fill="#C97B86" transform="rotate(300)"/>
+          </g>
+          <!-- center large bloom -->
+          <g transform="translate(240,120) scale(1.5)">
+            <circle r="9" fill="#8C6A1E"/>
+            <ellipse rx="11" ry="18" fill="#F3D6DC" transform="rotate(0)"/>
+            <ellipse rx="11" ry="18" fill="#EFC3CD" transform="rotate(51)"/>
+            <ellipse rx="11" ry="18" fill="#F3D6DC" transform="rotate(102)"/>
+            <ellipse rx="11" ry="18" fill="#EFC3CD" transform="rotate(153)"/>
+            <ellipse rx="11" ry="18" fill="#F3D6DC" transform="rotate(204)"/>
+            <ellipse rx="11" ry="18" fill="#EFC3CD" transform="rotate(255)"/>
+            <ellipse rx="11" ry="18" fill="#F3D6DC" transform="rotate(306)"/>
+          </g>
+          <!-- right bloom -->
+          <g transform="translate(300,205)">
+            <circle r="8" fill="#C6972B"/>
+            <ellipse rx="9" ry="15" fill="#B2606C" transform="rotate(0)"/>
+            <ellipse rx="9" ry="15" fill="#C97B86" transform="rotate(72)"/>
+            <ellipse rx="9" ry="15" fill="#B2606C" transform="rotate(144)"/>
+            <ellipse rx="9" ry="15" fill="#C97B86" transform="rotate(216)"/>
+            <ellipse rx="9" ry="15" fill="#B2606C" transform="rotate(288)"/>
+          </g>
+          <!-- small filler blooms -->
+          <g transform="translate(205,255)"><circle r="5" fill="#C6972B"/><ellipse rx="6" ry="10" fill="#E7A4AE" transform="rotate(0)"/><ellipse rx="6" ry="10" fill="#E7A4AE" transform="rotate(90)"/><ellipse rx="6" ry="10" fill="#F3D6DC" transform="rotate(180)"/><ellipse rx="6" ry="10" fill="#F3D6DC" transform="rotate(270)"/></g>
+          <g transform="translate(280,270)"><circle r="5" fill="#8C6A1E"/><ellipse rx="6" ry="10" fill="#F3D6DC" transform="rotate(0)"/><ellipse rx="6" ry="10" fill="#F3D6DC" transform="rotate(90)"/><ellipse rx="6" ry="10" fill="#E7A4AE" transform="rotate(180)"/><ellipse rx="6" ry="10" fill="#E7A4AE" transform="rotate(270)"/></g>
+          <path d="M100 480 C160 500 320 500 380 480 L380 500 C320 512 160 512 100 500 Z" fill="#C97B86" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust">
+    <div class="wrap trust-inner">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/><path d="M12 8v4l3 2"/></svg>
+        Made-to-order, by hand
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="15" height="10" rx="1.5"/><path d="M16 10h3.5l3 3.5V17H16z"/><circle cx="6" cy="19" r="1.6"/><circle cx="18.5" cy="19" r="1.6"/></svg>
+        Ships anywhere in the US
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Ordered entirely by DM
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.3-9C1 8.4 2.6 4 7 4c2 0 3.7 1.2 5 3 1.3-1.8 3-3 5-3 4.4 0 6 4.4 4.3 8-2.3 4.4-9.3 9-9.3 9z"/></svg>
+        Rooted in Moultrie, GA
+      </div>
+    </div>
+  </div>
+
+  <!-- OCCASIONS -->
+  <section class="occasions">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">What we make</span>
+        <h2>An arrangement for whatever you're marking</h2>
+        <p>Tell us the occasion and the vibe — romantic, bright, soft, bold — and we'll design around it.</p>
+      </div>
+      <div class="occ-grid">
+        <div class="occ-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c-4-3-8-6.5-8-10.5C4 7 6.5 5 9 5c1.5 0 2.6.8 3 2 .4-1.2 1.5-2 3-2 2.5 0 5 2 5 5.5C20 14.5 16 18 12 21z"/></svg>
+          <h3>Anniversaries &amp; date nights</h3>
+          <p>Romantic, full blooms in warm, rich tones for the person you keep choosing.</p>
+        </div>
+        <div class="occ-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l1.8 5.6H20l-4.8 3.5 1.8 5.6L12 13.2 6.9 16.7l1.8-5.6L4 8.1h6.2z"/></svg>
+          <h3>Birthdays</h3>
+          <p>Playful color combinations that feel like a genuine celebration, not an afterthought.</p>
+        </div>
+        <div class="occ-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M5 8l7-5 7 5M5 21V8M19 21V8M9 21v-6h6v6"/></svg>
+          <h3>Weddings &amp; events</h3>
+          <p>Coordinated florals for ceremonies, showers, and parties, planned around your date.</p>
+        </div>
+        <div class="occ-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+          <h3>Sympathy</h3>
+          <p>Gentle, quiet arrangements meant to comfort — handled with the care those moments need.</p>
+        </div>
+        <div class="occ-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9l8-6 8 6v12M9 21v-7h6v7"/></svg>
+          <h3>New home &amp; congratulations</h3>
+          <p>Bright, welcoming arrangements to mark a new chapter for someone you're proud of.</p>
+        </div>
+        <div class="occ-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/><path d="M12 8v4l3 2"/></svg>
+          <h3>Just because</h3>
+          <p>No occasion required — sometimes flowers are the message on their own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section id="order">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">How ordering works</span>
+        <h2>Three messages, and it's on its way</h2>
+        <p>There's no online checkout — every order is handled personally, straight from your DMs.</p>
+      </div>
+      <div class="order-flow">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Send a DM</h3>
+          <p>Message @nicoleflowerco on Instagram or TikTok with the occasion, your budget, and any colors you love.</p>
+          <a class="step-link" href="https://www.instagram.com/nicoleflowerco" target="_blank" rel="noopener">
+            Start the message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Confirm the details</h3>
+          <p>We'll reply with a design idea and a price, and lock in your delivery address once you approve it.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>It ships to you</h3>
+          <p>Your arrangement is hand-tied in Moultrie, GA and shipped to any address in the US.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">A peek at the palette</span>
+        <h2>Every bouquet is one of a kind</h2>
+        <p>Real arrangements change with the season and what's fresh — see the newest ones on Instagram and TikTok.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-tile tall">
+          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 260 C90 170 96 120 100 90" stroke="#2F4A3D" stroke-width="6" fill="none"/>
+            <g transform="translate(100,70)"><circle r="10" fill="#C6972B"/>
+              <ellipse rx="12" ry="20" fill="#C97B86" transform="rotate(0)"/><ellipse rx="12" ry="20" fill="#E7A4AE" transform="rotate(51)"/>
+              <ellipse rx="12" ry="20" fill="#C97B86" transform="rotate(102)"/><ellipse rx="12" ry="20" fill="#E7A4AE" transform="rotate(153)"/>
+              <ellipse rx="12" ry="20" fill="#C97B86" transform="rotate(204)"/><ellipse rx="12" ry="20" fill="#E7A4AE" transform="rotate(255)"/><ellipse rx="12" ry="20" fill="#C97B86" transform="rotate(306)"/>
+            </g>
+            <g transform="translate(70,130)"><circle r="7" fill="#8C6A1E"/><ellipse rx="8" ry="13" fill="#F3D6DC" transform="rotate(0)"/><ellipse rx="8" ry="13" fill="#F3D6DC" transform="rotate(90)"/><ellipse rx="8" ry="13" fill="#EFC3CD" transform="rotate(180)"/><ellipse rx="8" ry="13" fill="#EFC3CD" transform="rotate(270)"/></g>
+          </svg>
+        </div>
+        <div class="gallery-tile">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)"><circle r="10" fill="#C6972B"/>
+              <ellipse rx="13" ry="21" fill="#B2606C" transform="rotate(0)"/><ellipse rx="13" ry="21" fill="#C97B86" transform="rotate(72)"/>
+              <ellipse rx="13" ry="21" fill="#B2606C" transform="rotate(144)"/><ellipse rx="13" ry="21" fill="#C97B86" transform="rotate(216)"/><ellipse rx="13" ry="21" fill="#B2606C" transform="rotate(288)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="gallery-tile">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)"><circle r="9" fill="#8C6A1E"/>
+              <ellipse rx="11" ry="19" fill="#F3D6DC" transform="rotate(0)"/><ellipse rx="11" ry="19" fill="#EFC3CD" transform="rotate(60)"/>
+              <ellipse rx="11" ry="19" fill="#F3D6DC" transform="rotate(120)"/><ellipse rx="11" ry="19" fill="#EFC3CD" transform="rotate(180)"/>
+              <ellipse rx="11" ry="19" fill="#F3D6DC" transform="rotate(240)"/><ellipse rx="11" ry="19" fill="#EFC3CD" transform="rotate(300)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="gallery-tile tall">
+          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 260 C108 180 96 140 100 110" stroke="#2F4A3D" stroke-width="6" fill="none"/>
+            <g transform="translate(100,90)"><circle r="9" fill="#C6972B"/>
+              <ellipse rx="11" ry="18" fill="#C97B86" transform="rotate(0)"/><ellipse rx="11" ry="18" fill="#E7A4AE" transform="rotate(51)"/>
+              <ellipse rx="11" ry="18" fill="#C97B86" transform="rotate(102)"/><ellipse rx="11" ry="18" fill="#E7A4AE" transform="rotate(153)"/>
+              <ellipse rx="11" ry="18" fill="#C97B86" transform="rotate(204)"/><ellipse rx="11" ry="18" fill="#E7A4AE" transform="rotate(255)"/><ellipse rx="11" ry="18" fill="#C97B86" transform="rotate(306)"/>
+            </g>
+            <g transform="translate(125,150)"><circle r="6" fill="#8C6A1E"/><ellipse rx="7" ry="12" fill="#F3D6DC" transform="rotate(0)"/><ellipse rx="7" ry="12" fill="#F3D6DC" transform="rotate(90)"/><ellipse rx="7" ry="12" fill="#EFC3CD" transform="rotate(180)"/><ellipse rx="7" ry="12" fill="#EFC3CD" transform="rotate(270)"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="social" id="follow">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Where to find us</span>
+        <h2>Follow along, then send the DM</h2>
+        <p>Every arrangement gets posted before it ships — follow to see the latest, then message us to order your own.</p>
+      </div>
+      <div class="social-inner">
+        <div class="social-card">
+          <div class="social-card-top">
+            <div class="platform-icon ig">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            </div>
+            <div>
+              <h3>Instagram</h3>
+              <span class="handle">@nicoleflowerco</span>
+            </div>
+          </div>
+          <p class="desc">Fresh arrangements, behind-the-scenes bouquet-building, and the fastest way to reach us — this is where orders start.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/nicoleflowerco" target="_blank" rel="noopener">
+            Visit @nicoleflowerco
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="social-card">
+          <div class="social-card-top">
+            <div class="platform-icon tt">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v10.3a3.7 3.7 0 1 1-3-3.63"/><path d="M14 3c.5 2.6 2.3 4.4 5 4.7"/></svg>
+            </div>
+            <div>
+              <h3>TikTok</h3>
+              <span class="handle">@nicoleflowerco</span>
+            </div>
+          </div>
+          <p class="desc">Watch bouquets come together start to finish, see seasonal color palettes, and get a feel for the style before you order.</p>
+          <a class="btn btn-primary" href="https://www.tiktok.com/@nicoleflowerco" target="_blank" rel="noopener">
+            Watch @nicoleflowerco
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION / FINAL CTA -->
+  <section class="location">
+    <div class="wrap location-inner">
+      <div>
+        <span class="location-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.3-9C1 8.4 2.6 4 7 4c2 0 3.7 1.2 5 3 1.3-1.8 3-3 5-3 4.4 0 6 4.4 4.3 8-2.3 4.4-9.3 9-9.3 9z"/></svg>
+          Moultrie, GA
+        </span>
+        <h2>Ready to send something real?</h2>
+        <p>Skip the search for "florist near me." Message Nicole Flower Co. directly and get a bouquet designed around your occasion, hand-tied and shipped from Moultrie to anywhere in the US.</p>
+        <div class="location-actions">
+          <a class="btn btn-primary" href="https://www.instagram.com/nicoleflowerco" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            DM on Instagram
+          </a>
+          <a class="btn btn-secondary" href="https://www.tiktok.com/@nicoleflowerco" target="_blank" rel="noopener">
+            Find us on TikTok
+          </a>
+        </div>
+      </div>
+      <div aria-hidden="true">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="140" fill="rgba(198,151,43,0.08)"/>
+          <g transform="translate(150,150)">
+            <g transform="translate(-40,-10) scale(1.1)"><circle r="9" fill="#C6972B"/><ellipse rx="11" ry="18" fill="#C97B86" transform="rotate(0)"/><ellipse rx="11" ry="18" fill="#E7A4AE" transform="rotate(72)"/><ellipse rx="11" ry="18" fill="#C97B86" transform="rotate(144)"/><ellipse rx="11" ry="18" fill="#E7A4AE" transform="rotate(216)"/><ellipse rx="11" ry="18" fill="#C97B86" transform="rotate(288)"/></g>
+            <g transform="translate(30,20) scale(1.3)"><circle r="9" fill="#8C6A1E"/><ellipse rx="11" ry="18" fill="#F3D6DC" transform="rotate(0)"/><ellipse rx="11" ry="18" fill="#EFC3CD" transform="rotate(60)"/><ellipse rx="11" ry="18" fill="#F3D6DC" transform="rotate(120)"/><ellipse rx="11" ry="18" fill="#EFC3CD" transform="rotate(180)"/><ellipse rx="11" ry="18" fill="#F3D6DC" transform="rotate(240)"/><ellipse rx="11" ry="18" fill="#EFC3CD" transform="rotate(300)"/></g>
+            <g transform="translate(0,-55) scale(0.9)"><circle r="8" fill="#C6972B"/><ellipse rx="9" ry="15" fill="#B2606C" transform="rotate(0)"/><ellipse rx="9" ry="15" fill="#C97B86" transform="rotate(90)"/><ellipse rx="9" ry="15" fill="#B2606C" transform="rotate(180)"/><ellipse rx="9" ry="15" fill="#C97B86" transform="rotate(270)"/></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Nicole Flower Co. · Moultrie, GA · Orders by DM · Ships within the US</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/nicoleflowerco" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@nicoleflowerco" target="_blank" rel="noopener">TikTok</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

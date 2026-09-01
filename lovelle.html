@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovelle Patisserie — Custom Cakes & Desserts, Los Angeles</title>
+<meta name="description" content="Custom cakes and desserts made with love in Los Angeles. DM or text Lovelle Patisserie to order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --cream-2:#FFF1E2;
+    --pink:#EF5F8B;
+    --pink-deep:#D8446F;
+    --pink-soft:#FBD6E1;
+    --mint:#7FB89A;
+    --mint-soft:#DCEFE3;
+    --butter:#F3B23C;
+    --lavender:#B999D6;
+    --choco:#4A2E29;
+    --choco-soft:#7A5A52;
+    --paper:#FFFDFA;
+    --radius-lg:34px;
+    --shadow: 0 18px 40px rgba(74,46,41,0.12);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--choco);
+    font-family:'Quicksand', sans-serif;
+    font-weight:500;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.05;
+    margin:0;
+    color:var(--choco);
+  }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+  ::selection{ background:var(--pink); color:#fff; }
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--butter);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- Scallop dividers (piped-frosting motif) ---------- */
+  .scallop{
+    width:100%;
+    height:34px;
+    display:block;
+    line-height:0;
+  }
+  .scallop svg{ width:100%; height:100%; display:block; }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,248,239,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(74,46,41,0.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:600;
+    color:var(--pink-deep);
+  }
+  .brand .dot{
+    width:11px; height:11px; border-radius:50%;
+    background:var(--butter);
+    box-shadow: 8px 0 0 var(--mint), 16px -2px 0 -2px var(--pink);
+  }
+  .nav-links{ display:flex; align-items:center; gap:30px; }
+  .nav-links a{
+    font-size:0.98rem; font-weight:600; color:var(--choco-soft);
+    transition:color .18s ease;
+  }
+  .nav-links a:hover{ color:var(--pink-deep); }
+  .nav-cta{
+    background:var(--pink);
+    color:#fff !important;
+    padding:11px 22px;
+    border-radius:999px;
+    font-weight:700;
+    box-shadow:0 8px 18px rgba(239,95,139,0.35);
+    transition:transform .18s ease, box-shadow .18s ease;
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 12px 22px rgba(239,95,139,0.45); }
+  .menu-toggle{ display:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 40px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    align-items:center;
+    gap:40px;
+  }
+  .eyebrow-loc{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.92rem; font-weight:700;
+    color:var(--mint);
+    background:var(--mint-soft);
+    padding:8px 16px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.1rem);
+    letter-spacing:-0.01em;
+    color:var(--choco);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--pink-deep);
+    font-weight:500;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.18rem;
+    color:var(--choco-soft);
+    max-width:480px;
+    line-height:1.6;
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--pink);
+    color:#fff;
+    padding:16px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.02rem;
+    display:inline-flex; align-items:center; gap:10px;
+    box-shadow:0 14px 28px rgba(239,95,139,0.38);
+    transition:transform .2s ease, box-shadow .2s ease;
+    border:none; cursor:pointer;
+    font-family:'Quicksand', sans-serif;
+  }
+  .btn-primary:hover{ transform:translateY(-3px) scale(1.02); box-shadow:0 18px 34px rgba(239,95,139,0.46); }
+  .btn-secondary{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; color:var(--choco);
+    padding:16px 8px;
+    border-bottom:2px solid var(--choco);
+  }
+  .btn-secondary:hover{ color:var(--pink-deep); border-color:var(--pink-deep); }
+
+  .hero-visual{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    height:440px;
+  }
+  .plate{
+    position:absolute;
+    width:360px; height:360px;
+    border-radius:50%;
+    background:var(--paper);
+    box-shadow:var(--shadow);
+  }
+  .cake{
+    position:relative;
+    width:230px;
+  }
+  .tier{
+    border-radius:20px;
+    position:relative;
+    box-shadow:0 10px 18px rgba(74,46,41,0.14);
+  }
+  .tier::after{
+    content:"";
+    position:absolute; left:6px; right:6px; top:8px; height:14px;
+    background-image: radial-gradient(circle at 50% 100%, transparent 0 60%, rgba(255,255,255,0.55) 62%);
+    background-size:16px 16px;
+    background-repeat:repeat-x;
+    opacity:.9;
+  }
+  .tier1{ height:74px; background:var(--pink); }
+  .tier2{ height:60px; width:86%; margin:-10px auto 0; background:var(--butter); }
+  .tier3{ height:48px; width:70%; margin:-10px auto 0; background:var(--mint); border-radius:16px; }
+  .cherry{
+    width:22px; height:22px; border-radius:50%;
+    background:var(--pink-deep);
+    margin:-14px auto 0;
+    box-shadow:0 4px 8px rgba(74,46,41,0.2);
+  }
+  .sprinkle{
+    position:absolute;
+    border-radius:3px;
+    opacity:0;
+    animation: floatIn 900ms ease forwards, drift 5s ease-in-out infinite;
+    animation-delay: var(--d, 0s), var(--d, 0s);
+  }
+  @keyframes floatIn{ to{ opacity:1; } }
+  @keyframes drift{
+    0%, 100%{ transform: translateY(0) rotate(var(--r,0deg)); }
+    50%{ transform: translateY(-14px) rotate(calc(var(--r,0deg) + 12deg)); }
+  }
+
+  /* ---------- Order note banner ---------- */
+  .note{
+    background:var(--butter);
+    color:var(--choco);
+  }
+  .note-inner{
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    padding:14px 28px;
+    text-align:center;
+    font-weight:700;
+    font-size:0.98rem;
+    flex-wrap:wrap;
+  }
+  .note-inner span.icon{ font-size:1.1rem; }
+
+  /* ---------- Section shared ---------- */
+  section{ padding:88px 0; }
+  .section-head{
+    max-width:620px;
+    margin:0 auto 52px;
+    text-align:center;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 3.6vw, 2.7rem);
+  }
+  .section-head p{
+    margin-top:16px;
+    color:var(--choco-soft);
+    font-size:1.08rem;
+    line-height:1.6;
+  }
+
+  .reveal{
+    opacity:0; transform:translateY(26px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- About ---------- */
+  .about{ background:var(--paper); }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-badge{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    max-width:400px;
+    border-radius:var(--radius-lg);
+    background:linear-gradient(150deg, var(--pink-soft), var(--mint-soft));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow);
+  }
+  .about-badge .heart{
+    font-size:4.6rem;
+    color:var(--pink-deep);
+  }
+  .about h3{
+    font-size:1.9rem;
+    margin-bottom:18px;
+  }
+  .about p{
+    color:var(--choco-soft);
+    font-size:1.06rem;
+    line-height:1.75;
+    margin-bottom:16px;
+  }
+  .tag-row{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin-top:24px;
+  }
+  .tag{
+    font-size:0.88rem; font-weight:700;
+    padding:8px 16px;
+    border-radius:999px;
+    background:var(--cream-2);
+    color:var(--choco-soft);
+    border:1px solid rgba(74,46,41,0.08);
+  }
+
+  /* ---------- Gallery / Instagram ---------- */
+  .gallery{ background:var(--pink-soft); }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  .g-card{
+    aspect-ratio:1/1;
+    border-radius:22px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:2.4rem;
+    box-shadow:0 10px 22px rgba(74,46,41,0.10);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .g-card:hover{ transform:translateY(-6px) rotate(-1deg); box-shadow:0 16px 28px rgba(74,46,41,0.16); }
+  .g-card.c1{ background:var(--paper); }
+  .g-card.c2{ background:var(--butter); }
+  .g-card.c3{ background:var(--mint); }
+  .g-card.c4{ background:var(--paper); }
+  .g-card.c5{ background:var(--lavender); }
+  .g-card.c6{ background:var(--paper); }
+  .g-card.c7{ background:var(--pink); }
+  .g-card.c8{ background:var(--paper); }
+
+  .gallery-cta{
+    margin-top:44px;
+    text-align:center;
+  }
+  .gallery-cta a{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--choco);
+    color:#fff;
+    padding:16px 32px;
+    border-radius:999px;
+    font-weight:700;
+    box-shadow:0 14px 26px rgba(74,46,41,0.28);
+    transition:transform .2s ease;
+  }
+  .gallery-cta a:hover{ transform:translateY(-3px); }
+  .gallery-cta p{
+    margin-top:14px;
+    color:var(--choco-soft);
+    font-size:0.95rem;
+  }
+
+  /* ---------- How to order ---------- */
+  .steps{ background:var(--paper); }
+  .steps-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .step-card{
+    background:var(--cream);
+    border-radius:26px;
+    padding:36px 30px;
+    text-align:left;
+    border:1px solid rgba(74,46,41,0.06);
+  }
+  .step-mark{
+    width:46px; height:46px;
+    border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    margin-bottom:20px;
+  }
+  .step-card:nth-child(1) .step-mark{ background:var(--pink); }
+  .step-card:nth-child(2) .step-mark{ background:var(--mint); }
+  .step-card:nth-child(3) .step-mark{ background:var(--butter); }
+  .step-card h3{ font-size:1.25rem; margin-bottom:10px; }
+  .step-card p{ color:var(--choco-soft); font-size:0.99rem; line-height:1.6; }
+
+  /* ---------- Final CTA ---------- */
+  .final{
+    background:var(--choco);
+    color:var(--cream);
+    text-align:center;
+  }
+  .final h2{
+    color:#fff;
+    font-size:clamp(2rem, 4vw, 2.9rem);
+    max-width:640px;
+    margin:0 auto;
+  }
+  .final p{
+    margin-top:18px;
+    color:rgba(255,248,239,0.72);
+    font-size:1.08rem;
+  }
+  .final .btn-primary{
+    margin-top:34px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:#3E2521;
+    color:rgba(255,248,239,0.65);
+    padding:44px 0 30px;
+  }
+  .footer-grid{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:18px;
+    padding-bottom:22px;
+    border-bottom:1px solid rgba(255,248,239,0.12);
+  }
+  .footer-brand{
+    font-family:'Fraunces', serif;
+    color:#fff;
+    font-size:1.2rem;
+  }
+  footer .nav-links a{ color:rgba(255,248,239,0.72); font-size:0.92rem; }
+  footer .nav-links a:hover{ color:#fff; }
+  .footer-bottom{
+    padding-top:20px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:0.86rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .nav-links{
+      position:fixed; inset:0 0 0 auto;
+      top:66px;
+      width:78%; max-width:320px;
+      height:calc(100vh - 66px);
+      background:var(--paper);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:32px 28px;
+      gap:22px;
+      box-shadow:-10px 0 30px rgba(0,0,0,0.12);
+      transform:translateX(100%);
+      transition:transform .3s ease;
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .menu-toggle{
+      display:flex; align-items:center; justify-content:center;
+      width:42px; height:42px;
+      border-radius:12px;
+      background:var(--cream-2);
+      border:none;
+      cursor:pointer;
+      font-size:1.2rem;
+    }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero p.lede{ max-width:none; }
+    .hero-visual{ height:320px; order:-1; }
+    .about-grid{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:repeat(2, 1fr); }
+    .steps-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand"><span class="dot"></span>Lovelle Patisserie</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">Our Story</a>
+      <a href="#gallery">Sweet Gallery</a>
+      <a href="#order">How to Order</a>
+      <a href="https://instagram.com/lovelle.patisserie_" target="_blank" rel="noopener" class="nav-cta">Follow on Instagram</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow-loc">📍 Los Angeles</span>
+        <h1>Custom cakes &amp; desserts, <em>made with love</em>.</h1>
+        <p class="lede">Lovelle Patisserie bakes one-of-a-kind cakes and desserts for the moments worth celebrating — designed around you, from the first sketch to the last slice.</p>
+        <div class="hero-actions">
+          <a href="https://instagram.com/lovelle.patisserie_" target="_blank" rel="noopener" class="btn-primary" id="ctaMain">
+            💌 DM us on Instagram
+          </a>
+          <a href="#order" class="btn-secondary">See how it works ↓</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="plate"></div>
+        <div class="cake">
+          <div class="cherry"></div>
+          <div class="tier tier3"></div>
+          <div class="tier tier2"></div>
+          <div class="tier tier1"></div>
+        </div>
+        <div class="sprinkle" style="width:14px;height:5px;background:var(--pink-deep); top:18%; left:20%; --r:20deg; --d:0.1s;"></div>
+        <div class="sprinkle" style="width:14px;height:5px;background:var(--mint); top:30%; left:78%; --r:-30deg; --d:0.3s;"></div>
+        <div class="sprinkle" style="width:12px;height:5px;background:var(--butter); top:10%; left:60%; --r:10deg; --d:0.5s;"></div>
+        <div class="sprinkle" style="width:12px;height:5px;background:var(--lavender); top:70%; left:12%; --r:-10deg; --d:0.7s;"></div>
+        <div class="sprinkle" style="width:14px;height:5px;background:var(--pink); top:78%; left:82%; --r:35deg; --d:0.9s;"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">
+    <div class="wrap note-inner">
+      <span class="icon">🗓️</span>
+      <span>We're taking a short baking break from September 23–30 — DM us anytime and we'll get back to you when we're back!</span>
+    </div>
+  </div>
+
+  <div class="scallop" aria-hidden="true">
+    <svg viewBox="0 0 200 10" preserveAspectRatio="none"><path d="M0,0 Q5,10 10,0 T20,0 T30,0 T40,0 T50,0 T60,0 T70,0 T80,0 T90,0 T100,0 T110,0 T120,0 T130,0 T140,0 T150,0 T160,0 T170,0 T180,0 T190,0 T200,0 V0 H0 Z" fill="#FFFDFA"/></svg>
+  </div>
+
+  <section class="about reveal" id="about">
+    <div class="wrap about-grid">
+      <div class="about-badge"><span class="heart">♡</span></div>
+      <div>
+        <h3>Every order starts with your story.</h3>
+        <p>Lovelle Patisserie is a Los Angeles dessert shop built around one idea: a cake should feel as personal as the moment it's made for. Every order is designed, baked, and decorated by hand — no two are ever quite the same.</p>
+        <p>Whether it's a birthday, a shower, a wedding, or just because — tell us what you're picturing and we'll bring it to the table, one layer at a time.</p>
+        <div class="tag-row">
+          <span class="tag">Custom Cakes</span>
+          <span class="tag">Desserts</span>
+          <span class="tag">Made to Order</span>
+          <span class="tag">Los Angeles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scallop" aria-hidden="true" style="transform:rotate(180deg);">
+    <svg viewBox="0 0 200 10" preserveAspectRatio="none"><path d="M0,0 Q5,10 10,0 T20,0 T30,0 T40,0 T50,0 T60,0 T70,0 T80,0 T90,0 T100,0 T110,0 T120,0 T130,0 T140,0 T150,0 T160,0 T170,0 T180,0 T190,0 T200,0 V0 H0 Z" fill="#FBD6E1"/></svg>
+  </div>
+
+  <section class="gallery reveal" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Our sweetest work lives on Instagram</h2>
+        <p>Every custom cake we bake gets posted first to @lovelle.patisserie_ — follow along for the latest designs and behind-the-scenes bakes.</p>
+      </div>
+      <div class="gallery-grid" aria-hidden="true">
+        <div class="g-card c1">🧁</div>
+        <div class="g-card c2">🎂</div>
+        <div class="g-card c3">🍰</div>
+        <div class="g-card c4">🍓</div>
+        <div class="g-card c5">🍩</div>
+        <div class="g-card c6">🫐</div>
+        <div class="g-card c7">🎀</div>
+        <div class="g-card c8">🍒</div>
+      </div>
+      <div class="gallery-cta">
+        <a href="https://instagram.com/lovelle.patisserie_" target="_blank" rel="noopener">📷 @lovelle.patisserie_ on Instagram</a>
+        <p>Tap through for the full gallery of custom cakes &amp; desserts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps reveal" id="order">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How to order</h2>
+        <p>No forms, no wait — just send us a message and we'll take it from there.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-mark">1</div>
+          <h3>Reach out</h3>
+          <p>DM or text us with your date, the occasion, and any flavors or ideas you already have in mind.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-mark">2</div>
+          <h3>Design together</h3>
+          <p>We'll shape the design, size, and flavors with you until it feels exactly right.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-mark">3</div>
+          <h3>Pick it up, celebrate</h3>
+          <p>Your cake is baked and decorated fresh, ready for pickup in Los Angeles in time for your event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final reveal">
+    <div class="wrap">
+      <h2>Ready to design your cake?</h2>
+      <p>DM or text Lovelle Patisserie — tell us the date, and let's start sketching.</p>
+      <a href="https://instagram.com/lovelle.patisserie_" target="_blank" rel="noopener" class="btn-primary">💌 Message us on Instagram</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <span class="footer-brand">Lovelle Patisserie</span>
+      <div class="nav-links" style="position:static; height:auto; width:auto; flex-direction:row; box-shadow:none; padding:0; transform:none; background:none;">
+        <a href="#about">Our Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#order">How to Order</a>
+        <a href="https://instagram.com/lovelle.patisserie_" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>📍 Los Angeles, CA</span>
+      <span>Custom cakes &amp; desserts, made with love ♡</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // Light celebratory chime on main CTA (Web Audio API, no external assets)
+  function playChime(){
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const now = ctx.currentTime;
+      const notes = [523.25, 659.25, 783.99];
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, now + i * 0.09);
+        gain.gain.linearRampToValueAtTime(0.12, now + i * 0.09 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.09 + 0.4);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(now + i * 0.09);
+        osc.stop(now + i * 0.09 + 0.5);
+      });
+    } catch (e) { /* audio not available, ignore */ }
+  }
+  const ctaMain = document.getElementById('ctaMain');
+  if (ctaMain) ctaMain.addEventListener('click', playChime);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Front Porch Cottage Bakery | El Paso, TX</title>
+<meta name="description" content="Front Porch Cottage Bakery — quality baked goods made to help you slow down & savor more. El Paso, TX. Foodhandler certified. Pastry Arts grad. DM to order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF3E6;
+    --cream-deep: #F3E3C4;
+    --forest: #435434;
+    --forest-deep: #2E3B22;
+    --sage: #8FA377;
+    --berry: #A2465A;
+    --berry-deep: #832F42;
+    --gold: #C9A84C;
+    --brown: #3D2B1F;
+    --paper: #FFFDF8;
+    --radius-soft: 6px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--cream);
+    color: var(--brown);
+    font-family: 'Karla', sans-serif;
+    font-size: 16.5px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3{
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    color: var(--forest-deep);
+    margin: 0;
+    line-height: 1.08;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* subtle gingham dot texture used as background accent */
+  .dotted-bg{
+    background-image: radial-gradient(var(--gold) 1.1px, transparent 1.1px);
+    background-size: 22px 22px;
+    opacity: 0.16;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251,243,230,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(61,43,31,0.10);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 16px 28px;
+  }
+  .brand{
+    font-family:'Instrument Serif', serif;
+    font-size: 1.5rem;
+    color: var(--forest-deep);
+    letter-spacing: 0.2px;
+  }
+  .brand span{ color: var(--berry); font-style: italic; }
+  .header-ig{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.92rem;
+    color: var(--forest-deep);
+    border: 1.5px solid var(--forest-deep);
+    padding: 9px 16px;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .header-ig:hover{ background: var(--forest-deep); color: var(--paper); }
+  .header-ig svg{ width:16px; height:16px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 76px 0 90px;
+    overflow: hidden;
+  }
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .eyebrow-loc{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--berry-deep);
+    margin-bottom: 18px;
+  }
+  .eyebrow-loc svg{ width:14px; height:14px; }
+  .hero h1{
+    font-size: clamp(2.6rem, 5.4vw, 4.2rem);
+    max-width: 12ch;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.8s ease-out 0.15s forwards;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--berry);
+  }
+  .hero p.lede{
+    margin-top: 22px;
+    max-width: 46ch;
+    font-size: 1.12rem;
+    color: #57433A;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.8s ease-out 0.32s forwards;
+  }
+  .hero-ctas{
+    margin-top: 32px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.8s ease-out 0.48s forwards;
+  }
+  @keyframes rise{ to{ opacity:1; transform: translateY(0);} }
+
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background: var(--berry);
+    color: var(--paper);
+    text-decoration:none;
+    font-weight:700;
+    padding: 14px 26px;
+    border-radius: 999px;
+    box-shadow: 0 4px 0 var(--berry-deep);
+    transition: transform 0.15s ease;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-primary:active{ transform: translateY(2px); box-shadow: 0 2px 0 var(--berry-deep); }
+  .btn-primary svg{ width:18px; height:18px; }
+
+  .btn-ghost{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    color: var(--forest-deep);
+    text-decoration:none;
+    font-weight:600;
+    padding: 14px 8px;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .hero-badges{
+    margin-top: 40px;
+    display:flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: rise 0.8s ease-out 0.6s forwards;
+  }
+  .hero-badge{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--forest);
+  }
+  .hero-badge svg{ width:19px; height:19px; flex-shrink:0; color: var(--gold); }
+
+  /* hero illustration: bakery box tied with twine */
+  .hero-art{
+    position: relative;
+    display:flex;
+    justify-content:center;
+  }
+  .hero-art svg{ width: 100%; max-width: 420px; height:auto; }
+
+  /* ---------- scallop divider (pie-crust edge) ---------- */
+  .scallop{
+    display:block;
+    width:100%;
+    height: 34px;
+  }
+
+  /* ---------- Story ---------- */
+  .story{
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 84px 0;
+    position: relative;
+  }
+  .story-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 54px;
+    align-items:center;
+  }
+  .story h2{
+    color: var(--cream);
+    font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+  }
+  .story h2 em{ color: var(--gold); font-style:italic; }
+  .story p{
+    color: #E4E0CE;
+    font-size: 1.05rem;
+    max-width: 54ch;
+  }
+  .story p + p{ margin-top: 16px; }
+  .story-icon{
+    width: 74px; height:74px;
+    margin-bottom: 6px;
+    color: var(--gold);
+  }
+
+  /* ---------- What we bake ---------- */
+  .bake{
+    padding: 92px 0 76px;
+  }
+  .section-head{
+    max-width: 60ch;
+    margin-bottom: 48px;
+  }
+  .section-head h2{
+    font-size: clamp(2.1rem, 3.6vw, 2.7rem);
+  }
+  .section-head h2 em{ color: var(--berry); font-style: italic; }
+  .section-head p{
+    margin-top: 14px;
+    color: #57433A;
+    font-size: 1.05rem;
+  }
+
+  .bake-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .bake-card{
+    background: var(--paper);
+    border: 1.5px dashed var(--gold);
+    border-radius: var(--radius-soft);
+    padding: 30px 22px;
+    text-align:left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .bake-card:nth-child(2){ transform: rotate(-0.6deg); }
+  .bake-card:nth-child(4){ transform: rotate(0.6deg); }
+  .bake-card:hover{ transform: translateY(-5px); box-shadow: 0 10px 24px rgba(61,43,31,0.12); }
+  .bake-card svg{ width:38px; height:38px; color: var(--berry); margin-bottom: 16px; }
+  .bake-card h3{
+    font-size: 1.4rem;
+    color: var(--forest-deep);
+    margin-bottom: 8px;
+  }
+  .bake-card p{ font-size: 0.94rem; color: #5A4B3F; margin:0; }
+
+  /* ---------- Trust / certifications ---------- */
+  .trust{
+    background: var(--cream-deep);
+    padding: 78px 0;
+  }
+  .trust-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+  }
+  .trust-card{
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 34px 30px;
+    display:flex;
+    gap: 20px;
+    align-items:flex-start;
+    border-left: 4px solid var(--sage);
+  }
+  .trust-card:nth-child(2){ border-left-color: var(--berry); }
+  .trust-card svg{ width:34px; height:34px; flex-shrink:0; color: var(--forest); }
+  .trust-card:nth-child(2) svg{ color: var(--berry); }
+  .trust-card h3{ font-size: 1.28rem; margin-bottom: 6px; color: var(--forest-deep); }
+  .trust-card p{ margin:0; color: #57433A; font-size: 0.96rem; }
+
+  /* ---------- How to order ---------- */
+  .order{
+    padding: 92px 0 100px;
+  }
+  .order-list{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    counter-reset: step;
+    margin-top: 10px;
+  }
+  .order-step{
+    position: relative;
+    padding-top: 10px;
+  }
+  .order-num{
+    font-family:'Instrument Serif', serif;
+    font-size: 2.6rem;
+    color: var(--gold);
+    line-height:1;
+    margin-bottom: 14px;
+    display:block;
+  }
+  .order-step h3{ font-size: 1.3rem; margin-bottom: 8px; color: var(--forest-deep); }
+  .order-step p{ color: #57433A; font-size: 0.97rem; margin:0; max-width: 32ch; }
+
+  .order-cta{
+    margin-top: 54px;
+    background: var(--berry);
+    border-radius: 16px;
+    padding: 46px 48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .order-cta h3{
+    color: var(--cream);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    max-width: 22ch;
+  }
+  .order-cta .btn-primary{
+    background: var(--cream);
+    color: var(--berry-deep);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.18);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background: var(--forest-deep);
+    color: #CFCBB6;
+    padding: 52px 0 34px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-brand{
+    font-family:'Instrument Serif', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+  }
+  .footer-brand span{ color: var(--gold); font-style: italic; }
+  .footer-meta{ margin-top: 10px; font-size: 0.9rem; color: #A8A48F; }
+  .footer-ig{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top: 16px;
+    color: var(--cream);
+    text-decoration:none;
+    font-weight:600;
+    font-size: 0.94rem;
+    border-bottom: 1.5px solid var(--gold);
+    padding-bottom: 3px;
+  }
+  .footer-ig svg{ width:16px; height:16px; }
+  .footer-fine{
+    font-size: 0.82rem;
+    color: #8C8975;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 22px;
+  }
+
+  /* ---------- floating Instagram button ---------- */
+  .float-ig{
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    z-index: 80;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background: var(--berry);
+    color: var(--paper);
+    text-decoration:none;
+    padding: 14px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    box-shadow: 0 6px 18px rgba(61,43,31,0.28);
+    transition: transform 0.18s ease;
+  }
+  .float-ig:hover{ transform: translateY(-3px); }
+  .float-ig svg{ width:19px; height:19px; }
+
+  /* ---------- scroll reveal ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero h1, .hero p.lede, .hero-ctas, .hero-badges, .reveal{
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-art{ order: -1; max-width: 280px; margin: 0 auto 20px; }
+    .story-grid{ grid-template-columns: 1fr; }
+    .bake-grid{ grid-template-columns: repeat(2, 1fr); }
+    .trust-grid{ grid-template-columns: 1fr; }
+    .order-list{ grid-template-columns: 1fr; gap: 34px; }
+    .order-cta{ flex-direction: column; align-items:flex-start; }
+  }
+  @media (max-width: 520px){
+    .bake-grid{ grid-template-columns: 1fr; }
+    .header-ig span{ display:none; }
+    .float-ig span{ display:none; }
+    .float-ig{ padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">Front Porch <span>Cottage Bakery</span></div>
+    <a class="header-ig" href="https://www.instagram.com/frontporch_cottagebakery/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      <span>@frontporch_cottagebakery</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="dotted-bg"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-loc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        El Paso, Texas
+      </div>
+      <h1>Slow down &amp; <em>savor more.</em></h1>
+      <p class="lede">Front Porch Cottage Bakery bakes small-batch treats the old-fashioned way — made to order, from a home kitchen, for neighbors who still like to sit a while and enjoy something good.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://www.instagram.com/frontporch_cottagebakery/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          DM to place an order
+        </a>
+        <a class="btn-ghost" href="#bake">See what we bake</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 3.8 8.8 9 9 5.2-.2 9-4 9-9V7l-9-5z"/><path d="m9 12 2 2 4-4"/></svg>
+          Foodhandler certified
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+          Pastry Arts graduate
+        </div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- bakery box -->
+        <rect x="60" y="150" width="220" height="140" rx="6" fill="#FFFDF8" stroke="#3D2B1F" stroke-width="3"/>
+        <path d="M60 150 L280 150 L260 110 L80 110 Z" fill="#F3E3C4" stroke="#3D2B1F" stroke-width="3" stroke-linejoin="round"/>
+        <!-- lid seam -->
+        <line x1="60" y1="150" x2="280" y2="150" stroke="#3D2B1F" stroke-width="2.5"/>
+        <!-- twine -->
+        <path d="M170 110 C170 90, 145 90, 145 70 C145 50, 195 50, 195 70 C195 90, 170 90, 170 110" fill="none" stroke="#C9A84C" stroke-width="5" stroke-linecap="round"/>
+        <line x1="170" y1="70" x2="170" y2="150" stroke="#C9A84C" stroke-width="5"/>
+        <line x1="120" y1="110" x2="120" y2="290" stroke="#C9A84C" stroke-width="5"/>
+        <line x1="220" y1="110" x2="220" y2="290" stroke="#C9A84C" stroke-width="5"/>
+        <!-- bow -->
+        <ellipse cx="152" cy="66" rx="16" ry="11" fill="#A2465A" stroke="#3D2B1F" stroke-width="2.5" transform="rotate(-18 152 66)"/>
+        <ellipse cx="188" cy="66" rx="16" ry="11" fill="#A2465A" stroke="#3D2B1F" stroke-width="2.5" transform="rotate(18 188 66)"/>
+        <circle cx="170" cy="66" r="7" fill="#832F42" stroke="#3D2B1F" stroke-width="2"/>
+        <!-- pastries peeking out -->
+        <circle cx="105" cy="128" r="16" fill="#EFC9A6" stroke="#3D2B1F" stroke-width="2.5"/>
+        <path d="M97 122 q8 -10 16 0" fill="none" stroke="#832F42" stroke-width="2"/>
+        <circle cx="235" cy="128" r="16" fill="#F4D9A8" stroke="#3D2B1F" stroke-width="2.5"/>
+        <path d="M227 128 h16 M235 120 v16" stroke="#8FA377" stroke-width="2"/>
+        <!-- sprig -->
+        <path d="M170 92 q-4 -14 -14 -18" stroke="#8FA377" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M170 92 q4 -14 14 -18" stroke="#8FA377" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <svg class="scallop" viewBox="0 0 1200 40" preserveAspectRatio="none">
+    <path d="M0 0 Q 20 40 40 0 Q 60 40 80 0 Q 100 40 120 0 Q 140 40 160 0 Q 180 40 200 0 Q 220 40 240 0 Q 260 40 280 0 Q 300 40 320 0 Q 340 40 360 0 Q 380 40 400 0 Q 420 40 440 0 Q 460 40 480 0 Q 500 40 520 0 Q 540 40 560 0 Q 580 40 600 0 Q 620 40 640 0 Q 660 40 680 0 Q 700 40 720 0 Q 740 40 760 0 Q 780 40 800 0 Q 820 40 840 0 Q 860 40 880 0 Q 900 40 920 0 Q 940 40 960 0 Q 980 40 1000 0 Q 1020 40 1040 0 Q 1060 40 1080 0 Q 1100 40 1120 0 Q 1140 40 1160 0 Q 1180 40 1200 0 V0 H0 Z" fill="#435434"/>
+  </svg>
+</section>
+
+<section class="story">
+  <div class="wrap story-grid">
+    <div class="reveal">
+      <svg class="story-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 3.8 8.8 9 9 5.2-.2 9-4 9-9V7l-9-5z"/><path d="m9 12 2 2 4-4"/></svg>
+      <h2>Trained hands, <em>hometown heart.</em></h2>
+    </div>
+    <div class="reveal">
+      <p>Every order comes out of a Pastry Arts education and a food-handler certification — so the front porch charm is backed by real training and real food safety, not just good intentions.</p>
+      <p>Front Porch Cottage Bakery started with a simple idea: baking should slow you down, not speed you up. Each batch is made in small quantities, by hand, with time built in for the details that make something taste like it was made just for you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bake" id="bake">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>A little something for <em>every occasion.</em></h2>
+      <p>From everyday treats to made-to-order celebration bakes — message us for the current lineup and custom requests.</p>
+    </div>
+    <div class="bake-grid">
+      <div class="bake-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="14" cy="15" r="1"/><circle cx="9" cy="15" r="1"/></svg>
+        <h3>Cookies &amp; bars</h3>
+        <p>Small-batch cookies and bar treats, baked to order for everyday cravings.</p>
+      </div>
+      <div class="bake-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 21h16"/><path d="M6 21V11a6 6 0 0 1 12 0v10"/><path d="M9 8c1-2 5-2 6 0"/></svg>
+        <h3>Custom cakes</h3>
+        <p>Made-to-order cakes for birthdays, showers, and small celebrations.</p>
+      </div>
+      <div class="bake-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c3 3 5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 2-6 5-9z"/></svg>
+        <h3>Seasonal favorites</h3>
+        <p>Rotating flavors that follow the season — ask what's fresh this month.</p>
+      </div>
+      <div class="bake-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h16"/><path d="M6 12V8a6 6 0 0 1 12 0v4"/><rect x="4" y="12" width="16" height="7" rx="2"/></svg>
+        <h3>Breads &amp; morning bakes</h3>
+        <p>Simple, comforting bakes for a slow morning at home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Baked with <em>care you can trust.</em></h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+        <div>
+          <h3>Pastry Arts graduate</h3>
+          <p>Formal training in pastry techniques, behind every cookie, cake, and loaf.</p>
+        </div>
+      </div>
+      <div class="trust-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        <div>
+          <h3>Foodhandler certified</h3>
+          <p>Certified in safe food handling, so every order is made with care from start to finish.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>How to <em>get yours.</em></h2>
+      <p>Ordering is simple — everything starts with a message.</p>
+    </div>
+    <div class="order-list">
+      <div class="order-step reveal">
+        <span class="order-num">1</span>
+        <h3>Send a DM</h3>
+        <p>Message @frontporch_cottagebakery on Instagram with what you're craving.</p>
+      </div>
+      <div class="order-step reveal">
+        <span class="order-num">2</span>
+        <h3>Confirm the details</h3>
+        <p>We'll talk through flavors, quantity, and your date so everything's baked fresh and on time.</p>
+      </div>
+      <div class="order-step reveal">
+        <span class="order-num">3</span>
+        <h3>Pick up in El Paso</h3>
+        <p>Swing by for pickup and take home something made just for you.</p>
+      </div>
+    </div>
+
+    <div class="order-cta reveal">
+      <h3>Ready to slow down &amp; savor something good?</h3>
+      <a class="btn-primary" href="https://www.instagram.com/frontporch_cottagebakery/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        Message us on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">Front Porch <span>Cottage Bakery</span></div>
+      <div class="footer-meta">El Paso, Texas · Foodhandler certified · Pastry Arts graduate</div>
+      <a class="footer-ig" href="https://www.instagram.com/frontporch_cottagebakery/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        instagram.com/frontporch_cottagebakery
+      </a>
+    </div>
+  </div>
+  <div class="wrap footer-fine">
+    &copy; <span id="year"></span> Front Porch Cottage Bakery. Home-based cottage bakery, El Paso, TX.
+  </div>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/frontporch_cottagebakery/" target="_blank" rel="noopener" aria-label="Message Front Porch Cottage Bakery on Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+  <span>DM us</span>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

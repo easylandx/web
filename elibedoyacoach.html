@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elizabeth Bedoya · Mentora en crecimiento y éxito</title>
+<meta name="description" content="Sistema simple y duplicable para crecer en el MML: grupo de WhatsApp, guiones y seguimiento. Con Elizabeth Bedoya, TOP 1 del MML.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet-dark:#2C0E4A;
+    --violet-deep:#3B1264;
+    --pink:#FF3D7F;
+    --coral:#FF7A5C;
+    --gold:#FFC947;
+    --cream:#FFF6EC;
+    --ink:#2A1440;
+    --ink-soft:#5B4677;
+    --white:#FFFFFF;
+    --shadow-pink: rgba(255,61,127,.28);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Unbounded', sans-serif;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(44,14,74,0.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px;margin:0 auto;
+  }
+  .nav-brand{
+    font-family:'Unbounded',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--cream);
+    display:flex;align-items:center;gap:10px;
+  }
+  .nav-brand .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:linear-gradient(135deg,var(--pink),var(--gold));
+    box-shadow:0 0 14px var(--pink);
+  }
+  .nav-cta{
+    background:linear-gradient(120deg,var(--pink),var(--coral));
+    color:var(--white);
+    padding:10px 22px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.88rem;
+    box-shadow:0 6px 18px var(--shadow-pink);
+    transition:transform .25s ease, box-shadow .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--shadow-pink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,201,71,0.35), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(255,61,127,0.45), transparent 50%),
+      linear-gradient(160deg, var(--violet-deep) 0%, var(--violet-dark) 55%, #1c0836 100%);
+    overflow:hidden;
+    padding:140px 0 90px;
+  }
+
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .blob-1{width:420px;height:420px;background:var(--pink);top:-120px;right:-100px;animation:float1 14s ease-in-out infinite;}
+  .blob-2{width:340px;height:340px;background:var(--gold);bottom:-100px;left:-80px;animation:float2 16s ease-in-out infinite;}
+  .blob-3{width:260px;height:260px;background:var(--coral);top:40%;left:60%;animation:float1 11s ease-in-out infinite reverse;}
+
+  @keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(-30px,40px);}}
+  @keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(40px,-30px);}}
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+
+  .eyebrow-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,201,71,0.4);
+    color:var(--gold);
+    padding:8px 16px;
+    border-radius:100px;
+    font-size:0.8rem;
+    font-weight:600;
+    margin-bottom:26px;
+    opacity:0;
+    animation:riseIn .8s ease forwards;
+  }
+
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.4rem, 5vw, 3.7rem);
+    font-weight:800;
+    margin-bottom:22px;
+    opacity:0;
+    animation:riseIn .8s ease .12s forwards;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(100deg,var(--gold),var(--pink) 70%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero p.lead{
+    color:#D9CDEB;
+    font-size:1.15rem;
+    max-width:520px;
+    margin-bottom:36px;
+    line-height:1.6;
+    opacity:0;
+    animation:riseIn .8s ease .24s forwards;
+  }
+
+  .hero-actions{
+    display:flex;gap:16px;flex-wrap:wrap;
+    opacity:0;
+    animation:riseIn .8s ease .36s forwards;
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 30px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.98rem;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg,var(--pink),var(--coral));
+    color:var(--white);
+    box-shadow:0 10px 30px var(--shadow-pink);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 34px var(--shadow-pink);}
+  .btn-ghost{
+    background:rgba(255,255,255,0.06);
+    color:var(--cream);
+    border:1px solid rgba(255,255,255,0.25);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,0.14);transform:translateY(-3px);}
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* hero visual: orbit/network graphic representing duplicación */
+  .hero-visual{
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    height:420px;
+    opacity:0;
+    animation:riseIn 1s ease .3s forwards;
+  }
+  .orbit-core{
+    width:150px;height:150px;border-radius:50%;
+    background:linear-gradient(135deg,var(--pink),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 60px rgba(255,61,127,0.55);
+    position:relative;z-index:3;
+  }
+  .orbit-core span{
+    font-family:'Unbounded',sans-serif;
+    font-weight:800;
+    color:var(--violet-dark);
+    font-size:0.95rem;
+    text-align:center;
+    line-height:1.2;
+  }
+  .ring{
+    position:absolute;
+    border:1.5px dashed rgba(255,255,255,0.3);
+    border-radius:50%;
+  }
+  .ring-1{width:260px;height:260px;animation:spin 22s linear infinite;}
+  .ring-2{width:380px;height:380px;animation:spin 32s linear infinite reverse;}
+  .node{
+    position:absolute;
+    width:52px;height:52px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.35);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    backdrop-filter:blur(6px);
+  }
+  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:100px 0;position:relative;}
+  .eyebrow{
+    font-weight:700;
+    color:var(--pink);
+    font-size:0.85rem;
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.8rem,3.4vw,2.6rem);
+    color:var(--ink);
+    font-weight:700;
+    max-width:640px;
+    margin-bottom:20px;
+  }
+  .section-lead{
+    color:var(--ink-soft);
+    font-size:1.08rem;
+    max-width:600px;
+    line-height:1.7;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--cream);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-card{
+    background:linear-gradient(160deg,var(--violet-deep),var(--violet-dark));
+    border-radius:28px;
+    padding:44px 36px;
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .about-card::after{
+    content:"";
+    position:absolute;
+    width:220px;height:220px;
+    background:radial-gradient(circle, rgba(255,201,71,0.4), transparent 70%);
+    top:-60px;right:-60px;
+  }
+  .about-card .rank{
+    font-family:'Unbounded',sans-serif;
+    font-size:2.6rem;
+    font-weight:800;
+    background:linear-gradient(100deg,var(--gold),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:6px;
+  }
+  .about-card .rank-label{
+    color:#D9CDEB;font-size:0.95rem;letter-spacing:0.02em;
+  }
+  .about-card .divider{
+    height:1px;background:rgba(255,255,255,0.15);margin:28px 0;
+  }
+  .about-card p{
+    color:#E7DAF6;font-size:0.98rem;line-height:1.7;
+  }
+
+  .about-copy p{
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    line-height:1.75;
+    margin-bottom:18px;
+  }
+  .about-copy strong{color:var(--ink);}
+
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .pill{
+    background:var(--white);
+    border:1px solid rgba(44,14,74,0.1);
+    color:var(--ink);
+    font-size:0.85rem;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:100px;
+  }
+
+  /* ---------- SYSTEM STEPS ---------- */
+  .system{
+    background:linear-gradient(180deg, #1c0836 0%, var(--violet-dark) 100%);
+    color:var(--cream);
+  }
+  .system .eyebrow{color:var(--gold);}
+  .system .section-title{color:var(--cream);}
+  .system .section-lead{color:#CBB8E6;}
+
+  .steps{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .step-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:24px;
+    padding:34px 28px;
+    position:relative;
+    transition:transform .3s ease, background .3s ease;
+  }
+  .step-card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.09);}
+  .step-num{
+    font-family:'Unbounded',sans-serif;
+    font-size:2.2rem;
+    font-weight:800;
+    background:linear-gradient(100deg,var(--gold),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:18px;
+  }
+  .step-card h3{
+    font-size:1.2rem;
+    margin-bottom:12px;
+    color:var(--cream);
+  }
+  .step-card p{
+    color:#CBB8E6;
+    font-size:0.96rem;
+    line-height:1.65;
+  }
+  .step-connector{
+    position:absolute;
+    top:38px;right:-13px;
+    width:26px;height:26px;
+    display:none;
+    align-items:center;justify-content:center;
+    color:var(--gold);
+    font-size:1.2rem;
+  }
+  .step-card:not(:last-child) .step-connector{display:flex;}
+
+  /* ---------- WHY / BENEFITS ---------- */
+  .why{background:var(--cream);}
+  .why-grid{
+    margin-top:54px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+  }
+  .why-card{
+    background:var(--white);
+    border-radius:22px;
+    padding:30px 28px;
+    border:1px solid rgba(44,14,74,0.08);
+    box-shadow:0 14px 34px rgba(44,14,74,0.06);
+  }
+  .why-icon{
+    width:52px;height:52px;
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    margin-bottom:18px;
+    background:linear-gradient(135deg,var(--pink),var(--coral));
+  }
+  .why-card h3{
+    font-family:'Unbounded',sans-serif;
+    font-size:1.08rem;
+    margin-bottom:10px;
+    color:var(--ink);
+  }
+  .why-card p{color:var(--ink-soft);font-size:0.96rem;line-height:1.6;}
+
+  /* ---------- FOR WHO / STRIP ---------- */
+  .strip{
+    background:linear-gradient(120deg, var(--pink), var(--coral) 60%, var(--gold));
+    padding:60px 0;
+  }
+  .strip .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+  }
+  .strip h2{
+    color:var(--white);
+    font-size:clamp(1.5rem,2.6vw,2rem);
+    max-width:520px;
+  }
+  .strip .btn-primary{
+    background:var(--violet-dark);
+    box-shadow:0 10px 30px rgba(44,14,74,0.4);
+  }
+  .strip .btn-primary:hover{box-shadow:0 16px 34px rgba(44,14,74,0.5);}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--violet-dark);
+    color:var(--cream);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";
+    position:absolute;
+    width:520px;height:520px;
+    background:radial-gradient(circle, rgba(255,61,127,0.35), transparent 70%);
+    top:-160px;left:50%;transform:translateX(-50%);
+  }
+  .final-cta .wrap{position:relative;z-index:2;}
+  .final-cta h2{
+    font-size:clamp(1.9rem,4vw,2.8rem);
+    margin-bottom:18px;
+  }
+  .final-cta .grad{
+    background:linear-gradient(100deg,var(--gold),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .final-cta p{
+    color:#D9CDEB;
+    max-width:540px;
+    margin:0 auto 38px;
+    font-size:1.05rem;
+    line-height:1.7;
+  }
+  .final-actions{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  }
+
+  .ig-link{
+    display:inline-flex;align-items:center;gap:10px;
+    color:var(--cream);
+    font-weight:600;
+    padding:16px 30px;
+    border-radius:100px;
+    border:1px solid rgba(255,255,255,0.28);
+    background:rgba(255,255,255,0.06);
+    transition:transform .25s ease, background .25s ease;
+  }
+  .ig-link:hover{transform:translateY(-3px);background:rgba(255,255,255,0.14);}
+  .ig-link svg{width:20px;height:20px;flex-shrink:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#1c0836;
+    color:#9C87BE;
+    padding:40px 0;
+    font-size:0.86rem;
+  }
+  footer .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:14px;
+  }
+  footer a{color:var(--gold);font-weight:600;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-visual{height:300px;order:-1;}
+    .about-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .step-connector{display:none !important;}
+    .strip .wrap{flex-direction:column;text-align:center;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .hero{padding:120px 0 70px;}
+    .btn{padding:14px 24px;font-size:0.92rem;}
+  }
+
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span> Elizabeth Bedoya</div>
+    <a class="nav-cta" href="https://www.instagram.com/elibedoyacoach/" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow-badge">✨ TOP 1 del MML</span>
+      <h1>Un sistema simple para <span class="grad">crecer y duplicar</span> tu equipo</h1>
+      <p class="lead">Mentora en crecimiento y éxito. Te enseño el método con el que construí mi lugar en el TOP 1 del MML: grupo de WhatsApp, guiones y seguimiento. Nada complicado, todo duplicable.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/elibedoyacoach/" target="_blank" rel="noopener">Empecemos ya 🎯</a>
+        <a class="btn btn-ghost" href="#sistema">Conoce el sistema</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ring ring-2"></div>
+      <div class="ring ring-1"></div>
+      <div class="orbit-core"><span>Sistema<br>duplicable</span></div>
+      <div class="node" style="top:6%;left:48%;">💬</div>
+      <div class="node" style="top:50%;left:0%;">📋</div>
+      <div class="node" style="top:78%;left:70%;">📈</div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="reveal about-card">
+      <div class="rank">TOP 1</div>
+      <div class="rank-label">del MML ✨</div>
+      <div class="divider"></div>
+      <p>Elizabeth Bedoya Arias — mentora en crecimiento personal y éxito, especializada en construir equipos sólidos con un método claro y repetible.</p>
+    </div>
+    <div class="reveal about-copy">
+      <span class="eyebrow">Sobre Elizabeth</span>
+      <h2 class="section-title">Un método pensado para que cualquiera pueda aplicarlo</h2>
+      <p>Después de años construyendo equipo en el marketing multinivel, Elizabeth ordenó todo lo que funciona en un <strong>sistema simple y duplicable</strong>: sin fórmulas complicadas, sin depender del carisma de una sola persona.</p>
+      <p>Su forma de trabajar combina un <strong>grupo de WhatsApp</strong> activo, <strong>guiones</strong> probados para cada conversación y un <strong>seguimiento</strong> constante que convierte contactos en equipo real.</p>
+      <div class="pill-row">
+        <span class="pill">Mentora en crecimiento</span>
+        <span class="pill">Sistema duplicable</span>
+        <span class="pill">Acompañamiento cercano</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="system" id="sistema">
+  <div class="wrap">
+    <span class="eyebrow">El sistema</span>
+    <h2 class="section-title">Tres piezas, un mismo método</h2>
+    <p class="section-lead">Así de simple: cada pieza refuerza a la siguiente para que tu equipo crezca de forma constante y ordenada.</p>
+    <div class="steps">
+      <div class="reveal step-card">
+        <span class="step-connector">→</span>
+        <div class="step-num">01</div>
+        <h3>Grupo de WhatsApp</h3>
+        <p>Un espacio donde tu equipo se forma, comparte avances y se mantiene motivado día a día.</p>
+      </div>
+      <div class="reveal step-card">
+        <span class="step-connector">→</span>
+        <div class="step-num">02</div>
+        <h3>Guiones</h3>
+        <p>Mensajes y conversaciones ya preparados, para que sepas exactamente qué decir en cada momento.</p>
+      </div>
+      <div class="reveal step-card">
+        <div class="step-num">03</div>
+        <h3>Seguimiento</h3>
+        <p>La constancia que marca la diferencia: acompañar a cada persona hasta que el sistema se vuelve suyo también.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow">¿Para quién es esto?</span>
+    <h2 class="section-title">Para quien quiere crecer con claridad, no con complicaciones</h2>
+    <p class="section-lead">Este sistema está pensado para personas que quieren construir su equipo en el MML con pasos claros y acompañamiento real.</p>
+    <div class="why-grid">
+      <div class="reveal why-card">
+        <div class="why-icon">🌱</div>
+        <h3>Estás empezando en el MML</h3>
+        <p>Y quieres un método probado para arrancar con seguridad, sin improvisar.</p>
+      </div>
+      <div class="reveal why-card">
+        <div class="why-icon">🔁</div>
+        <h3>Quieres duplicar, no cargar todo tú sola</h3>
+        <p>Un sistema que tu equipo también puede aprender y repetir.</p>
+      </div>
+      <div class="reveal why-card">
+        <div class="why-icon">🗣️</div>
+        <h3>No sabes qué decir en cada conversación</h3>
+        <p>Los guiones te dan la seguridad de saber cómo avanzar en cada mensaje.</p>
+      </div>
+      <div class="reveal why-card">
+        <div class="why-icon">📈</div>
+        <h3>Buscas resultados constantes</h3>
+        <p>El seguimiento ordenado es lo que sostiene el crecimiento en el tiempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <h2>Empecemos ya. Tu equipo puede crecer desde hoy 🎯</h2>
+    <a class="btn btn-primary" href="https://www.instagram.com/elibedoyacoach/" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <span class="eyebrow">Da el siguiente paso</span>
+    <h2>Conviértete en la próxima <span class="grad">historia de éxito</span></h2>
+    <p>Escríbeme por Instagram y te cuento cómo aplicar el sistema en tu equipo: grupo de WhatsApp, guiones y seguimiento, paso a paso.</p>
+    <div class="final-actions">
+      <a class="ig-link" href="https://www.instagram.com/elibedoyacoach/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        @elibedoyacoach
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Elizabeth Bedoya Arias · Mentora en crecimiento y éxito</span>
+    <a href="https://www.instagram.com/elibedoyacoach/" target="_blank" rel="noopener">Instagram @elibedoyacoach</a>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

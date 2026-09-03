@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura Gijón Nutrición · Recomposición corporal sin miedo a la comida</title>
+<meta name="description" content="Laura Gijón, dietista especializada en recomposición corporal en Asturias. Transforma tu cuerpo sin dietas restrictivas ni miedo a la comida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E5;
+    --peach:#F6DCBD;
+    --berry:#D6416B;
+    --berry-deep:#B12E54;
+    --avocado:#7FA23A;
+    --avocado-deep:#5E7A29;
+    --gold:#E3A23D;
+    --ink:#332A22;
+    --ink-soft:#5E5344;
+    --line:rgba(51,42,34,0.14);
+    --max:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:'Manrope', sans-serif; font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Baloo 2', sans-serif; font-weight:700; color:var(--ink); margin:0;}
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:3px solid var(--berry-deep); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---- topbar ---- */
+  .topbar{position:sticky; top:0; z-index:50; background:rgba(251,243,229,0.93); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 28px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.12rem;}
+  .brand .mark{width:36px; height:36px; border-radius:50%; background:var(--berry); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Baloo 2',sans-serif; font-size:1.15rem; font-weight:700;}
+  .top-actions{display:flex; align-items:center; gap:16px;}
+  .ig-link{display:flex; align-items:center; gap:7px; font-weight:700; font-size:0.89rem; color:var(--avocado-deep);}
+  .ig-link svg{width:18px; height:18px;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 26px; border-radius:100px; font-weight:700; font-size:0.95rem; border:none; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;}
+  .btn-primary{background:var(--berry); color:#fff; box-shadow:0 8px 20px -8px rgba(177,46,84,0.55);}
+  .btn-primary:hover{background:var(--berry-deep); transform:translateY(-2px); box-shadow:0 12px 24px -8px rgba(177,46,84,0.6);}
+  .btn-ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--cream); transform:translateY(-2px);}
+  .top-actions .btn{padding:10px 20px; font-size:0.87rem;}
+
+  /* ---- hero ---- */
+  .hero{position:relative; overflow:hidden; padding:58px 0 24px;}
+  .hero .wrap{display:grid; grid-template-columns:1.05fr 0.95fr; gap:52px; align-items:center;}
+  .tagline{display:inline-flex; align-items:center; gap:8px; background:var(--peach); color:var(--berry-deep); font-weight:700; font-size:0.85rem; padding:8px 16px; border-radius:100px; margin-bottom:22px;}
+  .hero h1{font-size:clamp(2.15rem,4.2vw,3.15rem); line-height:1.12;}
+  .hero h1 span{color:var(--berry);}
+  .hero .lede{margin-top:20px; font-size:1.11rem; color:var(--ink-soft); max-width:47ch;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;}
+  .hero-note{margin-top:18px; font-size:0.85rem; color:var(--ink-soft);}
+
+  .hero-art{position:relative; aspect-ratio:1/1; max-width:430px; margin:0 auto;}
+  .reveal{opacity:0; transform:translateY(14px);}
+  .reveal.in{animation:riseIn .7s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes riseIn{to{opacity:1; transform:translateY(0);}}
+
+  section{padding:80px 0;}
+  .section-peach{background:var(--peach);}
+  .kicker{font-family:'Baloo 2',sans-serif; font-weight:700; color:var(--berry); font-size:1rem; margin-bottom:10px;}
+  .section-head{max-width:640px; margin-bottom:46px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.35rem); line-height:1.16;}
+  .section-head p{margin-top:14px; color:var(--ink-soft); font-size:1.03rem;}
+
+  /* ---- pain points ---- */
+  .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .pain-card{background:var(--cream); border:1px solid var(--line); border-radius:22px; padding:28px 24px;}
+  .pain-card .emoji{font-size:1.8rem; margin-bottom:14px; display:block;}
+  .pain-card h3{font-size:1.1rem; margin-bottom:8px; font-family:'Baloo 2',sans-serif;}
+  .pain-card p{font-size:0.94rem; color:var(--ink-soft);}
+
+  /* ---- metodo ---- */
+  .metodo{display:grid; grid-template-columns:0.9fr 1.1fr; gap:54px; align-items:center;}
+  .metodo-art{aspect-ratio:1/1; max-width:390px;}
+  .metodo-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:18px;}
+  .metodo-list li{display:flex; gap:14px; align-items:flex-start;}
+  .metodo-list .ico{flex:none; width:40px; height:40px; border-radius:12px; background:var(--peach); color:var(--avocado-deep); display:flex; align-items:center; justify-content:center;}
+  .metodo-list h4{font-family:'Baloo 2',sans-serif; font-size:1.08rem; margin-bottom:4px;}
+  .metodo-list p{color:var(--ink-soft); font-size:0.95rem;}
+
+  /* ---- prozis ---- */
+  .prozis-card{background:linear-gradient(120deg, var(--avocado) 0%, var(--avocado-deep) 100%); border-radius:26px; padding:44px 40px; color:#fff; display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center;}
+  .prozis-card h3{color:#fff; font-size:1.55rem;}
+  .prozis-card p{margin-top:10px; color:rgba(255,255,255,0.92); font-size:1rem; max-width:52ch;}
+  .prozis-card .btn-primary{background:#fff; color:var(--avocado-deep); box-shadow:none; white-space:nowrap;}
+  .prozis-card .btn-primary:hover{background:var(--cream);}
+
+  /* ---- testimonios ---- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testi{background:var(--cream); border-radius:20px; padding:30px 26px; border:1px solid var(--line);}
+  .testi .stars{color:var(--gold); font-size:1rem; margin-bottom:12px; letter-spacing:2px;}
+  .testi p.body{font-size:0.98rem; color:var(--ink); font-style:italic;}
+  .testi .who{margin-top:16px; font-size:0.87rem; color:var(--ink-soft); font-weight:700; font-style:normal;}
+
+  /* ---- cta final ---- */
+  .cta-final{background:linear-gradient(120deg, var(--berry) 0%, var(--gold) 100%); border-radius:30px; padding:62px 46px; text-align:center; color:#fff;}
+  .cta-final h2{color:#fff; font-size:clamp(1.85rem,3.6vw,2.5rem); max-width:22ch; margin:0 auto;}
+  .cta-final p{margin-top:16px; color:rgba(255,255,255,0.94); font-size:1.06rem; max-width:50ch; margin:16px auto 0;}
+  .cta-final .hero-ctas{justify-content:center; margin-top:32px;}
+  .cta-final .btn-primary{background:var(--ink); box-shadow:none;}
+  .cta-final .btn-primary:hover{background:#000;}
+  .cta-final .btn-ghost{border-color:rgba(255,255,255,0.75); color:#fff;}
+  .cta-final .btn-ghost:hover{background:rgba(255,255,255,0.2); color:#fff;}
+
+  footer{padding:50px 0 38px; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; align-items:center;}
+  footer .foot-links{display:flex; gap:22px; font-size:0.9rem; color:var(--ink-soft);}
+  footer .foot-copy{font-size:0.84rem; color:var(--ink-soft);}
+
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr; gap:34px;}
+    .hero-art{order:-1; max-width:280px;}
+    .pain-grid{grid-template-columns:1fr 1fr;}
+    .metodo{grid-template-columns:1fr;}
+    .metodo-art{margin:0 auto; order:-1;}
+    .prozis-card{grid-template-columns:1fr; text-align:center;}
+    .testi-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+    .cta-final{padding:46px 24px;}
+    .top-actions .ig-link span{display:none;}
+  }
+  @media (max-width:520px){
+    .pain-grid{grid-template-columns:1fr;}
+    .hero-ctas .btn, .cta-final .hero-ctas .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="mark">LG</span> Laura Gijón</div>
+    <div class="top-actions">
+      <a class="ig-link" href="https://www.instagram.com/lauragijong/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        <span>@lauragijong</span>
+      </a>
+      <a class="btn btn-primary" href="https://www.instagram.com/lauragijong/" target="_blank" rel="noopener">Escribe "CAMBIO"</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tagline reveal">🥑 Dietista · Recomposición corporal · Asturias</span>
+      <h1 class="reveal">Transforma tu cuerpo <span>sin miedo a la comida</span></h1>
+      <p class="lede reveal">Soy Laura Gijón, dietista especializada en recomposición corporal. Aprende a comer de todo con estrategia, gana fuerza y tono, y deja atrás las dietas restrictivas de una vez.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="https://www.instagram.com/lauragijong/" target="_blank" rel="noopener">Escríbeme "CAMBIO" por DM</a>
+        <a class="btn btn-ghost" href="https://prozis.com/f6RS" target="_blank" rel="noopener">Mi descuento en Prozis</a>
+      </div>
+      <p class="hero-note reveal">Planes personalizados · sin dietas rígidas · resultados que se mantienen</p>
+    </div>
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="210" cy="210" r="190" fill="var(--peach)"/>
+        <g transform="translate(180,220) rotate(-12)">
+          <ellipse cx="0" cy="0" rx="105" ry="140" fill="var(--avocado)"/>
+          <ellipse cx="0" cy="10" rx="62" ry="86" fill="#C9A05A"/>
+          <ellipse cx="0" cy="10" rx="26" ry="34" fill="#8A5A2B"/>
+        </g>
+        <g transform="translate(300,120) rotate(18)">
+          <rect x="-14" y="-46" width="28" height="92" rx="8" fill="var(--berry)"/>
+          <rect x="-34" y="-58" width="20" height="30" rx="6" fill="var(--berry-deep)"/>
+          <rect x="-34" y="28" width="20" height="30" rx="6" fill="var(--berry-deep)"/>
+          <rect x="14" y="-58" width="20" height="30" rx="6" fill="var(--berry-deep)"/>
+          <rect x="14" y="28" width="20" height="30" rx="6" fill="var(--berry-deep)"/>
+        </g>
+        <circle cx="80" cy="90" r="11" fill="var(--gold)"/>
+        <circle cx="340" cy="310" r="9" fill="var(--berry)"/>
+        <circle cx="90" cy="330" r="8" fill="var(--avocado-deep)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">¿Te suena esto?</p>
+      <h2>Llevas tiempo intentándolo, pero algo no encaja</h2>
+      <p>No hace falta prohibirte nada para ver cambios reales. Solo un método que se adapte a ti.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="emoji">🙅🏻‍♀️</span>
+        <h3>Le tienes miedo a la comida</h3>
+        <p>Cada plan anterior te hizo eliminar alimentos enteros, y eso no es sostenible ni necesario.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🏋🏻‍♀️</span>
+        <h3>Entrenas pero no ves el cambio</h3>
+        <p>Sin una alimentación que acompañe tu entreno, cuesta ganar tono y fuerza de verdad.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🔁</span>
+        <h3>Dietas rígidas que no duran</h3>
+        <p>Funcionan un tiempo y luego vuelves al punto de partida — el ciclo de siempre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-peach">
+  <div class="wrap metodo">
+    <div class="metodo-art">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="360" height="360" rx="34" fill="var(--cream)"/>
+        <g transform="translate(200,200)">
+          <circle r="130" fill="none" stroke="var(--berry)" stroke-width="12" stroke-linecap="round" stroke-dasharray="180 220"/>
+          <circle r="130" fill="none" stroke="var(--avocado)" stroke-width="12" stroke-linecap="round" stroke-dasharray="120 280" transform="rotate(160)"/>
+          <circle r="60" fill="var(--gold)"/>
+          <text x="0" y="9" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="700" font-size="26" fill="#fff">LG</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <p class="kicker">Mi método</p>
+      <h2>Recomposición corporal, comiendo de verdad</h2>
+      <ul class="metodo-list">
+        <li>
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><h4>Valoración de tu punto de partida</h4><p>Hablamos de tus hábitos, tu rutina y tu relación real con la comida.</p></div>
+        </li>
+        <li>
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 012-2h13v18H6a2 2 0 01-2-2zm0 0a2 2 0 002 2h13"/></svg></span>
+          <div><h4>Plan flexible y personalizado</h4><p>Alimentación que encaja con tus gustos y tu entreno, sin prohibiciones.</p></div>
+        </li>
+        <li>
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <div><h4>Seguimiento para que se mantenga</h4><p>Ajustamos contigo en cada etapa, para que el resultado no se pierda.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="prozis-card">
+      <div>
+        <h3>Mi selección en Prozis</h3>
+        <p>Los productos que recomiendo para acompañar tu entreno y tu alimentación, con mi enlace de siempre.</p>
+      </div>
+      <a class="btn btn-primary" href="https://prozis.com/f6RS" target="_blank" rel="noopener">Ver mi selección →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-peach">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Lo que cuentan quienes ya empezaron</p>
+      <h2>Cambios que se notan, sin volver al punto de partida</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="body">Aprendí a comer de todo sin culpa y aun así vi el cambio que buscaba en el gimnasio.</p>
+        <p class="who">— Clienta de Laura</p>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="body">Por fin un plan que se adapta a mi vida y no al revés. Nada de renunciar a todo.</p>
+        <p class="who">— Clienta de Laura</p>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="body">Gané fuerza y tono sin las dietas rígidas que había probado antes. Se nota la diferencia.</p>
+        <p class="who">— Clienta de Laura</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>Tu cambio empieza con un mensaje</h2>
+      <p>Escríbeme "CAMBIO" por Instagram y te cuento cómo trabajamos juntas tu recomposición corporal.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/lauragijong/" target="_blank" rel="noopener">Escribir "CAMBIO" ahora</a>
+        <a class="btn btn-ghost" href="https://prozis.com/f6RS" target="_blank" rel="noopener">Ver mi selección en Prozis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark">LG</span> Laura Gijón</div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/lauragijong/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://prozis.com/f6RS" target="_blank" rel="noopener">Prozis</a>
+    </div>
+    <p class="foot-copy">© 2026 Laura Gijón Nutrición · Asturias</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.animationDelay = (i*70)+'ms';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>

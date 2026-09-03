@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juanma Morales · Dietista Integrativo — Bienestar sin extremos</title>
+<meta name="description" content="Deja las dietas que no funcionan. Juanma Morales, dietista integrativo, te ayuda a transformar tu bienestar sin extremos, junto a FemEsenz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#FAF3E1;
+    --panel:#F4E2BE;
+    --coral:#E2523A;
+    --coral-deep:#C13F29;
+    --teal:#2F6E5E;
+    --teal-deep:#1F4F43;
+    --gold:#E8A33D;
+    --ink:#2B241A;
+    --ink-soft:#5C5240;
+    --line:rgba(43,36,26,0.14);
+    --max:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--sand); color:var(--ink);
+    font-family:'Public Sans', sans-serif; font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Bricolage Grotesque', sans-serif; font-weight:700;
+    color:var(--ink); margin:0; letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:3px solid var(--teal-deep); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---- topbar ---- */
+  .topbar{position:sticky; top:0; z-index:50; background:rgba(250,243,225,0.93); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 28px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1.1rem;}
+  .brand .mark{
+    width:36px; height:36px; border-radius:11px; background:var(--coral); color:var(--sand);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.02rem; transform:rotate(-6deg);
+  }
+  .top-actions{display:flex; align-items:center; gap:16px;}
+  .ig-link{display:flex; align-items:center; gap:7px; font-weight:600; font-size:0.9rem; color:var(--teal-deep);}
+  .ig-link svg{width:19px; height:19px;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 26px; border-radius:12px; font-weight:700; font-size:0.95rem; border:none; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;}
+  .btn-primary{background:var(--coral); color:#fff; box-shadow:0 8px 20px -8px rgba(194,63,41,0.55);}
+  .btn-primary:hover{background:var(--coral-deep); transform:translateY(-2px); box-shadow:0 12px 24px -8px rgba(194,63,41,0.6);}
+  .btn-ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--sand); transform:translateY(-2px);}
+  .top-actions .btn{padding:10px 18px; font-size:0.87rem; border-radius:10px;}
+
+  /* ---- hero ---- */
+  .hero{position:relative; overflow:hidden; padding:60px 0 20px;}
+  .hero .wrap{display:grid; grid-template-columns:1.08fr 0.92fr; gap:52px; align-items:center;}
+  .tagline{display:inline-flex; align-items:center; gap:8px; background:var(--panel); color:var(--teal-deep); font-weight:700; font-size:0.85rem; padding:8px 16px; border-radius:100px; margin-bottom:22px;}
+  .hero h1{font-size:clamp(2.2rem,4.3vw,3.3rem); line-height:1.08;}
+  .hero h1 span{color:var(--coral);}
+  .hero .lede{margin-top:20px; font-size:1.12rem; color:var(--ink-soft); max-width:48ch;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;}
+  .hero-note{margin-top:18px; font-size:0.86rem; color:var(--ink-soft); display:flex; align-items:center; gap:10px;}
+  .avatars{display:flex;}
+  .avatars span{width:26px; height:26px; border-radius:50%; border:2px solid var(--sand); margin-left:-8px;}
+  .avatars span:first-child{margin-left:0;}
+
+  .hero-art{position:relative; aspect-ratio:1/1; max-width:440px; margin:0 auto;}
+  .reveal{opacity:0; transform:translateY(14px);}
+  .reveal.in{animation:riseIn .7s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes riseIn{to{opacity:1; transform:translateY(0);}}
+
+  /* ---- pain points ---- */
+  section{padding:80px 0;}
+  .section-panel{background:var(--panel);}
+  .kicker{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; color:var(--coral); font-size:0.98rem; margin-bottom:10px;}
+  .section-head{max-width:640px; margin-bottom:46px;}
+  .section-head h2{font-size:clamp(1.75rem,3vw,2.3rem); line-height:1.18;}
+  .section-head p{margin-top:14px; color:var(--ink-soft); font-size:1.04rem;}
+
+  .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .pain-card{background:var(--sand); border:1px solid var(--line); border-radius:20px; padding:28px 24px;}
+  .pain-card .emoji{font-size:1.8rem; margin-bottom:14px; display:block;}
+  .pain-card h3{font-size:1.08rem; margin-bottom:8px;}
+  .pain-card p{font-size:0.94rem; color:var(--ink-soft);}
+
+  /* ---- método ---- */
+  .metodo{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center;}
+  .metodo-steps{display:grid; gap:0;}
+  .step{display:grid; grid-template-columns:52px 1fr; gap:18px; padding:22px 0; position:relative;}
+  .step:not(:last-child)::after{content:''; position:absolute; left:25px; top:60px; bottom:-6px; width:2px; background:var(--line);}
+  .step-num{width:52px; height:52px; border-radius:14px; background:var(--teal); color:var(--sand); display:flex; align-items:center; justify-content:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1.2rem; transform:rotate(-4deg);}
+  .step:nth-child(2n) .step-num{background:var(--coral); transform:rotate(4deg);}
+  .step h4{font-size:1.12rem; margin-bottom:5px;}
+  .step p{color:var(--ink-soft); font-size:0.96rem;}
+
+  .metodo-art{aspect-ratio:1/1; max-width:400px;}
+
+  /* ---- femesenz ---- */
+  .femesenz{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .femesenz-card{background:var(--teal); color:var(--sand); border-radius:26px; padding:42px 38px;}
+  .femesenz-card h3{color:var(--sand); font-size:1.5rem;}
+  .femesenz-card p{margin-top:14px; color:rgba(250,243,225,0.9); font-size:1rem;}
+  .femesenz-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:14px;}
+  .femesenz-list li{display:flex; gap:12px; font-size:0.96rem; color:rgba(250,243,225,0.92);}
+  .femesenz-list svg{flex:none; width:20px; height:20px; margin-top:2px; color:var(--gold);}
+
+  /* ---- testimonios ---- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testi{background:var(--sand); border-radius:20px; padding:30px 26px; border:1px solid var(--line);}
+  .testi .stars{color:var(--gold); font-size:1rem; margin-bottom:12px; letter-spacing:2px;}
+  .testi p.body{font-size:0.98rem; color:var(--ink); font-style:italic;}
+  .testi .who{margin-top:16px; font-size:0.87rem; color:var(--ink-soft); font-weight:600; font-style:normal;}
+
+  /* ---- cta final ---- */
+  .cta-final{background:linear-gradient(120deg, var(--coral) 0%, var(--gold) 100%); border-radius:30px; padding:64px 48px; text-align:center; color:#fff;}
+  .cta-final h2{color:#fff; font-size:clamp(1.85rem,3.6vw,2.5rem); max-width:22ch; margin:0 auto;}
+  .cta-final p{margin-top:16px; color:rgba(255,255,255,0.94); font-size:1.06rem; max-width:50ch; margin:16px auto 0;}
+  .cta-final .hero-ctas{justify-content:center; margin-top:32px;}
+  .cta-final .btn-primary{background:var(--ink); box-shadow:none;}
+  .cta-final .btn-primary:hover{background:#000;}
+  .cta-final .btn-ghost{border-color:rgba(255,255,255,0.75); color:#fff;}
+  .cta-final .btn-ghost:hover{background:rgba(255,255,255,0.2); color:#fff;}
+
+  /* ---- footer ---- */
+  footer{padding:50px 0 38px; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; align-items:center;}
+  footer .foot-links{display:flex; gap:22px; font-size:0.9rem; color:var(--ink-soft);}
+  footer .foot-copy{font-size:0.85rem; color:var(--ink-soft);}
+
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr; gap:34px;}
+    .hero-art{order:-1; max-width:280px;}
+    .pain-grid{grid-template-columns:1fr 1fr;}
+    .metodo, .femesenz{grid-template-columns:1fr;}
+    .metodo-art{margin:0 auto; order:-1;}
+    .testi-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+    .cta-final{padding:46px 24px;}
+    .top-actions .ig-link span{display:none;}
+  }
+  @media (max-width:520px){
+    .pain-grid{grid-template-columns:1fr;}
+    .hero-ctas .btn, .cta-final .hero-ctas .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="mark">JM</span> juanmadietista</div>
+    <div class="top-actions">
+      <a class="ig-link" href="https://www.instagram.com/juanmadietista/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        <span>@juanmadietista</span>
+      </a>
+      <a class="btn btn-primary" href="https://typebot.co/empiezaaqui" target="_blank" rel="noopener">Empieza aquí</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tagline reveal">Dietista integrativo · Junto a @femesenz</span>
+      <h1 class="reveal">¿Cansada de dietas que no funcionan? <span>Vamos a cambiar eso.</span></h1>
+      <p class="lede reveal">Soy Juanma Morales. Te ayudo a transformar tu bienestar con un método flexible, sin extremos ni prohibiciones — alimentación, movimiento y acompañamiento real, a tu ritmo.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="https://typebot.co/empiezaaqui" target="_blank" rel="noopener">Empieza aquí →</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/juanmadietista/" target="_blank" rel="noopener">Ver Instagram</a>
+      </div>
+      <p class="hero-note reveal">Método probado con la comunidad FemEsenz · seguimiento cercano, sin dietas extremas</p>
+    </div>
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="380" height="380" rx="36" fill="var(--panel)"/>
+        <g transform="translate(210,205)">
+          <circle r="130" fill="var(--coral)"/>
+          <circle r="130" fill="none" stroke="var(--coral-deep)" stroke-width="5"/>
+          <path d="M -95 20 A 100 100 0 0 1 60 -85" stroke="var(--sand)" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M 40 100 A 100 100 0 0 0 100 -10" stroke="var(--gold)" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <circle r="46" fill="var(--teal)"/>
+          <circle r="46" fill="none" stroke="var(--teal-deep)" stroke-width="4"/>
+        </g>
+        <g transform="translate(90,340) rotate(-10)">
+          <rect x="-40" y="-8" width="80" height="16" rx="8" fill="var(--teal)"/>
+          <circle cx="-40" cy="0" r="16" fill="var(--teal-deep)"/>
+          <circle cx="40" cy="0" r="16" fill="var(--teal-deep)"/>
+        </g>
+        <circle cx="350" cy="90" r="12" fill="var(--gold)"/>
+        <circle cx="60" cy="80" r="9" fill="var(--teal)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">¿Te suena esto?</p>
+      <h2>Has probado de todo y nada se sostiene en el tiempo</h2>
+      <p>No es falta de fuerza de voluntad. Es que las dietas extremas no están hechas para durar.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="emoji">😩</span>
+        <h3>Empiezas fuerte, abandonas rápido</h3>
+        <p>Cada dieta nueva promete resultados rápidos y termina siendo insostenible en tu día a día real.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🔁</span>
+        <h3>El efecto rebote de siempre</h3>
+        <p>Restringes, pierdes, recuperas — y vuelves a empezar de cero, sin entender por qué pasa.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🤍</span>
+        <h3>Nadie te acompaña de verdad</h3>
+        <p>Planes genéricos, sin seguimiento ni ajustes, que no tienen en cuenta tu vida ni tu ritmo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="wrap metodo">
+    <div class="metodo-art">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="360" height="360" rx="30" fill="var(--sand)"/>
+        <g transform="translate(200,200)">
+          <path d="M -120 0 A 120 120 0 1 1 120 0" fill="none" stroke="var(--teal)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M 120 0 A 120 120 0 0 1 -60 104" fill="none" stroke="var(--coral)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M -60 104 A 120 120 0 0 1 -120 0" fill="none" stroke="var(--gold)" stroke-width="14" stroke-linecap="round"/>
+          <circle r="52" fill="var(--ink)"/>
+          <text x="0" y="8" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="22" fill="var(--sand)">JM</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <p class="kicker">Cómo trabajamos</p>
+      <h2>Tres pasos, sin promesas imposibles</h2>
+      <div class="metodo-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div><h4>Hablamos de verdad</h4><p>Nada de formularios genéricos: te llamo, escucho tu caso y entiendo qué has probado antes.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div><h4>Plan flexible, a tu medida</h4><p>Alimentación y movimiento adaptados a tu rutina real, con recetas fáciles y sin prohibiciones.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div><h4>Seguimiento constante</h4><p>Ajustamos juntos en cada paso, con la comunidad FemEsenz detrás para sostener el cambio.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap femesenz">
+    <div>
+      <p class="kicker">Con @femesenz</p>
+      <h2>Una comunidad que sostiene el cambio, no solo un plan en PDF</h2>
+      <p class="lede" style="margin-top:16px; color:var(--ink-soft);">Junto a mi compañera Mari Nieto, dietista y naturóloga, formamos FemEsenz: espacio de nutrición, entrenamiento y bienestar donde el acompañamiento es constante — y donde el servicio 1a1 está abierto a cualquiera que lo necesite.</p>
+    </div>
+    <div class="femesenz-card">
+      <h3>Lo que encuentras dentro</h3>
+      <p>Todo pensado para que el cambio se sienta ligero, no como una obligación más.</p>
+      <ul class="femesenz-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Plan de nutrición personalizado, sin restricciones extremas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Entrenamientos en directo y rutinas para casa o gimnasio</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Seguimiento individual que se ajusta a cada momento</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Talleres, retos y comunidad para no caminar sola</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Lo que dicen quienes ya empezaron</p>
+      <h2>Resultados que se sienten sostenibles</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="body">Me llamó, escuchó mi caso y me dio un plan pensado para mí, no una plantilla más.</p>
+        <p class="who">— Clienta de FemEsenz</p>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="body">Nunca me sentí sola en el proceso. Está pendiente de cada ajuste, siempre con calma.</p>
+        <p class="who">— Clienta de FemEsenz</p>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="body">Aprendí a comer con su método flexible, sin la culpa que arrastraba de otras dietas.</p>
+        <p class="who">— Clienta de FemEsenz</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>Deja las dietas extremas. Empieza algo que sí se sostiene.</h2>
+      <p>Responde unas preguntas rápidas y descubre cómo podemos trabajar juntos, sin compromiso.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://typebot.co/empiezaaqui" target="_blank" rel="noopener">Empieza aquí →</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/juanmadietista/" target="_blank" rel="noopener">Ver contenido en Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark">JM</span> juanmadietista</div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/juanmadietista/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://typebot.co/empiezaaqui" target="_blank" rel="noopener">Empieza aquí</a>
+    </div>
+    <p class="foot-copy">© 2026 Juanma Morales · FemEsenz</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.animationDelay = (i*70)+'ms';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>

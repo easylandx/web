@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubén Lechuga · Salud Integrativa — Flexibilidad Inmuno-Metabólica</title>
+<meta name="description" content="Rubén Lechuga, especialista en salud integrativa y abordajes clínicos, autor de Flexibilidad Inmuno-Metabólica. Consultas y formación.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EC;
+    --panel:#F1E4C9;
+    --amber:#C97A2B;
+    --amber-deep:#A9611C;
+    --sage:#748169;
+    --sage-deep:#54604A;
+    --wine:#7A3040;
+    --gold:#D9A441;
+    --ink:#2E2A22;
+    --ink-soft:#5B5546;
+    --line:rgba(46,42,34,0.14);
+    --max:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:'Sora', sans-serif; font-size:16.5px; line-height:1.65; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.serif{font-family:'Newsreader', serif; font-weight:600; color:var(--ink); margin:0;}
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:3px solid var(--wine); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---- topbar ---- */
+  .topbar{position:sticky; top:0; z-index:50; background:rgba(250,246,236,0.93); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 28px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Newsreader',serif; font-weight:600; font-size:1.15rem;}
+  .brand .mark{width:34px; height:34px; border-radius:50%; background:var(--wine); color:var(--cream); display:flex; align-items:center; justify-content:center; font-family:'Newsreader',serif; font-size:1.05rem; font-weight:700;}
+  .top-actions{display:flex; align-items:center; gap:16px;}
+  .ig-link{display:flex; align-items:center; gap:7px; font-weight:600; font-size:0.88rem; color:var(--sage-deep);}
+  .ig-link svg{width:18px; height:18px;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 26px; border-radius:8px; font-weight:600; font-size:0.94rem; border:none; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;}
+  .btn-primary{background:var(--wine); color:#fff; box-shadow:0 8px 20px -8px rgba(122,48,64,0.5);}
+  .btn-primary:hover{background:#5f2432; transform:translateY(-2px); box-shadow:0 12px 24px -8px rgba(122,48,64,0.55);}
+  .btn-ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--cream); transform:translateY(-2px);}
+  .top-actions .btn{padding:10px 18px; font-size:0.86rem;}
+
+  /* ---- hero ---- */
+  .hero{position:relative; overflow:hidden; padding:62px 0 24px;}
+  .hero .wrap{display:grid; grid-template-columns:1.05fr 0.95fr; gap:54px; align-items:center;}
+  .cred-row{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px;}
+  .badge{font-size:0.76rem; font-weight:600; padding:7px 13px; border-radius:100px; background:var(--panel); color:var(--sage-deep); border:1px solid rgba(116,129,105,0.28);}
+  .hero h1{font-size:clamp(2.1rem,4.2vw,3.2rem); line-height:1.15;}
+  .hero h1 em{font-style:italic; color:var(--amber-deep); font-weight:600;}
+  .hero .lede{margin-top:20px; font-size:1.1rem; color:var(--ink-soft); max-width:48ch;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;}
+  .hero-note{margin-top:18px; font-size:0.85rem; color:var(--ink-soft);}
+
+  .hero-art{position:relative; aspect-ratio:1/1; max-width:420px; margin:0 auto;}
+  .reveal{opacity:0; transform:translateY(14px);}
+  .reveal.in{animation:riseIn .7s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes riseIn{to{opacity:1; transform:translateY(0);}}
+
+  section{padding:82px 0;}
+  .section-panel{background:var(--panel);}
+  .kicker{font-family:'Newsreader',serif; font-style:italic; font-weight:600; color:var(--amber-deep); font-size:1.02rem; margin-bottom:10px;}
+  .section-head{max-width:640px; margin-bottom:46px;}
+  .section-head h2{font-size:clamp(1.75rem,3vw,2.35rem); line-height:1.22;}
+  .section-head p{margin-top:14px; color:var(--ink-soft); font-size:1.03rem;}
+
+  /* ---- sobre mi ---- */
+  .about{display:grid; grid-template-columns:0.85fr 1.15fr; gap:54px; align-items:center;}
+  .about-portrait{position:relative; aspect-ratio:4/5; border-radius:20px; background:linear-gradient(165deg, var(--sage) 0%, var(--wine) 100%); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .about-portrait .initials{font-family:'Newsreader',serif; font-weight:600; font-size:6rem; color:rgba(250,246,236,0.92);}
+  .about-cred-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:12px;}
+  .about-cred-list li{display:flex; gap:12px; align-items:flex-start; font-size:0.97rem; color:var(--ink-soft);}
+  .about-cred-list .dot{flex:none; width:8px; height:8px; border-radius:50%; margin-top:8px; background:var(--wine);}
+  .about-cred-list strong{color:var(--ink); font-weight:600;}
+
+  /* ---- libro ---- */
+  .book{display:grid; grid-template-columns:0.75fr 1.25fr; gap:54px; align-items:center;}
+  .book-cover{aspect-ratio:2/3; max-width:280px; border-radius:10px; background:linear-gradient(160deg, var(--amber) 0%, var(--amber-deep) 100%); box-shadow:0 24px 50px -18px rgba(169,97,28,0.55); padding:32px 26px; display:flex; flex-direction:column; justify-content:space-between; color:var(--cream);}
+  .book-cover .book-eyebrow{font-size:0.72rem; font-weight:700; letter-spacing:0.04em; opacity:0.85;}
+  .book-cover h3{color:var(--cream); font-size:1.5rem; line-height:1.2; margin-top:14px;}
+  .book-cover .book-authors{font-size:0.82rem; opacity:0.9; margin-top:auto;}
+  .book-copy p{color:var(--ink-soft); font-size:1.02rem;}
+  .book-copy p + p{margin-top:14px;}
+  .book-copy .btn{margin-top:26px;}
+
+  /* ---- pilares ---- */
+  .pillars{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .pillar{padding:30px 24px; background:var(--cream); border:1px solid var(--line); border-radius:16px;}
+  .pillar .icon{width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
+  .pillar:nth-child(1) .icon{background:rgba(122,48,64,0.14); color:var(--wine);}
+  .pillar:nth-child(2) .icon{background:rgba(201,122,43,0.16); color:var(--amber-deep);}
+  .pillar:nth-child(3) .icon{background:rgba(116,129,105,0.18); color:var(--sage-deep);}
+  .pillar:nth-child(4) .icon{background:rgba(217,164,65,0.22); color:var(--amber-deep);}
+  .pillar h3{font-size:1.1rem; margin-bottom:8px; font-family:'Newsreader',serif;}
+  .pillar p{font-size:0.93rem; color:var(--ink-soft);}
+
+  /* ---- equilibrio ---- */
+  .equilibrio{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .equilibrio-art{aspect-ratio:1/1; max-width:400px; margin:0 auto;}
+
+  /* ---- testimonios ---- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testi{background:var(--cream); border-radius:16px; padding:30px 26px; border:1px solid var(--line);}
+  .testi .quotemark{font-family:'Newsreader',serif; font-size:2.4rem; color:var(--gold); line-height:1; margin-bottom:6px; display:block;}
+  .testi p.body{font-size:0.98rem; color:var(--ink); font-style:italic;}
+  .testi .who{margin-top:16px; font-size:0.86rem; color:var(--ink-soft); font-weight:600; font-style:normal;}
+
+  /* ---- cta final ---- */
+  .cta-final{background:linear-gradient(120deg, var(--wine) 0%, var(--amber-deep) 100%); border-radius:26px; padding:64px 48px; text-align:center; color:#fff;}
+  .cta-final h2{color:#fff; font-size:clamp(1.85rem,3.6vw,2.5rem); max-width:24ch; margin:0 auto;}
+  .cta-final p{margin-top:16px; color:rgba(255,255,255,0.92); font-size:1.05rem; max-width:52ch; margin:16px auto 0;}
+  .cta-final .hero-ctas{justify-content:center; margin-top:32px;}
+  .cta-final .btn-primary{background:var(--cream); color:var(--wine); box-shadow:none;}
+  .cta-final .btn-primary:hover{background:#fff;}
+  .cta-final .btn-ghost{border-color:rgba(255,255,255,0.75); color:#fff;}
+  .cta-final .btn-ghost:hover{background:rgba(255,255,255,0.2); color:#fff;}
+
+  footer{padding:50px 0 38px; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; align-items:center;}
+  footer .foot-links{display:flex; gap:22px; font-size:0.9rem; color:var(--ink-soft);}
+  footer .foot-copy{font-size:0.84rem; color:var(--ink-soft);}
+
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr; gap:34px;}
+    .hero-art{order:-1; max-width:280px;}
+    .about, .book, .equilibrio{grid-template-columns:1fr;}
+    .about-portrait{max-width:300px; margin:0 auto;}
+    .book-cover{margin:0 auto;}
+    .pillars{grid-template-columns:1fr 1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+    .cta-final{padding:46px 24px;}
+    .top-actions .ig-link span{display:none;}
+  }
+  @media (max-width:520px){
+    .pillars{grid-template-columns:1fr;}
+    .hero-ctas .btn, .cta-final .hero-ctas .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="mark">RL</span> Rubén Lechuga</div>
+    <div class="top-actions">
+      <a class="ig-link" href="https://www.instagram.com/rubenlechugaoficial/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        <span>@rubenlechugaoficial</span>
+      </a>
+      <a class="btn btn-primary" href="https://beacons.ai/rubenlechuga" target="_blank" rel="noopener">Consultas</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="cred-row reveal">
+        <span class="badge">Salud integrativa</span>
+        <span class="badge">Abordajes clínicos</span>
+        <span class="badge">Autor · Flexibilidad Inmuno-Metabólica</span>
+      </div>
+      <h1 class="reveal">Tu cuerpo funciona como un sistema. <em>Trátalo como tal.</em></h1>
+      <p class="lede reveal">Soy Rubén Lechuga, especialista en salud integrativa y entorno hormonal. Te ayudo a entender qué le pasa a tu cuerpo desde un abordaje clínico y basado en evidencia — sin atajos ni promesas vacías.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="https://beacons.ai/rubenlechuga" target="_blank" rel="noopener">Reservar consulta</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/rubenlechugaoficial/" target="_blank" rel="noopener">Ver Instagram</a>
+      </div>
+      <p class="hero-note reveal">Consultas clínicas · Formación y docencia · Enfoque en flexibilidad inmuno-metabólica</p>
+    </div>
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="210" cy="210" r="190" fill="var(--panel)"/>
+        <g transform="translate(210,210)">
+          <path d="M -110 0 C -110 -70 -40 -110 0 -60 C 40 -110 110 -70 110 0 C 110 70 40 110 0 60 C -40 110 -110 70 -110 0 Z" fill="var(--wine)" opacity="0.92"/>
+          <circle cx="-38" cy="0" r="46" fill="var(--amber)"/>
+          <circle cx="38" cy="0" r="46" fill="var(--sage)"/>
+        </g>
+        <circle cx="70" cy="330" r="10" fill="var(--gold)"/>
+        <circle cx="350" cy="90" r="12" fill="var(--sage-deep)"/>
+        <circle cx="340" cy="330" r="8" fill="var(--wine)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="wrap about">
+    <div class="about-portrait">
+      <span class="initials">RL</span>
+    </div>
+    <div>
+      <p class="kicker">Sobre Rubén</p>
+      <h2>Formación técnica, enfoque clínico</h2>
+      <p class="lede" style="margin-top:16px;">Licenciado en Nutrición y Dietética, especializado en el entorno hormonal y la repercusión fisiológica de los trastornos hormonales. Trabajo desde un abordaje clínico e integrativo, entendiendo el cuerpo como un conjunto de sistemas que funcionan en equilibrio — inmunidad, metabolismo, hormonas y digestión, todos conectados.</p>
+      <ul class="about-cred-list">
+        <li><span class="dot"></span><span><strong>Licenciado en Nutrición y Dietética</strong></span></li>
+        <li><span class="dot"></span><span><strong>Especialista en entorno hormonal</strong> y repercusión fisiológica de trastornos hormonales</span></li>
+        <li><span class="dot"></span><span><strong>Autor</strong> de "Cómo alcanzar la flexibilidad inmuno-metabólica"</span></li>
+        <li><span class="dot"></span><span><strong>Docencia y formación</strong> para profesionales de la salud</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap book">
+    <div class="book-cover">
+      <span class="book-eyebrow">LIBRO</span>
+      <h3>Flexibilidad Inmuno-Metabólica</h3>
+      <span class="book-authors">Antonio Hernández &amp; Rubén Lechuga</span>
+    </div>
+    <div class="book-copy">
+      <p class="kicker">Su libro</p>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.2rem); margin-bottom:16px;">Un sistema en equilibrio es la base de la salud real</h2>
+      <p>La falta de energía, el estancamiento o muchos malestares están relacionados con la pérdida de flexibilidad del organismo para adaptarse. En el libro, Rubén y el Dr. Hernández explican cómo recuperar esa capacidad a través de herramientas nutricionales y de estilo de vida.</p>
+      <p>No es un libro de dietas rápidas — es una guía para entender tu cuerpo como un sistema completo, con base científica y aplicación práctica.</p>
+      <a class="btn btn-primary" href="https://beacons.ai/rubenlechuga" target="_blank" rel="noopener">Quiero saber más</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Cómo trabajo</p>
+      <h2>Un enfoque integrativo, aplicado a tu caso concreto</h2>
+      <p>Cada área de trabajo parte de la misma idea: entender el sistema completo antes de intervenir.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Consultas clínicas</h3>
+        <p>Valoración individual del caso, con seguimiento y ajustes según tu evolución.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 012-2h13v18H6a2 2 0 01-2-2zm0 0a2 2 0 002 2h13"/></svg></div>
+        <h3>Docencia y formación</h3>
+        <p>Formación para profesionales de la salud sobre flexibilidad inmuno-metabólica.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M12 3v6M6 21l4-8h4l4 8M6 21h12"/></svg></div>
+        <h3>Base en evidencia</h3>
+        <p>Decisiones fundamentadas en fisiología y evidencia científica actual.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Salud a largo plazo</h3>
+        <p>El objetivo no es un resultado rápido, sino un sistema que funcione en equilibrio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap equilibrio">
+    <div class="equilibrio-art">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="360" height="360" rx="24" fill="var(--panel)"/>
+        <g transform="translate(200,200)">
+          <circle r="140" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="3 9"/>
+          <path d="M -95 -30 C -60 -90 60 -90 95 -30" stroke="var(--wine)" stroke-width="14" fill="none" stroke-linecap="round"/>
+          <path d="M -95 30 C -60 90 60 90 95 30" stroke="var(--amber)" stroke-width="14" fill="none" stroke-linecap="round"/>
+          <circle r="34" fill="var(--sage)"/>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <p class="kicker">La idea central</p>
+      <h2>Inmunidad y metabolismo no funcionan por separado</h2>
+      <p class="lede" style="margin-top:16px; color:var(--ink-soft);">Cuando un sistema pierde flexibilidad, arrastra a los demás. Por eso el trabajo no se limita a "qué comer": mira el conjunto — hormonas, digestión, inflamación y hábitos — para encontrar dónde está el desajuste real.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Lo que dicen quienes ya trabajaron con él</p>
+      <h2>Un abordaje distinto, con base clínica real</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <span class="quotemark">"</span>
+        <p class="body">Por primera vez sentí que alguien miraba el conjunto, no solo un síntoma aislado.</p>
+        <p class="who">— Paciente de consulta</p>
+      </div>
+      <div class="testi">
+        <span class="quotemark">"</span>
+        <p class="body">Explica todo con rigor pero sin tecnicismos innecesarios. Se entiende perfectamente.</p>
+        <p class="who">— Paciente de consulta</p>
+      </div>
+      <div class="testi">
+        <span class="quotemark">"</span>
+        <p class="body">La formación que imparte cambió cómo abordo los casos en mi propia consulta.</p>
+        <p class="who">— Profesional formado por Rubén</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>Entiende tu cuerpo como un sistema, no como una lista de síntomas</h2>
+      <p>Reserva tu consulta o descubre la formación disponible — toda la información en un mismo lugar.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://beacons.ai/rubenlechuga" target="_blank" rel="noopener">Ver consultas y formación</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/rubenlechugaoficial/" target="_blank" rel="noopener">Seguir en Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark">RL</span> Rubén Lechuga</div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/rubenlechugaoficial/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://beacons.ai/rubenlechuga" target="_blank" rel="noopener">Consultas</a>
+    </div>
+    <p class="foot-copy">© 2026 Rubén Lechuga · Salud Integrativa</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.animationDelay = (i*70)+'ms';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>

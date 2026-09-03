@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubén García · #elgymyelñam</title>
+<meta name="description" content="Pierde grasa y consigue tu cambio con Rubén García. Recetas fitness y entrenamiento: ser FIT nunca fue tan delicioso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#FF4757;
+    --red-deep:#E8324B;
+    --green:#7BC96F;
+    --green-deep:#2F4B26;
+    --yellow:#FFC145;
+    --cream:#FFFBF2;
+    --cream-dim:#FBF1DE;
+    --ink:#26331E;
+    --ink-soft:#5B6B52;
+    --white:#FFFFFF;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', sans-serif;
+    line-height:1.05;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,251,242,0.88);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(38,51,30,0.08);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;max-width:1120px;margin:0 auto;
+  }
+  .nav-brand{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;font-size:1.15rem;
+    color:var(--ink);
+    display:flex;align-items:center;gap:8px;
+  }
+  .nav-brand .tag{
+    background:var(--green);
+    color:var(--white);
+    font-size:0.68rem;
+    font-weight:700;
+    padding:3px 9px;
+    border-radius:100px;
+  }
+  .nav-cta{
+    background:var(--red);
+    color:var(--white);
+    padding:10px 20px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.85rem;
+    box-shadow:0 6px 16px rgba(255,71,87,0.3);
+    transition:transform .22s ease, box-shadow .22s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(255,71,87,0.38);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(255,193,69,0.35), transparent 45%),
+      radial-gradient(circle at 5% 85%, rgba(123,201,111,0.3), transparent 50%),
+      var(--cream);
+    padding:140px 0 80px;
+    overflow:hidden;
+  }
+  .float-emoji{
+    position:absolute;
+    font-size:3.4rem;
+    opacity:0.9;
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,0.08));
+  }
+  .e1{top:14%;right:8%;animation:bob 6s ease-in-out infinite;}
+  .e2{bottom:16%;left:5%;font-size:2.6rem;animation:bob 7s ease-in-out infinite 0.6s;}
+  .e3{top:56%;right:20%;font-size:2.2rem;animation:bob 5.5s ease-in-out infinite 1.2s;}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-18px) rotate(6deg);}}
+
+  .hero-inner{
+    position:relative;z-index:2;
+    max-width:760px;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--green-deep);
+    color:var(--cream);
+    padding:8px 18px;
+    border-radius:100px;
+    font-size:0.82rem;font-weight:600;
+    margin-bottom:26px;
+    opacity:0;animation:riseIn .8s ease forwards;
+  }
+  .hero h1{
+    color:var(--ink);
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    font-weight:800;
+    margin-bottom:22px;
+    opacity:0;animation:riseIn .8s ease .12s forwards;
+  }
+  .hero h1 .hl-red{color:var(--red);}
+  .hero h1 .hl-green{color:var(--green-deep);}
+  .hero p.lead{
+    color:var(--ink-soft);
+    font-size:1.18rem;
+    max-width:540px;
+    margin-bottom:36px;
+    line-height:1.6;
+    opacity:0;animation:riseIn .8s ease .24s forwards;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseIn .8s ease .36s forwards;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 30px;border-radius:100px;
+    font-weight:700;font-size:0.96rem;
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .btn-primary{
+    background:var(--red);
+    color:var(--white);
+    box-shadow:0 10px 26px rgba(255,71,87,0.32);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(255,71,87,0.4);}
+  .btn-outline{
+    background:var(--white);
+    color:var(--ink);
+    border:2px solid var(--green-deep);
+  }
+  .btn-outline:hover{background:var(--green-deep);color:var(--cream);transform:translateY(-3px);}
+
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  /* ---------- BRAND STRIP ---------- */
+  .brand-strip{
+    background:var(--green-deep);
+    padding:22px 0;
+  }
+  .brand-strip .wrap{
+    display:flex;flex-wrap:wrap;
+    align-items:center;justify-content:center;
+    gap:14px 34px;
+  }
+  .brand-item{
+    color:var(--cream);
+    font-weight:600;
+    font-size:0.95rem;
+    display:flex;align-items:center;gap:8px;
+  }
+  .brand-item .code{
+    background:var(--yellow);
+    color:var(--green-deep);
+    font-size:0.75rem;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:100px;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:100px 0;position:relative;}
+  .eyebrow{
+    font-weight:700;color:var(--red);
+    font-size:0.85rem;margin-bottom:14px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.9rem,3.6vw,2.8rem);
+    color:var(--ink);font-weight:700;
+    max-width:640px;margin-bottom:20px;
+  }
+  .section-lead{
+    color:var(--ink-soft);font-size:1.08rem;
+    max-width:600px;line-height:1.7;
+  }
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--white);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;align-items:center;
+  }
+  .about-visual{
+    background:linear-gradient(150deg, var(--green), var(--green-deep));
+    border-radius:28px;
+    padding:44px 34px;
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+    min-height:320px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .about-visual::after{
+    content:"🥑";
+    position:absolute;
+    font-size:9rem;
+    opacity:0.15;
+    right:-20px;bottom:-30px;
+    transform:rotate(-8deg);
+  }
+  .about-visual .hashtag{
+    font-family:'Baloo 2',sans-serif;
+    font-size:1.7rem;font-weight:700;
+    margin-bottom:14px;
+    position:relative;z-index:2;
+  }
+  .about-visual p{
+    color:#DFF0D6;font-size:0.98rem;line-height:1.65;
+    position:relative;z-index:2;
+  }
+  .about-copy p{
+    color:var(--ink-soft);font-size:1.05rem;line-height:1.75;
+    margin-bottom:18px;
+  }
+  .about-copy strong{color:var(--ink);}
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .chip{
+    background:var(--cream-dim);
+    color:var(--ink);
+    font-size:0.85rem;font-weight:600;
+    padding:9px 16px;border-radius:100px;
+  }
+
+  /* ---------- PROGRAM / OFFER ---------- */
+  .program{
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .program .eyebrow{color:var(--yellow);}
+  .program .section-title{color:var(--cream);}
+  .program .section-lead{color:#C9D4BF;}
+  .program-card{
+    margin-top:52px;
+    background:linear-gradient(135deg, var(--red), var(--red-deep));
+    border-radius:28px;
+    padding:48px 40px;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:40px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .program-card::after{
+    content:"🍉";
+    position:absolute;
+    font-size:8rem;
+    opacity:0.16;
+    right:-10px;top:-20px;
+  }
+  .program-card h3{
+    font-size:clamp(1.6rem,3vw,2.2rem);
+    color:var(--white);
+    margin-bottom:14px;
+    position:relative;z-index:2;
+  }
+  .program-card p{
+    color:#FFE3E6;font-size:0.99rem;line-height:1.65;
+    position:relative;z-index:2;margin-bottom:24px;
+  }
+  .program-actions{
+    display:flex;flex-direction:column;gap:12px;
+    position:relative;z-index:2;
+  }
+  .program-actions .btn{justify-content:center;}
+  .btn-white{
+    background:var(--white);
+    color:var(--red-deep);
+  }
+  .btn-white:hover{transform:translateY(-3px);background:var(--cream);}
+  .btn-line{
+    background:transparent;
+    color:var(--white);
+    border:2px solid rgba(255,255,255,0.5);
+  }
+  .btn-line:hover{background:rgba(255,255,255,0.14);transform:translateY(-3px);}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{background:var(--cream);}
+  .how-grid{
+    margin-top:54px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .how-card{
+    background:var(--white);
+    border-radius:22px;
+    padding:32px 26px;
+    border:1px solid rgba(38,51,30,0.08);
+    box-shadow:0 14px 30px rgba(38,51,30,0.05);
+  }
+  .how-emoji{font-size:2.2rem;margin-bottom:16px;display:block;}
+  .how-card h3{
+    font-family:'Baloo 2',sans-serif;
+    font-size:1.1rem;margin-bottom:10px;color:var(--ink);
+  }
+  .how-card p{color:var(--ink-soft);font-size:0.96rem;line-height:1.6;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:linear-gradient(150deg, var(--green-deep), #1C3014);
+    color:var(--cream);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";position:absolute;
+    width:520px;height:520px;
+    background:radial-gradient(circle, rgba(255,193,69,0.25), transparent 70%);
+    top:-160px;left:50%;transform:translateX(-50%);
+  }
+  .final-cta .wrap{position:relative;z-index:2;}
+  .final-cta h2{
+    font-size:clamp(1.9rem,4vw,2.8rem);
+    margin-bottom:18px;
+  }
+  .final-cta .hl{color:var(--yellow);}
+  .final-cta p{
+    color:#D3E2C7;max-width:520px;margin:0 auto 38px;
+    font-size:1.05rem;line-height:1.7;
+  }
+  .final-actions{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  }
+  .ig-link{
+    display:inline-flex;align-items:center;gap:10px;
+    color:var(--ink);font-weight:700;
+    padding:16px 28px;border-radius:100px;
+    background:var(--yellow);
+    transition:transform .22s ease, background .22s ease;
+  }
+  .ig-link:hover{transform:translateY(-3px);background:#FFD374;}
+  .ig-link svg{width:20px;height:20px;flex-shrink:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#1C3014;
+    color:#8FA184;
+    padding:36px 0;
+    font-size:0.85rem;
+  }
+  footer .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:14px;
+  }
+  footer a{color:var(--yellow);font-weight:600;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    .about-grid{grid-template-columns:1fr;}
+    .program-card{grid-template-columns:1fr;}
+    .how-grid{grid-template-columns:1fr;}
+    .brand-strip .wrap{justify-content:flex-start;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .hero{padding:120px 0 60px;}
+    .btn{padding:14px 22px;font-size:0.9rem;}
+    .float-emoji{display:none;}
+  }
+
+  :focus-visible{outline:3px solid var(--yellow);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Rubén García <span class="tag">#elgymyelñam</span></div>
+    <a class="nav-cta" href="https://www.instagram.com/rvbengarcia/" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="float-emoji e1">🥑</span>
+  <span class="float-emoji e2">🍉</span>
+  <span class="float-emoji e3">💪🏻</span>
+  <div class="wrap hero-inner">
+    <span class="hero-badge">🥑 Recetas fitness · Athlete</span>
+    <h1>Ser <span class="hl-red">FIT</span> nunca fue tan <span class="hl-green">delicious</span></h1>
+    <p class="lead">Recetas fáciles, tips de entrenamiento y un método pensado para que pierdas grasa sin renunciar a comer rico. Consigue tu cambio a tu ritmo.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://fitandelicious.co/checkout/rvbengarcia" target="_blank" rel="noopener">Pierde grasa y consigue tu cambio 💪🏻</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/rvbengarcia/" target="_blank" rel="noopener">Ver en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<div class="brand-strip">
+  <div class="wrap">
+    <span class="brand-item">🍉 @naturitas.es</span>
+    <span class="brand-item">🥑 @prozis <span class="code">-10% rvbengarcia</span></span>
+  </div>
+</div>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="reveal about-visual">
+      <div class="hashtag">#elgymyelñam</div>
+      <p>Rubén García combina entrenamiento y recetas reales para que comer bien y estar en forma vayan de la mano, sin dramas ni prohibiciones.</p>
+    </div>
+    <div class="reveal about-copy">
+      <span class="eyebrow">Sobre Rubén</span>
+      <h2 class="section-title">Fitness tips + recetas que sí te apetece cocinar</h2>
+      <p>Detrás de <strong>#elgymyelñam</strong> hay una idea simple: <strong>perder grasa y cambiar de hábitos no tiene que ser aburrido</strong>. Rubén comparte recetas y consejos de entrenamiento pensados para el día a día, no para una dieta imposible de mantener.</p>
+      <p>Si buscas un cambio real —físico y de hábitos— con acompañamiento y contenido que puedes aplicar ya, este es tu sitio.</p>
+      <div class="chip-row">
+        <span class="chip">Recetas fitness</span>
+        <span class="chip">Tips de entrenamiento</span>
+        <span class="chip">Pérdida de grasa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="program">
+  <div class="wrap">
+    <span class="eyebrow">El programa</span>
+    <h2 class="section-title">Pierde grasa y consigue tu cambio</h2>
+    <p class="section-lead">Un sistema pensado para resultados reales: entrenamiento, alimentación y seguimiento en un solo lugar.</p>
+    <div class="program-card">
+      <div>
+        <h3>Accede a tu plan hoy mismo</h3>
+        <p>Reserva tu acceso al programa de Rubén y empieza tu cambio con un método claro, sin complicaciones ni dietas imposibles.</p>
+      </div>
+      <div class="program-actions">
+        <a class="btn btn-white" href="https://fitandelicious.co/checkout/rvbengarcia" target="_blank" rel="noopener">Quiero mi acceso 🍉</a>
+        <a class="btn btn-line" href="https://m.fitandelicious.co/rvbengarcia" target="_blank" rel="noopener">Entrar desde el móvil</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2 class="section-title">Tan simple como suena</h2>
+    <p class="section-lead">Sin fórmulas raras: entrenamiento, comida rica y constancia.</p>
+    <div class="how-grid">
+      <div class="reveal how-card">
+        <span class="how-emoji">💪🏻</span>
+        <h3>Entrena con criterio</h3>
+        <p>Rutinas y tips pensados para quemar grasa y ganar forma sin perder tiempo.</p>
+      </div>
+      <div class="reveal how-card">
+        <span class="how-emoji">🥑</span>
+        <h3>Come rico, come fit</h3>
+        <p>Recetas fáciles que se ajustan a tu día a día, sin renunciar al sabor.</p>
+      </div>
+      <div class="reveal how-card">
+        <span class="how-emoji">🍉</span>
+        <h3>Mantén el cambio</h3>
+        <p>Hábitos que se sostienen en el tiempo, no un chute de motivación de una semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--yellow)">Tu cambio empieza hoy</span>
+    <h2>Ser fit, la versión <span class="hl">delicious</span></h2>
+    <p>Entra a tu programa, sígueme en Instagram y empecemos tu cambio juntos.</p>
+    <div class="final-actions">
+      <a class="btn btn-primary" href="https://fitandelicious.co/checkout/rvbengarcia" target="_blank" rel="noopener">Pierde grasa ya</a>
+      <a class="ig-link" href="https://www.instagram.com/rvbengarcia/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        @rvbengarcia
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Rubén García · #elgymyelñam · Athlete</span>
+    <a href="https://www.instagram.com/rvbengarcia/" target="_blank" rel="noopener">Instagram @rvbengarcia</a>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

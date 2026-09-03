@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ponte FitconQ · Paloma Quintana, Nutricionista Integrativa y Deportiva</title>
+<meta name="description" content="Aprende a cuidarte de forma fácil y sostenible con Paloma Quintana, dietista-nutricionista. Programa Ponte FitconQ: ciencia, comida real y acompañamiento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6EA;
+    --champagne:#F3E4C8;
+    --citrus:#E4791E;
+    --citrus-deep:#C7620F;
+    --olive:#6E7B3A;
+    --olive-deep:#525C29;
+    --mustard:#D9A441;
+    --plum:#7A3548;
+    --ink:#332C1F;
+    --ink-soft:#5B5140;
+    --line: rgba(51,44,31,0.14);
+    --max: 1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  :focus-visible{outline:3px solid var(--citrus-deep); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,246,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem;
+  }
+  .brand .mark{
+    width:34px; height:34px; border-radius:50%;
+    background:var(--citrus); color:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:1.05rem; font-weight:700;
+  }
+  .top-actions{display:flex; align-items:center; gap:18px;}
+  .ig-link{
+    display:flex; align-items:center; gap:7px;
+    font-weight:600; font-size:0.92rem; color:var(--plum);
+  }
+  .ig-link svg{width:19px; height:19px;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 26px;
+    border-radius:100px;
+    font-weight:600; font-size:0.95rem;
+    border:none; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-primary{
+    background:var(--citrus); color:#fff;
+    box-shadow:0 8px 20px -8px rgba(196,90,10,0.55);
+  }
+  .btn-primary:hover{background:var(--citrus-deep); transform:translateY(-2px); box-shadow:0 12px 24px -8px rgba(196,90,10,0.6);}
+  .btn-small{padding:10px 20px; font-size:0.88rem;}
+  .top-actions .btn{padding:10px 20px; font-size:0.88rem;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; overflow:hidden; padding:64px 0 40px;}
+  .hero .wrap{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .eyebrow-badges{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px;}
+  .badge{
+    font-size:0.78rem; font-weight:600; letter-spacing:0.01em;
+    padding:7px 13px; border-radius:100px;
+    background:var(--champagne); color:var(--olive-deep);
+    border:1px solid rgba(110,123,58,0.25);
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.4vw, 3.4rem);
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic; font-weight:500; color:var(--citrus-deep);
+  }
+  .hero .lede{
+    margin-top:22px; font-size:1.14rem; color:var(--ink-soft); max-width:46ch;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:32px;}
+  .btn-ghost{
+    background:transparent; color:var(--ink); border:1.5px solid var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--cream); transform:translateY(-2px);}
+  .hero-note{margin-top:18px; font-size:0.86rem; color:var(--ink-soft);}
+
+  .hero-art{position:relative; aspect-ratio:1/1; max-width:460px; margin:0 auto;}
+  .hero-art svg{width:100%; height:100%;}
+
+  .hero-scribble{
+    position:absolute; inset:0; z-index:-1; pointer-events:none;
+  }
+
+  /* scroll reveal (single orchestrated hero entrance) */
+  .reveal{opacity:0; transform:translateY(14px);}
+  .reveal.in{
+    animation:riseIn .7s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes riseIn{ to{opacity:1; transform:translateY(0);} }
+
+  /* ---------- sections shared ---------- */
+  section{padding:84px 0;}
+  .section-champagne{background:var(--champagne);}
+  .kicker{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    color:var(--citrus-deep); font-size:1.05rem; margin-bottom:10px;
+  }
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem); line-height:1.2;}
+  .section-head p{margin-top:14px; color:var(--ink-soft); font-size:1.05rem;}
+
+  /* ---------- about ---------- */
+  .about{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;
+  }
+  .about-portrait{
+    position:relative; aspect-ratio:4/5; border-radius:26px;
+    background:linear-gradient(160deg, var(--mustard) 0%, var(--citrus) 55%, var(--plum) 100%);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .about-portrait .initials{
+    font-family:'Fraunces', serif; font-weight:600; font-size:6.5rem; color:rgba(255,255,255,0.92);
+  }
+  .about-portrait .leafring{position:absolute; inset:0; opacity:0.5;}
+  .about-cred-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:12px;}
+  .about-cred-list li{
+    display:flex; gap:12px; align-items:flex-start; font-size:0.98rem; color:var(--ink-soft);
+  }
+  .about-cred-list .dot{
+    flex:none; width:8px; height:8px; border-radius:50%; margin-top:8px;
+    background:var(--olive);
+  }
+  .about-cred-list strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- pillars ---------- */
+  .pillars{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  .pillar{
+    padding:30px 24px; background:var(--cream);
+    border:1px solid var(--line);
+  }
+  .pillar:nth-child(1){border-radius:28px 12px 28px 12px;}
+  .pillar:nth-child(2){border-radius:12px 28px 12px 28px;}
+  .pillar:nth-child(3){border-radius:28px 12px 28px 12px;}
+  .pillar:nth-child(4){border-radius:12px 28px 12px 28px;}
+  .pillar .icon{
+    width:46px; height:46px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .pillar:nth-child(odd) .icon{background:rgba(228,121,30,0.15); color:var(--citrus-deep);}
+  .pillar:nth-child(even) .icon{background:rgba(110,123,58,0.16); color:var(--olive-deep);}
+  .pillar h3{font-size:1.12rem; margin-bottom:8px;}
+  .pillar p{font-size:0.94rem; color:var(--ink-soft);}
+
+  /* ---------- programa ---------- */
+  .programa{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;
+  }
+  .programa-card{
+    background:var(--ink); color:var(--cream);
+    border-radius:26px; padding:42px 38px;
+    position:relative; overflow:hidden;
+  }
+  .programa-card h3{color:var(--cream); font-size:1.5rem; margin-bottom:6px;}
+  .programa-card .price-tag{
+    display:inline-block; margin-top:10px; padding:6px 14px; border-radius:100px;
+    background:var(--mustard); color:var(--ink); font-weight:700; font-size:0.85rem;
+  }
+  .programa-list{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:16px;}
+  .programa-list li{display:flex; gap:12px; font-size:0.98rem; color:rgba(251,246,234,0.88);}
+  .programa-list svg{flex:none; width:20px; height:20px; margin-top:2px; color:var(--mustard);}
+  .programa-card .btn-primary{margin-top:30px; width:100%;}
+
+  .programa-side h2{font-size:clamp(1.8rem,3vw,2.3rem); line-height:1.22;}
+  .programa-side .lede{margin-top:16px; color:var(--ink-soft); font-size:1.04rem;}
+  .programa-mini{margin-top:30px; display:grid; gap:18px;}
+  .programa-mini-item{display:flex; gap:14px; align-items:flex-start;}
+  .programa-mini-item .num{
+    font-family:'Fraunces',serif; font-weight:600; color:var(--citrus-deep); font-size:1.3rem;
+    flex:none; width:32px;
+  }
+  .programa-mini-item h4{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; margin-bottom:4px;}
+  .programa-mini-item p{color:var(--ink-soft); font-size:0.95rem;}
+
+  /* ---------- testimonios ---------- */
+  .testi-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  .testi{
+    background:var(--cream); border-radius:20px; padding:30px 26px;
+    border:1px solid var(--line); position:relative;
+  }
+  .testi .quotemark{
+    font-family:'Fraunces', serif; font-size:2.6rem; color:var(--mustard);
+    line-height:1; margin-bottom:6px; display:block;
+  }
+  .testi p.body{font-size:1rem; color:var(--ink); font-style:italic;}
+  .testi .who{margin-top:18px; font-size:0.88rem; color:var(--ink-soft); font-weight:600; font-style:normal;}
+
+  /* ---------- clinica ---------- */
+  .clinica{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+  }
+  .clinica-list{list-style:none; margin:24px 0 0; padding:0; display:grid; gap:14px;}
+  .clinica-list li{display:flex; gap:12px; align-items:center; font-size:1rem;}
+  .clinica-list svg{flex:none; width:22px; height:22px; color:var(--olive-deep);}
+  .clinica-art{aspect-ratio:1/1; max-width:420px; margin:0 auto;}
+
+  /* ---------- cta final ---------- */
+  .cta-final{
+    background:linear-gradient(135deg, var(--mustard) 0%, var(--citrus) 100%);
+    border-radius:32px; padding:64px 48px; text-align:center; position:relative; overflow:hidden;
+    color:#fff;
+  }
+  .cta-final h2{color:#fff; font-size:clamp(1.9rem,3.6vw,2.6rem); max-width:22ch; margin:0 auto;}
+  .cta-final p{margin-top:16px; color:rgba(255,255,255,0.92); font-size:1.08rem; max-width:52ch; margin-left:auto; margin-right:auto;}
+  .cta-final .hero-ctas{justify-content:center; margin-top:34px;}
+  .cta-final .btn-primary{background:var(--ink); box-shadow:none;}
+  .cta-final .btn-primary:hover{background:#000; }
+  .cta-final .btn-ghost{border-color:rgba(255,255,255,0.7); color:#fff;}
+  .cta-final .btn-ghost:hover{background:rgba(255,255,255,0.18); color:#fff;}
+
+  /* ---------- footer ---------- */
+  footer{padding:52px 0 40px; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; align-items:center;}
+  footer .foot-links{display:flex; gap:22px; font-size:0.9rem; color:var(--ink-soft);}
+  footer .foot-copy{font-size:0.85rem; color:var(--ink-soft);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px){
+    .hero .wrap{grid-template-columns:1fr; gap:36px;}
+    .hero-art{order:-1; max-width:300px;}
+    .about, .programa, .clinica{grid-template-columns:1fr;}
+    .about-portrait{max-width:320px; margin:0 auto;}
+    .pillars{grid-template-columns:1fr 1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .cta-final{padding:48px 26px;}
+    .top-actions .ig-link span{display:none;}
+  }
+  @media (max-width: 520px){
+    .pillars{grid-template-columns:1fr;}
+    .hero-ctas .btn, .cta-final .hero-ctas .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="mark">Q</span> nutricionconQ</div>
+    <div class="top-actions">
+      <a class="ig-link" href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        <span>@nutricionconq</span>
+      </a>
+      <a class="btn btn-primary" href="https://app.harbiz.io/checkout-form/fitconq" target="_blank" rel="noopener">Ponte FitconQ</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow-badges reveal">
+        <span class="badge">Dietista-Nutricionista colegiada CV-00791</span>
+        <span class="badge">Nutrición integrativa y deportiva</span>
+      </div>
+      <h1 class="reveal">Cuidarte no debería ser complicado. <em>Aprende a hacerlo fácil.</em></h1>
+      <p class="lede reveal">Soy Paloma Quintana, nutricionista y CEO de Clínica FitconQ. Te acompaño con ciencia, comida real y hábitos que se sostienen en el tiempo — nada de dietas imposibles ni prohibiciones eternas.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="https://app.harbiz.io/checkout-form/fitconq" target="_blank" rel="noopener">Empieza tu Ponte FitconQ</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener">Sígueme en Instagram</a>
+      </div>
+      <p class="hero-note reveal">+10 años acompañando cambios reales · Valencia, Granada y online</p>
+    </div>
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="210" cy="210" r="190" fill="var(--champagne)"/>
+        <g transform="translate(210,210)">
+          <circle r="140" fill="var(--citrus)"/>
+          <circle r="140" fill="none" stroke="var(--citrus-deep)" stroke-width="6"/>
+          <g stroke="var(--cream)" stroke-width="5" opacity="0.9">
+            <line x1="0" y1="-130" x2="0" y2="130"/>
+            <line x1="-126" y1="-40" x2="126" y2="40" transform="rotate(30)"/>
+            <line x1="-126" y1="-40" x2="126" y2="40" transform="rotate(-30)"/>
+            <line x1="-126" y1="-40" x2="126" y2="40" transform="rotate(60)"/>
+            <line x1="-126" y1="-40" x2="126" y2="40" transform="rotate(-60)"/>
+            <line x1="-126" y1="-40" x2="126" y2="40" transform="rotate(90)"/>
+          </g>
+          <circle r="30" fill="var(--mustard)"/>
+        </g>
+        <g transform="translate(70,330) rotate(-18)">
+          <ellipse cx="0" cy="0" rx="46" ry="18" fill="var(--olive)"/>
+          <ellipse cx="60" cy="-14" rx="38" ry="15" fill="var(--olive-deep)"/>
+        </g>
+        <g transform="translate(330,90) rotate(24)">
+          <ellipse cx="0" cy="0" rx="34" ry="14" fill="var(--olive)"/>
+        </g>
+        <circle cx="60" cy="70" r="10" fill="var(--plum)"/>
+        <circle cx="350" cy="300" r="14" fill="var(--mustard)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section-champagne">
+  <div class="wrap about">
+    <div class="about-portrait">
+      <svg class="leafring" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.5" fill="var(--cream)">
+          <ellipse cx="40" cy="60" rx="40" ry="16" transform="rotate(-20 40 60)"/>
+          <ellipse cx="360" cy="440" rx="46" ry="18" transform="rotate(30 360 440)"/>
+          <ellipse cx="370" cy="60" rx="30" ry="12" transform="rotate(60 370 60)"/>
+        </g>
+      </svg>
+      <span class="initials">PQ</span>
+    </div>
+    <div>
+      <p class="kicker">Sobre Paloma</p>
+      <h2>Formación sólida, cercanía real</h2>
+      <p class="lede" style="margin-top:16px;">Dietista-nutricionista con más de una década acompañando procesos de cambio. Licenciada en Ciencia y Tecnología de los Alimentos, con posgrado universitario en Nutrición Humana, formación ISAK y técnico superior en acondicionamiento físico — todo puesto al servicio de planes que se adaptan a tu vida, no al revés.</p>
+      <ul class="about-cred-list">
+        <li><span class="dot"></span><span><strong>Dietista-Nutricionista colegiada</strong> — CV-00791</span></li>
+        <li><span class="dot"></span><span><strong>Licenciada CTA · MSc</strong> en Nutrición Humana</span></li>
+        <li><span class="dot"></span><span><strong>Antropometrista ISAK</strong> nivel 1</span></li>
+        <li><span class="dot"></span><span><strong>CEO y directora</strong> de Clínica FitconQ, con equipo docente en universidades del sector</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Nuestra forma de trabajar</p>
+      <h2>Nutrición evolutiva, con base científica y acompañamiento cercano</h2>
+      <p>Cuatro pilares que sostienen cada plan, sea cual sea tu punto de partida.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-4 3-7 7-7 11a7 7 0 0014 0c0-4-3-8-7-11z"/></svg></div>
+        <h3>Nutrición evolutiva</h3>
+        <p>Comida real, adaptada a cómo funciona tu cuerpo — sin listas imposibles de seguir.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3v18M18 3v18M3 8h6M15 8h6M3 16h6M15 16h6"/></svg></div>
+        <h3>Nutrición deportiva</h3>
+        <p>Planes de alimentación pensados para rendir, recuperar y sentirte con energía.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+        <h3>Acompañamiento cercano</h3>
+        <p>Seguimiento continuo para ajustar el plan a lo que va pasando en tu día a día.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M12 3v6M6 21l4-8h4l4 8M6 21h12"/></svg></div>
+        <h3>Base en evidencia</h3>
+        <p>Decisiones basadas en ciencia, no en tendencias — sostenibles a largo plazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-champagne" id="programa">
+  <div class="wrap programa">
+    <div class="programa-side">
+      <p class="kicker">El programa</p>
+      <h2>Ponte FitconQ: tu proceso de cambio, guiado de principio a fin</h2>
+      <p class="lede">Un programa diseñado para que dejes de perseguir dietas y empieces a construir un estilo de vida que te sienta bien — con guía profesional en cada paso.</p>
+      <div class="programa-mini">
+        <div class="programa-mini-item">
+          <span class="num">1</span>
+          <div><h4>Valoración inicial</h4><p>Entendemos tu punto de partida, tus objetivos y tu rutina real.</p></div>
+        </div>
+        <div class="programa-mini-item">
+          <span class="num">2</span>
+          <div><h4>Plan personalizado</h4><p>Alimentación y hábitos ajustados a ti — sin plantillas genéricas.</p></div>
+        </div>
+        <div class="programa-mini-item">
+          <span class="num">3</span>
+          <div><h4>Seguimiento constante</h4><p>Ajustamos contigo a medida que avanzas, para que el cambio se mantenga.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="programa-card">
+      <p class="kicker" style="color:var(--mustard);">Programa</p>
+      <h3>Ponte FitconQ</h3>
+      <span class="price-tag">Plazas 2026 abiertas</span>
+      <ul class="programa-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Plan de alimentación personalizado, con comida real</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Seguimiento y ajustes durante todo el proceso</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Enfoque integrativo: nutrición, hábitos y entrenamiento</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Acompañamiento directo de Paloma y su equipo</li>
+      </ul>
+      <a class="btn btn-primary" href="https://app.harbiz.io/checkout-form/fitconq" target="_blank" rel="noopener">Reservar mi plaza</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Lo que cuentan quienes ya lo vivieron</p>
+      <h2>Cambios que se sostienen en el tiempo</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <span class="quotemark">"</span>
+        <p class="body">Por fin entendí por qué como lo que como, no solo qué tengo que comer. Eso cambió todo.</p>
+        <p class="who">— Paciente de Clínica FitconQ</p>
+      </div>
+      <div class="testi">
+        <span class="quotemark">"</span>
+        <p class="body">Me acompañaron en cada ajuste. Nunca sentí que estaba sola siguiendo una dieta genérica.</p>
+        <p class="who">— Paciente de Clínica FitconQ</p>
+      </div>
+      <div class="testi">
+        <span class="quotemark">"</span>
+        <p class="body">Después de probar varias cosas, esta fue la primera vez que un cambio se sintió sostenible.</p>
+        <p class="who">— Paciente de Clínica FitconQ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-champagne">
+  <div class="wrap clinica">
+    <div>
+      <p class="kicker">Clínica FitconQ</p>
+      <h2>Atención presencial y online, con el mismo cuidado</h2>
+      <p class="lede" style="margin-top:16px;">Dirigida por Paloma Quintana, con consulta en Valencia y Granada, y seguimiento online para quien lo necesite desde cualquier lugar.</p>
+      <ul class="clinica-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Consulta en Valencia</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Consulta en Granada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/></svg>Seguimiento online para cualquier lugar</li>
+      </ul>
+    </div>
+    <div class="clinica-art">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="30" width="340" height="340" rx="34" fill="var(--cream)"/>
+        <g transform="translate(200,200)">
+          <circle r="120" fill="none" stroke="var(--olive)" stroke-width="3" stroke-dasharray="4 10"/>
+          <circle r="80" fill="var(--olive)" opacity="0.16"/>
+          <g fill="var(--olive-deep)">
+            <ellipse cx="-30" cy="-10" rx="22" ry="9" transform="rotate(-20 -30 -10)"/>
+            <ellipse cx="26" cy="4" rx="26" ry="10" transform="rotate(18 26 4)"/>
+            <ellipse cx="0" cy="34" rx="20" ry="8" transform="rotate(70 0 34)"/>
+          </g>
+          <circle r="14" fill="var(--citrus)"/>
+        </g>
+        <circle cx="90" cy="90" r="8" fill="var(--mustard)"/>
+        <circle cx="320" cy="310" r="10" fill="var(--plum)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>Este es el momento de empezar tu Ponte FitconQ</h2>
+      <p>Plazas limitadas para 2026. Reserva tu lugar y empieza a construir hábitos que sí se sostienen.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://app.harbiz.io/checkout-form/fitconq" target="_blank" rel="noopener">Quiero mi plaza en Ponte FitconQ</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener">Ver contenido en Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark">Q</span> nutricionconQ</div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://app.harbiz.io/checkout-form/fitconq" target="_blank" rel="noopener">Ponte FitconQ</a>
+    </div>
+    <p class="foot-copy">© 2026 Paloma Quintana · Clínica FitconQ</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.animationDelay = (i*70)+'ms';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>

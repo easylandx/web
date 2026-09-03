@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Ramajo · Entrenador personal en Madrid</title>
+<meta name="description" content="Entrenamiento personal y readaptación deportiva con Eduardo Ramajo, Licenciado en CAFyD (Nº col. 53685). 15 años de experiencia. Online y presencial en Madrid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2436;
+    --navy-deep:#091724;
+    --teal:#145C56;
+    --lime:#C9FF4D;
+    --coral:#FF5B3C;
+    --sand:#F0E9DC;
+    --sand-dim:#E5DCC8;
+    --ink:#0F2436;
+    --ink-soft:#4B5D67;
+    --white:#FFFFFF;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    background:var(--sand);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Big Shoulders Display', sans-serif;
+    line-height:0.98;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(15,36,54,0.86);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:1140px;margin:0 auto;
+  }
+  .nav-brand{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:700;font-size:1.3rem;
+    color:var(--sand);
+    letter-spacing:0.02em;
+  }
+  .nav-brand span{color:var(--lime);}
+  .nav-cta{
+    background:var(--lime);
+    color:var(--navy-deep);
+    padding:10px 22px;
+    border-radius:6px;
+    font-weight:700;
+    font-size:0.85rem;
+    transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translateY(-2px);background:#DBFF7A;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    background:
+      linear-gradient(120deg, rgba(201,255,77,0.08), transparent 40%),
+      linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 70%);
+    padding:150px 0 90px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    right:-10%;top:-10%;
+    width:60%;height:130%;
+    background:var(--teal);
+    clip-path:polygon(45% 0, 100% 0, 100% 100%, 20% 100%);
+    opacity:0.55;
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:50px;align-items:center;
+  }
+  .cred-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(201,255,77,0.12);
+    border:1px solid rgba(201,255,77,0.5);
+    color:var(--lime);
+    padding:8px 16px;border-radius:6px;
+    font-size:0.8rem;font-weight:600;
+    margin-bottom:26px;
+    opacity:0;animation:riseIn .8s ease forwards;
+    letter-spacing:0.03em;
+  }
+  .hero h1{
+    color:var(--sand);
+    font-size:clamp(3rem, 6.4vw, 5.4rem);
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    opacity:0;animation:riseIn .8s ease .12s forwards;
+  }
+  .hero h1 .accent{color:var(--lime);}
+  .hero p.lead{
+    font-family:'IBM Plex Sans',sans-serif;
+    color:#C4D2D8;
+    font-size:1.12rem;
+    max-width:480px;
+    margin-bottom:34px;
+    line-height:1.65;
+    opacity:0;animation:riseIn .8s ease .24s forwards;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseIn .8s ease .36s forwards;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 30px;border-radius:6px;
+    font-weight:700;font-size:0.95rem;
+    transition:transform .22s ease, box-shadow .22s ease, background .22s ease;
+  }
+  .btn-primary{
+    background:var(--lime);
+    color:var(--navy-deep);
+    box-shadow:0 10px 26px rgba(201,255,77,0.25);
+  }
+  .btn-primary:hover{transform:translateY(-3px);background:#DBFF7A;}
+  .btn-ghost{
+    background:transparent;
+    color:var(--sand);
+    border:1.5px solid rgba(240,233,220,0.4);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,0.08);transform:translateY(-3px);}
+
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  /* hero stat panel */
+  .stat-panel{
+    position:relative;z-index:2;
+    background:rgba(9,23,36,0.55);
+    border:1px solid rgba(201,255,77,0.25);
+    border-radius:18px;
+    padding:34px 30px;
+    backdrop-filter:blur(6px);
+    opacity:0;animation:riseIn 1s ease .3s forwards;
+  }
+  .stat-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:18px 0;
+    border-bottom:1px solid rgba(240,233,220,0.12);
+  }
+  .stat-row:last-child{border-bottom:none;}
+  .stat-num{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-size:2.6rem;font-weight:800;
+    color:var(--lime);
+  }
+  .stat-label{
+    color:#C4D2D8;font-size:0.86rem;
+    max-width:150px;text-align:right;
+    line-height:1.4;
+  }
+
+  /* ---------- CREDENTIALS STRIP ---------- */
+  .cred-strip{
+    background:var(--navy-deep);
+    padding:26px 0;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  .cred-strip .wrap{
+    display:flex;flex-wrap:wrap;
+    justify-content:space-between;
+    gap:18px;
+  }
+  .cred-item{
+    display:flex;align-items:center;gap:10px;
+    color:#C4D2D8;font-size:0.9rem;font-weight:500;
+  }
+  .cred-item .mark{color:var(--lime);font-weight:700;}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:104px 0;position:relative;}
+  .eyebrow{
+    font-weight:700;color:var(--coral);
+    font-size:0.85rem;margin-bottom:14px;
+    display:block;text-transform:uppercase;letter-spacing:0.06em;
+  }
+  .section-title{
+    font-size:clamp(2.2rem,4.2vw,3.2rem);
+    color:var(--ink);font-weight:800;
+    text-transform:uppercase;
+    max-width:680px;margin-bottom:20px;
+  }
+  .section-lead{
+    color:var(--ink-soft);font-size:1.06rem;
+    max-width:600px;line-height:1.7;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--sand);}
+  .service-grid{
+    margin-top:54px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+  }
+  .service-card{
+    background:var(--white);
+    border-radius:16px;
+    padding:34px 30px;
+    border:1px solid rgba(15,36,54,0.08);
+    position:relative;
+    overflow:hidden;
+    transition:transform .25s ease;
+  }
+  .service-card:hover{transform:translateY(-5px);}
+  .service-card::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+    background:var(--coral);
+  }
+  .service-card:nth-child(2)::before{background:var(--teal);}
+  .service-card:nth-child(3)::before{background:var(--lime);}
+  .service-card:nth-child(4)::before{background:var(--navy);}
+  .service-card h3{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-size:1.5rem;font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:12px;color:var(--navy);
+  }
+  .service-card p{color:var(--ink-soft);font-size:0.97rem;line-height:1.65;}
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    background:var(--navy);
+    color:var(--sand);
+  }
+  .process .eyebrow{color:var(--lime);}
+  .process .section-title{color:var(--sand);}
+  .process .section-lead{color:#C4D2D8;}
+  .process-list{margin-top:56px;}
+  .process-item{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:30px;
+    padding:30px 0;
+    border-top:1px solid rgba(240,233,220,0.14);
+    align-items:start;
+  }
+  .process-item:last-child{border-bottom:1px solid rgba(240,233,220,0.14);}
+  .process-num{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-size:3.4rem;font-weight:800;
+    -webkit-text-stroke:1.5px var(--lime);
+    color:transparent;
+  }
+  .process-item h3{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-size:1.5rem;font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:8px;color:var(--sand);
+  }
+  .process-item p{color:#C4D2D8;font-size:0.97rem;line-height:1.65;max-width:520px;}
+
+  /* ---------- MODALITY STRIP ---------- */
+  .modality{
+    background:var(--coral);
+    padding:60px 0;
+  }
+  .modality .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:30px;flex-wrap:wrap;
+  }
+  .modality h2{
+    color:var(--white);
+    font-size:clamp(1.6rem,3vw,2.3rem);
+    text-transform:uppercase;
+    max-width:520px;
+  }
+  .modality .btn-primary{
+    background:var(--navy-deep);
+    color:var(--lime);
+  }
+  .modality .btn-primary:hover{background:var(--navy);}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--navy-deep);
+    color:var(--sand);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";position:absolute;
+    width:600px;height:600px;
+    background:radial-gradient(circle, rgba(201,255,77,0.14), transparent 70%);
+    top:-200px;left:50%;transform:translateX(-50%);
+  }
+  .final-cta .wrap{position:relative;z-index:2;}
+  .final-cta h2{
+    font-size:clamp(2.2rem,5vw,3.6rem);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .final-cta .accent{color:var(--lime);}
+  .final-cta p{
+    color:#C4D2D8;max-width:540px;margin:0 auto 38px;
+    font-size:1.05rem;line-height:1.7;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .final-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .ig-link{
+    display:inline-flex;align-items:center;gap:10px;
+    color:var(--navy-deep);font-weight:700;
+    padding:16px 30px;border-radius:6px;
+    background:var(--lime);
+    transition:transform .22s ease, background .22s ease;
+  }
+  .ig-link:hover{transform:translateY(-3px);background:#DBFF7A;}
+  .ig-link svg{width:20px;height:20px;flex-shrink:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy-deep);
+    color:#7C8E97;
+    padding:36px 0;
+    font-size:0.85rem;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  footer .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:14px;
+  }
+  footer a{color:var(--lime);font-weight:600;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .stat-panel{order:-1;}
+    .service-grid{grid-template-columns:1fr;}
+    .process-item{grid-template-columns:70px 1fr;}
+    .cred-strip .wrap{justify-content:flex-start;}
+    .modality .wrap{flex-direction:column;text-align:center;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .hero{padding:130px 0 70px;}
+    .btn{padding:14px 22px;font-size:0.9rem;}
+    .process-num{font-size:2.6rem;}
+  }
+
+  :focus-visible{outline:3px solid var(--lime);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Eduardo<span>Ramajo</span></div>
+    <a class="nav-cta" href="https://www.instagram.com/ed.ramajo" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="cred-badge">▫️ Licenciado en CAFyD · Nº col. 53685</span>
+      <h1>Entrena con <span class="accent">método</span>, no con improvisación</h1>
+      <p class="lead">Entrenamiento personal y readaptación deportiva. 15 años ayudando a personas a moverse mejor, recuperarse de lesiones y alcanzar sus objetivos, online y presencial en Madrid.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/ed.ramajo" target="_blank" rel="noopener">Empieza tu entrenamiento</a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-row">
+        <span class="stat-num">15</span>
+        <span class="stat-label">años de experiencia en entrenamiento y readaptación</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">CAFyD</span>
+        <span class="stat-label">Licenciado en Ciencias de la Actividad Física y del Deporte</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">2</span>
+        <span class="stat-label">modalidades: online y presencial en Madrid</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cred-strip">
+  <div class="wrap">
+    <div class="cred-item"><span class="mark">▫️</span> Licenciado en CAFyD (Nº col. 53685)</div>
+    <div class="cred-item"><span class="mark">▫️</span> Entrenamiento y readaptación deportiva</div>
+    <div class="cred-item"><span class="mark">▫️</span> 15 años de experiencia</div>
+    <div class="cred-item"><span class="mark">▫️</span> Online y presencial (Madrid)</div>
+  </div>
+</div>
+
+<section class="services" id="servicios">
+  <div class="wrap">
+    <span class="eyebrow">Servicios</span>
+    <h2 class="section-title">Un plan hecho a tu medida</h2>
+    <p class="section-lead">Cada cuerpo y cada objetivo son distintos. Por eso cada plan se construye desde tu punto de partida, no desde una plantilla genérica.</p>
+    <div class="service-grid">
+      <div class="reveal service-card">
+        <h3>Entrenamiento personal</h3>
+        <p>Sesiones diseñadas para tu nivel y tus objetivos: fuerza, composición corporal, rendimiento o salud general.</p>
+      </div>
+      <div class="reveal service-card">
+        <h3>Readaptación deportiva</h3>
+        <p>Vuelta a la actividad después de una lesión, con un proceso seguro y progresivo, adaptado a tu recuperación.</p>
+      </div>
+      <div class="reveal service-card">
+        <h3>Entrenamiento online</h3>
+        <p>Programas y seguimiento a distancia, para entrenar con criterio profesional estés donde estés.</p>
+      </div>
+      <div class="reveal service-card">
+        <h3>Entrenamiento presencial en Madrid</h3>
+        <p>Sesiones cara a cara, con corrección técnica directa y ajustes en tiempo real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <span class="eyebrow">Cómo trabajamos</span>
+    <h2 class="section-title">Un proceso claro, paso a paso</h2>
+    <p class="section-lead">Antes de empezar a entrenar, hay un proceso pensado para que cada sesión tenga sentido dentro de tu objetivo.</p>
+    <div class="process-list">
+      <div class="reveal process-item">
+        <div class="process-num">01</div>
+        <div>
+          <h3>Valoración inicial</h3>
+          <p>Analizamos tu punto de partida, tu historial y tus objetivos para diseñar el plan adecuado.</p>
+        </div>
+      </div>
+      <div class="reveal process-item">
+        <div class="process-num">02</div>
+        <div>
+          <h3>Plan personalizado</h3>
+          <p>Programa de entrenamiento adaptado a tu nivel, tu disponibilidad y tu modalidad, online o presencial.</p>
+        </div>
+      </div>
+      <div class="reveal process-item">
+        <div class="process-num">03</div>
+        <div>
+          <h3>Seguimiento y ajustes</h3>
+          <p>Revisamos tu progreso de forma constante y ajustamos el plan según cómo responde tu cuerpo.</p>
+        </div>
+      </div>
+      <div class="reveal process-item">
+        <div class="process-num">04</div>
+        <div>
+          <h3>Resultados sostenibles</h3>
+          <p>El objetivo no es solo llegar a la meta, sino mantener el progreso a largo plazo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modality">
+  <div class="wrap">
+    <h2>Entrena donde te resulte mejor: online o presencial en Madrid</h2>
+    <a class="btn btn-primary" href="https://www.instagram.com/ed.ramajo" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--lime)">Da el primer paso</span>
+    <h2>Tu <span class="accent">progreso</span> empieza con un mensaje</h2>
+    <p>Cuéntame tu objetivo por Instagram y hablamos de cómo diseñar tu plan de entrenamiento o readaptación.</p>
+    <div class="final-actions">
+      <a class="ig-link" href="https://www.instagram.com/ed.ramajo" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        @ed.ramajo
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Eduardo Ramajo · Entrenador personal · Licenciado en CAFyD (Nº col. 53685)</span>
+    <a href="https://www.instagram.com/ed.ramajo" target="_blank" rel="noopener">Instagram @ed.ramajo</a>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

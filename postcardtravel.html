@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PostcardTravel · Viajes y experiencias a medida</title>
+<meta name="description" content="Viajes y experiencias a medida, con asesoría personal en Tres Cantos, Madrid. Praga, Ruta Fluvial del Duero y Japón en la Agenda Viajera 2026–2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F1E6CE;
+    --paper-soft: #F8F1E1;
+    --card: #FBF6E9;
+    --ink: #1F2E35;
+    --ink-soft: #445560;
+    --navy: #16323F;
+    --navy-deep: #102630;
+    --red: #C0463C;
+    --red-deep: #A03931;
+    --teal: #3B6E64;
+    --teal-deep: #2C5850;
+    --mustard: #D8A63F;
+    --line: rgba(31,46,53,0.18);
+    --shadow: 0 18px 40px rgba(22,50,63,0.16);
+    --radius-stamp: 6px;
+    --maxw: 1120px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+    margin:0;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .script{
+    font-family:'Caveat', cursive;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--red);
+    display:inline-block;
+    transform:rotate(-2deg);
+  }
+
+  /* ---------- perforated stamp edge ---------- */
+  .stamp-edge{
+    outline:3px dashed var(--ink);
+    outline-offset:6px;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.98rem;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:var(--red);
+    color:var(--paper-soft);
+    box-shadow:0 10px 24px rgba(192,70,60,0.35);
+  }
+  .btn-primary:hover{ background:var(--red-deep); }
+  .btn-outline{
+    background:transparent;
+    border-color:var(--navy);
+    color:var(--navy);
+  }
+  .btn-outline:hover{ background:var(--navy); color:var(--paper-soft); }
+  .btn-light{
+    background:var(--paper-soft);
+    color:var(--navy);
+  }
+  .btn-light:hover{ background:#fff; }
+  .btn svg{ width:18px; height:18px; flex:none; }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(241,230,206,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.2rem;
+    color:var(--navy);
+  }
+  .logo-mark{
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif;
+    font-size:0.85rem;
+    font-weight:700;
+    transform:rotate(-6deg);
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+    font-size:0.96rem;
+    font-weight:500;
+  }
+  .nav-links a{ color:var(--ink-soft); position:relative; }
+  .nav-links a:hover{ color:var(--navy); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .ig-pill{
+    display:flex; align-items:center; justify-content:center;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:2px solid var(--navy);
+    color:var(--navy);
+    transition:all .18s ease;
+  }
+  .ig-pill:hover{ background:var(--navy); color:var(--paper); }
+  .ig-pill svg{ width:18px; height:18px; }
+  .menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .menu-btn span, .menu-btn span::before, .menu-btn span::after{
+    content:"";
+    display:block;
+    width:24px; height:2px;
+    background:var(--navy);
+    position:relative;
+    transition:all .2s ease;
+  }
+  .menu-btn span::before{ position:absolute; top:-8px; }
+  .menu-btn span::after{ position:absolute; top:8px; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:76px 0 96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-copy .script{ margin-bottom:18px; }
+  .hero-copy h1{
+    font-size:clamp(2.4rem, 4.4vw, 3.6rem);
+    margin-bottom:22px;
+  }
+  .hero-copy p.lede{
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-bottom:32px;
+  }
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:30px;
+  }
+  .hero-note{
+    font-size:0.94rem;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .hero-note .dot{ width:6px; height:6px; border-radius:50%; background:var(--teal); flex:none; }
+
+  /* postcard visual */
+  .postcard{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    padding:26px;
+    transform:rotate(2.2deg);
+    transition:transform .35s ease;
+  }
+  .postcard:hover{ transform:rotate(0deg) translateY(-4px); }
+  .postcard-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    padding-bottom:20px;
+  }
+  .postcard-msg{
+    font-family:'Caveat', cursive;
+    font-size:1.5rem;
+    color:var(--navy);
+    line-height:1.35;
+    max-width:23ch;
+  }
+  .postmark{
+    flex:none;
+    width:104px; height:104px;
+    border-radius:50%;
+    border:2.5px dashed var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transform:rotate(-10deg);
+    animation:stamp-in .7s cubic-bezier(.2,.9,.3,1.2) both;
+    animation-delay:.25s;
+  }
+  .postmark-inner{
+    font-family:'Fraunces', serif;
+    color:var(--red);
+    line-height:1.15;
+  }
+  .postmark-inner .pt{ font-size:1.05rem; font-weight:700; display:block; }
+  .postmark-inner .loc{ font-size:0.56rem; letter-spacing:0.06em; display:block; margin-top:2px; }
+  @keyframes stamp-in{
+    0%{ opacity:0; transform:rotate(-10deg) scale(0.5); }
+    100%{ opacity:1; transform:rotate(-10deg) scale(1); }
+  }
+  .postcard-divider{
+    border:none;
+    border-top:2px dashed var(--line);
+    margin:0;
+  }
+  .postcard-bottom{
+    padding-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .postcard-stamp{
+    justify-self:end;
+    width:74px; height:92px;
+    outline:2.5px dashed var(--mustard);
+    outline-offset:5px;
+    background:var(--mustard);
+    border-radius:3px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .postcard-stamp svg{ width:38px; height:38px; }
+  .postcard-addr{
+    font-size:0.86rem;
+    color:var(--ink-soft);
+  }
+  .postcard-addr strong{ color:var(--navy); display:block; margin-bottom:4px; font-family:'Fraunces',serif; font-weight:600; }
+
+  @media (prefers-reduced-motion: reduce){
+    .postmark{ animation:none; }
+    .postcard{ transition:none; }
+  }
+
+  /* ---------- section shared ---------- */
+  section{ padding:88px 0; }
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head .script{ margin-bottom:14px; }
+  .section-head h2{
+    font-size:clamp(2rem, 3.4vw, 2.7rem);
+    margin-bottom:16px;
+  }
+  .section-head p{ color:var(--ink-soft); font-size:1.05rem; }
+
+  /* ---------- values ---------- */
+  .values{ background:var(--paper-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .value-card{
+    background:var(--card);
+    border-radius:10px;
+    padding:32px 26px;
+    outline:2px dashed var(--line);
+    outline-offset:-10px;
+  }
+  .value-icon{
+    width:52px; height:52px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:20px;
+  }
+  .value-icon svg{ width:26px; height:26px; }
+  .value-card:nth-child(1) .value-icon{ background:rgba(59,110,100,0.14); color:var(--teal); }
+  .value-card:nth-child(2) .value-icon{ background:rgba(192,70,60,0.14); color:var(--red); }
+  .value-card:nth-child(3) .value-icon{ background:rgba(216,166,63,0.2); color:#9d7726; }
+  .value-card h3{ font-size:1.28rem; margin-bottom:10px; }
+  .value-card p{ color:var(--ink-soft); font-size:0.98rem; }
+
+  /* ---------- destinations ---------- */
+  .destinations .wrap > .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+  .dest-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+    margin-bottom:44px;
+  }
+  .dest-card{
+    background:var(--card);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 26px rgba(22,50,63,0.1);
+    display:flex;
+    flex-direction:column;
+  }
+  .dest-art{
+    height:190px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .dest-art svg{ width:100%; height:100%; }
+  .dest-badge{
+    position:absolute;
+    top:16px; left:16px;
+    background:var(--paper-soft);
+    color:var(--navy);
+    font-size:0.76rem;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:100px;
+    outline:1.5px dashed var(--navy);
+  }
+  .dest-body{ padding:24px 24px 28px; flex:1; display:flex; flex-direction:column; }
+  .dest-body h3{ font-size:1.4rem; margin-bottom:10px; }
+  .dest-body p{ color:var(--ink-soft); font-size:0.96rem; flex:1; }
+  .dest-tag{
+    margin-top:16px;
+    font-family:'Caveat', cursive;
+    font-size:1.15rem;
+    color:var(--red);
+  }
+
+  .agenda-cta{
+    background:var(--navy);
+    border-radius:16px;
+    padding:44px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:32px;
+    flex-wrap:wrap;
+    color:var(--paper-soft);
+  }
+  .agenda-cta h3{ color:var(--paper-soft); font-size:1.7rem; max-width:22ch; margin-bottom:10px; }
+  .agenda-cta p{ color:rgba(248,241,225,0.75); max-width:38ch; }
+  .agenda-cta-text{ flex:1 1 320px; }
+
+  /* ---------- contact ---------- */
+  .contact{
+    background:var(--navy-deep);
+    color:var(--paper-soft);
+  }
+  .contact .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .contact .section-head p{ color:rgba(248,241,225,0.72); }
+  .contact .section-head h2{ color:var(--paper-soft); }
+  .contact-list{ list-style:none; padding:0; margin:0 0 32px; display:flex; flex-direction:column; gap:18px; }
+  .contact-list li{ display:flex; align-items:flex-start; gap:14px; font-size:1rem; }
+  .contact-list svg{ width:22px; height:22px; flex:none; margin-top:2px; color:var(--mustard); }
+  .contact-list a:hover{ color:var(--mustard); }
+  .contact-ctas{ display:flex; flex-wrap:wrap; gap:14px; }
+
+  .contact-card{
+    background:rgba(248,241,225,0.06);
+    border:1.5px dashed rgba(248,241,225,0.35);
+    border-radius:14px;
+    padding:36px;
+  }
+  .contact-card .script{ color:var(--mustard); margin-bottom:14px; display:block; }
+  .contact-card p{ color:rgba(248,241,225,0.82); font-size:1.02rem; margin-bottom:22px; }
+  .contact-card .ig-handle{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    color:var(--paper-soft);
+    border-bottom:2px solid var(--mustard);
+    padding-bottom:4px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--navy-deep);
+    border-top:1px solid rgba(248,241,225,0.14);
+    padding:40px 0;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+  .foot-left{ display:flex; align-items:center; gap:12px; color:var(--paper-soft); font-family:'Fraunces',serif; font-weight:600; }
+  .foot-links{ display:flex; gap:22px; flex-wrap:wrap; font-size:0.92rem; color:rgba(248,241,225,0.7); }
+  .foot-links a:hover{ color:var(--mustard); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px){
+    .hero .wrap{ grid-template-columns:1fr; }
+    .postcard{ transform:none; order:-1; }
+    .value-grid, .dest-grid{ grid-template-columns:1fr; }
+    .contact .wrap{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 720px){
+    .nav-links{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:var(--paper-soft);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:22px 28px;
+      gap:18px;
+      border-bottom:1px solid var(--line);
+      display:none;
+    }
+    .nav-links.open{ display:flex; }
+    .menu-btn{ display:block; }
+    .nav-cta .nav-text{ display:none; }
+    section{ padding:64px 0; }
+    .agenda-cta{ padding:30px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top">
+        <span class="logo-mark">PT</span>
+        PostcardTravel
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#agenda">Agenda Viajera</a>
+        <a href="#destinos">Destinos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="nav-cta">
+        <a class="ig-pill" href="https://www.instagram.com/postcardtravel_/" target="_blank" rel="noopener" aria-label="Instagram de PostcardTravel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a class="btn btn-outline nav-text" href="#contacto">Reserva tu asesoría</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="script">Viajes y experiencias a medida</span>
+        <h1>Cada viaje empieza con una postal que aún no has escrito</h1>
+        <p class="lede">Diseñamos itinerarios a medida y te acompañamos con asesoría personal en nuestra oficina de Tres Cantos, con un compromiso real por un turismo responsable.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5c0 8.3 6.7 15 15 15l3-3-5-5-2 2c-2.8-1.1-5-3.3-6-6l2-2-5-5-3 3z"/></svg>
+            Habla con nosotras
+          </a>
+          <a class="btn btn-outline" href="canva.link/vvviwkd4tjwvbm9" target="_blank" rel="noopener">Ver Agenda Viajera 2026–2027</a>
+        </div>
+        <p class="hero-note"><span class="dot"></span> Próximos destinos: Praga · Ruta Fluvial del Duero · Japón</p>
+      </div>
+
+      <div class="postcard-wrap">
+        <div class="postcard">
+          <div class="postcard-top">
+            <p class="postcard-msg">"Aquí no vendemos viajes, escribimos postales que luego vives."</p>
+            <div class="postmark">
+              <div class="postmark-inner">
+                <span class="pt">PT</span>
+                <span class="loc">TRES CANTOS · MADRID</span>
+              </div>
+            </div>
+          </div>
+          <hr class="postcard-divider">
+          <div class="postcard-bottom">
+            <div class="postcard-addr">
+              <strong>PostcardTravel</strong>
+              Av. de los Labradores 5, Local 2<br>
+              Tres Cantos, Madrid, España
+            </div>
+            <div class="postcard-stamp">
+              <svg viewBox="0 0 40 40" fill="none" stroke="var(--navy)" stroke-width="1.6">
+                <path d="M6 30 L14 14 L20 24 L24 18 L34 30 Z" fill="var(--navy)" opacity="0.85"/>
+                <circle cx="12" cy="10" r="3" fill="var(--red)" stroke="none"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values" id="nosotros">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="script">Nuestra forma de viajar</span>
+        <h2>Así diseñamos tu próxima postal</h2>
+        <p>No trabajamos con paquetes cerrados. Escuchamos, proponemos y cuidamos cada detalle, desde la primera cita en nuestra oficina hasta el último día de viaje.</p>
+      </div>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-9C.7 8.2 3 4 7 4c2 0 3.6 1.2 5 3 1.4-1.8 3-3 5-3 4 0 6.3 4.2 4.5 8-2.5 4.65-9.5 9-9.5 9z"/></svg>
+          </div>
+          <h3>Viajes responsables ♻️</h3>
+          <p>Elegimos alojamientos, guías y rutas que cuidan el lugar que visitas y a quienes lo habitan, sin renunciar a la comodidad.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+          </div>
+          <h3>Asesoría a medida</h3>
+          <p>Nos sentamos contigo en Tres Cantos, escuchamos lo que buscas y diseñamos un itinerario que no encontrarás en ningún folleto.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4.5"/></svg>
+          </div>
+          <h3>Experiencias únicas</h3>
+          <p>De un atardecer en el Duero a una tarde en un templo de Kioto: momentos pensados para recordarse, no para tacharse de una lista.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS / AGENDA VIAJERA -->
+  <section class="destinations" id="destinos">
+    <div class="wrap">
+      <div class="section-head" id="agenda">
+        <div>
+          <span class="script">Agenda Viajera 2026–2027</span>
+          <h2>Los próximos destinos que llevamos con nosotras</h2>
+          <p>Tres experiencias que abren nuestra agenda de próximas temporadas. Cada una con salidas guiadas y también a medida.</p>
+        </div>
+      </div>
+
+      <div class="dest-grid">
+        <!-- PRAGA -->
+        <article class="dest-card">
+          <div class="dest-art" style="background:linear-gradient(180deg, #E7CFC2 0%, #D8A63F 100%);">
+            <span class="dest-badge">Primer destino</span>
+            <svg viewBox="0 0 300 190" preserveAspectRatio="xMidYMax slice">
+              <rect x="0" y="150" width="300" height="40" fill="#16323F"/>
+              <path d="M40 150 V90 h14 v-16 h10 v16 h14 V150" fill="#1F2E35"/>
+              <path d="M100 150 V70 h20 l6 -14 6 14 h20 V150" fill="#3B6E64"/>
+              <rect x="150" y="150" width="18" height="40" fill="#1F2E35"/>
+              <path d="M150 120 L159 100 L168 120 Z" fill="#C0463C"/>
+              <rect x="185" y="150" width="70" height="10" fill="#1F2E35"/>
+              <rect x="195" y="105" width="8" height="45" fill="#1F2E35"/>
+              <rect x="240" y="105" width="8" height="45" fill="#1F2E35"/>
+              <circle cx="199" cy="98" r="7" fill="#D8A63F"/>
+              <circle cx="244" cy="98" r="7" fill="#D8A63F"/>
+              <circle cx="255" cy="45" r="18" fill="#F8F1E1" opacity="0.85"/>
+            </svg>
+          </div>
+          <div class="dest-body">
+            <h3>Praga</h3>
+            <p>Callejuelas empedradas, torres góticas y una luz dorada sobre el Moldava. Una escapada para perderse despacio.</p>
+            <span class="dest-tag">Saludos desde el Puente de Carlos</span>
+          </div>
+        </article>
+
+        <!-- DUERO -->
+        <article class="dest-card">
+          <div class="dest-art" style="background:linear-gradient(180deg, #CFE0DA 0%, #3B6E64 100%);">
+            <span class="dest-badge">Ruta fluvial</span>
+            <svg viewBox="0 0 300 190" preserveAspectRatio="xMidYMax slice">
+              <path d="M0 150 C60 130 100 160 160 140 C220 122 260 150 300 138 V190 H0 Z" fill="#2C5850"/>
+              <path d="M0 170 C70 155 110 180 170 165 C225 152 260 172 300 162 V190 H0 Z" fill="#3B6E64"/>
+              <g fill="#16323F">
+                <rect x="20" y="70" width="30" height="20" transform="skewX(-18)"/>
+                <rect x="70" y="60" width="30" height="24" transform="skewX(-18)"/>
+                <rect x="120" y="50" width="30" height="28" transform="skewX(-18)"/>
+              </g>
+              <path d="M180 150 q40 -18 80 0 v10 h-80 z" fill="#F8F1E1"/>
+              <rect x="215" y="130" width="6" height="22" fill="#1F2E35"/>
+              <path d="M221 130 l24 10 -24 6 z" fill="#C0463C"/>
+            </svg>
+          </div>
+          <div class="dest-body">
+            <h3>Ruta Fluvial del Duero</h3>
+            <p>Viñedos en terrazas, pueblos con encanto y un crucero pausado por uno de los grandes ríos ibéricos.</p>
+            <span class="dest-tag">Una copa, dos orillas</span>
+          </div>
+        </article>
+
+        <!-- JAPON -->
+        <article class="dest-card">
+          <div class="dest-art" style="background:linear-gradient(180deg, #F3D9CF 0%, #C0463C 100%);">
+            <span class="dest-badge">Larga distancia</span>
+            <svg viewBox="0 0 300 190" preserveAspectRatio="xMidYMax slice">
+              <circle cx="230" cy="55" r="30" fill="#F8F1E1" opacity="0.9"/>
+              <path d="M0 150 C70 165 90 135 160 150 C220 163 260 140 300 150 V190 H0 Z" fill="#16323F"/>
+              <g fill="#1F2E35">
+                <rect x="70" y="60" width="12" height="90"/>
+                <rect x="180" y="60" width="12" height="90"/>
+                <rect x="60" y="55" width="142" height="14"/>
+                <rect x="60" y="80" width="142" height="10"/>
+              </g>
+            </svg>
+          </div>
+          <div class="dest-body">
+            <h3>Japón</h3>
+            <p>Templos, neón y estaciones de tren perfectamente puntuales. Tradición y futuro conviviendo en cada esquina.</p>
+            <span class="dest-tag">Sayonara, hasta la próxima</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="agenda-cta">
+        <div class="agenda-cta-text">
+          <h3>Descubre la Agenda Viajera 2026–2027 completa</h3>
+          <p>Fechas orientativas, precios de referencia y todos los detalles de nuestras próximas salidas, en un solo documento.</p>
+        </div>
+        <a class="btn btn-light" href="canva.link/vvviwkd4tjwvbm9" target="_blank" rel="noopener">
+          Ver Agenda Viajera 2026–2027
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div>
+        <div class="section-head">
+          <span class="script" style="color:var(--mustard);">Estamos aquí para ayudarte</span>
+          <h2>Te esperamos en nuestra oficina de Tres Cantos</h2>
+          <p>Cuéntanos qué viaje tienes en mente y lo diseñamos juntas, con tiempo y sin prisas.</p>
+        </div>
+
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>Av. de los Labradores 5, Local 2<br>Tres Cantos, Madrid, España</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c0 8.3 6.7 15 15 15l3-3-5-5-2 2c-2.8-1.1-5-3.3-6-6l2-2-5-5-3 3z"/></svg>
+            <a href="tel:910821610">910 82 16 10</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
+            <a href="mailto:info@postcardtravel.es">info@postcardtravel.es</a>
+          </li>
+        </ul>
+
+        <div class="contact-ctas">
+          <a class="btn btn-primary" href="tel:910821610">Llamar ahora</a>
+          <a class="btn btn-outline" style="border-color:var(--paper-soft); color:var(--paper-soft);" href="mailto:info@postcardtravel.es">Escribir un email</a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <span class="script">Síguenos el rastro</span>
+        <p>Descubre inspiración de viaje, próximas salidas y el detrás de escena de la agencia en nuestro Instagram.</p>
+        <a class="ig-handle" href="https://www.instagram.com/postcardtravel_/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px;"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          @postcardtravel_
+        </a>
+        <p style="margin-top:22px;">O encuentra todos nuestros enlaces en un solo sitio:</p>
+        <a class="ig-handle" href="https://linkbio.co/6071912S99y9L" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px;"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.5-1.5"/></svg>
+          linkbio.co/6071912S99y9L
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-left">
+      <span class="logo-mark" style="background:var(--mustard); color:var(--navy-deep);">PT</span>
+      PostcardTravel
+    </div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/postcardtravel_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://linkbio.co/6071912S99y9L" target="_blank" rel="noopener">Todos los enlaces</a>
+      <a href="canva.link/vvviwkd4tjwvbm9" target="_blank" rel="noopener">Agenda Viajera 2026–2027</a>
+      <a href="mailto:info@postcardtravel.es">info@postcardtravel.es</a>
+      <a href="tel:910821610">910 82 16 10</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>

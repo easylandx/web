@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agurtzane Coach | Transfórmate en 21 días — Pierde peso sin dietas imposibles</title>
+<meta name="description" content="Agurtzane, health & wellness coach. Pierde peso sin dietas imposibles. +1000 transformaciones reales. Súmate al reto Transfórmate en 21 días.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFDF7;
+    --mint:#DEFFF0;
+    --ink:#1B1330;
+    --ink-soft:#5c5470;
+    --magenta:#FF2DAF;
+    --magenta-deep:#E01696;
+    --emerald:#22E39A;
+    --electric:#4D5DFF;
+    --violet-soft:#EDE6FF;
+    --line: rgba(27,19,48,0.13);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--cream);color:var(--ink);
+    font-family:'DM Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Unbounded', sans-serif;
+    font-weight:700;
+    line-height:1.08;
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--emerald);color:var(--ink);}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--electric);outline-offset:3px;border-radius:4px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV (mobile-safe: display toggled, not transform-only) ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,253,247,0.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.05rem;flex:none;}
+  .brand-mark{width:32px;height:32px;border-radius:50%;background:conic-gradient(var(--magenta),var(--electric),var(--emerald),var(--magenta));flex:none;}
+
+  .nav-links{
+    display:none;
+    width:100%;
+    background:var(--cream);
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+    padding:28px 28px 34px;
+    position:fixed;
+    left:0;right:0;top:64px;
+    border-bottom:1px solid var(--line);
+    max-height:calc(100vh - 64px);
+    overflow-y:auto;
+  }
+  .nav-links.open{display:flex;}
+  .nav-links a{font-size:1.05rem;font-weight:700;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--magenta);}
+  .nav-links .btn{width:100%;justify-content:center;}
+
+  @media(min-width:900px){
+    .nav-links{
+      display:flex !important;
+      position:static;
+      flex-direction:row;
+      align-items:center;
+      width:auto;
+      padding:0;
+      gap:28px;
+      border-bottom:none;
+      max-height:none;
+      overflow:visible;
+      background:transparent;
+    }
+    .nav-links a{font-size:0.94rem;}
+    .nav-links .btn{width:auto;}
+  }
+
+  .burger{display:inline-flex;background:none;border:none;cursor:pointer;padding:6px;flex:none;}
+  @media(min-width:900px){.burger{display:none;}}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 26px;border-radius:100px;
+    font-weight:700;font-size:0.94rem;
+    border:2px solid var(--ink);
+    cursor:pointer;white-space:nowrap;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-solid{background:var(--magenta);color:var(--cream);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink);}
+  .btn-solid:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+  .btn-outline{background:var(--cream);color:var(--ink);box-shadow:4px 4px 0 var(--emerald);}
+  .btn-outline:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--emerald);}
+  .btn-sm{padding:10px 20px;font-size:0.85rem;}
+  .nav-cta{display:none;}
+  @media(min-width:900px){.nav-cta{display:inline-flex;}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:60px 0 80px;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;position:relative;z-index:2;}
+  @media(min-width:960px){.hero-grid{grid-template-columns:1.08fr 0.92fr;}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:var(--cream);padding:8px 18px;border-radius:100px;
+    font-size:0.82rem;font-weight:700;margin-bottom:22px;
+  }
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.5rem);}
+  .hero h1 .accent{color:var(--magenta);}
+  .hero p.lede{margin-top:22px;font-size:1.14rem;line-height:1.55;color:var(--ink-soft);max-width:48ch;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px;}
+  .hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap;}
+  .hero-stats .stat b{font-family:'Unbounded',sans-serif;font-size:1.7rem;display:block;}
+  .hero-stats .stat span{font-size:0.82rem;color:var(--ink-soft);font-weight:600;}
+
+  .hero-visual{position:relative;height:400px;display:flex;align-items:center;justify-content:center;}
+  .ring{
+    position:absolute;border-radius:50%;
+    border:3px dashed var(--line);
+  }
+  .ring.r1{width:340px;height:340px;animation:spin-slow 40s linear infinite;}
+  .ring.r2{width:260px;height:260px;border-color:rgba(255,45,175,0.25);animation:spin-slow-rev 30s linear infinite;}
+  @keyframes spin-slow{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+  @keyframes spin-slow-rev{from{transform:rotate(360deg);}to{transform:rotate(0);}}
+  .core-circle{
+    position:relative;width:200px;height:200px;border-radius:50%;
+    background:linear-gradient(150deg,var(--magenta),var(--electric) 55%,var(--emerald));
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    border:3px solid var(--ink);box-shadow:0 30px 60px -18px rgba(255,45,175,0.35);
+    animation:pulse-core 5s ease-in-out infinite;
+    z-index:2;
+  }
+  @keyframes pulse-core{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  .core-circle b{font-family:'Unbounded',sans-serif;font-size:2.6rem;color:var(--cream);}
+  .core-circle span{font-size:0.72rem;color:var(--cream);font-weight:700;letter-spacing:0.03em;}
+  .orbit-badge{
+    position:absolute;background:var(--cream);border:2px solid var(--ink);border-radius:100px;
+    padding:9px 16px;font-weight:700;font-size:0.8rem;box-shadow:3px 3px 0 var(--ink);
+  }
+  .orbit-badge.o1{top:6%;left:2%;animation:float-a 6s ease-in-out infinite;}
+  .orbit-badge.o2{bottom:10%;right:0;animation:float-b 7s ease-in-out infinite;}
+  .orbit-badge.o3{top:44%;right:-4%;animation:float-a 8s ease-in-out infinite reverse;}
+  @keyframes float-a{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+  @keyframes float-b{0%,100%{transform:translateY(0);}50%{transform:translateY(12px);}}
+
+  .wave-divider{display:block;width:100%;height:70px;}
+
+  section{padding:84px 0;position:relative;}
+  .section-tag{font-weight:700;color:var(--magenta);font-size:0.92rem;margin-bottom:14px;display:block;}
+  .section-head{max-width:660px;margin-bottom:50px;}
+  .section-head h2{font-size:clamp(1.85rem,3.6vw,2.5rem);}
+  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:1.06rem;line-height:1.6;}
+
+  /* ---------- BENEFICIOS ---------- */
+  .about{background:var(--mint);}
+  .benefit-grid{display:grid;grid-template-columns:1fr;gap:22px;}
+  @media(min-width:700px){.benefit-grid{grid-template-columns:repeat(3,1fr);}}
+  .benefit-card{
+    background:var(--cream);border:2px solid var(--ink);border-radius:24px;padding:30px 26px;
+    box-shadow:6px 6px 0 var(--line);
+    opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease;
+  }
+  .benefit-card.in{opacity:1;transform:translateY(0);}
+  .benefit-card:nth-child(1){box-shadow:6px 6px 0 var(--magenta);}
+  .benefit-card:nth-child(2){box-shadow:6px 6px 0 var(--electric);}
+  .benefit-card:nth-child(3){box-shadow:6px 6px 0 var(--emerald);}
+  .benefit-card .ic{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;background:var(--violet-soft);}
+  .benefit-card h3{font-size:1.14rem;margin-bottom:10px;}
+  .benefit-card p{color:var(--ink-soft);font-size:0.97rem;line-height:1.55;}
+
+  /* ---------- SOBRE AGURTZANE ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;margin-top:60px;}
+  @media(min-width:900px){.about-grid{grid-template-columns:0.85fr 1.15fr;}}
+  .portrait-ring{
+    width:100%;max-width:300px;aspect-ratio:1;margin:0 auto;border-radius:50%;
+    background:linear-gradient(150deg,var(--magenta),var(--electric),var(--emerald));
+    padding:8px;
+  }
+  .portrait-inner{
+    width:100%;height:100%;border-radius:50%;background:var(--cream);border:3px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;font-size:4rem;
+  }
+  .about-body ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px;}
+  .about-body li{display:flex;gap:12px;align-items:flex-start;font-weight:600;}
+  .check{flex:none;width:24px;height:24px;border-radius:50%;background:var(--emerald);border:2px solid var(--ink);display:grid;place-items:center;font-size:0.72rem;margin-top:1px;}
+
+  /* ---------- METODO ---------- */
+  .method-track{position:relative;}
+  .method-grid{display:grid;grid-template-columns:1fr;gap:26px;}
+  @media(min-width:700px){.method-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1080px){.method-grid{grid-template-columns:repeat(4,1fr);}}
+  .method-card{
+    background:var(--cream);border:2px solid var(--ink);border-radius:24px;padding:28px 24px;position:relative;
+    box-shadow:5px 5px 0 var(--line);
+  }
+  .method-step{
+    font-family:'Unbounded',sans-serif;font-size:1.3rem;width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--cream);margin-bottom:18px;
+  }
+  .method-card h3{font-size:1.08rem;margin-bottom:8px;}
+  .method-card p{color:var(--ink-soft);font-size:0.94rem;line-height:1.5;}
+
+  /* ---------- RESULTADOS ---------- */
+  .results{background:var(--ink);color:var(--cream);}
+  .results .section-tag{color:var(--emerald);}
+  .results .section-head p{color:rgba(255,253,247,0.72);}
+  .results-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:50px;}
+  @media(min-width:760px){.results-stats{grid-template-columns:repeat(4,1fr);}}
+  .rstat{border:2px solid rgba(255,253,247,0.25);border-radius:20px;padding:26px 20px;text-align:center;}
+  .rstat b{font-family:'Unbounded',sans-serif;font-size:2rem;color:var(--emerald);display:block;}
+  .rstat span{font-size:0.82rem;color:rgba(255,253,247,0.7);font-weight:600;}
+  .testi-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:760px){.testi-grid{grid-template-columns:repeat(3,1fr);}}
+  .testi{
+    background:rgba(255,253,247,0.06);border:2px solid rgba(255,253,247,0.25);border-radius:22px;padding:26px;
+  }
+  .testi p.quote{line-height:1.55;font-size:1rem;font-weight:500;}
+  .testi .who{margin-top:16px;font-size:0.82rem;font-weight:700;color:var(--emerald);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:grid;gap:14px;max-width:820px;}
+  .faq-item{border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:var(--cream);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.02rem;color:var(--ink);
+  }
+  .faq-q .plus{
+    flex:none;width:30px;height:30px;border-radius:50%;background:var(--emerald);border:2px solid var(--ink);
+    display:grid;place-items:center;font-size:1.1rem;transition:transform .3s ease;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);background:var(--magenta);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a p{padding:0 24px 22px;color:var(--ink-soft);line-height:1.6;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{
+    background:linear-gradient(120deg,var(--magenta) 0%, var(--electric) 55%, var(--emerald) 100%);
+    text-align:center;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  }
+  .final-cta h2{font-size:clamp(2rem,4.4vw,3rem);color:var(--cream);max-width:18ch;margin:0 auto;}
+  .final-cta p{margin-top:18px;font-size:1.08rem;color:var(--cream);opacity:0.92;max-width:52ch;margin-left:auto;margin-right:auto;}
+  .final-cta .hero-ctas{justify-content:center;margin-top:32px;}
+  .final-cta .btn-outline{box-shadow:4px 4px 0 var(--ink);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(255,253,247,0.75);padding:56px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1fr;gap:36px;}
+  @media(min-width:760px){.foot-grid{grid-template-columns:1.3fr 1fr 1fr;}}
+  footer .brand{color:var(--cream);}
+  footer p.tag{margin-top:14px;font-size:0.94rem;max-width:32ch;line-height:1.5;}
+  footer h4{color:var(--cream);font-size:0.84rem;margin-bottom:14px;font-weight:700;}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+  footer a{font-size:0.94rem;}
+  footer a:hover{color:var(--emerald);}
+  .foot-bottom{
+    margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,253,247,0.15);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:0.8rem;
+  }
+  .foot-bottom a{font-weight:700;}
+
+  /* ---------- FLOATING CONTACT ---------- */
+  .float-wrap{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+  .float-btn{
+    width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--ink);cursor:pointer;box-shadow:4px 4px 0 var(--ink);transition:transform .2s ease;
+  }
+  .float-btn:hover{transform:scale(1.08) translateY(-2px);}
+  .float-btn.wa{background:var(--emerald);}
+  .float-btn.ig{background:linear-gradient(135deg,var(--magenta),var(--electric));}
+  .float-btn.book{background:var(--electric);}
+  .float-btn svg{width:24px;height:24px;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand"><span class="brand-mark"></span>agurtxucoach</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#beneficios">Beneficios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#metodo">Método</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-solid btn-sm" href="https://wa.me/message/XBOZSK3KVOG5I1" target="_blank" rel="noopener">Escríbeme</a>
+    </div>
+    <a class="btn btn-solid btn-sm nav-cta" href="https://business.hgoweb.com/u/7c01b3f4-72e3-4472-8731-308d96b40079" target="_blank" rel="noopener">Reserva tu plaza</a>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#1B1330" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Health &amp; Wellness Coach</span>
+        <h1>Pierde peso <span class="accent">sin dietas imposibles</span></h1>
+        <p class="lede">Soy Agurtzane. Acompaño a personas reales a transformar su cuerpo y su energía en 21 días, con un método sostenible que ya han vivido más de 1.000 personas.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="https://business.hgoweb.com/u/7c01b3f4-72e3-4472-8731-308d96b40079" target="_blank" rel="noopener">Reservar mi plaza</a>
+          <a class="btn btn-outline" href="https://wa.me/message/XBOZSK3KVOG5I1" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>+1.000</b><span>Transformaciones reales</span></div>
+          <div class="stat"><b>21 días</b><span>Duración del reto</span></div>
+          <div class="stat"><b>Online</b><span>Desde donde estés</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="core-circle"><b>21</b><span>DÍAS</span></div>
+        <span class="orbit-badge o1">✨ +1000 transformaciones</span>
+        <span class="orbit-badge o2">💪 Sin dietas imposibles</span>
+        <span class="orbit-badge o3">🔥 Cupos abiertos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Qué vas a lograr</span>
+        <h2>Un cambio real, no una dieta más</h2>
+        <p>El reto Transfórmate en 21 días está pensado para que el cambio se sostenga mucho después del día 21.</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit-card"><div class="ic">🎯</div><h3>Pierde peso de forma sostenible</h3><p>Sin dietas imposibles ni restricciones extremas que no puedas mantener en el tiempo.</p></div>
+        <div class="benefit-card"><div class="ic">⚡</div><h3>Recupera tu energía</h3><p>Hábitos diarios simples que te devuelven la vitalidad desde la primera semana.</p></div>
+        <div class="benefit-card"><div class="ic">🤝</div><h3>Acompañamiento real</h3><p>No estás sola: seguimiento cercano durante todo el proceso de transformación.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE AGURTZANE -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="portrait-ring">
+            <div class="portrait-inner">✨</div>
+          </div>
+        </div>
+        <div class="about-body reveal">
+          <span class="section-tag">Sobre mí</span>
+          <h2>Transformaciones reales, método probado</h2>
+          <p style="margin-top:18px;color:var(--ink-soft);font-size:1.06rem;line-height:1.65;">
+            Soy Agurtzane, health &amp; wellness coach. Llevo años acompañando a personas a perder peso y recuperar energía sin recurrir a dietas imposibles de sostener. Más de 1.000 personas ya han vivido su transformación conmigo, y ahora es tu turno de sumarte al reto de 21 días.
+          </p>
+          <ul>
+            <li><span class="check">✓</span>Método probado con más de 1.000 transformaciones reales</li>
+            <li><span class="check">✓</span>Plan adaptado a tu ritmo de vida, no al revés</li>
+            <li><span class="check">✓</span>Acompañamiento cercano durante los 21 días del reto</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODO -->
+  <section id="metodo">
+    <div class="wrap method-track">
+      <div class="section-head reveal">
+        <span class="section-tag">Cómo funciona</span>
+        <h2>4 pasos hacia tu transformación</h2>
+        <p>Un proceso claro, guiado de principio a fin, para que llegues al día 21 con resultados reales.</p>
+      </div>
+      <div class="method-grid">
+        <div class="method-card reveal"><div class="method-step">1</div><h3>Reserva tu plaza</h3><p>Agenda tu lugar en el reto desde el enlace de reservas.</p></div>
+        <div class="method-card reveal"><div class="method-step">2</div><h3>Valoración inicial</h3><p>Hablamos de tu punto de partida y tus objetivos concretos.</p></div>
+        <div class="method-card reveal"><div class="method-step">3</div><h3>Plan de 21 días</h3><p>Recibes tu guía diaria, pensada para tu vida real.</p></div>
+        <div class="method-card reveal"><div class="method-step">4</div><h3>Seguimiento y resultados</h3><p>Te acompaño durante todo el reto para que no te quedes sola en el camino.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section class="results" id="resultados">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Resultados</span>
+        <h2>Una comunidad que ya lo ha vivido</h2>
+      </div>
+      <div class="results-stats">
+        <div class="rstat"><b>+1.000</b><span>Transformaciones reales</span></div>
+        <div class="rstat"><b>21</b><span>Días de reto</span></div>
+        <div class="rstat"><b>100%</b><span>Online</span></div>
+        <div class="rstat"><b>0</b><span>Dietas imposibles</span></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi reveal"><p class="quote">"Terminé el reto sintiéndome con más energía que en años. No fue una dieta más, fue un cambio de verdad."</p><p class="who">— Participante del reto</p></div>
+        <div class="testi reveal"><p class="quote">"El acompañamiento fue lo que marcó la diferencia. Nunca sentí que estaba haciendo esto sola."</p><p class="who">— Participante del reto</p></div>
+        <div class="testi reveal"><p class="quote">"Por primera vez sentí que el plan encajaba conmigo, no yo encajando en el plan."</p><p class="who">— Participante del reto</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="preguntas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Preguntas frecuentes</span>
+        <h2>Antes de sumarte al reto</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">¿En qué consiste el reto de 21 días?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Es un acompañamiento guiado paso a paso para perder peso y recuperar energía, con seguimiento cercano durante todo el proceso.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Es presencial u online?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Es 100% online, así que puedes sumarte desde donde estés, con acompañamiento directo por WhatsApp.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Tengo que hacer dietas estrictas?<span class="plus">+</span></button>
+          <div class="faq-a"><p>No. El método está pensado precisamente para evitar las dietas imposibles de sostener en el tiempo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Cómo reservo mi plaza?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Puedes reservar directamente desde el enlace de reservas, o escribirme por WhatsApp o Instagram si prefieres resolver dudas antes.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Tu transformación empieza hoy</h2>
+      <p>Súmate a las más de 1.000 personas que ya han cambiado su cuerpo y su energía sin dietas imposibles.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="https://business.hgoweb.com/u/7c01b3f4-72e3-4472-8731-308d96b40079" target="_blank" rel="noopener">Reservar mi plaza</a>
+        <a class="btn btn-outline" href="https://wa.me/message/XBOZSK3KVOG5I1" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a href="#top" class="brand"><span class="brand-mark"></span>agurtxucoach</a>
+      <p class="tag">Agurtzane · Health &amp; Wellness Coach. Pierde peso sin dietas imposibles.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://business.hgoweb.com/u/7c01b3f4-72e3-4472-8731-308d96b40079" target="_blank" rel="noopener">Reservar plaza</a></li>
+        <li><a href="https://wa.me/message/XBOZSK3KVOG5I1" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/agurtxucoach" target="_blank" rel="noopener">Instagram · @agurtxucoach</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 agurtxucoach · Agurtzane. Todos los derechos reservados.</span>
+    <a href="https://easypagex.github.io" target="_blank" rel="noopener">Built by EasyLandX</a>
+  </div>
+</footer>
+
+<div class="float-wrap">
+  <a class="float-btn wa" href="https://wa.me/message/XBOZSK3KVOG5I1" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.5A10 10 0 1012 2z" stroke="#1B1330" stroke-width="1.6"/><path d="M8.5 8.7c.2-.5.5-.5.8-.5h.6c.2 0 .5 0 .7.5.3.6.9 2 1 2.1.1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.2.7.2.4 1 1.5 2.1 2.4 1.4 1.2 2 1.3 2.3 1.1.3-.1.5-.4.7-.6.2-.2.4-.3.7-.2.3.1 1.7.8 2 .9.3.1.5.2.5.4.1.6-.1 1.2-.6 1.6-.5.4-1.4.7-2.2.5-1.7-.4-3.4-1.3-4.8-2.6-1.4-1.3-2.4-2.8-3-4.4-.3-.8-.1-1.7.4-2.3z" fill="#1B1330"/></svg>
+  </a>
+  <a class="float-btn ig" href="https://www.instagram.com/agurtxucoach" target="_blank" rel="noopener" aria-label="Ver Instagram">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#FFFDF7" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="#FFFDF7" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="#FFFDF7"/></svg>
+  </a>
+  <a class="float-btn book" href="https://business.hgoweb.com/u/7c01b3f4-72e3-4472-8731-308d96b40079" target="_blank" rel="noopener" aria-label="Reservar mi plaza">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2.5" stroke="#FFFDF7" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="#FFFDF7" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </a>
+</div>
+
+<script>
+  // Mobile nav — display toggled explicitly (not transform-only) to avoid overlap on iPhone
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+  window.addEventListener('resize', () => {
+    if(window.innerWidth >= 900){
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .benefit-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.15});
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        ans.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

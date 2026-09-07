@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofia Collazos | Recetas & Lifestyle</title>
+<meta name="description" content="Recetas con amor y un estilo de vida con propósito. Descubre mi catálogo, sígueme en Instagram y Facebook.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #170f0c;
+    --bg-soft: #201510;
+    --coral: #ff6b4a;
+    --amber: #ffb84d;
+    --pink: #ff4d9e;
+    --ink: #fbf3ee;
+    --ink-dim: #c9b7ac;
+    --border: rgba(251,243,238,0.1);
+    --radius: 20px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .display{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img, svg{ display:block; max-width:100%; }
+  ::selection{ background: var(--coral); color: #170f0c; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--amber); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+
+  .wrap{ max-width: 1120px; margin:0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(23,15,12,0.78);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 24px; max-width:1120px; margin:0 auto;
+  }
+  .logo{ font-family:'Playfair Display', serif; font-size:1.3rem; font-style: italic; }
+  .logo span{ color: var(--coral); font-style: normal; }
+  .nav-cta{ display:flex; gap:10px; align-items:center; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 22px; border-radius: 999px;
+    font-weight:600; font-size:0.92rem; border:1px solid transparent;
+    cursor:pointer; transition: transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background: linear-gradient(120deg, var(--coral), var(--amber));
+    color:#170f0c;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,107,74,0.35); }
+  .btn-ghost{ border-color: var(--border); color: var(--ink); }
+  .btn-ghost:hover{ border-color: var(--pink); color: var(--pink); }
+  .nav-ig{ display:none; }
+  @media(min-width:640px){ .nav-ig{ display:inline-flex; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; padding: 96px 0 74px; overflow:hidden; }
+  .glow{ position:absolute; border-radius:50%; filter: blur(24px); pointer-events:none; }
+  .glow-1{ width:520px; height:520px; top:-200px; left:-180px; background: radial-gradient(circle, rgba(255,107,74,0.3), transparent 65%); }
+  .glow-2{ width:460px; height:460px; bottom:-220px; right:-160px; background: radial-gradient(circle, rgba(255,77,158,0.24), transparent 65%); }
+
+  .hero-inner{ position:relative; display:grid; grid-template-columns:1fr; gap: 44px; }
+  @media(min-width:960px){ .hero-inner{ grid-template-columns: 1.15fr 0.85fr; align-items:center; } }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:10px;
+    color: var(--ink-dim); font-size:0.92rem; margin-bottom: 20px;
+  }
+  .kicker .ico{ color: var(--amber); }
+
+  .hero h1{ font-size: clamp(2.4rem, 5.4vw, 3.9rem); margin-bottom: 22px; }
+  .hero h1 .c{ color: var(--coral); font-style: italic; }
+  .hero h1 .p{ color: var(--pink); }
+
+  .hero p.lead{ color: var(--ink-dim); font-size: 1.12rem; max-width: 47ch; margin-bottom: 20px; }
+  .hero .testimony{
+    border-left: 3px solid var(--amber);
+    padding-left: 18px;
+    color: var(--ink);
+    font-family:'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 32px;
+    max-width: 46ch;
+  }
+
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom: 26px; }
+  .btn-lg{ padding: 16px 30px; font-size: 1rem; }
+  .btn-outline{ border: 1.5px solid var(--pink); color: var(--pink); background: transparent; }
+  .btn-outline:hover{ background: rgba(255,77,158,0.1); transform: translateY(-2px); }
+
+  .social-row{ display:flex; gap: 16px; flex-wrap:wrap; }
+  .social-chip{
+    display:inline-flex; align-items:center; gap:8px;
+    color: var(--ink-dim); font-size: 0.9rem;
+  }
+  .social-chip svg{ width:18px; height:18px; }
+  .social-chip:hover{ color: var(--ink); }
+
+  .hero-card{
+    border-radius: 26px; border: 1px solid var(--border);
+    background: linear-gradient(165deg, var(--bg-soft), #180f0b);
+    padding: 34px 28px;
+  }
+  .hero-card .top-label{ font-size: 0.85rem; color: var(--ink-dim); margin-bottom: 18px; }
+  .hero-card .emoji-row{ display:flex; gap: 14px; margin-bottom: 22px; font-size: 1.8rem; }
+  .hero-card h3{ font-size: 1.4rem; margin-bottom: 10px; }
+  .hero-card p{ color: var(--ink-dim); font-size: 0.95rem; margin-bottom: 22px; }
+  .hero-card .btn{ width: 100%; justify-content:center; }
+
+  /* ---------- STRIP ---------- */
+  .strip{
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--bg-soft); padding: 16px 0;
+  }
+  .strip-inner{
+    display:flex; gap: 40px; flex-wrap:wrap; justify-content:center;
+    font-family:'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--ink-dim);
+  }
+  .strip-inner span{ color: var(--coral); font-style: normal; }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 92px 0; }
+  .section-head{ max-width: 620px; margin-bottom: 52px; }
+  .section-head .kicker{ margin-bottom: 14px; }
+  .section-head h2{ font-size: clamp(1.9rem, 4vw, 2.6rem); margin-bottom: 16px; }
+  .section-head p{ color: var(--ink-dim); font-size: 1.03rem; }
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* pillars */
+  .pillars{ display:grid; grid-template-columns: 1fr; gap: 24px; }
+  @media(min-width:840px){ .pillars{ grid-template-columns: repeat(3,1fr); } }
+  .pillar{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 32px 26px; background: var(--bg-soft);
+  }
+  .pillar .ico-circle{
+    width: 54px; height:54px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size: 1.4rem; margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .pillar:nth-child(1) .ico-circle{ color: var(--coral); border-color: rgba(255,107,74,0.4); }
+  .pillar:nth-child(2) .ico-circle{ color: var(--amber); border-color: rgba(255,184,77,0.4); }
+  .pillar:nth-child(3) .ico-circle{ color: var(--pink); border-color: rgba(255,77,158,0.4); }
+  .pillar h3{ font-family:'Poppins', sans-serif; font-weight:600; font-size: 1.15rem; margin-bottom: 12px; }
+  .pillar p{ color: var(--ink-dim); font-size: 0.95rem; }
+
+  /* catalog CTA */
+  .catalog{
+    border-radius: 26px; padding: 54px 40px;
+    background: linear-gradient(135deg, rgba(255,107,74,0.14), rgba(255,184,77,0.12));
+    border: 1px solid var(--border);
+    display:grid; grid-template-columns: 1fr; gap: 30px; align-items:center;
+  }
+  @media(min-width:880px){ .catalog{ grid-template-columns: 1.2fr 0.8fr; padding: 60px 54px; } }
+  .catalog h2{ font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 14px; }
+  .catalog p{ color: var(--ink-dim); margin-bottom: 24px; max-width: 46ch; }
+  .catalog-visual{
+    border-radius: 20px; border: 1px solid var(--border); background: var(--bg);
+    padding: 32px 26px; text-align:center;
+  }
+  .catalog-visual .emoji{ font-size: 2.6rem; margin-bottom: 12px; }
+  .catalog-visual .title{ font-family:'Playfair Display', serif; font-size: 1.2rem; color: var(--coral); margin-bottom: 8px; }
+  .catalog-visual .sub{ color: var(--ink-dim); font-size: 0.86rem; }
+
+  /* testimonials */
+  .testi-row{ display:grid; grid-template-columns: 1fr; gap: 22px; }
+  @media(min-width:840px){ .testi-row{ grid-template-columns: repeat(3,1fr); } }
+  .testi{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; background: var(--bg-soft);
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .testi .quote{ font-family:'Playfair Display', serif; font-style: italic; font-size: 1.02rem; }
+  .testi .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
+  .avatar{
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display', serif; font-size:0.95rem; color:#170f0c; flex-shrink:0;
+  }
+  .avatar.a1{ background: var(--coral); }
+  .avatar.a2{ background: var(--amber); }
+  .avatar.a3{ background: var(--pink); }
+  .who .name{ font-weight:600; font-size:0.9rem; }
+  .who .meta{ font-size:0.78rem; color: var(--ink-dim); }
+  .testi-note{
+    margin-top: 26px; font-size: 0.85rem; color: var(--ink-dim);
+    border-left: 2px solid var(--border); padding-left: 14px;
+  }
+
+  /* social follow section */
+  .follow-grid{ display:grid; grid-template-columns: 1fr; gap: 22px; }
+  @media(min-width:700px){ .follow-grid{ grid-template-columns: 1fr 1fr; } }
+  .follow-card{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 30px; background: var(--bg-soft);
+    display:flex; align-items:center; gap: 18px;
+  }
+  .follow-card .ico-box{
+    width: 50px; height:50px; border-radius: 14px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .follow-card.ig .ico-box{ background: rgba(255,77,158,0.14); color: var(--pink); }
+  .follow-card.fb .ico-box{ background: rgba(255,184,77,0.14); color: var(--amber); }
+  .follow-card .ico-box svg{ width: 26px; height:26px; }
+  .follow-card h3{ font-family:'Poppins', sans-serif; font-weight:600; font-size: 1.05rem; margin-bottom: 4px; }
+  .follow-card p{ color: var(--ink-dim); font-size: 0.88rem; }
+  .follow-card .arrow{ margin-left:auto; color: var(--ink-dim); font-size: 1.3rem; }
+
+  /* final cta */
+  .final-cta{
+    border-radius: 28px; padding: 70px 40px; text-align:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,107,74,0.18), transparent 55%),
+      radial-gradient(circle at 85% 80%, rgba(255,77,158,0.16), transparent 55%),
+      var(--bg-soft);
+    border: 1px solid var(--border);
+  }
+  .final-cta h2{ font-size: clamp(2rem, 4.8vw, 3rem); margin-bottom: 18px; }
+  .final-cta p{ color: var(--ink-dim); max-width: 50ch; margin: 0 auto 32px; font-size: 1.03rem; }
+  .final-ctas{ display:flex; flex-wrap:wrap; justify-content:center; gap: 14px; }
+
+  /* footer */
+  footer{ border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-inner{ display:flex; flex-direction:column; gap:18px; align-items:center; text-align:center; }
+  @media(min-width:640px){ .footer-inner{ flex-direction:row; justify-content:space-between; text-align:left; } }
+  .footer-links{ display:flex; gap:20px; color: var(--ink-dim); font-size:0.9rem; flex-wrap: wrap; justify-content:center; }
+  .footer-links a:hover{ color: var(--coral); }
+  .footer-note{ color: var(--ink-dim); font-size:0.82rem; }
+
+  /* floating whatsapp button */
+  .wa-float{
+    position: fixed; bottom: 22px; right: 22px; z-index: 60;
+    background: linear-gradient(135deg, var(--coral), var(--amber));
+    color:#170f0c; width: 58px; height:58px; border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 8px 26px rgba(255,107,74,0.4);
+    transition: transform .15s ease;
+  }
+  .wa-float:hover{ transform: scale(1.08); }
+  .wa-float svg{ width: 27px; height:27px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">Sofia <span>Collazos</span></div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost nav-ig" href="https://www.instagram.com/soysofiacollazos/" target="_blank" rel="noopener">
+        Instagram
+      </a>
+      <a class="btn btn-primary" href="https://wa.me/c/573052406394" target="_blank" rel="noopener">
+        Ver catálogo
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow glow-1" aria-hidden="true"></div>
+    <div class="glow glow-2" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <div class="kicker"><span class="ico">👩🏻‍🍳</span> Recetas & Lifestyle</div>
+        <h1>Cocinar con <span class="c">amor</span>, vivir con <span class="p">propósito</span></h1>
+        <p class="lead">
+          Recetas fáciles y llenas de sabor para tu día a día, y un estilo de vida que va mucho más allá del plato.
+        </p>
+        <p class="testimony">
+          "Creía que bajar de peso me traería libertad, pero encontré la verdadera libertad en Cristo."
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary btn-lg" href="https://wa.me/c/573052406394" target="_blank" rel="noopener">
+            Descubre mi catálogo
+          </a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/soysofiacollazos/" target="_blank" rel="noopener">
+            Sígueme en Instagram
+          </a>
+        </div>
+        <div class="social-row">
+          <a class="social-chip" href="https://www.instagram.com/soysofiacollazos/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+            @soysofiacollazos
+          </a>
+          <a class="social-chip" href="https://facebook.com/soysofiacollazos" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C16.3 3.1 15.2 3 14 3c-2.5 0-4.2 1.5-4.2 4.3v2.5H7.1V13H9.8v8h3.7z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="top-label">Descubre en mi contenido</div>
+        <div class="emoji-row">🍲 🥗 🍞 ✨</div>
+        <h3>Recetas & Lifestyle</h3>
+        <p>Ideas fáciles para cocinar rico y momentos de vida real, compartidos con el corazón.</p>
+        <a class="btn btn-primary" href="https://wa.me/c/573052406394" target="_blank" rel="noopener">
+          Ver catálogo completo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <div>Recetas fáciles <span>·</span></div>
+      <div>Lifestyle real <span>·</span></div>
+      <div>Fe y propósito <span>·</span></div>
+      <div>Comunidad</div>
+    </div>
+  </div>
+
+  <!-- PILARES -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="ico">✨</span> Lo que encontrarás aquí</div>
+        <h2>Contenido que nutre el cuerpo y el alma</h2>
+        <p>No es solo cocina. Es una forma distinta de ver la comida, el cuerpo y la libertad.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="ico-circle">🍳</div>
+          <h3>Recetas</h3>
+          <p>Platos sencillos, ricos y fáciles de preparar, pensados para el día a día real, no para la cocina perfecta de revista.</p>
+        </div>
+        <div class="pillar">
+          <div class="ico-circle">🌿</div>
+          <h3>Lifestyle</h3>
+          <p>Un vistazo honesto a la rutina, los hábitos y los pequeños momentos que hacen la vida más plena.</p>
+        </div>
+        <div class="pillar">
+          <div class="ico-circle">✨</div>
+          <h3>Fe y libertad</h3>
+          <p>La historia de cómo la verdadera libertad no se encontró en una talla de ropa, sino en algo mucho más grande.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOGO -->
+  <section style="background: var(--bg-soft);">
+    <div class="wrap">
+      <div class="catalog">
+        <div>
+          <h2>Todo mi catálogo, a un mensaje de distancia</h2>
+          <p>Escríbeme por WhatsApp y descubre las recetas y productos que tengo disponibles para ti.</p>
+          <a class="btn btn-primary btn-lg" href="https://wa.me/c/573052406394" target="_blank" rel="noopener">
+            Ver catálogo en WhatsApp
+          </a>
+        </div>
+        <div class="catalog-visual">
+          <div class="emoji">🛍️</div>
+          <div class="title">Catálogo de WhatsApp</div>
+          <div class="sub">Explora todo lo disponible directamente desde tu chat</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="kicker" style="justify-content:center;"><span class="ico">💬</span> Lo que dice la comunidad</div>
+        <h2>Historias de quienes ya me siguen</h2>
+      </div>
+      <div class="testi-row">
+        <div class="testi">
+          <p class="quote">"Sus recetas son tan fáciles que ya se volvieron parte de mi semana. Y su testimonio me tocó el corazón."</p>
+          <div class="who">
+            <div class="avatar a1">V</div>
+            <div>
+              <div class="name">Valentina, 29 años</div>
+              <div class="meta">Seguidora en Instagram</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"Me encanta su contenido porque va más allá de la comida. Habla de libertad de verdad."</p>
+          <div class="who">
+            <div class="avatar a2">L</div>
+            <div>
+              <div class="name">Luisa, 33 años</div>
+              <div class="meta">Seguidora en Instagram</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"Pedí algo de su catálogo por WhatsApp y la atención fue súper cercana y rápida."</p>
+          <div class="who">
+            <div class="avatar a3">C</div>
+            <div>
+              <div class="name">Camila, 26 años</div>
+              <div class="meta">Cliente por WhatsApp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="testi-note">Testimonios de ejemplo a modo ilustrativo. Sustitúyelos por citas reales de tu comunidad antes de publicar la página.</p>
+    </div>
+  </section>
+
+  <!-- FOLLOW -->
+  <section style="background: var(--bg-soft);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="ico">🔗</span> Sígueme donde prefieras</div>
+        <h2>Únete a la comunidad</h2>
+      </div>
+      <div class="follow-grid">
+        <a class="follow-card ig" href="https://www.instagram.com/soysofiacollazos/" target="_blank" rel="noopener">
+          <div class="ico-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div>
+            <h3>Instagram</h3>
+            <p>@soysofiacollazos — recetas y lifestyle a diario</p>
+          </div>
+          <div class="arrow">→</div>
+        </a>
+        <a class="follow-card fb" href="https://facebook.com/soysofiacollazos" target="_blank" rel="noopener">
+          <div class="ico-box">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C16.3 3.1 15.2 3 14 3c-2.5 0-4.2 1.5-4.2 4.3v2.5H7.1V13H9.8v8h3.7z"/></svg>
+          </div>
+          <div>
+            <h3>Facebook</h3>
+            <p>facebook.com/soysofiacollazos</p>
+          </div>
+          <div class="arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section>
+    <div class="wrap">
+      <div class="final-cta">
+        <h2>Tu próxima receta favorita te está esperando</h2>
+        <p>Explora mi catálogo, sígueme en redes y sé parte de una comunidad que cocina con amor y vive con propósito.</p>
+        <div class="final-ctas">
+          <a class="btn btn-primary btn-lg" href="https://wa.me/c/573052406394" target="_blank" rel="noopener">
+            Ver catálogo en WhatsApp
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/soysofiacollazos/" target="_blank" rel="noopener">
+            Sígueme en Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-note">© 2026 Sofia Collazos · Recetas & Lifestyle</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/soysofiacollazos/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/soysofiacollazos" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://wa.me/c/573052406394" target="_blank" rel="noopener">Catálogo WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/c/573052406394" target="_blank" rel="noopener" aria-label="Ver catálogo en WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.8.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.4 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.4 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.2 15 3.7 13.5 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+</a>
+
+</body>
+</html>

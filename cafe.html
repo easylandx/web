@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Café Pendiente ☕️</title>
+  <meta name="description" content="Tenemos pendiente un café. ¿Y si esta vez no lo dejamos para después? Conéctate por Zoom y convierte ese café pendiente en una conversación real.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cafe-oscuro: #3c2f2f;
+      --cafe-medio: #6f4e37;
+      --cafe-claro: #a67c52;
+      --crema: #f5f0e8;
+      --crema-suave: #faf7f2;
+      --blanco: #ffffff;
+      --texto: #2c2420;
+      --texto-suave: #5c4f47;
+      --acento: #c17f4a;
+      --sombra: 0 20px 40px rgba(60, 47, 47, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--crema-suave);
+      color: var(--texto);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Botón principal */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cafe-medio);
+      color: var(--blanco);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(111, 78, 55, 0.25);
+    }
+
+    .btn:hover {
+      background: var(--cafe-oscuro);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(111, 78, 55, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cafe-medio);
+      border: 2px solid var(--cafe-medio);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--cafe-medio);
+      color: white;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(166, 124, 82, 0.12);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--cafe-oscuro);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 24px 80px;
+      background: linear-gradient(165deg, #faf7f2 0%, #f0e6d8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(193, 127, 74, 0.12) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      color: var(--cafe-oscuro);
+      margin-bottom: 20px;
+    }
+
+    .hero-text .subtitle {
+      font-size: 1.25rem;
+      color: var(--texto-suave);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--texto-suave);
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mockup {
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--sombra);
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+    }
+
+    .mockup-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e0d5c8;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .video-box {
+      background: linear-gradient(145deg, #f0e6d8, #e8d9c8);
+      border-radius: 16px;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-box .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--cafe-claro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .video-box .name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--cafe-oscuro);
+    }
+
+    .coffee-icon {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      font-size: 1.4rem;
+      opacity: 0.7;
+    }
+
+    /* SECCIONES GENERALES */
+    section {
+      padding: 100px 24px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      color: var(--cafe-oscuro);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-lead {
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--texto-suave);
+      max-width: 560px;
+      margin: 0 auto 50px;
+    }
+
+    /* PROBLEMA */
+    .problema {
+      background: white;
+    }
+
+    .problema-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .problema-item {
+      background: var(--crema);
+      padding: 22px 28px;
+      border-radius: 16px;
+      font-size: 1.15rem;
+      color: var(--texto);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    }
+
+    .problema-item span {
+      font-size: 1.5rem;
+    }
+
+    .problema-footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 1.2rem;
+      color: var(--texto-suave);
+      font-style: italic;
+    }
+
+    /* SOLUCIÓN */
+    .solucion {
+      background: linear-gradient(180deg, #f5f0e8 0%, #faf7f2 100%);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 36px 28px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--sombra);
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .benefit-card .icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--cafe-oscuro);
+    }
+
+    .benefit-card p {
+      color: var(--texto-suave);
+      font-size: 0.95rem;
+    }
+
+    /* CÓMO FUNCIONA */
+    .como {
+      background: white;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 50px;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: var(--cafe-medio);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 0 auto 20px;
+    }
+
+    .step h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--cafe-oscuro);
+    }
+
+    .step p {
+      color: var(--texto-suave);
+      font-size: 0.98rem;
+    }
+
+    /* EMOCIONAL */
+    .emocional {
+      background: var(--cafe-oscuro);
+      color: var(--crema);
+      text-align: center;
+    }
+
+    .emocional .section-title {
+      color: var(--crema);
+    }
+
+    .emocional-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .frases {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .frase {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+    }
+
+    /* SOCIAL */
+    .social {
+      background: var(--crema);
+    }
+
+    .social-box {
+      background: white;
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: var(--sombra);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .social-box h2 {
+      font-size: 1.9rem;
+      color: var(--cafe-oscuro);
+      margin-bottom: 12px;
+    }
+
+    .social-box p {
+      color: var(--texto-suave);
+      margin-bottom: 32px;
+      font-size: 1.1rem;
+    }
+
+    .share-preview {
+      background: var(--crema-suave);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 32px 0;
+      border: 1px dashed var(--cafe-claro);
+    }
+
+    .share-preview p {
+      font-size: 1.15rem;
+      color: var(--cafe-oscuro);
+      margin-bottom: 8px;
+    }
+
+    .share-preview .mensaje {
+      font-style: italic;
+      color: var(--texto-suave);
+    }
+
+    /* CIERRE */
+    .cierre {
+      background: linear-gradient(165deg, #f0e6d8 0%, #e8d9c8 100%);
+      text-align: center;
+      padding: 120px 24px;
+    }
+
+    .cierre h2 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      color: var(--cafe-oscuro);
+      margin-bottom: 16px;
+    }
+
+    .cierre p {
+      font-size: 1.25rem;
+      color: var(--texto-suave);
+      margin-bottom: 40px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--cafe-oscuro);
+      color: rgba(245, 240, 232, 0.7);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.95rem;
+    }
+
+    footer strong {
+      color: var(--crema);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .benefits,
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .social-box {
+        padding: 36px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">
+        ☕️ El Café Pendiente
+      </div>
+      <a href="#empezar" class="btn" style="padding: 10px 22px; font-size: 0.95rem;">
+        Tomarnos un café
+      </a>
+    </div>
+  </nav>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Tenemos pendiente<br>un café. ☕️</h1>
+        <p class="subtitle">¿Y si esta vez no lo dejamos para después?</p>
+        <p>Una forma sencilla de volver a hablar con esa persona que hace tiempo que no ves.</p>
+        <a href="#empezar" class="btn">
+          Tomarnos un café →
+        </a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mockup">
+          <div class="mockup-header">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="video-grid">
+            <div class="video-box">
+              <div class="avatar">👤</div>
+              <div class="name">Tú</div>
+              <div class="coffee-icon">☕️</div>
+            </div>
+            <div class="video-box">
+              <div class="avatar">👤</div>
+              <div class="name">Ella / Él</div>
+              <div class="coffee-icon">☕️</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. EL PROBLEMA -->
+  <section class="problema">
+    <div class="container">
+      <h2 class="section-title">¿Cuántas veces has dicho…?</h2>
+      <p class="section-lead">“Tenemos pendiente un café.”</p>
+
+      <div class="problema-list">
+        <div class="problema-item">
+          <span>📅</span>
+          <div>Y pasan los días.</div>
+        </div>
+        <div class="problema-item">
+          <span>🗓️</span>
+          <div>Las semanas.</div>
+        </div>
+        <div class="problema-item">
+          <span>⏳</span>
+          <div>Los meses.</div>
+        </div>
+      </div>
+
+      <p class="problema-footer">
+        No porque no quieras hablar con esa persona.<br>
+        Simplemente nunca encontráis el momento.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. LA SOLUCIÓN -->
+  <section class="solucion">
+    <div class="container">
+      <h2 class="section-title">Haz que el café ocurra.</h2>
+      <p class="section-lead">
+        No necesitas desplazarte.<br>
+        No necesitas buscar un sitio.<br>
+        No necesitas esperar a que coincidan vuestras agendas.
+      </p>
+
+      <p style="text-align: center; font-size: 1.15rem; color: var(--texto-suave); margin-bottom: 10px;">
+        Elige a alguien, propón un momento y conectaos online.
+      </p>
+
+      <div class="benefits">
+        <div class="benefit-card">
+          <div class="icon">☕</div>
+          <h3>Café</h3>
+          <p>Cada uno con su taza, donde esté.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="icon">💬</div>
+          <h3>Conversación</h3>
+          <p>Sin prisas. Como de verdad.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="icon">❤️</div>
+          <h3>Tiempo juntos</h3>
+          <p>El que siempre debisteis tener.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CÓMO FUNCIONA -->
+  <section class="como" id="empezar">
+    <div class="container">
+      <h2 class="section-title">En tres pasos</h2>
+      <p class="section-lead">Así de simple.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Elige a la persona</h3>
+          <p>Esa amiga, ese antiguo compañero, alguien de la familia o alguien que echas de menos.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Propón el café</h3>
+          <p>“¿Nos tomamos un café por Zoom esta semana?”</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Conectaos</h3>
+          <p>Cada uno con su café. Una pantalla. Y tiempo para hablar.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="https://zoom.us/join" target="_blank" rel="noopener" class="btn">
+          Empezar ahora →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. EMOCIONAL -->
+  <section class="emocional">
+    <div class="container">
+      <h2 class="section-title">Porque un café nunca ha sido<br>realmente sobre el café.</h2>
+      
+      <p class="emocional-quote">
+        Es sobre decir lo que importa.
+      </p>
+
+      <div class="frases">
+        <div class="frase">“Me apetece verte.”</div>
+        <div class="frase">“Quiero saber cómo estás.”</div>
+        <div class="frase">“Hace demasiado tiempo que no hablamos.”</div>
+        <div class="frase">“Me acuerdo de ti.”</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SOCIAL / VIRAL -->
+  <section class="social">
+    <div class="container">
+      <div class="social-box">
+        <h2>¿A quién le debes un café?</h2>
+        <p>Envíale una invitación y convertid ese “tenemos pendiente un café” en realidad.</p>
+
+        <div class="share-preview">
+          <p><strong>Tenemos un café pendiente.</strong></p>
+          <p class="mensaje">¿Lo hacemos realidad esta semana? ☕️</p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+          <a href="https://wa.me/?text=Tenemos%20un%20caf%C3%A9%20pendiente.%20%C2%BFLo%20hacemos%20realidad%20esta%20semana%3F%20%E2%98%95%EF%B8%8F" 
+             target="_blank" rel="noopener" class="btn">
+            Enviar por WhatsApp
+          </a>
+          <a href="mailto:?subject=Tenemos%20un%20caf%C3%A9%20pendiente&body=Hola%2C%0A%0ATenemos%20un%20caf%C3%A9%20pendiente.%0A%C2%BFLo%20hacemos%20realidad%20esta%20semana%3F%20%E2%98%95%EF%B8%8F%0A%0APodemos%20conectarnos%20por%20Zoom%20cuando%20te%20venga%20bien." 
+             class="btn btn-outline">
+            Enviar por email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CIERRE -->
+  <section class="cierre">
+    <div class="container">
+      <h2>Deja de tener cafés pendientes.</h2>
+      <p>Convierte uno en una conversación.</p>
+      <a href="https://zoom.us/join" target="_blank" rel="noopener" class="btn">
+        Tomarnos un café →
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <strong>El Café Pendiente</strong> · Una de esas frases que decimos mucho.<br>
+      Y hacemos poco. Hasta ahora.
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlota | Dietista-Nutricionista — nutriaconsejame</title>
+<meta name="description" content="Carlota, Farmacéutica y Dietista-Nutricionista. Aprende a comer sano teniendo una vida real. Consulta presencial en Centro Vitasana y online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --peach:#FFE3C7;
+    --peach-deep:#FFD3A8;
+    --lime:#CCFF33;
+    --lime-deep:#AEE300;
+    --pink:#FF2E93;
+    --pink-soft:#FFD3E8;
+    --turq:#00E6C3;
+    --turq-soft:#CFFCF3;
+    --ink:#241533;
+    --ink-soft:#5b4d6b;
+    --line: rgba(36,21,51,0.12);
+    --radius-blob: 62% 38% 55% 45% / 45% 55% 45% 55%;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--lime);color:var(--ink);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:4px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,251,242,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;}
+  .brand-mark{
+    width:34px;height:34px;border-radius:var(--radius-blob);
+    background:linear-gradient(135deg,var(--lime),var(--turq));
+    flex:none;
+  }
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-size:0.95rem;font-weight:600;color:var(--ink-soft);transition:color .2s;}
+  .nav-links a:hover{color:var(--pink);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:100px;
+    font-weight:700;font-size:0.95rem;
+    border:2px solid var(--ink);
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-solid{background:var(--pink);color:var(--cream);border-color:var(--pink);box-shadow:4px 4px 0 var(--ink);}
+  .btn-solid:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+  .btn-outline{background:transparent;color:var(--ink);box-shadow:4px 4px 0 var(--lime-deep);}
+  .btn-outline:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--lime-deep);}
+  .btn-sm{padding:10px 20px;font-size:0.85rem;}
+  .nav-cta{display:none;}
+  @media(min-width:860px){.nav-cta{display:inline-flex;}}
+  .burger{display:inline-flex;background:none;border:none;cursor:pointer;padding:6px;}
+  @media(min-width:860px){.burger{display:none;}.nav-links{display:flex;}}
+  @media(max-width:859px){
+    /* Mobile/iPhone navigation: keep the menu completely out of the page
+       until opened, and give it its own layer below the header. */
+    header{height:auto;}
+    nav.wrap{
+      min-height:64px;
+      padding-top:12px;
+      padding-bottom:12px;
+    }
+    .nav-links{
+      position:fixed;
+      top:64px;
+      left:0;
+      right:0;
+      bottom:0;
+      width:100%;
+      min-height:calc(100dvh - 64px);
+      background:var(--cream);
+      flex-direction:column;
+      justify-content:flex-start;
+      align-items:stretch;
+      padding:32px 28px 40px;
+      gap:20px;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      transform:translate3d(0,-110%,0);
+      transition:transform .3s ease;
+      z-index:49;
+      visibility:hidden;
+      pointer-events:none;
+    }
+    .nav-links.open{
+      transform:translate3d(0,0,0);
+      visibility:visible;
+      pointer-events:auto;
+    }
+    .nav-links a{
+      display:block;
+      width:100%;
+      font-size:1.15rem;
+      line-height:1.3;
+      padding:8px 0;
+    }
+    .nav-links .btn{
+      width:100%;
+      justify-content:center;
+      margin-top:4px;
+    }
+  }
+
+  /* Small iPhones: prevent the brand and menu button from colliding. */
+  @media(max-width:420px){
+    .wrap{padding-left:20px;padding-right:20px;}
+    nav.wrap{gap:10px;}
+    .brand{
+      min-width:0;
+      font-size:1rem;
+      gap:8px;
+      white-space:nowrap;
+    }
+    .brand-mark{width:30px;height:30px;}
+    .burger{flex:none;}
+  }
+
+  /* When the mobile menu is open, prevent the page underneath from moving. */
+  @media(max-width:859px){
+    body:has(.nav-links.open){overflow:hidden;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:64px 0 90px;overflow:hidden;}
+  .hero-grid{
+    display:grid;grid-template-columns:1fr;gap:52px;align-items:center;position:relative;z-index:2;
+  }
+  @media(min-width:920px){.hero-grid{grid-template-columns:1.05fr 0.95fr;}}
+  .eyebrow-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:var(--cream);
+    padding:8px 16px;border-radius:100px;font-size:0.85rem;font-weight:700;
+    margin-bottom:22px;
+  }
+  .eyebrow-pill span.dot{width:8px;height:8px;border-radius:50%;background:var(--lime);}
+  .hero h1{font-size:clamp(2.4rem,5.2vw,3.7rem);}
+  .hero h1 em{font-style:normal;color:var(--pink);}
+  .hero p.lede{
+    margin-top:22px;font-size:1.18rem;line-height:1.55;color:var(--ink-soft);max-width:48ch;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px;}
+  .hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap;}
+  .hero-stats .stat b{font-family:'Fraunces',serif;font-size:1.9rem;display:block;}
+  .hero-stats .stat span{font-size:0.85rem;color:var(--ink-soft);font-weight:600;}
+
+  .hero-visual{position:relative;height:420px;}
+  .blob{position:absolute;border-radius:var(--radius-blob);}
+  .blob-main{
+    width:320px;height:320px;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+    background:linear-gradient(150deg,var(--lime) 0%, var(--turq) 55%, var(--pink) 100%);
+    animation: morph 9s ease-in-out infinite;
+    box-shadow: 0 30px 60px -20px rgba(255,46,147,0.35);
+  }
+  @keyframes morph{
+    0%,100%{border-radius:62% 38% 55% 45% / 45% 55% 45% 55%;}
+    33%{border-radius:45% 55% 40% 60% / 60% 40% 62% 38%;}
+    66%{border-radius:55% 45% 65% 35% / 35% 60% 40% 65%;}
+  }
+  .avocado{
+    position:absolute;width:150px;height:190px;
+    left:8%;top:12%;
+    background:var(--turq-soft);
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    border:3px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    animation: float1 6s ease-in-out infinite;
+  }
+  .avocado::before{
+    content:'';width:66px;height:82px;background:var(--peach-deep);border:3px solid var(--ink);
+    border-radius:50%;
+  }
+  .citrus{
+    position:absolute;width:120px;height:120px;right:4%;bottom:8%;
+    border-radius:50%;background:var(--pink-soft);border:3px solid var(--ink);
+    animation: float2 7s ease-in-out infinite;
+    display:grid;place-items:center;
+  }
+  .citrus::before{
+    content:'';width:88px;height:88px;border-radius:50%;
+    background:
+      conic-gradient(var(--pink) 0 8%, transparent 0 25%,
+                      var(--pink) 25% 33%, transparent 0 50%,
+                      var(--pink) 50% 58%, transparent 0 75%,
+                      var(--pink) 75% 83%, transparent 0 100%),
+      var(--cream);
+    border:3px solid var(--ink);
+  }
+  .leaf{
+    position:absolute;width:70px;height:70px;right:22%;top:2%;
+    background:var(--lime);border:3px solid var(--ink);
+    border-radius:0% 100% 0% 100%;
+    animation: spin1 12s linear infinite;
+  }
+  @keyframes float1{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-18px) rotate(3deg);}}
+  @keyframes float2{0%,100%{transform:translateY(0);}50%{transform:translateY(16px);}}
+  @keyframes spin1{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+  section{padding:88px 0;position:relative;}
+  /* Keep anchored sections visible below the sticky header on iPhone. */
+  section[id]{scroll-margin-top:78px;}
+
+  .section-tag{
+    font-weight:700;color:var(--pink);font-size:0.95rem;margin-bottom:14px;display:block;
+  }
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);}
+  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:1.08rem;line-height:1.6;}
+
+  /* ---------- SOBRE MI ---------- */
+  .about{background:var(--peach);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;}
+  @media(min-width:900px){.about-grid{grid-template-columns:0.85fr 1.15fr;}}
+  .portrait-frame{
+    position:relative;width:100%;max-width:340px;aspect-ratio:1/1.05;
+    background:var(--cream);border:3px solid var(--ink);
+    border-radius:48% 52% 40% 60% / 55% 45% 55% 45%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto;
+  }
+  .portrait-frame .face{
+    width:60%;height:60%;border-radius:50%;
+    background:linear-gradient(160deg,var(--turq-soft),var(--pink-soft));
+    border:3px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:2.6rem;font-weight:700;
+  }
+  .badge-float{
+    position:absolute;background:var(--ink);color:var(--cream);
+    padding:10px 16px;border-radius:100px;font-size:0.8rem;font-weight:700;
+    bottom:6%;right:-6%;box-shadow:4px 4px 0 var(--lime);
+  }
+  .about-body ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px;}
+  .about-body li{display:flex;gap:12px;align-items:flex-start;font-weight:600;}
+  .check{
+    flex:none;width:24px;height:24px;border-radius:50%;background:var(--turq);
+    border:2px solid var(--ink);display:grid;place-items:center;font-size:0.75rem;margin-top:1px;
+  }
+
+  /* ---------- METODO ---------- */
+  .method-grid{display:grid;grid-template-columns:1fr;gap:26px;}
+  @media(min-width:700px){.method-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1080px){.method-grid{grid-template-columns:repeat(4,1fr);}}
+  .method-card{
+    background:var(--cream);border:2px solid var(--ink);border-radius:26px;
+    padding:30px 26px;position:relative;
+    box-shadow:6px 6px 0 var(--line);
+    opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease;
+  }
+  .method-card.in{opacity:1;transform:translateY(0);}
+  .method-card:nth-child(1){box-shadow:6px 6px 0 var(--lime-deep);}
+  .method-card:nth-child(2){box-shadow:6px 6px 0 var(--pink);}
+  .method-card:nth-child(3){box-shadow:6px 6px 0 var(--turq);}
+  .method-card:nth-child(4){box-shadow:6px 6px 0 var(--peach-deep);}
+  .method-step{
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.6rem;
+    width:48px;height:48px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:var(--cream);margin-bottom:20px;
+  }
+  .method-card h3{font-size:1.18rem;margin-bottom:10px;}
+  .method-card p{color:var(--ink-soft);font-size:0.98rem;line-height:1.55;}
+
+  /* ---------- SERVICIOS ---------- */
+  .services{background:var(--ink);color:var(--cream);}
+  .services .section-tag{color:var(--lime);}
+  .services .section-head p{color:rgba(255,251,242,0.72);}
+  .service-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+  @media(min-width:860px){.service-grid{grid-template-columns:repeat(3,1fr);}}
+  .service-card{
+    background:rgba(255,251,242,0.06);
+    border:2px solid rgba(255,251,242,0.25);
+    border-radius:28px;padding:34px 28px;
+    transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);background:rgba(255,251,242,0.1);}
+  .service-card .icon{
+    width:56px;height:56px;border-radius:16px;margin-bottom:22px;
+    display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  }
+  .service-card:nth-child(1) .icon{background:var(--lime);}
+  .service-card:nth-child(2) .icon{background:var(--turq);}
+  .service-card:nth-child(3) .icon{background:var(--pink);}
+  .service-card h3{font-size:1.28rem;margin-bottom:12px;color:var(--cream);}
+  .service-card p{color:rgba(255,251,242,0.7);line-height:1.6;font-size:0.98rem;}
+  .service-card .price-tag{
+    display:inline-block;margin-top:18px;font-weight:700;font-size:0.88rem;
+    color:var(--lime);
+  }
+
+  /* ---------- COMUNIDAD / PRUEBA SOCIAL ---------- */
+  .community{background:var(--turq-soft);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .community-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+  @media(min-width:900px){.community-grid{grid-template-columns:1fr 1fr;}}
+  .ig-mock{
+    background:var(--cream);border:3px solid var(--ink);border-radius:28px;
+    padding:22px;box-shadow:8px 8px 0 var(--ink);
+  }
+  .ig-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .ig-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--lime));border:2px solid var(--ink);}
+  .ig-head b{font-size:0.95rem;}
+  .ig-head span{display:block;font-size:0.78rem;color:var(--ink-soft);}
+  .ig-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .ig-photos div{aspect-ratio:1;border-radius:12px;border:2px solid var(--ink);}
+  .ig-photos div:nth-child(1){background:linear-gradient(160deg,var(--lime),var(--turq-soft));}
+  .ig-photos div:nth-child(2){background:linear-gradient(160deg,var(--pink-soft),var(--pink));}
+  .ig-photos div:nth-child(3){background:linear-gradient(160deg,var(--peach-deep),var(--peach));}
+  .ig-photos div:nth-child(4){background:linear-gradient(160deg,var(--turq),var(--turq-soft));}
+  .ig-photos div:nth-child(5){background:linear-gradient(160deg,var(--lime-deep),var(--lime));}
+  .ig-photos div:nth-child(6){background:linear-gradient(160deg,var(--pink),var(--pink-soft));}
+  .testi-list{display:grid;gap:20px;}
+  .testi{
+    background:var(--cream);border:2px solid var(--ink);border-radius:22px;padding:24px;
+    box-shadow:5px 5px 0 var(--line);
+  }
+  .testi p.quote{font-family:'Fraunces',serif;font-size:1.08rem;line-height:1.5;font-weight:500;}
+  .testi .who{margin-top:14px;font-size:0.85rem;font-weight:700;color:var(--ink-soft);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:grid;gap:14px;max-width:820px;}
+  .faq-item{border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:var(--cream);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.02rem;color:var(--ink);
+  }
+  .faq-q .plus{
+    flex:none;width:30px;height:30px;border-radius:50%;background:var(--lime);
+    border:2px solid var(--ink);display:grid;place-items:center;font-size:1.1rem;
+    transition:transform .3s ease;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);background:var(--pink);}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+  }
+  .faq-a p{padding:0 24px 22px;color:var(--ink-soft);line-height:1.6;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{
+    background:linear-gradient(135deg,var(--pink) 0%, var(--turq) 100%);
+    text-align:center;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  }
+  .final-cta h2{font-size:clamp(2rem,4.4vw,3rem);color:var(--ink);max-width:16ch;margin:0 auto;}
+  .final-cta p{margin-top:18px;font-size:1.1rem;color:var(--ink);opacity:0.85;max-width:52ch;margin-left:auto;margin-right:auto;}
+  .final-cta .hero-ctas{justify-content:center;margin-top:32px;}
+  .final-cta .btn-outline{box-shadow:4px 4px 0 var(--ink);background:var(--cream);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(255,251,242,0.75);padding:56px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1fr;gap:36px;}
+  @media(min-width:760px){.foot-grid{grid-template-columns:1.3fr 1fr 1fr;}}
+  footer .brand{color:var(--cream);}
+  footer p.tag{margin-top:14px;font-size:0.95rem;max-width:32ch;line-height:1.5;}
+  footer h4{color:var(--cream);font-size:0.85rem;text-transform:none;margin-bottom:14px;font-weight:700;}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+  footer a{font-size:0.95rem;transition:color .2s;}
+  footer a:hover{color:var(--lime);}
+  .foot-bottom{
+    margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,251,242,0.15);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:0.82rem;
+  }
+  .foot-bottom a{font-weight:700;}
+
+  /* ---------- FLOATING CONTACT ---------- */
+  .float-wrap{
+    position:fixed;right:22px;bottom:22px;z-index:60;
+    display:flex;flex-direction:column;gap:12px;align-items:flex-end;
+  }
+  .float-btn{
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--ink);cursor:pointer;
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform .2s ease;
+  }
+  .float-btn:hover{transform:scale(1.08) translateY(-2px);}
+  .float-btn.ig{background:linear-gradient(135deg,var(--pink),var(--peach-deep));}
+  .float-btn.mail{background:var(--lime);}
+  .float-btn svg{width:26px;height:26px;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand"><span class="brand-mark"></span>nutriaconsejame</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#metodo">Método</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#comunidad">Comunidad</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-solid btn-sm" href="https://www.instagram.com/nutriaconsejame" target="_blank" rel="noopener">Escríbeme</a>
+    </div>
+    <a class="btn btn-solid btn-sm nav-cta" href="https://www.instagram.com/nutriaconsejame" target="_blank" rel="noopener">Reserva tu consulta</a>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#241533" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow-pill"><span class="dot"></span>Farmacéutica &amp; Dietista-Nutricionista</span>
+        <h1>Comer sano <em>sin</em> dejar de tener una vida real</h1>
+        <p class="lede">Soy Carlota. Te ayudo a organizar tu alimentación con planes que se adaptan a tu día a día — sin dietas imposibles, sin prohibiciones eternas, con ciencia y con cariño.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="https://www.instagram.com/nutriaconsejame" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+          <a class="btn btn-outline" href="mailto:nutriaconsejame@gmail.com">nutriaconsejame@gmail.com</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>+114K</b><span>Comunidad en Instagram</span></div>
+          <div class="stat"><b>Oviedo</b><span>Consulta presencial y online</span></div>
+          <div class="stat"><b>Centro Vitasana</b><span>Consulta presencial</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="blob blob-main"></div>
+        <div class="avocado"></div>
+        <div class="citrus"></div>
+        <div class="leaf"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <div class="portrait-frame">
+          <div class="face">🥑</div>
+          <span class="badge-float">Col. Dietista-Nutricionista</span>
+        </div>
+      </div>
+      <div class="about-body reveal">
+        <span class="section-tag">Sobre mí</span>
+        <h2>Ciencia con los pies en la tierra</h2>
+        <p style="margin-top:18px;color:var(--ink-soft);font-size:1.08rem;line-height:1.65;">
+          Soy farmacéutica de formación y dietista-nutricionista de vocación. Llevo años acompañando a personas que, como tú, tienen trabajo, familia, planes y ganas de cuidarse sin que la comida se convierta en un problema más. Comparto recetas, consejos e inspiración con una comunidad de más de 114.000 personas, y trabajo cada plan a medida en consulta.
+        </p>
+        <ul>
+          <li><span class="check">✓</span>Planes de alimentación realistas, adaptados a tu rutina</li>
+          <li><span class="check">✓</span>Seguimiento cercano, no solo un PDF y adiós</li>
+          <li><span class="check">✓</span>Consulta presencial en Centro Vitasana y online desde cualquier lugar</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODO -->
+  <section id="metodo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Cómo trabajamos</span>
+        <h2>Un proceso pensado para que sí lo cumplas</h2>
+        <p>Nada de planes genéricos. Cada paso está pensado para que la alimentación saludable encaje en tu vida, no al revés.</p>
+      </div>
+      <div class="method-grid">
+        <div class="method-card"><div class="method-step">1</div><h3>Primera consulta</h3><p>Hablamos de tu historia, tus hábitos, tus horarios y tus objetivos reales.</p></div>
+        <div class="method-card"><div class="method-step">2</div><h3>Plan a tu medida</h3><p>Diseño una pauta nutricional adaptada a lo que comes, cocinas y puedes mantener.</p></div>
+        <div class="method-card"><div class="method-step">3</div><h3>Seguimiento cercano</h3><p>Ajustamos juntas el plan con revisiones periódicas, presenciales u online.</p></div>
+        <div class="method-card"><div class="method-step">4</div><h3>Hábitos que duran</h3><p>El objetivo no es una dieta puntual, sino una relación sana y duradera con la comida.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services" id="servicios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Servicios</span>
+        <h2>Elige el formato que mejor encaja contigo</h2>
+        <p>Presencial en Centro Vitasana u online, siempre con el mismo acompañamiento cercano.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card reveal">
+          <div class="icon">🏥</div>
+          <h3>Consulta presencial</h3>
+          <p>En @centrovitasana. Valoración inicial completa y plan personalizado cara a cara.</p>
+          <span class="price-tag">Oviedo · @centrovitasana</span>
+        </div>
+        <div class="service-card reveal">
+          <div class="icon">💻</div>
+          <h3>Consulta online</h3>
+          <p>El mismo acompañamiento profesional, desde donde estés, con seguimiento por videollamada.</p>
+          <span class="price-tag">Disponible en toda España</span>
+        </div>
+        <div class="service-card reveal">
+          <div class="icon">🥗</div>
+          <h3>Recetas &amp; consejos</h3>
+          <p>Contenido diario en Instagram para acompañarte entre consulta y consulta.</p>
+          <span class="price-tag">@nutriaconsejame</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMUNIDAD -->
+  <section class="community" id="comunidad">
+    <div class="wrap community-grid">
+      <div class="reveal">
+        <div class="ig-mock">
+          <div class="ig-head">
+            <div class="ig-avatar"></div>
+            <div><b>nutriaconsejame</b><span>Carlota · Dietista-Nutricionista 🥑</span></div>
+          </div>
+          <div class="ig-photos">
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="section-tag">Comunidad</span>
+        <h2>+114.000 personas aprendiendo a comer mejor</h2>
+        <p style="margin-top:16px;color:var(--ink-soft);font-size:1.05rem;line-height:1.6;">
+          Cada día comparto recetas, consejos e inspiración para comer sano sin renunciar a disfrutar. Es la antesala perfecta para conocer cómo trabajo antes de dar el paso a una consulta.
+        </p>
+        <div class="testi-list" style="margin-top:28px;">
+          <div class="testi">
+            <p class="quote">"Por fin un plan que no tuve que abandonar a la semana. Encajaba con mi vida, no con la de otra persona."</p>
+            <p class="who">— Paciente de consulta online</p>
+          </div>
+          <div class="testi">
+            <p class="quote">"El seguimiento cercano marcó la diferencia. Sentí que había alguien detrás del plan, no solo un PDF."</p>
+            <p class="who">— Paciente de Centro Vitasana</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="preguntas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Preguntas frecuentes</span>
+        <h2>Antes de escribirme</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">¿Cómo es la consulta online?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Se realiza por videollamada con la misma valoración y seguimiento que en la consulta presencial. Solo necesitas conexión a internet.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Dónde está la consulta presencial?<span class="plus">+</span></button>
+          <div class="faq-a"><p>En Centro Vitasana (@centrovitasana), en Oviedo. Puedes escribirme por Instagram o email para conocer horarios disponibles.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Necesito tener ya hábitos saludables?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Para nada. Partimos de dónde estés ahora mismo y construimos el plan a partir de tu día a día real.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Cómo reservo mi primera cita?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Escríbeme por Instagram (@nutriaconsejame) o por email a nutriaconsejame@gmail.com y te cuento los siguientes pasos.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Empieza a comer sano de verdad, hoy</h2>
+      <p>Sin dietas imposibles. Sin planes que no vas a cumplir. Solo un acompañamiento real, adaptado a tu vida.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="https://www.instagram.com/nutriaconsejame" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+        <a class="btn btn-outline" href="mailto:nutriaconsejame@gmail.com">Escríbeme por email</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a href="#top" class="brand"><span class="brand-mark"></span>nutriaconsejame</a>
+      <p class="tag">Carlota · Farmacéutica y Dietista-Nutricionista. Comer sano cuando tienes una vida de verdad.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/nutriaconsejame" target="_blank" rel="noopener">Instagram · @nutriaconsejame</a></li>
+        <li><a href="mailto:nutriaconsejame@gmail.com">nutriaconsejame@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/centrovitasana" target="_blank" rel="noopener">@centrovitasana</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 nutriaconsejame · Carlota. Todos los derechos reservados.</span>
+    <a href="https://easypagex.github.io" target="_blank" rel="noopener">Built by EasyLandX</a>
+  </div>
+</footer>
+
+<div class="float-wrap">
+  <a class="float-btn ig" href="https://www.instagram.com/nutriaconsejame" target="_blank" rel="noopener" aria-label="Escríbeme por Instagram">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#241533" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="#241533" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="#241533"/></svg>
+  </a>
+  <a class="float-btn mail" href="mailto:nutriaconsejame@gmail.com" aria-label="Escríbeme por email">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="#241533" stroke-width="1.8"/><path d="M3 6l9 7 9-7" stroke="#241533" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<script>
+  // Mobile nav
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .method-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.15});
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        ans.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

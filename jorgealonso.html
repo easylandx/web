@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jorge Alonso | Pérdida de Peso para Mujeres — Nutrición Hormonal</title>
+<meta name="description" content="Nutrición clínica para mujeres profesionales: pierde grasa, optimiza tu salud hormonal y tu metabolismo. +500 vidas cambiadas. Escríbeme CAMBIO para empezar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0d0a14;
+    --bg-soft: #16111f;
+    --violet: #c77dff;
+    --pink: #ff4d8d;
+    --mint: #2effc4;
+    --ink: #f6f3fa;
+    --ink-dim: #b3a9c2;
+    --border: rgba(246,243,250,0.1);
+    --radius: 20px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img, svg{ display:block; max-width:100%; }
+  ::selection{ background: var(--violet); color: #0d0a14; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--mint); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+
+  .wrap{ max-width: 1140px; margin:0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(13,10,20,0.75);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 24px; max-width:1140px; margin:0 auto;
+  }
+  .logo{ font-family:'Fraunces', serif; font-size:1.3rem; }
+  .logo em{ font-style: italic; color: var(--violet); }
+  .nav-cta{ display:flex; gap:10px; align-items:center; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 22px; border-radius: 999px;
+    font-weight:700; font-size:0.94rem; border:1px solid transparent;
+    cursor:pointer; transition: transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background: linear-gradient(120deg, var(--violet), var(--pink));
+    color:#140b1f;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 30px rgba(199,125,255,0.35); }
+  .btn-ghost{ border-color: var(--border); color: var(--ink); }
+  .btn-ghost:hover{ border-color: var(--mint); color: var(--mint); }
+  .nav-ig{ display:none; }
+  @media(min-width:640px){ .nav-ig{ display:inline-flex; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; padding: 90px 0 70px; overflow:hidden; }
+  .blob{ position:absolute; border-radius:50%; filter: blur(20px); pointer-events:none; }
+  .blob-1{ width:520px; height:520px; top:-200px; right:-180px; background: radial-gradient(circle, rgba(199,125,255,0.32), transparent 65%); }
+  .blob-2{ width:460px; height:460px; bottom:-220px; left:-160px; background: radial-gradient(circle, rgba(46,255,196,0.2), transparent 65%); }
+
+  .hero-inner{
+    position:relative;
+    display:grid; grid-template-columns: 1fr; gap: 40px;
+  }
+  @media(min-width:960px){ .hero-inner{ grid-template-columns: 1.2fr 0.8fr; align-items:center; } }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    color: var(--ink-dim); font-size:0.92rem; margin-bottom: 20px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--mint); }
+
+  .hero h1{ font-size: clamp(2.5rem, 5.6vw, 4rem); margin-bottom: 22px; }
+  .hero h1 .hl{ color: var(--violet); font-style: italic; }
+
+  .hero p.lead{ color: var(--ink-dim); font-size: 1.12rem; max-width: 48ch; margin-bottom: 30px; }
+
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom: 22px; }
+  .btn-lg{ padding: 16px 30px; font-size: 1.02rem; }
+  .btn-outline{
+    border: 1.5px solid var(--mint); color: var(--mint); background: transparent;
+  }
+  .btn-outline:hover{ background: rgba(46,255,196,0.1); transform: translateY(-2px); }
+
+  .keyword-note{
+    display:flex; align-items:center; gap:10px;
+    color: var(--ink-dim); font-size: 0.9rem;
+  }
+  .keyword-note .pill{
+    background: rgba(255,77,141,0.14); color: var(--pink);
+    padding: 3px 10px; border-radius: 999px; font-weight:700; font-size: 0.78rem;
+  }
+
+  .hero-panel{
+    border-radius: 26px; border: 1px solid var(--border);
+    background: linear-gradient(165deg, var(--bg-soft), #100c19);
+    padding: 32px 28px;
+  }
+  .hero-panel .top-label{
+    font-size: 0.85rem; color: var(--ink-dim); margin-bottom: 18px;
+  }
+  .metric-row{ display:flex; flex-direction:column; gap: 18px; }
+  .metric{
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+  .metric:last-child{ border-bottom:none; padding-bottom:0; }
+  .metric .num{ font-family:'Fraunces', serif; font-size: 1.9rem; color: var(--violet); }
+  .metric .num.pink{ color: var(--pink); }
+  .metric .num.mint{ color: var(--mint); }
+  .metric .cap{ font-size: 0.85rem; color: var(--ink-dim); max-width: 55%; text-align:right; }
+
+  /* ---------- STRIP ---------- */
+  .strip{
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--bg-soft); padding: 16px 0;
+  }
+  .strip-inner{
+    display:flex; gap: 40px; flex-wrap:wrap; justify-content:center;
+    font-family:'Fraunces', serif; font-style: italic; font-size: 1rem; color: var(--ink-dim);
+  }
+  .strip-inner span{ color: var(--mint); font-style: normal; }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 96px 0; }
+  .section-head{ max-width: 620px; margin-bottom: 54px; }
+  .section-head .kicker{ margin-bottom: 14px; }
+  .section-head h2{ font-size: clamp(2rem, 4vw, 2.7rem); margin-bottom: 16px; }
+  .section-head p{ color: var(--ink-dim); font-size: 1.05rem; }
+
+  /* problem / solution */
+  .split{ display:grid; grid-template-columns: 1fr; gap: 26px; }
+  @media(min-width:840px){ .split{ grid-template-columns: 1fr 1fr; } }
+  .card{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 30px; background: var(--bg-soft);
+  }
+  .card h3{ font-size: 1.3rem; margin-bottom: 16px; }
+  .x-list, .check-list{ list-style:none; display:flex; flex-direction:column; gap: 14px; }
+  .x-list li, .check-list li{ display:flex; gap:12px; align-items:flex-start; color: var(--ink-dim); font-size:0.97rem; }
+  .x-list .mark{ color: var(--pink); font-weight:800; }
+  .check-list .mark{ color: var(--mint); font-weight:800; }
+
+  /* timeline method */
+  .timeline{ position:relative; padding-left: 34px; }
+  .timeline::before{
+    content:""; position:absolute; left: 9px; top: 6px; bottom: 6px; width: 2px;
+    background: linear-gradient(180deg, var(--violet), var(--pink), var(--mint));
+  }
+  .tl-item{ position:relative; padding-bottom: 44px; }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-item::before{
+    content:""; position:absolute; left: -34px; top: 4px;
+    width: 20px; height:20px; border-radius:50%;
+    background: var(--bg); border: 2px solid var(--violet);
+  }
+  .tl-item:nth-child(2)::before{ border-color: var(--pink); }
+  .tl-item:nth-child(3)::before{ border-color: var(--mint); }
+  .tl-item h3{ font-family:'Manrope', sans-serif; font-weight:800; font-size: 1.15rem; margin-bottom: 8px; }
+  .tl-item p{ color: var(--ink-dim); max-width: 60ch; }
+  .tl-item .tag{
+    display:inline-block; font-size: 0.76rem; font-weight:800; letter-spacing: 0.02em;
+    color: var(--violet); margin-bottom: 6px;
+  }
+
+  /* testimonials */
+  .testi-row{ display:grid; grid-template-columns: 1fr; gap: 22px; }
+  @media(min-width:840px){ .testi-row{ grid-template-columns: repeat(3,1fr); } }
+  .testi{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; background: var(--bg-soft);
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .testi .quote{ font-family:'Fraunces', serif; font-style: italic; font-size: 1.05rem; }
+  .testi .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
+  .avatar{
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-size:1rem; color:#140b1f; flex-shrink:0;
+  }
+  .avatar.a1{ background: var(--violet); }
+  .avatar.a2{ background: var(--pink); }
+  .avatar.a3{ background: var(--mint); }
+  .who .name{ font-weight:700; font-size:0.92rem; }
+  .who .meta{ font-size:0.8rem; color: var(--ink-dim); }
+  .testi-note{
+    margin-top: 26px; font-size: 0.85rem; color: var(--ink-dim);
+    border-left: 2px solid var(--border); padding-left: 14px;
+  }
+
+  /* DM CTA block */
+  .dm-block{
+    border-radius: 26px; padding: 54px 40px;
+    background: linear-gradient(135deg, rgba(199,125,255,0.14), rgba(255,77,141,0.12));
+    border: 1px solid var(--border);
+    display:grid; grid-template-columns: 1fr; gap: 30px; align-items:center;
+  }
+  @media(min-width:880px){ .dm-block{ grid-template-columns: 1.2fr 0.8fr; padding: 60px 54px; } }
+  .dm-block h2{ font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 14px; }
+  .dm-block p{ color: var(--ink-dim); margin-bottom: 24px; max-width: 46ch; }
+  .dm-visual{
+    border-radius: 20px; border: 1px solid var(--border); background: var(--bg);
+    padding: 32px 26px; text-align:center;
+  }
+  .dm-visual .word{
+    font-family:'Fraunces', serif; font-size: 1.6rem; font-style: italic; color: var(--pink);
+    margin-bottom: 8px;
+  }
+  .dm-visual .sub{ color: var(--ink-dim); font-size: 0.88rem; }
+
+  /* final cta */
+  .final-cta{
+    border-radius: 28px; padding: 70px 40px; text-align:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(199,125,255,0.18), transparent 55%),
+      radial-gradient(circle at 85% 80%, rgba(46,255,196,0.14), transparent 55%),
+      var(--bg-soft);
+    border: 1px solid var(--border);
+  }
+  .final-cta h2{ font-size: clamp(2.1rem, 5vw, 3.1rem); margin-bottom: 18px; }
+  .final-cta p{ color: var(--ink-dim); max-width: 50ch; margin: 0 auto 32px; font-size: 1.05rem; }
+  .final-ctas{ display:flex; flex-wrap:wrap; justify-content:center; gap: 14px; }
+
+  /* footer */
+  footer{ border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-inner{ display:flex; flex-direction:column; gap:18px; align-items:center; text-align:center; }
+  @media(min-width:640px){ .footer-inner{ flex-direction:row; justify-content:space-between; text-align:left; } }
+  .footer-links{ display:flex; gap:20px; color: var(--ink-dim); font-size:0.9rem; }
+  .footer-links a:hover{ color: var(--violet); }
+  .footer-note{ color: var(--ink-dim); font-size:0.82rem; }
+
+  /* floating instagram button */
+  .ig-float{
+    position: fixed; bottom: 22px; right: 22px; z-index: 60;
+    background: linear-gradient(135deg, var(--violet), var(--pink));
+    color:#140b1f; width: 58px; height:58px; border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 8px 26px rgba(199,125,255,0.4);
+    transition: transform .15s ease;
+  }
+  .ig-float:hover{ transform: scale(1.08); }
+  .ig-float svg{ width: 26px; height:26px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">Jorge <em>Alonso</em></div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost nav-ig" href="https://www.instagram.com/jorgealonsohz/" target="_blank" rel="noopener">
+        Instagram
+      </a>
+      <a class="btn btn-primary" href="https://ig.me/m/jorgealonsohz" target="_blank" rel="noopener">
+        Envía CAMBIO
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <div class="kicker"><span class="dot"></span> Nutricionista · Nutrición hormonal y metabólica</div>
+        <h1>Pierde grasa sin pelearte con tus <span class="hl">hormonas</span></h1>
+        <p class="lead">
+          Ayudo a mujeres profesionales a bajar de peso, equilibrar su metabolismo y recuperar la energía que las dietas genéricas les quitaron.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary btn-lg" href="https://ig.me/m/jorgealonsohz" target="_blank" rel="noopener">
+            Escríbeme por Instagram
+          </a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/jorgealonsohz/" target="_blank" rel="noopener">
+            Ver el perfil
+          </a>
+        </div>
+        <div class="keyword-note">
+          <span class="pill">CAMBIO</span>
+          Envía esa palabra por Instagram y empezamos hoy mismo
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="top-label">Resultados del programa</div>
+        <div class="metric-row">
+          <div class="metric">
+            <div class="num">+500</div>
+            <div class="cap">vidas cambiadas</div>
+          </div>
+          <div class="metric">
+            <div class="num pink">100%</div>
+            <div class="cap">planes personalizados, cero plantillas</div>
+          </div>
+          <div class="metric">
+            <div class="num mint">1 a 1</div>
+            <div class="cap">acompañamiento directo contigo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <div>Salud hormonal <span>·</span></div>
+      <div>Metabolismo activo <span>·</span></div>
+      <div>Sin dietas eternas <span>·</span></div>
+      <div>Pensado para mujeres profesionales</div>
+    </div>
+  </div>
+
+  <!-- PROBLEMA / SOLUCION -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span> El punto de partida</div>
+        <h2>Tu cuerpo no responde igual que hace unos años</h2>
+        <p>Entre el trabajo, el estrés y los cambios hormonales, las dietas genéricas dejan de funcionar. No es falta de disciplina: es un enfoque que no está pensado para ti.</p>
+      </div>
+      <div class="split">
+        <div class="card">
+          <h3>Lo que sueles encontrar</h3>
+          <ul class="x-list">
+            <li><span class="mark">✕</span> Dietas iguales para todo el mundo, sin mirar tus hormonas</li>
+            <li><span class="mark">✕</span> Bajar de peso rápido y recuperarlo semanas después</li>
+            <li><span class="mark">✕</span> Cansancio constante aunque comas "bien"</li>
+            <li><span class="mark">✕</span> Planes imposibles de sostener con una agenda profesional</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Lo que sí funciona contigo</h3>
+          <ul class="check-list">
+            <li><span class="mark">✓</span> Un plan que considera tu ciclo, tu estrés y tu rutina real</li>
+            <li><span class="mark">✓</span> Cambios metabólicos sostenibles, no soluciones exprés</li>
+            <li><span class="mark">✓</span> Más energía en tu día a día, no solo menos kilos</li>
+            <li><span class="mark">✓</span> Acompañamiento cercano, ajustado a tu vida profesional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODO / TIMELINE -->
+  <section style="background: var(--bg-soft);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span> Cómo trabajamos</div>
+        <h2>De tu primer mensaje a resultados reales</h2>
+        <p>Un proceso simple, pensado para que no tengas que pensar en nada más que en seguirlo.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tag">PASO 1</span>
+          <h3>Envías la palabra CAMBIO</h3>
+          <p>Me escribes por Instagram y te cuento cómo funciona el programa, sin compromiso.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tag">PASO 2</span>
+          <h3>Valoramos tu caso</h3>
+          <p>Revisamos tu historial, tu rutina, tu salud hormonal y metabólica para entender qué necesitas de verdad.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tag">PASO 3</span>
+          <h3>Empezamos tu plan</h3>
+          <p>Plan personalizado y seguimiento constante hasta que los resultados se noten y se mantengan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span> Lo que dicen ellas</div>
+        <h2>+500 mujeres ya dieron el paso</h2>
+        <p>Cada historia empieza igual: con un mensaje.</p>
+      </div>
+      <div class="testi-row">
+        <div class="testi">
+          <p class="quote">"Por fin entendí por qué las dietas normales no me funcionaban. El enfoque hormonal lo cambió todo."</p>
+          <div class="who">
+            <div class="avatar a1">C</div>
+            <div>
+              <div class="name">Carla, 38 años</div>
+              <div class="meta">Cliente del programa</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"Tengo más energía en el trabajo que hace cinco años. Y perdí grasa sin obsesionarme con la báscula."</p>
+          <div class="who">
+            <div class="avatar a2">S</div>
+            <div>
+              <div class="name">Sofía, 42 años</div>
+              <div class="meta">Cliente del programa</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"El seguimiento cercano marcó la diferencia. Nunca sentí que estaba sola en el proceso."</p>
+          <div class="who">
+            <div class="avatar a3">P</div>
+            <div>
+              <div class="name">Paula, 35 años</div>
+              <div class="meta">Cliente del programa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="testi-note">Testimonios de ejemplo a modo ilustrativo. Sustitúyelos por citas reales de tus clientas antes de publicar la página.</p>
+    </div>
+  </section>
+
+  <!-- DM CTA -->
+  <section>
+    <div class="wrap">
+      <div class="dm-block">
+        <div>
+          <h2>Tu cambio empieza con <span style="color: var(--pink); font-style: italic;">una palabra</span></h2>
+          <p>Envía CAMBIO por Instagram y te cuento paso a paso cómo funciona el programa y cómo podemos empezar.</p>
+          <a class="btn btn-primary btn-lg" href="https://ig.me/m/jorgealonsohz" target="_blank" rel="noopener">
+            Enviar CAMBIO ahora
+          </a>
+        </div>
+        <div class="dm-visual">
+          <div class="word">"CAMBIO"</div>
+          <div class="sub">Envíalo por Instagram DM a @jorgealonsohz</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section>
+    <div class="wrap">
+      <div class="final-cta">
+        <h2>+500 vidas ya cambiaron. La tuya puede ser la siguiente</h2>
+        <p>Escríbeme hoy y demos juntos el primer paso hacia un cuerpo y una salud que sí puedes sostener.</p>
+        <div class="final-ctas">
+          <a class="btn btn-primary btn-lg" href="https://ig.me/m/jorgealonsohz" target="_blank" rel="noopener">
+            Escríbeme por Instagram
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/jorgealonsohz/" target="_blank" rel="noopener">
+            Ver el perfil completo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-note">© 2026 Jorge Alonso · Pérdida de Peso para Mujeres</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/jorgealonsohz/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://ig.me/m/jorgealonsohz" target="_blank" rel="noopener">Enviar mensaje</a>
+    </div>
+  </div>
+</footer>
+
+<a class="ig-float" href="https://ig.me/m/jorgealonsohz" target="_blank" rel="noopener" aria-label="Escribir por Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+</a>
+
+</body>
+</html>

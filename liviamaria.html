@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livia Maria | Mentora Energética — Manifestación, Abundancia y Rituales</title>
+<meta name="description" content="Dirige tu energía, crea tu realidad. Rituales sencillos para una vida abundante con Livia Maria, Mentora Energética, miembro de Mentoryx.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0714;
+    --bg-soft: #130c22;
+    --gold: #ffc14d;
+    --violet: #b14eff;
+    --cyan: #4de8ff;
+    --ink: #f4f0fb;
+    --ink-dim: #a99fc2;
+    --border: rgba(244,240,251,0.1);
+    --radius: 22px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .display{
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img, svg{ display:block; max-width:100%; }
+  ::selection{ background: var(--violet); color: #0a0714; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--cyan); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+
+  .wrap{ max-width: 1120px; margin:0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(10,7,20,0.75);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 24px; max-width:1120px; margin:0 auto;
+  }
+  .logo{ font-family:'Cinzel', serif; font-size:1.2rem; letter-spacing: 0.03em; }
+  .logo .spark{ color: var(--gold); }
+  .nav-cta{ display:flex; gap:10px; align-items:center; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 22px; border-radius: 999px;
+    font-weight:600; font-size:0.92rem; border:1px solid transparent;
+    cursor:pointer; transition: transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background: linear-gradient(120deg, var(--gold), var(--violet));
+    color:#0a0714;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 30px rgba(177,78,255,0.35); }
+  .btn-ghost{ border-color: var(--border); color: var(--ink); }
+  .btn-ghost:hover{ border-color: var(--gold); color: var(--gold); }
+  .nav-ig{ display:none; }
+  @media(min-width:640px){ .nav-ig{ display:inline-flex; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; padding: 100px 0 76px; overflow:hidden; }
+
+  .ring{
+    position:absolute; border-radius:50%;
+    border: 1px solid rgba(177,78,255,0.25);
+    pointer-events:none;
+  }
+  .ring-1{ width:640px; height:640px; top:-260px; right:-220px; }
+  .ring-2{ width:460px; height:460px; top:-170px; right:-130px; border-color: rgba(255,193,77,0.18); }
+  .glow{
+    position:absolute; border-radius:50%; filter: blur(30px); pointer-events:none;
+  }
+  .glow-1{ width:480px; height:480px; top:-160px; right:-160px; background: radial-gradient(circle, rgba(177,78,255,0.28), transparent 65%); }
+  .glow-2{ width:420px; height:420px; bottom:-220px; left:-160px; background: radial-gradient(circle, rgba(255,193,77,0.18), transparent 65%); }
+
+  .hero-inner{ position:relative; display:grid; grid-template-columns:1fr; gap: 44px; }
+  @media(min-width:960px){ .hero-inner{ grid-template-columns: 1.15fr 0.85fr; align-items:center; } }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:10px;
+    color: var(--ink-dim); font-size:0.9rem; margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+  .kicker .spark-ico{ color: var(--gold); }
+
+  .hero h1{ font-size: clamp(2.3rem, 5.2vw, 3.7rem); margin-bottom: 24px; }
+  .hero h1 .g{ color: var(--gold); }
+  .hero h1 .v{ color: var(--violet); }
+
+  .hero p.lead{ color: var(--ink-dim); font-size: 1.1rem; max-width: 46ch; margin-bottom: 32px; }
+
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom: 26px; }
+  .btn-lg{ padding: 16px 30px; font-size: 1rem; }
+  .btn-outline{ border: 1.5px solid var(--cyan); color: var(--cyan); background: transparent; }
+  .btn-outline:hover{ background: rgba(77,232,255,0.1); transform: translateY(-2px); }
+
+  .credential{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 8px 16px; border-radius: 999px;
+    border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+    font-size: 0.85rem; color: var(--ink-dim);
+  }
+  .credential .ico{ color: var(--gold); }
+
+  /* hero mandala card */
+  .hero-panel{
+    position: relative;
+    border-radius: 999px;
+    aspect-ratio: 1 / 1;
+    max-width: 360px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    background: radial-gradient(circle at 50% 40%, rgba(177,78,255,0.16), transparent 60%), var(--bg-soft);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-panel::before, .hero-panel::after{
+    content:""; position:absolute; border-radius:50%;
+    border: 1px dashed rgba(244,240,251,0.14);
+  }
+  .hero-panel::before{ inset: 22px; }
+  .hero-panel::after{ inset: 48px; border-style: solid; border-color: rgba(255,193,77,0.16); }
+  .hero-panel-inner{
+    text-align:center; padding: 20px;
+  }
+  .hero-panel-inner .num{
+    font-family:'Cinzel', serif; font-size: 2.6rem; color: var(--gold);
+    line-height:1;
+  }
+  .hero-panel-inner .cap{
+    margin-top: 10px; font-size: 0.85rem; color: var(--ink-dim);
+    max-width: 20ch; margin-left:auto; margin-right:auto;
+  }
+
+  /* ---------- STRIP ---------- */
+  .strip{
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--bg-soft); padding: 16px 0;
+  }
+  .strip-inner{
+    display:flex; gap: 40px; flex-wrap:wrap; justify-content:center;
+    font-family:'Cinzel', serif; font-size: 0.92rem; letter-spacing: 0.02em; color: var(--ink-dim);
+  }
+  .strip-inner span{ color: var(--violet); }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 96px 0; }
+  .section-head{ max-width: 620px; margin-bottom: 54px; }
+  .section-head .kicker{ margin-bottom: 14px; }
+  .section-head h2{ font-size: clamp(1.9rem, 4vw, 2.6rem); margin-bottom: 16px; }
+  .section-head p{ color: var(--ink-dim); font-size: 1.03rem; }
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* three pillars */
+  .pillars{ display:grid; grid-template-columns: 1fr; gap: 24px; }
+  @media(min-width:840px){ .pillars{ grid-template-columns: repeat(3,1fr); } }
+  .pillar{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 32px 26px; background: var(--bg-soft);
+    position: relative; overflow:hidden;
+  }
+  .pillar .ico-circle{
+    width: 54px; height:54px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size: 1.4rem; margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .pillar:nth-child(1) .ico-circle{ color: var(--gold); border-color: rgba(255,193,77,0.4); }
+  .pillar:nth-child(2) .ico-circle{ color: var(--violet); border-color: rgba(177,78,255,0.4); }
+  .pillar:nth-child(3) .ico-circle{ color: var(--cyan); border-color: rgba(77,232,255,0.4); }
+  .pillar h3{ font-family:'Jost', sans-serif; font-weight:600; font-size: 1.2rem; margin-bottom: 12px; }
+  .pillar p{ color: var(--ink-dim); font-size: 0.96rem; }
+
+  /* ritual list */
+  .split{ display:grid; grid-template-columns: 1fr; gap: 26px; }
+  @media(min-width:840px){ .split{ grid-template-columns: 1fr 1fr; } }
+  .card{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 30px; background: var(--bg-soft);
+  }
+  .card h3{ font-family:'Jost', sans-serif; font-weight:600; font-size: 1.2rem; margin-bottom: 16px; }
+  .x-list, .check-list{ list-style:none; display:flex; flex-direction:column; gap: 14px; }
+  .x-list li, .check-list li{ display:flex; gap:12px; align-items:flex-start; color: var(--ink-dim); font-size:0.96rem; }
+  .x-list .mark{ color: var(--violet); font-weight:700; }
+  .check-list .mark{ color: var(--gold); font-weight:700; }
+
+  /* testimonials */
+  .testi-row{ display:grid; grid-template-columns: 1fr; gap: 22px; }
+  @media(min-width:840px){ .testi-row{ grid-template-columns: repeat(3,1fr); } }
+  .testi{
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; background: var(--bg-soft);
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .testi .quote{ font-family:'Cinzel', serif; font-weight: 400; font-size: 1rem; line-height:1.5; }
+  .testi .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
+  .avatar{
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel', serif; font-size:0.95rem; color:#0a0714; flex-shrink:0;
+  }
+  .avatar.a1{ background: var(--gold); }
+  .avatar.a2{ background: var(--violet); }
+  .avatar.a3{ background: var(--cyan); }
+  .who .name{ font-weight:600; font-size:0.9rem; }
+  .who .meta{ font-size:0.78rem; color: var(--ink-dim); }
+  .testi-note{
+    margin-top: 26px; font-size: 0.85rem; color: var(--ink-dim);
+    border-left: 2px solid var(--border); padding-left: 14px;
+  }
+
+  /* CTA block */
+  .cta-block{
+    border-radius: 26px; padding: 54px 40px;
+    background: linear-gradient(135deg, rgba(255,193,77,0.12), rgba(177,78,255,0.14));
+    border: 1px solid var(--border);
+    display:grid; grid-template-columns: 1fr; gap: 30px; align-items:center;
+  }
+  @media(min-width:880px){ .cta-block{ grid-template-columns: 1.2fr 0.8fr; padding: 60px 54px; } }
+  .cta-block h2{ font-size: clamp(1.7rem, 4vw, 2.4rem); margin-bottom: 14px; }
+  .cta-block p{ color: var(--ink-dim); margin-bottom: 24px; max-width: 46ch; }
+  .cta-visual{
+    border-radius: 20px; border: 1px solid var(--border); background: var(--bg);
+    padding: 32px 26px; text-align:center;
+  }
+  .cta-visual .emoji{ font-size: 2.6rem; margin-bottom: 12px; }
+  .cta-visual .title{ font-family:'Cinzel', serif; font-size: 1.15rem; color: var(--gold); margin-bottom: 8px; }
+  .cta-visual .sub{ color: var(--ink-dim); font-size: 0.86rem; }
+
+  /* final cta */
+  .final-cta{
+    border-radius: 28px; padding: 72px 40px; text-align:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(177,78,255,0.2), transparent 55%),
+      radial-gradient(circle at 85% 80%, rgba(255,193,77,0.16), transparent 55%),
+      var(--bg-soft);
+    border: 1px solid var(--border);
+  }
+  .final-cta h2{ font-size: clamp(1.9rem, 4.6vw, 2.9rem); margin-bottom: 18px; }
+  .final-cta p{ color: var(--ink-dim); max-width: 50ch; margin: 0 auto 32px; font-size: 1.03rem; }
+  .final-ctas{ display:flex; flex-wrap:wrap; justify-content:center; gap: 14px; }
+
+  /* footer */
+  footer{ border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-inner{ display:flex; flex-direction:column; gap:18px; align-items:center; text-align:center; }
+  @media(min-width:640px){ .footer-inner{ flex-direction:row; justify-content:space-between; text-align:left; } }
+  .footer-links{ display:flex; gap:20px; color: var(--ink-dim); font-size:0.9rem; }
+  .footer-links a:hover{ color: var(--gold); }
+  .footer-note{ color: var(--ink-dim); font-size:0.82rem; }
+
+  /* floating instagram button */
+  .ig-float{
+    position: fixed; bottom: 22px; right: 22px; z-index: 60;
+    background: linear-gradient(135deg, var(--gold), var(--violet));
+    color:#0a0714; width: 58px; height:58px; border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 8px 26px rgba(177,78,255,0.4);
+    transition: transform .15s ease;
+  }
+  .ig-float:hover{ transform: scale(1.08); }
+  .ig-float svg{ width: 26px; height:26px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">Livia Maria <span class="spark">✦</span></div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost nav-ig" href="https://www.instagram.com/liviamaria_mentora/" target="_blank" rel="noopener">
+        Instagram
+      </a>
+      <a class="btn btn-primary" href="https://ig.me/m/liviamaria_mentora" target="_blank" rel="noopener">
+        Escríbeme
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ring ring-1" aria-hidden="true"></div>
+    <div class="ring ring-2" aria-hidden="true"></div>
+    <div class="glow glow-1" aria-hidden="true"></div>
+    <div class="glow glow-2" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <div class="kicker"><span class="spark-ico">✦</span> Mentora Energética · Manifestación y Abundancia</div>
+        <h1>Dirige tu <span class="v">energía</span>. Crea tu <span class="g">realidad</span></h1>
+        <p class="lead">
+          Rituales sencillos, pensados para tu día a día, que te ayudan a soltar el bloqueo y abrirte a una vida abundante.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary btn-lg" href="https://ig.me/m/liviamaria_mentora" target="_blank" rel="noopener">
+            Escríbeme por Instagram
+          </a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/liviamaria_mentora/" target="_blank" rel="noopener">
+            Ver el perfil
+          </a>
+        </div>
+        <div class="credential">
+          <span class="ico">✦</span> Miembro de Mentoryx
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="hero-panel-inner">
+          <div class="num">🌀</div>
+          <div class="cap">Rituales sencillos para una vida abundante</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <div>Manifestación <span>✦</span></div>
+      <div>Abundancia <span>✦</span></div>
+      <div>Rituales <span>✦</span></div>
+      <div>Energía consciente</div>
+    </div>
+  </div>
+
+  <!-- TRES PILARES -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="spark-ico">✦</span> Tu camino, en tres pilares</div>
+        <h2>No se trata de esperar, se trata de dirigir</h2>
+        <p>Cada pilar te acerca un paso más a una vida donde la abundancia deja de ser una excepción y se vuelve tu estado natural.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="ico-circle">✦</div>
+          <h3>Manifestación</h3>
+          <p>Aprende a alinear tus pensamientos, palabras y acciones con lo que de verdad quieres crear en tu vida.</p>
+        </div>
+        <div class="pillar">
+          <div class="ico-circle">🪄</div>
+          <h3>Abundancia</h3>
+          <p>Suelta las creencias que te frenan y abre espacio real para recibir prosperidad en todas sus formas.</p>
+        </div>
+        <div class="pillar">
+          <div class="ico-circle">🌀</div>
+          <h3>Rituales</h3>
+          <p>Prácticas simples y constantes, fáciles de sostener en tu rutina, que transforman tu energía día a día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUEO / TRANSFORMACION -->
+  <section style="background: var(--bg-soft);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="spark-ico">✦</span> El punto de partida</div>
+        <h2>Sientes que algo te frena, aunque no sepas nombrarlo</h2>
+        <p>No es falta de esfuerzo. Es energía dispersa, creencias antiguas y rituales que nunca aprendiste a sostener.</p>
+      </div>
+      <div class="split">
+        <div class="card">
+          <h3>Lo que sueles vivir</h3>
+          <ul class="x-list">
+            <li><span class="mark">✦</span> Sensación de estar bloqueada sin saber por qué</li>
+            <li><span class="mark">✦</span> Ciclos que se repiten una y otra vez</li>
+            <li><span class="mark">✦</span> Prácticas espirituales que empiezas y abandonas</li>
+            <li><span class="mark">✦</span> Falta de claridad sobre qué energía estás emitiendo</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Lo que cambia contigo</h3>
+          <ul class="check-list">
+            <li><span class="mark">✦</span> Rituales simples que sí puedes sostener cada día</li>
+            <li><span class="mark">✦</span> Claridad sobre tus bloqueos y cómo soltarlos</li>
+            <li><span class="mark">✦</span> Una relación consciente con tu propia energía</li>
+            <li><span class="mark">✦</span> Acompañamiento cercano en cada paso del proceso</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="kicker" style="justify-content:center;"><span class="spark-ico">✦</span> Voces de la comunidad</div>
+        <h2>Historias de quienes ya dieron el paso</h2>
+      </div>
+      <div class="testi-row">
+        <div class="testi">
+          <p class="quote">"Empecé con un ritual de cinco minutos al día y en semanas sentí un cambio real en cómo veo mi vida."</p>
+          <div class="who">
+            <div class="avatar a1">A</div>
+            <div>
+              <div class="name">Ana, 31 años</div>
+              <div class="meta">Comunidad de Livia</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"Livia me ayudó a entender de dónde venían mis bloqueos. Hoy me siento mucho más en paz."</p>
+          <div class="who">
+            <div class="avatar a2">R</div>
+            <div>
+              <div class="name">Rocío, 27 años</div>
+              <div class="meta">Comunidad de Livia</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"Los rituales son sencillos de verdad. Por primera vez logré ser constante con una práctica."</p>
+          <div class="who">
+            <div class="avatar a3">D</div>
+            <div>
+              <div class="name">Daniela, 36 años</div>
+              <div class="meta">Comunidad de Livia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="testi-note">Testimonios de ejemplo a modo ilustrativo. Sustitúyelos por citas reales de tu comunidad antes de publicar la página.</p>
+    </div>
+  </section>
+
+  <!-- CTA MEDIA -->
+  <section>
+    <div class="wrap">
+      <div class="cta-block">
+        <div>
+          <h2>Empieza tu <span style="color: var(--violet);">ritual</span> hoy</h2>
+          <p>Escríbeme por Instagram y te cuento cómo trabajamos juntas para dirigir tu energía hacia la vida que quieres crear.</p>
+          <a class="btn btn-primary btn-lg" href="https://ig.me/m/liviamaria_mentora" target="_blank" rel="noopener">
+            Enviar mensaje ahora
+          </a>
+        </div>
+        <div class="cta-visual">
+          <div class="emoji">🪄</div>
+          <div class="title">Rituales para una vida abundante</div>
+          <div class="sub">Escríbeme por Instagram DM a @liviamaria_mentora</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section>
+    <div class="wrap">
+      <div class="final-cta">
+        <h2>Tu energía ya está lista. Solo falta dirigirla</h2>
+        <p>Escríbeme hoy y demos juntas el primer paso hacia una vida más abundante, consciente y alineada contigo.</p>
+        <div class="final-ctas">
+          <a class="btn btn-primary btn-lg" href="https://ig.me/m/liviamaria_mentora" target="_blank" rel="noopener">
+            Escríbeme por Instagram
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/liviamaria_mentora/" target="_blank" rel="noopener">
+            Ver el perfil completo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-note">© 2026 Livia Maria · Mentora Energética</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/liviamaria_mentora/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://ig.me/m/liviamaria_mentora" target="_blank" rel="noopener">Enviar mensaje</a>
+    </div>
+  </div>
+</footer>
+
+<a class="ig-float" href="https://ig.me/m/liviamaria_mentora" target="_blank" rel="noopener" aria-label="Escribir por Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheyla Dotes | Entrenadora online — Pierde 10kg en 90 días con 3h/semana</title>
+<meta name="description" content="Sheyla Dotes, entrenadora online. Ayudo a mujeres ocupadas +30 a perder 10kg en 90 días con solo 3h/semana. +700 cambios exitosos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF9EF;
+    --paper:#FFEFDD;
+    --ink:#151221;
+    --ink-soft:#5a5468;
+    --orange:#FF5A1F;
+    --orange-deep:#E14A14;
+    --cyan:#00D9FF;
+    --acid:#D6FF1F;
+    --acid-deep:#B9E000;
+    --line: rgba(21,18,33,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--cream);color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    line-height:1.04;
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--acid);color:var(--ink);}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV (mobile-safe: display toggled) ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,249,239,0.94);backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--ink);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.08rem;flex:none;}
+  .brand-mark{width:30px;height:30px;background:var(--orange);border:2px solid var(--ink);flex:none;transform:rotate(45deg);}
+
+  .nav-links{
+    display:none;width:100%;background:var(--cream);flex-direction:column;align-items:flex-start;
+    gap:20px;padding:26px 28px 32px;position:fixed;left:0;right:0;top:64px;
+    border-bottom:2px solid var(--ink);max-height:calc(100vh - 64px);overflow-y:auto;
+  }
+  .nav-links.open{display:flex;}
+  .nav-links a{font-size:1.02rem;font-weight:700;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--orange);}
+  .nav-links .btn{width:100%;justify-content:center;}
+
+  @media(min-width:900px){
+    .nav-links{
+      display:flex !important;position:static;flex-direction:row;align-items:center;
+      width:auto;padding:0;gap:26px;border-bottom:none;max-height:none;overflow:visible;background:transparent;
+    }
+    .nav-links a{font-size:0.92rem;}
+    .nav-links .btn{width:auto;}
+  }
+
+  .burger{display:inline-flex;background:none;border:none;cursor:pointer;padding:6px;flex:none;}
+  @media(min-width:900px){.burger{display:none;}}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 26px;font-weight:700;font-size:0.92rem;
+    border:2px solid var(--ink);cursor:pointer;white-space:nowrap;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-solid{background:var(--orange);color:var(--cream);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink);}
+  .btn-solid:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+  .btn-outline{background:var(--cream);color:var(--ink);box-shadow:4px 4px 0 var(--cyan);}
+  .btn-outline:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--cyan);}
+  .btn-sm{padding:10px 20px;font-size:0.84rem;}
+  .nav-cta{display:none;}
+  @media(min-width:900px){.nav-cta{display:inline-flex;}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:56px 0 0;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center;position:relative;z-index:2;padding-bottom:64px;}
+  @media(min-width:960px){.hero-grid{grid-template-columns:1.1fr 0.9fr;}}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);
+    padding:8px 16px;font-weight:700;font-size:0.8rem;margin-bottom:22px;
+  }
+  .badge .sq{width:8px;height:8px;background:var(--acid);}
+  .hero h1{font-size:clamp(2.35rem,5.4vw,3.8rem);}
+  .hero h1 .accent{color:var(--orange);}
+  .hero p.lede{margin-top:20px;font-size:1.14rem;line-height:1.5;color:var(--ink-soft);max-width:46ch;font-weight:500;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px;}
+  .hero-stats{display:flex;margin-top:44px;border-top:2px solid var(--ink);flex-wrap:wrap;}
+  .hero-stats .stat{flex:1;min-width:110px;padding:16px 16px 0 0;border-right:2px solid var(--ink);}
+  .hero-stats .stat:last-child{border-right:none;}
+  .hero-stats .stat b{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;display:block;color:var(--orange);}
+  .hero-stats .stat span{font-size:0.78rem;color:var(--ink-soft);font-weight:700;}
+
+  .hero-visual{position:relative;height:400px;display:flex;align-items:center;justify-content:center;}
+  .dial{
+    width:300px;height:300px;border-radius:50%;
+    border:3px solid var(--ink);position:relative;
+    background:radial-gradient(circle at 30% 30%, var(--paper), var(--cream));
+  }
+  .tick{position:absolute;width:3px;height:14px;background:var(--ink);left:50%;top:6px;transform-origin:50% 144px;}
+  .dial-center{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    text-align:center;
+  }
+  .dial-center b{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;display:block;color:var(--orange);}
+  .dial-center span{font-size:0.75rem;font-weight:700;color:var(--ink-soft);}
+  .needle{
+    position:absolute;top:50%;left:50%;width:4px;height:110px;background:var(--ink);
+    transform-origin:50% 0%;transform:translate(-50%,0) rotate(38deg);
+    animation:tick-move 6s ease-in-out infinite;
+  }
+  @keyframes tick-move{0%,100%{transform:translate(-50%,0) rotate(20deg);}50%{transform:translate(-50%,0) rotate(70deg);}}
+  .float-chip{
+    position:absolute;background:var(--cream);border:2px solid var(--ink);padding:9px 16px;
+    font-weight:700;font-size:0.8rem;box-shadow:3px 3px 0 var(--ink);
+  }
+  .float-chip.c1{top:2%;left:-2%;background:var(--acid);animation:chip-a 6s ease-in-out infinite;}
+  .float-chip.c2{bottom:4%;right:-4%;background:var(--cyan);animation:chip-b 7s ease-in-out infinite;}
+  @keyframes chip-a{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes chip-b{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+
+  .hero-strip{background:var(--ink);color:var(--cream);padding:14px 0;overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .strip-track{display:flex;gap:44px;white-space:nowrap;animation:scroll-strip 20s linear infinite;width:max-content;}
+  .strip-track span{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;color:var(--acid);}
+  .strip-track span.alt{color:var(--orange);}
+  @keyframes scroll-strip{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  section{padding:84px 0;position:relative;}
+  .section-tag{font-weight:700;color:var(--orange);font-size:0.9rem;margin-bottom:14px;display:block;}
+  .section-head{max-width:660px;margin-bottom:50px;}
+  .section-head h2{font-size:clamp(1.85rem,3.7vw,2.6rem);}
+  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:1.06rem;line-height:1.6;font-weight:500;}
+
+  /* ---------- BENEFICIOS ---------- */
+  .benefit-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--ink);border:2px solid var(--ink);}
+  @media(min-width:700px){.benefit-grid{grid-template-columns:repeat(3,1fr);}}
+  .benefit-card{background:var(--cream);padding:32px 26px;}
+  .benefit-card .num{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;color:var(--orange);display:block;margin-bottom:14px;}
+  .benefit-card h3{font-size:1.16rem;margin-bottom:10px;}
+  .benefit-card p{color:var(--ink-soft);font-size:0.97rem;line-height:1.55;font-weight:500;}
+
+  /* ---------- SOBRE SHEYLA ---------- */
+  .about{background:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;}
+  @media(min-width:900px){.about-grid{grid-template-columns:0.85fr 1.15fr;}}
+  .portrait{
+    width:100%;max-width:300px;aspect-ratio:1;margin:0 auto;background:var(--cream);
+    border:3px solid var(--ink);position:relative;display:flex;align-items:center;justify-content:center;
+    font-size:5rem;box-shadow:8px 8px 0 var(--orange);
+  }
+  .portrait .flag{
+    position:absolute;top:-16px;left:-16px;background:var(--acid);color:var(--ink);
+    padding:8px 14px;font-weight:700;font-size:0.72rem;border:2px solid var(--ink);
+  }
+  .about-body ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px;}
+  .about-body li{display:flex;gap:12px;align-items:flex-start;font-weight:700;}
+  .check{flex:none;width:24px;height:24px;background:var(--cyan);border:2px solid var(--ink);display:grid;place-items:center;font-size:0.72rem;margin-top:1px;font-weight:900;}
+
+  /* ---------- PROGRAMA 90 DIAS ---------- */
+  .timeline{display:grid;grid-template-columns:1fr;gap:0;border-top:2px solid var(--ink);border-left:2px solid var(--ink);}
+  @media(min-width:760px){.timeline{grid-template-columns:repeat(3,1fr);}}
+  .phase{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:32px 26px;background:var(--cream);}
+  .phase .p-tag{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;color:var(--cyan-deep,var(--orange));font-weight:700;}
+  .phase .p-days{font-family:'Space Grotesk',sans-serif;font-size:2rem;margin-top:8px;}
+  .phase h3{margin-top:12px;font-size:1.08rem;}
+  .phase p{margin-top:10px;color:var(--ink-soft);font-size:0.94rem;line-height:1.5;font-weight:500;}
+
+  /* ---------- PROGRAMA INCLUYE ---------- */
+  .includes{background:var(--ink);color:var(--cream);}
+  .includes .section-tag{color:var(--acid);}
+  .includes .section-head p{color:rgba(255,249,239,0.72);}
+  .include-list{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:760px){.include-list{grid-template-columns:repeat(2,1fr);}}
+  .include-item{display:flex;gap:16px;align-items:flex-start;border:2px solid rgba(255,249,239,0.25);padding:22px;background:rgba(255,249,239,0.05);}
+  .include-item .tick{flex:none;width:30px;height:30px;background:var(--acid);color:var(--ink);display:grid;place-items:center;font-weight:900;}
+  .include-item h4{font-family:'Space Grotesk';font-weight:700;font-size:1rem;color:var(--cream);}
+  .include-item p{color:rgba(255,249,239,0.68);font-size:0.9rem;margin-top:6px;font-weight:500;}
+
+  /* ---------- RESULTADOS ---------- */
+  .results-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--ink);border:2px solid var(--ink);margin-bottom:50px;}
+  @media(min-width:760px){.results-stats{grid-template-columns:repeat(4,1fr);}}
+  .rstat{background:var(--cream);padding:26px 20px;text-align:center;}
+  .rstat b{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;color:var(--orange);display:block;}
+  .rstat span{font-size:0.8rem;color:var(--ink-soft);font-weight:700;}
+  .testi-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--ink);border:2px solid var(--ink);}
+  @media(min-width:760px){.testi-grid{grid-template-columns:repeat(3,1fr);}}
+  .testi{background:var(--cream);padding:26px;}
+  .testi p.quote{line-height:1.55;font-size:1rem;font-weight:600;}
+  .testi .who{margin-top:16px;font-size:0.8rem;font-weight:700;color:var(--orange);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:grid;gap:12px;max-width:820px;}
+  .faq-item{border:2px solid var(--ink);background:var(--cream);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem;color:var(--ink);
+  }
+  .faq-q .plus{
+    flex:none;width:28px;height:28px;background:var(--acid);border:2px solid var(--ink);
+    display:grid;place-items:center;font-size:1.05rem;transition:transform .3s ease;font-weight:900;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);background:var(--orange);color:var(--cream);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a p{padding:0 24px 22px;color:var(--ink-soft);line-height:1.6;font-weight:500;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{
+    background:linear-gradient(120deg,var(--orange) 0%, var(--cyan) 100%);
+    text-align:center;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  }
+  .final-cta h2{font-size:clamp(2rem,4.6vw,3.1rem);color:var(--ink);max-width:18ch;margin:0 auto;}
+  .final-cta p{margin-top:18px;font-size:1.08rem;color:var(--ink);opacity:0.85;max-width:52ch;margin:18px auto 0;font-weight:600;}
+  .final-cta .hero-ctas{justify-content:center;margin-top:32px;}
+  .final-cta .btn-outline{box-shadow:5px 5px 0 var(--ink);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(255,249,239,0.75);padding:56px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1fr;gap:36px;}
+  @media(min-width:760px){.foot-grid{grid-template-columns:1.3fr 1fr 1fr;}}
+  footer .brand{color:var(--cream);}
+  footer p.tag{margin-top:14px;font-size:0.94rem;max-width:32ch;line-height:1.5;font-weight:500;}
+  footer h4{color:var(--cream);font-size:0.82rem;margin-bottom:14px;font-weight:700;}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+  footer a{font-size:0.94rem;font-weight:600;}
+  footer a:hover{color:var(--acid);}
+  .foot-bottom{
+    margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,249,239,0.15);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:0.8rem;font-weight:600;
+  }
+  .foot-bottom a{font-weight:700;}
+
+  /* ---------- FLOATING CONTACT ---------- */
+  .float-wrap{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+  .float-btn{
+    width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--ink);cursor:pointer;box-shadow:4px 4px 0 var(--ink);transition:transform .2s ease;
+  }
+  .float-btn:hover{transform:scale(1.08) translateY(-2px);}
+  .float-btn.wa{background:var(--acid);}
+  .float-btn.ig{background:var(--orange);}
+  .float-btn svg{width:24px;height:24px;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand"><span class="brand-mark"></span>sheyladc_</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#beneficios">Beneficios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#programa">Programa</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-solid btn-sm" href="https://wa.me/message/IZGQV6AYUHXFD1" target="_blank" rel="noopener">Empieza aquí</a>
+    </div>
+    <a class="btn btn-solid btn-sm nav-cta" href="https://wa.me/message/IZGQV6AYUHXFD1" target="_blank" rel="noopener">Empieza aquí</a>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#151221" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="badge"><span class="sq"></span>Entrenadora online</span>
+        <h1>Pierde 10kg en 90 días <span class="accent">con solo 3h/semana</span></h1>
+        <p class="lede">Soy Sheyla. Ayudo a mujeres ocupadas +30 a transformar su cuerpo sin pasarse la vida en el gimnasio. Entrenamientos eficientes, plan claro, resultados reales.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="https://wa.me/message/IZGQV6AYUHXFD1" target="_blank" rel="noopener">Empieza aquí — WhatsApp</a>
+          <a class="btn btn-outline" href="https://www.instagram.com/sheyladc_" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>10kg</b><span>Objetivo en 90 días</span></div>
+          <div class="stat"><b>3h</b><span>Por semana</span></div>
+          <div class="stat"><b>+700</b><span>Cambios exitosos</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="dial">
+          <div class="needle"></div>
+          <div class="dial-center"><b>3h</b><span>POR SEMANA</span></div>
+        </div>
+        <span class="float-chip c1">✅ +700 cambios</span>
+        <span class="float-chip c2">⏱ Solo 3h/semana</span>
+      </div>
+    </div>
+
+    <div class="hero-strip" aria-hidden="true">
+      <div class="strip-track">
+        <span>PIERDE 10KG</span><span class="alt">EN 90 DÍAS</span><span>SOLO 3H/SEMANA</span><span class="alt">PARA MUJERES OCUPADAS +30</span>
+        <span>PIERDE 10KG</span><span class="alt">EN 90 DÍAS</span><span>SOLO 3H/SEMANA</span><span class="alt">PARA MUJERES OCUPADAS +30</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Por qué funciona</span>
+        <h2>Pensado para mujeres que no tienen horas libres</h2>
+        <p>No necesitas vivir en el gimnasio para ver resultados. Necesitas un plan que encaje en tu semana real.</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit-card reveal"><span class="num">01</span><h3>Entrenamientos de 3h/semana</h3><p>Sesiones cortas y efectivas, diseñadas para caber en una agenda ocupada.</p></div>
+        <div class="benefit-card reveal"><span class="num">02</span><h3>Plan de 90 días</h3><p>Progresión clara semana a semana, sin adivinar qué hacer cada día.</p></div>
+        <div class="benefit-card reveal"><span class="num">03</span><h3>Pensado para +30</h3><p>Entrenamientos adaptados a tu cuerpo y tu etapa de vida, no genéricos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE SHEYLA -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <div class="portrait">
+          <span class="flag">Entrenadora online</span>
+          💪
+        </div>
+      </div>
+      <div class="about-body reveal">
+        <span class="section-tag">Sobre mí</span>
+        <h2>Entrenamiento eficiente, resultados reales</h2>
+        <p style="margin-top:18px;color:var(--ink-soft);font-size:1.06rem;line-height:1.65;font-weight:500;">
+          Soy Sheyla Dotes, entrenadora online. Ayudo a mujeres ocupadas de más de 30 años a perder peso y ganar fuerza con entrenamientos que caben en su semana real: 3 horas, sin excusas y sin pasar horas muertas en el gimnasio. Más de 700 mujeres ya han vivido su cambio conmigo.
+        </p>
+        <ul>
+          <li><span class="check">✓</span>Programa de 90 días con progresión semana a semana</li>
+          <li><span class="check">✓</span>Entrenamientos de solo 3h/semana</li>
+          <li><span class="check">✓</span>+700 cambios exitosos ya conseguidos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMA 90 DIAS -->
+  <section id="programa">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">El programa</span>
+        <h2>90 días, 3 fases, un solo objetivo</h2>
+        <p>Cada fase tiene un propósito claro para que llegues al día 90 con resultados visibles.</p>
+      </div>
+    </div>
+    <div class="wrap" style="padding:0;">
+      <div class="timeline">
+        <div class="phase reveal"><span class="p-tag">FASE 1</span><div class="p-days">Días 1–30</div><h3>Base y hábito</h3><p>Aprendes la rutina de 3h/semana y construyes el hábito de entrenar sin agobios.</p></div>
+        <div class="phase reveal"><span class="p-tag">FASE 2</span><div class="p-days">Días 31–60</div><h3>Progresión</h3><p>Aumenta la intensidad de forma controlada para acelerar tu cambio corporal.</p></div>
+        <div class="phase reveal"><span class="p-tag">FASE 3</span><div class="p-days">Días 61–90</div><h3>Resultados</h3><p>Consolidas el cambio y llegas a tu objetivo de los 10kg con un plan que ya es parte de tu vida.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUE INCLUYE -->
+  <section class="includes">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Qué incluye</span>
+        <h2>Todo lo que necesitas para los 90 días</h2>
+      </div>
+      <div class="include-list">
+        <div class="include-item"><span class="tick">✓</span><div><h4>Plan de entrenamiento de 90 días</h4><p>Estructurado en 3 fases, 3h/semana.</p></div></div>
+        <div class="include-item"><span class="tick">✓</span><div><h4>Rutinas para hacer en casa o gimnasio</h4><p>Se adaptan a donde puedas entrenar.</p></div></div>
+        <div class="include-item"><span class="tick">✓</span><div><h4>Seguimiento por WhatsApp</h4><p>Para resolver dudas durante todo el proceso.</p></div></div>
+        <div class="include-item"><span class="tick">✓</span><div><h4>Comunidad de +700 mujeres</h4><p>No entrenas sola: avanzás con otras en tu misma etapa.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section id="resultados">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Resultados</span>
+        <h2>+700 mujeres ya lo lograron</h2>
+      </div>
+      <div class="results-stats">
+        <div class="rstat"><b>+700</b><span>Cambios exitosos</span></div>
+        <div class="rstat"><b>90</b><span>Días de programa</span></div>
+        <div class="rstat"><b>3h</b><span>Por semana</span></div>
+        <div class="rstat"><b>+30</b><span>Pensado para esta etapa</span></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi reveal"><p class="quote">"Con 3 horas a la semana logré lo que no conseguí en años yendo 5 días al gimnasio sin plan."</p><p class="who">— Alumna del programa</p></div>
+        <div class="testi reveal"><p class="quote">"A los 30 pensé que ya no tenía tiempo para entrenar en serio. Este programa me demostró lo contrario."</p><p class="who">— Alumna del programa</p></div>
+        <div class="testi reveal"><p class="quote">"El seguimiento por WhatsApp hizo que no abandonara a mitad de camino, como me pasaba siempre."</p><p class="who">— Alumna del programa</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="preguntas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Preguntas frecuentes</span>
+        <h2>Antes de empezar</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">¿De verdad alcanza con 3h a la semana?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Sí. Los entrenamientos están diseñados para maximizar cada sesión, por eso no necesitas más tiempo para ver resultados.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Puedo entrenar en casa?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Sí, las rutinas se adaptan tanto a entrenamiento en casa como en gimnasio.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Es un programa solo para mujeres +30?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Está especialmente pensado para esa etapa de vida, pero el método aplica a cualquier mujer con poco tiempo disponible.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Cómo empiezo?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Escríbeme por WhatsApp o Instagram (@sheyladc_) y te cuento los próximos pasos para sumarte al programa de 90 días.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Empieza tu cambio de 90 días</h2>
+      <p>Sumate a las más de 700 mujeres que ya perdieron peso entrenando solo 3h por semana.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="https://wa.me/message/IZGQV6AYUHXFD1" target="_blank" rel="noopener">Empieza aquí — WhatsApp</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/sheyladc_" target="_blank" rel="noopener">Seguir en Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a href="#top" class="brand"><span class="brand-mark"></span>sheyladc_</a>
+      <p class="tag">Sheyla Dotes · Entrenadora online. Pierde 10kg en 90 días con 3h/semana.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/message/IZGQV6AYUHXFD1" target="_blank" rel="noopener">WhatsApp · Empieza aquí</a></li>
+        <li><a href="https://www.instagram.com/sheyladc_" target="_blank" rel="noopener">Instagram · @sheyladc_</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#programa">Programa</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 sheyladc_ · Sheyla Dotes. Todos los derechos reservados.</span>
+    <a href="https://easypagex.github.io" target="_blank" rel="noopener">Built by EasyLandX</a>
+  </div>
+</footer>
+
+<div class="float-wrap">
+  <a class="float-btn wa" href="https://wa.me/message/IZGQV6AYUHXFD1" target="_blank" rel="noopener" aria-label="Empieza por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.5A10 10 0 1012 2z" stroke="#151221" stroke-width="1.6"/><path d="M8.5 8.7c.2-.5.5-.5.8-.5h.6c.2 0 .5 0 .7.5.3.6.9 2 1 2.1.1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.2.7.2.4 1 1.5 2.1 2.4 1.4 1.2 2 1.3 2.3 1.1.3-.1.5-.4.7-.6.2-.2.4-.3.7-.2.3.1 1.7.8 2 .9.3.1.5.2.5.4.1.6-.1 1.2-.6 1.6-.5.4-1.4.7-2.2.5-1.7-.4-3.4-1.3-4.8-2.6-1.4-1.3-2.4-2.8-3-4.4-.3-.8-.1-1.7.4-2.3z" fill="#151221"/></svg>
+  </a>
+  <a class="float-btn ig" href="https://www.instagram.com/sheyladc_" target="_blank" rel="noopener" aria-label="Ver Instagram">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#FFF9EF" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="#FFF9EF" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="#FFF9EF"/></svg>
+  </a>
+</div>
+
+<script>
+  // Mobile nav — display toggled explicitly (avoids overlap on iPhone)
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+  window.addEventListener('resize', () => {
+    if(window.innerWidth >= 900){
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Dial ticks
+  const dial = document.querySelector('.dial');
+  if(dial){
+    for(let i=0;i<12;i++){
+      const t = document.createElement('div');
+      t.className = 'tick';
+      t.style.transform = `rotate(${i*30}deg)`;
+      dial.appendChild(t);
+    }
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.15});
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        ans.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

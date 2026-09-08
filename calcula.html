@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcula tus Números en 30 Segundos</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#0a0a0a',
+              card: '#121212',
+              border: '#222222',
+              green: '#10b981',
+              accent: '#34d399',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #f3f4f6;
+      font-family: 'Outfit', sans-serif;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen py-12 px-4 selection:bg-emerald-500 selection:text-black">
+
+  <div class="max-w-3xl mx-auto space-y-10">
+    
+    <!-- ENCABEZADO -->
+    <header class="text-center space-y-4">
+      <span class="text-xs font-bold uppercase tracking-[0.25em] text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-4 py-1.5 rounded-full inline-block">
+        Calculadora Express
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-none uppercase">
+        CALCULA TUS NÚMEROS EN <span class="text-emerald-400">30 SEGUNDOS</span>
+      </h1>
+      <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto font-light">
+        Solo necesitas tu peso y esta herramienta para obtener tus referencias orientativas.
+      </p>
+    </header>
+
+    <!-- FORMULARIO DE ENTRADA -->
+    <div class="bg-brand-card p-6 sm:p-8 rounded-3xl border border-brand-border shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <label for="peso" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-3">
+        Introduce tu peso corporal:
+      </label>
+      <div class="relative">
+        <input 
+          type="number" 
+          id="peso" 
+          placeholder="Ej. 75" 
+          value="75"
+          min="1" 
+          max="300"
+          class="w-full pl-5 pr-14 py-4 bg-black/60 border border-brand-border rounded-2xl focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 text-2xl font-bold text-white outline-none transition-all placeholder-gray-600"
+        />
+        <span class="absolute right-5 top-1/2 -translate-y-1/2 font-bold text-gray-400">kg</span>
+      </div>
+    </div>
+
+    <!-- RESULTADOS EN TARJETAS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <!-- Calorías -->
+      <div class="bg-brand-card p-6 rounded-3xl border border-brand-border flex flex-col justify-between hover:border-emerald-500/40 transition-colors group">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-white tracking-wider text-sm uppercase">CALORÍAS</h2>
+            <span class="text-[11px] font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800/40 px-2.5 py-1 rounded-full">peso × 30-35</span>
+          </div>
+          <p id="res-calorias" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight my-2">2.250 - 2.625 kcal</p>
+        </div>
+        <p class="text-xs text-gray-500 border-t border-brand-border/60 pt-3 mt-3 font-light">
+          Estimación inicial; puede variar mucho.
+        </p>
+      </div>
+
+      <!-- Proteína -->
+      <div class="bg-brand-card p-6 rounded-3xl border border-brand-border flex flex-col justify-between hover:border-emerald-500/40 transition-colors group">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-white tracking-wider text-sm uppercase">PROTEÍNA</h2>
+            <span class="text-[11px] font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800/40 px-2.5 py-1 rounded-full">peso × 1,6-2,0 g</span>
+          </div>
+          <p id="res-proteina" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight my-2">120 - 150 g</p>
+        </div>
+        <p class="text-xs text-gray-500 border-t border-brand-border/60 pt-3 mt-3 font-light">
+          Referencia práctica para personas activas.
+        </p>
+      </div>
+
+      <!-- Grasa -->
+      <div class="bg-brand-card p-6 rounded-3xl border border-brand-border flex flex-col justify-between hover:border-emerald-500/40 transition-colors group">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-white tracking-wider text-sm uppercase">GRASA</h2>
+            <span class="text-[11px] font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800/40 px-2.5 py-1 rounded-full">peso × 0,8-1,0 g</span>
+          </div>
+          <p id="res-grasa" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight my-2">60 - 75 g</p>
+        </div>
+        <p class="text-xs text-gray-500 border-t border-brand-border/60 pt-3 mt-3 font-light">
+          Ajustable a calorías y preferencias.
+        </p>
+      </div>
+
+      <!-- Agua -->
+      <div class="bg-brand-card p-6 rounded-3xl border border-brand-border flex flex-col justify-between hover:border-emerald-500/40 transition-colors group">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-white tracking-wider text-sm uppercase">AGUA</h2>
+            <span class="text-[11px] font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800/40 px-2.5 py-1 rounded-full">peso × 30-35 ml</span>
+          </div>
+          <p id="res-agua" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight my-2">2,25 - 2,63 L</p>
+        </div>
+        <p class="text-xs text-gray-500 border-t border-brand-border/60 pt-3 mt-3 font-light">
+          Aumenta con calor, sudor y ejercicio.
+        </p>
+      </div>
+
+      <!-- Pasos -->
+      <div class="bg-brand-card p-6 rounded-3xl border border-brand-border flex flex-col justify-between hover:border-emerald-500/40 transition-colors group">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-white tracking-wider text-sm uppercase">PASOS</h2>
+            <span class="text-[11px] font-mono bg-zinc-800 text-gray-300 px-2.5 py-1 rounded-full">Fijo</span>
+          </div>
+          <p class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight my-2">8.000 - 12.000 <span class="text-base font-normal text-gray-400">/ día</span></p>
+        </div>
+        <p class="text-xs text-gray-500 border-t border-brand-border/60 pt-3 mt-3 font-light">
+          Referencia orientativa. No depende del peso.
+        </p>
+      </div>
+
+      <!-- Cafeína -->
+      <div class="bg-brand-card p-6 rounded-3xl border border-brand-border flex flex-col justify-between hover:border-emerald-500/40 transition-colors group">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-white tracking-wider text-sm uppercase">CAFEÍNA</h2>
+            <span class="text-[11px] font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800/40 px-2.5 py-1 rounded-full">peso × 1-3 mg</span>
+          </div>
+          <p id="res-cafeina" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight my-2">75 - 225 mg</p>
+        </div>
+        <p class="text-xs text-gray-500 border-t border-brand-border/60 pt-3 mt-3 font-light">
+          Opcional; evita si afecta al sueño.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN HIDRATOS DE CARBONO -->
+    <div class="bg-brand-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-5">
+      <h2 class="text-xl font-black text-white uppercase tracking-wide flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+        ¿Y LOS HIDRATOS?
+      </h2>
+      <p class="text-sm text-gray-400 font-light leading-relaxed">
+        No te doy un único número porque dependen mucho de tu actividad, duración e intensidad del entrenamiento y objetivo.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
+        <div class="bg-black/50 p-4 rounded-2xl border border-brand-border text-center">
+          <span class="block font-bold text-xs text-emerald-400 uppercase tracking-wider mb-1">Día tranquilo</span>
+          <span class="text-xs text-gray-400 font-light">Menor necesidad de combustible</span>
+        </div>
+        <div class="bg-black/50 p-4 rounded-2xl border border-brand-border text-center">
+          <span class="block font-bold text-xs text-emerald-400 uppercase tracking-wider mb-1">Entrenamiento normal</span>
+          <span class="text-xs text-gray-400 font-light">Necesidad intermedia</span>
+        </div>
+        <div class="bg-black/50 p-4 rounded-2xl border border-brand-border text-center">
+          <span class="block font-bold text-xs text-emerald-400 uppercase tracking-wider mb-1">Tirada larga / Intenso</span>
+          <span class="text-xs text-gray-400 font-light">Mayor necesidad de hidratos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTONES DE ACCIÓN / ENLACES -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+      <a 
+        href="https://easylandx.github.io/web/andres.html" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto text-center px-6 py-3.5 rounded-2xl bg-brand-card hover:bg-zinc-800 border border-brand-border text-white text-sm font-bold tracking-wider uppercase transition-all duration-200"
+      >
+        Andrés Trece
+      </a>
+      
+      <a 
+        href="https://api.whatsapp.com/send/?phone=34616157937&text=Hola+Andr%C3%A9s%2C+quiero+empezar&type=phone_number&app_absent=0" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto text-center px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-extrabold tracking-wider uppercase transition-all duration-200 shadow-lg shadow-emerald-500/20"
+      >
+        WhatsApp
+      </a>
+      
+      <a 
+        href="https://www.instagram.com/andres_trece/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto text-center px-6 py-3.5 rounded-2xl bg-brand-card hover:bg-zinc-800 border border-brand-border text-white text-sm font-bold tracking-wider uppercase transition-all duration-200"
+      >
+        Empieza tu cambio
+      </a>
+    </div>
+
+    <!-- AVISO LEGAL / NOTA -->
+    <footer class="text-center pt-2">
+      <p class="text-xs font-semibold text-gray-500 uppercase tracking-[0.2em]">
+        SON REFERENCIAS ORIENTATIVAS, NO UNA DIETA PERSONALIZADA.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- JAVASCRIPT DE CÁLCULO -->
+  <script>
+    const inputPeso = document.getElementById('peso');
+
+    // Elementos donde se muestran los resultados
+    const resCalorias = document.getElementById('res-calorias');
+    const resProteina = document.getElementById('res-proteina');
+    const resGrasa = document.getElementById('res-grasa');
+    const resAgua = document.getElementById('res-agua');
+    const resCafeina = document.getElementById('res-cafeina');
+
+    function formatearNumero(num) {
+      return num.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+    }
+
+    function calcular() {
+      const peso = parseFloat(inputPeso.value);
+
+      if (isNaN(peso) || peso <= 0) {
+        resCalorias.textContent = '-';
+        resProteina.textContent = '-';
+        resGrasa.textContent = '-';
+        resAgua.textContent = '-';
+        resCafeina.textContent = '-';
+        return;
+      }
+
+      // Calorías: peso * 30 - peso * 35
+      const calMin = Math.round(peso * 30);
+      const calMax = Math.round(peso * 35);
+      resCalorias.textContent = `${formatearNumero(calMin)} - ${formatearNumero(calMax)} kcal`;
+
+      // Proteína: peso * 1.6 - peso * 2.0
+      const protMin = Math.round(peso * 1.6);
+      const protMax = Math.round(peso * 2.0);
+      resProteina.textContent = `${protMin} - ${protMax} g`;
+
+      // Grasa: peso * 0.8 - peso * 1.0
+      const grasaMin = Math.round(peso * 0.8);
+      const grasaMax = Math.round(peso * 1.0);
+      resGrasa.textContent = `${grasaMin} - ${grasaMax} g`;
+
+      // Agua: peso * 30 ml - peso * 35 ml (convertido a Litros)
+      const aguaMinL = (peso * 30 / 1000).toFixed(2);
+      const aguaMaxL = (peso * 35 / 1000).toFixed(2);
+      resAgua.textContent = `${formatearNumero(parseFloat(aguaMinL))} - ${formatearNumero(parseFloat(aguaMaxL))} L`;
+
+      // Cafeína: peso * 1 - peso * 3
+      const cafMin = Math.round(peso * 1);
+      const cafMax = Math.round(peso * 3);
+      resCafeina.textContent = `${cafMin} - ${cafMax} mg`;
+    }
+
+    // Escuchar eventos de entrada de datos
+    inputPeso.addEventListener('input', calcular);
+
+    // Cálculo inicial al cargar
+    calcular();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Aurelio Rojas | Cardiólogo — Prevención cardiovascular</title>
+<meta name="description" content="Cardiólogo especializado en prevención cardiovascular. Autor de 'Tu corazón tiene algo que decirte'. Consigue el libro y descubre cómo cuidar tu corazón.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#060b14;
+    --bg-1:#0b1420;
+    --bg-2:#101c2b;
+    --red:#ff2d55;
+    --blue:#2dd4ff;
+    --amber:#ffb020;
+    --ink:#eef4fb;
+    --muted:#8ea3b8;
+    --line:rgba(238,244,251,0.10);
+    --radius:20px;
+    --pad-x: clamp(22px, 5vw, 40px);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.12;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 var(--pad-x);
+  }
+  section{position:relative;}
+  .glow-bg{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(circle at 14% 12%, rgba(255,45,85,0.14), transparent 42%),
+      radial-gradient(circle at 88% 0%, rgba(45,212,255,0.12), transparent 40%);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(6,11,20,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px var(--pad-x);
+    max-width:1180px; margin:0 auto;
+    gap:20px;
+  }
+  .logo{display:flex; align-items:center; gap:11px; font-family:'Fraunces',serif; font-weight:600; font-size:1.08rem; white-space:nowrap;}
+  .logo .mark{
+    width:32px; height:32px; border-radius:50%;
+    background:linear-gradient(135deg, var(--red), var(--blue));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:0.78rem; color:#04101a; font-weight:700;
+    flex:none;
+  }
+  .nav-links{display:flex; gap:28px; font-size:0.88rem; color:var(--muted);}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-cta{display:flex; gap:12px; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:100px;
+    font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:0.9rem;
+    border:1px solid transparent; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-neon{
+    background:linear-gradient(90deg, var(--red), var(--amber));
+    color:#1a0508;
+  }
+  .btn-neon:hover{transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(255,45,85,0.55);}
+  .btn-ghost{border-color:var(--line); color:var(--ink); background:transparent;}
+  .btn-ghost:hover{border-color:var(--blue); color:var(--blue);}
+  .btn-sm{padding:9px 16px; font-size:0.8rem;}
+  .btn-lg{padding:16px 30px; font-size:1rem;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 84px; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:7px 14px; border-radius:100px;
+    border:1px solid var(--line); background:var(--bg-1);
+    font-size:0.82rem; color:var(--muted); margin-bottom:26px;
+  }
+  .eyebrow .hb{width:8px; height:8px; border-radius:50%; background:var(--red); box-shadow:0 0 10px var(--red); animation:beat 1.1s infinite;}
+  @keyframes beat{
+    0%,100%{transform:scale(1);}
+    25%{transform:scale(1.5);}
+    40%{transform:scale(1);}
+  }
+  .hero h1{font-size:clamp(2.2rem,4.2vw,3.5rem); margin-bottom:24px;}
+  .hero h1 .grad{
+    background:linear-gradient(90deg, var(--red), var(--amber) 75%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{color:var(--muted); font-size:1.06rem; max-width:50ch; margin-bottom:34px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:38px;}
+  .trust-strip{
+    display:flex; gap:30px; flex-wrap:wrap;
+    padding-top:28px; border-top:1px solid var(--line);
+  }
+  .trust-strip div{font-size:0.82rem; color:var(--muted); max-width:22ch;}
+  .trust-strip strong{
+    display:block; font-family:'Fraunces',serif; font-size:1.5rem; color:var(--ink); font-weight:600; margin-bottom:2px;
+  }
+
+  /* book mockup */
+  .book-stage{
+    position:relative; display:flex; align-items:center; justify-content:center;
+    padding:20px;
+  }
+  .book-stage .halo{
+    position:absolute; width:80%; height:80%; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,45,85,0.22), rgba(45,212,255,0.14) 55%, transparent 75%);
+    filter:blur(8px);
+  }
+  .book-cover{
+    position:relative; z-index:2;
+    width:78%; aspect-ratio:2/3;
+    border-radius:8px;
+    background:linear-gradient(150deg, #14202e, #0a121c 60%);
+    border:1px solid rgba(238,244,251,0.14);
+    box-shadow:
+      -18px 26px 50px -14px rgba(0,0,0,0.65),
+      inset 0 0 0 1px rgba(255,255,255,0.02);
+    transform:rotate(-4deg);
+    padding:28px 22px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .book-cover .heart-mono svg{width:44px; height:44px; stroke:var(--red); filter:drop-shadow(0 0 10px rgba(255,45,85,0.6));}
+  .book-cover .book-title{
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem; line-height:1.2;
+    color:var(--ink);
+  }
+  .book-cover .book-author{font-size:0.82rem; color:var(--blue); margin-top:14px;}
+  .book-badge{
+    position:absolute; z-index:3; top:8%; right:2%;
+    background:var(--amber); color:#241300;
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.72rem;
+    padding:8px 14px; border-radius:100px;
+    transform:rotate(6deg);
+    box-shadow:0 8px 22px -6px rgba(255,176,32,0.55);
+  }
+
+  /* ---------- HASHTAG / CRED BAND ---------- */
+  .band{
+    padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--bg-1);
+  }
+  .band .wrap{display:flex; gap:14px 22px; flex-wrap:wrap; justify-content:center;}
+  .chip{
+    display:flex; align-items:center; gap:9px;
+    font-size:0.85rem; color:var(--muted);
+    padding:8px 16px; border-radius:100px; border:1px solid var(--line);
+  }
+  .chip svg{width:15px; height:15px; stroke:var(--blue);}
+
+  /* ---------- SECTION HEADS ---------- */
+  .sec-pad{padding:100px 0;}
+  .sec-head{max-width:640px; margin-bottom:56px;}
+  .sec-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .sec-head h2{font-size:clamp(1.85rem,3vw,2.5rem); margin-bottom:16px;}
+  .sec-head p{color:var(--muted); font-size:1.02rem;}
+
+  /* ---------- ENEMIGOS ---------- */
+  .enemy-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .enemy-card{
+    background:var(--bg-2); border:1px solid var(--line); border-radius:var(--radius);
+    padding:36px; position:relative; overflow:hidden;
+  }
+  .enemy-card::before{
+    content:""; position:absolute; top:-50px; right:-50px; width:180px; height:180px; border-radius:50%;
+    filter:blur(10px);
+  }
+  .enemy-card.sugar::before{background:radial-gradient(circle, rgba(255,45,85,0.28), transparent 70%);}
+  .enemy-card.stress::before{background:radial-gradient(circle, rgba(45,212,255,0.26), transparent 70%);}
+  .enemy-tag{
+    display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:0.02em;
+    padding:5px 12px; border-radius:100px; margin-bottom:20px; position:relative;
+  }
+  .enemy-card.sugar .enemy-tag{background:rgba(255,45,85,0.16); color:var(--red);}
+  .enemy-card.stress .enemy-tag{background:rgba(45,212,255,0.16); color:var(--blue);}
+  .enemy-card h3{font-size:1.4rem; margin-bottom:14px; position:relative;}
+  .enemy-card p{color:var(--muted); font-size:0.96rem; position:relative;}
+
+  /* ---------- SOBRE MI ---------- */
+  .about{background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:0.72fr 1.28fr; gap:64px; align-items:center;}
+  .about-portrait{
+    aspect-ratio:4/5; border-radius:22px; overflow:hidden;
+    background:linear-gradient(160deg, rgba(255,45,85,0.16), rgba(45,212,255,0.12)), var(--bg-2);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .about-portrait svg{width:54%; opacity:0.92;}
+  .about h2{font-size:clamp(1.85rem,3vw,2.4rem); margin-bottom:20px;}
+  .about p{color:var(--muted); margin-bottom:16px; max-width:60ch;}
+  .cred-row{display:flex; gap:26px; flex-wrap:wrap; margin-top:28px;}
+  .cred{display:flex; align-items:center; gap:10px; font-size:0.88rem; color:var(--ink);}
+  .cred svg{width:19px; height:19px; stroke:var(--amber); flex:none;}
+
+  /* ---------- LIBRO FEATURE ---------- */
+  .book-feature{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:center;
+    background:var(--bg-2); border:1px solid var(--line); border-radius:24px;
+    padding:clamp(30px, 5vw, 56px);
+  }
+  .bf-visual{display:flex; align-items:center; justify-content:center;}
+  .bf-visual .book-cover{width:100%; transform:rotate(-3deg);}
+  .book-feature h2{font-size:clamp(1.7rem,2.8vw,2.2rem); margin-bottom:18px;}
+  .book-feature p.desc{color:var(--muted); margin-bottom:24px; max-width:56ch;}
+  .book-feature ul{list-style:none; margin-bottom:30px;}
+  .book-feature li{
+    display:flex; gap:12px; align-items:flex-start; padding:10px 0; font-size:0.95rem; color:var(--muted);
+  }
+  .book-feature li strong{color:var(--ink); font-weight:600;}
+  .book-feature li svg{flex:none; width:19px; height:19px; stroke:var(--red); margin-top:2px;}
+  .stars-row{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .stars-row .stars{color:var(--amber); letter-spacing:2px;}
+  .stars-row span{font-size:0.82rem; color:var(--muted);}
+
+  /* ---------- PARA QUIEN ---------- */
+  .who-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .who-card{
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:30px 26px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .who-card:hover{border-color:var(--red); transform:translateY(-4px);}
+  .who-card .ic{
+    width:44px; height:44px; border-radius:12px; margin-bottom:20px;
+    background:rgba(255,45,85,0.12); border:1px solid rgba(255,45,85,0.35);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .who-card .ic svg{width:20px; height:20px; stroke:var(--red);}
+  .who-card h3{font-size:1.08rem; margin-bottom:10px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;}
+  .who-card p{color:var(--muted); font-size:0.93rem;}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testi{background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .testi-card{
+    background:var(--bg-2); border:1px solid var(--line); border-radius:var(--radius); padding:28px;
+  }
+  .stars{color:var(--amber); font-size:0.9rem; margin-bottom:14px; letter-spacing:2px;}
+  .testi-card p{font-size:0.98rem; color:var(--ink); margin-bottom:18px;}
+  .testi-who{display:flex; align-items:center; gap:12px;}
+  .testi-avatar{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg, var(--red), var(--blue)); flex:none;}
+  .testi-who span{font-size:0.84rem; color:var(--muted);}
+  .testi-who strong{display:block; font-size:0.92rem; font-family:'Fraunces',serif; font-weight:600;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{padding:120px 0; text-align:center; position:relative;}
+  .final-cta .glow{
+    position:absolute; left:50%; top:0; transform:translateX(-50%);
+    width:600px; height:520px;
+    background:radial-gradient(circle, rgba(255,45,85,0.20), rgba(45,212,255,0.14) 45%, transparent 74%);
+    filter:blur(20px); pointer-events:none;
+  }
+  .final-cta h2{font-size:clamp(2rem,4.2vw,3.1rem); max-width:18ch; margin:0 auto 20px; position:relative;}
+  .final-cta p{color:var(--muted); max-width:50ch; margin:0 auto 40px; position:relative; font-size:1.04rem;}
+  .final-actions{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; position:relative;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line); padding:44px 0 32px;}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .foot-links{display:flex; gap:24px; font-size:0.84rem; color:var(--muted); flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--red);}
+  .foot-note{font-size:0.78rem; color:var(--muted); margin-top:24px; text-align:center;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:44px;}
+    .book-stage{order:-1; max-width:280px; margin:0 auto;}
+    .enemy-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-portrait{max-width:300px; margin:0 auto;}
+    .book-feature{grid-template-columns:1fr;}
+    .bf-visual .book-cover{max-width:220px; margin:0 auto;}
+    .who-grid{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:480px){
+    .hero-actions .btn, .final-actions .btn{width:100%; justify-content:center;}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;}}
+  :focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <span class="mark">AR</span>
+      Dr. Aurelio Rojas <span style="color:var(--muted); font-weight:400;">| Cardiólogo</span>
+    </a>
+    <div class="nav-links">
+      <a href="#enemigos">Enemigos del corazón</a>
+      <a href="#libro">El libro</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#sobre-mi">Sobre mí</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="https://www.instagram.com/doctorrojass/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-neon btn-sm" href="https://amzn.eu/d/01mOs1VO" target="_blank" rel="noopener">Comprar libro</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow-bg"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="hb"></span> Cardiólogo · Prevención cardiovascular</div>
+        <h1>Mi plan es simple: <span class="grad">que no acabes en el Hospi.</span></h1>
+        <p class="lead">Soy el Dr. Aurelio Rojas, cardiólogo. Ayudo a personas a proteger su corazón antes de que sea una urgencia — controlando el azúcar, el estrés y los hábitos que nadie te explica a tiempo.</p>
+        <div class="hero-actions">
+          <a class="btn btn-neon btn-lg" href="https://amzn.eu/d/01mOs1VO" target="_blank" rel="noopener">
+            Consigue "Tu corazón tiene algo que decirte"
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/doctorrojass/" target="_blank" rel="noopener">
+            Seguir en Instagram ↗
+          </a>
+        </div>
+        <div class="trust-strip">
+          <div><strong>Cardiólogo</strong>Prevención y salud cardiovascular</div>
+          <div><strong>Autor</strong>"Tu corazón tiene algo que decirte"</div>
+          <div><strong>Enfoque</strong>Enemigo declarado del azúcar y el estrés</div>
+        </div>
+      </div>
+
+      <div class="book-stage">
+        <div class="halo"></div>
+        <span class="book-badge">Nuevo libro</span>
+        <div class="book-cover">
+          <div class="heart-mono">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 4 1 5 3 1-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9Z"/></svg>
+          </div>
+          <div>
+            <div class="book-title">Tu corazón tiene algo que decirte</div>
+            <div class="book-author">Dr. Aurelio Rojas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND -->
+  <section class="band">
+    <div class="wrap">
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 4 1 5 3 1-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9Z"/></svg>Prevención cardiovascular</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg>Enemigo del azúcar</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Enemigo del estrés</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0 0 4h13"/></svg>Autor publicado</div>
+    </div>
+  </section>
+
+  <!-- ENEMIGOS -->
+  <section class="sec-pad" id="enemigos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Dos enemigos silenciosos de tu corazón</h2>
+        <p>No hace falta un infarto para actuar. Estos dos factores son responsables de gran parte de los problemas cardiovasculares que veo cada día.</p>
+      </div>
+      <div class="enemy-grid">
+        <div class="enemy-card sugar">
+          <span class="enemy-tag">Enemigo N°1</span>
+          <h3>El exceso de azúcar</h3>
+          <p>Eleva la inflamación, favorece la hipertensión y acelera el desgaste de tus arterias mucho antes de que aparezcan síntomas evidentes.</p>
+        </div>
+        <div class="enemy-card stress">
+          <span class="enemy-tag">Enemigo N°2</span>
+          <h3>El estrés sostenido</h3>
+          <p>Mantiene tu cuerpo en alerta constante, sube tu presión arterial y es uno de los factores más subestimados en la salud del corazón.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap sec-pad">
+      <div class="about-grid">
+        <div class="about-portrait">
+          <svg viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="66" r="32" stroke="#2dd4ff" stroke-width="2"/>
+            <path d="M52 168c0-28 21-48 48-48s48 20 48 48" stroke="#ff2d55" stroke-width="2"/>
+            <path d="M70 66c0 0 30 22 60 0" stroke="#ffb020" stroke-width="1.4" opacity="0.7"/>
+          </svg>
+        </div>
+        <div>
+          <h2>Cardiología con un lenguaje que entiendes</h2>
+          <p>Soy Aurelio Rojas, cardiólogo. Mi trabajo diario es la prevención: ayudar a que las personas cuiden su corazón antes de que un susto las lleve a urgencias.</p>
+          <p>Comparto todo lo que aprendo en consulta de forma directa y sin rodeos — por eso escribí "Tu corazón tiene algo que decirte", para que entiendas de una vez qué le pasa a tu cuerpo y qué puedes hacer hoy mismo al respecto.</p>
+          <div class="cred-row">
+            <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>Cardiólogo</div>
+            <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0 0 4h13"/></svg>Autor publicado</div>
+            <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 4 1 5 3 1-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9Z"/></svg>Enfoque en prevención</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRO FEATURE -->
+  <section class="sec-pad" id="libro">
+    <div class="wrap">
+      <div class="book-feature">
+        <div class="bf-visual">
+          <div class="book-cover">
+            <div class="heart-mono">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 4 1 5 3 1-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9Z"/></svg>
+            </div>
+            <div>
+              <div class="book-title">Tu corazón tiene algo que decirte</div>
+              <div class="book-author">Dr. Aurelio Rojas</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2>El libro que tu corazón necesita que leas</h2>
+          <div class="stars-row"><span class="stars">★★★★★</span><span>Valorado por lectores en Amazon</span></div>
+          <p class="desc">Una guía directa y sin tecnicismos para entender las señales de tu corazón, desmontar mitos sobre el azúcar y el estrés, y tomar decisiones simples que marcan una diferencia real.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Señales de alerta</strong> que muchas personas ignoran hasta que es tarde.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>El rol real del azúcar y el estrés</strong> en tu salud cardiovascular.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Hábitos simples</strong> explicados por un cardiólogo, no por internet.</span></li>
+          </ul>
+          <a class="btn btn-neon btn-lg" href="https://amzn.eu/d/01mOs1VO" target="_blank" rel="noopener">Comprar en Amazon</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUIEN -->
+  <section class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>¿Para quién es este contenido?</h2>
+        <p>No hace falta tener un diagnóstico para empezar a cuidar tu corazón.</p>
+      </div>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Vives con estrés constante</h3>
+          <p>Trabajo exigente, poco descanso y la sensación de estar siempre "acelerado".</p>
+        </div>
+        <div class="who-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>
+          <h3>Tienes antecedentes familiares</h3>
+          <p>Casos de hipertensión, infarto o problemas cardíacos en tu familia cercana.</p>
+        </div>
+        <div class="who-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 4 1 5 3 1-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9Z"/></svg></h3>
+          <h3>Quieres prevenir, no reaccionar</h3>
+          <p>Prefieres actuar hoy sobre tus hábitos, antes de que el cuerpo te obligue a hacerlo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testi" id="opiniones">
+    <div class="wrap sec-pad">
+      <div class="sec-head center">
+        <h2>Lectores y pacientes que ya dieron el paso</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Explica de forma clara algo que ningún médico me había explicado tan bien. Cambié mis hábitos desde el primer capítulo."</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>J. Morales</strong><span>Lector del libro</span></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Tenía antecedentes familiares y vivía ignorándolos. Este libro fue el empujón que necesitaba para tomarlo en serio."</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>P. Guzmán</strong><span>Lector del libro</span></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"El Dr. Rojas explica sin tecnicismos y con humor. Se nota que quiere que la gente realmente entienda, no solo vender."</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>N. Castillo</strong><span>Seguidora en Instagram</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Tu corazón te está hablando. Es momento de escucharlo.</h2>
+      <p>Consigue el libro hoy mismo o sígueme en Instagram para contenido diario sobre prevención cardiovascular.</p>
+      <div class="final-actions">
+        <a class="btn btn-neon btn-lg" href="https://amzn.eu/d/01mOs1VO" target="_blank" rel="noopener">Comprar en Amazon</a>
+        <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/doctorrojass/" target="_blank" rel="noopener">Seguir en Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="logo" href="#">
+        <span class="mark">AR</span>
+        Dr. Aurelio Rojas | Cardiólogo
+      </a>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/doctorrojass/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://amzn.eu/d/01mOs1VO" target="_blank" rel="noopener">Comprar el libro</a>
+      </div>
+    </div>
+    <p class="foot-note">Este contenido es informativo y no sustituye una consulta médica profesional. Dr. Aurelio Rojas © 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

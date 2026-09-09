@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIL | Hipotiroidismo — Recupera tu energía y tu peso</title>
+<meta name="description" content="Ayudo a personas con hipotiroidismo a eliminar el cansancio y el sobrepeso. Método creado por un enfermero especializado en tiroides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#050f12;
+    --bg-1:#0a1b1f;
+    --bg-2:#0e242a;
+    --cyan:#14f1d9;
+    --pink:#ff3fa4;
+    --lime:#d4ff5c;
+    --ink:#eafbf8;
+    --muted:#8fb3ae;
+    --line: rgba(234,251,248,0.10);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Sora', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{position:relative;}
+
+  /* subtle grid texture background */
+  .grid-tex{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+    pointer-events:none;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,15,18,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Sora', sans-serif; font-weight:700; font-size:1.15rem;
+  }
+  .logo svg{width:30px; height:30px;}
+  .nav-links{
+    display:flex; gap:32px; font-size:0.92rem; color:var(--muted);
+  }
+  .nav-links a:hover{color:var(--cyan);}
+  .nav-cta{
+    display:flex; gap:12px; align-items:center;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:100px;
+    font-family:'Sora', sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-neon{
+    background:linear-gradient(90deg, var(--cyan), var(--lime));
+    color:#04201d;
+    box-shadow:0 0 0 rgba(20,241,217,0);
+  }
+  .btn-neon:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 28px -6px rgba(20,241,217,0.55);
+  }
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--ink);
+    background:transparent;
+  }
+  .btn-ghost:hover{
+    border-color:var(--pink);
+    color:var(--pink);
+  }
+  .btn-sm{padding:9px 16px; font-size:0.82rem;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 88px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:10px;
+    color:var(--muted);
+    font-size:0.88rem;
+    margin-bottom:22px;
+  }
+  .dot-pulse{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--pink);
+    box-shadow:0 0 0 0 rgba(255,63,164,0.6);
+    animation:pulseDot 1.8s infinite;
+  }
+  @keyframes pulseDot{
+    0%{box-shadow:0 0 0 0 rgba(255,63,164,0.55);}
+    70%{box-shadow:0 0 0 9px rgba(255,63,164,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,63,164,0);}
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.8rem);
+    margin-bottom:22px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(90deg, var(--cyan), var(--pink) 70%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lead{
+    color:var(--muted);
+    font-size:1.08rem;
+    max-width:46ch;
+    margin-bottom:34px;
+  }
+  .hero-actions{
+    display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px;
+  }
+  .trust-row{
+    display:flex; gap:26px; flex-wrap:wrap;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  .trust-row div{font-size:0.82rem; color:var(--muted);}
+  .trust-row strong{
+    display:block; font-family:'Sora',sans-serif; font-size:1.5rem; color:var(--ink); font-weight:700;
+  }
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1/1.02;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-visual .halo{
+    position:absolute; width:78%; height:78%;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(20,241,217,0.20), rgba(255,63,164,0.10) 55%, transparent 72%);
+    filter:blur(6px);
+  }
+  .thyroid-svg{position:relative; width:82%; z-index:2;}
+  .thyroid-svg path.wing{
+    fill:none;
+    stroke-width:2.4;
+    filter:drop-shadow(0 0 9px rgba(20,241,217,0.55));
+  }
+  .thyroid-svg .wing-a{stroke:var(--cyan);}
+  .thyroid-svg .wing-b{stroke:var(--pink);}
+  .pulse-path{
+    fill:none; stroke:var(--lime); stroke-width:2.2;
+    stroke-dasharray:340; stroke-dashoffset:340;
+    filter:drop-shadow(0 0 6px rgba(212,255,92,0.6));
+    animation:draw 3.4s ease-in-out infinite;
+  }
+  @keyframes draw{
+    0%{stroke-dashoffset:340;}
+    45%{stroke-dashoffset:0;}
+    75%{stroke-dashoffset:0; opacity:1;}
+    100%{stroke-dashoffset:-340; opacity:0.4;}
+  }
+
+  /* ---------- SYMPTOMS TICKER ---------- */
+  .symptoms{
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--bg-1);
+  }
+  .ticker{
+    display:flex; gap:0; overflow:hidden; white-space:nowrap;
+  }
+  .ticker-track{
+    display:flex; gap:48px; align-items:center;
+    animation:scroll 26s linear infinite;
+  }
+  .ticker-track span{
+    font-family:'Sora', sans-serif;
+    font-size:1rem;
+    color:var(--muted);
+    display:flex; align-items:center; gap:12px;
+  }
+  .ticker-track span::before{
+    content:"";
+    width:6px; height:6px; border-radius:50%;
+    background:var(--cyan);
+  }
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .sec-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .sec-head h2{
+    font-size:clamp(1.9rem, 3vw, 2.6rem);
+    margin-bottom:16px;
+  }
+  .sec-head p{color:var(--muted); font-size:1.02rem;}
+  .sec-pad{padding:104px 0;}
+
+  /* ---------- PROBLEM / SOLUTION ---------- */
+  .split{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;
+  }
+  .card-stack .item{
+    display:grid; grid-template-columns:auto 1fr; gap:18px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .card-stack .item:first-child{padding-top:0;}
+  .item-icon{
+    width:44px; height:44px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,63,164,0.10);
+    border:1px solid rgba(255,63,164,0.35);
+  }
+  .item-icon svg{width:20px; height:20px; stroke:var(--pink);}
+  .item h3{font-size:1.05rem; margin-bottom:5px; font-weight:600;}
+  .item p{color:var(--muted); font-size:0.94rem;}
+
+  .solution-panel{
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .solution-panel::before{
+    content:"";
+    position:absolute; top:-40%; right:-30%;
+    width:280px; height:280px; border-radius:50%;
+    background:radial-gradient(circle, rgba(20,241,217,0.28), transparent 70%);
+    filter:blur(10px);
+  }
+  .solution-panel h3{font-size:1.4rem; margin-bottom:16px; position:relative;}
+  .solution-panel ul{list-style:none; position:relative;}
+  .solution-panel li{
+    display:flex; gap:12px; align-items:flex-start;
+    padding:12px 0;
+    color:var(--muted);
+    font-size:0.96rem;
+  }
+  .solution-panel li strong{color:var(--ink); font-weight:600;}
+  .check{
+    flex:none; width:20px; height:20px; margin-top:2px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--bg-1);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .about-grid{
+    display:grid; grid-template-columns:0.72fr 1.28fr; gap:64px; align-items:center;
+  }
+  .about-portrait{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:20px;
+    background:
+      linear-gradient(160deg, rgba(20,241,217,0.14), rgba(255,63,164,0.10)),
+      var(--bg-2);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .about-portrait svg{width:56%; opacity:0.9;}
+  .badge-float{
+    position:absolute; bottom:18px; left:18px; right:18px;
+    background:rgba(5,15,18,0.72);
+    backdrop-filter:blur(6px);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+  .badge-float strong{color:var(--cyan); display:block; font-family:'Sora',sans-serif; font-size:0.95rem;}
+  .about h2{font-size:clamp(1.9rem,3vw,2.5rem); margin-bottom:20px;}
+  .about p{color:var(--muted); margin-bottom:16px; max-width:56ch;}
+  .cred-row{
+    display:flex; gap:28px; flex-wrap:wrap; margin-top:28px;
+  }
+  .cred{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.88rem; color:var(--ink);
+  }
+  .cred svg{width:20px; height:20px; stroke:var(--lime);}
+
+  /* ---------- METHOD ---------- */
+  .method-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  }
+  .method-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px 26px;
+    position:relative;
+    background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .method-card:hover{
+    border-color:var(--cyan);
+    transform:translateY(-4px);
+  }
+  .method-num{
+    font-family:'Sora',sans-serif; font-weight:800;
+    font-size:0.85rem;
+    color:var(--bg-0);
+    background:var(--lime);
+    width:30px; height:30px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:22px;
+  }
+  .method-card h3{font-size:1.15rem; margin-bottom:10px;}
+  .method-card p{color:var(--muted); font-size:0.94rem;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .testi-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  .testi-card{
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .stars{color:var(--lime); font-size:0.9rem; margin-bottom:14px; letter-spacing:2px;}
+  .testi-card p{font-size:0.98rem; color:var(--ink); margin-bottom:18px;}
+  .testi-who{display:flex; align-items:center; gap:12px;}
+  .testi-avatar{
+    width:38px; height:38px; border-radius:50%;
+    background:linear-gradient(135deg, var(--cyan), var(--pink));
+    flex:none;
+  }
+  .testi-who span{font-size:0.84rem; color:var(--muted);}
+  .testi-who strong{display:block; font-size:0.92rem; font-family:'Sora',sans-serif;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    padding:120px 0;
+    text-align:center;
+    position:relative;
+  }
+  .final-cta .glow{
+    position:absolute; left:50%; top:0; transform:translateX(-50%);
+    width:560px; height:560px;
+    background:radial-gradient(circle, rgba(20,241,217,0.20), rgba(255,63,164,0.12) 45%, transparent 72%);
+    filter:blur(20px);
+    pointer-events:none;
+  }
+  .final-cta h2{
+    font-size:clamp(2rem,4.4vw,3.2rem);
+    max-width:16ch;
+    margin:0 auto 20px;
+    position:relative;
+  }
+  .final-cta p{
+    color:var(--muted); max-width:48ch; margin:0 auto 40px; position:relative; font-size:1.05rem;
+  }
+  .final-actions{
+    display:flex; gap:18px; justify-content:center; flex-wrap:wrap; position:relative;
+  }
+  .btn-lg{padding:16px 32px; font-size:1rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:44px 0 32px;
+  }
+  .foot-grid{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+  }
+  .foot-links{display:flex; gap:24px; font-size:0.84rem; color:var(--muted);}
+  .foot-links a:hover{color:var(--cyan);}
+  .foot-note{font-size:0.78rem; color:var(--muted); margin-top:24px; text-align:center;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1; max-width:340px; margin:0 auto 20px;}
+    .split{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .method-grid{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  :focus-visible{outline:2px solid var(--cyan); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <svg viewBox="0 0 32 32" fill="none"><path d="M16 16C16 16 10 9 6 11C2 13 3 21 9 22C13.5 22.8 16 16 16 16Z" stroke="#14f1d9" stroke-width="2"/><path d="M16 16C16 16 22 9 26 11C30 13 29 21 23 22C18.5 22.8 16 16 16 16Z" stroke="#ff3fa4" stroke-width="2"/></svg>
+      NIL <span style="color:var(--muted); font-weight:500;">| Hipotiroidismo</span>
+    </a>
+    <div class="nav-links">
+      <a href="#problema">El problema</a>
+      <a href="#metodo">Método</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#sobre-mi">Sobre mí</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="https://www.instagram.com/nilhealthy/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-neon btn-sm" href="https://linktr.ee/nilhealthy" target="_blank" rel="noopener">Empezar ahora</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="grid-tex"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line">
+          <span class="dot-pulse"></span>
+          Método guiado por un enfermero especializado en tiroides
+        </div>
+        <h1>Tu tiroides no está rota. <span class="grad">Está pidiendo el enfoque correcto.</span></h1>
+        <p class="lead">Ayudo a personas con hipotiroidismo a recuperar su energía y bajar de peso sin dietas imposibles ni promesas vacías — con un plan basado en cómo funciona realmente tu metabolismo.</p>
+        <div class="hero-actions">
+          <a class="btn btn-neon btn-lg" href="https://linktr.ee/nilhealthy" target="_blank" rel="noopener">
+            Quiero mi plan personalizado
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/nilhealthy/" target="_blank" rel="noopener">
+            Ver en Instagram ↗
+          </a>
+        </div>
+        <div class="trust-row">
+          <div><strong>+enfermería</strong>Formación clínica real</div>
+          <div><strong>100%</strong>Enfocado en tiroides</div>
+          <div><strong>1:1</strong>Acompañamiento cercano</div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="halo"></div>
+        <svg class="thyroid-svg" viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="wing wing-a" d="M158 150C158 150 100 70 55 95C10 120 20 210 85 225C140 237 158 150 158 150Z"/>
+          <path class="wing wing-b" d="M162 150C162 150 220 70 265 95C310 120 300 210 235 225C180 237 162 150 162 150Z"/>
+          <path class="pulse-path" d="M20 150 H100 L120 110 L140 190 L160 150 H300"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYMPTOMS TICKER -->
+  <section class="symptoms">
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>Cansancio constante</span>
+        <span>Sobrepeso que no baja</span>
+        <span>Caída de cabello</span>
+        <span>Niebla mental</span>
+        <span>Frío en manos y pies</span>
+        <span>Piel seca</span>
+        <span>Ánimo bajo</span>
+        <span>Cansancio constante</span>
+        <span>Sobrepeso que no baja</span>
+        <span>Caída de cabello</span>
+        <span>Niebla mental</span>
+        <span>Frío en manos y pies</span>
+        <span>Piel seca</span>
+        <span>Ánimo bajo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA / SOLUCIÓN -->
+  <section class="sec-pad" id="problema">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Has probado de todo. El problema no eras tú.</h2>
+        <p>La mayoría de las dietas y rutinas están pensadas para un metabolismo que funciona normal. El tuyo, con hipotiroidismo, necesita otra lógica.</p>
+      </div>
+
+      <div class="split">
+        <div class="card-stack">
+          <div class="item">
+            <div class="item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M13 2 L4 14 h6 l-1 8 9-12h-6z"/></svg>
+            </div>
+            <div>
+              <h3>Dietas genéricas que no consideran tu tiroides</h3>
+              <p>Restringir calorías sin ajustar por tu metabolismo real suele empeorar el cansancio y frenar aún más tu progreso.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div>
+              <h3>Cansancio que no se explica con "dormir más"</h3>
+              <p>Cuando la tiroides trabaja lenta, el cuerpo entero baja el ritmo — y ningún café ni suplemento genérico lo soluciona de fondo.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v6m0 0-4 4m4-4 4 4M6 21h12"/></svg>
+            </div>
+            <div>
+              <h3>Información contradictoria en internet</h3>
+              <p>Cada video dice algo distinto. Sin una guía clínica real, es fácil probar cosas al azar durante meses sin avanzar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-panel">
+          <h3>Lo que sí funciona</h3>
+          <ul>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#14f1d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Un plan hecho para tu caso</strong>, no una plantilla genérica de internet.</span>
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#14f1d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Ajustes de alimentación</strong> que trabajan a favor de tu metabolismo lento, no en su contra.</span>
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#14f1d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Seguimiento cercano</strong> para corregir el rumbo antes de que abandones.</span>
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#14f1d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Explicaciones claras</strong>, sin tecnicismos, de lo que le pasa a tu cuerpo y por qué.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap sec-pad">
+      <div class="about-grid">
+        <div class="about-portrait">
+          <svg viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="70" r="34" stroke="#14f1d9" stroke-width="2"/>
+            <path d="M50 170c0-30 22-52 50-52s50 22 50 52" stroke="#ff3fa4" stroke-width="2"/>
+            <path d="M78 150c0 0 6-70 22-70 M122 150c0 0-6-70-22-70" stroke="#d4ff5c" stroke-width="1.4" opacity="0.6"/>
+          </svg>
+          <div class="badge-float">
+            <strong>Nil</strong>
+            Ex enfermero clínico → Especialista en tiroides
+          </div>
+        </div>
+        <div>
+          <h2>De cuidar pacientes en planta a acompañar tiroides todos los días</h2>
+          <p>Trabajé como enfermero y vi de cerca cómo el hipotiroidismo se trata muchas veces con recetas genéricas, sin explicar al paciente qué está pasando ni por qué se siente así.</p>
+          <p>Hoy dedico mi trabajo por completo a esto: ayudar a personas con problemas de tiroides a eliminar el cansancio y el sobrepeso, con un método claro, humano y basado en cómo funciona tu cuerpo — no en modas.</p>
+          <div class="cred-row">
+            <div class="cred">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+              Formación en enfermería
+            </div>
+            <div class="cred">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 4 1 5 3 1-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9Z"/></svg>
+              Enfoque 100% en tiroides
+            </div>
+            <div class="cred">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+              Acompañamiento personalizado
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="sec-pad" id="metodo">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cómo trabajamos juntos</h2>
+        <p>Un proceso simple, sin promesas mágicas, pensado para que veas cambios reales en tu energía y tu cuerpo.</p>
+      </div>
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="method-num">01</div>
+          <h3>Diagnóstico inicial</h3>
+          <p>Revisamos tu situación actual: síntomas, hábitos, analíticas y tratamiento, para entender qué está frenando tu progreso.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-num">02</div>
+          <h3>Plan a tu medida</h3>
+          <p>Diseño una estrategia de alimentación y hábitos ajustada a tu metabolismo con hipotiroidismo, sin restricciones imposibles.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-num">03</div>
+          <h3>Acompañamiento real</h3>
+          <p>Seguimiento cercano para ajustar el plan según tu evolución, resolver dudas y mantenerte constante hasta ver resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testi" id="resultados">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <h2>Personas que recuperaron su energía</h2>
+        <p>Historias reales de quienes decidieron dejar de adivinar y seguir un plan hecho para su tiroides.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Llevaba años sintiéndome agotada y pensando que era normal. En pocas semanas noté diferencia en mi energía diaria."</p>
+          <div class="testi-who">
+            <div class="testi-avatar"></div>
+            <div><strong>M. Fernández</strong><span>Paciente con hipotiroidismo</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Por fin alguien me explicó por qué las dietas normales no me funcionaban. El plan se adaptó a mí, no al revés."</p>
+          <div class="testi-who">
+            <div class="testi-avatar"></div>
+            <div><strong>L. Torres</strong><span>Acompañamiento 1:1</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"El seguimiento cercano marcó la diferencia. Cada vez que me estancaba, ajustábamos algo y volvía a avanzar."</p>
+          <div class="testi-who">
+            <div class="testi-avatar"></div>
+            <div><strong>C. Ramírez</strong><span>Paciente con hipotiroidismo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Tu energía de siempre está más cerca de lo que crees.</h2>
+      <p>Escríbeme por Instagram o entra a mi Linktree para conocer cómo empezar tu proceso hoy mismo.</p>
+      <div class="final-actions">
+        <a class="btn btn-neon btn-lg" href="https://linktr.ee/nilhealthy" target="_blank" rel="noopener">Ir a linktr.ee/nilhealthy</a>
+        <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/nilhealthy/" target="_blank" rel="noopener">Escribir por Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="logo" href="#">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M16 16C16 16 10 9 6 11C2 13 3 21 9 22C13.5 22.8 16 16 16 16Z" stroke="#14f1d9" stroke-width="2"/><path d="M16 16C16 16 22 9 26 11C30 13 29 21 23 22C18.5 22.8 16 16 16 16Z" stroke="#ff3fa4" stroke-width="2"/></svg>
+        NIL | Hipotiroidismo
+      </a>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/nilhealthy/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linktr.ee/nilhealthy" target="_blank" rel="noopener">Linktree</a>
+        <a href="#metodo">Método</a>
+      </div>
+    </div>
+    <p class="foot-note">Este contenido es informativo y no sustituye una consulta médica. NIL | Hipotiroidismo © 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unai Dueñas | Nutricionista — Hipotiroidismo en mujeres</title>
+<meta name="description" content="Nutricionista especializado en hipotiroidismo. Ayudo a mujeres a eliminar la fatiga y bajar de peso con un plan 1 a 1. Agenda tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#120515;
+    --bg-1:#1b0a20;
+    --bg-2:#231129;
+    --coral:#ff5a36;
+    --violet:#b24bff;
+    --acid:#eeff5c;
+    --ink:#fbf4ff;
+    --muted:#bfa3c9;
+    --line:rgba(251,244,255,0.10);
+    --radius:20px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:1.06;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+  .noise{
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle at 18% 20%, rgba(178,75,255,0.16), transparent 42%),
+                       radial-gradient(circle at 82% 8%, rgba(255,90,54,0.14), transparent 40%);
+    pointer-events:none;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,5,21,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; max-width:1180px; margin:0 auto;
+  }
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1.1rem;}
+  .logo .mark{
+    width:32px; height:32px; border-radius:9px;
+    background:linear-gradient(135deg, var(--coral), var(--violet));
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.85rem; color:var(--bg-0); font-weight:800;
+  }
+  .nav-links{display:flex; gap:30px; font-size:0.9rem; color:var(--muted);}
+  .nav-links a:hover{color:var(--acid);}
+  .nav-cta{display:flex; gap:12px; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:100px;
+    font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:0.9rem;
+    border:1px solid transparent; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-neon{
+    background:linear-gradient(90deg, var(--coral), var(--violet));
+    color:#fff;
+  }
+  .btn-neon:hover{transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(255,90,54,0.55);}
+  .btn-ghost{border-color:var(--line); color:var(--ink); background:transparent;}
+  .btn-ghost:hover{border-color:var(--acid); color:var(--acid);}
+  .btn-sm{padding:9px 16px; font-size:0.8rem;}
+  .btn-lg{padding:16px 30px; font-size:1rem;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:92px 0 84px; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.08fr 0.92fr; gap:56px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:7px 14px; border-radius:100px;
+    border:1px solid var(--line); background:var(--bg-1);
+    font-size:0.82rem; color:var(--muted); margin-bottom:24px;
+  }
+  .eyebrow .sq{width:7px; height:7px; background:var(--acid); border-radius:2px;}
+  .hero h1{font-size:clamp(2.3rem,4.4vw,3.6rem); margin-bottom:22px;}
+  .hero h1 .grad{
+    background:linear-gradient(90deg, var(--coral), var(--violet) 75%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{color:var(--muted); font-size:1.06rem; max-width:48ch; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:36px;}
+  .tag-cloud{display:flex; gap:10px; flex-wrap:wrap;}
+  .pill{
+    font-size:0.78rem; padding:7px 14px; border-radius:100px;
+    border:1px solid var(--line); color:var(--muted);
+  }
+  .pill.on{border-color:var(--coral); color:var(--coral);}
+
+  /* booking card visual */
+  .book-card{
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:26px;
+    position:relative;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .book-card::before{
+    content:"";
+    position:absolute; top:-60px; right:-60px;
+    width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,90,54,0.32), transparent 70%);
+    filter:blur(4px);
+  }
+  .book-top{display:flex; align-items:center; gap:12px; margin-bottom:22px; position:relative;}
+  .book-avatar{
+    width:46px; height:46px; border-radius:50%;
+    background:linear-gradient(135deg, var(--violet), var(--coral));
+    flex:none;
+  }
+  .book-top strong{display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:1rem;}
+  .book-top span{font-size:0.8rem; color:var(--muted);}
+  .book-status{
+    margin-left:auto; font-size:0.72rem; color:var(--acid);
+    display:flex; align-items:center; gap:6px;
+  }
+  .book-status .d{width:6px; height:6px; border-radius:50%; background:var(--acid); box-shadow:0 0 8px var(--acid);}
+  .slot-row{
+    display:flex; gap:10px; margin-bottom:14px; position:relative;
+  }
+  .slot{
+    flex:1; text-align:center; padding:14px 6px; border-radius:14px;
+    border:1px solid var(--line); font-size:0.78rem; color:var(--muted);
+  }
+  .slot .day{display:block; font-family:'Bricolage Grotesque',sans-serif; color:var(--ink); font-size:1.15rem; margin-bottom:2px;}
+  .slot.active{border-color:var(--coral); background:rgba(255,90,54,0.08); color:var(--ink);}
+  .book-line{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 0; border-top:1px solid var(--line); font-size:0.85rem; color:var(--muted);
+    position:relative;
+  }
+  .book-line strong{color:var(--ink); font-weight:600;}
+  .book-cta{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; margin-top:16px; padding:14px; border-radius:14px;
+    background:linear-gradient(90deg, var(--coral), var(--violet));
+    color:#fff; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:0.9rem;
+    position:relative;
+  }
+
+  /* ---------- HASHTAG BAND ---------- */
+  .hband{
+    padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--bg-1);
+  }
+  .hband .wrap{display:flex; gap:14px; flex-wrap:wrap; justify-content:center;}
+  .hband .pill{font-size:0.85rem; padding:9px 18px;}
+
+  /* ---------- SECTION HEADS ---------- */
+  .sec-pad{padding:100px 0;}
+  .sec-head{max-width:620px; margin-bottom:56px;}
+  .sec-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .sec-head h2{font-size:clamp(1.85rem,3vw,2.5rem); margin-bottom:16px;}
+  .sec-head p{color:var(--muted); font-size:1.02rem;}
+
+  /* ---------- ANTES / DESPUES ---------- */
+  .ba-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);}
+  .ba-panel{padding:44px 38px; position:relative;}
+  .ba-before{background:var(--bg-1);}
+  .ba-after{background:linear-gradient(160deg, rgba(255,90,54,0.10), rgba(178,75,255,0.10)), var(--bg-2);}
+  .ba-tag{
+    display:inline-block; font-size:0.72rem; letter-spacing:0.02em; padding:5px 12px;
+    border-radius:100px; margin-bottom:20px; font-family:'Bricolage Grotesque',sans-serif; font-weight:600;
+  }
+  .ba-before .ba-tag{background:rgba(251,244,255,0.08); color:var(--muted);}
+  .ba-after .ba-tag{background:rgba(255,90,54,0.15); color:var(--coral);}
+  .ba-panel h3{font-size:1.3rem; margin-bottom:18px;}
+  .ba-panel ul{list-style:none;}
+  .ba-panel li{
+    padding:11px 0; border-top:1px solid var(--line); font-size:0.94rem; color:var(--muted);
+    display:flex; gap:10px; align-items:flex-start;
+  }
+  .ba-panel li:first-child{border-top:none;}
+  .ba-after li{color:var(--ink);}
+  .ba-panel li::before{content:"—"; color:var(--muted); flex:none;}
+  .ba-after li::before{content:"✓"; color:var(--coral); flex:none;}
+
+  /* ---------- SOBRE MI ---------- */
+  .about{background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:1.25fr 0.75fr; gap:64px; align-items:center;}
+  .about h2{font-size:clamp(1.85rem,3vw,2.4rem); margin-bottom:20px;}
+  .about p{color:var(--muted); margin-bottom:16px; max-width:58ch;}
+  .cred-list{display:flex; flex-direction:column; gap:16px; margin-top:26px;}
+  .cred{display:flex; gap:14px; align-items:flex-start;}
+  .cred .ic{
+    flex:none; width:38px; height:38px; border-radius:11px;
+    background:rgba(178,75,255,0.14); border:1px solid rgba(178,75,255,0.4);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cred .ic svg{width:18px; height:18px; stroke:var(--violet);}
+  .cred strong{display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:0.95rem;}
+  .cred span{font-size:0.85rem; color:var(--muted);}
+  .about-portrait{
+    aspect-ratio:3/4; border-radius:22px; overflow:hidden;
+    background:linear-gradient(160deg, rgba(255,90,54,0.18), rgba(178,75,255,0.14)), var(--bg-2);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .about-portrait svg{width:52%; opacity:0.92;}
+
+  /* ---------- TIMELINE METODO ---------- */
+  .tl{position:relative; padding-left:36px;}
+  .tl::before{
+    content:""; position:absolute; left:9px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(180deg, var(--coral), var(--violet));
+  }
+  .tl-item{position:relative; padding-bottom:46px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{
+    position:absolute; left:-36px; top:2px; width:20px; height:20px; border-radius:50%;
+    background:var(--bg-0); border:2px solid var(--coral);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .tl-dot::after{content:""; width:8px; height:8px; border-radius:50%; background:var(--coral);}
+  .tl-item h3{font-size:1.2rem; margin-bottom:8px;}
+  .tl-item p{color:var(--muted); max-width:56ch; font-size:0.96rem;}
+  .tl-item span.step-label{
+    display:block; font-size:0.78rem; color:var(--violet); font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:600; margin-bottom:6px;
+  }
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testi-list{display:flex; flex-direction:column; gap:0;}
+  .testi-row{
+    display:grid; grid-template-columns:60px 1fr; gap:24px;
+    padding:34px 0; border-bottom:1px solid var(--line);
+  }
+  .testi-row:first-child{padding-top:0;}
+  .testi-row:last-child{border-bottom:none;}
+  .quote-mark{
+    font-family:'Bricolage Grotesque',sans-serif; font-size:3rem; line-height:1;
+    background:linear-gradient(180deg, var(--coral), var(--violet));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .testi-row p{font-size:1.05rem; margin-bottom:14px;}
+  .testi-row .who{font-size:0.85rem; color:var(--muted);}
+  .testi-row .who strong{color:var(--ink); font-family:'Bricolage Grotesque',sans-serif; font-weight:600;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{padding:120px 0; text-align:center; position:relative;}
+  .final-cta .glow{
+    position:absolute; left:50%; top:0; transform:translateX(-50%);
+    width:600px; height:520px;
+    background:radial-gradient(circle, rgba(255,90,54,0.20), rgba(178,75,255,0.16) 45%, transparent 74%);
+    filter:blur(20px); pointer-events:none;
+  }
+  .final-cta h2{font-size:clamp(2rem,4.4vw,3.1rem); max-width:17ch; margin:0 auto 20px; position:relative;}
+  .final-cta p{color:var(--muted); max-width:48ch; margin:0 auto 40px; position:relative; font-size:1.04rem;}
+  .final-actions{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; position:relative;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line); padding:44px 0 32px;}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .foot-links{display:flex; gap:24px; font-size:0.84rem; color:var(--muted); flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--coral);}
+  .foot-note{font-size:0.78rem; color:var(--muted); margin-top:24px; text-align:center;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual, .book-card{order:-1;}
+    .ba-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-portrait{max-width:320px; margin:0 auto;}
+    .nav-links{display:none;}
+    .testi-row{grid-template-columns:40px 1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+  :focus-visible{outline:2px solid var(--acid); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <span class="mark">UD</span>
+      Unai Dueñas <span style="color:var(--muted); font-weight:500;">| Nutricionista</span>
+    </a>
+    <div class="nav-links">
+      <a href="#antes-despues">Antes / Después</a>
+      <a href="#metodo">Método</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#sobre-mi">Sobre mí</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="https://www.instagram.com/autoimmunai/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-neon btn-sm" href="https://wa.me/34644243278?text=Hola%20Unai%2C%20quiero%20agendar%20una%20cita%201a1" target="_blank" rel="noopener">Agendar cita</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="noise"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="sq"></span> Nutricionista especializado en hipotiroidismo</div>
+        <h1>Ayudo a mujeres a dejar de sentirse <span class="grad">cansadas en su propio cuerpo.</span></h1>
+        <p class="lead">Trabajamos juntos, 1 a 1, para eliminar la fatiga y bajar de peso con un plan de nutrición pensado específicamente para el hipotiroidismo — no una dieta más de internet.</p>
+        <div class="hero-actions">
+          <a class="btn btn-neon btn-lg" href="https://wa.me/34644243278?text=Hola%20Unai%2C%20quiero%20agendar%20una%20cita%201a1" target="_blank" rel="noopener">
+            Agendar mi cita por WhatsApp
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/autoimmunai/" target="_blank" rel="noopener">
+            Ver en Instagram ↗
+          </a>
+        </div>
+        <div class="tag-cloud">
+          <span class="pill on">#HIPOTIROIDISMO</span>
+          <span class="pill">#FATIGA</span>
+          <span class="pill">#PESO</span>
+          <span class="pill">#NUTRICIÓN</span>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-top">
+          <div class="book-avatar"></div>
+          <div>
+            <strong>Unai Dueñas Fernández</strong>
+            <span>Nutricionista · Consulta 1 a 1</span>
+          </div>
+          <div class="book-status"><span class="d"></span>Agenda abierta</div>
+        </div>
+        <div class="slot-row">
+          <div class="slot"><span class="day">Ma</span>10:30</div>
+          <div class="slot active"><span class="day">Mi</span>17:00</div>
+          <div class="slot"><span class="day">Ju</span>12:00</div>
+        </div>
+        <div class="book-line"><span>Primera consulta</span><strong>Valoración completa</strong></div>
+        <div class="book-line"><span>Modalidad</span><strong>Online o presencial</strong></div>
+        <a class="book-cta" href="https://wa.me/34644243278?text=Hola%20Unai%2C%20quiero%20agendar%20una%20cita%201a1" target="_blank" rel="noopener">
+          Reservar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HASHTAGS -->
+  <section class="hband">
+    <div class="wrap">
+      <span class="pill">#HIPOTIROIDISMO</span>
+      <span class="pill">#FATIGA</span>
+      <span class="pill">#PESO</span>
+      <span class="pill">#TIROIDES</span>
+      <span class="pill">#NUTRICIÓNCLÍNICA</span>
+      <span class="pill">#MUJERES</span>
+      <span class="pill">#ENERGÍA</span>
+    </div>
+  </section>
+
+  <!-- ANTES / DESPUÉS -->
+  <section class="sec-pad" id="antes-despues">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>No es falta de fuerza de voluntad. Es falta de un plan correcto.</h2>
+        <p>Así suele verse el día a día antes y después de trabajar la alimentación con el enfoque adecuado para el hipotiroidismo.</p>
+      </div>
+      <div class="ba-grid">
+        <div class="ba-panel ba-before">
+          <span class="ba-tag">Sin enfoque</span>
+          <h3>Lo que sueles vivir hoy</h3>
+          <ul>
+            <li>Cansancio desde que te levantas, aunque duermas bien</li>
+            <li>El peso sube aunque comas "menos"</li>
+            <li>Dietas genéricas que no toman en cuenta tu tiroides</li>
+            <li>Frustración por probar de todo sin resultados</li>
+          </ul>
+        </div>
+        <div class="ba-panel ba-after">
+          <span class="ba-tag">Con plan 1 a 1</span>
+          <h3>Lo que buscamos lograr</h3>
+          <ul>
+            <li>Energía estable durante el día, sin bajones</li>
+            <li>Pérdida de peso sostenida, sin dietas extremas</li>
+            <li>Alimentación adaptada a tu analítica y tu ritmo de vida</li>
+            <li>Acompañamiento cercano que te mantiene constante</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap sec-pad">
+      <div class="about-grid">
+        <div>
+          <h2>Nutrición clínica enfocada, no consejos genéricos de redes</h2>
+          <p>Soy Unai Dueñas Fernández, nutricionista especializado en el acompañamiento de mujeres con hipotiroidismo. Mi trabajo se centra en un solo objetivo: que dejes de sentir que tu cuerpo va en tu contra.</p>
+          <p>Cada plan parte de tu caso concreto — tus analíticas, tu tratamiento, tu rutina — para diseñar una estrategia de alimentación que realmente pueda sostenerse en el tiempo.</p>
+          <div class="cred-list">
+            <div class="cred">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+              <div><strong>Nutricionista colegiado</strong><span>Formación clínica en nutrición y dietética</span></div>
+            </div>
+            <div class="cred">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 4 1 5 3 1-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9Z"/></svg></div>
+              <div><strong>Especializado en tiroides</strong><span>Enfoque específico en hipotiroidismo</span></div>
+            </div>
+            <div class="cred">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></div>
+              <div><strong>Consulta 1 a 1</strong><span>Plan y seguimiento personal, no genérico</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-portrait">
+          <svg viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="66" r="32" stroke="#b24bff" stroke-width="2"/>
+            <path d="M52 168c0-28 21-48 48-48s48 20 48 48" stroke="#ff5a36" stroke-width="2"/>
+            <path d="M78 110c6 8 38 8 44 0" stroke="#eeff5c" stroke-width="1.4" opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODO -->
+  <section class="sec-pad" id="metodo">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Así es el proceso paso a paso</h2>
+        <p>Sin fórmulas mágicas: un camino claro para que la fatiga y el peso dejen de ser un misterio.</p>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="step-label">Paso 1</span>
+          <h3>Valoración inicial completa</h3>
+          <p>Analizamos tus síntomas, tus analíticas de tiroides, tu tratamiento actual y tus hábitos para entender el punto de partida real.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="step-label">Paso 2</span>
+          <h3>Plan de alimentación a tu medida</h3>
+          <p>Diseñamos una estrategia adaptada a tu metabolismo, tu día a día y tus gustos — pensada para sostenerse en el tiempo.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="step-label">Paso 3</span>
+          <h3>Seguimiento y ajustes</h3>
+          <p>Revisamos tu evolución periódicamente y ajustamos el plan según cómo responde tu cuerpo, para que sigas avanzando.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="step-label">Paso 4</span>
+          <h3>Resultados sostenibles</h3>
+          <p>El objetivo no es un cambio pasajero, sino que recuperes tu energía y tu peso de forma estable a largo plazo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="sec-pad" id="opiniones" style="background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2>Lo que dicen las mujeres que ya trabajaron conmigo</h2>
+      </div>
+      <div class="testi-list">
+        <div class="testi-row">
+          <div class="quote-mark">“</div>
+          <div>
+            <p>Después de años sintiéndome agotada, el plan de Unai fue el primero que realmente tomó en cuenta mi tiroides.</p>
+            <div class="who"><strong>Sara G.</strong> · Paciente con hipotiroidismo</div>
+          </div>
+        </div>
+        <div class="testi-row">
+          <div class="quote-mark">“</div>
+          <div>
+            <p>Bajé de peso sin pasar hambre y, sobre todo, recuperé la energía para seguir con mi vida normal.</p>
+            <div class="who"><strong>Elena R.</strong> · Consulta 1 a 1</div>
+          </div>
+        </div>
+        <div class="testi-row">
+          <div class="quote-mark">“</div>
+          <div>
+            <p>El seguimiento cercano hizo toda la diferencia. Cada ajuste tenía una explicación clara y sentía que avanzaba.</p>
+            <div class="who"><strong>Marta P.</strong> · Paciente con hipotiroidismo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Agenda tu primera consulta hoy mismo.</h2>
+      <p>Cuéntame tu caso por WhatsApp y te explico cómo trabajamos juntos para recuperar tu energía y tu peso.</p>
+      <div class="final-actions">
+        <a class="btn btn-neon btn-lg" href="https://wa.me/34644243278?text=Hola%20Unai%2C%20quiero%20agendar%20una%20cita%201a1" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/autoimmunai/" target="_blank" rel="noopener">Ver en Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="logo" href="#">
+        <span class="mark">UD</span>
+        Unai Dueñas | Nutricionista
+      </a>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/autoimmunai/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/34644243278?text=Hola%20Unai%2C%20quiero%20agendar%20una%20cita%201a1" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:unaiiduenaas@gmail.com">unaiiduenaas@gmail.com</a>
+      </div>
+    </div>
+    <p class="foot-note">Este contenido es informativo y no sustituye una consulta médica o nutricional presencial. Unai Dueñas Fernández © 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

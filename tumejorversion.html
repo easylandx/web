@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Mejor Versión | Reacondicionamiento metabólico y bienestar</title>
+<meta name="description" content="Pérdida de peso desde el bienestar. Te acompaño en tu reacondicionamiento metabólico para que consigas tu mejor versión. Escríbeme por Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#06120d;
+    --bg-1:#0b1c15;
+    --bg-2:#10261c;
+    --green:#39ff8f;
+    --pink:#ff5fa2;
+    --gold:#ffd166;
+    --ink:#eafff2;
+    --muted:#8fb8a3;
+    --line:rgba(234,255,242,0.10);
+    --radius:22px;
+    --pad-x: clamp(22px, 5vw, 40px);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);
+    color:var(--ink);
+    font-family:'Figtree', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Unbounded', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.14;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 var(--pad-x);}
+  section{position:relative;}
+  .glow-bg{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(circle at 12% 10%, rgba(57,255,143,0.14), transparent 42%),
+      radial-gradient(circle at 90% 4%, rgba(255,95,162,0.14), transparent 40%);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(6,18,13,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px var(--pad-x);
+    max-width:1180px; margin:0 auto;
+    gap:20px;
+  }
+  .logo{display:flex; align-items:center; gap:11px; font-family:'Unbounded',sans-serif; font-weight:600; font-size:1.02rem; white-space:nowrap;}
+  .logo .mark{
+    width:32px; height:32px; border-radius:11px;
+    background:linear-gradient(135deg, var(--green), var(--pink));
+    display:flex; align-items:center; justify-content:center;
+    flex:none;
+  }
+  .logo .mark svg{width:17px; height:17px; stroke:#052013;}
+  .nav-links{display:flex; gap:26px; font-size:0.86rem; color:var(--muted);}
+  .nav-links a:hover{color:var(--green);}
+  .nav-cta{display:flex; gap:12px; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:100px;
+    font-family:'Unbounded', sans-serif; font-weight:500; font-size:0.86rem;
+    border:1px solid transparent; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-neon{
+    background:linear-gradient(90deg, var(--green), var(--gold));
+    color:#052013;
+  }
+  .btn-neon:hover{transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(57,255,143,0.5);}
+  .btn-ghost{border-color:var(--line); color:var(--ink); background:transparent;}
+  .btn-ghost:hover{border-color:var(--pink); color:var(--pink);}
+  .btn-sm{padding:9px 16px; font-size:0.76rem;}
+  .btn-lg{padding:16px 30px; font-size:0.95rem;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 84px; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:7px 14px; border-radius:100px;
+    border:1px solid var(--line); background:var(--bg-1);
+    font-size:0.8rem; color:var(--muted); margin-bottom:26px;
+  }
+  .eyebrow .sq{width:7px; height:7px; background:var(--green); border-radius:50%; box-shadow:0 0 8px var(--green);}
+  .hero h1{font-size:clamp(2.1rem,4vw,3.3rem); margin-bottom:24px;}
+  .hero h1 .grad{
+    background:linear-gradient(90deg, var(--green), var(--pink) 75%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{color:var(--muted); font-size:1.04rem; max-width:48ch; margin-bottom:34px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:36px;}
+  .pillar-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .pillar{
+    display:flex; align-items:center; gap:8px;
+    font-size:0.8rem; color:var(--muted);
+    padding:8px 15px; border-radius:100px; border:1px solid var(--line);
+  }
+  .pillar svg{width:14px; height:14px; stroke:var(--green);}
+
+  /* organic growth visual */
+  .grow-stage{position:relative; display:flex; align-items:center; justify-content:center; padding:10px;}
+  .grow-stage .halo{
+    position:absolute; width:88%; height:88%; border-radius:50%;
+    background:radial-gradient(circle, rgba(57,255,143,0.22), rgba(255,95,162,0.14) 55%, transparent 75%);
+    filter:blur(10px);
+  }
+  .grow-card{
+    position:relative; z-index:2;
+    width:100%;
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    border-radius:26px;
+    padding:32px 28px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .grow-card svg{width:100%; height:auto; margin-bottom:20px;}
+  .grow-stat-row{display:flex; gap:12px;}
+  .grow-stat{
+    flex:1; text-align:center; padding:14px 8px; border-radius:14px;
+    border:1px solid var(--line); background:var(--bg-1);
+  }
+  .grow-stat strong{display:block; font-family:'Unbounded',sans-serif; font-size:1.15rem; color:var(--green); margin-bottom:2px;}
+  .grow-stat span{font-size:0.72rem; color:var(--muted);}
+
+  /* ---------- BAND ---------- */
+  .band{
+    padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--bg-1);
+  }
+  .band .wrap{display:flex; gap:14px 22px; flex-wrap:wrap; justify-content:center;}
+  .chip{
+    display:flex; align-items:center; gap:9px;
+    font-size:0.83rem; color:var(--muted);
+    padding:8px 16px; border-radius:100px; border:1px solid var(--line);
+  }
+  .chip svg{width:15px; height:15px; stroke:var(--pink);}
+
+  /* ---------- SECTION HEADS ---------- */
+  .sec-pad{padding:100px 0;}
+  .sec-head{max-width:620px; margin-bottom:52px;}
+  .sec-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .sec-head h2{font-size:clamp(1.75rem,3vw,2.4rem); margin-bottom:16px;}
+  .sec-head p{color:var(--muted); font-size:1rem;}
+
+  /* ---------- SENTIR HOY / MEJOR VERSION (lista organica) ---------- */
+  .feel-list{display:flex; flex-direction:column; gap:0; max-width:760px;}
+  .feel-row{
+    display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:flex-start;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .feel-row:first-child{padding-top:0;}
+  .feel-row:last-child{border-bottom:none;}
+  .feel-ic{
+    width:42px; height:42px; border-radius:12px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .feel-row.now .feel-ic{background:rgba(255,95,162,0.12); border:1px solid rgba(255,95,162,0.35);}
+  .feel-row.now .feel-ic svg{stroke:var(--pink);}
+  .feel-row.goal .feel-ic{background:rgba(57,255,143,0.12); border:1px solid rgba(57,255,143,0.35);}
+  .feel-row.goal .feel-ic svg{stroke:var(--green);}
+  .feel-ic svg{width:19px; height:19px;}
+  .feel-row h3{font-size:1.02rem; margin-bottom:5px; font-weight:600; font-family:'Figtree',sans-serif;}
+  .feel-row p{color:var(--muted); font-size:0.94rem;}
+
+  /* ---------- PROCESO: RAIZ / TALLO / FLOR ---------- */
+  .stage-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;}
+  .stage-card{
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 26px; position:relative; overflow:hidden;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .stage-card:hover{transform:translateY(-4px);}
+  .stage-card.raiz{border-color:rgba(255,95,162,0.25);}
+  .stage-card.raiz:hover{border-color:var(--pink);}
+  .stage-card.tallo{border-color:rgba(255,209,102,0.25);}
+  .stage-card.tallo:hover{border-color:var(--gold);}
+  .stage-card.flor{border-color:rgba(57,255,143,0.25);}
+  .stage-card.flor:hover{border-color:var(--green);}
+  .stage-icon{width:46px; height:46px; margin-bottom:22px;}
+  .stage-card.raiz .stage-icon svg{stroke:var(--pink);}
+  .stage-card.tallo .stage-icon svg{stroke:var(--gold);}
+  .stage-card.flor .stage-icon svg{stroke:var(--green);}
+  .stage-label{font-size:0.76rem; color:var(--muted); text-transform:lowercase; margin-bottom:8px; display:block;}
+  .stage-card h3{font-size:1.15rem; margin-bottom:12px;}
+  .stage-card p{color:var(--muted); font-size:0.94rem;}
+
+  /* ---------- SOBRE ---------- */
+  .about{background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:0.7fr 1.3fr; gap:60px; align-items:center;}
+  .about-portrait{
+    aspect-ratio:4/5; border-radius:24px; overflow:hidden;
+    background:linear-gradient(160deg, rgba(57,255,143,0.16), rgba(255,95,162,0.14)), var(--bg-2);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .about-portrait svg{width:56%; opacity:0.92;}
+  .about h2{font-size:clamp(1.75rem,3vw,2.2rem); margin-bottom:20px;}
+  .about p{color:var(--muted); margin-bottom:16px; max-width:58ch;}
+  .cred-row{display:flex; gap:24px; flex-wrap:wrap; margin-top:26px;}
+  .cred{display:flex; align-items:center; gap:10px; font-size:0.86rem; color:var(--ink);}
+  .cred svg{width:18px; height:18px; stroke:var(--gold); flex:none;}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testi-card{
+    background:var(--bg-2); border:1px solid var(--line); border-radius:var(--radius); padding:28px;
+  }
+  .stars{color:var(--gold); font-size:0.85rem; margin-bottom:14px; letter-spacing:2px;}
+  .testi-card p{font-size:0.96rem; color:var(--ink); margin-bottom:18px;}
+  .testi-who{display:flex; align-items:center; gap:12px;}
+  .testi-avatar{width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg, var(--green), var(--pink)); flex:none;}
+  .testi-who span{font-size:0.82rem; color:var(--muted);}
+  .testi-who strong{display:block; font-size:0.9rem; font-family:'Unbounded',sans-serif; font-weight:500;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{padding:120px 0; text-align:center; position:relative;}
+  .final-cta .glow{
+    position:absolute; left:50%; top:0; transform:translateX(-50%);
+    width:600px; height:520px;
+    background:radial-gradient(circle, rgba(57,255,143,0.20), rgba(255,95,162,0.16) 45%, transparent 74%);
+    filter:blur(20px); pointer-events:none;
+  }
+  .final-cta h2{font-size:clamp(1.9rem,4vw,2.9rem); max-width:18ch; margin:0 auto 20px; position:relative;}
+  .final-cta p{color:var(--muted); max-width:50ch; margin:0 auto 40px; position:relative; font-size:1.02rem;}
+  .final-actions{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; position:relative;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line); padding:44px 0 32px;}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .foot-links{display:flex; gap:24px; font-size:0.84rem; color:var(--muted); flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--green);}
+  .foot-note{font-size:0.78rem; color:var(--muted); margin-top:24px; text-align:center;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    .grow-stage{order:-1; max-width:340px; margin:0 auto;}
+    .stage-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-portrait{max-width:300px; margin:0 auto;}
+    .testi-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:480px){
+    .hero-actions .btn, .final-actions .btn{width:100%; justify-content:center;}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+  :focus-visible{outline:2px solid var(--green); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 21V9M12 9C12 9 6 9 6 4C11 4 12 9 12 9ZM12 9C12 9 18 9 18 4C13 4 12 9 12 9Z"/></svg></span>
+      Tu Mejor Versión
+    </a>
+    <div class="nav-links">
+      <a href="#hoy-vs-meta">Tu proceso</a>
+      <a href="#etapas">Cómo trabajamos</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#sobre-mi">Sobre mí</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-neon btn-sm" href="https://www.instagram.com/tu_mejor_version_conmigo/" target="_blank" rel="noopener">Escríbeme</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow-bg"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="sq"></span> Reacondicionamiento metabólico</div>
+        <h1>Perder peso desde el <span class="grad">bienestar, no desde el castigo.</span></h1>
+        <p class="lead">Te acompaño a reacondicionar tu metabolismo con hábitos sostenibles, sin dietas extremas ni prohibiciones imposibles, para que llegues a tu mejor versión y te quedes en ella.</p>
+        <div class="hero-actions">
+          <a class="btn btn-neon btn-lg" href="https://www.instagram.com/tu_mejor_version_conmigo/" target="_blank" rel="noopener">
+            Escríbeme por Instagram
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/tu_mejor_version_conmigo/" target="_blank" rel="noopener">
+            Ver contenido ↗
+          </a>
+        </div>
+        <div class="pillar-row">
+          <span class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M12 21V9M12 9C12 9 6 9 6 4C11 4 12 9 12 9ZM12 9C12 9 18 9 18 4C13 4 12 9 12 9Z"/></svg>Reacondicionamiento metabólico</span>
+          <span class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m14.5-6.5-2 2m-9 9-2 2m0-13 2 2m9 9 2 2"/></svg>Pérdida de peso desde el bienestar</span>
+          <span class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>Tu mejor versión</span>
+        </div>
+      </div>
+
+      <div class="grow-stage">
+        <div class="halo"></div>
+        <div class="grow-card">
+          <svg viewBox="0 0 300 180" fill="none">
+            <path d="M40 160c30-70 80-100 140-110" stroke="#ff5fa2" stroke-width="2" opacity="0.55"/>
+            <path d="M40 160c40-40 100-60 220-70" stroke="#ffd166" stroke-width="2" opacity="0.75"/>
+            <path d="M40 160c60-10 150-20 220-95" stroke="#39ff8f" stroke-width="2.4"/>
+            <circle cx="260" cy="65" r="7" fill="#39ff8f"/>
+            <circle cx="40" cy="160" r="6" fill="#ff5fa2"/>
+          </svg>
+          <div class="grow-stat-row">
+            <div class="grow-stat"><strong>+ energía</strong><span>día a día</span></div>
+            <div class="grow-stat"><strong>− peso</strong><span>sostenible</span></div>
+            <div class="grow-stat"><strong>✓ hábitos</strong><span>que se quedan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND -->
+  <section class="band">
+    <div class="wrap">
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m14.5-6.5-2 2m-9 9-2 2m0-13 2 2m9 9 2 2"/></svg>Sin dietas extremas</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Cambios sostenibles</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>Acompañamiento cercano</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V9M12 9C12 9 6 9 6 4C11 4 12 9 12 9ZM12 9C12 9 18 9 18 4C13 4 12 9 12 9Z"/></svg>Enfoque en bienestar</div>
+    </div>
+  </section>
+
+  <!-- HOY VS META -->
+  <section class="sec-pad" id="hoy-vs-meta">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>De cómo te sientes hoy, a tu mejor versión</h2>
+        <p>No se trata de fuerza de voluntad, sino de construir el proceso correcto para tu cuerpo y tu ritmo de vida.</p>
+      </div>
+      <div class="feel-list">
+        <div class="feel-row now">
+          <div class="feel-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div><h3>Sientes que nada de lo que haces se sostiene</h3><p>Empiezas dietas o rutinas con motivación, pero a las pocas semanas todo vuelve a lo mismo.</p></div>
+        </div>
+        <div class="feel-row now">
+          <div class="feel-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>
+          <div><h3>Tu metabolismo parece ir en contra tuya</h3><p>Comes "bien" y aun así el cuerpo no responde como esperas.</p></div>
+        </div>
+        <div class="feel-row goal">
+          <div class="feel-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div><h3>Un proceso hecho para ti, no una plantilla</h3><p>Trabajamos tus hábitos reales, tu rutina y tu historia, no una dieta genérica de internet.</p></div>
+        </div>
+        <div class="feel-row goal">
+          <div class="feel-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div><h3>Resultados que se mantienen en el tiempo</h3><p>Porque el objetivo no es un cambio pasajero, sino llegar a tu mejor versión y quedarte en ella.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETAPAS: RAIZ / TALLO / FLOR -->
+  <section class="sec-pad" id="etapas" style="background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cómo trabajamos juntos</h2>
+        <p>Un proceso con tres etapas, como todo lo que crece de verdad: primero la base, luego el impulso, después los resultados.</p>
+      </div>
+      <div class="stage-grid">
+        <div class="stage-card raiz">
+          <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v10M12 13c-3 0-5 2-5 6M12 13c3 0 5 2 5 6M12 13c-2 2-2 5-2 8M12 13c2 2 2 5 2 8"/></svg></div>
+          <span class="stage-label">etapa 01 — raíz</span>
+          <h3>Base: entendemos tu punto de partida</h3>
+          <p>Revisamos tus hábitos actuales, tu rutina y tu relación con la comida para construir sobre algo real, no sobre suposiciones.</p>
+        </div>
+        <div class="stage-card tallo">
+          <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V7m0 0c-3 0-4-3-4-5 4 0 5 3 5 5m-1 0c3 0 4-3 4-5-4 0-5 3-5 5"/></svg></div>
+          <span class="stage-label">etapa 02 — tallo</span>
+          <h3>Impulso: reacondicionamos tu metabolismo</h3>
+          <p>Ajustamos alimentación y hábitos de forma progresiva, para que tu cuerpo empiece a responder sin sensación de restricción.</p>
+        </div>
+        <div class="stage-card flor">
+          <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3"/><path d="M12 5c0-2 1.5-3 3-3M12 5c0-2-1.5-3-3-3M9 8c-2 0-3 1.5-3 3m6-3c2 0 3 1.5 3 3M12 11v10"/></svg></div>
+          <span class="stage-label">etapa 03 — flor</span>
+          <h3>Resultado: tu mejor versión, sostenida</h3>
+          <p>Llegas a tu peso y energía deseados con hábitos que ya son parte de ti, no un esfuerzo temporal más.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="about" id="sobre-mi">
+    <div class="wrap sec-pad">
+      <div class="about-grid">
+        <div>
+          <h2>No es otro plan más. Es un acompañamiento real</h2>
+          <p>Detrás de Tu Mejor Versión hay un acompañamiento cercano, pensado para personas que están cansadas de empezar de cero una y otra vez.</p>
+          <p>Mi trabajo es ayudarte a reacondicionar tu metabolismo y tus hábitos desde el bienestar — sin culpa, sin prohibiciones extremas y con resultados que se notan en tu energía, tu cuerpo y tu relación contigo misma.</p>
+          <div class="cred-row">
+            <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>Acompañamiento cercano</div>
+            <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 9C12 9 6 9 6 4C11 4 12 9 12 9ZM12 9C12 9 18 9 18 4C13 4 12 9 12 9Z"/></svg>Enfoque en bienestar</div>
+            <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m14.5-6.5-2 2m-9 9-2 2m0-13 2 2m9 9 2 2"/></svg>Cambios sostenibles</div>
+          </div>
+        </div>
+        <div class="about-portrait">
+          <svg viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="66" r="32" stroke="#ff5fa2" stroke-width="2"/>
+            <path d="M52 168c0-28 21-48 48-48s48 20 48 48" stroke="#39ff8f" stroke-width="2"/>
+            <path d="M100 34c-6-10 2-20 12-20" stroke="#ffd166" stroke-width="1.4" opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="sec-pad" id="opiniones">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2>Personas que ya encontraron su mejor versión</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Nunca me habían acompañado así. Sentí que por fin trabajábamos con mi cuerpo, no en su contra."</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>A. Delgado</strong><span>Proceso de 3 meses</span></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Bajé de peso sin sentir que estaba castigándome. Los hábitos se quedaron, no fue algo temporal."</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>R. Salas</strong><span>Reacondicionamiento metabólico</span></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"El acompañamiento cercano marcó la diferencia. Cada semana sentía que avanzaba un poco más."</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>P. Nieves</strong><span>Proceso de 6 meses</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Tu mejor versión ya está en camino.</h2>
+      <p>Escríbeme por Instagram y cuéntame tu caso — juntas construimos el proceso que sí se va a sostener.</p>
+      <div class="final-actions">
+        <a class="btn btn-neon btn-lg" href="https://www.instagram.com/tu_mejor_version_conmigo/" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="logo" href="#">
+        <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 21V9M12 9C12 9 6 9 6 4C11 4 12 9 12 9ZM12 9C12 9 18 9 18 4C13 4 12 9 12 9Z"/></svg></span>
+        Tu Mejor Versión
+      </a>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/tu_mejor_version_conmigo/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <p class="foot-note">Este contenido es informativo y no sustituye una consulta médica o nutricional profesional. Tu Mejor Versión © 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

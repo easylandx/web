@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebe | Coach de Bienestar — Tu Transformación Empieza Aquí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fdf2ff;
+    --bg-2: #f7e6ff;
+    --panel: #ffffff;
+    --ink: #2b0a3d;
+    --ink-dim: #6b5578;
+    --magenta: #ff1f8f;
+    --yellow: #ffe93d;
+    --blue: #2f6bff;
+    --line: rgba(43,10,61,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    overflow-x:hidden;
+  }
+
+  .display{
+    font-family:'Unbounded', sans-serif;
+    line-height:1.06;
+    font-weight:700;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+
+  .glow{position:fixed; border-radius:50%; filter:blur(120px); z-index:0; pointer-events:none;}
+  .glow-1{width:520px; height:520px; background:var(--magenta); opacity:0.3; top:-190px; right:-150px;}
+  .glow-2{width:460px; height:460px; background:var(--blue); opacity:0.22; bottom:-170px; left:-140px;}
+  .glow-3{width:320px; height:320px; background:var(--yellow); opacity:0.35; top:38%; left:56%;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(253,242,255,0.78);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:1160px; margin:0 auto;
+  }
+  .logo{font-family:'Unbounded', sans-serif; font-size:20px; font-weight:700;}
+  .logo span{color:var(--magenta);}
+  .nav-links{display:flex; gap:30px; font-size:15px; color:var(--ink-dim);}
+  .nav-links a:hover{color:var(--magenta);}
+  @media (max-width:860px){ .nav-links{display:none;} }
+  .nav-cta{display:flex; gap:12px;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 24px; border-radius:999px; font-weight:700; font-size:14.5px;
+    transition:transform .15s ease, box-shadow .15s ease; white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--magenta); color:#fff;}
+  .btn-primary:hover{box-shadow:0 10px 30px rgba(255,31,143,0.35);}
+  .btn-outline{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:rgba(43,10,61,0.06);}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink); font-size:14px; padding:9px 18px; font-weight:600;}
+  .btn-lg{padding:17px 30px; font-size:16px;}
+
+  /* HERO */
+  .hero{position:relative; z-index:1; padding:96px 0 74px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:54px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700;
+    color:var(--ink); background:var(--yellow);
+    padding:8px 18px; border-radius:999px; margin-bottom:26px;
+  }
+  .hero h1{font-size:clamp(36px, 5vw, 60px); margin-bottom:22px;}
+  .hero h1 .accent{color:var(--magenta);}
+  .hero p.lead{
+    font-size:18px; color:var(--ink-dim); max-width:460px;
+    margin-bottom:34px; line-height:1.65; font-weight:500;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:38px;}
+  .hero-stats{display:flex; gap:36px; flex-wrap:wrap;}
+  .hero-stats div{border-left:3px solid var(--magenta); padding-left:14px;}
+  .hero-stats strong{display:block; font-family:'Unbounded', sans-serif; font-size:26px; color:var(--ink);}
+  .hero-stats span{font-size:13px; color:var(--ink-dim); font-weight:600;}
+
+  /* Visual */
+  .visual{position:relative; height:440px;}
+  .visual-card{
+    position:absolute; inset:0; border-radius:28px; background:var(--panel);
+    border:1px solid var(--line); overflow:hidden;
+    box-shadow:0 30px 60px rgba(43,10,61,0.1);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .visual-core{text-align:center;}
+  .visual-core .big{font-family:'Unbounded', sans-serif; font-size:88px; font-weight:900; color:var(--magenta); line-height:1;}
+  .visual-core .big span{color:var(--ink);}
+  .visual-core .label{font-size:15px; color:var(--ink-dim); margin-top:10px; font-weight:600;}
+  .visual-ring{
+    position:absolute; border-radius:50%; border:2px dashed rgba(43,10,61,0.15);
+    width:300px; height:300px; top:50%; left:50%; transform:translate(-50%,-50%);
+    animation:spin 28s linear infinite;
+  }
+  @keyframes spin{ to{transform:translate(-50%,-50%) rotate(360deg);} }
+  .badge-float{
+    position:absolute; padding:12px 18px; border-radius:14px; font-size:13.5px; font-weight:700;
+    box-shadow:0 12px 30px rgba(43,10,61,0.18);
+  }
+  .badge-1{top:24px; left:24px; background:var(--blue); color:#fff;}
+  .badge-2{bottom:24px; right:24px; background:var(--ink); color:var(--yellow);}
+
+  /* MARQUEE */
+  .marquee{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--ink); padding:16px 0; overflow:hidden; white-space:nowrap;
+    position:relative; z-index:1;
+  }
+  .marquee-track{
+    display:inline-block; animation:scroll 24s linear infinite;
+    font-family:'Unbounded', sans-serif; font-size:19px; color:var(--yellow); font-weight:600;
+  }
+  .marquee-track span{margin:0 26px;}
+  .marquee-track span.hi{color:var(--magenta);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section{position:relative; z-index:1; padding:96px 0;}
+  .section-head{max-width:600px; margin-bottom:54px;}
+  .section-tag{color:var(--blue); font-size:14px; font-weight:700; margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(30px,3.8vw,44px);}
+  .section-head p{color:var(--ink-dim); margin-top:16px; font-size:16.5px; line-height:1.6; font-weight:500;}
+
+  /* Metamorfosis - 3 etapas */
+  .etapas{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .etapas{grid-template-columns:1fr;} }
+  .etapa{
+    border-radius:24px; padding:32px 26px; background:var(--panel); border:1px solid var(--line);
+    position:relative;
+  }
+  .etapa .icon{
+    width:52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; margin-bottom:20px;
+  }
+  .etapa:nth-child(1) .icon{background:rgba(47,107,255,0.15);}
+  .etapa:nth-child(2) .icon{background:rgba(255,233,61,0.5);}
+  .etapa:nth-child(3) .icon{background:rgba(255,31,143,0.15);}
+  .etapa h3{font-family:'Unbounded', sans-serif; font-size:20px; margin-bottom:12px; font-weight:700;}
+  .etapa p{color:var(--ink-dim); font-size:15px; line-height:1.6; font-weight:500;}
+
+  /* About */
+  .about{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  @media (max-width:900px){ .about{grid-template-columns:1fr;} }
+  .about-card{border-radius:26px; border:1px solid var(--line); background:var(--panel); padding:34px;}
+  .about-card .avatar-ring{
+    width:74px; height:74px; border-radius:50%;
+    background:linear-gradient(135deg,var(--magenta),var(--blue));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Unbounded', sans-serif; font-size:22px; margin-bottom:22px; color:#fff;
+  }
+  .about-list{list-style:none; margin-top:24px; display:grid; gap:14px;}
+  .about-list li{display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--ink-dim); font-weight:500;}
+  .about-list li b{color:var(--ink); font-weight:700;}
+  .dot{min-width:8px; height:8px; border-radius:50%; background:var(--magenta); margin-top:7px;}
+
+  /* Testimonials */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi{border-radius:20px; border:1px solid var(--line); background:var(--panel); padding:26px;}
+  .testi p{font-size:15px; color:var(--ink-dim); line-height:1.6; margin-bottom:18px; font-weight:500;}
+  .testi-author{display:flex; align-items:center; gap:12px;}
+  .avatar{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--yellow),var(--magenta));}
+  .testi-author strong{font-size:14.5px; display:block;}
+  .testi-author span{font-size:12.5px; color:var(--ink-dim);}
+
+  /* CTA final */
+  .cta-final{
+    text-align:center; border-radius:30px; padding:76px 30px;
+    background:radial-gradient(circle at top, rgba(255,31,143,0.16), transparent 60%), var(--panel);
+    border:1px solid var(--line);
+  }
+  .cta-final h2{font-size:clamp(32px,5vw,50px); margin-bottom:18px;}
+  .cta-final p{color:var(--ink-dim); max-width:460px; margin:0 auto 34px; font-size:16.5px; font-weight:500;}
+  .cta-final .hero-actions{justify-content:center;}
+
+  footer{border-top:1px solid var(--line); padding:44px 0 30px; position:relative; z-index:1;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;}
+  .foot-links{display:flex; gap:22px; font-size:14px; color:var(--ink-dim); font-weight:600;}
+  .foot-links a:hover{color:var(--magenta);}
+  .foot-note{margin-top:26px; font-size:12.5px; color:var(--ink-dim); opacity:0.75;}
+
+  ::selection{background:var(--yellow); color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<header>
+  <nav>
+    <div class="logo">Rebe<span>.</span>fdz</div>
+    <div class="nav-links">
+      <a href="#metamorfosis">Metamorfosis</a>
+      <a href="#metodo">Método</a>
+      <a href="#historias">Historias</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://www.instagram.com/rebecafdzr/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-primary" href="https://wa.me/34605255969" target="_blank" rel="noopener">Escríbeme</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">🦋 Coach de Bienestar</span>
+        <h1 class="display">Perdí +40kg y ahora te enseño <span class="accent">cómo hacerlo tú</span></h1>
+        <p class="lead">Soy Rebe, coach de bienestar. Te acompaño en tu transformación con hábitos y rutinas reales, para que consigas resultados que se sostienen en el tiempo.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://wa.me/34605255969" target="_blank" rel="noopener">Empieza tu cambio por WhatsApp</a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/rebecafdzr/" target="_blank" rel="noopener">Ver mi transformación en Instagram</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>-40kg</strong><span>transformación real</span></div>
+          <div><strong>100%</strong><span>hábitos, no dietas milagro</span></div>
+          <div><strong>1:1</strong><span>acompañamiento personalizado</span></div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visual-card">
+          <div class="visual-ring"></div>
+          <div class="visual-core">
+            <div class="big">-40<span>kg</span></div>
+            <div class="label">y un cambio de hábitos para siempre</div>
+          </div>
+        </div>
+        <div class="badge-float badge-1">🌱 Hábitos reales</div>
+        <div class="badge-float badge-2">✨ Resultados reales</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="hi">TRANSFORMACIÓN</span><span>HÁBITOS</span><span class="hi">RUTINAS</span><span>RESULTADOS REALES</span><span class="hi">-40KG</span><span>BIENESTAR</span>
+      <span class="hi">TRANSFORMACIÓN</span><span>HÁBITOS</span><span class="hi">RUTINAS</span><span>RESULTADOS REALES</span><span class="hi">-40KG</span><span>BIENESTAR</span>
+    </div>
+  </div>
+
+  <section id="metamorfosis">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">TU METAMORFOSIS</span>
+        <h2 class="display">De donde estás hoy, a donde quieres llegar</h2>
+        <p>El mismo camino que yo recorrí para perder +40kg, adaptado a ti.</p>
+      </div>
+      <div class="etapas">
+        <div class="etapa">
+          <div class="icon">🌱</div>
+          <h3>Punto de partida</h3>
+          <p>Evaluamos tu situación real, sin juicios, y armamos un plan a tu medida.</p>
+        </div>
+        <div class="etapa">
+          <div class="icon">🔄</div>
+          <h3>Hábitos + rutinas</h3>
+          <p>Construimos hábitos sostenibles de alimentación y movimiento, paso a paso.</p>
+        </div>
+        <div class="etapa">
+          <div class="icon">🦋</div>
+          <h3>Resultados reales</h3>
+          <p>Consolidamos el cambio para que dure, no solo hasta el próximo verano.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo">
+    <div class="wrap about">
+      <div class="about-card">
+        <div class="avatar-ring">RF</div>
+        <h3 class="display" style="font-size:22px;">Quién te acompaña</h3>
+        <p style="color:var(--ink-dim); margin-top:12px; font-size:15px; line-height:1.6; font-weight:500;">
+          Rebe, coach de bienestar. Perdí más de 40kg y hoy dedico mi trabajo a enseñarte el mismo camino: hábitos, rutinas y resultados reales.
+        </p>
+        <ul class="about-list">
+          <li><span class="dot"></span><span><b>Experiencia propia</b>, no solo teoría: viví el proceso de principio a fin.</span></li>
+          <li><span class="dot"></span><span><b>Hábitos por encima de dietas</b>, para resultados que se sostienen.</span></li>
+          <li><span class="dot"></span><span><b>Acompañamiento cercano</b>, directo por WhatsApp e Instagram.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="section-tag">EL MÉTODO</span>
+        <h2 class="display">Nada de dietas milagro</h2>
+        <p style="color:var(--ink-dim); margin-top:18px; font-size:16px; line-height:1.65; max-width:520px; font-weight:500;">
+          Mi transformación no vino de una dieta de moda, sino de cambiar hábitos de verdad. Por eso te acompaño a construir rutinas que puedas sostener, con resultados reales y medibles en tu cuerpo y en cómo te sientes.
+        </p>
+        <div style="margin-top:30px;">
+          <a class="btn btn-primary btn-lg" href="https://wa.me/34605255969" target="_blank" rel="noopener">Quiero empezar mi cambio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historias">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">HISTORIAS</span>
+        <h2 class="display">Transformaciones reales, hábitos reales</h2>
+        <p>Personas que empezaron donde estás tú ahora.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi">
+          <p>"Rebe me demostró con su propia historia que sí se puede. Cambié mis hábitos y los resultados llegaron solos."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Marta S.</strong><span>-12kg en 6 meses</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"Nada de dietas imposibles. Aprendí rutinas que hoy son parte natural de mi día a día."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Andrea V.</strong><span>Acompañamiento 1:1</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"El seguimiento constante por WhatsApp fue clave. Sentí que no estaba sola en el proceso."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Laura P.</strong><span>Transformación en curso</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-final">
+        <h2 class="display">Empieza tu cambio aquí ⤵️</h2>
+        <p>Escríbeme y armamos juntas tu plan de hábitos, rutinas y resultados reales.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://wa.me/34605255969" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/rebecafdzr/" target="_blank" rel="noopener">Sígueme en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="logo" style="font-size:18px;">Rebe<span>.</span>fdz</div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/rebecafdzr/" target="_blank" rel="noopener">@rebecafdzr</a>
+        <a href="https://wa.me/34605255969" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#metamorfosis">Metamorfosis</a>
+      </div>
+    </div>
+    <p class="foot-note">Coach de Bienestar · Hábitos + Rutinas + Resultados reales · Perdí +40kg, te enseño cómo</p>
+  </div>
+</footer>
+
+</body>
+</html>

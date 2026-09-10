@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gianna Villarroel | Coach Bienestar — El Sistema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f0f6ff;
+    --bg-2: #e4edff;
+    --panel: #ffffff;
+    --ink: #0c1a33;
+    --ink-dim: #55637d;
+    --violet: #7c4dff;
+    --cyan: #00d9ff;
+    --pink: #ff3d81;
+    --line: rgba(12,26,51,0.1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+
+  .display{
+    font-family:'Syne', sans-serif;
+    line-height:1.05;
+    font-weight:700;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+
+  .glow{position:fixed; border-radius:50%; filter:blur(120px); z-index:0; pointer-events:none;}
+  .glow-1{width:520px; height:520px; background:var(--violet); opacity:0.22; top:-190px; right:-150px;}
+  .glow-2{width:460px; height:460px; background:var(--cyan); opacity:0.24; bottom:-170px; left:-140px;}
+  .glow-3{width:300px; height:300px; background:var(--pink); opacity:0.22; top:40%; left:55%;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(240,246,255,0.78);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:1160px; margin:0 auto;
+  }
+  .logo{font-family:'Syne', sans-serif; font-size:20px; font-weight:800;}
+  .logo span{color:var(--violet);}
+  .nav-links{display:flex; gap:30px; font-size:15px; color:var(--ink-dim); font-weight:500;}
+  .nav-links a:hover{color:var(--violet);}
+  @media (max-width:860px){ .nav-links{display:none;} }
+  .nav-cta{display:flex; gap:12px;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 24px; border-radius:999px; font-weight:700; font-size:14.5px;
+    transition:transform .15s ease, box-shadow .15s ease; white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--violet); color:#fff;}
+  .btn-primary:hover{box-shadow:0 10px 30px rgba(124,77,255,0.35);}
+  .btn-outline{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:rgba(12,26,51,0.06);}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink); font-size:14px; padding:9px 18px; font-weight:600;}
+  .btn-lg{padding:17px 30px; font-size:16px;}
+
+  /* HERO */
+  .hero{position:relative; z-index:1; padding:96px 0 74px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:54px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700;
+    color:#fff; background:var(--ink);
+    padding:8px 18px; border-radius:999px; margin-bottom:26px;
+  }
+  .kicker span{color:var(--cyan);}
+  .hero h1{font-size:clamp(34px, 4.8vw, 56px); margin-bottom:22px;}
+  .hero h1 .accent{color:var(--violet);}
+  .hero p.lead{
+    font-size:18px; color:var(--ink-dim); max-width:480px;
+    margin-bottom:34px; line-height:1.65; font-weight:500;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px;}
+  .hero-pillars{display:flex; gap:10px; flex-wrap:wrap;}
+  .pill{
+    font-size:13px; font-weight:700; color:var(--ink);
+    border:1px solid var(--line); padding:7px 14px; border-radius:999px;
+    background:var(--panel);
+  }
+
+  /* Visual: sistema 1h + 15h */
+  .visual{position:relative; height:440px;}
+  .visual-card{
+    position:absolute; inset:0; border-radius:28px; background:var(--panel);
+    border:1px solid var(--line); overflow:hidden;
+    box-shadow:0 30px 60px rgba(12,26,51,0.1);
+    padding:34px;
+    display:flex; flex-direction:column; justify-content:center; gap:22px;
+  }
+  .time-row{display:flex; align-items:center; gap:18px;}
+  .time-chip{
+    font-family:'Syne', sans-serif; font-weight:800; font-size:30px;
+    width:88px; height:88px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .time-chip.small{background:rgba(124,77,255,0.14); color:var(--violet);}
+  .time-chip.big{background:var(--ink); color:var(--cyan);}
+  .time-text strong{display:block; font-size:16px; margin-bottom:4px;}
+  .time-text span{font-size:13.5px; color:var(--ink-dim); font-weight:500;}
+  .time-divider{height:1px; background:var(--line); margin:2px 0;}
+  .badge-float{
+    position:absolute; padding:12px 18px; border-radius:14px; font-size:13.5px; font-weight:700;
+    box-shadow:0 12px 30px rgba(12,26,51,0.16);
+  }
+  .badge-1{top:-16px; right:24px; background:var(--pink); color:#fff;}
+  .badge-2{bottom:-16px; left:24px; background:var(--cyan); color:var(--ink);}
+
+  /* MARQUEE */
+  .marquee{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--ink); padding:16px 0; overflow:hidden; white-space:nowrap;
+    position:relative; z-index:1;
+  }
+  .marquee-track{
+    display:inline-block; animation:scroll 24s linear infinite;
+    font-family:'Syne', sans-serif; font-size:19px; color:var(--cyan); font-weight:700;
+  }
+  .marquee-track span{margin:0 26px;}
+  .marquee-track span.hi{color:var(--pink);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section{position:relative; z-index:1; padding:96px 0;}
+  .section-head{max-width:600px; margin-bottom:54px;}
+  .section-tag{color:var(--violet); font-size:14px; font-weight:700; margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(30px,3.8vw,42px);}
+  .section-head p{color:var(--ink-dim); margin-top:16px; font-size:16.5px; line-height:1.6; font-weight:500;}
+
+  /* Pilares */
+  .pilares{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .pilares{grid-template-columns:1fr;} }
+  .pilar{
+    border-radius:24px; padding:32px 26px; background:var(--panel); border:1px solid var(--line);
+    position:relative;
+  }
+  .pilar .icon{
+    width:52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; margin-bottom:20px;
+  }
+  .pilar:nth-child(1) .icon{background:rgba(124,77,255,0.14);}
+  .pilar:nth-child(2) .icon{background:rgba(0,217,255,0.16);}
+  .pilar:nth-child(3) .icon{background:rgba(255,61,129,0.14);}
+  .pilar h3{font-family:'Syne', sans-serif; font-size:20px; margin-bottom:12px; font-weight:700;}
+  .pilar p{color:var(--ink-dim); font-size:15px; line-height:1.6; font-weight:500;}
+
+  /* Semana */
+  .semana{
+    border-radius:28px; background:var(--ink); color:#fff;
+    padding:48px; display:flex; align-items:center; justify-content:space-between;
+    gap:30px; flex-wrap:wrap;
+  }
+  .semana h3{font-family:'Syne', sans-serif; font-size:28px; max-width:460px; font-weight:700;}
+  .semana p{color:rgba(255,255,255,0.7); max-width:440px; margin-top:10px; font-size:15px; font-weight:500;}
+  .semana .btn-primary{background:var(--cyan); color:var(--ink);}
+
+  /* About */
+  .about{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  @media (max-width:900px){ .about{grid-template-columns:1fr;} }
+  .about-card{border-radius:26px; border:1px solid var(--line); background:var(--panel); padding:34px;}
+  .about-card .avatar-ring{
+    width:74px; height:74px; border-radius:50%;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Syne', sans-serif; font-size:22px; margin-bottom:22px; color:#fff;
+  }
+  .about-list{list-style:none; margin-top:24px; display:grid; gap:14px;}
+  .about-list li{display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--ink-dim); font-weight:500;}
+  .about-list li b{color:var(--ink); font-weight:700;}
+  .dot{min-width:8px; height:8px; border-radius:50%; background:var(--violet); margin-top:7px;}
+
+  /* Testimonials */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi{border-radius:20px; border:1px solid var(--line); background:var(--panel); padding:26px;}
+  .testi p{font-size:15px; color:var(--ink-dim); line-height:1.6; margin-bottom:18px; font-weight:500;}
+  .testi-author{display:flex; align-items:center; gap:12px;}
+  .avatar{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--cyan),var(--pink));}
+  .testi-author strong{font-size:14.5px; display:block;}
+  .testi-author span{font-size:12.5px; color:var(--ink-dim);}
+
+  /* CTA final */
+  .cta-final{
+    text-align:center; border-radius:30px; padding:76px 30px;
+    background:radial-gradient(circle at top, rgba(124,77,255,0.18), transparent 60%), var(--panel);
+    border:1px solid var(--line);
+  }
+  .cta-final h2{font-size:clamp(30px,4.8vw,48px); margin-bottom:18px;}
+  .cta-final p{color:var(--ink-dim); max-width:460px; margin:0 auto 34px; font-size:16.5px; font-weight:500;}
+  .cta-final .hero-actions{justify-content:center;}
+
+  footer{border-top:1px solid var(--line); padding:44px 0 30px; position:relative; z-index:1;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;}
+  .foot-links{display:flex; gap:22px; font-size:14px; color:var(--ink-dim); font-weight:600;}
+  .foot-links a:hover{color:var(--violet);}
+  .foot-note{margin-top:26px; font-size:12.5px; color:var(--ink-dim); opacity:0.75;}
+
+  ::selection{background:var(--cyan); color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<header>
+  <nav>
+    <div class="logo">Gianna<span>.</span></div>
+    <div class="nav-links">
+      <a href="#sistema">El sistema</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#historias">Historias</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://www.instagram.com/giannavillarroel/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-primary" href="https://form.typeform.com/to/E1eQcJA4" target="_blank" rel="noopener">Empezar</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">✨ Coach Bienestar · Online</span>
+        <h1 class="display">1 hora de sistema, <span class="accent">15 horas</span> que dependen de vos</h1>
+        <p class="lead">Soy Gianna Villarroel. Creé un sistema que une entrenamiento, alimentación y mentalidad: 4 días por semana, 1 hora por sesión. El resto del día también cuenta, y ahí también te acompaño.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://form.typeform.com/to/E1eQcJA4" target="_blank" rel="noopener">Quiero mi lugar en el sistema</a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/giannavillarroel/" target="_blank" rel="noopener">Ver el sistema en Instagram</a>
+        </div>
+        <div class="hero-pillars">
+          <span class="pill">Entrenamiento</span>
+          <span class="pill">Alimentación</span>
+          <span class="pill">Mentalidad</span>
+          <span class="pill">4 días · 1 hora</span>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="badge-float badge-1">4 días / semana</div>
+        <div class="visual-card">
+          <div class="time-row">
+            <div class="time-chip small">1h</div>
+            <div class="time-text">
+              <strong>El sistema</strong>
+              <span>Entrenamiento + alimentación + mentalidad, guiados por mí.</span>
+            </div>
+          </div>
+          <div class="time-divider"></div>
+          <div class="time-row">
+            <div class="time-chip big">15h</div>
+            <div class="time-text">
+              <strong>Lo que hacés vos</strong>
+              <span>Las decisiones del resto del día, con las herramientas que te doy.</span>
+            </div>
+          </div>
+        </div>
+        <div class="badge-float badge-2">✨ Resultado: el sistema completo</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="hi">ENTRENAMIENTO</span><span>ALIMENTACIÓN</span><span class="hi">MENTALIDAD</span><span>4 DÍAS POR SEMANA</span><span class="hi">COACH ONLINE</span><span>DIGITAL CREATOR</span>
+      <span class="hi">ENTRENAMIENTO</span><span>ALIMENTACIÓN</span><span class="hi">MENTALIDAD</span><span>4 DÍAS POR SEMANA</span><span class="hi">COACH ONLINE</span><span>DIGITAL CREATOR</span>
+    </div>
+  </div>
+
+  <section id="pilares">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">EL SISTEMA</span>
+        <h2 class="display">Tres pilares que trabajan juntos</h2>
+        <p>Nada funciona por separado: el sistema une lo físico, lo nutricional y lo mental.</p>
+      </div>
+      <div class="pilares">
+        <div class="pilar">
+          <div class="icon">🏋🏻‍♀️</div>
+          <h3>Entrenamiento</h3>
+          <p>Rutinas guiadas, 4 días por semana, pensadas para tu nivel y tu objetivo.</p>
+        </div>
+        <div class="pilar">
+          <div class="icon">🥗</div>
+          <h3>Alimentación</h3>
+          <p>Pautas claras y sostenibles, sin restricciones imposibles de mantener.</p>
+        </div>
+        <div class="pilar">
+          <div class="icon">🧠</div>
+          <h3>Mentalidad</h3>
+          <p>Herramientas para sostener el cambio en las 15 horas donde decidís vos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sistema">
+    <div class="wrap">
+      <div class="semana">
+        <div>
+          <h3>4 días por semana. 1 hora por día.</h3>
+          <p>El sistema está diseñado para que rinda en poco tiempo, sin que tu vida gire alrededor del entrenamiento.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="https://form.typeform.com/to/E1eQcJA4" target="_blank" rel="noopener">Sumarme al sistema</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap about">
+      <div class="about-card">
+        <div class="avatar-ring">GV</div>
+        <h3 class="display" style="font-size:22px;">Quién te acompaña</h3>
+        <p style="color:var(--ink-dim); margin-top:12px; font-size:15px; line-height:1.6; font-weight:500;">
+          Gianna Villarroel, coach de bienestar y digital creator. Diseñé un sistema propio que combina entrenamiento, alimentación y mentalidad, 100% online.
+        </p>
+        <ul class="about-list">
+          <li><span class="dot"></span><span><b>Sistema propio</b>, no un plan genérico copiado de internet.</span></li>
+          <li><span class="dot"></span><span><b>Coaching 100% online</b>, con seguimiento a través del formulario y redes.</span></li>
+          <li><span class="dot"></span><span><b>Enfoque integral</b>: lo físico, lo nutricional y lo mental, todo junto.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="section-tag">EL ENFOQUE</span>
+        <h2 class="display">1 hora no alcanza sola, y está bien</h2>
+        <p style="color:var(--ink-dim); margin-top:18px; font-size:16px; line-height:1.65; max-width:520px; font-weight:500;">
+          Por eso el sistema no termina cuando termina el entrenamiento. Te doy las herramientas de alimentación y mentalidad para que las 15 horas restantes también trabajen a tu favor.
+        </p>
+        <div style="margin-top:30px;">
+          <a class="btn btn-primary btn-lg" href="https://form.typeform.com/to/E1eQcJA4" target="_blank" rel="noopener">Completar el formulario</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historias">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">HISTORIAS</span>
+        <h2 class="display">Resultados de quienes ya están en el sistema</h2>
+        <p>Constancia de 4 días por semana, resultados que se notan todos los días.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi">
+          <p>"Con solo 4 días a la semana logré más consistencia que con planes de 6 días que nunca podía cumplir."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Rocío M.</strong><span>3 meses en el sistema</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"Lo de la mentalidad marcó la diferencia. Por primera vez entendí por qué antes no sostenía los cambios."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Julieta N.</strong><span>Sistema completo</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"Todo online, todo claro. Sé exactamente qué hacer en mi hora de entrenamiento y en el resto del día."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Constanza D.</strong><span>Coaching online</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-final">
+        <h2 class="display">Tu lugar en el sistema te espera</h2>
+        <p>Completá el formulario y arrancamos con tus 4 días de entrenamiento, alimentación y mentalidad.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://form.typeform.com/to/E1eQcJA4" target="_blank" rel="noopener">Completar formulario</a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/giannavillarroel/" target="_blank" rel="noopener">Sígueme en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="logo" style="font-size:18px;">Gianna<span>.</span></div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/giannavillarroel/" target="_blank" rel="noopener">@giannavillarroel</a>
+        <a href="https://form.typeform.com/to/E1eQcJA4" target="_blank" rel="noopener">Formulario</a>
+        <a href="#pilares">El sistema</a>
+      </div>
+    </div>
+    <p class="foot-note">Coach Bienestar · Digital Creator · Entrenamiento + Alimentación + Mentalidad, 4 días por semana</p>
+  </div>
+</footer>
+
+</body>
+</html>

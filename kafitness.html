@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KA Fitness | Kelly Ann Cortés — Coach Bienestar & Personal Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fff2f5;
+    --bg-2: #ffe4eb;
+    --panel: #ffffff;
+    --ink: #2b1220;
+    --ink-dim: #7a5866;
+    --coral: #ff4d6d;
+    --lime: #b6ff3d;
+    --purple: #9b5cff;
+    --line: rgba(43,18,32,0.1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    overflow-x:hidden;
+  }
+
+  .display{
+    font-family:'Bricolage Grotesque', sans-serif;
+    line-height:1.04;
+    font-weight:700;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+
+  .glow{position:fixed; border-radius:50%; filter:blur(120px); z-index:0; pointer-events:none;}
+  .glow-1{width:520px; height:520px; background:var(--coral); opacity:0.24; top:-190px; right:-150px;}
+  .glow-2{width:460px; height:460px; background:var(--purple); opacity:0.2; bottom:-170px; left:-140px;}
+  .glow-3{width:300px; height:300px; background:var(--lime); opacity:0.3; top:38%; left:55%;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,242,245,0.78);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:1160px; margin:0 auto;
+  }
+  .logo{font-family:'Bricolage Grotesque', sans-serif; font-size:20px; font-weight:800;}
+  .logo span{color:var(--coral);}
+  .nav-links{display:flex; gap:30px; font-size:15px; color:var(--ink-dim); font-weight:500;}
+  .nav-links a:hover{color:var(--coral);}
+  @media (max-width:860px){ .nav-links{display:none;} }
+  .nav-cta{display:flex; gap:12px;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 24px; border-radius:999px; font-weight:700; font-size:14.5px;
+    transition:transform .15s ease, box-shadow .15s ease; white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--coral); color:#fff;}
+  .btn-primary:hover{box-shadow:0 10px 30px rgba(255,77,109,0.35);}
+  .btn-outline{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:rgba(43,18,32,0.06);}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink); font-size:14px; padding:9px 18px; font-weight:600;}
+  .btn-lg{padding:17px 30px; font-size:16px;}
+
+  /* HERO */
+  .hero{position:relative; z-index:1; padding:96px 0 74px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:54px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700;
+    color:var(--ink); background:var(--lime);
+    padding:8px 18px; border-radius:999px; margin-bottom:26px;
+  }
+  .hero h1{font-size:clamp(34px, 4.8vw, 58px); margin-bottom:22px;}
+  .hero h1 .accent{color:var(--coral);}
+  .hero p.lead{
+    font-size:18px; color:var(--ink-dim); max-width:460px;
+    margin-bottom:34px; line-height:1.65; font-weight:500;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px;}
+  .hero-pillars{display:flex; gap:10px; flex-wrap:wrap;}
+  .pill{
+    font-size:13px; font-weight:700; color:var(--ink);
+    border:1px solid var(--line); padding:7px 14px; border-radius:999px;
+    background:var(--panel);
+  }
+
+  /* Visual: quiz card */
+  .visual{position:relative; height:440px;}
+  .visual-card{
+    position:absolute; inset:0; border-radius:28px; background:var(--panel);
+    border:1px solid var(--line); overflow:hidden;
+    box-shadow:0 30px 60px rgba(43,18,32,0.1);
+    padding:32px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .quiz-tag{
+    display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700;
+    color:var(--purple); background:rgba(155,92,255,0.12);
+    padding:6px 14px; border-radius:999px; margin-bottom:18px; width:fit-content;
+  }
+  .quiz-q{font-family:'Bricolage Grotesque', sans-serif; font-size:21px; font-weight:700; margin-bottom:22px; line-height:1.25;}
+  .quiz-opt{
+    display:flex; align-items:center; gap:12px;
+    border:1.5px solid var(--line); border-radius:14px;
+    padding:14px 16px; margin-bottom:12px; font-size:14.5px; font-weight:600;
+  }
+  .quiz-opt.active{border-color:var(--coral); background:rgba(255,77,109,0.06);}
+  .quiz-dot{width:18px; height:18px; border-radius:50%; border:2px solid var(--line); flex-shrink:0;}
+  .quiz-opt.active .quiz-dot{border-color:var(--coral); background:var(--coral);}
+  .badge-float{
+    position:absolute; padding:12px 18px; border-radius:14px; font-size:13.5px; font-weight:700;
+    box-shadow:0 12px 30px rgba(43,18,32,0.16);
+  }
+  .badge-1{top:-16px; left:24px; background:var(--coral); color:#fff;}
+  .badge-2{bottom:-16px; right:24px; background:var(--ink); color:var(--lime);}
+
+  /* MARQUEE */
+  .marquee{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--ink); padding:16px 0; overflow:hidden; white-space:nowrap;
+    position:relative; z-index:1;
+  }
+  .marquee-track{
+    display:inline-block; animation:scroll 24s linear infinite;
+    font-family:'Bricolage Grotesque', sans-serif; font-size:19px; color:var(--lime); font-weight:700;
+  }
+  .marquee-track span{margin:0 26px;}
+  .marquee-track span.hi{color:var(--coral);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section{position:relative; z-index:1; padding:96px 0;}
+  .section-head{max-width:600px; margin-bottom:54px;}
+  .section-tag{color:var(--purple); font-size:14px; font-weight:700; margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(30px,3.8vw,42px);}
+  .section-head p{color:var(--ink-dim); margin-top:16px; font-size:16.5px; line-height:1.6; font-weight:500;}
+
+  /* Pilares */
+  .pilares{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .pilares{grid-template-columns:1fr;} }
+  .pilar{
+    border-radius:24px; padding:32px 26px; background:var(--panel); border:1px solid var(--line);
+    position:relative;
+  }
+  .pilar .icon{
+    width:52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; margin-bottom:20px;
+  }
+  .pilar:nth-child(1) .icon{background:rgba(255,77,109,0.14);}
+  .pilar:nth-child(2) .icon{background:rgba(182,255,61,0.4);}
+  .pilar:nth-child(3) .icon{background:rgba(155,92,255,0.14);}
+  .pilar h3{font-family:'Bricolage Grotesque', sans-serif; font-size:20px; margin-bottom:12px; font-weight:700;}
+  .pilar p{color:var(--ink-dim); font-size:15px; line-height:1.6; font-weight:500;}
+
+  /* Quiz CTA strip */
+  .quiz-strip{
+    border-radius:28px; background:var(--ink); color:#fff;
+    padding:48px; display:flex; align-items:center; justify-content:space-between;
+    gap:30px; flex-wrap:wrap;
+  }
+  .quiz-strip h3{font-family:'Bricolage Grotesque', sans-serif; font-size:28px; max-width:460px; font-weight:700;}
+  .quiz-strip p{color:rgba(255,255,255,0.7); max-width:440px; margin-top:10px; font-size:15px; font-weight:500;}
+  .quiz-strip .btn-primary{background:var(--lime); color:var(--ink);}
+
+  /* About */
+  .about{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  @media (max-width:900px){ .about{grid-template-columns:1fr;} }
+  .about-card{border-radius:26px; border:1px solid var(--line); background:var(--panel); padding:34px;}
+  .about-card .avatar-ring{
+    width:74px; height:74px; border-radius:50%;
+    background:linear-gradient(135deg,var(--coral),var(--purple));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Bricolage Grotesque', sans-serif; font-size:22px; margin-bottom:22px; color:#fff;
+  }
+  .about-list{list-style:none; margin-top:24px; display:grid; gap:14px;}
+  .about-list li{display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--ink-dim); font-weight:500;}
+  .about-list li b{color:var(--ink); font-weight:700;}
+  .dot{min-width:8px; height:8px; border-radius:50%; background:var(--coral); margin-top:7px;}
+
+  /* Testimonials */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi{border-radius:20px; border:1px solid var(--line); background:var(--panel); padding:26px;}
+  .testi p{font-size:15px; color:var(--ink-dim); line-height:1.6; margin-bottom:18px; font-weight:500;}
+  .testi-author{display:flex; align-items:center; gap:12px;}
+  .avatar{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--lime),var(--purple));}
+  .testi-author strong{font-size:14.5px; display:block;}
+  .testi-author span{font-size:12.5px; color:var(--ink-dim);}
+
+  /* CTA final */
+  .cta-final{
+    text-align:center; border-radius:30px; padding:76px 30px;
+    background:radial-gradient(circle at top, rgba(255,77,109,0.16), transparent 60%), var(--panel);
+    border:1px solid var(--line);
+  }
+  .cta-final h2{font-size:clamp(30px,4.8vw,48px); margin-bottom:18px;}
+  .cta-final p{color:var(--ink-dim); max-width:460px; margin:0 auto 34px; font-size:16.5px; font-weight:500;}
+  .cta-final .hero-actions{justify-content:center;}
+
+  footer{border-top:1px solid var(--line); padding:44px 0 30px; position:relative; z-index:1;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;}
+  .foot-links{display:flex; gap:22px; font-size:14px; color:var(--ink-dim); font-weight:600;}
+  .foot-links a:hover{color:var(--coral);}
+  .foot-note{margin-top:26px; font-size:12.5px; color:var(--ink-dim); opacity:0.75;}
+
+  ::selection{background:var(--lime); color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<header>
+  <nav>
+    <div class="logo">KA<span>.</span>Fitness</div>
+    <div class="nav-links">
+      <a href="#pilares">Cómo te ayudo</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#historias">Historias</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://www.instagram.com/kellyann.cortes/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-primary" href="https://linktr.ee/kellyanncortes" target="_blank" rel="noopener">Toma el quiz</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">💫 Coach Bienestar & Personal Trainer</span>
+        <h1 class="display">Movete mejor. Cuidá tu cuerpo <span class="accent">con intención</span></h1>
+        <p class="lead">Soy Kelly Ann Cortés, de KA Fitness. Te ayudo a crear hábitos reales, moverte mejor y cuidar tu cuerpo con intención, no con exigencia.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://linktr.ee/kellyanncortes" target="_blank" rel="noopener">🌸 Toma tu quiz de bienestar</a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/kellyann.cortes/" target="_blank" rel="noopener">Ver mi trabajo en Instagram</a>
+        </div>
+        <div class="hero-pillars">
+          <span class="pill">Hábitos</span>
+          <span class="pill">Movimiento</span>
+          <span class="pill">Bienestar</span>
+          <span class="pill">Personal Trainer</span>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="badge-float badge-1">🌸 Quiz de bienestar</div>
+        <div class="visual-card">
+          <span class="quiz-tag">✨ Descubrí tu punto de partida</span>
+          <div class="quiz-q">¿Qué te gustaría mejorar primero?</div>
+          <div class="quiz-opt active"><span class="quiz-dot"></span> Crear hábitos que se sostengan</div>
+          <div class="quiz-opt"><span class="quiz-dot"></span> Moverme mejor cada día</div>
+          <div class="quiz-opt"><span class="quiz-dot"></span> Cuidar mi cuerpo con intención</div>
+        </div>
+        <div class="badge-float badge-2">💫 100% personalizado</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="hi">HÁBITOS</span><span>MOVIMIENTO CON INTENCIÓN</span><span class="hi">BIENESTAR</span><span>PERSONAL TRAINER</span><span class="hi">QUIZ DE BIENESTAR</span><span>KA FITNESS</span>
+      <span class="hi">HÁBITOS</span><span>MOVIMIENTO CON INTENCIÓN</span><span class="hi">BIENESTAR</span><span>PERSONAL TRAINER</span><span class="hi">QUIZ DE BIENESTAR</span><span>KA FITNESS</span>
+    </div>
+  </div>
+
+  <section id="pilares">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">CÓMO TE AYUDO</span>
+        <h2 class="display">Tres formas de acompañarte</h2>
+        <p>No se trata de entrenar más duro, sino de entrenar con intención.</p>
+      </div>
+      <div class="pilares">
+        <div class="pilar">
+          <div class="icon">🌱</div>
+          <h3>Crear hábitos</h3>
+          <p>Construimos rutinas pequeñas y sostenibles que se convierten en parte de tu día a día.</p>
+        </div>
+        <div class="pilar">
+          <div class="icon">🏃🏻‍♀️</div>
+          <h3>Moverte mejor</h3>
+          <p>Entrenamientos pensados para tu cuerpo real, no para un ideal genérico.</p>
+        </div>
+        <div class="pilar">
+          <div class="icon">💫</div>
+          <h3>Cuidarte con intención</h3>
+          <p>Cada decisión —entrenar, comer, descansar— desde la conciencia, no desde la culpa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <div class="wrap">
+      <div class="quiz-strip">
+        <div>
+          <h3>🌸 Toma tu quiz de bienestar</h3>
+          <p>En un par de minutos identificamos tu punto de partida y armamos el plan ideal para vos.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="https://linktr.ee/kellyanncortes" target="_blank" rel="noopener">Empezar quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap about">
+      <div class="about-card">
+        <div class="avatar-ring">KA</div>
+        <h3 class="display" style="font-size:22px;">Quién te acompaña</h3>
+        <p style="color:var(--ink-dim); margin-top:12px; font-size:15px; line-height:1.6; font-weight:500;">
+          Kelly Ann Cortés, coach de bienestar y personal trainer detrás de KA Fitness. Te acompaño a moverte mejor y cuidar tu cuerpo con intención.
+        </p>
+        <ul class="about-list">
+          <li><span class="dot"></span><span><b>Plan a tu medida</b>, a partir de tu quiz de bienestar.</span></li>
+          <li><span class="dot"></span><span><b>Entrenamiento con propósito</b>, no volumen por volumen.</span></li>
+          <li><span class="dot"></span><span><b>Acompañamiento cercano</b>, disponible por Instagram y Linktree.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="section-tag">EL ENFOQUE</span>
+        <h2 class="display">Con intención, no con exigencia</h2>
+        <p style="color:var(--ink-dim); margin-top:18px; font-size:16px; line-height:1.65; max-width:520px; font-weight:500;">
+          No busco que entrenes más, sino que entrenes mejor. El quiz de bienestar es el primer paso para entender de verdad qué necesita tu cuerpo hoy, y construir hábitos que realmente se sostengan.
+        </p>
+        <div style="margin-top:30px;">
+          <a class="btn btn-primary btn-lg" href="https://linktr.ee/kellyanncortes" target="_blank" rel="noopener">🌸 Toma tu quiz de bienestar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historias">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">HISTORIAS</span>
+        <h2 class="display">Lo que dicen quienes ya empezaron su quiz</h2>
+        <p>Resultados reales, a partir de un plan pensado para cada una.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi">
+          <p>"El quiz me ayudó a entender por dónde empezar. Sentí que el plan era realmente mío, no uno más genérico."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Antonella R.</strong><span>Plan personalizado</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"Aprendí a moverme mejor sin lastimarme. Kelly Ann siempre explica el por qué de cada ejercicio."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Fernanda T.</strong><span>Personal training</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"Cambié la forma de ver el entrenamiento: ahora es cuidado, no castigo. Se nota en mis hábitos diarios."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Isabella C.</strong><span>Coaching de bienestar</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-final">
+        <h2 class="display">Tu bienestar empieza con un quiz</h2>
+        <p>Descubrí tu punto de partida y recibí un plan pensado para vos.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://linktr.ee/kellyanncortes" target="_blank" rel="noopener">🌸 Toma tu quiz de bienestar</a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/kellyann.cortes/" target="_blank" rel="noopener">Sígueme en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="logo" style="font-size:18px;">KA<span>.</span>Fitness</div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/kellyann.cortes/" target="_blank" rel="noopener">@kellyann.cortes</a>
+        <a href="https://linktr.ee/kellyanncortes" target="_blank" rel="noopener">Linktree</a>
+        <a href="#pilares">Cómo te ayudo</a>
+      </div>
+    </div>
+    <p class="foot-note">Coach Bienestar / Personal Trainer · Hábitos · Movimiento · Bienestar con intención</p>
+  </div>
+</footer>
+
+</body>
+</html>

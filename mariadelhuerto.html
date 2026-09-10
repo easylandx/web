@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>María del Huerto | Yoga & Bienestar — Programa Raíz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f1f7ec;
+    --bg-2: #e7f1de;
+    --panel: #ffffff;
+    --ink: #16301f;
+    --ink-dim: #4c6355;
+    --lime: #cdfa3c;
+    --tangerine: #ff6a3d;
+    --teal: #00d9a8;
+    --line: rgba(22,48,31,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    overflow-x:hidden;
+  }
+
+  .serif{
+    font-family:'DM Serif Display', serif;
+    line-height:1.04;
+    font-weight:400;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+
+  /* soft neon washes */
+  .glow{position:fixed; border-radius:50%; filter:blur(120px); z-index:0; pointer-events:none;}
+  .glow-1{width:520px; height:520px; background:var(--lime); opacity:0.35; top:-200px; right:-160px;}
+  .glow-2{width:460px; height:460px; background:var(--teal); opacity:0.28; bottom:-180px; left:-140px;}
+  .glow-3{width:340px; height:340px; background:var(--tangerine); opacity:0.16; top:44%; left:52%;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(241,247,236,0.78);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:1160px; margin:0 auto;
+  }
+  .logo{font-family:'DM Serif Display', serif; font-size:22px;}
+  .logo em{font-style:italic; color:var(--tangerine);}
+  .nav-links{display:flex; gap:30px; font-size:15px; color:var(--ink-dim);}
+  .nav-links a:hover{color:var(--tangerine);}
+  @media (max-width:820px){ .nav-links{display:none;} }
+  .nav-cta{display:flex; gap:12px;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 24px; border-radius:999px; font-weight:700; font-size:14.5px;
+    transition:transform .15s ease, box-shadow .15s ease; white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--ink); color:var(--lime);}
+  .btn-primary:hover{box-shadow:0 10px 30px rgba(22,48,31,0.28);}
+  .btn-outline{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:rgba(22,48,31,0.06);}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink); font-size:14px; padding:9px 18px; font-weight:600;}
+  .btn-lg{padding:17px 30px; font-size:16px;}
+
+  /* HERO */
+  .hero{position:relative; z-index:1; padding:96px 0 76px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:54px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700;
+    color:var(--ink); background:var(--lime);
+    padding:8px 18px; border-radius:999px; margin-bottom:26px;
+  }
+  .hero h1{font-size:clamp(38px, 5.4vw, 64px); margin-bottom:22px;}
+  .hero h1 .accent{color:var(--tangerine); font-style:italic;}
+  .hero p.lead{
+    font-size:18px; color:var(--ink-dim); max-width:460px;
+    margin-bottom:34px; line-height:1.65;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px;}
+  .hero-tags{display:flex; gap:10px; flex-wrap:wrap;}
+  .pill{
+    font-size:13px; font-weight:600; color:var(--ink-dim);
+    border:1px solid var(--line); padding:7px 14px; border-radius:999px;
+    background:var(--panel);
+  }
+
+  /* Root visual */
+  .root-wrap{position:relative; height:440px;}
+  .root-card{
+    position:absolute; inset:0;
+    border-radius:28px; background:var(--panel); border:1px solid var(--line);
+    overflow:hidden;
+    box-shadow:0 30px 60px rgba(22,48,31,0.08);
+  }
+  .root-svg{position:absolute; inset:0; width:100%; height:100%;}
+  .badge-float{
+    position:absolute; background:var(--ink); color:var(--bg);
+    padding:12px 18px; border-radius:14px; font-size:13.5px; font-weight:700;
+    box-shadow:0 12px 30px rgba(22,48,31,0.25);
+  }
+  .badge-1{top:26px; left:26px; background:var(--tangerine); color:#1a0d05;}
+  .badge-2{bottom:26px; right:26px; background:var(--teal); color:#062f27;}
+
+  /* MARQUEE */
+  .marquee{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--ink); padding:16px 0; overflow:hidden; white-space:nowrap;
+    position:relative; z-index:1;
+  }
+  .marquee-track{
+    display:inline-block; animation:scroll 24s linear infinite;
+    font-family:'DM Serif Display', serif; font-style:italic; font-size:20px; color:var(--lime);
+  }
+  .marquee-track span{margin:0 26px;}
+  .marquee-track span.hi{color:var(--tangerine);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section{position:relative; z-index:1; padding:96px 0;}
+  .section-head{max-width:600px; margin-bottom:54px;}
+  .section-tag{color:var(--tangerine); font-size:14px; font-weight:700; margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(30px,3.8vw,44px);}
+  .section-head p{color:var(--ink-dim); margin-top:16px; font-size:16.5px; line-height:1.6;}
+
+  /* Programa Raíz - 3 etapas */
+  .etapas{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .etapas{grid-template-columns:1fr;} }
+  .etapa{
+    border-radius:24px; padding:32px 26px; background:var(--panel); border:1px solid var(--line);
+    position:relative;
+  }
+  .etapa .icon{
+    width:52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; margin-bottom:20px;
+  }
+  .etapa:nth-child(1) .icon{background:rgba(205,250,60,0.35);}
+  .etapa:nth-child(2) .icon{background:rgba(0,217,168,0.22);}
+  .etapa:nth-child(3) .icon{background:rgba(255,106,61,0.18);}
+  .etapa h3{font-family:'DM Serif Display', serif; font-size:23px; margin-bottom:12px; font-weight:400;}
+  .etapa p{color:var(--ink-dim); font-size:15px; line-height:1.6;}
+
+  /* About */
+  .about{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  @media (max-width:900px){ .about{grid-template-columns:1fr;} }
+  .about-card{border-radius:26px; border:1px solid var(--line); background:var(--panel); padding:34px;}
+  .about-card .avatar-ring{
+    width:74px; height:74px; border-radius:50%;
+    background:linear-gradient(135deg,var(--lime),var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'DM Serif Display', serif; font-size:24px; margin-bottom:22px; color:var(--ink);
+  }
+  .about-list{list-style:none; margin-top:24px; display:grid; gap:14px;}
+  .about-list li{display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--ink-dim);}
+  .about-list li b{color:var(--ink); font-weight:700;}
+  .dot{min-width:8px; height:8px; border-radius:50%; background:var(--tangerine); margin-top:7px;}
+
+  /* Modalidades */
+  .modalidades{
+    border-radius:28px; background:var(--ink); color:var(--bg);
+    padding:48px; display:flex; align-items:center; justify-content:space-between;
+    gap:30px; flex-wrap:wrap;
+  }
+  .modalidades h3{font-family:'DM Serif Display', serif; font-size:30px; max-width:460px; font-weight:400;}
+  .modalidades p{color:rgba(241,247,236,0.72); max-width:440px; margin-top:10px; font-size:15px;}
+  .modalidades .btn-primary{background:var(--lime); color:var(--ink);}
+
+  /* Testimonials */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi{border-radius:20px; border:1px solid var(--line); background:var(--panel); padding:26px;}
+  .testi p{font-size:15px; color:var(--ink-dim); line-height:1.6; margin-bottom:18px; font-style:italic;}
+  .testi-author{display:flex; align-items:center; gap:12px;}
+  .avatar{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--tangerine),var(--teal));}
+  .testi-author strong{font-size:14.5px; display:block;}
+  .testi-author span{font-size:12.5px; color:var(--ink-dim);}
+
+  /* CTA final */
+  .cta-final{
+    text-align:center; border-radius:30px; padding:76px 30px;
+    background:radial-gradient(circle at top, rgba(205,250,60,0.35), transparent 60%), var(--panel);
+    border:1px solid var(--line);
+  }
+  .cta-final h2{font-size:clamp(32px,5vw,52px); margin-bottom:18px;}
+  .cta-final p{color:var(--ink-dim); max-width:460px; margin:0 auto 34px; font-size:16.5px;}
+  .cta-final .hero-actions{justify-content:center;}
+
+  footer{border-top:1px solid var(--line); padding:44px 0 30px; position:relative; z-index:1;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;}
+  .foot-links{display:flex; gap:22px; font-size:14px; color:var(--ink-dim);}
+  .foot-links a:hover{color:var(--tangerine);}
+  .foot-note{margin-top:26px; font-size:12.5px; color:var(--ink-dim); opacity:0.75;}
+
+  ::selection{background:var(--lime); color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<header>
+  <nav>
+    <div class="logo">María <em>del Huerto</em></div>
+    <div class="nav-links">
+      <a href="#raiz">Programa Raíz</a>
+      <a href="#metodo">Etapas</a>
+      <a href="#historias">Historias</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://www.instagram.com/mariadelhuertocoach/" target="_blank" rel="noopener">Seguime en Instagram</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">🌿 Programa Raíz</span>
+        <h1 class="serif">Te acompaño a volver a tu <span class="accent">cuerpo</span></h1>
+        <p class="lead">Soy María del Huerto, yoga & bienestar. Un camino 1:1 de hábitos, bienestar y consciencia para reencontrarte con vos, sin apuro y sin fórmulas genéricas.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://www.instagram.com/mariadelhuertocoach/" target="_blank" rel="noopener">Quiero empezar mi Programa Raíz</a>
+          <a class="btn btn-outline btn-lg" href="https://www.instagram.com/mariadelhuertocoach/" target="_blank" rel="noopener">Ver clases en Instagram</a>
+        </div>
+        <div class="hero-tags">
+          <span class="pill">Hábitos</span>
+          <span class="pill">Bienestar</span>
+          <span class="pill">Consciencia</span>
+          <span class="pill">1:1 mujeres y hombres</span>
+          <span class="pill">Yoga</span>
+        </div>
+      </div>
+
+      <div class="root-wrap">
+        <div class="root-card">
+          <svg class="root-svg" viewBox="0 0 420 440" preserveAspectRatio="xMidYMid slice">
+            <line x1="210" y1="30" x2="210" y2="180" stroke="#16301f" stroke-width="3" opacity="0.5"/>
+            <path d="M210,180 C160,220 120,230 80,300" stroke="#00d9a8" stroke-width="3" fill="none" opacity="0.7"/>
+            <path d="M210,180 C260,220 300,230 340,300" stroke="#ff6a3d" stroke-width="3" fill="none" opacity="0.7"/>
+            <path d="M210,180 C210,240 210,260 210,340" stroke="#16301f" stroke-width="3" fill="none" opacity="0.55"/>
+            <path d="M80,300 C60,340 60,370 50,410" stroke="#00d9a8" stroke-width="2.5" fill="none" opacity="0.5"/>
+            <path d="M340,300 C360,340 360,370 370,410" stroke="#ff6a3d" stroke-width="2.5" fill="none" opacity="0.5"/>
+            <path d="M210,340 C190,375 200,395 180,420" stroke="#16301f" stroke-width="2.5" fill="none" opacity="0.4"/>
+            <path d="M210,340 C230,375 220,395 240,420" stroke="#16301f" stroke-width="2.5" fill="none" opacity="0.4"/>
+            <circle cx="210" cy="30" r="26" fill="#cdfa3c"/>
+            <circle cx="210" cy="180" r="9" fill="#16301f"/>
+            <circle cx="80" cy="300" r="7" fill="#00d9a8"/>
+            <circle cx="340" cy="300" r="7" fill="#ff6a3d"/>
+          </svg>
+        </div>
+        <div class="badge-float badge-1">Un camino de vuelta a vos</div>
+        <div class="badge-float badge-2">☆ Yoga</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="hi">Yoga</span><span>Hábitos</span><span class="hi">Bienestar</span><span>Consciencia</span><span class="hi">Programa Raíz</span><span>1:1 mujeres y hombres</span>
+      <span class="hi">Yoga</span><span>Hábitos</span><span class="hi">Bienestar</span><span>Consciencia</span><span class="hi">Programa Raíz</span><span>1:1 mujeres y hombres</span>
+    </div>
+  </div>
+
+  <section id="raiz">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">PROGRAMA RAÍZ</span>
+        <h2 class="serif">Un camino de vuelta a vos</h2>
+        <p>Tres etapas para reconstruir el vínculo con tu cuerpo, desde la raíz hacia arriba.</p>
+      </div>
+      <div class="etapas">
+        <div class="etapa">
+          <div class="icon">🌱</div>
+          <h3>Raíz</h3>
+          <p>Volvemos a lo esencial: respiración, presencia y hábitos que sostienen todo lo demás.</p>
+        </div>
+        <div class="etapa">
+          <div class="icon">🧘🏽</div>
+          <h3>Cuerpo</h3>
+          <p>Práctica de yoga adaptada a vos, para habitar tu cuerpo con más consciencia y menos exigencia.</p>
+        </div>
+        <div class="etapa">
+          <div class="icon">✨</div>
+          <h3>Consciencia</h3>
+          <p>Integramos lo trabajado en tu día a día, para que el cambio se sostenga en el tiempo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo">
+    <div class="wrap about">
+      <div class="about-card">
+        <div class="avatar-ring">MH</div>
+        <h3 class="serif" style="font-size:24px;">Quién te acompaña</h3>
+        <p style="color:var(--ink-dim); margin-top:12px; font-size:15px; line-height:1.6;">
+          María del Huerto, yoga & bienestar. Guío el Programa Raíz, un espacio 1:1 para reencontrarte con tu cuerpo desde la calma y la consciencia.
+        </p>
+        <ul class="about-list">
+          <li><span class="dot"></span><span><b>Sesiones 1:1</b> para mujeres y hombres, adaptadas a tu momento.</span></li>
+          <li><span class="dot"></span><span><b>Yoga como base</b>, combinado con hábitos y trabajo de consciencia.</span></li>
+          <li><span class="dot"></span><span><b>Acompañamiento sin apuro</b>, respetando tus propios tiempos.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="section-tag">EL ENFOQUE</span>
+        <h2 class="serif">Volver al cuerpo, no exigirle</h2>
+        <p style="color:var(--ink-dim); margin-top:18px; font-size:16px; line-height:1.65; max-width:520px;">
+          El Programa Raíz no busca un cuerpo distinto, sino una relación distinta con el que ya tenés. A través del yoga, los hábitos y la consciencia, construimos juntos un camino sostenible de bienestar real.
+        </p>
+        <div style="margin-top:30px;">
+          <a class="btn btn-primary btn-lg" href="https://www.instagram.com/mariadelhuertocoach/" target="_blank" rel="noopener">Conocer el Programa Raíz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="modalidades">
+        <div>
+          <h3>☆ 1:1 para mujeres y hombres</h3>
+          <p>Sesiones individuales de yoga y bienestar, pensadas para tu cuerpo y tu proceso particular.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="https://www.instagram.com/mariadelhuertocoach/" target="_blank" rel="noopener">Reservar mi sesión 1:1</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="historias">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">HISTORIAS</span>
+        <h2 class="serif">Quienes ya volvieron a su cuerpo</h2>
+        <p>Procesos reales, acompañados desde la raíz.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi">
+          <p>"Nunca había sentido el yoga como algo mío hasta este proceso. Volví a conectar con mi cuerpo sin exigencia."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Luján F.</strong><span>Programa Raíz</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"El acompañamiento 1:1 hizo toda la diferencia. Pude ir a mi ritmo y sostener los cambios en el tiempo."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Nico A.</strong><span>Sesiones individuales</span></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p>"Más que una práctica de yoga, fue un camino de vuelta a mí misma. Hoy me habito distinto."</p>
+          <div class="testi-author">
+            <div class="avatar"></div>
+            <div><strong>Delfina S.</strong><span>Proceso de consciencia</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-final">
+        <h2 class="serif">Tu camino de vuelta a vos empieza hoy</h2>
+        <p>Escribime por Instagram y arrancamos tu Programa Raíz.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://www.instagram.com/mariadelhuertocoach/" target="_blank" rel="noopener">Seguime en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="logo" style="font-size:18px;">María <em>del Huerto</em></div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/mariadelhuertocoach/" target="_blank" rel="noopener">@mariadelhuertocoach</a>
+        <a href="#raiz">Programa Raíz</a>
+        <a href="#historias">Historias</a>
+      </div>
+    </div>
+    <p class="foot-note">Yoga & Bienestar · Hábitos · Bienestar · Consciencia · Programa Raíz — un camino de vuelta a ti</p>
+  </div>
+</footer>
+
+</body>
+</html>

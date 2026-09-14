@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alimentación Consciente | Empezá sin experiencia</title>
+<meta name="description" content="Alimentación Consciente. Te muestro cómo empezar sin experiencia. Comunidad en expansión. Envíos a todo Argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#05010f;
+    --bg2:#170634;
+    --neon-green:#2bff9b;
+    --neon-yellow:#e9ff2e;
+    --neon-pink:#ff2ee6;
+    --neon-purple:#8a2eff;
+    --neon-orange:#ff7a1f;
+    --card-bg:rgba(255,255,255,0.05);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(43,255,155,0.25), transparent 42%),
+      radial-gradient(circle at 88% 12%, rgba(255,46,230,0.25), transparent 45%),
+      radial-gradient(circle at 50% 95%, rgba(138,46,255,0.28), transparent 55%),
+      linear-gradient(160deg, var(--bg1), var(--bg2) 60%, #0c0420);
+    background-attachment:fixed;
+    color:#f2fff4;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+  h1,h2,h3,.logo{font-family:'Baloo 2', cursive;}
+
+  .bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:0.55;animation:float linear infinite;}
+  @keyframes float{
+    0%{transform:translateY(110vh) translateX(0) rotate(0deg);}
+    100%{transform:translateY(-15vh) translateX(20px) rotate(360deg);}
+  }
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(5,1,15,0.55);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(43,255,155,0.25);
+  }
+  .logo{font-size:1.25rem;font-weight:800;color:var(--neon-green);
+    text-shadow:0 0 8px var(--neon-green), 0 0 20px rgba(43,255,155,0.5);
+    display:flex;align-items:center;gap:8px;}
+  nav a.cta-nav{
+    text-decoration:none;font-weight:700;color:#05010f;
+    background:linear-gradient(90deg,#25D366,var(--neon-green));
+    padding:10px 22px;border-radius:999px;font-size:0.9rem;
+    box-shadow:0 0 18px rgba(43,255,155,0.6);
+    transition:transform .25s ease, box-shadow .25s ease;
+    white-space:nowrap;
+  }
+  nav a.cta-nav:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 28px rgba(43,255,155,0.9);}
+
+  header.hero{
+    position:relative;z-index:2;
+    min-height:92vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:60px 6vw 40px;
+  }
+  .tag{
+    display:inline-block;padding:8px 18px;border-radius:999px;
+    border:1px solid var(--neon-yellow);color:var(--neon-yellow);
+    font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;
+    margin-bottom:24px;text-shadow:0 0 10px var(--neon-yellow);
+    box-shadow:inset 0 0 12px rgba(233,255,46,0.3), 0 0 12px rgba(233,255,46,0.2);
+    animation:pulseTag 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseTag{0%,100%{opacity:1;}50%{opacity:0.6;}}
+
+  h1.title{
+    font-size:clamp(2.2rem, 6.5vw, 4.6rem);
+    font-weight:800;
+    line-height:1.08;
+    background:linear-gradient(90deg, var(--neon-green), var(--neon-yellow) 40%, var(--neon-orange) 65%, var(--neon-pink));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 30px rgba(43,255,155,0.35);
+    margin-bottom:16px;
+    animation:hueMove 8s linear infinite;
+    background-size:300% 100%;
+  }
+  @keyframes hueMove{
+    0%{background-position:0% 50%;}
+    100%{background-position:300% 50%;}
+  }
+  .subtitle{
+    font-size:clamp(1.05rem,2.8vw,1.4rem);
+    color:#d7ffe4;
+    font-weight:500;
+    max-width:640px;
+    margin-bottom:30px;
+    line-height:1.5;
+  }
+  .subtitle b{color:var(--neon-yellow);text-shadow:0 0 12px rgba(233,255,46,0.6);}
+
+  .hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:6px;}
+  .btn-primary, .btn-secondary, .btn-tertiary{
+    text-decoration:none;font-weight:700;padding:16px 30px;border-radius:999px;
+    font-size:1rem;display:inline-flex;align-items:center;gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,#25D366,#2bff9b);
+    color:#05010f;
+    box-shadow:0 0 25px rgba(37,211,102,0.6);
+  }
+  .btn-primary:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 40px rgba(37,211,102,0.9);}
+  .btn-secondary{
+    background:transparent;
+    color:var(--neon-pink);
+    border:2px solid var(--neon-pink);
+    box-shadow:0 0 18px rgba(255,46,230,0.35);
+  }
+  .btn-secondary:hover{background:rgba(255,46,230,0.12);transform:translateY(-3px) scale(1.05);}
+  .btn-tertiary{
+    background:transparent;
+    color:var(--neon-yellow);
+    border:2px solid var(--neon-yellow);
+    box-shadow:0 0 18px rgba(233,255,46,0.3);
+  }
+  .btn-tertiary:hover{background:rgba(233,255,46,0.1);transform:translateY(-3px) scale(1.05);}
+
+  section{position:relative;z-index:2;padding:70px 6vw;}
+
+  .info-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:26px;max-width:1100px;margin:0 auto;
+  }
+  .card{
+    background:var(--card-bg);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;padding:30px 24px;
+    backdrop-filter:blur(6px);
+    text-align:center;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    opacity:0;transform:translateY(30px);
+  }
+  .card.visible{opacity:1;transform:translateY(0);}
+  .card:nth-child(1){transition-delay:.05s;}
+  .card:nth-child(2){transition-delay:.15s;}
+  .card:nth-child(3){transition-delay:.25s;}
+  .card:hover{transform:translateY(-8px);}
+  .card:nth-child(1){border-color:rgba(43,255,155,0.3);}
+  .card:nth-child(1):hover{box-shadow:0 0 30px rgba(43,255,155,0.35);}
+  .card:nth-child(2){border-color:rgba(233,255,46,0.3);}
+  .card:nth-child(2):hover{box-shadow:0 0 30px rgba(233,255,46,0.35);}
+  .card:nth-child(3){border-color:rgba(255,46,230,0.3);}
+  .card:nth-child(3):hover{box-shadow:0 0 30px rgba(255,46,230,0.35);}
+  .card .icon{font-size:2.6rem;margin-bottom:14px;display:block;}
+  .card h3{font-size:1.2rem;margin-bottom:10px;color:#fff;}
+  .card p{color:#cfd8c9;font-size:0.93rem;line-height:1.5;}
+
+  .section-title{
+    text-align:center;font-size:clamp(1.7rem,4vw,2.5rem);
+    margin-bottom:36px;color:#fff;
+  }
+  .section-title span{
+    color:var(--neon-green);text-shadow:0 0 16px rgba(43,255,155,0.6);
+  }
+
+  /* video section */
+  .video-wrap{max-width:760px;margin:0 auto;text-align:center;}
+  .video-frame{
+    position:relative;border-radius:22px;overflow:hidden;
+    border:2px solid rgba(43,255,155,0.4);
+    box-shadow:0 0 40px rgba(43,255,155,0.2);
+    aspect-ratio:16/9;
+    background:#000;
+  }
+  .video-frame iframe{width:100%;height:100%;border:0;display:block;}
+  .video-caption{margin-top:16px;color:#c9d6c2;font-size:0.95rem;}
+
+  /* interactive quiz card */
+  .quiz-wrap{max-width:640px;margin:0 auto;text-align:center;}
+  .quiz-box{
+    background:var(--card-bg);
+    border:2px dashed var(--neon-yellow);
+    border-radius:24px;
+    padding:38px 24px;
+    box-shadow:0 0 30px rgba(233,255,46,0.15);
+  }
+  .quiz-box h3{font-size:1.3rem;margin-bottom:22px;color:#fff;}
+  .quiz-options{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto;}
+  .quiz-opt{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    color:#f2fff4;
+    padding:14px 18px;border-radius:14px;
+    font-size:0.98rem;font-weight:600;
+    cursor:pointer;text-align:left;
+    transition:all .2s ease;
+  }
+  .quiz-opt:hover{border-color:var(--neon-green);background:rgba(43,255,155,0.1);transform:translateX(4px);}
+  .quiz-result{
+    margin-top:22px;font-size:1.05rem;font-weight:700;color:var(--neon-green);
+    text-shadow:0 0 10px rgba(43,255,155,0.5);
+    min-height:1.6em;
+  }
+
+  .form-cta{
+    max-width:640px;margin:0 auto;text-align:center;
+    background:var(--card-bg);
+    border:1px solid rgba(138,46,255,0.4);
+    border-radius:22px;padding:36px 26px;
+    box-shadow:0 0 30px rgba(138,46,255,0.2);
+  }
+  .form-cta h3{font-size:1.3rem;color:#fff;margin-bottom:10px;}
+  .form-cta p{color:#c9d6c2;margin-bottom:22px;}
+
+  .envios-row{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px;
+  }
+  .badge{
+    padding:10px 18px;border-radius:999px;font-size:0.88rem;font-weight:700;
+    border:1px solid var(--neon-purple);color:#c9a6ff;
+    text-shadow:0 0 8px rgba(138,46,255,0.5);
+  }
+
+  footer{
+    position:relative;z-index:2;
+    text-align:center;padding:50px 6vw 40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    margin-top:20px;
+  }
+  .social-row{
+    display:flex;gap:18px;justify-content:center;margin:24px 0 18px;flex-wrap:wrap;
+  }
+  .social-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:700;color:#fff;
+    padding:12px 24px;border-radius:999px;font-size:0.92rem;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .ig{
+    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    box-shadow:0 0 22px rgba(214,41,118,0.55);
+  }
+  .ig:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 34px rgba(214,41,118,0.85);}
+  .wa{
+    background:linear-gradient(90deg,#25D366,#128C7E);
+    box-shadow:0 0 22px rgba(37,211,102,0.5);
+  }
+  .wa:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 34px rgba(37,211,102,0.8);}
+  .yt{
+    background:linear-gradient(90deg,#ff0000,#c40000);
+    box-shadow:0 0 22px rgba(255,0,0,0.45);
+  }
+  .yt:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 34px rgba(255,0,0,0.75);}
+  footer p{color:#8a9682;font-size:0.85rem;margin-top:10px;}
+
+  @media (max-width:600px){
+    nav{padding:14px 5vw;}
+    nav a.cta-nav{padding:8px 16px;font-size:0.8rem;}
+    section{padding:56px 6vw;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-orbs" id="orbs"></div>
+
+<nav>
+  <div class="logo">💚 Alimentación Consciente</div>
+  <a class="cta-nav" href="https://wa.me/1170629277" target="_blank" rel="noopener">WhatsApp</a>
+</nav>
+
+<header class="hero">
+  <div class="tag">Comunidad en expansión 🔥</div>
+  <h1 class="title">Alimentación<br>Consciente</h1>
+  <p class="subtitle">📈 Te muestro cómo <b>empezar sin experiencia</b><br>💚 Alimentación consciente, a tu manera<br>🇦🇷 Envíos a todo el país</p>
+  <div class="hero-buttons">
+    <a class="btn-primary" href="https://wa.me/1170629277" target="_blank" rel="noopener">
+      👇 Escribime por WhatsApp
+    </a>
+    <a class="btn-secondary" href="https://instagram.com/simbolos.rp" target="_blank" rel="noopener">
+      📷 Instagram
+    </a>
+    <a class="btn-tertiary" href="https://youtu.be/n7sGbm1UShA" target="_blank" rel="noopener">
+      ▶️ Ver video
+    </a>
+  </div>
+</header>
+
+<section id="info">
+  <h2 class="section-title">¿Por qué <span>sumarte</span>?</h2>
+  <div class="info-grid">
+    <div class="card">
+      <span class="icon">🌱</span>
+      <h3>Sin experiencia</h3>
+      <p>Te acompaño paso a paso para que empieces aunque nunca hayas hecho algo así.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🔥</span>
+      <h3>Comunidad activa</h3>
+      <p>Formás parte de una comunidad en expansión que crece todos los días.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🇦🇷</span>
+      <h3>Envíos a todo el país</h3>
+      <p>No importa en qué provincia estés, te llega igual.</p>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <h2 class="section-title">Mirá <span>cómo funciona</span> ▶️</h2>
+  <div class="video-wrap">
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/n7sGbm1UShA" title="Alimentación Consciente" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">3 minutos para entender de qué se trata 💚</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2 class="section-title">¿Vas por <span>buen camino</span>? 🌿</h2>
+  <div class="quiz-wrap">
+    <div class="quiz-box">
+      <h3 id="quizQuestion">¿Cuántas veces por semana comés algo realmente natural?</h3>
+      <div class="quiz-options" id="quizOptions">
+        <button class="quiz-opt" data-r="Genial, ya tenés el hábito. Te muestro cómo ir un paso más allá 🚀">Todos los días</button>
+        <button class="quiz-opt" data-r="¡Buen punto de partida! Con la guía correcta esto crece rápido 🌱">Algunas veces</button>
+        <button class="quiz-opt" data-r="Es el momento perfecto para empezar, sin experiencia y a tu ritmo 💚">Casi nunca</button>
+      </div>
+      <p class="quiz-result" id="quizResult"></p>
+    </div>
+  </div>
+</section>
+
+<section id="form">
+  <div class="form-cta">
+    <h3>¿Querés más información?</h3>
+    <p>Completá el formulario y te contactamos.</p>
+    <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfPi6kv76VdEOje3UE8CjNBXMEnT5XMtLlQc/viewform" target="_blank" rel="noopener">
+      📝 Completar formulario
+    </a>
+  </div>
+</section>
+
+<section class="envios-block" style="text-align:center;">
+  <h2 class="section-title">📦 Envíos a <span>todo el país</span></h2>
+  <div class="envios-row">
+    <span class="badge">🇦🇷 Todo Argentina</span>
+    <span class="badge">💬 Atención por WhatsApp</span>
+    <span class="badge">🔥 Comunidad en expansión</span>
+  </div>
+</section>
+
+<footer>
+  <h3 style="color:#fff;font-size:1.3rem;">Dale el primer paso hoy</h3>
+  <div class="social-row">
+    <a class="social-btn wa" href="https://wa.me/1170629277" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="social-btn ig" href="https://instagram.com/simbolos.rp" target="_blank" rel="noopener">📷 @simbolos.rp</a>
+    <a class="social-btn yt" href="https://youtu.be/n7sGbm1UShA" target="_blank" rel="noopener">▶️ YouTube</a>
+  </div>
+  <p>© Alimentación Consciente · Envíos a todo 🇦🇷</p>
+</footer>
+
+<script>
+  (function(){
+    const wrap = document.getElementById('orbs');
+    const colors = ['#2bff9b','#ff2ee6','#e9ff2e','#8a2eff','#ff7a1f'];
+    const count = window.innerWidth < 600 ? 14 : 26;
+    for(let i=0;i<count;i++){
+      const o = document.createElement('div');
+      o.className = 'orb';
+      const size = 6 + Math.random()*22;
+      o.style.width = size+'px';
+      o.style.height = size+'px';
+      o.style.left = Math.random()*100+'vw';
+      o.style.background = colors[Math.floor(Math.random()*colors.length)];
+      o.style.boxShadow = '0 0 '+(size*1.5)+'px '+o.style.background;
+      const dur = 10 + Math.random()*14;
+      o.style.animationDuration = dur+'s';
+      o.style.animationDelay = (-Math.random()*dur)+'s';
+      wrap.appendChild(o);
+    }
+  })();
+
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  }, {threshold:0.2});
+  cards.forEach(c=>io.observe(c));
+
+  // interactive quiz
+  const opts = document.querySelectorAll('.quiz-opt');
+  const result = document.getElementById('quizResult');
+  opts.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      result.textContent = btn.getAttribute('data-r');
+      opts.forEach(o=>o.style.borderColor='rgba(255,255,255,0.15)');
+      btn.style.borderColor = '#2bff9b';
+    });
+  });
+</script>
+
+</body>
+</html>

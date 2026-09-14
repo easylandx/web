@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Compostera de Emily | Sustratos Orgánicos en Pilar</title>
+<meta name="description" content="Venta minorista y mayorista de sustratos orgánicos. Somos productores. Pilar, Buenos Aires.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#0d0221;
+    --bg2:#1a0938;
+    --neon-green:#39ff14;
+    --neon-lime:#ccff00;
+    --neon-pink:#ff2ee6;
+    --neon-cyan:#00fff2;
+    --neon-orange:#ff9a1f;
+    --card-bg:rgba(255,255,255,0.05);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(57,255,20,0.25), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(255,46,230,0.25), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(0,255,242,0.2), transparent 50%),
+      linear-gradient(160deg, var(--bg1), var(--bg2) 60%, #14012e);
+    background-attachment:fixed;
+    color:#f1ffe8;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+  h1,h2,h3,.logo{font-family:'Baloo 2', cursive;}
+
+  /* floating particles canvas-ish via divs */
+  .bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:0.55;animation:float linear infinite;}
+  @keyframes float{
+    0%{transform:translateY(110vh) translateX(0) rotate(0deg);}
+    100%{transform:translateY(-15vh) translateX(20px) rotate(360deg);}
+  }
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(13,2,33,0.55);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(57,255,20,0.25);
+  }
+  .logo{font-size:1.4rem;font-weight:800;color:var(--neon-lime);
+    text-shadow:0 0 8px var(--neon-lime), 0 0 20px rgba(204,255,0,0.5);
+    display:flex;align-items:center;gap:8px;}
+  nav a.cta-nav{
+    text-decoration:none;font-weight:700;color:#0d0221;
+    background:linear-gradient(90deg,var(--neon-green),var(--neon-lime));
+    padding:10px 22px;border-radius:999px;font-size:0.95rem;
+    box-shadow:0 0 18px rgba(57,255,20,0.6);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  nav a.cta-nav:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 28px rgba(57,255,20,0.9);}
+
+  header.hero{
+    position:relative;z-index:2;
+    min-height:90vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:60px 6vw 40px;
+  }
+  .tag{
+    display:inline-block;padding:8px 18px;border-radius:999px;
+    border:1px solid var(--neon-cyan);color:var(--neon-cyan);
+    font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;
+    margin-bottom:24px;text-shadow:0 0 10px var(--neon-cyan);
+    box-shadow:inset 0 0 12px rgba(0,255,242,0.3), 0 0 12px rgba(0,255,242,0.2);
+    animation:pulseTag 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseTag{0%,100%{opacity:1;}50%{opacity:0.6;}}
+
+  h1.title{
+    font-size:clamp(2.4rem, 7vw, 5rem);
+    font-weight:800;
+    line-height:1.05;
+    background:linear-gradient(90deg, var(--neon-lime), var(--neon-green) 40%, var(--neon-cyan) 70%, var(--neon-pink));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 30px rgba(57,255,20,0.35);
+    margin-bottom:14px;
+    animation:hueMove 8s linear infinite;
+    background-size:300% 100%;
+  }
+  @keyframes hueMove{
+    0%{background-position:0% 50%;}
+    100%{background-position:300% 50%;}
+  }
+  .subtitle{
+    font-size:clamp(1.1rem,3vw,1.6rem);
+    color:var(--neon-pink);
+    text-shadow:0 0 14px rgba(255,46,230,0.6);
+    font-weight:700;
+    margin-bottom:30px;
+  }
+  .plant-emoji{font-size:2.2rem;filter:drop-shadow(0 0 10px var(--neon-green));}
+
+  .hero-buttons{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:10px;}
+  .btn-primary, .btn-secondary{
+    text-decoration:none;font-weight:700;padding:16px 34px;border-radius:999px;
+    font-size:1.05rem;display:inline-flex;align-items:center;gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,#25D366,#39ff14);
+    color:#0d0221;
+    box-shadow:0 0 25px rgba(37,211,102,0.6);
+  }
+  .btn-primary:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 40px rgba(37,211,102,0.9);}
+  .btn-secondary{
+    background:transparent;
+    color:var(--neon-pink);
+    border:2px solid var(--neon-pink);
+    box-shadow:0 0 18px rgba(255,46,230,0.35);
+  }
+  .btn-secondary:hover{background:rgba(255,46,230,0.12);transform:translateY(-3px) scale(1.05);}
+
+  section{position:relative;z-index:2;padding:70px 6vw;}
+
+  .info-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:26px;max-width:1100px;margin:0 auto;
+  }
+  .card{
+    background:var(--card-bg);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;padding:30px 24px;
+    backdrop-filter:blur(6px);
+    text-align:center;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    opacity:0;transform:translateY(30px);
+  }
+  .card.visible{opacity:1;transform:translateY(0);}
+  .card:nth-child(1){transition-delay:.05s;}
+  .card:nth-child(2){transition-delay:.15s;}
+  .card:nth-child(3){transition-delay:.25s;}
+  .card:hover{transform:translateY(-8px);}
+  .card .icon{font-size:2.6rem;margin-bottom:14px;display:block;}
+  .card:nth-child(1){border-color:rgba(57,255,20,0.3);}
+  .card:nth-child(1):hover{box-shadow:0 0 30px rgba(57,255,20,0.35);}
+  .card:nth-child(2){border-color:rgba(0,255,242,0.3);}
+  .card:nth-child(2):hover{box-shadow:0 0 30px rgba(0,255,242,0.35);}
+  .card:nth-child(3){border-color:rgba(255,46,230,0.3);}
+  .card:nth-child(3):hover{box-shadow:0 0 30px rgba(255,46,230,0.35);}
+  .card h3{font-size:1.25rem;margin-bottom:10px;color:#fff;}
+  .card p{color:#cfd8c9;font-size:0.95rem;line-height:1.5;}
+
+  .section-title{
+    text-align:center;font-size:clamp(1.8rem,4vw,2.6rem);
+    margin-bottom:40px;color:#fff;
+  }
+  .section-title span{
+    color:var(--neon-lime);text-shadow:0 0 16px rgba(204,255,0,0.6);
+  }
+
+  /* interactive compost mixer */
+  .mixer-wrap{
+    max-width:640px;margin:0 auto;text-align:center;
+  }
+  .mixer-box{
+    position:relative;
+    background:var(--card-bg);
+    border:2px dashed var(--neon-lime);
+    border-radius:24px;
+    padding:40px 24px;
+    box-shadow:0 0 30px rgba(204,255,0,0.15);
+  }
+  #mixCircle{
+    width:180px;height:180px;border-radius:50%;margin:0 auto 22px;
+    background:conic-gradient(from 0deg, #6b4226, #39ff14, #ccff00, #6b4226);
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.8rem;
+    box-shadow:0 0 40px rgba(57,255,20,0.35);
+    transition:transform .15s ease;
+    cursor:pointer;
+    user-select:none;
+  }
+  #mixCircle.spin{animation:spin 0.9s linear;}
+  @keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+  #mixLabel{font-size:1.1rem;color:var(--neon-lime);font-weight:700;min-height:1.4em;}
+  #mixBar{
+    width:100%;height:14px;border-radius:999px;background:rgba(255,255,255,0.1);
+    overflow:hidden;margin-top:18px;border:1px solid rgba(255,255,255,0.15);
+  }
+  #mixFill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,var(--neon-green),var(--neon-lime));
+    box-shadow:0 0 12px var(--neon-green);
+    transition:width .4s ease;
+  }
+  .mixer-hint{margin-top:14px;font-size:0.9rem;color:#a9b8a0;}
+
+  .location-block{
+    max-width:700px;margin:0 auto;text-align:center;
+  }
+  .location-block .pin{
+    font-size:2rem;
+  }
+  .badge-row{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px;
+  }
+  .badge{
+    padding:10px 18px;border-radius:999px;font-size:0.9rem;font-weight:700;
+    border:1px solid var(--neon-cyan);color:var(--neon-cyan);
+    text-shadow:0 0 8px rgba(0,255,242,0.5);
+  }
+
+  footer{
+    position:relative;z-index:2;
+    text-align:center;padding:50px 6vw 40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    margin-top:20px;
+  }
+  .social-row{
+    display:flex;gap:20px;justify-content:center;margin:24px 0 18px;flex-wrap:wrap;
+  }
+  .social-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:700;color:#fff;
+    padding:12px 24px;border-radius:999px;font-size:0.95rem;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .ig{
+    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    box-shadow:0 0 22px rgba(214,41,118,0.55);
+  }
+  .ig:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 34px rgba(214,41,118,0.85);}
+  .wa{
+    background:linear-gradient(90deg,#25D366,#128C7E);
+    box-shadow:0 0 22px rgba(37,211,102,0.5);
+  }
+  .wa:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 0 34px rgba(37,211,102,0.8);}
+  footer p{color:#8a9682;font-size:0.85rem;margin-top:10px;}
+
+  @media (max-width:600px){
+    nav{padding:14px 5vw;}
+    nav a.cta-nav{padding:8px 16px;font-size:0.85rem;}
+    section{padding:56px 6vw;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-orbs" id="orbs"></div>
+
+<nav>
+  <div class="logo">🌱 La Compostera de Emily</div>
+  <a class="cta-nav" href="https://wa.link/mtm059" target="_blank" rel="noopener">Pedí ahora</a>
+</nav>
+
+<header class="hero">
+  <div class="tag">Somos productores</div>
+  <h1 class="title">La Compostera<br>de Emily</h1>
+  <p class="subtitle"><span class="plant-emoji">🌱</span> Sustratos Orgánicos <span class="plant-emoji">🌱</span></p>
+  <div class="hero-buttons">
+    <a class="btn-primary" href="https://wa.link/mtm059" target="_blank" rel="noopener">
+      👇🏻 Envianos un WhatsApp
+    </a>
+    <a class="btn-secondary" href="https://instagram.com/lacomposteradeemily" target="_blank" rel="noopener">
+      📷 Seguinos en Instagram
+    </a>
+  </div>
+</header>
+
+<section id="info">
+  <h2 class="section-title">Venta <span>minorista</span> y <span>mayorista</span> 🚛</h2>
+  <div class="info-grid">
+    <div class="card">
+      <span class="icon">🌾</span>
+      <h3>100% Productores</h3>
+      <p>Elaboramos nuestro propio sustrato orgánico, de la tierra directo a tus plantas.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🛒</span>
+      <h3>Minorista y Mayorista</h3>
+      <p>Comprá la cantidad que necesites, para tu huerta o para revender.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🚛</span>
+      <h3>Envíos</h3>
+      <p>Coordinamos entregas en Pilar y zonas cercanas, Buenos Aires.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mixer">
+  <h2 class="section-title">Probá tu <span>mezcla</span> 🌿</h2>
+  <div class="mixer-wrap">
+    <div class="mixer-box">
+      <div id="mixCircle">🪴</div>
+      <div id="mixLabel">Tocá el círculo para compostar</div>
+      <div id="mixBar"><div id="mixFill"></div></div>
+      <p class="mixer-hint">Cada toque suma "vida" a tu sustrato orgánico 🌱</p>
+    </div>
+  </div>
+</section>
+
+<section class="location-block">
+  <h2 class="section-title"><span class="pin">📍</span> Pilar, <span>Buenos Aires</span></h2>
+  <div class="badge-row">
+    <span class="badge">🌱 Orgánico</span>
+    <span class="badge">🚛 Envíos a domicilio</span>
+    <span class="badge">📦 Por bolsa o a granel</span>
+  </div>
+</section>
+
+<footer>
+  <h3 style="color:#fff;font-size:1.4rem;">¿Listo para hacer crecer tu huerta?</h3>
+  <div class="social-row">
+    <a class="social-btn wa" href="https://wa.link/mtm059" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="social-btn ig" href="https://instagram.com/lacomposteradeemily" target="_blank" rel="noopener">📷 @lacomposteradeemily</a>
+  </div>
+  <p>© La Compostera de Emily · Pilar, Bs. As. · Sustratos Orgánicos</p>
+</footer>
+
+<script>
+  // floating neon orbs background
+  (function(){
+    const wrap = document.getElementById('orbs');
+    const colors = ['#39ff14','#ff2ee6','#00fff2','#ccff00','#ff9a1f'];
+    const count = window.innerWidth < 600 ? 14 : 26;
+    for(let i=0;i<count;i++){
+      const o = document.createElement('div');
+      o.className = 'orb';
+      const size = 6 + Math.random()*22;
+      o.style.width = size+'px';
+      o.style.height = size+'px';
+      o.style.left = Math.random()*100+'vw';
+      o.style.background = colors[Math.floor(Math.random()*colors.length)];
+      o.style.boxShadow = '0 0 '+(size*1.5)+'px '+o.style.background;
+      const dur = 10 + Math.random()*14;
+      o.style.animationDuration = dur+'s';
+      o.style.animationDelay = (-Math.random()*dur)+'s';
+      wrap.appendChild(o);
+    }
+  })();
+
+  // scroll reveal
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  }, {threshold:0.2});
+  cards.forEach(c=>io.observe(c));
+
+  // interactive compost mixer
+  const mixCircle = document.getElementById('mixCircle');
+  const mixLabel = document.getElementById('mixLabel');
+  const mixFill = document.getElementById('mixFill');
+  const faces = ['🪴','🌱','🌿','🍃','🌻'];
+  const messages = [
+    'Tocá el círculo para compostar',
+    'Mezclando materia orgánica...',
+    'Sumando nutrientes 🌾',
+    'Tu sustrato está tomando forma...',
+    '¡Casi listo!',
+    '¡Sustrato 100% orgánico! 🌱'
+  ];
+  let progress = 0;
+
+  mixCircle.addEventListener('click', () => {
+    progress = Math.min(progress + 20, 100);
+    mixFill.style.width = progress + '%';
+    mixCircle.classList.remove('spin');
+    void mixCircle.offsetWidth;
+    mixCircle.classList.add('spin');
+    const step = Math.min(Math.floor(progress/20), faces.length-1);
+    mixCircle.textContent = faces[step];
+    mixLabel.textContent = messages[Math.min(Math.floor(progress/20), messages.length-1)];
+    if(progress >= 100){
+      mixLabel.textContent = messages[messages.length-1];
+      setTimeout(()=>{ progress = 0; mixFill.style.width='0%'; mixCircle.textContent='🪴'; mixLabel.textContent = messages[0]; }, 2200);
+    }
+  });
+</script>
+
+</body>
+</html>

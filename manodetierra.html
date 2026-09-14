@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mano de Tierra — Aceites esenciales de la Patagonia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tierra-950:#081410;
+    --tierra-900:#0d1f17;
+    --tierra-800:#14301f;
+    --tierra-700:#1d4029;
+    --lima:#c8ff4d;
+    --lima-soft:#e4ffab;
+    --fucsia:#ff4fd8;
+    --fucsia-soft:#ffb0ec;
+    --crema:#f4f1e4;
+    --musgo:#9fb8a4;
+    --musgo-dim:#5f7a68;
+    --radius-organic: 63% 37% 41% 59% / 47% 41% 59% 53%;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--tierra-950);
+    color:var(--crema);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    line-height:1.05;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  ::selection{background:var(--fucsia);color:var(--tierra-950);}
+
+  :focus-visible{
+    outline:2px solid var(--lima);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- decorative texture ---------- */
+  .grain{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:5;
+    opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:40;
+    background:rgba(8,20,16,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(200,255,77,.12);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.25rem;
+    letter-spacing:.01em;
+    color:var(--crema);
+    text-decoration:none;
+  }
+  .logo em{
+    font-style:normal;
+    color:var(--lima);
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    font-size:.92rem;
+    color:var(--musgo);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--lima);}
+  .nav-cta{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .ig-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:38px;height:38px;
+    border-radius:50%;
+    border:1px solid rgba(244,241,228,.25);
+    text-decoration:none;
+    transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .ig-btn:hover{
+    border-color:var(--fucsia);
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(255,79,216,.45);
+  }
+  .btn-shop{
+    background:var(--lima);
+    color:var(--tierra-950);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:.88rem;
+    padding:10px 20px;
+    border-radius:100px;
+    text-decoration:none;
+    white-space:nowrap;
+    box-shadow:0 0 0 rgba(200,255,77,0);
+    transition:box-shadow .3s ease, transform .2s ease;
+  }
+  .btn-shop:hover{
+    box-shadow:0 0 26px rgba(200,255,77,.55);
+    transform:translateY(-2px);
+  }
+  .burger{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 120px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--musgo);
+    font-size:.85rem;
+    margin-bottom:22px;
+  }
+  .eyebrow-line svg{width:16px;height:16px;flex-shrink:0;}
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.4rem);
+    color:var(--crema);
+  }
+  .hero h1 .accent{
+    font-style:italic;
+    background:linear-gradient(100deg, var(--lima), var(--fucsia) 85%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lead{
+    margin-top:24px;
+    max-width:46ch;
+    color:var(--musgo);
+    font-size:1.08rem;
+    line-height:1.65;
+  }
+  .hero-actions{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-top:38px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--fucsia);
+    color:var(--tierra-950);
+    font-weight:600;
+    padding:15px 30px;
+    border-radius:100px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 0 0 rgba(255,79,216,0);
+    transition:box-shadow .3s ease, transform .2s ease;
+  }
+  .btn-primary:hover{
+    box-shadow:0 0 32px rgba(255,79,216,.55);
+    transform:translateY(-2px);
+  }
+  .btn-text{
+    text-decoration:none;
+    font-size:.92rem;
+    color:var(--crema);
+    border-bottom:1px solid rgba(244,241,228,.3);
+    padding-bottom:2px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .btn-text:hover{color:var(--lima); border-color:var(--lima);}
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1/1.05;
+  }
+  .blob{
+    position:absolute;
+    inset:6%;
+    border-radius:var(--radius-organic);
+    background:
+      radial-gradient(circle at 30% 25%, rgba(200,255,77,.55), transparent 55%),
+      radial-gradient(circle at 75% 70%, rgba(255,79,216,.5), transparent 55%),
+      var(--tierra-800);
+    box-shadow: inset 0 0 60px rgba(0,0,0,.4);
+    animation: blobmove 14s ease-in-out infinite;
+  }
+  @keyframes blobmove{
+    0%,100%{ border-radius:63% 37% 41% 59% / 47% 41% 59% 53%; }
+    50%{ border-radius:41% 59% 63% 37% / 55% 47% 53% 45%; }
+  }
+  .hero-visual .stem{
+    position:absolute;
+    inset:0;
+    z-index:2;
+  }
+  .hero-glow-dot{
+    position:absolute;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--lima);
+    box-shadow:0 0 16px 4px rgba(200,255,77,.7);
+  }
+
+  .field-lines{
+    position:absolute;
+    top:-10%;
+    right:-18%;
+    width:70%;
+    height:140%;
+    opacity:.35;
+    z-index:1;
+    pointer-events:none;
+  }
+
+  /* ---------- section shell ---------- */
+  section{
+    position:relative;
+    padding:104px 0;
+  }
+  .section-head{
+    max-width:60ch;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.6vw, 2.7rem);
+    color:var(--crema);
+  }
+  .section-head h2 em{
+    font-style:italic;
+    color:var(--lima);
+  }
+  .section-head p{
+    color:var(--musgo);
+    margin-top:16px;
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(200,255,77,.35), rgba(255,79,216,.35), transparent);
+    border:none;
+  }
+
+  /* ---------- about ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+  }
+  .about-portrait{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:38% 62% 55% 45% / 45% 40% 60% 55%;
+    background:
+      radial-gradient(circle at 70% 20%, rgba(255,79,216,.4), transparent 60%),
+      radial-gradient(circle at 20% 80%, rgba(200,255,77,.35), transparent 55%),
+      var(--tierra-800);
+    overflow:hidden;
+    border:1px solid rgba(244,241,228,.08);
+  }
+  .about-portrait span{
+    position:absolute;
+    bottom:22px;
+    left:24px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--crema);
+  }
+  .about-copy p{
+    color:var(--musgo);
+    line-height:1.75;
+    font-size:1.03rem;
+    margin:0 0 18px;
+    max-width:56ch;
+  }
+  .about-copy strong{color:var(--crema); font-weight:600;}
+  .signature{
+    margin-top:28px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--lima);
+    font-size:1.3rem;
+  }
+
+  /* ---------- products ---------- */
+  .products-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .product-card{
+    position:relative;
+    padding:34px 28px 30px;
+    background:var(--tierra-900);
+    border:1px solid rgba(244,241,228,.08);
+    border-radius:28px 12px 28px 12px;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .product-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--card-glow, var(--lima));
+  }
+  .product-card .icon-blob{
+    width:56px;height:56px;
+    border-radius:60% 40% 45% 55% / 55% 45% 55% 45%;
+    background:var(--card-glow, var(--lima));
+    margin-bottom:22px;
+    box-shadow:0 0 22px -2px var(--card-glow, var(--lima));
+  }
+  .product-card h3{
+    font-size:1.25rem;
+    color:var(--crema);
+    margin-bottom:12px;
+  }
+  .product-card p{
+    color:var(--musgo);
+    font-size:.95rem;
+    line-height:1.6;
+    margin:0;
+  }
+
+  /* ---------- ritual finder (interactive) ---------- */
+  .ritual{
+    background:var(--tierra-900);
+    border-radius:32px;
+    padding:56px 48px 60px;
+    border:1px solid rgba(244,241,228,.06);
+  }
+  .ritual-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .ritual-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .ritual-btn{
+    appearance:none;
+    cursor:pointer;
+    background:transparent;
+    border:1px solid rgba(244,241,228,.22);
+    color:var(--crema);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:.95rem;
+    padding:13px 22px;
+    border-radius:100px;
+    transition:all .25s ease;
+  }
+  .ritual-btn:hover{
+    border-color:var(--lima);
+  }
+  .ritual-btn[aria-pressed="true"]{
+    background:var(--lima);
+    color:var(--tierra-950);
+    border-color:var(--lima);
+    font-weight:600;
+    box-shadow:0 0 24px rgba(200,255,77,.4);
+  }
+  .ritual-result{
+    background:var(--tierra-950);
+    border:1px solid rgba(244,241,228,.08);
+    border-radius:24px;
+    padding:32px;
+    min-height:230px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    transition:box-shadow .4s ease;
+  }
+  .ritual-result .tag{
+    display:inline-flex;
+    align-self:flex-start;
+    font-size:.78rem;
+    color:var(--tierra-950);
+    background:var(--fucsia);
+    padding:5px 14px;
+    border-radius:100px;
+    margin-bottom:16px;
+    font-weight:600;
+  }
+  .ritual-result h3{
+    font-size:1.5rem;
+    color:var(--crema);
+    margin-bottom:10px;
+  }
+  .ritual-result p{
+    color:var(--musgo);
+    line-height:1.65;
+    margin:0 0 18px;
+    font-size:.98rem;
+  }
+  .ritual-result a{
+    align-self:flex-start;
+    font-size:.9rem;
+    color:var(--lima);
+    text-decoration:none;
+    border-bottom:1px solid rgba(200,255,77,.5);
+    padding-bottom:2px;
+  }
+  .ritual-result a:hover{color:var(--lima-soft);}
+
+  /* ---------- instagram strip ---------- */
+  .ig-strip{
+    text-align:center;
+    padding:100px 0 110px;
+  }
+  .ig-strip h2{
+    font-size:clamp(1.9rem,4vw,2.9rem);
+    color:var(--crema);
+    max-width:20ch;
+    margin:0 auto 20px;
+  }
+  .ig-strip h2 em{font-style:italic; color:var(--fucsia);}
+  .ig-strip p{
+    color:var(--musgo);
+    max-width:48ch;
+    margin:0 auto 34px;
+    line-height:1.6;
+  }
+  .btn-ig-big{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    padding:16px 32px;
+    border-radius:100px;
+    background:linear-gradient(100deg, var(--fucsia), var(--lima));
+    color:var(--tierra-950);
+    font-weight:600;
+    box-shadow:0 0 0 rgba(255,79,216,0);
+    transition:box-shadow .3s ease, transform .2s ease;
+  }
+  .btn-ig-big:hover{
+    box-shadow:0 0 34px rgba(255,79,216,.4);
+    transform:translateY(-3px);
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid rgba(244,241,228,.1);
+    padding:44px 0;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-row .logo{font-size:1.05rem;}
+  .foot-links{
+    display:flex;
+    gap:22px;
+    list-style:none;
+    padding:0;margin:0;
+    font-size:.86rem;
+    color:var(--musgo-dim);
+  }
+  .foot-links a{text-decoration:none; color:var(--musgo-dim); transition:color .2s ease;}
+  .foot-links a:hover{color:var(--lima);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .blob{animation:none;}
+    *{transition:none !important;}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 940px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{max-width:340px; margin:40px auto 0;}
+    .about{grid-template-columns:1fr;}
+    .about-portrait{max-width:340px; margin:0 auto;}
+    .products-grid{grid-template-columns:1fr 1fr;}
+    .ritual-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 680px){
+    nav{padding:16px 20px;}
+    .nav-links{display:none;}
+    .wrap{padding:0 20px;}
+    section{padding:76px 0;}
+    .products-grid{grid-template-columns:1fr;}
+    .ritual{padding:36px 22px 40px;}
+    .footer-row{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">mano <em>de tierra</em></a>
+    <ul class="nav-links">
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#angie">Angie</a></li>
+      <li><a href="#ritual">Encontrá tu ritual</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="ig-btn" href="https://instagram.com/mano.de.tierra" target="_blank" rel="noopener" aria-label="Instagram de Mano de Tierra">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="btn-shop" href="https://mdetierra.mitiendanube.com" target="_blank" rel="noopener">Visitar tienda</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="field-lines" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M20 580C120 480 60 380 160 300C260 220 200 100 320 20" stroke="url(#g1)" stroke-width="1.5"/>
+      <path d="M60 600C160 500 100 400 200 320C300 240 240 120 360 40" stroke="url(#g2)" stroke-width="1"/>
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="400" y2="600" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#c8ff4d"/><stop offset="1" stop-color="#ff4fd8"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0" y1="600" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4fd8"/><stop offset="1" stop-color="#c8ff4d"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="wrap">
+      <div>
+        <div class="eyebrow-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 3 4 6 4 9a4 4 0 0 1-8 0c0-3 1-6 4-9z"/><path d="M12 12v9"/></svg>
+          Destilado a mano, lote por lote, en la Patagonia
+        </div>
+        <h1>Esencias vivas, <span class="accent">directo de la tierra</span></h1>
+        <p class="lead">Soy Angie Armando. Elaboro aceites esenciales puros, hidrolatos y preparados herbales cosechados y destilados en la Patagonia — para pieles y rutinas que buscan algo real.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://mdetierra.mitiendanube.com" target="_blank" rel="noopener">
+            Comprar en la tienda
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn-text" href="#ritual">Encontrá tu ritual ideal</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="blob"></div>
+        <svg class="stem" viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M150 300C150 220 110 200 110 140C110 90 150 60 150 20" stroke="#f4f1e4" stroke-opacity=".55" stroke-width="1.4"/>
+          <path d="M150 180C150 180 100 170 90 130" stroke="#f4f1e4" stroke-opacity=".4" stroke-width="1.2"/>
+          <path d="M150 220C150 220 195 205 205 165" stroke="#f4f1e4" stroke-opacity=".4" stroke-width="1.2"/>
+          <ellipse cx="150" cy="20" rx="10" ry="16" fill="#c8ff4d" fill-opacity=".85"/>
+          <ellipse cx="90" cy="128" rx="9" ry="14" fill="#ff4fd8" fill-opacity=".8" transform="rotate(-35 90 128)"/>
+          <ellipse cx="207" cy="163" rx="9" ry="14" fill="#ff4fd8" fill-opacity=".8" transform="rotate(35 207 163)"/>
+        </svg>
+        <div class="hero-glow-dot" style="top:14%; left:48%;"></div>
+        <div class="hero-glow-dot" style="top:58%; left:28%; background:var(--fucsia); box-shadow:0 0 16px 4px rgba(255,79,216,.7);"></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section id="angie">
+    <div class="wrap about">
+      <div class="about-portrait">
+        <span>Angie · Patagonia</span>
+      </div>
+      <div class="about-copy">
+        <h2 style="margin-bottom:22px;">Una destilería <em style="font-style:italic;color:var(--lima)">pequeña</em>, hecha con las manos</h2>
+        <p>Cada frasco de <strong>Mano de Tierra</strong> nace de plantas cosechadas cerca de casa, en la Patagonia, y se destila en lotes chicos para cuidar cada detalle del proceso.</p>
+        <p>No trabajo con fórmulas genéricas: cada aceite esencial, hidrolato y preparado herbal responde a lo que la planta da en su momento — por eso ningún lote es exactamente igual al anterior, y eso también es parte de lo que ofrezco.</p>
+        <p class="signature">— Angie Armando</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PRODUCTS -->
+  <section id="productos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Lo que sale de la <em>destilería</em></h2>
+        <p>Tres formas de llevar la Patagonia a tu rutina diaria de cuidado personal.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card" style="--card-glow: var(--lima);">
+          <div class="icon-blob"></div>
+          <h3>Aceites esenciales</h3>
+          <p>Extraídos por destilación de plantas patagónicas, puros y sin diluir, para aromaterapia y cuidado de la piel.</p>
+        </div>
+        <div class="product-card" style="--card-glow: var(--fucsia);">
+          <div class="icon-blob"></div>
+          <h3>Hidrolatos</h3>
+          <p>El agua floral que queda de la destilación: suave, fresca y perfecta como tónico facial o corporal diario.</p>
+        </div>
+        <div class="product-card" style="--card-glow: var(--lima-soft);">
+          <div class="icon-blob"></div>
+          <h3>Preparados herbales</h3>
+          <p>Macerados, ungüentos y mezclas a base de hierbas silvestres, pensados para necesidades puntuales de la piel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- INTERACTIVE RITUAL FINDER -->
+  <section id="ritual">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>¿Qué necesita <em>tu piel</em> hoy?</h2>
+        <p>Elegí lo que estás buscando y te muestro con qué producto empezar.</p>
+      </div>
+
+      <div class="ritual">
+        <div class="ritual-grid">
+          <div class="ritual-options" role="group" aria-label="Elegí una necesidad">
+            <button class="ritual-btn" data-key="calma" aria-pressed="false">Calma y descanso</button>
+            <button class="ritual-btn" data-key="energia" aria-pressed="false">Energía y foco</button>
+            <button class="ritual-btn" data-key="piel" aria-pressed="false">Piel seca o sensible</button>
+            <button class="ritual-btn" data-key="brillo" aria-pressed="false">Frescura y brillo</button>
+          </div>
+
+          <div class="ritual-result" id="ritualResult">
+            <span class="tag">Empezá acá</span>
+            <h3>Elegí una opción a la izquierda</h3>
+            <p>Te voy a recomendar un aceite, hidrolato o preparado según lo que estés necesitando hoy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="ig-strip">
+    <div class="wrap">
+      <h2>El día a día de la destilería está en <em>Instagram</em></h2>
+      <p>Cosechas, destilaciones y lotes nuevos — @mano.de.tierra.</p>
+      <a class="btn-ig-big" href="https://instagram.com/mano.de.tierra" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        Seguir @mano.de.tierra
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <a href="#top" class="logo">mano <em>de tierra</em></a>
+    <ul class="foot-links">
+      <li><a href="https://mdetierra.mitiendanube.com" target="_blank" rel="noopener">Tienda</a></li>
+      <li><a href="https://instagram.com/mano.de.tierra" target="_blank" rel="noopener">Instagram</a></li>
+      <li>Patagonia, Argentina</li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const data = {
+    calma: {
+      tag: "Calma y descanso",
+      title: "Hidrolato de lavanda + aceite esencial calmante",
+      text: "Rociá el hidrolato sobre el rostro o la almohada y usá unas gotas del aceite esencial en un difusor antes de dormir. Ideal para bajar revoluciones al final del día.",
+      glow: "rgba(200,255,77,.35)"
+    },
+    energia: {
+      tag: "Energía y foco",
+      title: "Aceite esencial cítrico patagónico",
+      text: "Unas gotas en las muñecas o en el difusor durante la mañana ayudan a despertar los sentidos antes de empezar el día.",
+      glow: "rgba(255,79,216,.3)"
+    },
+    piel: {
+      tag: "Piel seca o sensible",
+      title: "Preparado herbal + hidrolato suave",
+      text: "El ungüento herbal nutre en profundidad, y el hidrolato funciona como tónico previo para calmar e hidratar sin irritar.",
+      glow: "rgba(200,255,77,.35)"
+    },
+    brillo: {
+      tag: "Frescura y brillo",
+      title: "Hidrolato tonificante de uso diario",
+      text: "Aplicado después de la limpieza facial, refresca, cierra los poros y deja la piel lista para tu crema habitual.",
+      glow: "rgba(255,79,216,.3)"
+    }
+  };
+
+  const buttons = document.querySelectorAll(".ritual-btn");
+  const resultBox = document.getElementById("ritualResult");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.setAttribute("aria-pressed", "false"));
+      btn.setAttribute("aria-pressed", "true");
+
+      const info = data[btn.dataset.key];
+      resultBox.style.boxShadow = `0 0 40px ${info.glow}`;
+      resultBox.innerHTML = `
+        <span class="tag">${info.tag}</span>
+        <h3>${info.title}</h3>
+        <p>${info.text}</p>
+        <a href="https://mdetierra.mitiendanube.com" target="_blank" rel="noopener">Ver en la tienda →</a>
+      `;
+    });
+  });
+
+  // Subtle parallax on hero blob, respecting reduced motion
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!prefersReduced){
+    const visual = document.querySelector(".hero-visual");
+    const blob = document.querySelector(".blob");
+    if(visual && blob){
+      visual.addEventListener("mousemove", (e) => {
+        const rect = visual.getBoundingClientRect();
+        const x = (e.clientX - rect.left)/rect.width - 0.5;
+        const y = (e.clientY - rect.top)/rect.height - 0.5;
+        blob.style.transform = `translate(${x*14}px, ${y*14}px)`;
+      });
+      visual.addEventListener("mouseleave", () => {
+        blob.style.transform = "translate(0,0)";
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

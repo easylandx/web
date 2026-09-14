@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indígena — Cosmética animal de campo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #07120b;
+    --bg-soft: #0d1e13;
+    --panel: #0f2417;
+    --lime: #c8ff3d;
+    --pink: #ff3fb0;
+    --teal: #33fbe0;
+    --cream: #f3f6ea;
+    --muted: #a9c2ab;
+    --line: rgba(200,255,61,0.18);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1,h2,h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    line-height: 1.05;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+  ::selection{ background: var(--pink); color:#07120b; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- layout helpers ---------- */
+  .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  section{ position: relative; }
+
+  /* ---------- nav ---------- */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(7,18,11,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 32px;
+    max-width: 1180px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-style: italic; font-weight: 600;
+    font-size: 1.4rem; letter-spacing: 0.01em;
+    color: var(--lime);
+    text-shadow: 0 0 18px rgba(200,255,61,0.55);
+  }
+  .nav-links{ display:flex; gap: 28px; font-size: 0.92rem; color: var(--muted); }
+  .nav-links a{ text-decoration:none; transition: color .2s ease; }
+  .nav-links a:hover{ color: var(--lime); }
+  .nav-cta{
+    padding: 9px 18px; border-radius: 999px;
+    background: var(--pink); color: #0a0a0a; font-weight:600; font-size: 0.88rem;
+    text-decoration:none; box-shadow: 0 0 22px rgba(255,63,176,0.45);
+    transition: transform .2s ease, box-shadow .2s ease;
+    white-space: nowrap;
+  }
+  .nav-cta:hover{ transform: translateY(-2px); box-shadow: 0 0 30px rgba(255,63,176,0.7); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height: 92vh;
+    display:flex; align-items:center;
+    padding: 80px 0 60px;
+    background:
+      radial-gradient(600px circle at var(--mx,50%) var(--my,30%), rgba(200,255,61,0.10), transparent 60%),
+      linear-gradient(180deg, #07120b 0%, #0a1a10 100%);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items:center;
+  }
+  .eyebrow{
+    color: var(--teal); font-size: 0.95rem; letter-spacing: 0.02em; margin-bottom: 18px;
+    display:inline-block;
+  }
+  .hero h1{
+    font-size: clamp(3rem, 6.4vw, 5.4rem);
+    color: var(--cream);
+  }
+  .hero h1 em{
+    font-style: italic; color: var(--lime);
+    text-shadow: 0 0 30px rgba(200,255,61,0.45), 0 0 60px rgba(200,255,61,0.2);
+  }
+  .hero p.lead{
+    color: var(--muted); font-size: 1.12rem; max-width: 46ch; margin-top: 22px;
+  }
+  .hero-actions{ display:flex; gap:16px; margin-top: 36px; flex-wrap: wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 15px 26px; border-radius: 999px; font-weight:600; font-size: 0.98rem;
+    text-decoration:none; border: 1px solid transparent; cursor:pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-solid{
+    background: var(--lime); color: #07160b;
+    box-shadow: 0 0 26px rgba(200,255,61,0.45);
+  }
+  .btn-solid:hover{ transform: translateY(-2px); box-shadow: 0 0 38px rgba(200,255,61,0.7); }
+  .btn-outline{
+    border-color: rgba(243,246,234,0.35); color: var(--cream);
+  }
+  .btn-outline:hover{ border-color: var(--teal); color: var(--teal); box-shadow: 0 0 20px rgba(51,251,224,0.35); }
+
+  .hero-art{
+    position:relative; aspect-ratio: 1/1;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .glow-ring{
+    position:absolute; inset: 6%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--lime), var(--teal), var(--pink), var(--lime));
+    filter: blur(46px); opacity: 0.35;
+    animation: spin 16s linear infinite;
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+  .hero-art svg{ position:relative; z-index:2; width: 82%; }
+
+  /* ---------- section titles ---------- */
+  .section-head{ max-width: 60ch; margin-bottom: 46px; }
+  .section-head h2{ font-size: clamp(2rem, 3.4vw, 2.8rem); color: var(--cream); }
+  .section-head p{ color: var(--muted); margin-top: 14px; font-size: 1.02rem; }
+  .tag{
+    color: var(--pink); font-size: 0.92rem; margin-bottom: 14px; display:block;
+  }
+
+  /* ---------- filosofia ---------- */
+  .filosofia{ padding: 110px 0; border-top: 1px solid var(--line); }
+  .filosofia-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items:center; }
+  .filo-card{
+    background: var(--panel); border: 1px solid var(--line); border-radius: 22px;
+    padding: 34px; position:relative; overflow:hidden;
+  }
+  .filo-card::after{
+    content:""; position:absolute; width:220px; height:220px; right:-70px; top:-70px;
+    background: radial-gradient(circle, var(--teal), transparent 70%); opacity:.18; filter: blur(6px);
+  }
+  .filo-card p{ color: var(--muted); font-size: 1.02rem; }
+  .filo-card strong{ color: var(--lime); }
+  .stat-row{ display:flex; gap: 34px; margin-top: 28px; flex-wrap: wrap; }
+  .stat{ }
+  .stat b{ font-family:'Fraunces', serif; font-size: 2rem; color: var(--teal); display:block; }
+  .stat span{ color: var(--muted); font-size: 0.88rem; }
+
+  /* ---------- beneficios / tabs (interactivo) ---------- */
+  .beneficios{ padding: 100px 0; border-top: 1px solid var(--line); }
+  .tabs{ display:flex; gap:10px; flex-wrap: wrap; margin-bottom: 40px; }
+  .tab-btn{
+    padding: 11px 20px; border-radius: 999px; border: 1px solid var(--line);
+    background: transparent; color: var(--muted); font-family: inherit; font-size: 0.94rem;
+    cursor:pointer; transition: all .2s ease;
+  }
+  .tab-btn:hover{ color: var(--cream); border-color: var(--teal); }
+  .tab-btn.active{
+    background: var(--lime); color: #07160b; border-color: var(--lime); font-weight: 600;
+    box-shadow: 0 0 22px rgba(200,255,61,0.4);
+  }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items:center; animation: fadein .35s ease; }
+  @keyframes fadein{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:none; } }
+  .tab-panel h3{ font-size: 1.8rem; color: var(--cream); margin-bottom: 14px; }
+  .tab-panel p{ color: var(--muted); }
+  .tab-list{ margin-top: 20px; padding:0; list-style:none; }
+  .tab-list li{
+    padding: 12px 0; border-bottom: 1px solid var(--line);
+    color: var(--cream); display:flex; gap: 12px; align-items:flex-start; font-size: 0.98rem;
+  }
+  .tab-list li::before{ content:"·"; color: var(--pink); font-size: 1.6rem; line-height: 0.6; }
+  .tab-visual{
+    aspect-ratio: 4/3; border-radius: 20px; border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(200,255,61,0.10), rgba(255,63,176,0.10));
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .tab-visual svg{ width: 62%; }
+
+  /* ---------- ingredientes (hover cards) ---------- */
+  .ingredientes{ padding: 100px 0; border-top: 1px solid var(--line); }
+  .ing-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .ing-card{
+    background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+    padding: 26px; min-height: 168px; position:relative; overflow:hidden;
+    transition: transform .25s ease, border-color .25s ease;
+    cursor: default;
+  }
+  .ing-card:hover, .ing-card:focus-within{
+    transform: translateY(-4px);
+    border-color: var(--lime);
+  }
+  .ing-card:hover .ing-glow{ opacity: .5; }
+  .ing-glow{
+    position:absolute; inset:-40%; opacity:0; transition: opacity .3s ease;
+    background: radial-gradient(circle at 30% 20%, var(--lime), transparent 60%);
+    filter: blur(10px); pointer-events:none;
+  }
+  .ing-title{ font-family:'Fraunces', serif; font-size: 1.28rem; color: var(--cream); position:relative; z-index:1; }
+  .ing-desc{
+    color: var(--muted); font-size: 0.92rem; margin-top: 10px; position:relative; z-index:1;
+    max-height: 0; opacity: 0; overflow:hidden;
+    transition: max-height .3s ease, opacity .3s ease, margin-top .3s ease;
+  }
+  .ing-card:hover .ing-desc, .ing-card:focus-within .ing-desc{
+    max-height: 120px; opacity: 1;
+  }
+  .ing-mark{ color: var(--teal); font-size: 0.82rem; position:relative; z-index:1; margin-top:12px; display:inline-block; }
+
+  /* ---------- catalogo / cta ---------- */
+  .catalogo{
+    padding: 120px 0;
+    text-align:center;
+    background: radial-gradient(700px circle at 50% 0%, rgba(255,63,176,0.14), transparent 65%);
+    border-top: 1px solid var(--line);
+  }
+  .catalogo h2{ font-size: clamp(2.2rem, 4.4vw, 3.4rem); max-width: 20ch; margin: 0 auto; }
+  .catalogo h2 em{ color: var(--pink); font-style: italic; text-shadow: 0 0 28px rgba(255,63,176,0.5); }
+  .catalogo p{ color: var(--muted); max-width: 48ch; margin: 18px auto 34px; }
+  .catalogo .hero-actions{ justify-content:center; }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding: 46px 0 40px; border-top: 1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap: wrap; gap: 16px;
+  }
+  footer .brand{ font-size: 1.1rem; }
+  .ig-pill{
+    display:inline-flex; align-items:center; gap:10px;
+    color: var(--cream); text-decoration:none; font-size: 0.94rem;
+    padding: 10px 8px; border-radius: 999px;
+  }
+  .ig-pill svg{ width:20px; height:20px; }
+  .ig-pill:hover{ color: var(--teal); }
+  footer .fine{ color: var(--muted); font-size: 0.82rem; width:100%; text-align:center; margin-top: 8px;}
+
+  @media (max-width: 880px){
+    .hero-grid, .filosofia-grid, .tab-panel.active{ grid-template-columns: 1fr; }
+    .hero-art{ order:-1; max-width: 320px; margin: 0 auto; }
+    .ing-grid{ grid-template-columns: repeat(2,1fr); }
+    .nav-links{ display:none; }
+  }
+  @media (max-width: 520px){
+    .ing-grid{ grid-template-columns: 1fr; }
+    .wrap{ padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <span class="brand">Indígena</span>
+    <nav class="nav-links">
+      <a href="#filosofia">Filosofía</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#ingredientes">Ingredientes</a>
+    </nav>
+    <a class="nav-cta" href="https://drive.google.com/file/d/1gtACjBChUVyoloIHy_EIQwdr84Je1oVR/view?usp=sharing" target="_blank" rel="noopener">Ver catálogo</a>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Viviendo en el campo 🌿🍃</span>
+      <h1>Cosmética que <em>respira</em><br>campo abierto</h1>
+      <p class="lead">Indígena nace en la vida rural: fórmulas hechas a mano con miel, cera de abeja, leche de cabra y aceites que la propia granja nos regala. Piel cuidada, origen honesto.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="https://drive.google.com/file/d/1gtACjBChUVyoloIHy_EIQwdr84Je1oVR/view?usp=sharing" target="_blank" rel="noopener">Ver catálogo</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/indigena.bysofiabazan/" target="_blank" rel="noopener">Seguinos en Instagram</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="glow-ring"></div>
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <path d="M150 40 C 90 70, 60 140, 90 210 C 110 255, 150 270, 150 270 C 150 270, 190 255, 210 210 C 240 140, 210 70, 150 40 Z"
+              fill="none" stroke="var(--lime)" stroke-width="2.5" opacity="0.9"/>
+        <path d="M150 60 C 150 120, 150 190, 150 255" stroke="var(--teal)" stroke-width="2" opacity="0.8"/>
+        <path d="M150 100 C 120 110, 105 125, 100 140" stroke="var(--teal)" stroke-width="1.6" fill="none" opacity="0.7"/>
+        <path d="M150 100 C 180 110, 195 125, 200 140" stroke="var(--teal)" stroke-width="1.6" fill="none" opacity="0.7"/>
+        <path d="M150 150 C 118 160, 100 178, 94 196" stroke="var(--pink)" stroke-width="1.6" fill="none" opacity="0.7"/>
+        <path d="M150 150 C 182 160, 200 178, 206 196" stroke="var(--pink)" stroke-width="1.6" fill="none" opacity="0.7"/>
+        <circle cx="150" cy="155" r="6" fill="var(--lime)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="filosofia" id="filosofia">
+  <div class="wrap filosofia-grid">
+    <div>
+      <span class="tag">Nuestra filosofía</span>
+      <h2>De la tierra a tu piel, sin atajos</h2>
+    </div>
+    <div class="filo-card">
+      <p><strong>Indígena</strong> es cosmética animal criada en el campo: cada tanda se elabora en pequeños lotes, con ingredientes que salen de nuestra propia granja y de productores vecinos. Nada de laboratorios lejanos — la miel se cosecha, la leche se ordeña y la cera se cuela a mano, la misma semana en que llega a tu frasco.</p>
+      <div class="stat-row">
+        <div class="stat"><b>100%</b><span>ingredientes de campo</span></div>
+        <div class="stat"><b>0</b><span>químicos agresivos</span></div>
+        <div class="stat"><b>Lotes</b><span>chicos, hechos a mano</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="beneficios" id="beneficios">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Beneficios</span>
+      <h2>Un ritual para cada parte de tu cuerpo</h2>
+      <p>Tocá una categoría para ver qué le hace la vida de campo a tu piel.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Categorías de beneficios">
+      <button class="tab-btn active" data-tab="rostro">Piel & rostro</button>
+      <button class="tab-btn" data-tab="cabello">Cabello</button>
+      <button class="tab-btn" data-tab="cuerpo">Cuerpo & manos</button>
+    </div>
+
+    <div class="tab-panel active" data-panel="rostro">
+      <div>
+        <h3>Piel & rostro</h3>
+        <p>Cremas y bálsamos livianos que nutren sin tapar los poros, pensados para el sol y el viento del campo.</p>
+        <ul class="tab-list">
+          <li>Bálsamo de miel para hidratación profunda</li>
+          <li>Aceite de rosa mosqueta para marcas y cicatrices</li>
+          <li>Manteca de karité para piel castigada por el sol</li>
+        </ul>
+      </div>
+      <div class="tab-visual">
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="80" rx="70" ry="46" fill="none" stroke="var(--lime)" stroke-width="2"/>
+          <circle cx="70" cy="70" r="5" fill="var(--pink)"/>
+          <circle cx="130" cy="70" r="5" fill="var(--pink)"/>
+          <path d="M75 100 Q100 118 125 100" stroke="var(--teal)" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="cabello">
+      <div>
+        <h3>Cabello</h3>
+        <p>Fórmulas con leche de cabra y própolis para fortalecer desde la raíz, ideales después de mucho sol o agua salada.</p>
+        <ul class="tab-list">
+          <li>Shampoo sólido de leche de cabra</li>
+          <li>Máscara de própolis para puntas resecas</li>
+          <li>Aceite de oveja para brillo natural</li>
+        </ul>
+      </div>
+      <div class="tab-visual">
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 30 C 60 40, 55 90, 70 130" stroke="var(--teal)" stroke-width="2" fill="none"/>
+          <path d="M100 30 C 140 40, 145 90, 130 130" stroke="var(--teal)" stroke-width="2" fill="none"/>
+          <path d="M100 30 C 100 60, 100 100, 100 135" stroke="var(--lime)" stroke-width="2" fill="none"/>
+          <circle cx="100" cy="28" r="6" fill="var(--pink)"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="cuerpo">
+      <div>
+        <h3>Cuerpo & manos</h3>
+        <p>Manteca de cera de abeja y lanolina para manos curtidas de trabajo al aire libre y piel del cuerpo reseca.</p>
+        <ul class="tab-list">
+          <li>Manteca corporal de cera de abeja</li>
+          <li>Crema de manos con lanolina</li>
+          <li>Exfoliante de miel y avena de campo</li>
+        </ul>
+      </div>
+      <div class="tab-visual">
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 120 C 60 80, 90 50, 140 55" stroke="var(--pink)" stroke-width="2" fill="none"/>
+          <circle cx="140" cy="55" r="7" fill="var(--lime)"/>
+          <path d="M60 120 C 90 130, 120 128, 140 110" stroke="var(--teal)" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ingredientes" id="ingredientes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Ingredientes</span>
+      <h2>Lo que entra a cada frasco</h2>
+      <p>Pasá el mouse (o tocá) cada ingrediente para conocer para qué sirve.</p>
+    </div>
+    <div class="ing-grid">
+      <div class="ing-card" tabindex="0">
+        <div class="ing-glow"></div>
+        <div class="ing-title">Miel de campo</div>
+        <div class="ing-desc">Humecta e ilumina la piel opaca, con propiedades antibacterianas naturales.</div>
+        <span class="ing-mark">Hidratación</span>
+      </div>
+      <div class="ing-card" tabindex="0">
+        <div class="ing-glow"></div>
+        <div class="ing-title">Cera de abeja</div>
+        <div class="ing-desc">Sella la humedad y forma una barrera protectora suave frente al frío y el viento.</div>
+        <span class="ing-mark">Protección</span>
+      </div>
+      <div class="ing-card" tabindex="0">
+        <div class="ing-glow"></div>
+        <div class="ing-title">Leche de cabra</div>
+        <div class="ing-desc">Rica en ácidos suaves que renuevan la piel y calman irritaciones.</div>
+        <span class="ing-mark">Renovación</span>
+      </div>
+      <div class="ing-card" tabindex="0">
+        <div class="ing-glow"></div>
+        <div class="ing-title">Lanolina</div>
+        <div class="ing-desc">Repara manos y codos curtidos por el trabajo al aire libre.</div>
+        <span class="ing-mark">Reparación</span>
+      </div>
+      <div class="ing-card" tabindex="0">
+        <div class="ing-glow"></div>
+        <div class="ing-title">Própolis</div>
+        <div class="ing-desc">Fortalece cabello y cuero cabelludo, con acción calmante natural.</div>
+        <span class="ing-mark">Fortaleza</span>
+      </div>
+      <div class="ing-card" tabindex="0">
+        <div class="ing-glow"></div>
+        <div class="ing-title">Aceite de oveja</div>
+        <div class="ing-desc">Aporta brillo y suavidad sin dejar sensación grasosa.</div>
+        <span class="ing-mark">Brillo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catalogo">
+  <div class="wrap">
+    <h2>Conocé el <em>catálogo</em> completo</h2>
+    <p>Todos los productos, tamaños y precios de Indígena, listos para pedir.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="https://drive.google.com/file/d/1gtACjBChUVyoloIHy_EIQwdr84Je1oVR/view?usp=sharing" target="_blank" rel="noopener">Ver catálogo</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/indigena.bysofiabazan/" target="_blank" rel="noopener">Seguinos en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; width:100%;">
+    <span class="brand">Indígena</span>
+    <a class="ig-pill" href="https://www.instagram.com/indigena.bysofiabazan/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      @indigena.bysofiabazan
+    </a>
+    <span class="fine">Indígena — cosmética animal hecha a mano en el campo 🌿</span>
+  </div>
+</footer>
+
+<script>
+  // Interactividad 1: brillo que sigue el mouse en el hero
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    hero.style.setProperty('--mx', x + '%');
+    hero.style.setProperty('--my', y + '%');
+  });
+
+  // Interactividad 2: tabs de beneficios
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

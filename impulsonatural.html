@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impulso Natural — Panadería de Masa Madre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-void:#160b08;
+    --bg-void-2:#26120a;
+    --neon-pink:#ff3d8f;
+    --neon-lime:#c6ff3d;
+    --neon-amber:#ffb020;
+    --cream:#fdf3e4;
+    --cream-dim:#cdb9a5;
+    --line:rgba(253,243,228,0.14);
+    --side-pad: clamp(20px, 6vw, 96px);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:
+      radial-gradient(ellipse 60% 45% at 12% 8%, rgba(255,61,143,0.16), transparent 60%),
+      radial-gradient(ellipse 55% 40% at 90% 18%, rgba(198,255,61,0.10), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,176,32,0.10), transparent 60%),
+      var(--bg-void);
+    color:var(--cream);
+    font-family:'Sora', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  a{color:inherit;}
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-left:var(--side-pad);
+    padding-right:var(--side-pad);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    padding:20px var(--side-pad);
+    display:flex; align-items:center; justify-content:space-between;
+    background:rgba(22,11,8,0.72);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand-dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--neon-lime);
+    box-shadow:0 0 10px var(--neon-lime), 0 0 22px var(--neon-lime);
+  }
+  .nav-cta{
+    display:flex; gap:10px; align-items:center;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px;
+    border-radius:999px;
+    font-family:'Sora', sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.18s ease, box-shadow 0.18s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:var(--neon-lime);
+    color:#16220a;
+    box-shadow:0 0 18px rgba(198,255,61,0.45);
+  }
+  .btn-primary:hover{ box-shadow:0 0 28px rgba(198,255,61,0.7); }
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--cream);
+  }
+  .btn-ghost:hover{ border-color:var(--neon-pink); }
+  .btn-sm{ padding:9px 16px; font-size:0.82rem; }
+
+  @media (max-width:640px){
+    .nav-cta .btn-ghost span{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:96px var(--side-pad) 80px;
+    position:relative;
+  }
+  .eyebrow-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:7px 14px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    font-size:0.82rem;
+    color:var(--cream-dim);
+    margin-bottom:28px;
+  }
+  .eyebrow-badge b{ color:var(--neon-amber); font-weight:600; }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    max-width:15ch;
+  }
+  .hero h1 .glow-pink{ color:var(--neon-pink); text-shadow:0 0 26px rgba(255,61,143,0.55);}
+  .hero h1 .glow-lime{ color:var(--neon-lime); text-shadow:0 0 26px rgba(198,255,61,0.5);}
+
+  .hero p.lead{
+    margin-top:26px;
+    max-width:52ch;
+    font-size:1.12rem;
+    color:var(--cream-dim);
+  }
+
+  .hero-actions{
+    margin-top:38px;
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+
+  .starter-jar{
+    margin-top:64px;
+    display:flex; align-items:center; gap:18px;
+    max-width:420px;
+  }
+  .jar-visual{
+    position:relative;
+    width:64px; height:64px;
+    border-radius:16px;
+    background:linear-gradient(180deg, rgba(255,176,32,0.18), rgba(255,61,143,0.12));
+    border:1px solid var(--line);
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .bubble{
+    position:absolute;
+    bottom:-8px;
+    border-radius:50%;
+    background:var(--neon-amber);
+    opacity:0.85;
+    filter:blur(0.2px);
+    animation:rise 3.6s ease-in infinite;
+  }
+  .bubble:nth-child(1){ width:9px; height:9px; left:10px; animation-delay:0s; background:var(--neon-amber);}
+  .bubble:nth-child(2){ width:6px; height:6px; left:28px; animation-delay:0.9s; background:var(--neon-pink);}
+  .bubble:nth-child(3){ width:12px; height:12px; left:38px; animation-delay:1.7s; background:var(--neon-lime);}
+  .bubble:nth-child(4){ width:5px; height:5px; left:18px; animation-delay:2.4s; background:var(--neon-amber);}
+  @keyframes rise{
+    0%{ transform:translateY(0) scale(1); opacity:0.9;}
+    85%{ opacity:0.7;}
+    100%{ transform:translateY(-70px) scale(0.5); opacity:0;}
+  }
+  .starter-jar p{ font-size:0.9rem; color:var(--cream-dim); }
+  .starter-jar strong{ color:var(--cream); font-weight:600; }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:80px var(--side-pad); border-top:1px solid var(--line); }
+  .section-inner{ max-width:1180px; margin:0 auto; }
+  .kicker{ color:var(--neon-pink); font-weight:600; font-size:0.95rem; margin-bottom:14px; }
+  section h2{ font-size:clamp(1.7rem, 3.4vw, 2.6rem); max-width:22ch; }
+  section p.sub{ margin-top:16px; max-width:58ch; color:var(--cream-dim); font-size:1.02rem; }
+
+  /* ---------- ABOUT GRID ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:56px;
+    margin-top:48px;
+    align-items:start;
+  }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+
+  .value-list{ display:flex; flex-direction:column; gap:26px; }
+  .value-item{ display:flex; gap:16px; align-items:flex-start; }
+  .value-mark{
+    width:34px; height:34px; flex-shrink:0;
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem;
+    background:rgba(198,255,61,0.1);
+    border:1px solid rgba(198,255,61,0.35);
+    color:var(--neon-lime);
+  }
+  .value-item h3{ font-size:1.08rem; font-weight:600; margin-bottom:4px; }
+  .value-item p{ color:var(--cream-dim); font-size:0.95rem; }
+
+  /* ---------- TABS (interactivity) ---------- */
+  .tabs{ margin-top:52px; }
+  .tab-bar{
+    display:flex; gap:8px; border-bottom:1px solid var(--line);
+    margin-bottom:32px;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    background:none; border:none;
+    color:var(--cream-dim);
+    font-family:'Sora', sans-serif;
+    font-weight:600;
+    font-size:0.98rem;
+    padding:14px 6px;
+    margin-right:28px;
+    cursor:pointer;
+    position:relative;
+    transition:color 0.2s ease;
+  }
+  .tab-btn:hover{ color:var(--cream); }
+  .tab-btn.active{ color:var(--neon-amber); }
+  .tab-btn.active::after{
+    content:'';
+    position:absolute; left:0; right:0; bottom:-1px;
+    height:2px;
+    background:var(--neon-amber);
+    box-shadow:0 0 10px var(--neon-amber);
+  }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
+  @media (max-width:700px){ .tab-panel.active{ grid-template-columns:1fr; } }
+
+  .product-card{
+    padding:26px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:rgba(253,243,228,0.02);
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .product-card:hover{
+    border-color:var(--neon-pink);
+    transform:translateY(-3px);
+  }
+  .product-card h3{ font-size:1.15rem; font-weight:600; margin-bottom:8px; }
+  .product-card p{ color:var(--cream-dim); font-size:0.94rem; }
+
+  /* ---------- STATS ---------- */
+  .stats-band{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    margin-top:52px;
+  }
+  @media (max-width:700px){ .stats-band{ grid-template-columns:1fr; } }
+  .stat{
+    padding:30px 24px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    text-align:left;
+  }
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-size:2.6rem;
+    font-weight:600;
+    color:var(--neon-lime);
+    text-shadow:0 0 22px rgba(198,255,61,0.4);
+  }
+  .stat .label{ margin-top:6px; color:var(--cream-dim); font-size:0.92rem; }
+
+  /* ---------- LOCATION / CTA FINAL ---------- */
+  .cta-final{
+    text-align:left;
+    background:linear-gradient(160deg, rgba(255,61,143,0.1), rgba(255,176,32,0.06));
+    border-radius:28px;
+    padding:64px var(--side-pad);
+    margin:0 var(--side-pad);
+    border:1px solid var(--line);
+  }
+  .cta-final h2{ max-width:18ch; }
+  .cta-final .loc{
+    display:flex; align-items:center; gap:8px;
+    margin-top:18px; color:var(--cream-dim); font-size:0.95rem;
+  }
+  .cta-final .actions{ margin-top:34px; display:flex; flex-wrap:wrap; gap:14px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:48px var(--side-pad) 56px;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+    color:var(--cream-dim);
+    font-size:0.86rem;
+    border-top:1px solid var(--line);
+  }
+  footer .socials{ display:flex; gap:14px; }
+  footer a.icon-link{
+    width:38px; height:38px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  footer a.icon-link:hover{ border-color:var(--neon-pink); color:var(--neon-pink); }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    width:56px; height:56px; border-radius:50%;
+    background:var(--neon-lime);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 20px rgba(198,255,61,0.55);
+    transition:transform 0.2s ease;
+  }
+  .float-wa:hover{ transform:scale(1.08); }
+  .float-wa svg{ width:26px; height:26px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="brand-dot"></span>Impulso Natural</div>
+  <div class="nav-cta">
+    <a class="btn btn-ghost btn-sm" href="https://instagram.com/impulso.natural" target="_blank" rel="noopener"><span>Instagram</span></a>
+    <a class="btn btn-primary btn-sm" href="https://wa.me/message/3Y4XGHR44XHPH1" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow-badge">Domselaar, Buenos Aires · <b>Masa madre real</b></div>
+  <h1>Pan que fermenta<br>con <span class="glow-pink">tiempo</span>, no con <span class="glow-lime">apuro</span>.</h1>
+  <p class="lead">Panadería artesanal y pastelería consciente, 100% plant-based. Horneamos en lotes chicos para que cada pieza salga como tiene que salir: con corteza de verdad y miga viva.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="https://wa.me/message/3Y4XGHR44XHPH1" target="_blank" rel="noopener">Hacer mi pedido</a>
+    <a class="btn btn-ghost" href="https://wa.me/c/5491140836681" target="_blank" rel="noopener">Ver catálogo</a>
+  </div>
+
+  <div class="starter-jar">
+    <div class="jar-visual">
+      <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+    </div>
+    <p><strong>Nuestra masa madre</strong> está viva y burbujeando ahora mismo, igual que en el frasco.</p>
+  </div>
+</header>
+
+<section id="valores">
+  <div class="section-inner about-grid">
+    <div>
+      <div class="kicker">Cómo horneamos</div>
+      <h2>Pan consciente, de principio a fin.</h2>
+      <p class="sub">Nada de atajos: fermentación larga, ingredientes simples y una cocina pensada para no dejar residuo en el planeta ni en el cuerpo.</p>
+    </div>
+    <div class="value-list">
+      <div class="value-item">
+        <div class="value-mark">🌱</div>
+        <div><h3>100% plant-based</h3><p>Ningún producto lleva origen animal, ni en el pan ni en la pastelería.</p></div>
+      </div>
+      <div class="value-item">
+        <div class="value-mark">⏱</div>
+        <div><h3>Fermentación lenta</h3><p>Entre 24 y 48 horas de reposo para una miga más digestiva y sabrosa.</p></div>
+      </div>
+      <div class="value-item">
+        <div class="value-mark">📍</div>
+        <div><h3>Hecho en Domselaar</h3><p>Producción local, en lotes chicos, pensada para tu pedido.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="section-inner">
+    <div class="kicker">Lo que hacemos</div>
+    <h2>Elegí entre pan artesanal y pastelería consciente.</h2>
+
+    <div class="tabs">
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="pan">Pan artesanal</button>
+        <button class="tab-btn" data-tab="pasteleria">Pastelería consciente</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-pan">
+        <div class="product-card"><h3>Masa madre clásico</h3><p>Corteza crocante y miga alveolada, horneado del día.</p></div>
+        <div class="product-card"><h3>Integral de semillas</h3><p>Harina integral con mix de semillas tostadas.</p></div>
+        <div class="product-card"><h3>Focaccia de estación</h3><p>Con vegetales y hierbas frescas según la época del año.</p></div>
+        <div class="product-card"><h3>Pan de campo</h3><p>Ideal para acompañar comidas, con miga bien tierna.</p></div>
+      </div>
+
+      <div class="tab-panel" id="tab-pasteleria">
+        <div class="product-card"><h3>Budines plant-based</h3><p>Húmedos y esponjosos, sin ningún producto de origen animal.</p></div>
+        <div class="product-card"><h3>Cookies de masa madre</h3><p>Con el descarte de nuestra masa madre, nada se tira.</p></div>
+        <div class="product-card"><h3>Medialunas veganas</h3><p>Hojaldradas, con la manteca cambiada por alternativas vegetales.</p></div>
+        <div class="product-card"><h3>Tartas de estación</h3><p>Rellenos rotativos según fruta y verdura de temporada.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comunidad">
+  <div class="section-inner">
+    <div class="kicker">Comunidad</div>
+    <h2>Una comunidad que crece a fuego lento.</h2>
+    <p class="sub">Cada semana compartimos el proceso completo: desde que armamos la masa hasta que sale del horno.</p>
+    <div class="stats-band">
+      <div class="stat"><div class="num" data-count="282">0</div><div class="label">Publicaciones</div></div>
+      <div class="stat"><div class="num" data-count="3105">0</div><div class="label">Seguidores</div></div>
+      <div class="stat"><div class="num" data-count="1379">0</div><div class="label">Cuentas que seguimos</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="border-top:none; padding-top:0;">
+  <div class="cta-final">
+    <div class="kicker">Hacé tu pedido</div>
+    <h2>¿Arrancamos con tu próximo pedido?</h2>
+    <div class="loc">📍 Domselaar, Buenos Aires</div>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/message/3Y4XGHR44XHPH1" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+      <a class="btn btn-ghost" href="https://wa.me/c/5491140836681" target="_blank" rel="noopener">Ver catálogo completo</a>
+      <a class="btn btn-ghost" href="https://instagram.com/impulso.natural" target="_blank" rel="noopener">Seguinos en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Impulso Natural · Panadería de masa madre</div>
+  <div class="socials">
+    <a class="icon-link" href="https://instagram.com/impulso.natural" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    </a>
+    <a class="icon-link" href="https://wa.me/message/3Y4XGHR44XHPH1" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/message/3Y4XGHR44XHPH1" target="_blank" rel="noopener" aria-label="Pedidos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#16220a"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
+</a>
+
+<script>
+  // Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Count-up stats on scroll into view
+  const counters = document.querySelectorAll('.num[data-count]');
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    const duration = 1400;
+    const start = performance.now();
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString('es-AR');
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('es-AR');
+    };
+    requestAnimationFrame(step);
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+</script>
+
+</body>
+</html>

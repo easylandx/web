@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huerta En Flor · Huerta Escuela en Mendiolaza</title>
+<meta name="description" content="Huerta En Flor: huerta escuela, talleres, charlas y flores comestibles en Mendiolaza, Córdoba. Sumate a nuestra próxima charla y seguinos en Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Caveat:wght@600;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8ee;
+    --ink:#23301c;
+    --ink-soft:#5c6650;
+    --card:#ffffff;
+    --lime:#c6ff6b;
+    --coral:#ff5c8a;
+    --violet:#b98cff;
+    --sun:#ffd23d;
+    --line:#e7e2cf;
+    --radius:24px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Quicksand',sans-serif;
+    font-weight:700;
+    line-height:1.08;
+    margin:0;
+  }
+  .hand{
+    font-family:'Caveat',cursive;
+    font-weight:700;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* fondo neón */
+  .neon-field{
+    position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg);
+  }
+  .blob{position:absolute;border-radius:50%;filter:blur(75px);opacity:.5;animation:drift 24s ease-in-out infinite;}
+  .blob.b1{width:480px;height:480px;background:var(--lime);top:-160px;right:-120px;}
+  .blob.b2{width:420px;height:420px;background:var(--coral);bottom:-140px;left:-100px;animation-delay:-8s;}
+  .blob.b3{width:380px;height:380px;background:var(--violet);top:38%;left:38%;animation-delay:-14s;opacity:.35;}
+  .blob.b4{width:300px;height:300px;background:var(--sun);bottom:12%;right:6%;animation-delay:-5s;opacity:.4;}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(-24px,26px) scale(1.06);}
+  }
+  @media (prefers-reduced-motion:reduce){.blob{animation:none;}}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,248,238,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:1120px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.2rem;}
+  .brand-mark{
+    width:36px;height:36px;border-radius:12px;
+    background:linear-gradient(135deg,var(--lime),var(--sun));
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  }
+  nav.links{display:flex;gap:26px;font-size:.92rem;font-weight:600;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:2px solid transparent;padding-bottom:2px;transition:.2s;}
+  nav.links a:hover{color:var(--ink);border-color:var(--coral);}
+  .nav-cta{
+    background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;
+    font-weight:700;font-size:.86rem;text-decoration:none;white-space:nowrap;
+  }
+  @media (max-width:760px){nav.links{display:none;}}
+
+  /* HERO asimétrico */
+  .hero{padding:74px 0 30px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;
+  }
+  .eyebrow-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--card);border:1.5px solid var(--ink);
+    padding:7px 16px 7px 8px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:24px;
+  }
+  .eyebrow-badge .dot{width:18px;height:18px;border-radius:50%;background:var(--coral);display:inline-block;}
+  .hero h1{font-size:clamp(2.3rem,5.6vw,3.6rem);letter-spacing:-.01em;}
+  .hero h1 .accent{
+    display:block;
+    background:linear-gradient(90deg,var(--coral),var(--violet) 60%,var(--lime));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{margin-top:20px;font-size:1.1rem;color:var(--ink-soft);max-width:52ch;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;
+    font-weight:700;font-size:.94rem;text-decoration:none;border:2px solid var(--ink);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-solid{background:var(--ink);color:var(--bg);}
+  .btn-solid:hover{box-shadow:6px 6px 0 0 var(--lime);}
+  .btn-outline{background:var(--card);color:var(--ink);}
+  .btn-outline:hover{box-shadow:6px 6px 0 0 var(--coral);}
+
+  .seed-card{
+    background:linear-gradient(160deg,var(--violet),var(--coral) 55%,var(--sun));
+    border-radius:var(--radius);
+    aspect-ratio:4/5;
+    position:relative;
+    display:flex;align-items:flex-end;
+    padding:26px;
+    overflow:hidden;
+  }
+  .seed-card::before{
+    content:"";position:absolute;inset:12px;border-radius:calc(var(--radius) - 6px);
+    background:var(--bg);opacity:.08;
+  }
+  .seed-note{
+    position:relative;
+    background:var(--bg);
+    border-radius:16px;
+    padding:16px 18px;
+    width:100%;
+  }
+  .seed-note span.hand{font-size:1.5rem;display:block;color:var(--ink);}
+  .seed-note small{color:var(--ink-soft);font-weight:600;font-size:.8rem;}
+  .seed-emoji{
+    position:absolute;top:22px;left:22px;font-size:2.4rem;
+  }
+  @media (max-width:840px){
+    .hero-grid{grid-template-columns:1fr;}
+    .seed-card{max-width:320px;margin:0 auto;order:-1;}
+  }
+
+  .hero-strip{display:flex;gap:12px;flex-wrap:wrap;margin-top:46px;}
+  .pill{
+    background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:999px;
+    font-size:.84rem;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;gap:8px;
+  }
+  .pill i{width:8px;height:8px;border-radius:50%;background:var(--violet);display:inline-block;}
+
+  section{padding:84px 0;}
+  .section-head{max-width:60ch;margin-bottom:44px;}
+  .kicker{font-weight:700;color:var(--coral);font-size:.88rem;margin-bottom:10px;display:block;}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:1.02rem;}
+
+  /* Que hacemos - grid 2x2 */
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service-card{
+    background:var(--card);border:1.5px solid var(--ink);border-radius:var(--radius);
+    padding:26px 22px;transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);box-shadow:7px 9px 0 0 var(--ink);}
+  .service-card .em{font-size:1.9rem;margin-bottom:14px;}
+  .service-card h3{font-size:1.05rem;margin-bottom:8px;}
+  .service-card p{color:var(--ink-soft);font-size:.9rem;line-height:1.5;}
+  @media (max-width:900px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.service-grid{grid-template-columns:1fr;}}
+
+  /* Chips interactivos */
+  .chip-shell{
+    background:var(--ink);color:var(--bg);border-radius:28px;padding:50px clamp(20px,5vw,54px);
+  }
+  .chip-shell .kicker{color:var(--lime);}
+  .chip-shell .section-head p{color:#d4cfba;}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+  .chip{
+    background:transparent;border:1.5px solid #4c5640;color:#d4cfba;
+    padding:10px 18px;border-radius:999px;font-family:'Karla',sans-serif;font-weight:700;
+    font-size:.9rem;cursor:pointer;transition:all .2s ease;
+  }
+  .chip:hover{border-color:var(--bg);color:var(--bg);}
+  .chip.active{background:var(--lime);border-color:var(--lime);color:var(--ink);}
+  .chip-panel{display:none;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start;animation:rise .35s ease;}
+  .chip-panel.active{display:grid;}
+  @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .chip-panel h3{font-size:1.4rem;margin-bottom:12px;color:var(--bg);}
+  .chip-panel p.desc{color:#e2ddc9;font-size:.98rem;line-height:1.6;margin-bottom:18px;}
+  .chip-meta{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+  .chip-meta li{display:flex;gap:10px;font-size:.92rem;color:#e2ddc9;}
+  .chip-meta li b{color:var(--lime);min-width:110px;font-weight:700;}
+  .chip-card{background:#313b28;border:1px solid #47523a;border-radius:16px;padding:24px;}
+  .chip-card .tag{
+    display:inline-block;background:var(--coral);color:var(--ink);font-size:.72rem;font-weight:800;
+    padding:4px 10px;border-radius:999px;margin-bottom:12px;
+  }
+  .chip-card p{color:#e2ddc9;font-size:.9rem;line-height:1.55;}
+  @media (max-width:760px){.chip-panel.active{grid-template-columns:1fr;}}
+
+  /* Charla / Meet */
+  .meet-wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+  .meet-copy h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:16px;}
+  .meet-copy p{color:var(--ink-soft);font-size:1rem;line-height:1.6;}
+  .meet-card{
+    background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+    padding:30px;box-shadow:10px 10px 0 0 var(--violet);
+  }
+  .meet-card .live-badge{
+    display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:800;
+    background:var(--lime);padding:5px 12px;border-radius:999px;margin-bottom:16px;
+  }
+  .meet-card .live-badge .ping{
+    width:8px;height:8px;border-radius:50%;background:var(--ink);
+    animation:ping 1.4s ease-in-out infinite;
+  }
+  @keyframes ping{0%,100%{opacity:1;}50%{opacity:.3;}}
+  .meet-card h3{font-size:1.3rem;margin-bottom:8px;}
+  .meet-card p{color:var(--ink-soft);font-size:.92rem;margin-bottom:20px;}
+  .meet-link-row{
+    display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px;margin-bottom:16px;
+  }
+  .meet-link-row code{font-size:.86rem;color:var(--ink);word-break:break-all;flex:1;}
+  .copy-btn{
+    border:1.5px solid var(--ink);background:var(--card);border-radius:8px;padding:7px 12px;
+    font-weight:700;font-size:.78rem;cursor:pointer;font-family:'Karla',sans-serif;white-space:nowrap;
+    transition:background .2s, color .2s;
+  }
+  .copy-btn:hover{background:var(--ink);color:var(--bg);}
+  .copy-btn.copied{background:var(--lime);border-color:var(--lime);color:var(--ink);}
+  @media (max-width:840px){.meet-wrap{grid-template-columns:1fr;}}
+
+  /* CTA final */
+  .cta-band{
+    background:linear-gradient(100deg,var(--lime),var(--sun) 50%,var(--coral));
+    border-radius:28px;padding:54px clamp(24px,5vw,60px);text-align:center;
+  }
+  .cta-band h2{font-size:clamp(1.8rem,3.8vw,2.5rem);max-width:22ch;margin:0 auto;}
+  .cta-band p{max-width:50ch;margin:16px auto 28px;font-size:1.02rem;color:rgba(35,48,28,.82);font-weight:600;}
+  .cta-band .btn-outline{background:var(--bg);}
+  .cta-band .btn-solid:hover{box-shadow:6px 6px 0 0 var(--ink);}
+
+  footer{padding:46px 0 38px;border-top:1px solid var(--line);margin-top:16px;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .foot-brand p{color:var(--ink-soft);font-size:.9rem;margin-top:10px;max-width:36ch;line-height:1.5;}
+  .foot-contact{display:grid;gap:8px;margin-top:14px;font-size:.88rem;color:var(--ink-soft);}
+  .foot-contact a{text-decoration:none;color:var(--ink-soft);}
+  .foot-contact a:hover{color:var(--ink);}
+  .foot-links{display:flex;gap:14px;}
+  .icon-btn{
+    width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink);
+    transition:background .2s,color .2s,transform .2s;
+  }
+  .icon-btn:hover{background:var(--ink);color:var(--bg);transform:translateY(-3px);}
+  .foot-bottom{
+    margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:.78rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="neon-field">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="brand-mark">🌱</span> Huerta En Flor</div>
+    <nav class="links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#que-hacemos">Qué hacemos</a>
+      <a href="#intereses">Elegí tu camino</a>
+      <a href="#charla">Próxima charla</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="#charla">Sumate a la charla</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow-badge"><span class="dot"></span> Huerta Escuela · Mendiolaza, Córdoba</span>
+        <h1>
+          Aprendé a cultivar
+          <span class="accent">tu propia huerta en flor</span>
+        </h1>
+        <p class="lead">
+          Talleres, charlas y una huerta escuela para acercarte al cultivo agroecológico y descubrir
+          el mundo de las flores comestibles, con las manos en la tierra.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#intereses">Elegí tu camino</a>
+          <a class="btn btn-outline" href="https://www.instagram.com/huertaenflor" target="_blank" rel="noopener">Seguinos en Instagram</a>
+        </div>
+        <div class="hero-strip">
+          <span class="pill"><i></i>🏡 Huerta Escuela</span>
+          <span class="pill"><i></i>♻️ Talleres</span>
+          <span class="pill"><i></i>🗣 Charlas</span>
+          <span class="pill"><i></i>🌸 Flores comestibles</span>
+        </div>
+      </div>
+      <div class="seed-card">
+        <span class="seed-emoji">🌼</span>
+        <div class="seed-note">
+          <span class="hand">"Cada flor que se come, cuenta una historia."</span>
+          <small>Huerta En Flor · Mendiolaza</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="nosotros">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Quiénes somos</span>
+        <h2>Una huerta pensada para enseñar y florecer</h2>
+        <p>
+          Huerta En Flor es un espacio en Mendiolaza donde la huerta agroecológica se convierte en escuela:
+          compartimos lo que aprendimos cultivando, para que cada persona pueda armar su propia huerta,
+          incorporar flores comestibles a su cocina y entender el ciclo completo de lo que come.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUE HACEMOS -->
+  <section id="que-hacemos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Nuestras propuestas</span>
+        <h2>Cuatro formas de acercarte a la huerta</h2>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="em">🏡</div>
+          <h3>Huerta Escuela</h3>
+          <p>Un espacio de aprendizaje continuo sobre cultivo agroecológico, pensado para todos los niveles.</p>
+        </div>
+        <div class="service-card">
+          <div class="em">♻️</div>
+          <h3>Talleres</h3>
+          <p>Encuentros prácticos: compostaje, almácigos, diseño de huertas y más, con las manos en la tierra.</p>
+        </div>
+        <div class="service-card">
+          <div class="em">🗣</div>
+          <h3>Charlas</h3>
+          <p>Encuentros presenciales y online para compartir conocimiento y resolver dudas sobre tu huerta.</p>
+        </div>
+        <div class="service-card">
+          <div class="em">🌸</div>
+          <h3>Flores comestibles</h3>
+          <p>Cómo cultivarlas, cosecharlas y sumarlas a tus platos: color, sabor y nutrientes desde la huerta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERESES INTERACTIVOS -->
+  <section id="intereses">
+    <div class="wrap">
+      <div class="chip-shell">
+        <div class="section-head">
+          <span class="kicker">Armá tu recorrido</span>
+          <h2>¿Qué te gustaría aprender primero?</h2>
+          <p>Elegí un interés y te contamos cómo empezar.</p>
+        </div>
+
+        <div class="chips" role="tablist">
+          <button class="chip active" data-chip="huerta">Empezar mi huerta</button>
+          <button class="chip" data-chip="compost">Compostaje</button>
+          <button class="chip" data-chip="flores">Flores comestibles</button>
+          <button class="chip" data-chip="charlas">Charlas online</button>
+        </div>
+
+        <div class="chip-panel active" id="chip-huerta">
+          <div>
+            <h3>Empezar mi huerta</h3>
+            <p class="desc">
+              Si nunca cultivaste, este es tu punto de partida: aprendés a elegir el lugar, preparar la tierra
+              y armar tus primeros canteros con cultivos de estación.
+            </p>
+            <ul class="chip-meta">
+              <li><b>Formato</b> Taller presencial en la Huerta Escuela</li>
+              <li><b>Duración</b> Encuentro de medio día</li>
+              <li><b>Te llevás</b> Plantines y una guía de cultivo</li>
+            </ul>
+          </div>
+          <div class="chip-card">
+            <span class="tag">Para empezar</span>
+            <p>No hace falta experiencia previa ni tener huerta todavía: arrancamos desde cero, paso a paso.</p>
+          </div>
+        </div>
+
+        <div class="chip-panel" id="chip-compost">
+          <div>
+            <h3>Compostaje</h3>
+            <p class="desc">
+              Aprendé a transformar los residuos orgánicos de tu casa en abono para tu huerta: qué compostar,
+              en qué proporciones y cómo mantener el compost sano.
+            </p>
+            <ul class="chip-meta">
+              <li><b>Formato</b> Taller práctico</li>
+              <li><b>Duración</b> Encuentro de 2 a 3 horas</li>
+              <li><b>Te llevás</b> Tu propia compostera lista para empezar</li>
+            </ul>
+          </div>
+          <div class="chip-card">
+            <span class="tag">Ideal en casa</span>
+            <p>Funciona igual de bien en un patio grande que en un balcón chico.</p>
+          </div>
+        </div>
+
+        <div class="chip-panel" id="chip-flores">
+          <div>
+            <h3>Flores comestibles</h3>
+            <p class="desc">
+              Conocé qué flores se pueden comer, cómo cultivarlas junto a tus verduras y de qué forma
+              sumarlas a tus platos para darles color y sabor.
+            </p>
+            <ul class="chip-meta">
+              <li><b>Formato</b> Taller en la Huerta Escuela</li>
+              <li><b>Duración</b> Encuentro de medio día</li>
+              <li><b>Te llevás</b> Semillas de flores comestibles</li>
+            </ul>
+          </div>
+          <div class="chip-card">
+            <span class="tag">Más pedido</span>
+            <p>El taller favorito de quienes ya tienen huerta y quieren llevarla un paso más allá.</p>
+          </div>
+        </div>
+
+        <div class="chip-panel" id="chip-charlas">
+          <div>
+            <h3>Charlas online</h3>
+            <p class="desc">
+              Encuentros por videollamada para resolver dudas puntuales de tu huerta, sin moverte de tu casa.
+              Ideal si estás lejos de Mendiolaza o preferís empezar de forma liviana.
+            </p>
+            <ul class="chip-meta">
+              <li><b>Formato</b> Google Meet</li>
+              <li><b>Duración</b> Aprox. 1 hora</li>
+              <li><b>Cupos</b> Limitados por encuentro</li>
+            </ul>
+          </div>
+          <div class="chip-card">
+            <span class="tag">Desde donde estés</span>
+            <p>Te dejamos el link de acceso a la próxima charla más abajo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHARLA / MEET -->
+  <section id="charla">
+    <div class="wrap meet-wrap">
+      <div class="meet-copy">
+        <span class="kicker">Charla online</span>
+        <h2>Sumate a nuestra próxima charla por Google Meet</h2>
+        <p>
+          Un espacio abierto para conversar sobre huerta agroecológica, resolver dudas y conocer más
+          sobre nuestros talleres. Solo necesitás el link para unirte.
+        </p>
+      </div>
+      <div class="meet-card">
+        <span class="live-badge"><span class="ping"></span> Acceso por Meet</span>
+        <h3>Charla de Huerta En Flor</h3>
+        <p>Copiá el link o entrá directo a la videollamada el día del encuentro.</p>
+        <div class="meet-link-row">
+          <code id="meet-url">meet.google.com/ktt-juip-ejp</code>
+          <button class="copy-btn" id="copy-meet">Copiar</button>
+        </div>
+        <a class="btn btn-solid" style="width:100%;justify-content:center;" href="https://meet.google.com/ktt-juip-ejp" target="_blank" rel="noopener">Unirme a la charla</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="cta-band">
+        <span class="kicker" style="color:var(--ink);">Vení a conocernos</span>
+        <h2>Te esperamos en la Huerta Escuela</h2>
+        <p>Escribinos por Instagram o por mail para conocer las próximas fechas de talleres y charlas.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a class="btn btn-solid" href="https://www.instagram.com/huertaenflor" target="_blank" rel="noopener">Escribinos por Instagram</a>
+          <a class="btn btn-outline" href="mailto:huertaenflor@gmail.com">huertaenflor@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand"><span class="brand-mark">🌱</span> Huerta En Flor</div>
+        <p>Huerta Escuela, talleres, charlas y flores comestibles en Mendiolaza, Córdoba.</p>
+        <div class="foot-contact">
+          <a href="mailto:huertaenflor@gmail.com">💌 huertaenflor@gmail.com</a>
+          <span>📍 Las Abelias 387, Mendiolaza, Córdoba, Argentina</span>
+        </div>
+      </div>
+      <div class="foot-links">
+        <a class="icon-btn" href="https://www.instagram.com/huertaenflor" target="_blank" rel="noopener" aria-label="Instagram de Huerta En Flor">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a class="icon-btn" href="https://meet.google.com/ktt-juip-ejp" target="_blank" rel="noopener" aria-label="Unirse a la charla por Google Meet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h11v12H4z"/><path d="M15 10l5-3v10l-5-3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Huerta En Flor</span>
+      <span>Hecho con cariño, a semilla.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      document.querySelectorAll('.chip-panel').forEach(p=>p.classList.remove('active'));
+      chip.classList.add('active');
+      document.getElementById('chip-' + chip.dataset.chip).classList.add('active');
+    });
+  });
+
+  const copyBtn = document.getElementById('copy-meet');
+  copyBtn.addEventListener('click', ()=>{
+    const text = 'https://meet.google.com/ktt-juip-ejp';
+    navigator.clipboard.writeText(text).then(()=>{
+      copyBtn.textContent = '¡Copiado!';
+      copyBtn.classList.add('copied');
+      setTimeout(()=>{
+        copyBtn.textContent = 'Copiar';
+        copyBtn.classList.remove('copied');
+      }, 1800);
+    }).catch(()=>{
+      copyBtn.textContent = 'meet.google.com/ktt-juip-ejp';
+    });
+  });
+</script>
+
+</body>
+</html>

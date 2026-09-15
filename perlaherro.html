@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perla Herro · Activista · Gastronomía Salvaje</title>
+<meta name="description" content="Perla Herro — activista, gaucha, gastronomía para la liberación. Del campo a la mesa. Conocé su libro Naturaleza Humana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Caveat:wght@600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sun:#ff6b35;
+    --wheat:#f2a93b;
+    --herb:#4c7a2e;
+    --terra:#c1432b;
+    --night:#3b1f3d;
+    --cream:#fff6e5;
+    --ink:#26160f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    letter-spacing:0.01em;
+    line-height:0.98;
+    text-transform:uppercase;
+  }
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(255,246,229,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid var(--ink);
+  }
+  .brand{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900; font-size:1.3rem;
+    text-transform:uppercase; letter-spacing:0.02em;
+  }
+  .brand span{color:var(--terra);}
+  .nav-cta{
+    background:var(--night);
+    color:var(--cream);
+    padding:10px 22px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .nav-cta:hover{background:var(--terra); transform:translateY(-1px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:130px 6vw 90px;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(242,169,59,0.85), transparent 42%),
+      radial-gradient(circle at 90% 10%, rgba(255,107,53,0.8), transparent 48%),
+      radial-gradient(circle at 70% 90%, rgba(76,122,46,0.75), transparent 50%),
+      linear-gradient(150deg, var(--terra), var(--night) 75%);
+    overflow:hidden;
+  }
+  .hero-sun{
+    position:absolute; top:-80px; right:-80px;
+    width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #ffd27a, var(--wheat) 60%, transparent 75%);
+    animation:pulse 9s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-sun{animation:none;} }
+  .hero-inner{position:relative; z-index:2; max-width:720px;}
+  .kicker{
+    display:inline-block;
+    background:var(--cream);
+    color:var(--ink);
+    padding:6px 16px;
+    border-radius:100px;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.6rem, 7vw, 5.2rem);
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--wheat);
+  }
+  .hero .quote{
+    font-family:'Caveat', cursive;
+    font-size:clamp(1.5rem, 2.8vw, 2rem);
+    color:var(--cream);
+    margin-bottom:30px;
+    max-width:480px;
+  }
+  .hero-tags{
+    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px;
+  }
+  .pill{
+    border:1.5px solid rgba(255,246,229,0.55);
+    color:var(--cream);
+    padding:7px 16px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:500;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:16px;}
+  .btn-primary{
+    background:var(--cream);
+    color:var(--ink);
+    padding:16px 32px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:1rem;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .btn-primary:hover{background:var(--wheat); transform:translateY(-2px);}
+  .btn-secondary{
+    border:2px solid var(--cream);
+    color:var(--cream);
+    padding:14px 30px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:1rem;
+    transition:background .25s ease;
+  }
+  .btn-secondary:hover{background:rgba(255,246,229,0.15);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 6vw;}
+  .section-head{max-width:600px; margin:0 auto 54px;}
+  .section-head .tag{
+    color:var(--terra); font-weight:700; text-transform:uppercase;
+    letter-spacing:0.08em; font-size:0.82rem; display:block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(2rem, 4.5vw, 3rem); color:var(--night);}
+  .section-head p{margin-top:16px; color:rgba(38,22,15,0.72); font-size:1.05rem; line-height:1.6;}
+
+  /* ---------- BIO ---------- */
+  .bio{
+    max-width:900px; margin:0 auto;
+    display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center;
+  }
+  .bio-mark{
+    width:150px; height:150px; border-radius:50%;
+    background:conic-gradient(from 200deg, var(--sun), var(--wheat), var(--herb), var(--terra), var(--sun));
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .bio-mark span{
+    width:118px; height:118px; border-radius:50%; background:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:2.6rem; color:var(--night);
+  }
+  .bio p{font-size:1.08rem; line-height:1.7; color:rgba(38,22,15,0.85);}
+  .bio p + p{margin-top:14px;}
+
+  /* ---------- PLANTAS / INTERACTIVO ---------- */
+  .plantas{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+    max-width:1080px; margin:0 auto;
+  }
+  .planta-card{
+    perspective:1200px;
+    height:230px;
+    cursor:pointer;
+  }
+  .planta-inner{
+    position:relative; width:100%; height:100%;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+    transform-style:preserve-3d;
+  }
+  .planta-card.flipped .planta-inner{transform:rotateY(180deg);}
+  .planta-face{
+    position:absolute; inset:0;
+    border-radius:20px;
+    backface-visibility:hidden;
+    display:flex; flex-direction:column;
+    padding:22px;
+  }
+  .planta-front{
+    background:var(--night);
+    color:var(--cream);
+    justify-content:space-between;
+  }
+  .planta-front svg{width:46px;height:46px;}
+  .planta-front h3{font-size:1.3rem; margin-top:14px;}
+  .planta-front .tap{font-size:0.78rem; opacity:0.65; text-transform:none; font-family:'Work Sans'; font-weight:400;}
+  .planta-back{
+    background:var(--wheat);
+    color:var(--ink);
+    transform:rotateY(180deg);
+    justify-content:center;
+  }
+  .planta-back p{font-size:0.92rem; line-height:1.5;}
+  .planta-back h4{font-family:'Big Shoulders Display'; font-size:1.1rem; margin-bottom:8px; text-transform:uppercase;}
+
+  /* ---------- LIBRO ---------- */
+  .libro-section{background:var(--night);}
+  .libro{
+    max-width:1000px; margin:0 auto;
+    display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center;
+  }
+  .book-cover{
+    aspect-ratio:3/4.3;
+    background:linear-gradient(160deg, var(--terra), var(--sun) 55%, var(--wheat));
+    border-radius:6px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.45), 0 0 0 6px rgba(255,246,229,0.08);
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:34px 26px;
+    transform:rotate(-3deg);
+  }
+  .book-cover .top-line{
+    font-size:0.75rem; letter-spacing:0.12em; color:rgba(38,22,15,0.7); font-weight:700; text-transform:uppercase;
+  }
+  .book-cover h3{
+    color:var(--cream);
+    font-size:2.2rem;
+    line-height:0.95;
+  }
+  .book-cover .author{
+    font-family:'Caveat', cursive;
+    font-size:1.6rem;
+    color:var(--night);
+  }
+  .libro-text .tag{color:var(--wheat); font-weight:700; text-transform:uppercase; letter-spacing:0.08em; font-size:0.82rem; display:block; margin-bottom:12px;}
+  .libro-text h2{color:var(--cream); font-size:clamp(1.9rem,4vw,2.6rem); margin-bottom:18px;}
+  .libro-text p{color:rgba(255,246,229,0.82); line-height:1.7; font-size:1.05rem; margin-bottom:30px;}
+
+  /* ---------- MANIFIESTO BANNER ---------- */
+  .marquee-wrap{
+    background:var(--sun);
+    overflow:hidden;
+    padding:26px 0;
+    border-top:3px solid var(--ink);
+    border-bottom:3px solid var(--ink);
+  }
+  .marquee{
+    display:flex; white-space:nowrap;
+    animation:scroll 22s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .marquee{animation:none;} }
+  .marquee span{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900;
+    font-size:clamp(1.6rem, 4vw, 2.8rem);
+    color:var(--ink);
+    margin-right:40px;
+    text-transform:uppercase;
+  }
+  .marquee span.alt{color:var(--cream); -webkit-text-stroke:1.5px var(--ink);}
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ---------- CONTACTO ---------- */
+  .contacto{
+    max-width:760px; margin:0 auto; text-align:center;
+  }
+  .contact-links{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:36px;
+  }
+  .contact-link{
+    display:flex; align-items:center; gap:12px;
+    background:var(--night);
+    color:var(--cream);
+    padding:16px 26px;
+    border-radius:100px;
+    font-weight:600; font-size:0.98rem;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .contact-link:hover{background:var(--terra); transform:translateY(-2px);}
+  .contact-link svg{width:20px;height:20px;}
+
+  footer{
+    text-align:center; padding:46px 6vw 36px;
+    color:rgba(38,22,15,0.55);
+    font-size:0.85rem;
+    background:var(--cream);
+  }
+  footer .brand{display:block; margin-bottom:8px; font-size:1rem; color:var(--night);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .bio{grid-template-columns:1fr; text-align:center; justify-items:center;}
+    .plantas{grid-template-columns:repeat(2,1fr);}
+    .libro{grid-template-columns:1fr;}
+    .book-cover{max-width:260px; margin:0 auto;}
+  }
+  @media (max-width: 520px){
+    nav{padding:14px 5vw;}
+    .brand{font-size:1.05rem;}
+    section{padding:70px 5vw;}
+    .plantas{grid-template-columns:1fr 1fr; gap:14px;}
+    .planta-card{height:200px;}
+  }
+
+  a:focus-visible, .planta-card:focus-visible{
+    outline:3px solid var(--night);
+    outline-offset:3px;
+  }
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">perla <span>herro</span></div>
+  <a class="nav-cta" href="https://instagram.com/perla_herro" target="_blank" rel="noopener">Seguime</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-sun"></div>
+  <div class="hero-inner">
+    <span class="kicker">Activista · Gaucha</span>
+    <h1>Gastronomía para la <em>liberación</em></h1>
+    <p class="quote">"Todo lo bueno es libre y salvaje"</p>
+    <div class="hero-tags">
+      <span class="pill">@calisanutricionuba</span>
+      <span class="pill">@borrajas.cocinasalvaje</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://pachamamitalibros.com.ar/naturaleza-humana-perla-herro" target="_blank" rel="noopener">Conocé el libro</a>
+      <a class="btn-secondary" href="https://instagram.com/perla_herro" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</header>
+
+<section class="reveal">
+  <div class="bio">
+    <div class="bio-mark"><span>PH</span></div>
+    <div>
+      <p>Perla Herro es activista, gaucha y cocinera del monte. Su trabajo une nutrición, campo y libertad: comida que se cosecha, no se fabrica.</p>
+      <p>Desde <strong>@calisanutricionuba</strong> lleva la nutrición a la práctica, y desde <strong>@borrajas.cocinasalvaje</strong> rescata plantas silvestres para llevarlas del campo a la mesa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-head">
+    <span class="tag">Del campo a la mesa</span>
+    <h2>Plantas silvestres que curan</h2>
+    <p>Tocá cada tarjeta para conocer una de las plantas que Perla lleva del monte a la olla.</p>
+  </div>
+  <div class="plantas">
+
+    <div class="planta-card" tabindex="0" role="button" aria-pressed="false">
+      <div class="planta-inner">
+        <div class="planta-face planta-front">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 40c0-14 8-22 8-22s-16 0-16 16c0 4 2 6 2 6" stroke="#f2a93b" stroke-width="3" stroke-linecap="round"/><circle cx="30" cy="14" r="4" fill="#ff6b35"/></svg>
+          <div>
+            <h3>Borraja</h3>
+            <span class="tap">Tocá para descubrir</span>
+          </div>
+        </div>
+        <div class="planta-face planta-back">
+          <h4>Borraja</h4>
+          <p>Flor silvestre de sabor fresco. Se usa en ensaladas y rellenos, y da nombre a su cocina salvaje.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="planta-card" tabindex="0" role="button" aria-pressed="false">
+      <div class="planta-inner">
+        <div class="planta-face planta-front">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 40V16M24 16l-8 8M24 16l8 8M24 24l-6 6M24 24l6 6" stroke="#4c7a2e" stroke-width="3" stroke-linecap="round"/></svg>
+          <div>
+            <h3>Ortiga</h3>
+            <span class="tap">Tocá para descubrir</span>
+          </div>
+        </div>
+        <div class="planta-face planta-back">
+          <h4>Ortiga</h4>
+          <p>Densa en hierro y minerales. En infusión o salteada, es una de las plantas más nutritivas del monte.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="planta-card" tabindex="0" role="button" aria-pressed="false">
+      <div class="planta-inner">
+        <div class="planta-face planta-front">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="6" fill="#f2a93b"/><path d="M24 24v16" stroke="#f2a93b" stroke-width="3" stroke-linecap="round"/></svg>
+          <div>
+            <h3>Diente de león</h3>
+            <span class="tap">Tocá para descubrir</span>
+          </div>
+        </div>
+        <div class="planta-face planta-back">
+          <h4>Diente de león</h4>
+          <p>Raíz, hoja y flor comestibles. Depurativa y amiga del hígado, crece libre en cualquier baldío.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="planta-card" tabindex="0" role="button" aria-pressed="false">
+      <div class="planta-inner">
+        <div class="planta-face planta-front">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 8c6 6 6 12 0 18-6-6-6-12 0-18z" fill="#c1432b"/><path d="M24 26v14" stroke="#c1432b" stroke-width="3" stroke-linecap="round"/></svg>
+          <div>
+            <h3>Malva</h3>
+            <span class="tap">Tocá para descubrir</span>
+          </div>
+        </div>
+        <div class="planta-face planta-back">
+          <h4>Malva</h4>
+          <p>Calma la garganta y la digestión. Sus flores lilas también tiñen y decoran los platos de campo.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="libro-section reveal">
+  <div class="libro">
+    <div class="book-cover">
+      <span class="top-line">Un libro de</span>
+      <h3>Naturaleza<br>Humana</h3>
+      <span class="author">Perla Herro</span>
+    </div>
+    <div class="libro-text">
+      <span class="tag">Recién salido</span>
+      <h2>Naturaleza Humana</h2>
+      <p>El libro donde Perla junta activismo, gastronomía salvaje y gauchada en un solo texto: una invitación a comer y vivir libre, del campo a la mesa.</p>
+      <a class="btn-primary" href="https://pachamamitalibros.com.ar/naturaleza-humana-perla-herro" target="_blank" rel="noopener">Comprar el libro</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>#gastronomíaparalaliberación</span>
+    <span class="alt">#delcampoalamesa</span>
+    <span>#gastronomíaparalaliberación</span>
+    <span class="alt">#delcampoalamesa</span>
+    <span>#gastronomíaparalaliberación</span>
+    <span class="alt">#delcampoalamesa</span>
+  </div>
+</div>
+
+<section class="reveal">
+  <div class="contacto">
+    <span class="section-head-tag" style="color:var(--terra); font-weight:700; text-transform:uppercase; letter-spacing:0.08em; font-size:0.82rem;">Sumate</span>
+    <h2 style="margin-top:12px; font-size:clamp(2rem,4vw,2.8rem); color:var(--night);">Libre, salvaje y con vos</h2>
+    <div class="contact-links">
+      <a class="contact-link" href="https://instagram.com/perla_herro" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff6e5" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+        @perla_herro
+      </a>
+      <a class="contact-link" href="https://pachamamitalibros.com.ar/naturaleza-humana-perla-herro" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff6e5" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        Naturaleza Humana
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">perla herro</span>
+  Activista · Gaucha · Gastronomía para la liberación
+</footer>
+
+<script>
+  document.querySelectorAll('.planta-card').forEach(card => {
+    const toggle = () => {
+      const flipped = card.classList.toggle('flipped');
+      card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

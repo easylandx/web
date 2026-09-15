@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monte Callado | Molino Harinero</title>
+<meta name="description" content="Monte Callado, Molino Harinero. Harinas de molienda artesanal. Solo para locos. Escribinos por WhatsApp o seguinos en Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f1e4;
+    --ink:#1e1b16;
+    --ink-soft:#5c5648;
+    --card:#fffdf7;
+    --orange:#ff4d1c;
+    --cyan:#29e3ff;
+    --yellow:#ffe347;
+    --line:#e3dac2;
+    --radius:6px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Space Grotesk',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Bebas Neue',sans-serif;
+    font-weight:400;
+    letter-spacing:.02em;
+    line-height:.95;
+    margin:0;
+    text-transform:uppercase;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* fondo: blobs neón + textura de grano */
+  .neon-field{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--bg);}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.42;animation:drift 26s ease-in-out infinite;}
+  .blob.b1{width:460px;height:460px;background:var(--orange);top:-150px;left:-120px;}
+  .blob.b2{width:420px;height:420px;background:var(--cyan);bottom:-140px;right:-110px;animation-delay:-9s;}
+  .blob.b3{width:320px;height:320px;background:var(--yellow);top:46%;right:20%;animation-delay:-15s;opacity:.35;}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(22px,-20px) scale(1.05);}}
+  @media (prefers-reduced-motion:reduce){.blob{animation:none;}}
+  .grain{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:radial-gradient(var(--ink) .8px, transparent .8px);
+    background-size:22px 22px;
+    opacity:.055;
+  }
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,241,228,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1120px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;}
+  .brand-mark{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--ink);color:var(--yellow);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;
+  }
+  nav.links{display:flex;gap:26px;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:2px solid transparent;padding-bottom:2px;transition:.2s;}
+  nav.links a:hover{color:var(--ink);border-color:var(--orange);}
+  .nav-cta{
+    background:var(--orange);color:var(--card);padding:10px 18px;border-radius:999px;
+    font-weight:700;font-size:.8rem;text-decoration:none;white-space:nowrap;text-transform:uppercase;letter-spacing:.03em;
+  }
+  @media (max-width:760px){nav.links{display:none;}}
+
+  /* HERO */
+  .hero{padding:80px 0 40px;text-align:center;}
+  .stamp{
+    display:inline-flex;align-items:center;gap:10px;
+    border:2.5px solid var(--ink);
+    padding:9px 20px;border-radius:999px;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:1rem;letter-spacing:.08em;
+    transform:rotate(-3deg);
+    margin-bottom:30px;
+    background:var(--card);
+  }
+  .stamp .dot{width:9px;height:9px;border-radius:50%;background:var(--orange);}
+  .hero h1{
+    font-size:clamp(3.2rem,10vw,7rem);
+    letter-spacing:.01em;
+  }
+  .hero .sub{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.3rem,3vw,1.9rem);
+    color:var(--orange);
+    letter-spacing:.06em;
+    margin-top:6px;
+  }
+  .hero p.lead{
+    max-width:52ch;margin:26px auto 0;font-size:1.1rem;color:var(--ink-soft);
+    font-weight:500;
+  }
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;padding:15px 28px;border-radius:999px;
+    font-weight:700;font-size:.92rem;text-decoration:none;border:2.5px solid var(--ink);
+    text-transform:uppercase;letter-spacing:.03em;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-solid{background:var(--ink);color:var(--bg);}
+  .btn-solid:hover{box-shadow:6px 6px 0 0 var(--orange);}
+  .btn-outline{background:var(--card);color:var(--ink);}
+  .btn-outline:hover{box-shadow:6px 6px 0 0 var(--cyan);}
+  .btn-wsp{background:#25d366;color:var(--ink);border-color:var(--ink);}
+  .btn-wsp:hover{box-shadow:6px 6px 0 0 var(--yellow);}
+
+  .stats-row{
+    display:flex;justify-content:center;gap:0;margin-top:58px;
+    border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+    max-width:640px;margin-left:auto;margin-right:auto;
+  }
+  .stat{
+    flex:1;padding:22px 12px;text-align:center;
+    border-left:2px solid var(--ink);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:var(--orange);letter-spacing:.02em;}
+  .stat .label{font-size:.74rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+
+  section{padding:88px 0;}
+  .section-head{max-width:62ch;margin-bottom:44px;}
+  .kicker{
+    font-weight:700;color:var(--orange);font-size:.82rem;margin-bottom:10px;display:block;
+    text-transform:uppercase;letter-spacing:.08em;
+  }
+  .section-head h2{font-size:clamp(2.1rem,4.6vw,3.2rem);}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:1.04rem;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* Sobre el molino */
+  .about-panel{
+    background:var(--ink);color:var(--bg);border-radius:20px;
+    padding:52px clamp(22px,5vw,60px);
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;
+  }
+  .about-panel .tagline{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2.2rem,4.4vw,3rem);
+    color:var(--yellow);
+    line-height:1;
+  }
+  .about-panel p{color:#d8d0bd;font-size:1rem;line-height:1.65;}
+  .about-panel p + p{margin-top:14px;}
+  @media (max-width:820px){.about-panel{grid-template-columns:1fr;}}
+
+  /* Productos - selector interactivo */
+  .flour-select{
+    display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px;
+  }
+  .flour-chip{
+    border:2.5px solid var(--ink);background:var(--card);color:var(--ink);
+    padding:11px 20px;border-radius:999px;font-family:'Bebas Neue',sans-serif;
+    font-size:1rem;letter-spacing:.04em;cursor:pointer;transition:all .2s ease;
+  }
+  .flour-chip:hover{background:var(--yellow);}
+  .flour-chip.active{background:var(--ink);color:var(--bg);}
+  .flour-panel{
+    display:none;
+    grid-template-columns:.85fr 1.15fr;gap:0;
+    border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;
+    animation:rise .35s ease;
+  }
+  .flour-panel.active{display:grid;}
+  @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .flour-visual{
+    background:var(--orange);
+    display:flex;align-items:center;justify-content:center;
+    font-size:5rem;
+    min-height:220px;
+  }
+  .flour-panel:nth-child(odd) .flour-visual{background:var(--cyan);}
+  .flour-info{padding:34px 34px;background:var(--card);}
+  .flour-info h3{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;margin-bottom:10px;letter-spacing:.02em;}
+  .flour-info p.desc{color:var(--ink-soft);font-size:.98rem;line-height:1.6;margin-bottom:18px;}
+  .flour-tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .flour-tags span{
+    background:var(--bg);border:1.5px solid var(--ink);padding:6px 12px;border-radius:999px;
+    font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+  }
+  @media (max-width:760px){.flour-panel.active{grid-template-columns:1fr;}.flour-visual{min-height:140px;}}
+
+  /* Valores */
+  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .value-card{
+    background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:28px 24px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .value-card:hover{transform:translateY(-5px);box-shadow:6px 8px 0 0 var(--ink);}
+  .value-card .num{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--orange);letter-spacing:.02em;}
+  .value-card h3{font-family:'Space Grotesk',sans-serif;text-transform:none;font-weight:700;font-size:1.08rem;margin-top:6px;margin-bottom:10px;letter-spacing:normal;}
+  .value-card p{color:var(--ink-soft);font-size:.94rem;line-height:1.55;}
+  @media (max-width:820px){.value-grid{grid-template-columns:1fr;}}
+
+  /* CTA WhatsApp */
+  .cta-band{
+    background:linear-gradient(100deg,var(--orange),var(--yellow) 55%,var(--cyan));
+    border-radius:24px;padding:56px clamp(24px,5vw,64px);text-align:center;
+  }
+  .cta-band h2{font-size:clamp(2rem,4.4vw,3rem);max-width:22ch;margin:0 auto;color:var(--ink);}
+  .cta-band p{max-width:50ch;margin:16px auto 30px;font-size:1.04rem;color:rgba(30,27,22,.82);font-weight:600;}
+  .cta-band .btn-solid:hover{box-shadow:6px 6px 0 0 var(--ink);}
+
+  footer{padding:48px 0 40px;border-top:2px solid var(--ink);margin-top:20px;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .foot-brand p{color:var(--ink-soft);font-size:.9rem;margin-top:10px;max-width:34ch;}
+  .foot-links{display:flex;gap:14px;}
+  .icon-btn{
+    width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink);
+    transition:background .2s,color .2s,transform .2s;
+  }
+  .icon-btn:hover{background:var(--ink);color:var(--bg);transform:translateY(-3px);}
+  .foot-bottom{
+    margin-top:34px;padding-top:18px;border-top:1.5px solid var(--line);font-size:.78rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="neon-field">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+</div>
+<div class="grain"></div>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="brand-mark">MC</span> Monte Callado</div>
+    <nav class="links">
+      <a href="#sobre">Sobre el molino</a>
+      <a href="#harinas">Harinas</a>
+      <a href="#valores">Por qué nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/5492494466667" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="stamp"><span class="dot"></span> Molino Harinero</span>
+      <h1>Monte Callado</h1>
+      <p class="sub">Solo para locos.</p>
+      <p class="lead">
+        Harina de molienda artesanal, hecha por quienes eligieron el camino largo:
+        moler despacio, en pequeñas partidas, sin apurar nada.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-wsp" href="https://wa.me/5492494466667" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/montecallado" target="_blank" rel="noopener">Ver Instagram</a>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat"><div class="num">136</div><div class="label">Posts</div></div>
+        <div class="stat"><div class="num">6.151</div><div class="label">Seguidores</div></div>
+        <div class="stat"><div class="num">894</div><div class="label">Siguiendo</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE EL MOLINO -->
+  <section id="sobre">
+    <div class="wrap">
+      <div class="about-panel">
+        <div class="tagline">Solo<br>para<br>locos</div>
+        <div>
+          <p>
+            Monte Callado es un molino harinero que eligió hacer las cosas distinto: moler poco, moler bien,
+            y sostener un proceso artesanal en un mundo que va cada vez más rápido.
+          </p>
+          <p>
+            No es para todos. Es para quien busca una harina con carácter, con la trazabilidad del grano
+            a la bolsa, y no le tiene miedo a hacer las cosas a fuego lento.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HARINAS interactivo -->
+  <section id="harinas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Nuestras harinas</span>
+        <h2>Elegí tu harina</h2>
+        <p>Tocá cada variedad para ver para qué usarla.</p>
+      </div>
+
+      <div class="flour-select" role="tablist">
+        <button class="flour-chip active" data-flour="integral">Integral</button>
+        <button class="flour-chip" data-flour="0000">0000</button>
+        <button class="flour-chip" data-flour="000">000</button>
+        <button class="flour-chip" data-flour="semita">Semita</button>
+      </div>
+
+      <div class="flour-panel active" id="flour-integral">
+        <div class="flour-visual">🌾</div>
+        <div class="flour-info">
+          <h3>Harina Integral</h3>
+          <p class="desc">Molienda del grano entero, sin refinar. Más fibra, más sabor y ese color tostado característico.</p>
+          <div class="flour-tags"><span>Pan de campo</span><span>Panificados rústicos</span><span>Alto en fibra</span></div>
+        </div>
+      </div>
+
+      <div class="flour-panel" id="flour-0000">
+        <div class="flour-visual">🥐</div>
+        <div class="flour-info">
+          <h3>Harina 0000</h3>
+          <p class="desc">La más refinada de la casa. Ideal para masas livianas, facturas y repostería fina.</p>
+          <div class="flour-tags"><span>Repostería</span><span>Masas livianas</span><span>Facturas</span></div>
+        </div>
+      </div>
+
+      <div class="flour-panel" id="flour-000">
+        <div class="flour-visual">🍞</div>
+        <div class="flour-info">
+          <h3>Harina 000</h3>
+          <p class="desc">El equilibrio justo entre fuerza y suavidad. La elegida para el pan de todos los días.</p>
+          <div class="flour-tags"><span>Pan casero</span><span>Pizza</span><span>Uso diario</span></div>
+        </div>
+      </div>
+
+      <div class="flour-panel" id="flour-semita">
+        <div class="flour-visual">🌿</div>
+        <div class="flour-info">
+          <h3>Semita</h3>
+          <p class="desc">Un intermedio entre la integral y la blanca: conserva parte del salvado, con una miga más suave.</p>
+          <div class="flour-tags"><span>Pan de semita</span><span>Sabor intermedio</span><span>Menos refinada</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section id="valores">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Por qué Monte Callado</span>
+        <h2>Molienda lenta, resultado honesto</h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="num">01</div>
+          <h3>Molienda en pequeñas partidas</h3>
+          <p>Molemos lo justo para mantener la frescura, sin stock durmiendo en depósito.</p>
+        </div>
+        <div class="value-card">
+          <div class="num">02</div>
+          <h3>Trazabilidad del grano</h3>
+          <p>Sabemos de dónde viene cada grano que entra al molino, de principio a fin.</p>
+        </div>
+        <div class="value-card">
+          <div class="num">03</div>
+          <h3>Proceso artesanal</h3>
+          <p>Sin atajos ni apuros: el tiempo que necesita cada harina es el que le damos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>¿Sos de los locos que valoran una buena harina?</h2>
+        <p>Escribinos por WhatsApp para consultar stock, precios y envíos.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a class="btn btn-solid" href="https://wa.me/5492494466667" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a class="btn btn-outline" href="https://www.instagram.com/montecallado" target="_blank" rel="noopener">Seguir en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand"><span class="brand-mark">MC</span> Monte Callado</div>
+        <p>Molino harinero. Molienda artesanal, en pequeñas partidas. Solo para locos.</p>
+      </div>
+      <div class="foot-links">
+        <a class="icon-btn" href="https://www.instagram.com/montecallado" target="_blank" rel="noopener" aria-label="Instagram de Monte Callado">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a class="icon-btn" href="https://wa.me/5492494466667" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 0 0-7.75 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 8.7c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.5.2.5.6 1.6.6 1.7.1.1.1.3 0 .4-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.2.5.3.1.2.1 1-.3 1.5-.3.6-1.5 1.1-2.1 1.1-.6 0-1.3.1-4.2-1.7-2.5-1.6-4-4.4-4.1-4.6-.1-.2-.9-1.2-.9-2.3 0-1.1.6-1.6.8-1.9z" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Monte Callado</span>
+      <span>Molino harinero · solo para locos.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.flour-chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      document.querySelectorAll('.flour-chip').forEach(c=>c.classList.remove('active'));
+      document.querySelectorAll('.flour-panel').forEach(p=>p.classList.remove('active'));
+      chip.classList.add('active');
+      document.getElementById('flour-' + chip.dataset.flour).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

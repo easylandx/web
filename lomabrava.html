@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loma Brava · Alimentos Agroecológicos</title>
+<meta name="description" content="Loma Brava — alimentos agroecológicos, sin agroquímicos, conservantes ni aditivos. Cultivamos comunidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#081a10;
+    --bg2:#0e2417;
+    --lime:#baff29;
+    --green:#39ff8a;
+    --coral:#ff5470;
+    --gold:#ffd23f;
+    --card:#102b1b;
+    --text:#eafff0;
+    --text-dim:rgba(234,255,240,0.68);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    line-height:1.08;
+  }
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(8,26,16,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(186,255,41,0.22);
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:1.15rem;
+  }
+  .brand span{
+    color:var(--lime);
+    text-shadow:0 0 10px rgba(186,255,41,0.6), 0 0 22px rgba(186,255,41,0.3);
+  }
+  .nav-cta{
+    background:transparent;
+    color:var(--lime);
+    border:1.5px solid var(--lime);
+    padding:9px 20px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+    box-shadow:0 0 14px rgba(186,255,41,0.3);
+    transition:all .25s ease;
+  }
+  .nav-cta:hover{background:var(--lime); color:var(--bg); box-shadow:0 0 24px rgba(186,255,41,0.55);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:130px 6vw 90px;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(186,255,41,0.32), transparent 45%),
+      radial-gradient(circle at 88% 10%, rgba(57,255,138,0.28), transparent 45%),
+      radial-gradient(circle at 55% 95%, rgba(255,84,112,0.25), transparent 55%),
+      var(--bg);
+    overflow:hidden;
+  }
+  .glow{
+    position:absolute; border-radius:50%;
+    filter:blur(65px);
+    opacity:0.5;
+    animation:float 16s ease-in-out infinite;
+  }
+  .glow.g1{width:300px;height:300px; background:var(--lime); top:6%; right:6%;}
+  .glow.g2{width:220px;height:220px; background:var(--green); bottom:6%; left:4%; animation-delay:-6s;}
+  .glow.g3{width:150px;height:150px; background:var(--coral); top:55%; right:30%; animation-delay:-11s;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) translateX(0);}
+    50%{transform:translateY(-26px) translateX(18px);}
+  }
+  @media (prefers-reduced-motion: reduce){ .glow{animation:none;} }
+
+  .hero-inner{position:relative; z-index:2; max-width:700px;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(186,255,41,0.4);
+    color:var(--lime);
+    padding:7px 18px;
+    border-radius:100px;
+    font-size:0.82rem;
+    font-weight:600;
+    margin-bottom:24px;
+  }
+  .hero h1{
+    color:var(--text);
+    font-size:clamp(2.3rem, 5.8vw, 4.1rem);
+    margin-bottom:20px;
+  }
+  .hero h1 .neon{
+    color:var(--lime);
+    text-shadow:0 0 14px rgba(186,255,41,0.75), 0 0 32px rgba(186,255,41,0.4);
+  }
+  .hero p{
+    color:var(--text-dim);
+    font-size:1.12rem;
+    line-height:1.65;
+    max-width:520px;
+    margin-bottom:32px;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:16px;}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--lime), var(--green));
+    color:var(--bg);
+    padding:16px 34px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:1rem;
+    display:inline-flex; align-items:center; gap:10px;
+    box-shadow:0 0 26px rgba(186,255,41,0.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 0 36px rgba(186,255,41,0.55);}
+  .btn-secondary{
+    border:1.5px solid rgba(234,255,240,0.4);
+    color:var(--text);
+    padding:14.5px 30px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:1rem;
+    transition:background .25s ease;
+  }
+  .btn-secondary:hover{background:rgba(234,255,240,0.1);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 6vw; position:relative;}
+  .section-head{max-width:600px; margin:0 auto 50px; text-align:center;}
+  .section-head .tag{
+    color:var(--lime); font-weight:600; text-transform:uppercase;
+    letter-spacing:0.08em; font-size:0.8rem; display:block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.6rem); color:var(--text);}
+  .section-head p{margin-top:14px; color:var(--text-dim); font-size:1.02rem; line-height:1.6;}
+
+  /* ---------- SWITCH COMPARATIVO ---------- */
+  .switch-box{
+    background:var(--bg2);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    max-width:900px; margin:0 auto;
+    padding:56px 6vw;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .switch-box::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 85% 0%, rgba(255,84,112,0.16), transparent 55%);
+    pointer-events:none;
+  }
+  .switch-box .tag{color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:0.08em; font-size:0.8rem; display:block; margin-bottom:10px; position:relative;}
+  .switch-box h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:34px; position:relative;}
+
+  .switch-control{
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    margin-bottom:38px; position:relative;
+  }
+  .switch-label{font-weight:600; font-size:0.95rem; color:var(--text-dim); transition:color .3s ease;}
+  .switch-label.on{color:var(--lime);}
+  .switch-toggle{
+    width:64px; height:34px; border-radius:100px;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.25);
+    position:relative;
+    cursor:pointer;
+    transition:background .3s ease;
+  }
+  .switch-toggle.active{ background:var(--lime); border-color:var(--lime); box-shadow:0 0 18px rgba(186,255,41,0.5);}
+  .switch-knob{
+    position:absolute; top:3px; left:3px;
+    width:26px; height:26px; border-radius:50%;
+    background:var(--text);
+    transition:transform .3s ease;
+  }
+  .switch-toggle.active .switch-knob{ transform:translateX(30px); background:var(--bg);}
+
+  .switch-panel{max-width:520px; margin:0 auto; position:relative; min-height:210px;}
+  .switch-content{display:none; text-align:left; animation:fadeUp .5s ease forwards;}
+  .switch-content.active{display:block;}
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  .switch-content ul{list-style:none;}
+  .switch-content li{
+    display:flex; align-items:center; gap:12px;
+    padding:11px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    font-size:1rem;
+    color:var(--text-dim);
+  }
+  .switch-content li:last-child{border-bottom:none;}
+  .switch-content[data-panel="antes"] li::before{ content:'✕'; color:var(--coral); font-weight:700; }
+  .switch-content[data-panel="lomabrava"] li::before{ content:'✓'; color:var(--lime); font-weight:700; }
+
+  /* ---------- VALORES ---------- */
+  .valores{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+    max-width:1000px; margin:0 auto;
+  }
+  .valor{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    padding:30px 24px;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .valor:hover{ transform:translateY(-4px); }
+  .valor.c-lime{border-color:rgba(186,255,41,0.35);}
+  .valor.c-green{border-color:rgba(57,255,138,0.35);}
+  .valor.c-coral{border-color:rgba(255,84,112,0.35);}
+  .valor .icon{width:40px;height:40px; margin-bottom:16px;}
+  .valor h3{font-size:1.1rem; margin-bottom:8px; color:var(--text);}
+  .valor p{color:var(--text-dim); font-size:0.92rem; line-height:1.55;}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-wrap{
+    background:var(--lime);
+    overflow:hidden;
+    padding:22px 0;
+    border-top:3px solid var(--bg);
+    border-bottom:3px solid var(--bg);
+  }
+  .marquee{ display:flex; white-space:nowrap; animation:scroll 22s linear infinite; }
+  @media (prefers-reduced-motion: reduce){ .marquee{animation:none;} }
+  .marquee span{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:clamp(1.3rem, 3vw, 2rem);
+    color:var(--bg);
+    margin-right:36px;
+  }
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- CREDIBILIDAD ---------- */
+  .credibilidad{
+    max-width:700px; margin:0 auto; text-align:center;
+  }
+  .fao-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--card);
+    border:1px solid rgba(255,210,63,0.4);
+    padding:14px 26px;
+    border-radius:100px;
+    font-weight:600; font-size:0.92rem;
+    color:var(--gold);
+    box-shadow:0 0 18px rgba(255,210,63,0.2);
+    margin-top:10px;
+    transition:transform .25s ease;
+  }
+  .fao-badge:hover{transform:translateY(-2px);}
+
+  /* ---------- CONTACTO ---------- */
+  .contacto{
+    max-width:820px; margin:0 auto; text-align:center;
+  }
+  .contact-links{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:34px;
+  }
+  .contact-link{
+    display:flex; align-items:center; gap:12px;
+    padding:16px 28px;
+    border-radius:100px;
+    font-weight:700; font-size:0.98rem;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .contact-link.wa{ background:linear-gradient(120deg, var(--lime), var(--green)); color:var(--bg); box-shadow:0 8px 24px rgba(186,255,41,0.35);}
+  .contact-link.ig{ background:var(--coral); color:var(--text); box-shadow:0 8px 24px rgba(255,84,112,0.35);}
+  .contact-link:hover{transform:translateY(-3px);}
+  .contact-link svg{width:20px;height:20px;}
+
+  footer{
+    text-align:center; padding:46px 6vw 36px;
+    color:rgba(234,255,240,0.4);
+    font-size:0.85rem;
+  }
+  footer .brand{display:block; margin-bottom:8px; color:var(--text-dim); font-size:1rem;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .valores{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    nav{padding:14px 5vw;}
+    section{padding:64px 5vw;}
+    .switch-box{padding:40px 5vw; border-radius:24px;}
+    .switch-control{gap:10px;}
+    .switch-label{font-size:0.82rem;}
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--lime);
+    outline-offset:3px;
+  }
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">loma <span>brava</span></div>
+  <a class="nav-cta" href="https://wa.me/c/5491122615541" target="_blank" rel="noopener">Pedidos</a>
+</nav>
+
+<header class="hero">
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="glow g3"></div>
+  <div class="hero-inner">
+    <span class="kicker">🌱 Grocery Store</span>
+    <h1>Cultivamos <span class="neon">comunidad</span></h1>
+    <p>Alimentos agroecológicos de la naturaleza para vos. Sin agroquímicos, sin conservantes, sin aditivos: comida como tiene que ser.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://wa.me/c/5491122615541" target="_blank" rel="noopener">Hacer mi pedido</a>
+      <a class="btn-secondary" href="https://instagram.com/lomabrava" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</header>
+
+<section class="reveal">
+  <div class="switch-box">
+    <span class="tag">Comparalo vos mismo</span>
+    <h2>¿Cómo comés hoy?</h2>
+
+    <div class="switch-control">
+      <span class="switch-label on" id="label-antes">Como antes</span>
+      <div class="switch-toggle active" id="modoSwitch" role="switch" aria-checked="true" tabindex="0" aria-label="Comparar modo de alimentación"><div class="switch-knob"></div></div>
+      <span class="switch-label" id="label-lomabrava">Con Loma Brava</span>
+    </div>
+
+    <div class="switch-panel">
+      <div class="switch-content active" data-panel="antes">
+        <ul>
+          <li>Agroquímicos en cada cosecha</li>
+          <li>Conservantes para alargar la vida útil</li>
+          <li>Aditivos que no reconocés</li>
+          <li>Cadena larga entre el campo y tu mesa</li>
+        </ul>
+      </div>
+      <div class="switch-content" data-panel="lomabrava">
+        <ul>
+          <li>Alimentos agroecológicos de verdad</li>
+          <li>Cero conservantes artificiales</li>
+          <li>Cero aditivos, solo comida</li>
+          <li>Comunidad de productores cerca tuyo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-head">
+    <span class="tag">Nuestro compromiso</span>
+    <h2>Lo que no vas a encontrar acá</h2>
+  </div>
+  <div class="valores">
+    <div class="valor c-lime">
+      <svg class="icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#baff29" stroke-width="3"/><path d="M16 16l16 16M32 16L16 32" stroke="#baff29" stroke-width="3" stroke-linecap="round"/></svg>
+      <h3>Sin agroquímicos</h3>
+      <p>Cultivos agroecológicos, respetando el suelo y el ciclo natural de cada planta.</p>
+    </div>
+    <div class="valor c-green">
+      <svg class="icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#39ff8a" stroke-width="3"/><path d="M16 16l16 16M32 16L16 32" stroke="#39ff8a" stroke-width="3" stroke-linecap="round"/></svg>
+      <h3>Sin conservantes</h3>
+      <p>Productos frescos y de estación, tal como los da la naturaleza.</p>
+    </div>
+    <div class="valor c-coral">
+      <svg class="icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#ff5470" stroke-width="3"/><path d="M16 16l16 16M32 16L16 32" stroke="#ff5470" stroke-width="3" stroke-linecap="round"/></svg>
+      <h3>Sin aditivos</h3>
+      <p>Nada que no puedas reconocer o pronunciar en la etiqueta.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>🌱 AGROECOLÓGICO</span>
+    <span>🚫 SIN AGROQUÍMICOS</span>
+    <span>🌾 DE LA NATURALEZA</span>
+    <span>🌱 AGROECOLÓGICO</span>
+    <span>🚫 SIN AGROQUÍMICOS</span>
+    <span>🌾 DE LA NATURALEZA</span>
+  </div>
+</div>
+
+<section class="reveal">
+  <div class="credibilidad">
+    <h2 style="font-size:clamp(1.7rem,3vw,2.2rem); margin-bottom:12px;">Agroecología reconocida</h2>
+    <p style="color:var(--text-dim); font-size:1rem;">Nuestro trabajo forma parte de la base de agroecología de la FAO.</p>
+    <a class="fao-badge" href="https://fao.org/agroecology/database/detail/es/c/1447176" target="_blank" rel="noopener">
+      🌍 Ver en la base de la FAO
+    </a>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="contacto">
+    <h2 style="font-size:clamp(1.9rem,4vw,2.6rem); margin-bottom:14px;">Sumate a la comunidad</h2>
+    <p style="color:var(--text-dim); font-size:1.05rem;">Pedí por WhatsApp o seguinos en Instagram para ver lo que llega cada semana.</p>
+    <div class="contact-links">
+      <a class="contact-link wa" href="https://wa.me/c/5491122615541" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#081a10"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.3.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.7.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.6-.2 1.2z"/></svg>
+        Ver catálogo y pedir
+      </a>
+      <a class="contact-link ig" href="https://instagram.com/lomabrava" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#eafff0" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+        @lomabrava
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">loma brava</span>
+  Alimentos agroecológicos · Cultivamos comunidad
+</footer>
+
+<script>
+  const modoSwitch = document.getElementById('modoSwitch');
+  const labelAntes = document.getElementById('label-antes');
+  const labelLoma = document.getElementById('label-lomabrava');
+  const panelAntes = document.querySelector('.switch-content[data-panel="antes"]');
+  const panelLoma = document.querySelector('.switch-content[data-panel="lomabrava"]');
+
+  function toggleModo(){
+    const isLomabrava = modoSwitch.classList.toggle('active');
+    modoSwitch.setAttribute('aria-checked', isLomabrava ? 'false' : 'true');
+    if(isLomabrava){
+      // switch defaults active = "antes" side visually off means lomabrava... normalize below
+    }
+    const showLoma = !modoSwitch.classList.contains('active') ? false : true;
+  }
+
+  // simpler explicit state machine
+  let state = 'antes';
+  function render(){
+    if(state === 'antes'){
+      modoSwitch.classList.remove('active');
+      labelAntes.classList.add('on');
+      labelLoma.classList.remove('on');
+      panelAntes.classList.add('active');
+      panelLoma.classList.remove('active');
+      modoSwitch.setAttribute('aria-checked','false');
+    } else {
+      modoSwitch.classList.add('active');
+      labelAntes.classList.remove('on');
+      labelLoma.classList.add('on');
+      panelAntes.classList.remove('active');
+      panelLoma.classList.add('active');
+      modoSwitch.setAttribute('aria-checked','true');
+    }
+  }
+  modoSwitch.addEventListener('click', () => { state = state === 'antes' ? 'lomabrava' : 'antes'; render(); });
+  modoSwitch.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      state = state === 'antes' ? 'lomabrava' : 'antes';
+      render();
+    }
+  });
+  // init state to "lomabrava" active to match markup default (toggle starts active)
+  state = 'lomabrava';
+  render();
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

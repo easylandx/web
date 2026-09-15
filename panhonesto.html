@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pan Honesto · Fermentación natural, Carabelas</title>
+<meta name="description" content="Pan Honesto: pan de fermentación natural hecho a mano, con materias primas orgánicas y harinas molidas a piedra de granito. Carabelas, Buenos Aires.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf2e4;
+    --ink:#2a1c12;
+    --ink-soft:#6b5947;
+    --card:#fffaf0;
+    --crust:#ff5a36;
+    --teal:#22e8c2;
+    --gold:#ffcc3d;
+    --plum:#8b5cf6;
+    --line:#ecdfc7;
+    --radius:22px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;line-height:1.05;margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  .neon-field{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg);}
+  .blob{position:absolute;border-radius:50%;filter:blur(82px);opacity:.4;animation:sway 25s ease-in-out infinite;}
+  .blob.b1{width:460px;height:460px;background:var(--crust);top:-160px;left:-120px;}
+  .blob.b2{width:420px;height:420px;background:var(--teal);bottom:-150px;right:-110px;animation-delay:-8s;}
+  .blob.b3{width:320px;height:320px;background:var(--plum);top:40%;right:22%;animation-delay:-14s;opacity:.3;}
+  .blob.b4{width:260px;height:260px;background:var(--gold);bottom:16%;left:16%;animation-delay:-4s;opacity:.42;}
+  @keyframes sway{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(20px,-22px) scale(1.06);}}
+  @media (prefers-reduced-motion:reduce){.blob{animation:none;}}
+
+  header{
+    position:sticky;top:0;z-index:50;background:rgba(250,242,228,.85);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1080px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;}
+  .brand-mark{
+    width:36px;height:36px;border-radius:12px;
+    background:linear-gradient(135deg,var(--crust),var(--gold));
+    display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+  }
+  nav.links{display:flex;gap:26px;font-size:.9rem;font-weight:600;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:2px solid transparent;padding-bottom:2px;transition:.2s;}
+  nav.links a:hover{color:var(--ink);border-color:var(--crust);}
+  .nav-cta{
+    background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;
+    font-weight:700;font-size:.84rem;text-decoration:none;white-space:nowrap;
+  }
+  @media (max-width:760px){nav.links{display:none;}}
+
+  /* HERO */
+  .hero{padding:76px 0 36px;text-align:center;}
+  .eyebrow-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--card);border:1.5px solid var(--ink);
+    padding:7px 16px 7px 8px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:24px;
+  }
+  .eyebrow-badge .dot{width:18px;height:18px;border-radius:50%;background:var(--crust);display:inline-block;}
+  .hero h1{font-size:clamp(2.6rem,7vw,5rem);letter-spacing:-.01em;}
+  .hero h1 em{
+    font-style:italic;
+    background:linear-gradient(90deg,var(--crust),var(--plum) 60%,var(--teal));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{max-width:52ch;margin:22px auto 0;font-size:1.1rem;color:var(--ink-soft);}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;
+    font-weight:700;font-size:.94rem;text-decoration:none;border:2px solid var(--ink);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-solid{background:var(--ink);color:var(--bg);}
+  .btn-solid:hover{box-shadow:6px 6px 0 0 var(--gold);}
+  .btn-outline{background:var(--card);color:var(--ink);}
+  .btn-outline:hover{box-shadow:6px 6px 0 0 var(--teal);}
+
+  .stats-row{
+    display:flex;justify-content:center;gap:14px;margin-top:50px;flex-wrap:wrap;
+  }
+  .stat{
+    background:var(--card);border:1.5px solid var(--ink);border-radius:16px;
+    padding:16px 26px;text-align:center;min-width:110px;
+  }
+  .stat .num{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--crust);}
+  .stat .label{font-size:.72rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+
+  .hero-strip{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px;}
+  .pill{
+    background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:999px;
+    font-size:.84rem;font-weight:600;color:var(--ink-soft);
+  }
+
+  section{padding:84px 0;}
+  .section-head{max-width:60ch;margin-bottom:44px;}
+  .kicker{font-weight:700;color:var(--crust);font-size:.85rem;margin-bottom:10px;display:block;}
+  .section-head h2{font-size:clamp(1.9rem,3.8vw,2.7rem);}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:1.02rem;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* Sobre el pan */
+  .about-panel{
+    background:var(--ink);color:var(--bg);border-radius:26px;
+    padding:50px clamp(22px,5vw,58px);text-align:center;
+  }
+  .about-panel h2{font-size:clamp(1.8rem,3.6vw,2.5rem);color:var(--gold);max-width:22ch;margin:0 auto;}
+  .about-panel p{color:#e4d9c5;font-size:1.04rem;line-height:1.65;max-width:60ch;margin:20px auto 0;}
+
+  /* Proceso interactivo */
+  .timeline{
+    display:flex;justify-content:space-between;gap:8px;margin-bottom:38px;
+    position:relative;
+  }
+  .timeline::before{
+    content:"";position:absolute;top:19px;left:5%;right:5%;height:2px;background:var(--line);z-index:0;
+  }
+  .t-step{
+    background:var(--card);border:1.5px solid var(--ink);border-radius:999px;
+    padding:9px 16px;font-weight:700;font-size:.86rem;cursor:pointer;
+    position:relative;z-index:1;transition:all .2s ease;flex:1;text-align:center;
+  }
+  .t-step.active{background:var(--crust);color:var(--card);border-color:var(--crust);}
+  .t-step:hover{border-color:var(--crust);}
+  .process-detail{
+    display:none;border:1.5px solid var(--ink);border-radius:var(--radius);
+    grid-template-columns:.8fr 1.2fr;overflow:hidden;animation:rise .35s ease;
+  }
+  .process-detail.active{display:grid;}
+  @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .process-visual{
+    background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:4.5rem;min-height:200px;
+  }
+  .process-detail:nth-child(even) .process-visual{background:var(--gold);}
+  .process-info{padding:32px;background:var(--card);}
+  .process-info h3{font-size:1.7rem;margin-bottom:10px;}
+  .process-info p{color:var(--ink-soft);font-size:.98rem;line-height:1.6;}
+  @media (max-width:760px){
+    .timeline{flex-wrap:wrap;}
+    .timeline::before{display:none;}
+    .process-detail.active{grid-template-columns:1fr;}
+    .process-visual{min-height:130px;}
+  }
+
+  /* Que usamos */
+  .value-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .value-card{
+    background:var(--card);border:1.5px solid var(--ink);border-radius:20px;padding:28px 24px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .value-card:hover{transform:translateY(-5px);box-shadow:6px 8px 0 0 var(--ink);}
+  .value-card .em{font-size:1.9rem;margin-bottom:14px;}
+  .value-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;margin-bottom:10px;}
+  .value-card p{color:var(--ink-soft);font-size:.94rem;line-height:1.55;}
+  @media (max-width:820px){.value-row{grid-template-columns:1fr;}}
+
+  /* CTA final */
+  .cta-band{
+    background:linear-gradient(100deg,var(--crust),var(--gold) 50%,var(--teal));
+    border-radius:28px;padding:54px clamp(24px,5vw,60px);text-align:center;
+  }
+  .cta-band h2{font-size:clamp(1.9rem,4vw,2.7rem);max-width:22ch;margin:0 auto;color:var(--ink);}
+  .cta-band p{max-width:50ch;margin:16px auto 28px;font-size:1.03rem;color:rgba(42,28,18,.82);font-weight:600;}
+  .cta-band .btn-outline{background:var(--bg);}
+
+  footer{padding:46px 0 38px;border-top:1px solid var(--line);margin-top:16px;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .foot-brand p{color:var(--ink-soft);font-size:.9rem;margin-top:10px;max-width:34ch;line-height:1.5;}
+  .foot-links{display:flex;gap:14px;}
+  .icon-btn{
+    width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink);
+    transition:background .2s,color .2s,transform .2s;
+  }
+  .icon-btn:hover{background:var(--ink);color:var(--bg);transform:translateY(-3px);}
+  .foot-bottom{
+    margin-top:32px;padding-top:18px;border-top:1px solid var(--line);font-size:.78rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="neon-field">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="brand-mark">🥖</span> Pan Honesto</div>
+    <nav class="links">
+      <a href="#sobre">Sobre el pan</a>
+      <a href="#proceso">Nuestro proceso</a>
+      <a href="#que-usamos">Qué usamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="https://www.instagram.com/pan.honesto" target="_blank" rel="noopener">Ver Instagram</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow-badge"><span class="dot"></span> Carabelas, Buenos Aires 🇦🇷</span>
+      <h1>Pan <em>Honesto</em></h1>
+      <p class="lead">
+        Pan de fermentación natural, hecho a mano, con materias primas orgánicas
+        y harinas molidas a piedras de granito.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="https://www.instagram.com/pan.honesto" target="_blank" rel="noopener">Seguinos en Instagram</a>
+        <a class="btn btn-outline" href="#proceso">Conocé el proceso</a>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat"><div class="num">45</div><div class="label">Posts</div></div>
+        <div class="stat"><div class="num">3.271</div><div class="label">Seguidores</div></div>
+        <div class="stat"><div class="num">1.490</div><div class="label">Siguiendo</div></div>
+      </div>
+
+      <div class="hero-strip">
+        <span class="pill">🥖 Fermentación natural</span>
+        <span class="pill">🌾 Materias primas orgánicas</span>
+        <span class="pill">🪨 Harinas a piedra de granito</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE EL PAN -->
+  <section id="sobre">
+    <div class="wrap">
+      <div class="about-panel">
+        <h2>Pan hecho como se hacía antes</h2>
+        <p>
+          Nada de atajos: fermentación lenta, harinas orgánicas molidas a piedra y las manos
+          de siempre amasando cada pan. Pan Honesto nació para volver a esa forma de hacer pan,
+          en Carabelas, Buenos Aires.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO INTERACTIVO -->
+  <section id="proceso">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">De la harina al pan</span>
+        <h2>Nuestro proceso</h2>
+        <p>Tocá cada etapa para conocer cómo hacemos el pan.</p>
+      </div>
+
+      <div class="timeline" role="tablist">
+        <button class="t-step active" data-step="masa">Masa madre</button>
+        <button class="t-step" data-step="amasado">Amasado</button>
+        <button class="t-step" data-step="fermentacion">Fermentación lenta</button>
+        <button class="t-step" data-step="horneado">Horneado</button>
+      </div>
+
+      <div class="process-detail active" id="step-masa">
+        <div class="process-visual">🫙</div>
+        <div class="process-info">
+          <h3>Masa madre</h3>
+          <p>Todo empieza con nuestra masa madre, cultivada y alimentada a diario. Es el motor natural que hace crecer cada pan, sin levadura comercial.</p>
+        </div>
+      </div>
+
+      <div class="process-detail" id="step-amasado">
+        <div class="process-visual">👐</div>
+        <div class="process-info">
+          <h3>Amasado a mano</h3>
+          <p>Amasamos cada partida a mano, con harinas orgánicas molidas a piedra de granito, para respetar la fibra del grano y su sabor.</p>
+        </div>
+      </div>
+
+      <div class="process-detail" id="step-fermentacion">
+        <div class="process-visual">⏳</div>
+        <div class="process-info">
+          <h3>Fermentación lenta</h3>
+          <p>Dejamos que la masa fermente a su propio ritmo, durante largas horas, para lograr una miga más digerible y un sabor más profundo.</p>
+        </div>
+      </div>
+
+      <div class="process-detail" id="step-horneado">
+        <div class="process-visual">🔥</div>
+        <div class="process-info">
+          <h3>Horneado</h3>
+          <p>El último paso: horneamos cada pan hasta lograr esa corteza crocante que distingue al pan de fermentación natural.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUE USAMOS -->
+  <section id="que-usamos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Nuestros principios</span>
+        <h2>Lo que no negociamos</h2>
+      </div>
+      <div class="value-row">
+        <div class="value-card">
+          <div class="em">🥖</div>
+          <h3>Fermentación natural</h3>
+          <p>Cada pan lleva su tiempo. No apuramos procesos ni usamos levadura comercial.</p>
+        </div>
+        <div class="value-card">
+          <div class="em">🌾</div>
+          <h3>Materias primas orgánicas</h3>
+          <p>Elegimos ingredientes orgánicos para que el pan sea honesto de la harina hasta la corteza.</p>
+        </div>
+        <div class="value-card">
+          <div class="em">🪨</div>
+          <h3>Harinas a piedra de granito</h3>
+          <p>Molienda a piedra, más lenta y respetuosa del grano que la molienda industrial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL / CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>Probá el pan de fermentación natural</h2>
+        <p>Seguinos en Instagram para ver las fechas de horneado y cómo conseguir tu pan en Carabelas.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a class="btn btn-solid" href="https://www.instagram.com/pan.honesto" target="_blank" rel="noopener">Ir a Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand"><span class="brand-mark">🥖</span> Pan Honesto</div>
+        <p>Pan de fermentación natural hecho a mano, con materias primas orgánicas. Carabelas, Buenos Aires.</p>
+      </div>
+      <div class="foot-links">
+        <a class="icon-btn" href="https://www.instagram.com/pan.honesto" target="_blank" rel="noopener" aria-label="Instagram de Pan Honesto">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Pan Honesto</span>
+      <span>Carabelas, Buenos Aires, Argentina.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.t-step').forEach(step=>{
+    step.addEventListener('click', ()=>{
+      document.querySelectorAll('.t-step').forEach(s=>s.classList.remove('active'));
+      document.querySelectorAll('.process-detail').forEach(p=>p.classList.remove('active'));
+      step.classList.add('active');
+      document.getElementById('step-' + step.dataset.step).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

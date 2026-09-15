@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agus Houssay · Masajes & Reflexología · Zona Norte</title>
+<meta name="description" content="Agus Houssay — masajes deportivos, terapéuticos y craneales, reflexología facial y podal. Zona Norte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0714;
+    --bg2:#140a24;
+    --pink:#ff2e9d;
+    --cyan:#28f5ff;
+    --purple:#a742ff;
+    --lime:#d6ff3f;
+    --card:#170f28;
+    --text:#f2ecff;
+    --text-dim:rgba(242,236,255,0.68);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Poppins', sans-serif;
+    font-weight:700;
+    line-height:1.08;
+  }
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(11,7,20,0.78);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,46,157,0.22);
+  }
+  .brand{
+    font-family:'Poppins', sans-serif; font-weight:800;
+    font-size:1.1rem; letter-spacing:0.01em;
+    color:var(--text);
+  }
+  .brand span{
+    color:var(--cyan);
+    text-shadow:0 0 10px rgba(40,245,255,0.7), 0 0 22px rgba(40,245,255,0.35);
+  }
+  .nav-cta{
+    background:transparent;
+    color:var(--pink);
+    border:1.5px solid var(--pink);
+    padding:9px 20px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+    box-shadow:0 0 14px rgba(255,46,157,0.35);
+    transition:all .25s ease;
+  }
+  .nav-cta:hover{background:var(--pink); color:var(--bg); box-shadow:0 0 24px rgba(255,46,157,0.6);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:130px 6vw 90px;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,46,157,0.35), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(40,245,255,0.3), transparent 45%),
+      radial-gradient(circle at 55% 90%, rgba(167,66,255,0.35), transparent 55%),
+      var(--bg);
+    overflow:hidden;
+  }
+  .glow{
+    position:absolute; border-radius:50%;
+    filter:blur(60px);
+    opacity:0.55;
+    animation:float 15s ease-in-out infinite;
+  }
+  .glow.g1{width:280px;height:280px; background:var(--pink); top:8%; right:8%;}
+  .glow.g2{width:220px;height:220px; background:var(--cyan); bottom:8%; left:4%; animation-delay:-6s;}
+  .glow.g3{width:160px;height:160px; background:var(--purple); top:50%; right:30%; animation-delay:-11s;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) translateX(0);}
+    50%{transform:translateY(-26px) translateX(20px);}
+  }
+  @media (prefers-reduced-motion: reduce){ .glow{animation:none;} }
+
+  .hero-inner{position:relative; z-index:2; max-width:700px;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,46,157,0.4);
+    color:var(--pink);
+    padding:7px 18px;
+    border-radius:100px;
+    font-size:0.82rem;
+    font-weight:600;
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 5.6vw, 4rem);
+    margin-bottom:22px;
+  }
+  .hero h1 .neon{
+    color:var(--cyan);
+    text-shadow:0 0 12px rgba(40,245,255,0.75), 0 0 30px rgba(40,245,255,0.4);
+  }
+  .hero p{
+    color:var(--text-dim);
+    font-size:1.12rem;
+    line-height:1.65;
+    max-width:520px;
+    margin-bottom:32px;
+  }
+  .hero-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px; }
+  .pill{
+    border:1px solid rgba(242,236,255,0.25);
+    color:var(--text-dim);
+    padding:7px 16px;
+    border-radius:100px;
+    font-size:0.82rem;
+    font-weight:500;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:16px;}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--pink), var(--purple));
+    color:var(--text);
+    padding:16px 34px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:1rem;
+    display:inline-flex; align-items:center; gap:10px;
+    box-shadow:0 0 26px rgba(255,46,157,0.45);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 0 36px rgba(255,46,157,0.6);}
+  .btn-secondary{
+    border:1.5px solid rgba(40,245,255,0.5);
+    color:var(--cyan);
+    padding:14.5px 30px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:1rem;
+    transition:background .25s ease, box-shadow .25s ease;
+  }
+  .btn-secondary:hover{background:rgba(40,245,255,0.1); box-shadow:0 0 20px rgba(40,245,255,0.35);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 6vw; position:relative;}
+  .section-head{max-width:600px; margin:0 auto 54px; text-align:center;}
+  .section-head .tag{
+    color:var(--pink); font-weight:600; text-transform:uppercase;
+    letter-spacing:0.08em; font-size:0.8rem; display:block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.6rem); color:var(--text);}
+  .section-head p{margin-top:16px; color:var(--text-dim); font-size:1.03rem; line-height:1.6;}
+
+  /* ---------- SERVICIOS ---------- */
+  .servicios{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    max-width:1080px; margin:0 auto;
+  }
+  .servicio{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:20px;
+    padding:28px 22px;
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .servicio:hover{transform:translateY(-4px);}
+  .servicio.c-pink{border-color:rgba(255,46,157,0.4);}
+  .servicio.c-cyan{border-color:rgba(40,245,255,0.4);}
+  .servicio.c-purple{border-color:rgba(167,66,255,0.4);}
+  .servicio.c-lime{border-color:rgba(214,255,63,0.4);}
+  .servicio .icon{width:40px;height:40px; margin-bottom:16px;}
+  .servicio h3{font-size:1.05rem; margin-bottom:8px; color:var(--text);}
+  .servicio p{color:var(--text-dim); font-size:0.88rem; line-height:1.5;}
+
+  /* ---------- SELECTOR INTERACTIVO ---------- */
+  .selector-box{
+    background:var(--bg2);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    max-width:1000px; margin:0 auto;
+    padding:60px 6vw;
+    position:relative;
+    overflow:hidden;
+  }
+  .selector-box::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 85% 0%, rgba(167,66,255,0.22), transparent 55%);
+    pointer-events:none;
+  }
+  .selector-head{text-align:center; max-width:540px; margin:0 auto 40px; position:relative;}
+  .selector-head .tag{color:var(--lime); font-weight:600; text-transform:uppercase; letter-spacing:0.08em; font-size:0.8rem; display:block; margin-bottom:10px;}
+  .selector-head h2{font-size:clamp(1.7rem,3vw,2.3rem);}
+  .selector-head p{margin-top:14px; color:var(--text-dim); line-height:1.6;}
+
+  .necesidad-tabs{
+    display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:36px; position:relative;
+  }
+  .nec-btn{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.15);
+    color:var(--text-dim);
+    padding:12px 22px;
+    border-radius:100px;
+    font-size:0.9rem; font-weight:600;
+    cursor:pointer;
+    transition:all .3s ease;
+  }
+  .nec-btn.active{ color:var(--bg); }
+  .nec-btn[data-nec="estres"].active{ background:var(--pink); border-color:var(--pink); box-shadow:0 0 18px rgba(255,46,157,0.5);}
+  .nec-btn[data-nec="piernas"].active{ background:var(--cyan); border-color:var(--cyan); box-shadow:0 0 18px rgba(40,245,255,0.5);}
+  .nec-btn[data-nec="deportivo"].active{ background:var(--lime); border-color:var(--lime); box-shadow:0 0 18px rgba(214,255,63,0.5);}
+  .nec-btn[data-nec="facial"].active{ background:var(--purple); border-color:var(--purple); box-shadow:0 0 18px rgba(167,66,255,0.5);}
+
+  .nec-panel{max-width:560px; margin:0 auto; text-align:center; min-height:140px; position:relative;}
+  .nec-content{display:none; animation:fadeUp .5s ease forwards;}
+  .nec-content.active{display:block;}
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  .nec-content h3{font-size:1.35rem; margin-bottom:12px;}
+  .nec-content[data-panel="estres"] h3{color:var(--pink);}
+  .nec-content[data-panel="piernas"] h3{color:var(--cyan);}
+  .nec-content[data-panel="deportivo"] h3{color:var(--lime);}
+  .nec-content[data-panel="facial"] h3{color:var(--purple);}
+  .nec-content p{color:var(--text-dim); line-height:1.65; font-size:1rem;}
+
+  /* ---------- ZONA ---------- */
+  .zona{
+    max-width:720px; margin:0 auto; text-align:center;
+  }
+  .zona-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--card);
+    border:1px solid rgba(40,245,255,0.35);
+    padding:14px 28px;
+    border-radius:100px;
+    font-weight:600; font-size:1rem;
+    color:var(--cyan);
+    box-shadow:0 0 20px rgba(40,245,255,0.25);
+    margin-top:10px;
+  }
+
+  /* ---------- CONTACTO ---------- */
+  .contacto{
+    background:linear-gradient(140deg, rgba(255,46,157,0.16), rgba(167,66,255,0.16));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:32px;
+    max-width:900px; margin:0 auto;
+    padding:64px 6vw;
+    text-align:center;
+  }
+  .contacto h2{font-size:clamp(1.8rem,3.5vw,2.5rem); margin-bottom:16px;}
+  .contacto p{color:var(--text-dim); line-height:1.6; margin-bottom:32px; font-size:1.05rem;}
+  .contact-link{
+    display:inline-flex; align-items:center; gap:12px;
+    background:linear-gradient(120deg, var(--pink), var(--purple));
+    color:var(--text);
+    padding:18px 34px;
+    border-radius:100px;
+    font-weight:700; font-size:1.05rem;
+    box-shadow:0 0 30px rgba(255,46,157,0.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .contact-link:hover{transform:translateY(-2px); box-shadow:0 0 40px rgba(255,46,157,0.55);}
+  .contact-link svg{width:22px;height:22px;}
+
+  footer{
+    text-align:center; padding:46px 6vw 36px;
+    color:rgba(242,236,255,0.4);
+    font-size:0.85rem;
+  }
+  footer .brand{display:block; margin-bottom:8px; color:var(--text-dim); font-size:1rem;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .servicios{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 560px){
+    nav{padding:14px 5vw;}
+    section{padding:64px 5vw;}
+    .servicios{grid-template-columns:1fr;}
+    .selector-box, .contacto{padding:42px 5vw; border-radius:24px;}
+    .nec-btn{padding:10px 16px; font-size:0.82rem;}
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+  }
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">agus <span>houssay</span></div>
+  <a class="nav-cta" href="https://instagram.com/agushoussay" target="_blank" rel="noopener">Seguime</a>
+</nav>
+
+<header class="hero">
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="glow g3"></div>
+  <div class="hero-inner">
+    <span class="kicker">🌈 Zona Norte</span>
+    <h1>Masajes y reflexología que te <span class="neon">devuelven el cuerpo</span></h1>
+    <p>Deportivo, terapéutico o craneal: bienestar profesional pensado para tu rutina, con reflexología facial y podal incluida.</p>
+    <div class="hero-tags">
+      <span class="pill">🏅 Deportivo</span>
+      <span class="pill">💆 Terapéutico</span>
+      <span class="pill">🧠 Craneal</span>
+      <span class="pill">🦶 Reflexología podal</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://instagram.com/agushoussay" target="_blank" rel="noopener">Reservar mi sesión</a>
+      <a class="btn-secondary" href="#necesidad">¿Qué necesito hoy?</a>
+    </div>
+  </div>
+</header>
+
+<section class="reveal">
+  <div class="section-head">
+    <span class="tag">Servicios</span>
+    <h2>Un masaje para cada momento</h2>
+  </div>
+  <div class="servicios">
+    <div class="servicio c-pink">
+      <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M24 40c8-6 14-12 14-20a8 8 0 00-14-5 8 8 0 00-14 5c0 8 6 14 14 20z" fill="#ff2e9d"/></svg>
+      <h3>Terapéutico</h3>
+      <p>Libera tensión acumulada y devuelve movilidad a zonas contracturadas.</p>
+    </div>
+    <div class="servicio c-lime">
+      <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M10 30l8-8 6 6 12-14" stroke="#d6ff3f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="36" cy="14" r="3" fill="#d6ff3f"/></svg>
+      <h3>Deportivo</h3>
+      <p>Recuperación muscular antes o después de entrenar, a tu ritmo.</p>
+    </div>
+    <div class="servicio c-purple">
+      <svg class="icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" fill="#a742ff" opacity="0.85"/><path d="M18 30c0 6 2 10 6 10s6-4 6-10" stroke="#a742ff" stroke-width="3" fill="none"/></svg>
+      <h3>Craneal</h3>
+      <p>Relajación profunda para bajar el estrés mental y dormir mejor.</p>
+    </div>
+    <div class="servicio c-cyan">
+      <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M24 8c-6 8-10 14-10 20a10 10 0 0020 0c0-6-4-12-10-20z" fill="#28f5ff"/></svg>
+      <h3>Reflexología facial & podal</h3>
+      <p>Puntos de presión que activan tu energía de pies a cabeza.</p>
+    </div>
+  </div>
+</section>
+
+<section id="necesidad" class="reveal">
+  <div class="selector-box">
+    <div class="selector-head">
+      <span class="tag">Encontrá tu masaje</span>
+      <h2>¿Qué necesitás hoy?</h2>
+      <p>Elegí cómo te sentís y te digo qué sesión te conviene.</p>
+    </div>
+
+    <div class="necesidad-tabs" role="tablist" aria-label="Necesidades">
+      <button class="nec-btn active" data-nec="estres" role="tab" aria-selected="true">😮‍💨 Estrés</button>
+      <button class="nec-btn" data-nec="piernas" role="tab" aria-selected="false">🦵 Piernas cansadas</button>
+      <button class="nec-btn" data-nec="deportivo" role="tab" aria-selected="false">🏃 Dolor muscular</button>
+      <button class="nec-btn" data-nec="facial" role="tab" aria-selected="false">😣 Tensión facial</button>
+    </div>
+
+    <div class="nec-panel">
+      <div class="nec-content active" data-panel="estres">
+        <h3>Masaje craneal</h3>
+        <p>Cuando la cabeza no para, un masaje craneal baja las revoluciones, relaja la mandíbula y ayuda a dormir mejor esa misma noche.</p>
+      </div>
+      <div class="nec-content" data-panel="piernas">
+        <h3>Reflexología podal</h3>
+        <p>Pies pesados después de un día largo: la reflexología podal activa la circulación y te devuelve la liviandad.</p>
+      </div>
+      <div class="nec-content" data-panel="deportivo">
+        <h3>Masaje deportivo</h3>
+        <p>Contracturas o sobrecarga por entrenar: un masaje deportivo recupera el músculo y previene lesiones.</p>
+      </div>
+      <div class="nec-content" data-panel="facial">
+        <h3>Reflexología facial</h3>
+        <p>Mandíbula apretada, ojos cansados: la reflexología facial libera tensión acumulada en el rostro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="zona">
+    <h2 style="margin-bottom:10px; font-size:clamp(1.7rem,3vw,2.2rem);">Atención en Zona Norte</h2>
+    <p style="color:var(--text-dim); font-size:1rem;">Consultá disponibilidad y ubicación por Instagram.</p>
+    <div class="zona-badge">📍 Zona Norte</div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="contacto">
+    <h2>Dale a tu cuerpo lo que pide</h2>
+    <p>Escribime por Instagram y coordinamos tu sesión.</p>
+    <a class="contact-link" href="https://instagram.com/agushoussay" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#f2ecff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+      @agushoussay
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">agus houssay</span>
+  Masajes & Reflexología facial y podal · Zona Norte
+</footer>
+
+<script>
+  const necBtns = document.querySelectorAll('.nec-btn');
+  const necPanels = document.querySelectorAll('.nec-content');
+  necBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      necBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      necPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      const target = document.querySelector(`.nec-content[data-panel="${btn.dataset.nec}"]`);
+      if(target) target.classList.add('active');
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

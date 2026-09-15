@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Granja Verbena · Tambo Caprino</title>
+<meta name="description" content="Granja Verbena, Tambo Caprino en Córdoba: quesos artesanales de cabra, dulce de leche, catas de quesos & vinos, almacén en el campo y visitas guiadas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-base:#fffdf6;
+    --ink:#241c14;
+    --ink-soft:#5b5142;
+    --card:#ffffff;
+    --lime:#d4ff3d;
+    --pink:#ff3da6;
+    --cyan:#3debff;
+    --orange:#ffb13d;
+    --line:#ece6d6;
+    --radius:22px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope',sans-serif;
+    color:var(--ink);
+    background:var(--bg-base);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    line-height:1.05;
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Fondo neón ambiental ---------- */
+  .neon-field{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
+    background:var(--bg-base);
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:.55;
+    animation:float 22s ease-in-out infinite;
+  }
+  .blob.b1{width:520px;height:520px;background:var(--lime);top:-180px;left:-140px;animation-delay:0s;}
+  .blob.b2{width:460px;height:460px;background:var(--pink);top:220px;right:-160px;animation-delay:-6s;}
+  .blob.b3{width:420px;height:420px;background:var(--cyan);bottom:-160px;left:12%;animation-delay:-12s;}
+  .blob.b4{width:320px;height:320px;background:var(--orange);bottom:8%;right:8%;animation-delay:-4s;opacity:.4;}
+  @keyframes float{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(30px,-40px) scale(1.08);}
+    66%{transform:translate(-25px,25px) scale(0.95);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .blob{animation:none;}
+    *{scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(255,253,246,.78);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fredoka',sans-serif;
+    font-size:1.15rem;
+    font-weight:600;
+  }
+  .brand-mark{
+    width:34px;height:34px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--lime),var(--cyan));
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.05rem;
+  }
+  nav.links{
+    display:flex;
+    gap:26px;
+    font-size:.92rem;
+    font-weight:600;
+  }
+  nav.links a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    padding-bottom:2px;
+    border-bottom:2px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  nav.links a:hover{color:var(--ink);border-color:var(--pink);}
+  .nav-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ink);
+    color:var(--bg-base);
+    padding:10px 18px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.88rem;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .menu-toggle{display:none;}
+
+  @media (max-width:760px){
+    nav.links{display:none;}
+    .menu-toggle{
+      display:inline-flex;
+      background:none;border:1.5px solid var(--ink);
+      border-radius:10px;
+      padding:8px 10px;
+      font-family:'Manrope',sans-serif;
+      font-weight:700;
+    }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 0 60px;
+    text-align:center;
+  }
+  .eyebrow-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    padding:7px 16px 7px 8px;
+    border-radius:999px;
+    font-size:.82rem;
+    font-weight:700;
+    margin-bottom:26px;
+  }
+  .eyebrow-badge .dot{
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--pink);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem,6.4vw,4.6rem);
+    letter-spacing:-.01em;
+    max-width:15ch;
+    margin:0 auto;
+  }
+  .hero h1 .accent{
+    display:block;
+    background:linear-gradient(90deg,var(--pink),var(--orange) 55%, var(--lime));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lead{
+    max-width:56ch;
+    margin:22px auto 0;
+    font-size:1.15rem;
+    color:var(--ink-soft);
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:34px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:14px 26px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.98rem;
+    text-decoration:none;
+    border:2px solid var(--ink);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-solid{
+    background:var(--ink);
+    color:var(--bg-base);
+    box-shadow:0 0 0 0 var(--lime);
+  }
+  .btn-solid:hover{box-shadow:6px 6px 0 0 var(--lime);}
+  .btn-outline{
+    background:var(--card);
+    color:var(--ink);
+  }
+  .btn-outline:hover{box-shadow:6px 6px 0 0 var(--cyan);}
+
+  .hero-strip{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:52px;
+  }
+  .pill{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:10px 18px;
+    border-radius:999px;
+    font-size:.86rem;
+    font-weight:600;
+    color:var(--ink-soft);
+    display:flex;align-items:center;gap:8px;
+  }
+  .pill i{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--pink);
+    display:inline-block;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:60ch;
+    margin-bottom:48px;
+  }
+  .kicker{
+    font-weight:700;
+    color:var(--pink);
+    font-size:.9rem;
+    margin-bottom:10px;
+    display:block;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem,3.6vw,2.6rem);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+
+  /* ---------- Sobre nosotros ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-copy p{
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    line-height:1.65;
+  }
+  .about-copy p + p{margin-top:16px;}
+  .about-visual{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:var(--radius);
+    background:linear-gradient(155deg,var(--lime) 0%, var(--cyan) 55%, var(--pink) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .about-visual::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border-radius:calc(var(--radius) - 6px);
+    background:var(--bg-base);
+    opacity:.08;
+  }
+  .about-visual .glyph{
+    font-size:6.5rem;
+    filter:drop-shadow(0 10px 18px rgba(0,0,0,.15));
+  }
+  @media (max-width:820px){
+    .about-grid{grid-template-columns:1fr;}
+    .about-visual{max-width:340px;margin:0 auto;order:-1;}
+  }
+
+  /* ---------- Productos ---------- */
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .product-card{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:var(--radius);
+    padding:28px 24px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .product-card:nth-child(1){transform:rotate(-.6deg);}
+  .product-card:nth-child(3){transform:rotate(.6deg);}
+  .product-card:hover{transform:translateY(-6px) rotate(0deg);box-shadow:8px 10px 0 0 var(--ink);}
+  .product-card .swatch{
+    width:54px;height:54px;
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;
+    margin-bottom:18px;
+  }
+  .product-card:nth-child(1) .swatch{background:var(--lime);}
+  .product-card:nth-child(2) .swatch{background:var(--orange);}
+  .product-card:nth-child(3) .swatch{background:var(--cyan);}
+  .product-card h3{font-size:1.2rem;margin-bottom:10px;}
+  .product-card p{color:var(--ink-soft);font-size:.96rem;line-height:1.55;}
+
+  @media (max-width:820px){
+    .product-grid{grid-template-columns:1fr;}
+    .product-card{transform:none !important;}
+  }
+
+  /* ---------- Experiencias interactivas ---------- */
+  .exp-shell{
+    background:var(--ink);
+    color:var(--bg-base);
+    border-radius:28px;
+    padding:52px clamp(20px,5vw,56px);
+  }
+  .exp-shell .section-head p{color:#cfc6b4;}
+  .exp-shell .kicker{color:var(--lime);}
+  .tabs{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+  .tab-btn{
+    background:transparent;
+    border:1.5px solid #574c39;
+    color:#cfc6b4;
+    padding:11px 20px;
+    border-radius:999px;
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:.92rem;
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+  .tab-btn:hover{border-color:var(--bg-base);color:var(--bg-base);}
+  .tab-btn.active{
+    background:var(--lime);
+    border-color:var(--lime);
+    color:var(--ink);
+  }
+  .tab-panel{
+    display:none;
+    animation:fadeIn .35s ease;
+  }
+  .tab-panel.active{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:start;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .tab-panel h3{font-size:1.5rem;margin-bottom:12px;color:var(--bg-base);}
+  .tab-panel p.desc{color:#d9d2c2;font-size:1rem;line-height:1.6;margin-bottom:20px;}
+  .meta-list{
+    list-style:none;
+    padding:0;margin:0 0 26px;
+    display:grid;
+    gap:10px;
+  }
+  .meta-list li{
+    display:flex;
+    gap:10px;
+    font-size:.94rem;
+    color:#e7e1d3;
+  }
+  .meta-list li b{
+    color:var(--lime);
+    min-width:118px;
+    font-weight:700;
+  }
+  .exp-card{
+    background:#332a1c;
+    border-radius:18px;
+    padding:26px;
+    border:1px solid #4a3f2c;
+  }
+  .exp-card .tag{
+    display:inline-block;
+    background:var(--pink);
+    color:var(--ink);
+    font-size:.74rem;
+    font-weight:800;
+    padding:4px 10px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .exp-card p{color:#d9d2c2;font-size:.92rem;line-height:1.55;}
+
+  @media (max-width:760px){
+    .tab-panel.active{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Video ---------- */
+  .video-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:44px;
+    align-items:center;
+  }
+  .video-frame{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:3px solid var(--ink);
+    aspect-ratio:16/9;
+    box-shadow:10px 10px 0 0 var(--pink);
+  }
+  .video-frame iframe{
+    width:100%;height:100%;border:0;
+  }
+  .video-copy h2{font-size:clamp(1.7rem,3.4vw,2.3rem);margin-bottom:16px;}
+  .video-copy p{color:var(--ink-soft);font-size:1.02rem;line-height:1.6;}
+  @media (max-width:820px){
+    .video-wrap{grid-template-columns:1fr;}
+    .video-copy{order:2;}
+  }
+
+  /* ---------- Visitanos / CTA ---------- */
+  .cta-band{
+    background:linear-gradient(100deg,var(--lime),var(--cyan) 50%, var(--pink));
+    border-radius:28px;
+    padding:56px clamp(24px,5vw,64px);
+    text-align:center;
+  }
+  .cta-band h2{
+    font-size:clamp(1.9rem,4vw,2.7rem);
+    max-width:20ch;
+    margin:0 auto;
+  }
+  .cta-band p{
+    max-width:52ch;
+    margin:16px auto 30px;
+    font-size:1.05rem;
+    color:rgba(36,28,20,.82);
+    font-weight:600;
+  }
+  .cta-band .hero-actions{margin-top:0;}
+  .cta-band .btn-solid:hover{box-shadow:6px 6px 0 0 var(--ink);}
+  .cta-band .btn-outline{background:var(--bg-base);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:48px 0 40px;
+    border-top:1px solid var(--line);
+    margin-top:20px;
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  .foot-brand p{color:var(--ink-soft);font-size:.92rem;margin-top:8px;max-width:34ch;}
+  .foot-links{
+    display:flex;
+    gap:14px;
+  }
+  .icon-btn{
+    width:44px;height:44px;
+    border-radius:50%;
+    border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;
+    color:var(--ink);
+    transition:background .2s,color .2s, transform .2s;
+  }
+  .icon-btn:hover{
+    background:var(--ink);
+    color:var(--bg-base);
+    transform:translateY(-3px);
+  }
+  .foot-bottom{
+    margin-top:36px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:.8rem;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="neon-field">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <span class="brand-mark">🐐</span>
+      Granja Verbena
+    </div>
+    <nav class="links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#productos">Productos</a>
+      <a href="#experiencias">Experiencias</a>
+      <a href="#video">Video</a>
+      <a href="#visitanos">Visitanos</a>
+    </nav>
+    <a class="nav-cta" href="#visitanos">Reservar visita</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow-badge"><span class="dot"></span> Tambo Caprino · Córdoba</span>
+      <h1>
+        Del campo a tu mesa,
+        <span class="accent">directo de nuestras cabras</span>
+      </h1>
+      <p class="lead">
+        Quesos artesanales y dulce de leche de cabra elaborados en granja, catas de quesos & vinos,
+        almacén con productos del campo y visitas guiadas para toda la familia.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#experiencias">Descubrí las experiencias</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/granjaverbenacordoba" target="_blank" rel="noopener">Seguinos en Instagram</a>
+      </div>
+      <div class="hero-strip">
+        <span class="pill"><i></i>Quesos artesanales de cabra</span>
+        <span class="pill"><i></i>Dulce de leche de cabra</span>
+        <span class="pill"><i></i>Catas de quesos & vinos</span>
+        <span class="pill"><i></i>Almacén en el campo</span>
+        <span class="pill"><i></i>Visitas guiadas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="nosotros">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="kicker">Quiénes somos</span>
+        <h2>Un tambo caprino chico, hecho a mano y a monte</h2>
+        <p>
+          Granja Verbena nació de las ganas de trabajar la tierra y compartirla. Ordeñamos nuestras cabras,
+          elaboramos los quesos y el dulce de leche en pequeños lotes, y abrimos la tranquera para que
+          conozcas de cerca cómo se hace cada producto.
+        </p>
+        <p>
+          Nada es a gran escala: por eso podemos cuidar cada detalle, desde la alimentación de los animales
+          hasta el tiempo de estacionamiento de cada queso.
+        </p>
+      </div>
+      <div class="about-visual">
+        <span class="glyph">🧀</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Lo que elaboramos</span>
+        <h2>Productos con nombre y apellido</h2>
+        <p>Todo se produce en la granja, en pequeñas partidas, siguiendo el ritmo de las cabras y de las estaciones.</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="swatch">🧀</div>
+          <h3>Quesos artesanales de cabra</h3>
+          <p>Pasta blanda, semidura y madurados. Cada variedad tiene su propio tiempo de estacionamiento y su propio carácter.</p>
+        </div>
+        <div class="product-card">
+          <div class="swatch">🍯</div>
+          <h3>Dulce de leche de cabra</h3>
+          <p>Cocción lenta y receta propia. Un sabor más suave y menos dulzón que el tradicional, ideal para acompañar los quesos.</p>
+        </div>
+        <div class="product-card">
+          <div class="swatch">🧺</div>
+          <h3>Almacén en el campo</h3>
+          <p>Un rincón con productos de la granja y de productores vecinos: conservas, panificados y más, para llevar a casa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIAS INTERACTIVAS -->
+  <section id="experiencias">
+    <div class="wrap">
+      <div class="exp-shell">
+        <div class="section-head">
+          <span class="kicker">Vení a vivirlo</span>
+          <h2>Elegí tu experiencia en la granja</h2>
+          <p>Dos formas de conocernos de cerca. Tocá cada opción para ver cómo funciona.</p>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" data-tab="cata" role="tab" aria-selected="true">Catas de quesos & vinos</button>
+          <button class="tab-btn" data-tab="visita" role="tab" aria-selected="false">Visitas guiadas</button>
+        </div>
+
+        <div class="tab-panel active" id="panel-cata">
+          <div>
+            <h3>Catas de quesos & vinos</h3>
+            <p class="desc">
+              Una recorrida sensorial por nuestros quesos, maridados con vinos de bodegas de la región.
+              Vas probando de menor a mayor intensidad, mientras te contamos cómo se elabora cada queso.
+            </p>
+            <ul class="meta-list">
+              <li><b>Duración</b> Aprox. 1 hora y media</li>
+              <li><b>Incluye</b> 5 quesos, 3 vinos, dulce de leche de cierre</li>
+              <li><b>Ideal para</b> Parejas, amigos, grupos chicos</li>
+              <li><b>Reserva</b> Con anticipación, por Instagram</li>
+            </ul>
+          </div>
+          <div class="exp-card">
+            <span class="tag">Recomendado</span>
+            <p>
+              Terminamos con un paso por el almacén, para que te lleves a casa los quesos y el dulce de leche
+              que más te gustaron de la cata.
+            </p>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-visita">
+          <div>
+            <h3>Visitas guiadas a la granja</h3>
+            <p class="desc">
+              Recorré el tambo, conocé a las cabras, mirá cómo se ordeña y cómo se elabora el queso paso a paso.
+              Pensada para toda la familia, con tiempos tranquilos para preguntar y sacar fotos.
+            </p>
+            <ul class="meta-list">
+              <li><b>Duración</b> Aprox. 1 hora</li>
+              <li><b>Incluye</b> Recorrida guiada y degustación breve</li>
+              <li><b>Ideal para</b> Familias con niños, grupos escolares</li>
+              <li><b>Reserva</b> Con anticipación, por Instagram</li>
+            </ul>
+          </div>
+          <div class="exp-card">
+            <span class="tag">Para todas las edades</span>
+            <p>
+              Los chicos pueden acercarse a las cabras y ver de cerca todo el proceso, desde el ordeñe hasta
+              el molde del queso.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video">
+    <div class="wrap video-wrap">
+      <div class="video-copy">
+        <span class="kicker">Conocenos por dentro</span>
+        <h2>Así se vive un día en Granja Verbena</h2>
+        <p>
+          Un recorrido en video por el tambo: las cabras, el ordeñe y la elaboración de los quesos,
+          para que veas de primera mano el trabajo que hay detrás de cada producto.
+        </p>
+      </div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/BC0Q0zkDJko" title="Granja Verbena - Tambo Caprino" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISITANOS / CTA -->
+  <section id="visitanos">
+    <div class="wrap">
+      <div class="cta-band">
+        <span class="kicker" style="color:var(--ink);">Te esperamos</span>
+        <h2>Reservá tu cata o tu visita guiada</h2>
+        <p>Coordinamos todo por Instagram: fechas, horarios y grupos. Escribinos y armamos tu visita a la granja.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="https://www.instagram.com/granjaverbenacordoba" target="_blank" rel="noopener">Escribinos por Instagram</a>
+          <a class="btn btn-outline" href="https://youtu.be/BC0Q0zkDJko?si=z3PKh5CcJLbGR4G1" target="_blank" rel="noopener">Ver el video completo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <span class="brand-mark">🐐</span>
+          Granja Verbena
+        </div>
+        <p>Tambo caprino en Córdoba. Quesos artesanales, dulce de leche de cabra, catas, almacén y visitas guiadas.</p>
+      </div>
+      <div class="foot-links">
+        <a class="icon-btn" href="https://www.instagram.com/granjaverbenacordoba" target="_blank" rel="noopener" aria-label="Instagram de Granja Verbena">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a class="icon-btn" href="https://youtu.be/BC0Q0zkDJko?si=z3PKh5CcJLbGR4G1" target="_blank" rel="noopener" aria-label="Video en YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Granja Verbena · Tambo Caprino</span>
+      <span>Hecho con cariño, a monte.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

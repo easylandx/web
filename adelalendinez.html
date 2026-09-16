@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adela Lendínez — Nutricionista online 🌱</title>
+<meta name="description" content="Nutrición como acto de autocuidado. Alimentación 100% vegetal y una mejor relación con la comida, con Adela Lendínez, nutricionista online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mint:#F2FFF0;
+    --green:#5DE879;
+    --pink:#FF5FA8;
+    --yellow:#FFE066;
+    --forest:#1B3A2B;
+    --forest-soft:#3C5C48;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--mint);
+    color:var(--forest);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Poppins',sans-serif;
+    line-height:1.18;
+    font-weight:700;
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(242,255,240,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid var(--forest);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .brand{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:1.15rem;
+  }
+  .brand span{color:var(--pink);}
+  .nav-cta{
+    background:var(--forest);
+    color:var(--green);
+    padding:10px 20px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.9rem;
+    transition:transform .2s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:80px 0 96px;
+    background:
+      radial-gradient(circle at 88% 15%, rgba(255,224,102,0.6), transparent 45%),
+      radial-gradient(circle at 8% 85%, rgba(255,95,168,0.4), transparent 48%),
+      var(--green);
+    overflow:hidden;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    background:var(--yellow);
+    color:var(--forest);
+    font-weight:800;
+    font-size:0.92rem;
+    padding:6px 16px;
+    border-radius:100px;
+    border:2px solid var(--forest);
+    margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:clamp(2rem, 4.8vw, 3.1rem);
+    max-width:20ch;
+    margin:0 auto 20px;
+    color:var(--forest);
+  }
+  .hero p.lead{
+    font-size:1.12rem;
+    font-weight:600;
+    max-width:46ch;
+    margin:0 auto 36px;
+    color:var(--forest-soft);
+  }
+  .btn-primary{
+    background:var(--forest);
+    color:var(--green);
+    padding:16px 32px;
+    border-radius:100px;
+    font-weight:800;
+    font-size:1.02rem;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 6px 0 rgba(27,58,43,0.4);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 9px 0 rgba(27,58,43,0.4);}
+
+  /* ---------- SECTION HEADS ---------- */
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 44px;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3.6vw, 2.5rem);
+    margin-bottom:14px;
+  }
+  .section-head p{
+    font-size:1.02rem;
+    color:var(--forest-soft);
+    font-weight:600;
+  }
+
+  /* ---------- PLANT GROWTH INTERACTIVE ---------- */
+  .plant-section{
+    padding:92px 0 96px;
+    background:var(--mint);
+    text-align:center;
+  }
+  .plant-btn{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:4.5rem;
+    line-height:1;
+    display:inline-block;
+    transition:transform .3s ease;
+  }
+  .plant-btn:hover{transform:scale(1.08);}
+  .plant-btn.grow{animation:growPop .4s ease;}
+  @keyframes growPop{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.25);}
+    100%{transform:scale(1);}
+  }
+  .plant-hint{
+    font-size:0.92rem;
+    font-weight:700;
+    color:var(--forest-soft);
+    margin-top:14px;
+    margin-bottom:12px;
+  }
+  .plant-stage-label{
+    font-weight:800;
+    font-size:0.95rem;
+    color:var(--pink);
+    margin-bottom:28px;
+  }
+  .plant-box{
+    max-width:560px;
+    margin:0 auto;
+    background:#fff;
+    border:3px solid var(--forest);
+    border-radius:26px;
+    padding:32px 30px;
+    min-height:110px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 0 rgba(27,58,43,0.12);
+  }
+  .plant-box p{
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--forest);
+  }
+
+  /* ---------- COMO AYUDO ---------- */
+  .ayuda{
+    padding:92px 0 96px;
+    background:var(--pink);
+  }
+  .ayuda-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .ayuda-card{
+    background:var(--mint);
+    border:3px solid var(--forest);
+    border-radius:24px;
+    padding:30px 26px;
+    transition:transform .2s ease;
+  }
+  .ayuda-card:hover{transform:translateY(-6px);}
+  .ayuda-card .icon{
+    width:52px;height:52px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;
+    margin-bottom:18px;
+  }
+  .ayuda-card:nth-child(1) .icon{background:var(--green);}
+  .ayuda-card:nth-child(2) .icon{background:var(--yellow);}
+  .ayuda-card:nth-child(3) .icon{background:var(--pink);}
+  .ayuda-card h3{
+    font-size:1.15rem;
+    margin-bottom:10px;
+  }
+  .ayuda-card p{
+    font-size:0.95rem;
+    color:var(--forest-soft);
+    font-weight:500;
+  }
+
+  /* ---------- PHILOSOPHY ---------- */
+  .philosophy{
+    background:var(--forest);
+    color:var(--mint);
+    padding:80px 0;
+    text-align:center;
+  }
+  .philosophy blockquote{
+    font-family:'Poppins',sans-serif;
+    font-size:clamp(1.4rem, 3.2vw, 2rem);
+    font-weight:700;
+    max-width:22ch;
+    margin:0 auto 18px;
+  }
+  .philosophy cite{
+    font-style:normal;
+    font-weight:700;
+    font-size:0.98rem;
+    opacity:0.8;
+    color:var(--green);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    padding:96px 0;
+    background:var(--yellow);
+    text-align:center;
+  }
+  .contact h2{
+    font-size:clamp(1.8rem, 3.8vw, 2.6rem);
+    margin-bottom:16px;
+    color:var(--forest);
+  }
+  .contact p{
+    font-size:1.05rem;
+    max-width:48ch;
+    margin:0 auto 40px;
+    color:var(--forest-soft);
+    font-weight:600;
+  }
+  .link-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .link-card{
+    background:#fff;
+    border:3px solid var(--forest);
+    border-radius:22px;
+    padding:26px 18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:1rem;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .link-card:hover{transform:translateY(-5px);background:var(--green);}
+  .link-card .emoji{font-size:1.9rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--forest);
+    color:var(--mint);
+    padding:40px 0 28px;
+    text-align:center;
+  }
+  footer .brand-foot{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1.1rem;
+    margin-bottom:6px;
+  }
+  footer .brand-foot span{color:var(--pink);}
+  footer .credit{
+    font-size:0.82rem;
+    color:rgba(242,255,240,0.6);
+    margin-top:18px;
+  }
+  footer .credit a{color:var(--green);font-weight:700;}
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed;
+    bottom:22px;right:22px;
+    width:60px;height:60px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    z-index:60;
+    border:3px solid var(--forest);
+    transition:transform .2s ease;
+  }
+  .float-wa:hover{transform:scale(1.08);}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:820px){
+    .ayuda-grid{grid-template-columns:1fr;}
+    .link-grid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .plant-btn.grow{animation:none;}
+  }
+  :focus-visible{outline:3px solid var(--forest);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Adela<span> Lendínez</span></div>
+    <a class="nav-cta" href="#contacto">Pide tu cita</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Adela Lendínez · Nutricionista online 🌱</span>
+    <h1>Nutrición como acto de autocuidado</h1>
+    <p class="lead">Te ayudo a llevar una alimentación 100% vegetal y a mejorar tu relación con la comida.</p>
+    <a class="btn-primary" href="https://wa.me/34614022069" target="_blank" rel="noopener">📲 Pide tu cita aquí</a>
+  </div>
+</header>
+
+<section class="plant-section" id="planta">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Planta tu semilla de autocuidado</h2>
+      <p>Cada pequeño gesto hacia una alimentación más consciente suma. Toca la semilla y descúbrelo.</p>
+    </div>
+    <button class="plant-btn reveal" id="plantBtn" aria-label="Tocar la planta">🌱</button>
+    <p class="plant-hint reveal">Toca para ver crecer tu planta</p>
+    <p class="plant-stage-label reveal" id="plantStage">Semilla</p>
+    <div class="plant-box reveal">
+      <p id="plantText">Cada cambio pequeño y sostenido pesa más que la perfección de un solo día.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ayuda" id="ayuda">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>¿Cómo te acompaño?</h2>
+      <p>Un proceso pensado para ti, sin dietas rígidas ni promesas imposibles.</p>
+    </div>
+    <div class="ayuda-grid">
+      <div class="ayuda-card reveal">
+        <div class="icon">🌱</div>
+        <h3>Alimentación 100% vegetal</h3>
+        <p>Aprende a comer rico, variado y equilibrado desde el mundo vegetal, a tu ritmo.</p>
+      </div>
+      <div class="ayuda-card reveal">
+        <div class="icon">💗</div>
+        <h3>Mejor relación con la comida</h3>
+        <p>Trabajamos juntas para que comer deje de ser una fuente de culpa o ansiedad.</p>
+      </div>
+      <div class="ayuda-card reveal">
+        <div class="icon">📱</div>
+        <h3>Seguimiento online</h3>
+        <p>Acompañamiento cercano y flexible, adaptado a tu día a día, estés donde estés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="wrap">
+    <blockquote class="reveal">"Cuidarte no es una dieta, es una forma de quererte."</blockquote>
+    <cite class="reveal">— Adela Lendínez</cite>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <h2 class="reveal">Empieza tu proceso</h2>
+    <p class="reveal">Escríbeme por WhatsApp para contarme tu caso, o sígueme en Instagram para más contenido sobre alimentación vegetal.</p>
+    <div class="link-grid reveal">
+      <a class="link-card" href="https://wa.me/34614022069" target="_blank" rel="noopener">
+        <span class="emoji">💬</span>
+        WhatsApp
+      </a>
+      <a class="link-card" href="https://www.instagram.com/adelalendinez.nutri" target="_blank" rel="noopener">
+        <span class="emoji">📷</span>
+        Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand-foot">Adela<span> Lendínez</span></div>
+    <div>Nutricionista online 🌱</div>
+    <div class="credit">© 2026 adelalendinez.nutri — Built by <a href="https://easylandx.github.io" target="_blank" rel="noopener">EasyLandX</a></div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/34614022069" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<script>
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Plant growth interactive
+  const stages = [
+    { emoji: "🌱", label: "Semilla", text: "Cada cambio pequeño y sostenido pesa más que la perfección de un solo día." },
+    { emoji: "🌿", label: "Brote",   text: "Escuchar a tu cuerpo, sin juzgarlo, es el primer paso hacia una relación más sana con la comida." },
+    { emoji: "🪴", label: "Planta",  text: "Comer bien no significa comer poco, significa comer con conciencia y disfrute." },
+    { emoji: "🌸", label: "Flor",    text: "Una alimentación 100% vegetal puede ser variada, sabrosa y perfectamente equilibrada." },
+    { emoji: "🌳", label: "Pleno crecimiento", text: "El autocuidado florece cuando dejas de exigirte perfección y empiezas a acompañarte." }
+  ];
+  let stageIndex = 0;
+  const plantBtn = document.getElementById('plantBtn');
+  const plantStage = document.getElementById('plantStage');
+  const plantText = document.getElementById('plantText');
+
+  plantBtn.addEventListener('click', ()=>{
+    plantBtn.classList.remove('grow');
+    void plantBtn.offsetWidth;
+    plantBtn.classList.add('grow');
+
+    stageIndex = (stageIndex + 1) % stages.length;
+    const stage = stages[stageIndex];
+
+    plantBtn.textContent = stage.emoji;
+    plantStage.textContent = stage.label;
+
+    plantText.style.opacity = 0;
+    setTimeout(()=>{
+      plantText.textContent = stage.text;
+      plantText.style.opacity = 1;
+    }, 150);
+  });
+</script>
+
+</body>
+</html>

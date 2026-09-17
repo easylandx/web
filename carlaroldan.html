@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carla Roldán Yoga · Vinyasa · Hatha · Yin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fff8ef;
+    --bg-card: #ffffff;
+    --ink: #221c2b;
+    --ink-dim: #756c82;
+    --coral: #ff6b5f;
+    --turquoise: #12b8ab;
+    --sun: #ffca3a;
+    --violet: #6a4c93;
+    --line: #221c2b18;
+    --radius-lg: 26px;
+    --radius-sm: 14px;
+    --maxw: 1100px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(48% 40% at 92% 0%, #ffca3a26, transparent 60%),
+      radial-gradient(45% 38% at 4% 18%, #12b8ab26, transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Spectral', serif;
+    line-height:1.1;
+    margin:0;
+    color:var(--ink);
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 clamp(24px, 6vw, 76px);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  :focus-visible{
+    outline:2px solid var(--violet);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    backdrop-filter: blur(14px);
+    background:#fff8efcc;
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:22px; padding-bottom:22px;
+  }
+  .brand{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:1.4rem;
+  }
+  nav ul{ list-style:none; display:flex; gap:clamp(16px,3vw,32px); margin:0; padding:0; }
+  nav a{
+    text-decoration:none; color:var(--ink-dim); font-size:0.95rem;
+    transition:color .2s ease;
+  }
+  nav a:hover{ color:var(--ink); }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--violet); color:#fff; font-weight:600;
+    padding:10px 20px; border-radius:999px; font-size:0.9rem;
+    text-decoration:none;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{ background:var(--coral); transform:translateY(-1px); }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; overflow:hidden; padding:clamp(60px,9vw,110px) 0 clamp(50px,7vw,90px); }
+  .hero-inner{ position:relative; z-index:1; display:grid; grid-template-columns:1.1fr 0.9fr; gap:52px; align-items:center; }
+  .location-pills{ display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap; }
+  .pill{
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px solid var(--line); border-radius:999px;
+    padding:6px 14px; font-size:0.85rem; color:var(--ink-dim); background:#ffffff;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.7rem);
+    font-weight:500;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--coral); font-weight:500;
+  }
+  .hero p.lead{
+    margin-top:22px; font-size:1.14rem; color:var(--ink-dim); max-width:46ch;
+  }
+  .hero-actions{ display:flex; gap:16px; margin-top:32px; flex-wrap:wrap; }
+  .btn-primary, .btn-ghost{
+    padding:15px 30px; border-radius:999px; text-decoration:none;
+    font-size:1rem; font-weight:600; display:inline-flex; align-items:center; gap:10px;
+    transition:transform .2s ease, box-shadow .25s ease, background .2s ease;
+  }
+  .btn-primary{ background:linear-gradient(120deg, var(--coral), var(--sun)); color:#221c2b; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 28px #ff6b5f44; }
+  .btn-ghost{ border:1px solid var(--line); color:var(--ink); background:#ffffff; }
+  .btn-ghost:hover{ border-color:var(--turquoise); color:#0c8177; }
+
+  .hero-visual{
+    position:relative; aspect-ratio:0.95/1; border-radius:var(--radius-lg);
+    background: conic-gradient(from 200deg, #ff6b5f2e, #ffca3a2e, #12b8ab2e, #6a4c932e, #ff6b5f2e);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .hero-visual::before{
+    content:""; position:absolute; inset:12%;
+    border:1px solid #221c2b1f; border-radius:50%;
+  }
+  .hero-mantra{
+    position:relative; z-index:2; font-family:'Spectral',serif; font-style:italic; font-size:1.5rem;
+    color:var(--ink); text-align:center; padding:0 26px; max-width:78%;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:clamp(58px,8vw,100px) 0; position:relative; }
+  .kicker{ color:var(--coral); font-size:0.98rem; margin-bottom:10px; display:block; font-weight:600; }
+  .section-head{ max-width:620px; margin-bottom:48px; }
+  .section-head h2{ font-size:clamp(1.75rem, 3vw, 2.4rem); font-weight:500; }
+  .section-head p{ margin-top:15px; color:var(--ink-dim); font-size:1.03rem; }
+
+  /* ---------- ESTILOS (interactivo) ---------- */
+  .selector{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:40px; align-items:start; }
+  .style-list{ display:flex; flex-direction:column; gap:6px; }
+  .style-btn{
+    all:unset; cursor:pointer; padding:18px 22px; border-radius:var(--radius-sm);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    color:var(--ink-dim); font-size:1.05rem; font-family:'Manrope',sans-serif;
+    border:1px solid transparent; transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .style-btn:hover{ background:#221c2b0a; color:var(--ink); }
+  .style-btn[aria-selected="true"]{
+    background:#ffffff; color:var(--ink); border-color:var(--line);
+    box-shadow:0 6px 18px #221c2b10;
+  }
+  .style-btn .dot{
+    width:9px; height:9px; border-radius:50%; background:var(--ink-dim); flex-shrink:0;
+    transition:background .2s ease, box-shadow .2s ease;
+  }
+  .style-btn[aria-selected="true"] .dot{ background:var(--cur-color, var(--coral)); box-shadow:0 0 10px var(--cur-color, var(--coral)); }
+
+  .style-display{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:clamp(28px,4vw,42px); min-height:280px;
+    background:var(--bg-card);
+    position:relative; overflow:hidden;
+    box-shadow:0 12px 36px #221c2b0d;
+  }
+  .style-display::before{
+    content:""; position:absolute; inset:0; opacity:0.55;
+    background:radial-gradient(circle at 18% 12%, var(--cur-color, var(--coral)) 0%, transparent 45%);
+    transition:background .4s ease;
+  }
+  .style-display-inner{ position:relative; z-index:1; }
+  .style-display h3{ font-size:1.5rem; color:var(--ink); margin-bottom:12px; font-weight:500; }
+  .style-display p{ color:var(--ink-dim); font-size:1.02rem; max-width:56ch; }
+  .style-tag{
+    display:inline-block; margin-top:18px; padding:7px 16px; border-radius:999px;
+    font-size:0.85rem; color:#221c2b; background:var(--cur-color, var(--coral)); font-weight:600;
+  }
+
+  /* ---------- SOBRE MI ---------- */
+  .about{ display:grid; grid-template-columns:0.95fr 1.05fr; gap:52px; align-items:center; }
+  .about-card{
+    border:1px solid var(--line); border-radius:var(--radius-lg); padding:36px;
+    background:var(--bg-card);
+    box-shadow:0 12px 36px #221c2b0d;
+  }
+  .about-card p{ color:var(--ink-dim); }
+  .stat-row{ display:flex; gap:30px; margin-top:26px; flex-wrap:wrap; }
+  .stat b{ display:block; font-family:'Spectral',serif; font-size:1.8rem; color:var(--turquoise); }
+  .stat span{ color:var(--ink-dim); font-size:0.9rem; }
+
+  .cities-card{
+    border-radius:var(--radius-lg);
+    padding:clamp(30px,4vw,44px);
+    background:linear-gradient(120deg, #ff6b5f14, #12b8ab14);
+    border:1px solid var(--line);
+  }
+  .cities-card h3{ font-size:1.35rem; font-weight:500; }
+  .city-row{ display:flex; gap:16px; margin-top:22px; align-items:flex-start; }
+  .city-row + .city-row{ margin-top:18px; padding-top:18px; border-top:1px solid var(--line); }
+  .city-mark{ font-size:1.3rem; }
+  .city-row div b{ display:block; font-family:'Spectral',serif; font-size:1.1rem; font-weight:500; }
+  .city-row div span{ color:var(--ink-dim); font-size:0.92rem; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .contact-card{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:clamp(28px,4vw,42px);
+    background:var(--bg-card);
+    box-shadow:0 12px 36px #221c2b0d;
+  }
+  .contact-card h3{ font-size:1.3rem; margin-bottom:14px; font-weight:500; }
+  .contact-line{
+    display:flex; align-items:center; gap:14px; padding:14px 0;
+    border-top:1px solid var(--line); text-decoration:none; color:var(--ink);
+    transition:color .2s ease, gap .2s ease;
+  }
+  .contact-line:first-of-type{ border-top:none; }
+  .contact-line:hover{ color:#e0554b; gap:18px; }
+  .icon-badge{
+    width:38px; height:38px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background:#221c2b0a; font-size:1.1rem;
+  }
+
+  footer{
+    border-top:1px solid var(--line); padding:32px 0; color:var(--ink-dim); font-size:0.9rem;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+  footer a{ color:var(--ink-dim); text-decoration:none; }
+  footer a:hover{ color:#e0554b; }
+
+  @media (max-width: 880px){
+    nav ul{ display:none; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:320px; margin:0 auto; }
+    .selector{ grid-template-columns:1fr; }
+    .about{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Carla Roldán</div>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#estilos">Estilos</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#contacto">Reserva tu clase</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="location-pills">
+          <span class="pill">⚓️ Santander</span>
+          <span class="pill">🏡 Madrid</span>
+        </div>
+        <h1>Yoga que se adapta a <em>tu momento</em></h1>
+        <p class="lead">Soy Carla, profesora certificada con más de 500 horas de formación. Doy clases de Vinyasa, Hatha y Yin entre Santander y Madrid, buscando siempre el estilo justo para lo que tu cuerpo necesita hoy.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contacto">Escríbeme por Instagram</a>
+          <a class="btn-ghost" href="#estilos">Ver estilos de clase</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <p class="hero-mantra">Respira despacio, muévete con intención</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="estilos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Estilos de clase</span>
+        <h2>Tres formas de practicar yoga</h2>
+        <p>Toca cada estilo para saber cuál encaja mejor con tu energía de hoy.</p>
+      </div>
+
+      <div class="selector">
+        <div class="style-list" role="tablist" aria-label="Estilos de yoga" id="styleList"></div>
+        <div class="style-display" id="styleDisplay">
+          <div class="style-display-inner">
+            <h3 id="pdTitle"></h3>
+            <p id="pdDesc"></p>
+            <span class="style-tag" id="pdTag"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="wrap about">
+      <div class="about-card">
+        <h2>Formación sólida, práctica cercana</h2>
+        <p style="margin-top:16px;">Cuento con más de 500 horas de formación como profesora de yoga, lo que me permite guiar clases seguras, bien secuenciadas y adaptadas a cada nivel. Mi objetivo es que salgas de cada sesión con más claridad, no solo más flexibilidad.</p>
+        <div class="stat-row">
+          <div class="stat"><b>500h+</b><span>formación certificada</span></div>
+          <div class="stat"><b>3 estilos</b><span>Vinyasa · Hatha · Yin</span></div>
+        </div>
+      </div>
+      <div class="cities-card">
+        <h3>Dónde encontrarme</h3>
+        <div class="city-row">
+          <span class="city-mark">⚓️</span>
+          <div><b>Santander</b><span>Clases junto al mar, ritmo pausado y presente</span></div>
+        </div>
+        <div class="city-row">
+          <span class="city-mark">🏡</span>
+          <div><b>Madrid, España</b><span>Clases en la ciudad para recargar entre semana</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Contacto</span>
+        <h2>Empecemos tu práctica</h2>
+        <p>Escríbeme por Instagram para reservar tu clase o resolver cualquier duda sobre horarios y estilos.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Carla Roldán Yoga</h3>
+          <a class="contact-line" href="https://instagram.com/carlaroldan_yoga" target="_blank" rel="noopener">
+            <span class="icon-badge">◎</span> @carlaroldan_yoga en Instagram
+          </a>
+          <div class="contact-line" style="cursor:default;">
+            <span class="icon-badge">✦</span> Santander &amp; Madrid, España
+          </div>
+        </div>
+        <div class="contact-card">
+          <h3>Lo que practicamos juntas</h3>
+          <p style="color:var(--ink-dim);">Vinyasa · Hatha · Yin · Clases para todos los niveles</p>
+          <a class="btn-primary" style="margin-top:22px;" href="https://instagram.com/carlaroldan_yoga" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>Carla Roldán Yoga · Santander &amp; Madrid</span>
+    <a href="https://instagram.com/carlaroldan_yoga" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const styles = [
+    {
+      name: "Vinyasa",
+      color: "#ff6b5f",
+      tag: "Fluido y dinámico",
+      desc: "Secuencias que conectan movimiento y respiración sin pausa. Ideal para activar el cuerpo, mejorar la resistencia y despejar la mente."
+    },
+    {
+      name: "Hatha",
+      color: "#ffca3a",
+      tag: "Base y alineación",
+      desc: "Posturas sostenidas con más tiempo para ajustar la alineación. Perfecto para construir una base sólida y entender cada postura a fondo."
+    },
+    {
+      name: "Yin",
+      color: "#12b8ab",
+      tag: "Calma profunda",
+      desc: "Posturas pasivas mantenidas varios minutos para soltar tensión en tejido conectivo y calmar el sistema nervioso. El complemento ideal a un ritmo de vida acelerado."
+    }
+  ];
+
+  const list = document.getElementById('styleList');
+  const display = document.getElementById('styleDisplay');
+  const pdTitle = document.getElementById('pdTitle');
+  const pdDesc = document.getElementById('pdDesc');
+  const pdTag = document.getElementById('pdTag');
+
+  styles.forEach((p, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'style-btn';
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    btn.style.setProperty('--cur-color', p.color);
+    btn.innerHTML = '<span>' + p.name + '</span><span class="dot"></span>';
+    btn.addEventListener('click', () => selectStyle(i));
+    list.appendChild(btn);
+  });
+
+  function selectStyle(index){
+    const p = styles[index];
+    Array.from(list.children).forEach((btn, i) => {
+      btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+    });
+    display.style.setProperty('--cur-color', p.color);
+    pdTitle.textContent = p.name;
+    pdDesc.textContent = p.desc;
+    pdTag.textContent = p.tag;
+    pdTag.style.background = p.color;
+  }
+
+  selectStyle(0);
+})();
+</script>
+
+</body>
+</html>

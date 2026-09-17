@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beck Yoga Om · Rebeca Carretero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fef9f2;
+    --bg-card: #ffffff;
+    --ink: #1c1730;
+    --ink-dim: #6b6280;
+    --pink: #ff3d9a;
+    --orange: #ff8a3d;
+    --lime: #a6e22e;
+    --sky: #2fd0e0;
+    --line: #1c17301a;
+    --radius-lg: 28px;
+    --radius-sm: 14px;
+    --maxw: 1120px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(55% 45% at 90% -5%, #ff8a3d22, transparent 60%),
+      radial-gradient(50% 40% at 0% 10%, #2fd0e022, transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Sora', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 clamp(24px, 6vw, 72px);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  :focus-visible{
+    outline:2px solid var(--pink);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    backdrop-filter: blur(14px);
+    background:#fef9f2cc;
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:20px; padding-bottom:20px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.35rem;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand span{ color:var(--pink); font-size:0.7rem; font-family:'Sora',sans-serif; letter-spacing:0.02em; }
+  nav ul{ list-style:none; display:flex; gap:clamp(16px,3vw,34px); margin:0; padding:0; }
+  nav a{
+    text-decoration:none; color:var(--ink-dim); font-size:0.95rem;
+    transition:color .2s ease;
+  }
+  nav a:hover{ color:var(--ink); }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:#fff; font-weight:600;
+    padding:10px 20px; border-radius:999px; font-size:0.9rem;
+    text-decoration:none;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{ background:var(--pink); transform:translateY(-1px); }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; overflow:hidden; padding:clamp(64px,10vw,120px) 0 clamp(56px,8vw,96px); }
+  .hero-inner{ position:relative; z-index:1; display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; }
+  .eyebrow-free{ color:var(--pink); font-size:1rem; margin-bottom:18px; display:block; font-weight:600; }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.8rem);
+    font-weight:600;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(100deg, var(--pink), var(--orange));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{
+    margin-top:22px; font-size:1.15rem; color:var(--ink-dim); max-width:48ch;
+  }
+  .hero-actions{ display:flex; gap:16px; margin-top:34px; flex-wrap:wrap; }
+  .btn-primary, .btn-ghost{
+    padding:15px 30px; border-radius:999px; text-decoration:none;
+    font-size:1rem; font-weight:600; display:inline-flex; align-items:center; gap:10px;
+    transition:transform .2s ease, box-shadow .25s ease, background .2s ease;
+  }
+  .btn-primary{ background:linear-gradient(120deg, var(--pink), var(--orange)); color:#fff; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px #ff3d9a44; }
+  .btn-ghost{ border:1px solid var(--line); color:var(--ink); background:#ffffff; }
+  .btn-ghost:hover{ border-color:var(--sky); color:#0f9fac; }
+
+  .hero-visual{
+    position:relative; aspect-ratio:1/1.05; border-radius:var(--radius-lg);
+    background: conic-gradient(from 210deg, #ff3d9a26, #ff8a3d26, #a6e22e26, #2fd0e026, #ff3d9a26);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .hero-visual::before{
+    content:""; position:absolute; inset:14%;
+    border:1px solid #1c173022; border-radius:50%;
+  }
+  .hero-visual::after{
+    content:""; position:absolute; inset:28%;
+    border:1px solid #1c173015; border-radius:50%;
+  }
+  .hero-mantra{
+    position:relative; z-index:2; font-family:'Fraunces',serif; font-size:1.5rem; font-weight:600;
+    color:var(--ink); text-align:center; padding:0 20px; max-width:75%;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:clamp(64px,9vw,110px) 0; position:relative; }
+  .kicker{ color:var(--pink); font-size:1rem; margin-bottom:10px; display:block; font-weight:600; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(1.8rem, 3.2vw, 2.5rem); font-weight:600; }
+  .section-head p{ margin-top:16px; color:var(--ink-dim); font-size:1.05rem; }
+
+  /* ---------- FACETAS (interactivo) ---------- */
+  .selector{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:44px; align-items:start; }
+  .facet-list{ display:flex; flex-direction:column; gap:6px; }
+  .facet-btn{
+    all:unset; cursor:pointer; padding:18px 22px; border-radius:var(--radius-sm);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    color:var(--ink-dim); font-size:1.05rem; font-family:'Sora',sans-serif;
+    border:1px solid transparent; transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .facet-btn:hover{ background:#1c17300a; color:var(--ink); }
+  .facet-btn[aria-selected="true"]{
+    background:#ffffff; color:var(--ink); border-color:var(--line);
+    box-shadow:0 6px 18px #1c173010;
+  }
+  .facet-btn .dot{
+    width:9px; height:9px; border-radius:50%; background:var(--ink-dim); flex-shrink:0;
+    transition:background .2s ease, box-shadow .2s ease;
+  }
+  .facet-btn[aria-selected="true"] .dot{ background:var(--cur-color, var(--pink)); box-shadow:0 0 10px var(--cur-color, var(--pink)); }
+
+  .facet-display{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:clamp(28px,4vw,44px); min-height:300px;
+    background:var(--bg-card);
+    position:relative; overflow:hidden;
+    box-shadow:0 12px 40px #1c17300d;
+  }
+  .facet-display::before{
+    content:""; position:absolute; inset:0; opacity:0.5;
+    background:radial-gradient(circle at 20% 15%, var(--cur-color, var(--pink)) 0%, transparent 45%);
+    transition:background .4s ease;
+  }
+  .facet-display-inner{ position:relative; z-index:1; }
+  .facet-display h3{ font-size:1.55rem; color:var(--ink); margin-bottom:14px; font-weight:600; }
+  .facet-display p{ color:var(--ink-dim); font-size:1.02rem; max-width:56ch; }
+  .facet-tag{
+    display:inline-block; margin-top:20px; padding:7px 16px; border-radius:999px;
+    font-size:0.85rem; color:#1c1730; background:var(--cur-color, var(--pink)); font-weight:600;
+  }
+
+  /* ---------- SOBRE MI ---------- */
+  .about{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center; }
+  .about-card{
+    border:1px solid var(--line); border-radius:var(--radius-lg); padding:36px;
+    background:var(--bg-card);
+    box-shadow:0 12px 40px #1c17300d;
+  }
+  .about-card p{ color:var(--ink-dim); }
+  .stat-row{ display:flex; gap:34px; margin-top:28px; flex-wrap:wrap; }
+  .stat b{ display:block; font-family:'Fraunces',serif; font-size:1.9rem; color:var(--pink); font-weight:600; }
+  .stat span{ color:var(--ink-dim); font-size:0.9rem; }
+
+  .life-strip{
+    border-radius:var(--radius-lg);
+    padding:clamp(32px,4.5vw,48px);
+    background:linear-gradient(120deg, #ff3d9a14, #2fd0e014);
+    border:1px solid var(--line);
+  }
+  .life-strip h3{ font-size:1.4rem; font-weight:600; }
+  .life-strip ul{ list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; color:var(--ink-dim); }
+  .life-strip li{ display:flex; gap:10px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; }
+  .contact-card{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:clamp(28px,4vw,44px);
+    background:var(--bg-card);
+    box-shadow:0 12px 40px #1c17300d;
+  }
+  .contact-card h3{ font-size:1.35rem; margin-bottom:14px; font-weight:600; }
+  .contact-line{
+    display:flex; align-items:center; gap:14px; padding:14px 0;
+    border-top:1px solid var(--line); text-decoration:none; color:var(--ink);
+    transition:color .2s ease, gap .2s ease;
+  }
+  .contact-line:first-of-type{ border-top:none; }
+  .contact-line:hover{ color:#e0217e; gap:18px; }
+  .icon-badge{
+    width:38px; height:38px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background:#1c17300a; font-size:1.1rem;
+  }
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0; color:var(--ink-dim); font-size:0.9rem;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+  footer a{ color:var(--ink-dim); text-decoration:none; }
+  footer a:hover{ color:#e0217e; }
+
+  @media (max-width: 880px){
+    nav ul{ display:none; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:340px; margin:0 auto; }
+    .selector{ grid-template-columns:1fr; }
+    .about{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Beck Yoga Om <span>REBECA CARRETERO</span></div>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#facetas">Quién soy</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#contacto">Únete a mi clase</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow-free">Comunidad Beck Yoga Om</span>
+        <h1>Yoga con <em>energía</em>, cuerpo con criterio</h1>
+        <p class="lead">Soy Rebeca, profesora de yoga, crossfitera y pedagoga. Uno la calma de la esterilla con la fuerza del box para que entrenes tu cuerpo entero: flexible, fuerte y presente.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contacto">Escríbeme por Instagram</a>
+          <a class="btn-ghost" href="#facetas">Conóceme mejor</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <p class="hero-mantra">Fuerza, respiración y montaña</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="facetas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Quién soy</span>
+        <h2>Varias caras, una sola práctica</h2>
+        <p>Toca cada faceta para conocer un poco más de cómo entreno y acompaño.</p>
+      </div>
+
+      <div class="selector">
+        <div class="facet-list" role="tablist" aria-label="Facetas de Rebeca" id="facetList"></div>
+        <div class="facet-display" id="facetDisplay">
+          <div class="facet-display-inner">
+            <h3 id="pdTitle"></h3>
+            <p id="pdDesc"></p>
+            <span class="facet-tag" id="pdTag"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="wrap about">
+      <div class="about-card">
+        <h2>Del aula a la esterilla, del box a la montaña</h2>
+        <p style="margin-top:16px;">Soy graduada en Pedagogía por la UCM, y esa formación está detrás de cada clase: escucho, adapto y explico para que entiendas tu propio cuerpo, no solo repitas posturas. El yoga me da el enfoque; el crossfit, la fuerza; la montaña, la perspectiva.</p>
+        <div class="stat-row">
+          <div class="stat"><b>Pedagogía</b><span>UCM</span></div>
+          <div class="stat"><b>Yoga + Crossfit</b><span>cuerpo completo</span></div>
+        </div>
+      </div>
+      <div class="life-strip">
+        <h3>Lo que me acompaña fuera de clase</h3>
+        <ul>
+          <li>🐈‍⬛ Cocó y Lulú, mis compañeras felinas de siempre</li>
+          <li>⛰️ La Machota, mi rincón de desconexión</li>
+          <li>🏔️ Abantos, mis otras montañas favoritas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Contacto</span>
+        <h2>Vamos a movernos juntas</h2>
+        <p>Sígueme y escríbeme por Instagram para reservar tu clase o resolver cualquier duda.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Beck Yoga Om</h3>
+          <a class="contact-line" href="https://instagram.com/beck_yoga_om" target="_blank" rel="noopener">
+            <span class="icon-badge">◎</span> @beck_yoga_om en Instagram
+          </a>
+          <div class="contact-line" style="cursor:default;">
+            <span class="icon-badge">✦</span> Comunidad de yoga y movimiento
+          </div>
+        </div>
+        <div class="contact-card">
+          <h3>Lo que trabajamos juntas</h3>
+          <p style="color:var(--ink-dim);">Yoga · Fuerza estilo crossfit · Respiración y enfoque pedagógico · Acompañamiento cercano</p>
+          <a class="btn-primary" style="margin-top:22px;" href="https://instagram.com/beck_yoga_om" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>Beck Yoga Om · Rebeca Carretero</span>
+    <a href="https://instagram.com/beck_yoga_om" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const facets = [
+    {
+      name: "Profesora de Yoga",
+      color: "#ff3d9a",
+      tag: "Cuerpo y respiración",
+      desc: "Clases que combinan posturas, respiración y quietud, adaptadas a cada nivel para que cada alumna encuentre su propio ritmo."
+    },
+    {
+      name: "Crossfitera",
+      color: "#ff8a3d",
+      tag: "Fuerza funcional",
+      desc: "El entrenamiento de fuerza es mi otra mitad: aporta potencia, resistencia y una energía distinta que se nota también en la esterilla."
+    },
+    {
+      name: "Pedagoga (UCM)",
+      color: "#2fd0e0",
+      tag: "Cómo enseño",
+      desc: "Graduada en Pedagogía por la UCM. Uso esa formación para explicar el movimiento de forma clara, cercana y adaptada a cada persona."
+    },
+    {
+      name: "Mi vida fuera del mat",
+      color: "#a6e22e",
+      tag: "Lo que me inspira",
+      desc: "Cocó y Lulú, mis gatas, y La Machota y Abantos, mis montañas favoritas. La calma de casa y el aire libre también forman parte de mi práctica."
+    }
+  ];
+
+  const list = document.getElementById('facetList');
+  const display = document.getElementById('facetDisplay');
+  const pdTitle = document.getElementById('pdTitle');
+  const pdDesc = document.getElementById('pdDesc');
+  const pdTag = document.getElementById('pdTag');
+
+  facets.forEach((p, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'facet-btn';
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    btn.style.setProperty('--cur-color', p.color);
+    btn.innerHTML = '<span>' + p.name + '</span><span class="dot"></span>';
+    btn.addEventListener('click', () => selectFacet(i));
+    list.appendChild(btn);
+  });
+
+  function selectFacet(index){
+    const p = facets[index];
+    Array.from(list.children).forEach((btn, i) => {
+      btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+    });
+    display.style.setProperty('--cur-color', p.color);
+    pdTitle.textContent = p.name;
+    pdDesc.textContent = p.desc;
+    pdTag.textContent = p.tag;
+    pdTag.style.background = p.color;
+  }
+
+  selectFacet(0);
+})();
+</script>
+
+</body>
+</html>

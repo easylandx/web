@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vincashala · Bienestar en Mérida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c0a1e;
+    --bg-2: #120e2b;
+    --panel: #16123380;
+    --ink: #f4f1ff;
+    --ink-dim: #b9b3d9;
+    --magenta: #ff2fa6;
+    --cyan: #23f0e0;
+    --violet: #a06bff;
+    --lime: #d4ff5c;
+    --line: #ffffff1a;
+    --radius-lg: 28px;
+    --radius-sm: 14px;
+    --maxw: 1120px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(60% 50% at 15% 0%, #3a0a5e55, transparent 60%),
+      radial-gradient(50% 45% at 100% 15%, #003a4a66, transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Sora', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.1;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 clamp(24px, 6vw, 72px);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  :focus-visible{
+    outline:2px solid var(--lime);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    backdrop-filter: blur(14px);
+    background:#0c0a1ecc;
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:20px; padding-bottom:20px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.35rem;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand span{ color:var(--lime); font-size:0.7rem; font-family:'Sora',sans-serif; letter-spacing:0.02em; }
+  nav ul{ list-style:none; display:flex; gap:clamp(16px,3vw,34px); margin:0; padding:0; }
+  nav a{
+    text-decoration:none; color:var(--ink-dim); font-size:0.95rem;
+    transition:color .2s ease;
+  }
+  nav a:hover{ color:var(--ink); }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--lime); color:#161022; font-weight:600;
+    padding:10px 20px; border-radius:999px; font-size:0.9rem;
+    text-decoration:none;
+    box-shadow:0 0 0 rgba(212,255,92,0);
+    transition:box-shadow .25s ease, transform .2s ease;
+  }
+  .nav-cta:hover{ box-shadow:0 0 26px #d4ff5c99; transform:translateY(-1px); }
+  .menu-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; overflow:hidden; padding:clamp(64px,10vw,120px) 0 clamp(56px,8vw,96px); }
+  .glow-orb{
+    position:absolute; z-index:0; border-radius:50%;
+    filter:blur(70px); opacity:0.55; pointer-events:none;
+  }
+  .glow-orb.one{ width:420px; height:420px; background:var(--magenta); top:-140px; right:-80px; animation:drift1 22s ease-in-out infinite; }
+  .glow-orb.two{ width:340px; height:340px; background:var(--cyan); bottom:-160px; left:-100px; animation:drift2 26s ease-in-out infinite; }
+  @keyframes drift1{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-40px, 50px); } }
+  @keyframes drift2{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(40px, -40px); } }
+
+  .hero-inner{ position:relative; z-index:1; display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; }
+  .eyebrow-free{ color:var(--cyan); font-size:1rem; margin-bottom:18px; display:block; }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 4.1rem);
+    background:linear-gradient(100deg, var(--ink) 30%, var(--cyan) 70%, var(--magenta) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{
+    margin-top:24px; font-size:1.15rem; color:var(--ink-dim); max-width:46ch;
+  }
+  .hero-actions{ display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
+  .btn-primary, .btn-ghost{
+    padding:15px 30px; border-radius:999px; text-decoration:none;
+    font-size:1rem; font-weight:600; display:inline-flex; align-items:center; gap:10px;
+    transition:transform .2s ease, box-shadow .25s ease, background .2s ease;
+  }
+  .btn-primary{ background:linear-gradient(120deg, var(--magenta), var(--violet)); color:#fff; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px #ff2fa655; }
+  .btn-ghost{ border:1px solid var(--line); color:var(--ink); background:#ffffff08; }
+  .btn-ghost:hover{ border-color:var(--cyan); color:var(--cyan); }
+
+  .hero-visual{
+    position:relative; aspect-ratio:1/1.05; border-radius:var(--radius-lg);
+    background: conic-gradient(from 210deg, #ff2fa633, #23f0e033, #a06bff33, #d4ff5c33, #ff2fa633);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .hero-visual::before{
+    content:""; position:absolute; inset:14%;
+    border:1px solid #ffffff30; border-radius:50%;
+  }
+  .hero-visual::after{
+    content:""; position:absolute; inset:28%;
+    border:1px solid #ffffff20; border-radius:50%;
+  }
+  .hero-mantra{
+    position:relative; z-index:2; font-family:'Fraunces',serif; font-size:1.4rem;
+    color:var(--ink); text-align:center; padding:0 20px; max-width:70%;
+  }
+
+  /* ---------- SECTION LABELS ---------- */
+  section{ padding:clamp(64px,9vw,110px) 0; position:relative; }
+  .kicker{ color:var(--magenta); font-size:1rem; margin-bottom:10px; display:block; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); }
+  .section-head p{ margin-top:16px; color:var(--ink-dim); font-size:1.05rem; }
+
+  /* ---------- PRACTICE SELECTOR (interactivo) ---------- */
+  .selector{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:44px; align-items:start; }
+  .practice-list{ display:flex; flex-direction:column; gap:6px; }
+  .practice-btn{
+    all:unset; cursor:pointer; padding:18px 22px; border-radius:var(--radius-sm);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    color:var(--ink-dim); font-size:1.05rem; font-family:'Sora',sans-serif;
+    border:1px solid transparent; transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .practice-btn:hover{ background:#ffffff08; color:var(--ink); }
+  .practice-btn[aria-selected="true"]{
+    background:#ffffff10; color:var(--ink); border-color:var(--line);
+  }
+  .practice-btn .dot{
+    width:9px; height:9px; border-radius:50%; background:var(--ink-dim); flex-shrink:0;
+    transition:background .2s ease, box-shadow .2s ease;
+  }
+  .practice-btn[aria-selected="true"] .dot{ background:var(--cur-color, var(--cyan)); box-shadow:0 0 10px var(--cur-color, var(--cyan)); }
+
+  .practice-display{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:clamp(28px,4vw,44px); min-height:320px;
+    background:#ffffff06;
+    position:relative; overflow:hidden;
+  }
+  .practice-display::before{
+    content:""; position:absolute; inset:0; opacity:0.5;
+    background:radial-gradient(circle at 20% 15%, var(--cur-color, var(--cyan)) 0%, transparent 45%);
+    transition:background .4s ease;
+  }
+  .practice-display-inner{ position:relative; z-index:1; }
+  .practice-display h3{ font-size:1.6rem; color:var(--ink); margin-bottom:14px; }
+  .practice-display p{ color:var(--ink-dim); font-size:1.02rem; max-width:56ch; }
+  .practice-tag{
+    display:inline-block; margin-top:20px; padding:7px 16px; border-radius:999px;
+    font-size:0.85rem; color:#0c0a1e; background:var(--cur-color, var(--cyan)); font-weight:600;
+  }
+
+  /* ---------- ABOUT / FRANJA ---------- */
+  .about{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center; }
+  .about-card{
+    border:1px solid var(--line); border-radius:var(--radius-lg); padding:36px;
+    background:linear-gradient(160deg, #ffffff0c, transparent 60%);
+  }
+  .about-card p{ color:var(--ink-dim); }
+  .stat-row{ display:flex; gap:34px; margin-top:28px; flex-wrap:wrap; }
+  .stat{ }
+  .stat b{ display:block; font-family:'Fraunces',serif; font-size:2rem; color:var(--lime); }
+  .stat span{ color:var(--ink-dim); font-size:0.9rem; }
+
+  /* ---------- ONLINE STRIP ---------- */
+  .online-strip{
+    border-radius:var(--radius-lg);
+    padding:clamp(36px,5vw,56px);
+    background:linear-gradient(120deg, #ff2fa61a, #23f0e01a);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
+  }
+  .online-strip h3{ font-size:1.6rem; max-width:30ch; }
+  .online-strip p{ color:var(--ink-dim); margin-top:10px; max-width:44ch; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; }
+  .contact-card{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:clamp(28px,4vw,44px);
+    background:#ffffff06;
+  }
+  .contact-card h3{ font-size:1.4rem; margin-bottom:14px; }
+  .contact-line{
+    display:flex; align-items:center; gap:14px; padding:14px 0;
+    border-top:1px solid var(--line); text-decoration:none; color:var(--ink);
+    transition:color .2s ease, gap .2s ease;
+  }
+  .contact-line:first-of-type{ border-top:none; }
+  .contact-line:hover{ color:var(--cyan); gap:18px; }
+  .icon-badge{
+    width:38px; height:38px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background:#ffffff10; font-size:1.1rem;
+  }
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0; color:var(--ink-dim); font-size:0.9rem;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+  footer a{ color:var(--ink-dim); text-decoration:none; }
+  footer a:hover{ color:var(--cyan); }
+
+  @media (max-width: 880px){
+    nav ul{ display:none; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:340px; margin:0 auto; }
+    .selector{ grid-template-columns:1fr; }
+    .about{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .online-strip{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Vincashala <span>MÉRIDA</span></div>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#practicas">Prácticas</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#online">Online</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#contacto">Reservar clase</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="glow-orb one"></div>
+    <div class="glow-orb two"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow-free">Yoga y bienestar en Vinca, Mérida</span>
+        <h1>Vuelve a tu cuerpo, vuelve a ti</h1>
+        <p class="lead">Un espacio para reconectar a través del yoga, el movimiento somático, la corrección postural y el sonido. Clases presenciales en Mérida y online desde cualquier lugar.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contacto">Reserva tu primera clase</a>
+          <a class="btn-ghost" href="#practicas">Ver prácticas</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <p class="hero-mantra">Respira. Alinea. Vibra.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="practicas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Nuestras prácticas</span>
+        <h2>Elige lo que tu cuerpo necesita hoy</h2>
+        <p>Cada práctica trabaja una capa distinta: movimiento, postura o sonido. Toca una para conocerla.</p>
+      </div>
+
+      <div class="selector">
+        <div class="practice-list" role="tablist" aria-label="Prácticas de Vincashala" id="practiceList"></div>
+        <div class="practice-display" id="practiceDisplay">
+          <div class="practice-display-inner">
+            <h3 id="pdTitle"></h3>
+            <p id="pdDesc"></p>
+            <span class="practice-tag" id="pdTag"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="wrap about">
+      <div class="about-card">
+        <h2>Un espacio, muchas formas de habitar tu cuerpo</h2>
+        <p style="margin-top:16px;">Vincashala nace en Mérida como un punto de encuentro entre el yoga tradicional y el trabajo somático contemporáneo. Acompañamos procesos de alivio postural, calma nerviosa y reconexión, en grupo o en sesión individual.</p>
+        <div class="stat-row">
+          <div class="stat"><b>6</b><span>disciplinas activas</span></div>
+          <div class="stat"><b>100%</b><span>clases también online</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="online-strip">
+          <div>
+            <h3 id="online">Clases online, mismo ritual</h3>
+            <p>Si no puedes venir a Vinca, tu práctica te sigue. Sesiones en vivo por videollamada con el mismo acompañamiento cercano.</p>
+          </div>
+          <a class="btn-primary" href="#contacto">Quiero una clase online</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Contacto</span>
+        <h2>Empieza cuando quieras</h2>
+        <p>Escríbenos y te ayudamos a elegir la práctica y el horario que mejor se acomode a ti.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Vincashala</h3>
+          <a class="contact-line" href="tel:05430">
+            <span class="icon-badge">☎</span> 05430
+          </a>
+          <a class="contact-line" href="https://instagram.com/vincashala" target="_blank" rel="noopener">
+            <span class="icon-badge">◎</span> @vincashala en Instagram
+          </a>
+          <div class="contact-line" style="cursor:default;">
+            <span class="icon-badge">✦</span> Vinca, Mérida
+          </div>
+        </div>
+        <div class="contact-card">
+          <h3>Lo que trabajamos contigo</h3>
+          <p style="color:var(--ink-dim);">Yoga · Movimiento somático · Corrección postural · Baños de sonido · Gongs · Clases online</p>
+          <a class="btn-primary" style="margin-top:22px;" href="https://instagram.com/vincashala" target="_blank" rel="noopener">Escríbenos por Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>Vincashala · Vinca, Mérida</span>
+    <a href="https://instagram.com/vincashala" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const practices = [
+    {
+      name: "Yoga",
+      color: "#23f0e0",
+      tag: "Presencial y online",
+      desc: "Práctica de posturas, respiración y quietud. Clases para todos los niveles, con espacio para adaptar cada postura a tu cuerpo del día."
+    },
+    {
+      name: "Movimiento Somático",
+      color: "#a06bff",
+      tag: "Enfoque en el sistema nervioso",
+      desc: "Exploración lenta y consciente del movimiento para liberar tensión acumulada y recuperar la escucha interna del cuerpo."
+    },
+    {
+      name: "Corrección Postural",
+      color: "#ff2fa6",
+      tag: "Sesiones individuales",
+      desc: "Trabajo enfocado en identificar compensaciones posturales y construir, paso a paso, patrones de movimiento más cómodos y sostenibles."
+    },
+    {
+      name: "Baños de Sonido",
+      color: "#d4ff5c",
+      tag: "Relajación profunda",
+      desc: "Sesiones inmersivas de sonido que invitan al sistema nervioso a soltar y descansar en un estado de calma profunda."
+    },
+    {
+      name: "Gongs",
+      color: "#23f0e0",
+      tag: "Terapia vibracional",
+      desc: "El gong como instrumento de sanación: sus vibraciones ayudan a liberar bloqueos energéticos y a inducir estados meditativos."
+    },
+    {
+      name: "Clases Online",
+      color: "#a06bff",
+      tag: "Desde donde estés",
+      desc: "Yoga y movimiento en vivo por videollamada, con el mismo acompañamiento cercano que en el estudio de Mérida."
+    }
+  ];
+
+  const list = document.getElementById('practiceList');
+  const display = document.getElementById('practiceDisplay');
+  const pdTitle = document.getElementById('pdTitle');
+  const pdDesc = document.getElementById('pdDesc');
+  const pdTag = document.getElementById('pdTag');
+
+  practices.forEach((p, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'practice-btn';
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    btn.style.setProperty('--cur-color', p.color);
+    btn.innerHTML = '<span>' + p.name + '</span><span class="dot"></span>';
+    btn.addEventListener('click', () => selectPractice(i));
+    list.appendChild(btn);
+  });
+
+  function selectPractice(index){
+    const p = practices[index];
+    Array.from(list.children).forEach((btn, i) => {
+      btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+    });
+    display.style.setProperty('--cur-color', p.color);
+    pdTitle.textContent = p.name;
+    pdDesc.textContent = p.desc;
+    pdTag.textContent = p.tag;
+    pdTag.style.background = p.color;
+  }
+
+  selectPractice(0);
+})();
+</script>
+
+</body>
+</html>

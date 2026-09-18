@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talleres Tres Cantos — Taller Multimarca Alemán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:#15161C;
+    --red:#FF1E3C;
+    --amber:#FFB100;
+    --blue:#2F80FF;
+    --surface:#FFF7ED;
+    --text-on-surface:#1B1B1F;
+    --text-on-vivid:#FFF7ED;
+    --bg-grad: radial-gradient(circle at 85% 0%, rgba(255,177,0,0.55), transparent 45%),
+               radial-gradient(circle at 5% 90%, rgba(47,128,255,0.35), transparent 40%),
+               linear-gradient(150deg, #15161C 0%, #3A0A12 45%, #FF1E3C 100%);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --surface:#1B1B22; --text-on-surface:#F4EFE8; }
+  }
+  :root[data-theme="dark"]{ --surface:#1B1B22; --text-on-surface:#F4EFE8; }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Sora", -apple-system, "Segoe UI", sans-serif;
+    background:var(--bg-grad) var(--ink);
+    color:var(--text-on-vivid);
+    min-height:100vh; overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:"Teko", "Segoe UI", sans-serif;
+    font-weight:600; line-height:0.94; letter-spacing:0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+  button{font-family:inherit; cursor:pointer;}
+  :focus-visible{outline:3px solid var(--amber); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:blur(14px) saturate(140%);
+    background:rgba(21,22,28,0.4);
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:13px 28px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; font-family:"Teko"; font-weight:700; font-size:1.55rem; }
+  .brand-mark{
+    width:38px; height:38px; border-radius:9px; background:var(--red); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:1.15rem; flex-shrink:0;
+  }
+  .nav-links{ display:flex; align-items:center; gap:20px; }
+  .nav-links a{ font-size:0.92rem; font-weight:600; text-decoration:none; opacity:0.92; }
+  .only-desktop{ display:none; }
+  @media (min-width:860px){ .only-desktop{ display:inline; } }
+  .icon-link{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+    text-decoration:none; font-size:1.05rem; transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .icon-link:hover{ background:rgba(255,255,255,0.26); transform:translateY(-2px); }
+  .nav-cta{ display:none; }
+  @media (min-width:720px){
+    .nav-cta{
+      display:inline-flex; align-items:center; gap:8px; background:var(--amber); color:var(--ink);
+      padding:10px 18px; border-radius:8px; font-weight:800; font-size:0.86rem; text-decoration:none;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{ position:relative; padding:74px 0 92px; overflow:hidden; }
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap:48px; align-items:center; }
+  @media (min-width:900px){ .hero-grid{ grid-template-columns:1.2fr 0.8fr; gap:40px; } }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.13); border:1px solid rgba(255,255,255,0.28);
+    padding:7px 16px 7px 8px; border-radius:999px; font-size:0.84rem; font-weight:600;
+    margin-bottom:22px; font-family:"Sora";
+  }
+  .eyebrow .dot{ width:9px; height:9px; border-radius:50%; background:var(--amber); }
+  .hero h1{ font-size:clamp(3rem, 7.5vw, 5.4rem); color:var(--text-on-vivid); margin-bottom:18px; text-wrap:balance; }
+  .hero h1 em{ font-style:normal; color:var(--amber); }
+  .hero p.lead{ font-size:1.14rem; max-width:48ch; opacity:0.92; margin-bottom:28px; font-weight:500; }
+
+  .brand-strip{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px; }
+  .brand-strip span{
+    font-size:0.82rem; font-weight:700; padding:7px 14px; background:rgba(255,255,255,0.1);
+    border-radius:999px; border:1px solid rgba(255,255,255,0.22);
+  }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; padding:15px 26px; border-radius:10px; border:none;
+    font-weight:700; font-size:0.98rem; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-primary{ background:var(--amber); color:var(--ink); box-shadow:0 10px 26px rgba(255,177,0,0.35); }
+  .btn-ghost{ background:transparent; color:var(--text-on-vivid); border:1.5px solid rgba(255,255,255,0.5); }
+
+  /* ---- gauge widget ---- */
+  .gauge-card{
+    position:relative; z-index:2; background:rgba(255,247,237,0.08); border:1px solid rgba(255,255,255,0.22);
+    border-radius:24px; padding:30px 26px 28px; backdrop-filter:blur(6px); text-align:center;
+  }
+  .gauge-card h3{ font-family:"Sora"; font-weight:700; font-size:1rem; margin-bottom:4px; }
+  .gauge-card .sub{ font-size:0.85rem; opacity:0.8; margin-bottom:20px; }
+  .gauge-wrap{ position:relative; width:220px; height:130px; margin:0 auto 18px; }
+  .gauge-wrap svg{ width:100%; height:100%; display:block; }
+  .needle{
+    transform-origin:110px 110px;
+    transform:rotate(-90deg);
+    transition:transform 1.4s cubic-bezier(.2,.9,.25,1);
+  }
+  .gauge-readout{ font-family:"Teko"; font-size:1.6rem; margin-top:-6px; }
+  .gauge-btn{
+    background:var(--blue); color:#fff; border:none; padding:12px 22px; border-radius:10px; font-weight:700; font-size:0.92rem;
+  }
+  .gauge-note{ margin-top:12px; font-size:0.78rem; opacity:0.75; min-height:16px; font-family:"Sora"; }
+
+  /* ---------- SECTION shell ---------- */
+  section{ background:var(--surface); color:var(--text-on-surface); }
+  .section-pad{ padding:86px 0; }
+  .section-head{ max-width:640px; margin-bottom:46px; }
+  .section-head .kicker{ font-weight:700; color:var(--red); font-size:0.9rem; margin-bottom:8px; display:block; font-family:"Sora"; }
+  .section-head h2{ font-size:clamp(2.1rem, 5vw, 3.1rem); }
+  .section-head p{ margin-top:14px; font-size:1.04rem; opacity:0.78; max-width:56ch; font-family:"Sora"; }
+
+  /* ---------- MARCAS interactivo ---------- */
+  .marcas-panel{ display:grid; grid-template-columns:1fr; gap:16px; }
+  @media (min-width:880px){ .marcas-panel{ grid-template-columns:300px 1fr; gap:26px; align-items:start; } }
+  .marca-tabs{ display:flex; flex-wrap:wrap; gap:10px; }
+  @media (min-width:880px){ .marca-tabs{ flex-direction:column; flex-wrap:nowrap; } }
+  .marca-tab{
+    border:none; background:rgba(21,22,28,0.05); padding:13px 18px; border-radius:12px;
+    font-weight:700; font-size:0.92rem; color:inherit; font-family:"Sora";
+    border-left:4px solid transparent; transition:background 0.2s ease, transform 0.2s ease;
+    display:flex; align-items:center; gap:10px;
+  }
+  .marca-tab:hover{ transform:translateX(3px); }
+  .marca-tab .sw{ width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .marca-tab.active{ background:rgba(21,22,28,0.08); }
+
+  .marca-display{ background:var(--ink); color:var(--text-on-vivid); border-radius:24px; padding:34px 32px; min-height:220px; display:flex; flex-direction:column; justify-content:center; }
+  .marca-display .tag{ display:inline-block; font-family:"Sora"; font-size:0.78rem; font-weight:700; padding:5px 12px; border-radius:999px; margin-bottom:16px; width:fit-content; }
+  .marca-display h3{ font-size:2.2rem; margin-bottom:12px; }
+  .marca-display p{ font-family:"Sora"; font-size:1rem; opacity:0.85; max-width:52ch; line-height:1.6; }
+
+  /* ---------- SERVICIOS ---------- */
+  .servicios-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
+  @media (min-width:760px){ .servicios-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:1040px){ .servicios-grid{ grid-template-columns:repeat(4,1fr); } }
+  .servicio-card{
+    background:linear-gradient(160deg, rgba(255,30,60,0.07), rgba(47,128,255,0.07));
+    border-radius:20px; padding:28px 24px; display:flex; flex-direction:column; gap:12px;
+  }
+  .servicio-card .ic{ width:48px; height:48px; border-radius:12px; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.25rem; }
+  .servicio-card h3{ font-family:"Teko"; font-weight:600; font-size:1.5rem; }
+  .servicio-card p{ font-family:"Sora"; font-size:0.92rem; opacity:0.78; line-height:1.5; }
+
+  /* ---------- BENEFICIOS strip ---------- */
+  .benefits-strip{ background:var(--ink); color:var(--text-on-vivid); }
+  .benefits-row{ display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:rgba(255,255,255,0.1); border-radius:20px; overflow:hidden; }
+  @media (min-width:760px){ .benefits-row{ grid-template-columns:repeat(4,1fr); } }
+  .benefit{ background:var(--ink); padding:32px 22px; text-align:left; }
+  .benefit .ic{ font-size:1.5rem; display:block; margin-bottom:10px; }
+  .benefit p{ font-family:"Sora"; font-size:0.92rem; opacity:0.82; }
+
+  /* ---------- UBICACION ---------- */
+  .location-grid{ display:grid; grid-template-columns:1fr; gap:32px; }
+  @media (min-width:880px){ .location-grid{ grid-template-columns:1fr 1fr; align-items:stretch; } }
+  .info-card{ background:linear-gradient(160deg, rgba(255,30,60,0.08), rgba(255,177,0,0.08)); border-radius:26px; padding:34px; display:flex; flex-direction:column; gap:20px; }
+  .info-row{ display:flex; gap:16px; align-items:flex-start; }
+  .info-row .ic{ width:44px; height:44px; border-radius:12px; flex-shrink:0; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
+  .info-row h4{ font-family:"Sora"; font-size:0.98rem; margin-bottom:4px; }
+  .info-row p, .info-row a{ font-family:"Sora"; font-size:0.94rem; opacity:0.85; text-decoration:none; }
+  .map-blob{
+    border-radius:26px; overflow:hidden; position:relative; min-height:260px;
+    background:
+      radial-gradient(circle at 25% 30%, rgba(255,177,0,0.5), transparent 45%),
+      radial-gradient(circle at 75% 70%, rgba(47,128,255,0.4), transparent 50%),
+      linear-gradient(150deg, #3A0A12, #FF1E3C);
+    display:flex; align-items:flex-end; padding:26px;
+  }
+  .map-blob .pin{
+    background:rgba(255,247,237,0.95); color:var(--ink); border-radius:14px; padding:15px 20px;
+    font-weight:700; display:flex; align-items:center; gap:10px; text-decoration:none; font-size:0.9rem; font-family:"Sora";
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{ background:var(--bg-grad) var(--ink); color:var(--text-on-vivid); text-align:center; }
+  .cta-final h2{ font-size:clamp(2.2rem,6vw,3.5rem); margin-bottom:16px; }
+  .cta-final p{ font-family:"Sora"; opacity:0.92; margin-bottom:30px; font-size:1.06rem; max-width:50ch; margin-inline:auto; }
+  .cta-actions{ display:flex; justify-content:center; flex-wrap:wrap; gap:14px; }
+
+  footer{ background:var(--ink); color:rgba(255,247,237,0.6); padding:30px 0; font-size:0.84rem; text-align:center; font-family:"Sora"; }
+  footer a{ color:var(--amber); text-decoration:none; font-weight:700; }
+
+  .float-ig{
+    position:fixed; bottom:22px; right:22px; z-index:60; width:60px; height:60px; border-radius:16px;
+    background:linear-gradient(135deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5);
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.7rem; text-decoration:none;
+    box-shadow:0 12px 28px rgba(0,0,0,0.35);
+    animation:pulseIg 2.8s ease-in-out infinite;
+  }
+  @keyframes pulseIg{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.08); } }
+  @media (prefers-reduced-motion: reduce){ .float-ig{ animation:none; } }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">🔧</span>
+      Talleres Tres Cantos
+    </a>
+    <div class="nav-links">
+      <a class="only-desktop" href="#marcas">Marcas</a>
+      <a class="only-desktop" href="#servicios">Servicios</a>
+      <a href="https://www.instagram.com/tallerestrescantos/" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">📷</a>
+      <a href="https://www.instagram.com/tallerestrescantos/" target="_blank" rel="noopener" class="nav-cta">Pedir cita</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Taller multimarca · Tres Cantos</span>
+      <h1>Especialistas en <em>coches alemanes</em></h1>
+      <p class="lead">Mecánica y electricidad para tu vehículo, con el conocimiento técnico específico que solo da trabajar cada día con marcas alemanas.</p>
+      <div class="brand-strip">
+        <span>BMW</span><span>Mercedes-Benz</span><span>Volkswagen</span><span>Audi</span><span>Seat</span><span>Škoda</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/tallerestrescantos/" target="_blank" rel="noopener">📷 Escríbenos por Instagram</a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+
+    <div class="gauge-card">
+      <h3>Pide tu diagnosis</h3>
+      <p class="sub">Pulsa y comprueba el estado de tu vehículo</p>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 220 130">
+          <path d="M10,110 A100,100 0 0,1 210,110" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M10,110 A100,100 0 0,1 78,17" fill="none" stroke="#2F80FF" stroke-width="14" stroke-linecap="round"/>
+          <path d="M78,17 A100,100 0 0,1 142,17" fill="none" stroke="#FFB100" stroke-width="14" stroke-linecap="round"/>
+          <path d="M142,17 A100,100 0 0,1 210,110" fill="none" stroke="#FF1E3C" stroke-width="14" stroke-linecap="round"/>
+          <g class="needle" id="needle">
+            <line x1="110" y1="110" x2="110" y2="30" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="110" cy="110" r="8" fill="#FFF7ED"/>
+          </g>
+        </svg>
+      </div>
+      <div class="gauge-readout" id="gaugeReadout">— · —</div>
+      <button class="gauge-btn" id="gaugeBtn">Comprobar vehículo</button>
+      <div class="gauge-note" id="gaugeNote"></div>
+    </div>
+  </div>
+</header>
+
+<section id="marcas" class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Nuestra especialidad</span>
+      <h2>Conocemos tu marca por dentro</h2>
+      <p>Trabajamos cada día con estas marcas, con diagnosis y recambios adaptados a cada una. Elige la tuya.</p>
+    </div>
+
+    <div class="marcas-panel">
+      <div class="marca-tabs" role="tablist" aria-label="Marcas">
+        <button class="marca-tab active" data-marca="0"><span class="sw" style="background:#1C69D4"></span> BMW</button>
+        <button class="marca-tab" data-marca="1"><span class="sw" style="background:#6C7A89"></span> Mercedes-Benz</button>
+        <button class="marca-tab" data-marca="2"><span class="sw" style="background:#1F4E8C"></span> Volkswagen</button>
+        <button class="marca-tab" data-marca="3"><span class="sw" style="background:#B4302E"></span> Audi</button>
+        <button class="marca-tab" data-marca="4"><span class="sw" style="background:#FF5C39"></span> Seat</button>
+        <button class="marca-tab" data-marca="5"><span class="sw" style="background:#4BA82E"></span> Škoda</button>
+      </div>
+
+      <div class="marca-display" id="marcaDisplay">
+        <span class="tag" id="marcaTag" style="background:#1C69D4">BMW</span>
+        <h3 id="marcaTitulo">Mecánica y electricidad BMW</h3>
+        <p id="marcaTexto">Diagnosis específica por escáner de marca, mantenimiento según sus intervalos de servicio y recambios adecuados a cada motorización, desde gasolina y diésel hasta híbridos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="section-pad" style="background:linear-gradient(150deg, rgba(255,30,60,0.05), rgba(47,128,255,0.05)), var(--surface);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Qué hacemos</span>
+      <h2>Mecánica y electricidad, sin vueltas</h2>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="ic">🔧</div>
+        <h3>Mecánica general</h3>
+        <p>Mantenimiento, frenos, distribución, suspensión y reparaciones mecánicas de cualquier nivel.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="ic">⚡</div>
+        <h3>Electricidad del automóvil</h3>
+        <p>Diagnosis de averías eléctricas y electrónicas, sensores, baterías y sistemas de a bordo.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="ic">🖥️</div>
+        <h3>Diagnosis multimarca</h3>
+        <p>Equipos de diagnosis específicos por marca para identificar la avería real, sin adivinar.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="ic">🛠️</div>
+        <h3>Mantenimiento preventivo</h3>
+        <p>Revisiones periódicas para que tu coche llegue seguro a la ITV y dure más tiempo bien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits-strip">
+  <div class="wrap section-pad">
+    <div class="section-head" style="color:var(--text-on-vivid)">
+      <span class="kicker" style="color:var(--amber)">Por qué elegirnos</span>
+      <h2 style="color:var(--text-on-vivid)">Trato cercano, técnica alemana</h2>
+    </div>
+    <div class="benefits-row">
+      <div class="benefit"><span class="ic">🎯</span><p>Diagnosis precisa antes de tocar nada, sin sorpresas en el presupuesto.</p></div>
+      <div class="benefit"><span class="ic">🔩</span><p>Recambios adecuados a cada marca y motorización, no genéricos.</p></div>
+      <div class="benefit"><span class="ic">🧑‍🔧</span><p>Mecánicos con experiencia específica en vehículos alemanes.</p></div>
+      <div class="benefit"><span class="ic">🤝</span><p>Explicación clara de cada avería, sin tecnicismos innecesarios.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Visítanos</span>
+      <h2>Estamos en Tres Cantos</h2>
+    </div>
+    <div class="location-grid">
+      <div class="info-card">
+        <div class="info-row">
+          <div class="ic">📍</div>
+          <div>
+            <h4>Dirección</h4>
+            <p>Ronda de Valdecarrizo, 25, Tres Cantos, Madrid, España 28770</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">📷</div>
+          <div>
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/tallerestrescantos/" target="_blank" rel="noopener">@tallerestrescantos</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">🚗</div>
+          <div>
+            <h4>Taller multimarca</h4>
+            <p>Especializado en BMW, Mercedes-Benz, Volkswagen, Audi, Seat y Škoda.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-blob">
+        <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Ronda+de+Valdecarrizo+25+Tres+Cantos+Madrid+28770" target="_blank" rel="noopener">
+          📍 Ronda de Valdecarrizo, 25 — Cómo llegar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final section-pad">
+  <div class="wrap">
+    <h2>Cuéntanos qué le pasa a tu coche</h2>
+    <p>Escríbenos por Instagram y te decimos cómo podemos ayudarte, sin compromiso.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary" href="https://www.instagram.com/tallerestrescantos/" target="_blank" rel="noopener">📷 Ir a Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Talleres Tres Cantos · Ronda de Valdecarrizo, 25, Tres Cantos, Madrid ·
+    <a href="https://www.instagram.com/tallerestrescantos/" target="_blank" rel="noopener">@tallerestrescantos</a>
+  </div>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/tallerestrescantos/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+
+<script>
+  // ---- Marcas tabs ----
+  const marcas = [
+    { tag:"BMW", color:"#1C69D4", titulo:"Mecánica y electricidad BMW",
+      texto:"Diagnosis específica por escáner de marca, mantenimiento según sus intervalos de servicio y recambios adecuados a cada motorización, desde gasolina y diésel hasta híbridos." },
+    { tag:"Mercedes-Benz", color:"#6C7A89", titulo:"Mecánica y electricidad Mercedes-Benz",
+      texto:"Revisión y reparación de sistemas mecánicos y electrónicos propios de Mercedes-Benz, con especial atención a suspensión, frenos y electrónica de confort." },
+    { tag:"Volkswagen", color:"#1F4E8C", titulo:"Mecánica y electricidad Volkswagen",
+      texto:"Mantenimiento y reparación adaptados a la gama Volkswagen, incluyendo motores TSI y TDI, cajas DSG y sistemas electrónicos de a bordo." },
+    { tag:"Audi", color:"#B4302E", titulo:"Mecánica y electricidad Audi",
+      texto:"Diagnosis avanzada para la electrónica Audi, mantenimiento de motores y transmisión, y puesta a punto para que el coche rinda como debe." },
+    { tag:"Seat", color:"#FF5C39", titulo:"Mecánica y electricidad Seat",
+      texto:"Revisiones, mecánica general y electricidad para toda la gama Seat, con recambios ajustados a cada modelo y motorización." },
+    { tag:"Škoda", color:"#4BA82E", titulo:"Mecánica y electricidad Škoda",
+      texto:"Mantenimiento preventivo y reparación de averías mecánicas y eléctricas en vehículos Škoda, con la misma base técnica del grupo alemán." }
+  ];
+
+  const tabsM = document.querySelectorAll(".marca-tab");
+  const tagEl = document.getElementById("marcaTag");
+  const tituloEl = document.getElementById("marcaTitulo");
+  const textoEl = document.getElementById("marcaTexto");
+
+  tabsM.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabsM.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      const data = marcas[tab.dataset.marca];
+      tagEl.textContent = data.tag;
+      tagEl.style.background = data.color;
+      tituloEl.textContent = data.titulo;
+      textoEl.textContent = data.texto;
+    });
+  });
+
+  // ---- Gauge widget ----
+  const needle = document.getElementById("needle");
+  const readout = document.getElementById("gaugeReadout");
+  const note = document.getElementById("gaugeNote");
+  const btnG = document.getElementById("gaugeBtn");
+  let checked = false;
+
+  btnG.addEventListener("click", () => {
+    if(checked){
+      needle.style.transform = "rotate(-90deg)";
+      readout.textContent = "— · —";
+      note.textContent = "";
+      btnG.textContent = "Comprobar vehículo";
+      checked = false;
+      return;
+    }
+    needle.style.transform = "rotate(70deg)";
+    readout.textContent = "Estado: correcto";
+    note.textContent = "Diagnosis inicial superada. Te esperamos para la revisión completa.";
+    btnG.textContent = "Reiniciar";
+    checked = true;
+  });
+</script>
+
+</body>
+</html>

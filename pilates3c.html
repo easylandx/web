@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilates Tres Cantos — Estudio de Pilates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --coral:#FF5D8F;
+    --orange:#FF8C42;
+    --purple:#7B2CBF;
+    --sun:#FFD23F;
+    --ink:#2D1B4E;
+    --cream:#FFF8F0;
+    --mint:#0FBFA0;
+    --bg-grad: linear-gradient(135deg, #FF5D8F 0%, #FF7A5C 32%, #FF8C42 55%, #7B2CBF 100%);
+    --surface: var(--cream);
+    --text-on-surface: var(--ink);
+    --text-on-vivid: #FFF8F0;
+    --radius-blob: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --surface:#241436;
+      --text-on-surface:#FFF3E8;
+      --cream:#241436;
+      --ink:#FFF3E8;
+    }
+  }
+  :root[data-theme="dark"]{
+    --surface:#241436;
+    --text-on-surface:#FFF3E8;
+    --cream:#241436;
+    --ink:#FFF3E8;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Plus Jakarta Sans", -apple-system, "Segoe UI", sans-serif;
+    background:var(--bg-grad) fixed;
+    color:var(--text-on-vivid);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:"Unbounded", "Segoe UI", sans-serif;
+    font-weight:800;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+  button{font-family:inherit; cursor:pointer;}
+  :focus-visible{outline:3px solid var(--sun); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:blur(14px) saturate(140%);
+    background:rgba(45,27,78,0.28);
+    border-bottom:1px solid rgba(255,255,255,0.18);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:"Unbounded"; font-weight:800; font-size:1.05rem;
+    text-decoration:none;
+  }
+  .brand-mark{
+    width:38px; height:38px; border-radius:var(--radius-blob);
+    background:var(--sun); display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem; flex-shrink:0;
+  }
+  .nav-links{display:flex; align-items:center; gap:22px;}
+  .nav-links a{
+    font-size:0.92rem; font-weight:600; text-decoration:none; opacity:0.92;
+  }
+  .icon-link{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3);
+    text-decoration:none; font-size:1.05rem;
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .icon-link:hover{ background:rgba(255,255,255,0.3); transform:translateY(-2px); }
+  .nav-cta{
+    display:none;
+  }
+  @media (min-width:720px){
+    .nav-cta{
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--sun); color:var(--ink);
+      padding:10px 18px; border-radius:999px; font-weight:700; font-size:0.9rem;
+      text-decoration:none;
+    }
+  }
+  .nav-links .only-desktop{display:none;}
+  @media (min-width:860px){ .nav-links .only-desktop{display:inline;} }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:74px 0 90px;
+    overflow:hidden;
+  }
+  .hero-blob{
+    position:absolute; border-radius:50%;
+    filter:blur(2px);
+    opacity:0.5;
+  }
+  .hero-blob.b1{ width:340px; height:340px; background:radial-gradient(circle at 30% 30%, var(--sun), transparent 70%); top:-90px; right:-70px; }
+  .hero-blob.b2{ width:260px; height:260px; background:radial-gradient(circle at 30% 30%, var(--mint), transparent 70%); bottom:-100px; left:-80px; opacity:0.35;}
+
+  .hero-grid{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:1fr; gap:48px; align-items:center;
+  }
+  @media (min-width:900px){
+    .hero-grid{ grid-template-columns:1.15fr 0.85fr; gap:40px; }
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35);
+    padding:7px 16px 7px 8px; border-radius:999px; font-size:0.86rem; font-weight:600;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{width:9px; height:9px; border-radius:50%; background:var(--mint);}
+  .hero h1{
+    font-size:clamp(2.5rem, 6vw, 4.1rem);
+    color:var(--text-on-vivid);
+    margin-bottom:22px;
+    text-wrap:balance;
+  }
+  .hero p.lead{
+    font-size:1.15rem; max-width:46ch; opacity:0.94; margin-bottom:32px; font-weight:500;
+  }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:38px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:15px 26px; border-radius:999px; border:none;
+    font-weight:700; font-size:1rem; text-decoration:none;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-primary{
+    background:var(--sun); color:var(--ink);
+    box-shadow:0 10px 26px rgba(255,210,63,0.4);
+  }
+  .btn-ghost{
+    background:transparent; color:var(--text-on-vivid);
+    border:1.5px solid rgba(255,255,255,0.55);
+  }
+  .hero-tags{ display:flex; flex-wrap:wrap; gap:10px; }
+  .hero-tags span{
+    font-size:0.82rem; font-weight:600; padding:7px 13px;
+    background:rgba(255,255,255,0.14); border-radius:999px; border:1px solid rgba(255,255,255,0.28);
+  }
+
+  /* ---- breathing widget ---- */
+  .breathe-card{
+    position:relative; z-index:2;
+    background:rgba(255,248,240,0.12);
+    border:1px solid rgba(255,255,255,0.28);
+    border-radius:32px;
+    padding:30px 26px 32px;
+    backdrop-filter:blur(6px);
+    text-align:center;
+  }
+  .breathe-card h3{ font-size:1.05rem; margin-bottom:6px; color:var(--text-on-vivid); }
+  .breathe-card .sub{ font-size:0.86rem; opacity:0.85; margin-bottom:22px; }
+  .breathe-stage{
+    position:relative; width:210px; height:210px; margin:0 auto 22px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .breathe-ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:2px dashed rgba(255,255,255,0.35);
+  }
+  .breathe-circle{
+    width:110px; height:110px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--sun), var(--coral) 70%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Unbounded"; font-weight:700; font-size:0.95rem; color:var(--ink);
+    transition:width 4s ease-in-out, height 4s ease-in-out;
+    box-shadow:0 0 40px rgba(255,210,63,0.35);
+  }
+  .breathe-circle.inhale{ width:190px; height:190px; }
+  .breathe-circle.exhale{ width:110px; height:110px; }
+  .breathe-btn{
+    background:var(--mint); color:#0B2E27; border:none;
+    padding:12px 22px; border-radius:999px; font-weight:700; font-size:0.92rem;
+  }
+  .breathe-count{ margin-top:14px; font-size:0.8rem; opacity:0.8; min-height:18px; }
+
+  /* ---------- SECTION shell ---------- */
+  section{
+    background:var(--surface);
+    color:var(--text-on-surface);
+    position:relative;
+  }
+  .section-pad{ padding:84px 0; }
+  .section-head{ max-width:640px; margin-bottom:48px; }
+  .section-head .kicker{
+    font-weight:700; color:var(--coral); font-size:0.95rem; margin-bottom:10px; display:block;
+  }
+  .section-head h2{ font-size:clamp(1.9rem, 4vw, 2.7rem); }
+  .section-head p{ margin-top:16px; font-size:1.05rem; opacity:0.82; max-width:56ch; }
+
+  /* ---------- CLASES (tabs) ---------- */
+  .clases-panel{
+    display:grid; grid-template-columns:1fr; gap:14px;
+  }
+  @media (min-width:880px){
+    .clases-panel{ grid-template-columns: 340px 1fr; gap:28px; align-items:start; }
+  }
+  .clase-tabs{ display:flex; flex-direction:column; gap:10px; }
+  .clase-tab{
+    text-align:left; border:none; background:rgba(123,44,191,0.06);
+    padding:18px 20px; border-radius:20px;
+    display:flex; align-items:center; gap:14px;
+    font-weight:700; font-size:1rem; color:inherit;
+    transition:background 0.25s ease, transform 0.2s ease;
+    border-left:4px solid transparent;
+  }
+  .clase-tab .emoji{ font-size:1.5rem; }
+  .clase-tab:hover{ transform:translateX(3px); }
+  .clase-tab.active{
+    background:linear-gradient(120deg, rgba(255,93,143,0.14), rgba(255,140,66,0.14));
+    border-left:4px solid var(--coral);
+  }
+  .clase-display{
+    background:linear-gradient(150deg, rgba(255,93,143,0.08), rgba(123,44,191,0.08));
+    border-radius:28px; padding:38px 34px;
+    min-height:250px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .clase-display .big-emoji{
+    width:64px; height:64px; border-radius:var(--radius-blob);
+    background:var(--sun); display:flex; align-items:center; justify-content:center;
+    font-size:1.8rem; margin-bottom:20px;
+  }
+  .clase-display h3{ font-size:1.5rem; margin-bottom:14px; }
+  .clase-display p{ font-size:1.02rem; line-height:1.6; opacity:0.88; max-width:52ch; }
+  .clase-display .level{
+    margin-top:20px; display:inline-block; font-size:0.82rem; font-weight:700;
+    background:rgba(15,191,160,0.14); color:var(--mint); padding:6px 14px; border-radius:999px;
+  }
+
+  /* ---------- BENEFICIOS ---------- */
+  .benefits-strip{
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .benefits-row{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+    background:rgba(255,255,255,0.1); border-radius:24px; overflow:hidden;
+  }
+  @media (min-width:760px){ .benefits-row{ grid-template-columns:repeat(4,1fr); } }
+  .benefit{
+    background:var(--ink); padding:34px 24px; text-align:left;
+  }
+  .benefit .n{ font-family:"Unbounded"; font-size:1.6rem; color:var(--sun); display:block; margin-bottom:10px;}
+  .benefit p{ font-size:0.95rem; opacity:0.82; }
+
+  /* ---------- UBICACION ---------- */
+  .location-grid{
+    display:grid; grid-template-columns:1fr; gap:32px;
+  }
+  @media (min-width:880px){ .location-grid{ grid-template-columns:1fr 1fr; align-items:stretch; } }
+  .info-card{
+    background:linear-gradient(150deg, rgba(255,140,66,0.1), rgba(255,93,143,0.1));
+    border-radius:28px; padding:36px; display:flex; flex-direction:column; gap:20px;
+  }
+  .info-row{ display:flex; gap:16px; align-items:flex-start; }
+  .info-row .ic{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    background:var(--coral); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.15rem;
+  }
+  .info-row h4{ font-size:1rem; margin-bottom:4px; }
+  .info-row p, .info-row a{ font-size:0.95rem; opacity:0.85; text-decoration:none; }
+  .map-blob{
+    border-radius:28px; overflow:hidden; position:relative; min-height:280px;
+    background:
+      radial-gradient(circle at 25% 30%, rgba(255,210,63,0.5), transparent 45%),
+      radial-gradient(circle at 75% 70%, rgba(15,191,160,0.4), transparent 50%),
+      linear-gradient(150deg, var(--purple), var(--coral));
+    display:flex; align-items:flex-end; padding:26px;
+  }
+  .map-blob .pin{
+    background:rgba(255,248,240,0.95); color:var(--ink); border-radius:18px;
+    padding:16px 20px; font-weight:700; display:flex; align-items:center; gap:10px;
+    text-decoration:none; font-size:0.92rem;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:var(--bg-grad);
+    color:var(--text-on-vivid);
+    text-align:center;
+  }
+  .cta-final h2{ font-size:clamp(1.9rem,5vw,3rem); margin-bottom:18px; max-width:18ch; margin-inline:auto; }
+  .cta-final p{ opacity:0.92; margin-bottom:32px; font-size:1.08rem; }
+  .cta-actions{ display:flex; justify-content:center; flex-wrap:wrap; gap:14px; }
+
+  footer{
+    background:var(--ink); color:rgba(255,243,232,0.7); padding:34px 0; font-size:0.85rem;
+    text-align:center;
+  }
+  footer a{ color:var(--sun); text-decoration:none; font-weight:600; }
+
+  /* floating whatsapp */
+  .float-wa{
+    position:fixed; bottom:22px; right:22px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:1.7rem; text-decoration:none;
+    box-shadow:0 12px 28px rgba(0,0,0,0.3);
+    animation:pulseWa 2.6s ease-in-out infinite;
+  }
+  @keyframes pulseWa{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce){ .float-wa{ animation:none; } }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">🧘🏼‍♀️</span>
+      Pilates Tres Cantos
+    </a>
+    <div class="nav-links">
+      <a class="only-desktop" href="#clases">Clases</a>
+      <a class="only-desktop" href="#ubicacion">Ubicación</a>
+      <a href="https://www.instagram.com/pilatestrescantos_/" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">📷</a>
+      <a href="https://wa.me/34650924787" target="_blank" rel="noopener" class="icon-link" aria-label="WhatsApp">💬</a>
+      <a href="https://wa.me/34650924787" target="_blank" rel="noopener" class="nav-cta">Reservar clase</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Tres Cantos, Madrid</span>
+      <h1>Respira hondo.<br>Muévete mejor.</h1>
+      <p class="lead">Pilates Suelo, Máquina, embarazo e Hipopresivos en un estudio cercano pensado para que cada sesión te deje más fuerte, más flexible y más tranquila.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/34650924787" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+        <a class="btn btn-ghost" href="#clases">Ver clases</a>
+      </div>
+      <div class="hero-tags">
+        <span>🧘🏼‍♀️ Pilates Suelo</span>
+        <span>🤸🏻‍♀️ Pilates Máquina</span>
+        <span>🤰🏽 Embarazadas</span>
+        <span>🧎🏽‍♀️ Hipopresivos</span>
+      </div>
+    </div>
+
+    <div class="breathe-card">
+      <h3>Prueba una respiración de Pilates</h3>
+      <p class="sub">Pulsa el botón y sigue el ritmo del círculo</p>
+      <div class="breathe-stage">
+        <div class="breathe-ring"></div>
+        <div class="breathe-circle" id="breatheCircle">Pulsa ▶</div>
+      </div>
+      <button class="breathe-btn" id="breatheBtn">Empezar respiración</button>
+      <div class="breathe-count" id="breatheCount"></div>
+    </div>
+  </div>
+</header>
+
+<section id="clases" class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Nuestras clases</span>
+      <h2>Un método para cada cuerpo y cada momento</h2>
+      <p>Elige una modalidad para conocer en qué consiste. Todas nuestras clases son en grupos reducidos, con seguimiento cercano.</p>
+    </div>
+
+    <div class="clases-panel">
+      <div class="clase-tabs" role="tablist" aria-label="Tipos de clase">
+        <button class="clase-tab active" data-clase="0"><span class="emoji">🧘🏼‍♀️</span> Pilates Suelo</button>
+        <button class="clase-tab" data-clase="1"><span class="emoji">🤸🏻‍♀️</span> Pilates Máquina</button>
+        <button class="clase-tab" data-clase="2"><span class="emoji">🤰🏽</span> Pilates Embarazadas</button>
+        <button class="clase-tab" data-clase="3"><span class="emoji">🧎🏽‍♀️</span> Hipopresivos</button>
+      </div>
+
+      <div class="clase-display" id="claseDisplay">
+        <div class="big-emoji" id="claseEmoji">🧘🏼‍♀️</div>
+        <h3 id="claseTitulo">Pilates Suelo</h3>
+        <p id="claseTexto">Trabajamos con el propio peso del cuerpo sobre esterilla: control, respiración y precisión en cada movimiento para fortalecer tu centro, mejorar la postura y ganar flexibilidad.</p>
+        <span class="level" id="claseNivel">Todos los niveles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits-strip">
+  <div class="wrap section-pad">
+    <div class="section-head" style="color:var(--cream)">
+      <span class="kicker" style="color:var(--sun)">Por qué Pilates</span>
+      <h2 style="color:var(--cream)">Lo que notarás desde las primeras clases</h2>
+    </div>
+    <div class="benefits-row">
+      <div class="benefit"><span class="n">01</span><p>Mejor postura y menos dolor de espalda en el día a día.</p></div>
+      <div class="benefit"><span class="n">02</span><p>Más fuerza en el centro del cuerpo, sin impacto en las articulaciones.</p></div>
+      <div class="benefit"><span class="n">03</span><p>Flexibilidad y movilidad que se notan dentro y fuera del estudio.</p></div>
+      <div class="benefit"><span class="n">04</span><p>Bienestar real: respiración consciente y menos estrés acumulado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion" class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Visítanos</span>
+      <h2>Te esperamos en Tres Cantos</h2>
+    </div>
+    <div class="location-grid">
+      <div class="info-card">
+        <div class="info-row">
+          <div class="ic">📍</div>
+          <div>
+            <h4>Dirección</h4>
+            <p>Avenida de Viñuelas, 24, Tres Cantos, Madrid, España</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">☎️</div>
+          <div>
+            <h4>Teléfono / WhatsApp</h4>
+            <a href="https://wa.me/34650924787" target="_blank" rel="noopener">650 924 787</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">📷</div>
+          <div>
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/pilatestrescantos_/" target="_blank" rel="noopener">@pilatestrescantos_</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">📣</div>
+          <div>
+            <h4>Horarios y clases</h4>
+            <p>Consulta disponibilidad y precios directamente por WhatsApp, te respondemos enseguida.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-blob">
+        <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Avenida+de+Vi%C3%B1uelas+24+Tres+Cantos+Madrid" target="_blank" rel="noopener">
+          📍 Avenida de Viñuelas, 24 — Cómo llegar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final section-pad">
+  <div class="wrap">
+    <h2>Tu primera clase empieza con un mensaje</h2>
+    <p>Cuéntanos qué buscas y te ayudamos a encontrar tu horario ideal.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary" href="https://wa.me/34650924787" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/pilatestrescantos_/" target="_blank" rel="noopener">📷 Ver Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Pilates Tres Cantos · Avenida de Viñuelas, 24, Tres Cantos, Madrid ·
+    <a href="https://wa.me/34650924787" target="_blank" rel="noopener">650 924 787</a>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/34650924787" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">💬</a>
+
+<script>
+  // ---- Clases tabs ----
+  const clases = [
+    { emoji:"🧘🏼‍♀️", titulo:"Pilates Suelo", nivel:"Todos los niveles",
+      texto:"Trabajamos con el propio peso del cuerpo sobre esterilla: control, respiración y precisión en cada movimiento para fortalecer tu centro, mejorar la postura y ganar flexibilidad." },
+    { emoji:"🤸🏻‍♀️", titulo:"Pilates Máquina", nivel:"Iniciación a avanzado",
+      texto:"Sesiones en reformer y otros aparatos que añaden resistencia controlada, para esculpir cada músculo con precisión y trabajar de forma más profunda y personalizada." },
+    { emoji:"🤰🏽", titulo:"Pilates Embarazadas", nivel:"Adaptado a cada trimestre",
+      texto:"Un método seguro pensado para acompañarte durante el embarazo: fortalece el suelo pélvico, alivia molestias y te prepara física y mentalmente para el parto." },
+    { emoji:"🧎🏽‍♀️", titulo:"Hipopresivos", nivel:"Suelo pélvico y core",
+      texto:"Ejercicios posturales y de respiración que reducen la presión abdominal, fortalecen el suelo pélvico y ayudan a recuperar y tonificar el abdomen." }
+  ];
+
+  const tabs = document.querySelectorAll(".clase-tab");
+  const emojiEl = document.getElementById("claseEmoji");
+  const tituloEl = document.getElementById("claseTitulo");
+  const textoEl = document.getElementById("claseTexto");
+  const nivelEl = document.getElementById("claseNivel");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      const data = clases[tab.dataset.clase];
+      emojiEl.textContent = data.emoji;
+      tituloEl.textContent = data.titulo;
+      textoEl.textContent = data.texto;
+      nivelEl.textContent = data.nivel;
+    });
+  });
+
+  // ---- Breathing widget ----
+  const circle = document.getElementById("breatheCircle");
+  const btn = document.getElementById("breatheBtn");
+  const countEl = document.getElementById("breatheCount");
+  let running = false;
+
+  function runCycle(cyclesLeft){
+    if(cyclesLeft <= 0){
+      circle.className = "breathe-circle";
+      circle.textContent = "Pulsa ▶";
+      countEl.textContent = "¡Genial! Así se siente una clase de Pilates 🌿";
+      running = false;
+      btn.textContent = "Repetir";
+      return;
+    }
+    circle.className = "breathe-circle inhale";
+    circle.textContent = "Inhala";
+    countEl.textContent = "Ciclo " + (4 - cyclesLeft) + " de 3";
+    setTimeout(() => {
+      circle.className = "breathe-circle exhale";
+      circle.textContent = "Exhala";
+      setTimeout(() => runCycle(cyclesLeft - 1), 4000);
+    }, 4000);
+  }
+
+  btn.addEventListener("click", () => {
+    if(running) return;
+    running = true;
+    btn.textContent = "Respirando…";
+    runCycle(3);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padel Tres Cantos League — Club de Pádel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Manrope:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --blue-deep:#122C8C;
+    --blue:#2E6CF0;
+    --teal:#00C2A8;
+    --lime:#D4FF3D;
+    --orange:#FF5A36;
+    --ink:#071230;
+    --surface:#F4FBE9;
+    --text-on-surface:#0A1F44;
+    --text-on-vivid:#F4FBE9;
+    --bg-grad: radial-gradient(circle at 12% 8%, #2E6CF0 0%, transparent 45%),
+               radial-gradient(circle at 88% 12%, #00C2A8 0%, transparent 40%),
+               linear-gradient(150deg, #122C8C 0%, #1746B8 45%, #0E8F9E 100%);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --surface:#0B1A38; --text-on-surface:#EAF3FF;
+    }
+  }
+  :root[data-theme="dark"]{ --surface:#0B1A38; --text-on-surface:#EAF3FF; }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Manrope", -apple-system, "Segoe UI", sans-serif;
+    background:var(--bg-grad) var(--blue-deep);
+    color:var(--text-on-vivid);
+    min-height:100vh; overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:"Big Shoulders Display", "Segoe UI", sans-serif;
+    font-weight:800; line-height:0.95; letter-spacing:0.01em;
+    text-transform:uppercase;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+  button{font-family:inherit; cursor:pointer;}
+  :focus-visible{outline:3px solid var(--lime); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:blur(14px) saturate(140%);
+    background:rgba(7,18,48,0.35);
+    border-bottom:1px solid rgba(255,255,255,0.14);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; font-family:"Big Shoulders Display"; font-weight:800; font-size:1.3rem; text-transform:uppercase; }
+  .brand-mark{
+    width:38px; height:38px; border-radius:10px; background:var(--lime); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;
+  }
+  .nav-links{ display:flex; align-items:center; gap:20px; }
+  .nav-links a{ font-size:0.92rem; font-weight:600; text-decoration:none; opacity:0.92; font-family:"Manrope"; }
+  .only-desktop{ display:none; }
+  @media (min-width:860px){ .only-desktop{ display:inline; } }
+  .icon-link{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.28);
+    text-decoration:none; font-size:1.05rem; transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .icon-link:hover{ background:rgba(255,255,255,0.28); transform:translateY(-2px); }
+  .nav-cta{ display:none; }
+  @media (min-width:720px){
+    .nav-cta{
+      display:inline-flex; align-items:center; gap:8px; background:var(--lime); color:var(--ink);
+      padding:10px 18px; border-radius:10px; font-weight:800; font-size:0.85rem; text-decoration:none;
+      font-family:"Big Shoulders Display"; text-transform:uppercase; letter-spacing:0.03em;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{ position:relative; padding:76px 0 96px; overflow:hidden; }
+  .court-lines{
+    position:absolute; inset:0; opacity:0.15; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 2px, transparent 2px);
+    background-size:100% 50%, 33% 100%;
+    background-position:0 0, 0 0;
+  }
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap:48px; align-items:center; }
+  @media (min-width:900px){ .hero-grid{ grid-template-columns:1.2fr 0.8fr; gap:40px; } }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.3);
+    padding:7px 16px 7px 8px; border-radius:999px; font-size:0.84rem; font-weight:700;
+    margin-bottom:22px; font-family:"Manrope"; text-transform:none;
+  }
+  .eyebrow .dot{ width:9px; height:9px; border-radius:50%; background:var(--lime); }
+  .hero h1{ font-size:clamp(2.9rem, 7.5vw, 5.6rem); color:var(--text-on-vivid); margin-bottom:20px; text-wrap:balance; }
+  .hero h1 span{ color:var(--lime); }
+  .hero p.lead{ font-family:"Manrope"; font-size:1.15rem; max-width:48ch; opacity:0.94; margin-bottom:30px; font-weight:500; }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; padding:15px 26px; border-radius:12px; border:none;
+    font-weight:800; font-size:0.95rem; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;
+    font-family:"Big Shoulders Display"; text-transform:uppercase; letter-spacing:0.02em;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-primary{ background:var(--lime); color:var(--ink); box-shadow:0 10px 26px rgba(212,255,61,0.35); }
+  .btn-ghost{ background:transparent; color:var(--text-on-vivid); border:1.5px solid rgba(255,255,255,0.5); }
+  .hero-tags{ display:flex; flex-wrap:wrap; gap:10px; font-family:"Manrope"; }
+  .hero-tags span{ font-size:0.8rem; font-weight:700; padding:7px 13px; background:rgba(255,255,255,0.12); border-radius:999px; border:1px solid rgba(255,255,255,0.25); }
+
+  /* ---- ball scoreboard widget ---- */
+  .score-card{
+    position:relative; z-index:2; background:rgba(244,251,233,0.1); border:1px solid rgba(255,255,255,0.25);
+    border-radius:24px; padding:28px 26px 30px; backdrop-filter:blur(6px);
+  }
+  .score-card h3{ font-family:"Manrope"; text-transform:none; font-weight:700; font-size:1rem; margin-bottom:4px; }
+  .score-card .sub{ font-family:"Manrope"; font-size:0.85rem; opacity:0.82; margin-bottom:20px; }
+  .court{
+    position:relative; height:150px; border-radius:16px;
+    background:linear-gradient(180deg, #0E8F9E, #0B6E7C);
+    border:3px solid rgba(255,255,255,0.5);
+    overflow:hidden; margin-bottom:20px;
+  }
+  .court::before{
+    content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background:rgba(255,255,255,0.55); transform:translateX(-50%);
+  }
+  .court::after{
+    content:""; position:absolute; left:12%; right:12%; top:50%; height:2px; background:rgba(255,255,255,0.4); transform:translateY(-50%);
+  }
+  .ball{
+    position:absolute; width:22px; height:22px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #EFFF9E, var(--lime));
+    top:18px; left:18px;
+    animation:bounceBall 3.2s ease-in-out infinite;
+    box-shadow:0 6px 10px rgba(0,0,0,0.25);
+  }
+  @keyframes bounceBall{
+    0%{ left:10%; top:14%; }
+    25%{ left:78%; top:60%; }
+    50%{ left:18%; top:74%; }
+    75%{ left:70%; top:20%; }
+    100%{ left:10%; top:14%; }
+  }
+  @media (prefers-reduced-motion: reduce){ .ball{ animation:none; left:40%; top:40%; } }
+  .score-row{ display:flex; justify-content:space-between; align-items:center; font-family:"Manrope"; font-size:0.85rem; }
+  .score-row .chip{ background:var(--orange); color:#fff; font-weight:800; padding:6px 12px; border-radius:8px; font-family:"Big Shoulders Display"; text-transform:uppercase; letter-spacing:0.02em; }
+
+  /* ---------- SECTION shell ---------- */
+  section{ background:var(--surface); color:var(--text-on-surface); }
+  .section-pad{ padding:88px 0; }
+  .section-head{ max-width:640px; margin-bottom:46px; }
+  .section-head .kicker{ font-weight:800; color:var(--orange); font-size:0.9rem; margin-bottom:8px; display:block; font-family:"Manrope"; text-transform:none; }
+  .section-head h2{ font-size:clamp(2.1rem, 5vw, 3.2rem); }
+  .section-head p{ margin-top:14px; font-size:1.05rem; opacity:0.78; max-width:56ch; font-family:"Manrope"; }
+
+  /* ---------- QUE OFRECEMOS ---------- */
+  .offer-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
+  @media (min-width:760px){ .offer-grid{ grid-template-columns:repeat(3,1fr); } }
+  .offer-card{
+    background:var(--ink); color:var(--text-on-vivid); border-radius:22px; padding:30px 26px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .offer-card .ic{ width:52px; height:52px; border-radius:14px; background:var(--lime); color:var(--ink); display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+  .offer-card h3{ font-family:"Big Shoulders Display"; font-size:1.5rem; }
+  .offer-card p{ font-family:"Manrope"; font-size:0.95rem; opacity:0.78; line-height:1.55; }
+
+  /* ---------- POZOS interactivo ---------- */
+  .pozos-panel{ display:grid; grid-template-columns:1fr; gap:16px; }
+  @media (min-width:880px){ .pozos-panel{ grid-template-columns:300px 1fr; gap:26px; align-items:start; } }
+  .pozo-tabs{ display:flex; flex-direction:column; gap:10px; }
+  .pozo-tab{
+    text-align:left; border:none; background:rgba(18,44,140,0.06); padding:16px 18px; border-radius:14px;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    font-weight:700; font-size:0.95rem; color:inherit; font-family:"Manrope";
+    border-left:4px solid transparent; transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .pozo-tab:hover{ transform:translateX(3px); }
+  .pozo-tab.active{ background:linear-gradient(120deg, rgba(46,108,240,0.14), rgba(0,194,168,0.14)); border-left:4px solid var(--blue); }
+  .pozo-tab .lvl-dot{ width:10px; height:10px; border-radius:50%; }
+
+  .pozo-display{ background:var(--ink); color:var(--text-on-vivid); border-radius:24px; padding:32px 30px; }
+  .pozo-display h3{ font-size:1.7rem; margin-bottom:10px; }
+  .pozo-display .desc{ font-family:"Manrope"; font-size:0.98rem; opacity:0.82; margin-bottom:22px; max-width:52ch; line-height:1.55; }
+  .table-mini{ width:100%; border-collapse:collapse; font-family:"Manrope"; font-size:0.9rem; }
+  .table-mini th{ text-align:left; opacity:0.6; font-weight:600; padding:8px 10px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; }
+  .table-mini td{ padding:10px; border-top:1px solid rgba(255,255,255,0.12); }
+  .table-mini .rank{
+    display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%;
+    background:var(--lime); color:var(--ink); font-family:"Big Shoulders Display"; font-weight:800; font-size:0.82rem;
+  }
+  .table-mini tr:first-child .rank{ background:var(--orange); color:#fff; }
+
+  /* ---------- COMO FUNCIONA (pasos) ---------- */
+  .steps{ display:grid; grid-template-columns:1fr; gap:0; counter-reset:step; }
+  @media (min-width:760px){ .steps{ grid-template-columns:repeat(4,1fr); } }
+  .step{ position:relative; padding:26px 22px 22px 0; border-top:3px solid var(--blue); }
+  @media (min-width:760px){ .step + .step{ border-left:1px solid rgba(10,31,68,0.12); padding-left:22px; } }
+  .step .num{ font-family:"Big Shoulders Display"; font-size:2.6rem; color:var(--blue); display:block; margin-bottom:8px; }
+  .step h4{ font-family:"Manrope"; font-weight:700; font-size:1.02rem; margin-bottom:8px; }
+  .step p{ font-family:"Manrope"; font-size:0.92rem; opacity:0.75; line-height:1.5; }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{ background:var(--bg-grad) var(--blue-deep); color:var(--text-on-vivid); text-align:center; }
+  .cta-final h2{ font-size:clamp(2.2rem,6vw,3.6rem); margin-bottom:16px; }
+  .cta-final p{ font-family:"Manrope"; opacity:0.92; margin-bottom:30px; font-size:1.08rem; max-width:50ch; margin-inline:auto; }
+  .cta-actions{ display:flex; justify-content:center; flex-wrap:wrap; gap:14px; }
+
+  footer{ background:var(--ink); color:rgba(244,251,233,0.65); padding:32px 0; font-size:0.85rem; text-align:center; font-family:"Manrope"; }
+  footer a{ color:var(--lime); text-decoration:none; font-weight:700; }
+
+  .float-ig{
+    position:fixed; bottom:22px; right:22px; z-index:60; width:60px; height:60px; border-radius:16px;
+    background:linear-gradient(135deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5);
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.7rem; text-decoration:none;
+    box-shadow:0 12px 28px rgba(0,0,0,0.35);
+    animation:pulseIg 2.8s ease-in-out infinite;
+  }
+  @keyframes pulseIg{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.08); } }
+  @media (prefers-reduced-motion: reduce){ .float-ig{ animation:none; } }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">🎾</span>
+      Padel Tres Cantos League
+    </a>
+    <div class="nav-links">
+      <a class="only-desktop" href="#pozos">Ligas y pozos</a>
+      <a class="only-desktop" href="#como-funciona">Cómo funciona</a>
+      <a href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">📷</a>
+      <a href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener" class="nav-cta">Apúntate</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="court-lines"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Club deportivo · Tres Cantos</span>
+      <h1>Juega tu <span>liga</span><br>de pádel</h1>
+      <p class="lead">Organizamos ligas y pozos por niveles para que juegues pádel de forma fácil y divertida, conozcas gente nueva y mejores partido a partido.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener">📷 Escríbenos por Instagram</a>
+        <a class="btn btn-ghost" href="#pozos">Ver ligas y pozos</a>
+      </div>
+      <div class="hero-tags">
+        <span>🏆 Ligas por temporada</span>
+        <span>🎯 Pozos por niveles</span>
+        <span>🎉 Eventos de pádel</span>
+      </div>
+    </div>
+
+    <div class="score-card">
+      <h3>Así se mueve un pozo</h3>
+      <p class="sub">Cada semana, la pelota decide tu rival</p>
+      <div class="court"><div class="ball"></div></div>
+      <div class="score-row">
+        <span>Próxima jornada</span>
+        <span class="chip">Nivel B · Sábado</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Qué hacemos</span>
+      <h2>Pádel sin complicaciones</h2>
+      <p>Nos encargamos de organizar horarios, rivales y clasificaciones. Tú solo tienes que venir a jugar.</p>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="ic">🏆</div>
+        <h3>Ligas</h3>
+        <p>Competiciones por temporada donde te enfrentas a distintos rivales y subes puestos según tus resultados.</p>
+      </div>
+      <div class="offer-card">
+        <div class="ic">🎯</div>
+        <h3>Pozos por niveles</h3>
+        <p>Grupos agrupados por nivel de juego para que cada partido esté equilibrado, sea competitivo y divertido.</p>
+      </div>
+      <div class="offer-card">
+        <div class="ic">🎉</div>
+        <h3>Eventos</h3>
+        <p>Torneos, quedadas y actividades especiales para vivir el pádel más allá de la liga semanal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pozos" class="section-pad" style="background:linear-gradient(150deg, rgba(46,108,240,0.06), rgba(0,194,168,0.06)), var(--surface);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Encuentra tu nivel</span>
+      <h2>Elige tu pozo</h2>
+      <p>Cada pozo tiene su propia clasificación en vivo. Así es un ejemplo de cómo se ve durante la temporada.</p>
+    </div>
+
+    <div class="pozos-panel">
+      <div class="pozo-tabs" role="tablist" aria-label="Niveles de pozo">
+        <button class="pozo-tab active" data-pozo="0"><span>Iniciación</span><span class="lvl-dot" style="background:var(--teal)"></span></button>
+        <button class="pozo-tab" data-pozo="1"><span>Intermedio</span><span class="lvl-dot" style="background:var(--blue)"></span></button>
+        <button class="pozo-tab" data-pozo="2"><span>Avanzado</span><span class="lvl-dot" style="background:var(--orange)"></span></button>
+        <button class="pozo-tab" data-pozo="3"><span>Competición</span><span class="lvl-dot" style="background:var(--lime)"></span></button>
+      </div>
+
+      <div class="pozo-display" id="pozoDisplay">
+        <h3 id="pozoTitulo">Iniciación</h3>
+        <p class="desc" id="pozoTexto">Para quien empieza en el pádel o lleva pocos meses jugando. El objetivo es coger confianza, aprender la colocación en pista y disfrutar del juego sin presión.</p>
+        <table class="table-mini">
+          <thead><tr><th>#</th><th>Jugador/a</th><th>Puntos</th></tr></thead>
+          <tbody id="pozoTabla">
+            <tr><td><span class="rank">1</span></td><td>Laura & Marta</td><td>18 pts</td></tr>
+            <tr><td><span class="rank">2</span></td><td>Javier & Iván</td><td>15 pts</td></tr>
+            <tr><td><span class="rank">3</span></td><td>Sara & Noelia</td><td>12 pts</td></tr>
+            <tr><td><span class="rank">4</span></td><td>Diego & Pablo</td><td>9 pts</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona" class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Cómo funciona</span>
+      <h2>Apúntate en 4 pasos</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <h4>Escríbenos</h4>
+        <p>Nos mandas un mensaje por Instagram contándonos tu nivel y disponibilidad.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h4>Te ubicamos</h4>
+        <p>Te asignamos al pozo o liga que mejor encaja contigo.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h4>Juegas cada semana</h4>
+        <p>Recibes tu rival y horario, y solo tienes que presentarte a jugar.</p>
+      </div>
+      <div class="step">
+        <span class="num">4</span>
+        <h4>Subes de nivel</h4>
+        <p>Según tus resultados, subes o bajas de pozo en la siguiente jornada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final section-pad">
+  <div class="wrap">
+    <h2>¿Jugamos esta semana?</h2>
+    <p>Síguenos en Instagram y escríbenos para unirte a la próxima liga o pozo de tu nivel.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary" href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener">📷 Ir a Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Padel Tres Cantos League · Club deportivo ·
+    <a href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener">@padel_tres_cantos_league</a>
+  </div>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+
+<script>
+  const pozos = [
+    {
+      titulo:"Iniciación",
+      texto:"Para quien empieza en el pádel o lleva pocos meses jugando. El objetivo es coger confianza, aprender la colocación en pista y disfrutar del juego sin presión.",
+      tabla:[["Laura & Marta","18 pts"],["Javier & Iván","15 pts"],["Sara & Noelia","12 pts"],["Diego & Pablo","9 pts"]]
+    },
+    {
+      titulo:"Intermedio",
+      texto:"Jugadores con base técnica y experiencia en pista. Partidos más dinámicos, con más ritmo y variedad de golpes.",
+      tabla:[["Elena & Rocío","22 pts"],["Carlos & Adrián","19 pts"],["Beatriz & Nuria","17 pts"],["Hugo & Mario","14 pts"]]
+    },
+    {
+      titulo:"Avanzado",
+      texto:"Nivel alto de juego, con control táctico y buena lectura del punto. Encuentros muy competitivos jornada tras jornada.",
+      tabla:[["Andrea & Cris","27 pts"],["Rubén & Álex","25 pts"],["Marina & Lucía","23 pts"],["Dani & Fer","20 pts"]]
+    },
+    {
+      titulo:"Competición",
+      texto:"El pozo más exigente, para jugadores con experiencia en torneos. Clasificación ajustada y mucho nivel en cada punto.",
+      tabla:[["Nacho & Guille","31 pts"],["Paula & Sofía","29 pts"],["Óscar & Bruno","28 pts"],["Irene & Clara","26 pts"]]
+    }
+  ];
+
+  const tabsP = document.querySelectorAll(".pozo-tab");
+  const tituloP = document.getElementById("pozoTitulo");
+  const textoP = document.getElementById("pozoTexto");
+  const tablaP = document.getElementById("pozoTabla");
+
+  tabsP.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabsP.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      const data = pozos[tab.dataset.pozo];
+      tituloP.textContent = data.titulo;
+      textoP.textContent = data.texto;
+      tablaP.innerHTML = data.tabla.map((row, i) => `
+        <tr>
+          <td><span class="rank">${i+1}</span></td>
+          <td>${row[0]}</td>
+          <td>${row[1]}</td>
+        </tr>
+      `).join("");
+    });
+  });
+</script>
+
+</body>
+</html>

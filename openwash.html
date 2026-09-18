@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenWash Tres Cantos · Lavandería Autoservicio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --azul-900:#08215C;
+  --azul-700:#0E4DA4;
+  --azul-500:#1E88E5;
+  --azul-300:#6FBBFA;
+  --azul-100:#E8F4FD;
+  --cian:#00C2D1;
+  --blanco:#FFFFFF;
+  --tinta:#0A1F44;
+  --tinta-suave:#3E5A85;
+  --superficie:var(--blanco);
+  --fondo:var(--azul-100);
+  --borde:rgba(10,31,68,0.10);
+  --sombra:0 20px 40px -18px rgba(8,33,92,0.35);
+}
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark){
+    --superficie:#0F2A66;
+    --fondo:#081B44;
+    --tinta:#F2F7FF;
+    --tinta-suave:#BBD3F5;
+    --borde:rgba(255,255,255,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --superficie:#0F2A66;
+  --fondo:#081B44;
+  --tinta:#F2F7FF;
+  --tinta-suave:#BBD3F5;
+  --borde:rgba(255,255,255,0.12);
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--fondo);
+  color:var(--tinta);
+  font-family:'Inter',system-ui,sans-serif;
+  line-height:1.55;
+  overflow-x:hidden;
+}
+img{max-width:100%; display:block;}
+h1,h2,h3,.marca{font-family:'Fredoka',system-ui,sans-serif; font-weight:600;}
+a{color:inherit;}
+.envoltorio{max-width:1180px; margin:0 auto; padding:0 24px;}
+.overflow-guard{overflow-x:auto;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+
+/* ---------- Header ---------- */
+header{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--superficie) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--borde);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px;
+}
+.marca{
+  display:flex; align-items:center; gap:10px;
+  font-size:1.25rem; color:var(--azul-700);
+  text-decoration:none;
+}
+:root[data-theme="dark"] .marca, .marca{ }
+@media (prefers-color-scheme: dark){ .marca{color:var(--azul-300);} }
+:root[data-theme="dark"] .marca{color:var(--azul-300);}
+.marca .icono-burbuja{
+  width:38px; height:38px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, var(--cian), var(--azul-500));
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+}
+nav.enlaces{display:flex; gap:28px; font-size:0.95rem; font-weight:600;}
+nav.enlaces a{text-decoration:none; color:var(--tinta-suave); transition:color .2s;}
+nav.enlaces a:hover, nav.enlaces a:focus-visible{color:var(--azul-500);}
+.btn-nav{
+  background:var(--azul-500); color:#fff; padding:10px 20px; border-radius:999px;
+  font-weight:700; text-decoration:none; font-size:0.9rem;
+  box-shadow:0 8px 20px -8px rgba(30,136,229,0.6);
+  white-space:nowrap;
+}
+.menu-toggle{display:none; background:none; border:none; font-size:1.6rem; color:var(--azul-700); cursor:pointer;}
+.btn-whatsapp{background:#25D366; box-shadow:0 8px 20px -8px rgba(37,211,102,0.65);}
+
+@media (max-width:860px){
+  nav.enlaces{
+    position:fixed; top:70px; left:0; right:0; background:var(--superficie);
+    flex-direction:column; padding:20px 24px; gap:16px; border-bottom:1px solid var(--borde);
+    transform:translateY(-130%); transition:transform .3s ease; box-shadow:var(--sombra);
+  }
+  nav.enlaces.abierto{transform:translateY(0);}
+  .menu-toggle{display:block;}
+  .btn-nav{display:none;}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  background:linear-gradient(160deg, var(--azul-900), var(--azul-700) 55%, var(--azul-500));
+  color:#fff;
+  overflow:hidden;
+  padding:64px 0 90px;
+}
+.hero .envoltorio{
+  display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+  position:relative; z-index:2;
+}
+.pastilla{
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.25);
+  padding:7px 14px; border-radius:999px; font-size:0.85rem; font-weight:600;
+  margin-bottom:22px;
+}
+.punto-vivo{width:9px; height:9px; border-radius:50%; background:#4CF2A0; box-shadow:0 0 0 0 rgba(76,242,160,.6); animation:pulso 2s infinite;}
+@keyframes pulso{
+  0%{box-shadow:0 0 0 0 rgba(76,242,160,.55);}
+  70%{box-shadow:0 0 0 10px rgba(76,242,160,0);}
+  100%{box-shadow:0 0 0 0 rgba(76,242,160,0);}
+}
+.hero h1{font-size:clamp(2.3rem, 4.2vw, 3.4rem); line-height:1.08; max-width:12ch;}
+.hero p.intro{margin-top:20px; font-size:1.12rem; color:rgba(255,255,255,0.85); max-width:44ch;}
+.hero-cta{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+.btn-primario{
+  background:#fff; color:var(--azul-700); padding:15px 26px; border-radius:999px;
+  font-weight:700; text-decoration:none; box-shadow:var(--sombra); border:none; cursor:pointer;
+  font-size:1rem;
+}
+.btn-secundario{
+  padding:15px 26px; border-radius:999px; font-weight:700; text-decoration:none;
+  border:1.5px solid rgba(255,255,255,0.55); color:#fff; font-size:1rem;
+}
+.hero-precios{display:flex; gap:22px; margin-top:38px; flex-wrap:wrap;}
+.precio-mini{border-left:2px solid rgba(255,255,255,0.35); padding-left:14px;}
+.precio-mini strong{display:block; font-size:1.5rem; font-family:'Fredoka';}
+.precio-mini span{font-size:0.85rem; color:rgba(255,255,255,0.75);}
+
+/* Lavadora ilustrada e interactiva */
+.escena-lavadora{
+  position:relative; display:flex; align-items:center; justify-content:center;
+  min-height:340px;
+}
+.burbuja{
+  position:absolute; border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, rgba(255,255,255,0.9), rgba(255,255,255,0.05));
+  animation:flotar 7s ease-in-out infinite;
+}
+@keyframes flotar{
+  0%,100%{transform:translateY(0) translateX(0);}
+  50%{transform:translateY(-22px) translateX(8px);}
+}
+.lavadora{
+  width:230px; height:250px; background:linear-gradient(160deg,#fff,#EAF3FF);
+  border-radius:26px; position:relative; box-shadow:0 30px 60px -20px rgba(0,0,0,0.45);
+  cursor:pointer; border:6px solid #fff;
+}
+.lavadora .panel{
+  height:44px; background:var(--azul-900); border-radius:20px 20px 0 0;
+  display:flex; align-items:center; justify-content:space-between; padding:0 16px;
+}
+.lavadora .luz{width:9px; height:9px; border-radius:50%; background:#4CF2A0;}
+.lavadora .marca-mini{color:rgba(255,255,255,0.6); font-size:0.65rem; letter-spacing:0.4px; font-weight:600;}
+.tambor{
+  position:absolute; top:70px; left:50%; transform:translateX(-50%);
+  width:170px; height:170px; border-radius:50%;
+  background:radial-gradient(circle at 65% 20%, #DCEEFF, var(--azul-500) 70%, var(--azul-900));
+  border:10px solid #F4F9FF;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.tambor::before{
+  content:""; position:absolute; inset:14px; border-radius:50%;
+  border:3px dashed rgba(255,255,255,0.5);
+}
+.ropa{
+  width:60%; height:60%; border-radius:44% 56% 60% 40%/50% 45% 55% 50%;
+  background:linear-gradient(135deg, var(--cian), #fff 40%, var(--azul-300));
+  opacity:0.9;
+}
+.tambor.girando{animation:girar 0.9s linear infinite;}
+@keyframes girar{ to{ transform:translateX(-50%) rotate(360deg); } }
+.indicacion-clic{
+  position:absolute; bottom:-34px; left:50%; transform:translateX(-50%);
+  font-size:0.85rem; color:rgba(255,255,255,0.8); white-space:nowrap; font-weight:600;
+}
+
+/* ---------- Franja de estado ---------- */
+.franja-estado{
+  background:var(--superficie); border-bottom:1px solid var(--borde);
+}
+.franja-estado .envoltorio{
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+  padding:16px 24px; font-size:0.95rem; font-weight:600;
+}
+.estado-chip{display:flex; align-items:center; gap:9px;}
+.estado-punto{width:10px; height:10px; border-radius:50%;}
+.estado-abierto .estado-punto{background:#22C55E;}
+.estado-cerrado .estado-punto{background:#EF4444;}
+.franja-datos{display:flex; gap:26px; color:var(--tinta-suave); font-weight:500; flex-wrap:wrap;}
+
+/* ---------- Secciones genéricas ---------- */
+section{padding:84px 0;}
+.encabezado-seccion{max-width:640px; margin-bottom:48px;}
+.encabezado-seccion h2{font-size:clamp(1.9rem,3vw,2.5rem); color:var(--azul-700);}
+@media (prefers-color-scheme: dark){ .encabezado-seccion h2{color:var(--azul-300);} }
+:root[data-theme="dark"] .encabezado-seccion h2{color:var(--azul-300);}
+.encabezado-seccion p{color:var(--tinta-suave); margin-top:12px; font-size:1.05rem;}
+
+/* Servicios */
+.rejilla-servicios{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px;}
+.tarjeta-servicio{
+  background:var(--superficie); border:1px solid var(--borde); border-radius:20px; padding:28px;
+  box-shadow:var(--sombra);
+}
+.tarjeta-servicio .emoji{font-size:1.8rem;}
+.tarjeta-servicio h3{margin-top:14px; font-size:1.25rem;}
+.tarjeta-servicio .precio{
+  font-family:'Fredoka'; font-size:2rem; color:var(--azul-500); margin-top:10px;
+}
+.tarjeta-servicio p{color:var(--tinta-suave); margin-top:8px; font-size:0.95rem;}
+
+/* Calculadora interactiva */
+.calculadora{
+  background:linear-gradient(135deg, var(--azul-700), var(--azul-500));
+  border-radius:28px; padding:44px; color:#fff;
+  display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
+}
+.calculadora h3{font-size:1.6rem; margin-bottom:10px;}
+.calculadora p{color:rgba(255,255,255,0.85); margin-bottom:26px; max-width:38ch;}
+.slider-fila{display:flex; align-items:center; gap:16px; margin-bottom:10px;}
+input[type="range"]{
+  -webkit-appearance:none; flex:1; height:8px; border-radius:999px;
+  background:rgba(255,255,255,0.3); outline:none;
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:24px; height:24px; border-radius:50%;
+  background:#fff; box-shadow:0 4px 10px rgba(0,0,0,0.3); cursor:pointer;
+}
+input[type="range"]::-moz-range-thumb{
+  width:24px; height:24px; border-radius:50%; background:#fff; border:none; cursor:pointer;
+}
+.kg-valor{font-family:'Fredoka'; font-size:1.3rem; min-width:56px; text-align:right;}
+.resultado-calc{
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3);
+  border-radius:18px; padding:26px; text-align:center;
+}
+.resultado-calc .cifra{font-family:'Fredoka'; font-size:2.6rem;}
+.resultado-calc .detalle{color:rgba(255,255,255,0.8); font-size:0.9rem; margin-top:6px;}
+
+/* Cómo llegar */
+.rejilla-llegar{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:stretch;}
+.tarjeta-direccion{
+  background:var(--superficie); border:1px solid var(--borde); border-radius:22px; padding:34px;
+  box-shadow:var(--sombra);
+}
+.tarjeta-direccion h3{font-size:1.3rem; margin-bottom:6px;}
+.linea-dato{display:flex; gap:12px; margin-top:18px; align-items:flex-start;}
+.linea-dato .icono{
+  width:38px; height:38px; border-radius:12px; background:var(--azul-100);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.05rem;
+}
+@media (prefers-color-scheme: dark){ .linea-dato .icono{background:rgba(255,255,255,0.1);} }
+:root[data-theme="dark"] .linea-dato .icono{background:rgba(255,255,255,0.1);}
+.linea-dato strong{display:block; font-size:0.95rem;}
+.linea-dato span{color:var(--tinta-suave); font-size:0.9rem;}
+.botones-direccion{display:flex; gap:12px; margin-top:26px; flex-wrap:wrap;}
+.btn-mapa{
+  background:var(--azul-500); color:#fff; padding:13px 22px; border-radius:14px;
+  text-decoration:none; font-weight:700; font-size:0.92rem; display:inline-flex; align-items:center; gap:8px;
+}
+.btn-insta{
+  background:linear-gradient(135deg,#5B51D8,#C1358F,#F5A048);
+  color:#fff; padding:13px 22px; border-radius:14px; text-decoration:none; font-weight:700; font-size:0.92rem;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.mapa-embed{
+  border-radius:22px; overflow:hidden; border:1px solid var(--borde); box-shadow:var(--sombra); min-height:280px;
+}
+.mapa-embed iframe{width:100%; height:100%; min-height:280px; border:0; display:block;}
+
+/* Reseñas */
+.carrusel-resenas{position:relative; max-width:720px; margin:0 auto;}
+.tarjeta-resena{
+  background:var(--superficie); border:1px solid var(--borde); border-radius:22px; padding:38px;
+  box-shadow:var(--sombra); text-align:center; min-height:210px;
+  display:none; animation:aparecer .4s ease;
+}
+.tarjeta-resena.activa{display:block;}
+@keyframes aparecer{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+.estrellas{color:#FFB400; font-size:1.2rem; letter-spacing:3px; margin-bottom:14px;}
+.tarjeta-resena p.cita{font-size:1.08rem; color:var(--tinta); max-width:46ch; margin:0 auto;}
+.tarjeta-resena .autor{margin-top:18px; font-weight:700; color:var(--azul-500); font-size:0.95rem;}
+.controles-carrusel{display:flex; justify-content:center; align-items:center; gap:18px; margin-top:24px;}
+.flecha-carrusel{
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--borde); background:var(--superficie);
+  cursor:pointer; font-size:1.1rem; color:var(--azul-700); display:flex; align-items:center; justify-content:center;
+}
+.flecha-carrusel:hover{background:var(--azul-500); color:#fff;}
+.puntos-carrusel{display:flex; gap:8px;}
+.puntito{width:8px; height:8px; border-radius:50%; background:var(--borde); cursor:pointer; border:none;}
+.puntito.activo{background:var(--azul-500); width:22px; border-radius:999px; transition:all .25s;}
+
+/* CTA final */
+.cta-final{
+  background:linear-gradient(135deg, var(--azul-900), var(--azul-700));
+  color:#fff; border-radius:28px; text-align:center; padding:60px 30px;
+}
+.cta-final h2{font-size:clamp(1.8rem,3vw,2.3rem); max-width:20ch; margin:0 auto 14px;}
+.cta-final p{color:rgba(255,255,255,0.82); margin-bottom:28px;}
+
+/* Footer */
+footer{background:var(--azul-900); color:rgba(255,255,255,0.78); padding:50px 0 26px;}
+.pie-grid{display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap;}
+.pie-marca{display:flex; align-items:center; gap:10px; color:#fff; font-size:1.15rem; margin-bottom:10px;}
+footer .redes{display:flex; gap:14px; margin-top:16px;}
+footer .redes a{
+  width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.1);
+  display:flex; align-items:center; justify-content:center; text-decoration:none; color:#fff; font-size:1.1rem;
+}
+.copy{text-align:center; margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.12); font-size:0.85rem;}
+
+.visible-solo-foco:focus-visible{outline:3px solid var(--cian); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#inicio" class="marca"><span class="icono-burbuja">🧺</span> OpenWash <span style="font-weight:400; color:var(--tinta-suave); font-size:0.85rem; margin-left:2px;">Tres Cantos</span></a>
+    <button class="menu-toggle visible-solo-foco" id="botonMenu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="enlaces" id="menuEnlaces">
+      <a href="#servicios">Servicios</a>
+      <a href="#calculadora">Precios</a>
+      <a href="#llegar">Cómo llegar</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="https://www.instagram.com/lavanderiaopenwashtrescantos/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <a class="btn-nav btn-whatsapp" href="https://wa.me/34627342096" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="envoltorio">
+    <div>
+      <div class="pastilla"><span class="punto-vivo"></span> Abierto 365 días, de 7:00 a 23:00</div>
+      <h1>Tu colada, lista mientras haces recados</h1>
+      <p class="intro">Autoservicio en el centro de Tres Cantos: máquinas grandes, ciclos rápidos y sin cita previa. Entras, programas y te vas.</p>
+      <div class="hero-cta">
+        <a href="#llegar" class="btn-primario">Ver cómo llegar</a>
+        <a href="https://wa.me/34627342096" target="_blank" rel="noopener" class="btn-secundario">💬 Escríbenos por WhatsApp</a>
+      </div>
+      <div class="hero-precios">
+        <div class="precio-mini"><strong>Desde 5€</strong><span>Lavado</span></div>
+        <div class="precio-mini"><strong>Desde 2,50€</strong><span>Secado</span></div>
+        <div class="precio-mini"><strong>365 días</strong><span>Sin descanso</span></div>
+      </div>
+    </div>
+
+    <div class="escena-lavadora">
+      <div class="burbuja" style="width:26px; height:26px; top:10%; left:8%; animation-delay:0s;"></div>
+      <div class="burbuja" style="width:14px; height:14px; top:20%; right:6%; animation-delay:1.4s;"></div>
+      <div class="burbuja" style="width:18px; height:18px; bottom:14%; left:4%; animation-delay:2.6s;"></div>
+      <div class="burbuja" style="width:10px; height:10px; bottom:26%; right:12%; animation-delay:0.8s;"></div>
+      <div>
+        <div class="lavadora visible-solo-foco" id="lavadoraInteractiva" role="button" tabindex="0" aria-label="Pulsa para ver la lavadora en marcha">
+          <div class="panel"><span class="marca-mini">OPENWASH</span><span class="luz"></span></div>
+          <div class="tambor" id="tambor"><div class="ropa"></div></div>
+        </div>
+        <div class="indicacion-clic">👆 Toca la lavadora y ponla en marcha</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="franja-estado">
+  <div class="envoltorio">
+    <div class="estado-chip" id="estadoChip">
+      <span class="estado-punto"></span>
+      <span id="estadoTexto">Comprobando horario…</span>
+    </div>
+    <div class="franja-datos">
+      <span>📍 C/ Cd de México 2, Bajo 4E, Tres Cantos</span>
+      <span>Junto a Pizzería el Verdi</span>
+    </div>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="envoltorio">
+    <div class="encabezado-seccion">
+      <h2>Todo lo que necesitas, en una sola parada</h2>
+      <p>Máquinas de gran capacidad pensadas para edredones, cortinas y coladas grandes que no caben en casa.</p>
+    </div>
+    <div class="rejilla-servicios">
+      <div class="tarjeta-servicio">
+        <div class="emoji">🌊</div>
+        <h3>Lavado</h3>
+        <div class="precio">Desde 5€</div>
+        <p>Varios programas y temperaturas, para ropa de diario o cargas grandes.</p>
+      </div>
+      <div class="tarjeta-servicio">
+        <div class="emoji">🔥</div>
+        <h3>Secado</h3>
+        <div class="precio">Desde 2,50€</div>
+        <p>Secadoras de alta potencia: ropa lista en un tiempo mínimo, sin humedad.</p>
+      </div>
+      <div class="tarjeta-servicio">
+        <div class="emoji">🛏️</div>
+        <h3>Edredones y textiles grandes</h3>
+        <div class="precio">A medida</div>
+        <p>Tambores extra grandes para nórdicos, mantas y cortinas.</p>
+      </div>
+      <div class="tarjeta-servicio">
+        <div class="emoji">🕑</div>
+        <h3>Sin cita, sin esperas</h3>
+        <div class="precio">7:00–23:00</div>
+        <p>Entra cuando te venga bien, los 365 días del año.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="calculadora" style="padding-top:0;">
+  <div class="envoltorio">
+    <div class="calculadora">
+      <div>
+        <h3>Calcula tu colada</h3>
+        <p>Mueve el deslizador y descubre el precio orientativo según los kilos de ropa.</p>
+        <div class="slider-fila">
+          <span>3 kg</span>
+          <input type="range" id="sliderKg" min="3" max="18" value="6" step="1">
+          <span>18 kg</span>
+        </div>
+        <div style="text-align:center; margin-top:6px;">
+          <span class="kg-valor" id="kgTexto">6 kg</span>
+        </div>
+      </div>
+      <div class="resultado-calc">
+        <div class="detalle">Precio orientativo (lavado + secado)</div>
+        <div class="cifra" id="precioCalc">10,50 €</div>
+        <div class="detalle" id="tiempoCalc">≈ 55 min en total</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="llegar">
+  <div class="envoltorio">
+    <div class="encabezado-seccion">
+      <h2>Fácil de encontrar, fácil de aparcar</h2>
+      <p>Estamos en pleno centro de Tres Cantos, junto a la Pizzería el Verdi.</p>
+    </div>
+    <div class="rejilla-llegar">
+      <div class="tarjeta-direccion">
+        <h3>OpenWash Tres Cantos</h3>
+        <span style="color:var(--tinta-suave); font-size:0.9rem;">Lavandería autoservicio</span>
+
+        <div class="linea-dato">
+          <div class="icono">📍</div>
+          <div>
+            <strong>Calle Ciudad de México, 2, Bajo 4E</strong>
+            <span>Tres Cantos, Madrid, 28760 — junto a Pizzería el Verdi</span>
+          </div>
+        </div>
+        <div class="linea-dato">
+          <div class="icono">⏰</div>
+          <div>
+            <strong>7:00 a 23:00 h</strong>
+            <span>Los 365 días del año</span>
+          </div>
+        </div>
+        <div class="linea-dato">
+          <div class="icono">🧺</div>
+          <div>
+            <strong>Lavado desde 5€ · Secado desde 2,50€</strong>
+            <span>Sin necesidad de reserva</span>
+          </div>
+        </div>
+        <div class="linea-dato">
+          <div class="icono">💬</div>
+          <div>
+            <strong>627 342 096</strong>
+            <span>Escríbenos por WhatsApp para cualquier duda</span>
+          </div>
+        </div>
+
+        <div class="botones-direccion">
+          <a class="btn-mapa" href="https://maps.app.goo.gl/MTEeKiw2xfWiAvHy9" target="_blank" rel="noopener">📍 Abrir en Google Maps</a>
+          <a class="btn-insta" href="https://www.instagram.com/lavanderiaopenwashtrescantos/" target="_blank" rel="noopener">📷 Síguenos en Instagram</a>
+          <a class="btn-nav btn-whatsapp" style="border-radius:14px;" href="https://wa.me/34627342096" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="mapa-embed">
+        <iframe
+          src="https://www.google.com/maps?q=Calle+Ciudad+de+M%C3%A9xico+2,+Tres+Cantos,+Madrid&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de OpenWash Tres Cantos">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resenas">
+  <div class="envoltorio">
+    <div class="encabezado-seccion" style="margin-left:auto; margin-right:auto; text-align:center;">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <p style="margin-left:auto; margin-right:auto;">Reseñas de ejemplo — sustitúyelas por las vuestras reales de Google.</p>
+    </div>
+
+    <div class="carrusel-resenas">
+      <div class="tarjeta-resena activa">
+        <div class="estrellas">★★★★★</div>
+        <p class="cita">Máquinas rápidas y muy limpias. Lavé el edredón de la cama grande en un momento, algo que en casa era imposible.</p>
+        <div class="autor">— Marta G.</div>
+      </div>
+      <div class="tarjeta-resena">
+        <div class="estrellas">★★★★★</div>
+        <p class="cita">Abren hasta tarde, así que puedo ir después del trabajo sin agobios. El local está siempre cuidado.</p>
+        <div class="autor">— Javier R.</div>
+      </div>
+      <div class="tarjeta-resena">
+        <div class="estrellas">★★★★☆</div>
+        <p class="cita">Precio justo para lo que ofrecen. La zona junto a la pizzería es fácil de encontrar y hay sitio para aparcar.</p>
+        <div class="autor">— Lucía M.</div>
+      </div>
+
+      <div class="controles-carrusel">
+        <button class="flecha-carrusel visible-solo-foco" id="prevResena" aria-label="Reseña anterior">←</button>
+        <div class="puntos-carrusel" id="puntosResena"></div>
+        <button class="flecha-carrusel visible-solo-foco" id="nextResena" aria-label="Reseña siguiente">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="envoltorio">
+    <div class="cta-final">
+      <h2>Tu próxima colada, resuelta hoy</h2>
+      <p>Abierto ahora mismo, de 7:00 a 23:00, los 365 días del año.</p>
+      <div class="hero-cta" style="justify-content:center;">
+        <a href="https://maps.app.goo.gl/MTEeKiw2xfWiAvHy9" target="_blank" rel="noopener" class="btn-primario">📍 Cómo llegar</a>
+        <a href="https://wa.me/34627342096" target="_blank" rel="noopener" class="btn-secundario">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="envoltorio">
+    <div class="pie-grid">
+      <div>
+        <div class="pie-marca">🧺 OpenWash Tres Cantos</div>
+        <p style="max-width:34ch; font-size:0.92rem;">Lavandería autoservicio en el centro de Tres Cantos. Lavado desde 5€, secado desde 2,50€.</p>
+        <div class="redes">
+          <a href="https://www.instagram.com/lavanderiaopenwashtrescantos/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://maps.app.goo.gl/MTEeKiw2xfWiAvHy9" target="_blank" rel="noopener" aria-label="Google Maps">📍</a>
+          <a href="https://wa.me/34627342096" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div>
+        <strong style="color:#fff;">Dirección</strong>
+        <p style="font-size:0.92rem; margin-top:8px;">Calle Ciudad de México 2, Bajo 4E<br>Tres Cantos, Madrid, 28760</p>
+      </div>
+      <div>
+        <strong style="color:#fff;">Horario</strong>
+        <p style="font-size:0.92rem; margin-top:8px;">Todos los días<br>7:00 – 23:00 h</p>
+      </div>
+    </div>
+    <div class="copy">© 2026 OpenWash Tres Cantos · Lavandería autoservicio</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Menú móvil
+  const botonMenu = document.getElementById('botonMenu');
+  const menuEnlaces = document.getElementById('menuEnlaces');
+  botonMenu.addEventListener('click', function(){
+    const abierto = menuEnlaces.classList.toggle('abierto');
+    botonMenu.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+  });
+  menuEnlaces.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menuEnlaces.classList.remove('abierto'); });
+  });
+
+  // Lavadora interactiva
+  const lavadora = document.getElementById('lavadoraInteractiva');
+  const tambor = document.getElementById('tambor');
+  function alternarGiro(){ tambor.classList.toggle('girando'); }
+  lavadora.addEventListener('click', alternarGiro);
+  lavadora.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); alternarGiro(); }
+  });
+
+  // Estado abierto/cerrado en tiempo real (hora local del visitante)
+  const estadoChip = document.getElementById('estadoChip');
+  const estadoTexto = document.getElementById('estadoTexto');
+  function actualizarEstado(){
+    const ahora = new Date();
+    const hora = ahora.getHours() + ahora.getMinutes()/60;
+    const abierto = hora >= 7 && hora < 23;
+    estadoChip.className = 'estado-chip ' + (abierto ? 'estado-abierto' : 'estado-cerrado');
+    estadoTexto.textContent = abierto ? 'Abierto ahora · cierra a las 23:00' : 'Cerrado ahora · abre a las 7:00';
+  }
+  actualizarEstado();
+  setInterval(actualizarEstado, 60000);
+
+  // Calculadora de precio
+  const sliderKg = document.getElementById('sliderKg');
+  const kgTexto = document.getElementById('kgTexto');
+  const precioCalc = document.getElementById('precioCalc');
+  const tiempoCalc = document.getElementById('tiempoCalc');
+  function calcular(){
+    const kg = parseInt(sliderKg.value, 10);
+    kgTexto.textContent = kg + ' kg';
+    const precioLavado = 5 + Math.max(0, kg - 6) * 0.45;
+    const precioSecado = 2.5 + Math.max(0, kg - 6) * 0.3;
+    const total = precioLavado + precioSecado;
+    precioCalc.textContent = total.toFixed(2).replace('.', ',') + ' €';
+    const minutos = 40 + Math.round(Math.max(0, kg - 6) * 1.5);
+    tiempoCalc.textContent = '≈ ' + minutos + ' min en total';
+  }
+  sliderKg.addEventListener('input', calcular);
+  calcular();
+
+  // Carrusel de reseñas
+  const tarjetas = Array.from(document.querySelectorAll('.tarjeta-resena'));
+  const puntosContenedor = document.getElementById('puntosResena');
+  let indiceActual = 0;
+
+  tarjetas.forEach(function(_, i){
+    const punto = document.createElement('button');
+    punto.className = 'puntito' + (i === 0 ? ' activo' : '');
+    punto.setAttribute('aria-label', 'Ir a la reseña ' + (i+1));
+    punto.addEventListener('click', function(){ irAResena(i); });
+    puntosContenedor.appendChild(punto);
+  });
+  const puntos = Array.from(puntosContenedor.children);
+
+  function irAResena(i){
+    tarjetas[indiceActual].classList.remove('activa');
+    puntos[indiceActual].classList.remove('activo');
+    indiceActual = (i + tarjetas.length) % tarjetas.length;
+    tarjetas[indiceActual].classList.add('activa');
+    puntos[indiceActual].classList.add('activo');
+  }
+
+  document.getElementById('prevResena').addEventListener('click', function(){ irAResena(indiceActual - 1); });
+  document.getElementById('nextResena').addEventListener('click', function(){ irAResena(indiceActual + 1); });
+
+  let autoplay = setInterval(function(){ irAResena(indiceActual + 1); }, 6000);
+  document.querySelector('.carrusel-resenas').addEventListener('mouseenter', function(){ clearInterval(autoplay); });
+})();
+</script>
+
+</body>
+</html>

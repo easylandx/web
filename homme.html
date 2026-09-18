@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homme Peluquerías | Barber Shop en Tres Cantos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#FFC93C;
+    --gold-deep:#FFA400;
+    --red:#FF4D4D;
+    --red-light:#FFB3B3;
+    --blue:#2E6CF6;
+    --blue-light:#CFE0FF;
+    --cream:#FFF7E8;
+    --ink:#241C1C;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif; color:var(--ink); background:var(--cream); overflow-x:hidden;}
+  h1,h2,h3{font-family:'Bebas Neue',sans-serif; letter-spacing:1px;}
+  a{text-decoration:none; color:inherit;}
+  .reveal{opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(255,201,60,0.96);
+    padding:14px 6%; display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 2px 12px rgba(0,0,0,0.1);
+  }
+  .logo{font-family:'Bebas Neue',sans-serif; font-size:1.7rem; display:flex; align-items:center; gap:10px;}
+  .logo-icon{font-size:1.5rem;}
+  .nav-links{display:flex; gap:28px;}
+  .nav-links a{font-weight:600; font-size:.95rem; position:relative; padding:4px 0;}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--red);transition:width .3s;}
+  .nav-links a:hover::after{width:100%;}
+  .menu-toggle{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+  .menu-toggle span{width:26px;height:3px;background:var(--ink);border-radius:2px;}
+
+  /* HERO */
+  header.hero{
+    min-height:100vh; padding:150px 6% 90px;
+    background:linear-gradient(150deg, var(--gold) 0%, var(--gold-deep) 40%, var(--red) 100%);
+    display:flex; align-items:center; flex-wrap:wrap; gap:50px; position:relative; overflow:hidden;
+  }
+  header.hero::before{content:''; position:absolute; width:420px; height:420px; border-radius:50%; background:rgba(255,255,255,0.16); top:-140px; right:-100px;}
+  .barberpole{
+    position:absolute; width:70px; height:100%; top:0; right:6%;
+    background:repeating-linear-gradient(45deg, var(--red) 0 20px, var(--white) 20px 40px, var(--blue) 40px 60px);
+    opacity:.18; border-radius:40px; display:none;
+  }
+  .hero-text{flex:1 1 420px; z-index:2;}
+  .eyebrow{display:inline-block; background:var(--white); color:var(--red); font-weight:700; font-size:.8rem; letter-spacing:1.5px; text-transform:uppercase; padding:7px 16px; border-radius:30px; margin-bottom:22px;}
+  .hero-text h1{font-size:4rem; line-height:1; color:var(--ink); margin-bottom:18px;}
+  .hero-text h1 span{color:var(--white); -webkit-text-stroke:1.5px var(--ink);}
+  .hero-sub{font-size:1.15rem; max-width:520px; margin-bottom:34px; font-weight:500; color:#4a2f1f;}
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{padding:15px 30px; border-radius:40px; font-weight:700; font-size:1rem; display:inline-flex; align-items:center; gap:10px; transition:transform .25s, box-shadow .25s; cursor:pointer; border:none;}
+  .btn-primary{background:var(--ink); color:var(--gold);}
+  .btn-primary:hover{transform:translateY(-4px); box-shadow:0 10px 22px rgba(36,28,28,0.35);}
+  .btn-outline{background:var(--white); color:var(--ink); border:2px solid var(--ink);}
+  .btn-outline:hover{transform:translateY(-4px); box-shadow:0 10px 22px rgba(255,255,255,0.5);}
+
+  .hero-visual{flex:0 0 300px; z-index:2; margin:0 auto; position:relative;}
+  .scissor-frame{
+    width:300px; height:300px; border-radius:36px;
+    background:linear-gradient(135deg, var(--blue), var(--red));
+    display:flex; align-items:center; justify-content:center; font-size:6rem;
+    box-shadow:0 20px 50px rgba(36,28,28,0.3); border:8px solid var(--white); transform:rotate(-4deg);
+  }
+  .badge-role{position:absolute; bottom:-14px; left:-14px; background:var(--white); padding:10px 18px; border-radius:30px; font-weight:700; font-size:.85rem; box-shadow:0 8px 20px rgba(0,0,0,0.15); color:var(--red); transform:rotate(3deg);}
+
+  /* SERVICIOS — rojo */
+  section.servicios{background:linear-gradient(180deg, var(--red) 0%, var(--red-light) 100%); padding:100px 6%;}
+  .section-head{text-align:center; max-width:700px; margin:0 auto 60px;}
+  .section-head .eyebrow{background:var(--ink); color:var(--red-light);}
+  .section-head h2{font-size:2.8rem; color:var(--white);}
+  .section-head p{color:#fff0f0; font-weight:500;}
+  .serv-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; max-width:1100px; margin:0 auto;}
+  .serv-card{background:var(--white); border-radius:22px; padding:34px 26px; text-align:center; box-shadow:0 14px 30px rgba(0,0,0,0.12); transition:transform .3s;}
+  .serv-card:hover{transform:translateY(-10px) rotate(-1deg);}
+  .serv-icon{font-size:2.6rem; margin-bottom:16px; display:block;}
+  .serv-card h3{font-size:1.3rem; margin-bottom:10px;}
+  .serv-card p{font-size:.92rem; color:#5c4433; line-height:1.5;}
+
+  /* RESERVA — azul, interactivo */
+  section.reserva{background:linear-gradient(180deg, var(--blue-light) 0%, var(--blue) 100%); padding:100px 6%;}
+  .reserva .section-head h2{color:var(--white);}
+  .reserva .section-head p{color:#eaf1ff;}
+  .booking-card{max-width:640px; margin:0 auto; background:var(--white); border-radius:26px; padding:44px 34px; box-shadow:0 20px 46px rgba(0,0,0,0.18);}
+  .booking-card h3{font-size:1.6rem; margin-bottom:6px;}
+  .booking-card p.sub{color:#5c6b8a; margin-bottom:24px; font-size:.95rem; font-family:'Poppins',sans-serif;}
+  .service-select{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px;}
+  .service-chip{padding:10px 18px; border-radius:30px; border:2px solid var(--blue-light); background:var(--white); font-weight:600; font-size:.88rem; cursor:pointer; transition:all .25s;}
+  .service-chip.active{background:var(--blue); color:var(--white); border-color:var(--blue);}
+  .form-row{display:flex; flex-direction:column; gap:14px; margin-bottom:18px;}
+  .form-row input, .form-row select{padding:14px 16px; border-radius:12px; border:2px solid #e2e9f7; font-family:'Poppins',sans-serif; font-size:.95rem; outline:none; transition:border-color .25s;}
+  .form-row input:focus, .form-row select:focus{border-color:var(--blue);}
+  .submit-btn{width:100%; padding:16px; border-radius:14px; border:none; background:var(--ink); color:var(--gold); font-weight:700; font-size:1rem; cursor:pointer; transition:transform .25s;}
+  .submit-btn:hover{transform:translateY(-3px);}
+  .success-msg{display:none; background:var(--gold); color:var(--ink); padding:16px; border-radius:12px; font-weight:600; margin-top:16px; font-size:.9rem;}
+  .success-msg.show{display:block;}
+
+  /* UBICACIÓN — dorado */
+  section.ubicacion{background:linear-gradient(160deg, var(--gold) 0%, var(--gold-deep) 100%); padding:90px 6%; text-align:center;}
+  .ubicacion .section-head h2{color:var(--ink);}
+  .ubicacion .section-head p{color:#5c4400;}
+  .loc-card{max-width:560px; margin:0 auto; background:var(--white); border-radius:24px; padding:38px 30px; box-shadow:0 18px 40px rgba(0,0,0,0.15);}
+  .loc-card .pin{font-size:2.4rem; margin-bottom:12px;}
+  .loc-card h3{font-size:1.3rem; margin-bottom:8px; font-family:'Poppins',sans-serif; font-weight:700;}
+  .loc-card p{color:#5c4433; margin-bottom:20px; line-height:1.5;}
+  .social-row{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+  .social-btn{display:flex; align-items:center; gap:10px; background:var(--ink); color:var(--white); padding:13px 24px; border-radius:40px; font-weight:600; font-size:.92rem; box-shadow:0 10px 24px rgba(0,0,0,0.2); transition:transform .25s;}
+  .social-btn:hover{transform:translateY(-4px);}
+
+  /* FLOATING */
+  .floating-btns{position:fixed; bottom:26px; right:26px; z-index:999; display:flex; flex-direction:column; gap:14px;}
+  .fab{width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--white); font-size:1.5rem; box-shadow:0 10px 22px rgba(0,0,0,0.25); transition:transform .25s;}
+  .fab:hover{transform:scale(1.12);}
+  .fab.instagram{background:radial-gradient(circle at 30% 30%, #feda75, #d62976 60%, #4f5bd5);}
+
+  footer{background:var(--ink); color:#e8d9c9; text-align:center; padding:32px 6% 26px; font-size:.85rem;}
+  footer strong{color:var(--gold);}
+
+  @media(max-width:768px){
+    .nav-links{position:fixed; top:64px; right:0; left:0; background:var(--gold); flex-direction:column; align-items:center; padding:20px 0; gap:18px; transform:translateY(-140%); transition:transform .35s ease; box-shadow:0 12px 20px rgba(0,0,0,0.1);}
+    .nav-links.open{transform:translateY(0);}
+    .menu-toggle{display:flex;}
+    .hero-text h1{font-size:2.8rem;}
+    .serv-grid{grid-template-columns:1fr;}
+    header.hero{padding:130px 6% 70px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span class="logo-icon">💈</span>Homme Peluquerías</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#servicios">Servicios</a>
+    <a href="#reserva">Pide tu cita</a>
+    <a href="#ubicacion">Ubicación</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="hero">
+  <div class="hero-text reveal">
+    <span class="eyebrow">🎩 Peluquería masculina · Barber Shop</span>
+    <h1>HOMME<br><span>PELUQUERÍAS</span></h1>
+    <p class="hero-sub">✄ Cortes y tratamientos pensados para ti. Estilo, precisión y buena mano en cada visita, en el corazón de Tres Cantos.</p>
+    <div class="cta-row">
+      <a href="#reserva" class="btn btn-primary">📲 Pide tu cita online</a>
+      <a href="https://www.instagram.com/homme_peluquerias" target="_blank" rel="noopener" class="btn btn-outline">📷 Instagram</a>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="scissor-frame">✂️</div>
+    <div class="badge-role">💈 Barber Shop</div>
+  </div>
+</header>
+
+<section class="servicios" id="servicios">
+  <div class="section-head reveal">
+    <span class="eyebrow">Nuestros servicios</span>
+    <h2>Cortes y tratamientos</h2>
+    <p>Todo lo que tu estilo necesita, en un solo lugar</p>
+  </div>
+  <div class="serv-grid">
+    <div class="serv-card reveal">
+      <span class="serv-icon">✂️</span>
+      <h3>Corte clásico</h3>
+      <p>Cortes de precisión adaptados a tu forma de cara y estilo personal.</p>
+    </div>
+    <div class="serv-card reveal">
+      <span class="serv-icon">🪒</span>
+      <h3>Arreglo de barba</h3>
+      <p>Perfilado y afeitado tradicional para una barba impecable.</p>
+    </div>
+    <div class="serv-card reveal">
+      <span class="serv-icon">💆</span>
+      <h3>Tratamientos capilares</h3>
+      <p>Cuidado profesional para un cabello sano y con más fuerza.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reserva" id="reserva">
+  <div class="section-head reveal">
+    <span class="eyebrow" style="background:var(--white); color:var(--blue);">Pide tu cita</span>
+    <h2>Reserva en segundos</h2>
+    <p>Elige tu servicio y déjanos tus datos</p>
+  </div>
+  <div class="booking-card reveal">
+    <h3>Reserva tu cita 📲</h3>
+    <p class="sub">Selecciona el servicio que quieres reservar</p>
+    <div class="service-select" id="serviceSelect">
+      <div class="service-chip" onclick="selectChip(this)">✂️ Corte</div>
+      <div class="service-chip" onclick="selectChip(this)">🪒 Barba</div>
+      <div class="service-chip" onclick="selectChip(this)">✂️🪒 Corte + Barba</div>
+      <div class="service-chip" onclick="selectChip(this)">💆 Tratamiento</div>
+    </div>
+    <form id="bookingForm" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="tel" placeholder="Tu teléfono" required>
+        <select required>
+          <option value="" disabled selected>Elige un día preferido</option>
+          <option>Lunes</option><option>Martes</option><option>Miércoles</option>
+          <option>Jueves</option><option>Viernes</option><option>Sábado</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Confirmar solicitud de cita</button>
+      <div class="success-msg" id="successMsg">✅ ¡Gracias! Hemos recibido tu solicitud, te confirmaremos la cita muy pronto.</div>
+    </form>
+  </div>
+</section>
+
+<section class="ubicacion" id="ubicacion">
+  <div class="section-head reveal">
+    <span class="eyebrow" style="background:var(--ink); color:var(--gold);">Dónde estamos</span>
+    <h2>Visítanos</h2>
+  </div>
+  <div class="loc-card reveal">
+    <div class="pin">📍</div>
+    <h3>Calle Descubridores 15</h3>
+    <p>Tres Cantos, Madrid, España — 28760</p>
+    <div class="social-row">
+      <a href="https://www.instagram.com/homme_peluquerias" target="_blank" rel="noopener" class="social-btn">📷 @homme_peluquerias</a>
+    </div>
+  </div>
+</section>
+
+<div class="floating-btns">
+  <a href="https://www.instagram.com/homme_peluquerias" target="_blank" rel="noopener" class="fab instagram" aria-label="Instagram">📷</a>
+</div>
+
+<footer>
+  <p>© 2026 Homme Peluquerías — Tres Cantos, Madrid</p>
+  <p><strong>Built by EasyLandX</strong></p>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.15});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function selectChip(el){
+    document.querySelectorAll('.service-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    document.getElementById('successMsg').classList.add('show');
+    e.target.reset();
+    document.querySelectorAll('.service-chip').forEach(c => c.classList.remove('active'));
+    return false;
+  }
+</script>
+
+</body>
+</html>

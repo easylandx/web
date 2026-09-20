@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shop the Sheet — Live Product Grid</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --ivory:      #FBF6EA;
+    --ivory-2:    #FFFDF7;
+    --paper:      #FFFFFF;
+    --ink:        #2B2418;
+    --ink-soft:   #6B6151;
+    --line:       #E8DEC7;
+    --ochre:      #A0672B;
+    --ochre-dark: #7E501E;
+    --sage:       #57684E;
+    --sage-soft:  #E7ECDD;
+    --gold-glow:  #F0DCA6;
+    --radius-lg:  22px;
+    --radius-sm:  10px;
+    --shadow:     0 1px 2px rgba(43,36,24,.06), 0 10px 30px -14px rgba(43,36,24,.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--ivory);
+  }
+
+  html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  body {
+    font-family: 'Public Sans', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; margin: 0; }
+
+  a { color: inherit; }
+
+  /* ---------- Header ---------- */
+
+  header.top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: linear-gradient(180deg, var(--ivory) 78%, transparent);
+    backdrop-filter: saturate(140%) blur(6px);
+    padding: 28px clamp(18px, 4vw, 56px) 14px;
+  }
+
+  .top-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .brand-mark .glyph {
+    font-size: 30px;
+    line-height: 1;
+    transform: translateY(2px);
+  }
+
+  h1.title {
+    font-size: clamp(26px, 3.4vw, 34px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin-top: 4px;
+    max-width: 46ch;
+  }
+
+  .status-pill {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 13px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    background: var(--ivory-2);
+    white-space: nowrap;
+  }
+
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--sage);
+    flex: none;
+  }
+  .status-pill.is-error .status-dot { background: #A24435; }
+  .status-pill.is-loading .status-dot { background: var(--ochre); animation: pulse 1.1s ease-in-out infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .45; transform: scale(.72); }
+  }
+
+  /* ---------- Controls ---------- */
+
+  .controls {
+    max-width: 1160px;
+    margin: 18px auto 0;
+    padding: 0 clamp(18px, 4vw, 56px);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1 1 240px;
+    min-width: 200px;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  input[type="search"] {
+    width: 100%;
+    font: inherit;
+    font-size: 15px;
+    padding: 11px 14px 11px 38px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    outline-offset: 2px;
+  }
+  input[type="search"]::placeholder { color: var(--ink-soft); }
+  input[type="search"]:focus-visible { outline: 2px solid var(--ochre); }
+
+  .pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pill-btn {
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 9px 15px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .pill-btn:hover { border-color: var(--ochre); color: var(--ink); }
+  .pill-btn:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
+  .pill-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--ivory-2);
+  }
+
+  /* ---------- Grid ---------- */
+
+  main {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 22px clamp(18px, 4vw, 56px) 80px;
+  }
+
+  .count-row {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 4px 2px 16px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--paper);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(43,36,24,.05);
+  }
+
+  .card-media {
+    aspect-ratio: 4 / 3;
+    background: var(--sage-soft);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-media .fallback {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--ochre-dark);
+    background:
+      radial-gradient(120% 140% at 15% 10%, var(--gold-glow), transparent 60%),
+      var(--sage-soft);
+  }
+
+  .card-body {
+    padding: 16px 17px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .card-category {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--sage);
+    letter-spacing: .01em;
+  }
+
+  .card-name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .card-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    gap: 10px;
+  }
+
+  .card-price {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ochre-dark);
+  }
+
+  .card-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--ochre);
+    padding-bottom: 1px;
+  }
+  .card-link:hover { color: var(--ochre-dark); }
+
+  /* ---------- States ---------- */
+
+  .state {
+    max-width: 640px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .state .glyph { font-size: 40px; display: block; margin-bottom: 14px; }
+  .state h2 { font-size: 22px; margin-bottom: 10px; }
+  .state p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+  .state .howto {
+    text-align: left;
+    margin-top: 22px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    font-size: 13.5px;
+    color: var(--ink);
+    box-shadow: var(--shadow);
+  }
+  .state .howto h3 { font-size: 14px; margin-bottom: 8px; }
+  .state .howto ol { margin: 0; padding-left: 20px; line-height: 1.8; }
+  .state .howto code {
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 12.5px;
+  }
+
+  .skel {
+    background: linear-gradient(100deg, var(--paper) 30%, var(--ivory-2) 50%, var(--paper) 70%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    border-radius: var(--radius-lg);
+    aspect-ratio: 3 / 4;
+  }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+
+  footer {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    padding: 0 20px 34px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .status-dot, .skel { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-row">
+    <div>
+      <div class="brand-mark">
+        <span class="glyph" aria-hidden="true">🧺</span>
+        <h1 class="title">Shop the Sheet</h1>
+      </div>
+      <p class="subtitle">A live product grid, pulled straight from a Google Sheet — edit a row there, it shows up here.</p>
+    </div>
+    <span class="status-pill is-loading" id="statusPill">
+      <span class="status-dot"></span>
+      <span id="statusText">Connecting to the sheet…</span>
+    </span>
+  </div>
+
+  <div class="controls" id="controls" hidden>
+    <div class="search-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="searchInput" placeholder="Search products…" aria-label="Search products">
+    </div>
+    <div class="pills" id="categoryPills" role="group" aria-label="Filter by category"></div>
+  </div>
+</header>
+
+<main>
+  <p class="count-row" id="countRow" hidden></p>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>© 2026 · Data served live from Google Sheets</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---- Configuration ------------------------------------------------
+  // Point this at any public Google Sheet: File → Share → "Anyone with
+  // the link" must be able to at least VIEW the sheet, or the feed below
+  // returns a login page instead of data.
+  const SHEET_ID   = "1arVKkjyeA9809g4Tgsin6yOVUXjaG-xpmKYjBWOGVdU";
+  const SHEET_NAME = ""; // leave blank to use the first sheet/tab
+
+  const feedUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json` +
+                  (SHEET_NAME ? `&sheet=${encodeURIComponent(SHEET_NAME)}` : "");
+
+  // Header names we recognize, in priority order, per field.
+  const FIELD_ALIASES = {
+    name:        ["name", "product", "title", "item"],
+    price:       ["price", "cost", "amount"],
+    image:       ["image", "img", "photo", "picture", "image url", "imageurl"],
+    description: ["description", "desc", "details", "notes", "summary"],
+    category:    ["category", "type", "tag", "collection", "group"],
+    link:        ["link", "url", "buy", "buy link", "product link"]
+  };
+
+  const grid        = document.getElementById("grid");
+  const statusPill  = document.getElementById("statusPill");
+  const statusText  = document.getElementById("statusText");
+  const controls    = document.getElementById("controls");
+  const searchInput = document.getElementById("searchInput");
+  const pillsWrap    = document.getElementById("categoryPills");
+  const countRow    = document.getElementById("countRow");
+
+  let allProducts = [];
+  let activeCategory = "All";
+
+  showSkeletons();
+  fetchSheet();
+
+  function showSkeletons() {
+    grid.innerHTML = "";
+    for (let i = 0; i < 8; i++) {
+      const s = document.createElement("div");
+      s.className = "skel";
+      grid.appendChild(s);
+    }
+  }
+
+  function fetchSheet() {
+    fetch(feedUrl)
+      .then((res) => {
+        if (!res.ok) throw new Error("http-" + res.status);
+        return res.text();
+      })
+      .then((text) => {
+        const json = parseGvizResponse(text);
+        const products = rowsToProducts(json);
+        if (!products.length) {
+          renderEmptyState();
+          return;
+        }
+        allProducts = products;
+        setStatus(false, `Live · ${products.length} item${products.length === 1 ? "" : "s"}`);
+        buildCategoryPills(products);
+        controls.hidden = false;
+        countRow.hidden = false;
+        render();
+      })
+      .catch((err) => {
+        console.error("Sheet fetch failed:", err);
+        renderErrorState();
+      });
+  }
+
+  // Google's gviz endpoint wraps its JSON in a JS call — strip that off.
+  function parseGvizResponse(text) {
+    const start = text.indexOf("{");
+    const end = text.lastIndexOf("}");
+    if (start === -1 || end === -1) throw new Error("Unexpected response shape");
+    return JSON.parse(text.slice(start, end + 1));
+  }
+
+  function rowsToProducts(json) {
+    if (!json || !json.table || !Array.isArray(json.table.rows)) return [];
+    const cols = json.table.cols || [];
+
+    // Map each recognized field to a column index, by header label first,
+    // falling back to a best-effort guess if the sheet has no headers.
+    const fieldIndex = {};
+    Object.keys(FIELD_ALIASES).forEach((field) => {
+      const aliases = FIELD_ALIASES[field];
+      let idx = cols.findIndex((c) => c && c.label &&
+        aliases.includes(String(c.label).trim().toLowerCase()));
+      fieldIndex[field] = idx;
+    });
+
+    // No headers matched at all — guess positionally from the first
+    // populated row: first text column → name, first numeric → price,
+    // any URL-looking text → image.
+    if (Object.values(fieldIndex).every((i) => i === -1)) {
+      const sample = json.table.rows.find((r) => r.c && r.c.some((c) => c && c.v != null));
+      if (sample) {
+        sample.c.forEach((cell, i) => {
+          if (!cell || cell.v == null) return;
+          const val = String(cell.v);
+          if (fieldIndex.name === -1 && isNaN(val) ) fieldIndex.name = i;
+          else if (fieldIndex.price === -1 && !isNaN(parseFloat(cell.v))) fieldIndex.price = i;
+          else if (fieldIndex.image === -1 && /^https?:\/\/.+\.(png|jpe?g|gif|webp)/i.test(val)) fieldIndex.image = i;
+        });
+      }
+    }
+
+    const products = [];
+    json.table.rows.forEach((row) => {
+      if (!row.c) return;
+      const get = (i) => (i > -1 && row.c[i] && row.c[i].v != null) ? row.c[i].v : "";
+      const name = String(get(fieldIndex.name)).trim();
+      if (!name) return; // skip blank / spacer rows
+      products.push({
+        name,
+        price: get(fieldIndex.price),
+        image: String(get(fieldIndex.image)).trim(),
+        description: String(get(fieldIndex.description)).trim(),
+        category: String(get(fieldIndex.category)).trim() || "General",
+        link: String(get(fieldIndex.link)).trim()
+      });
+    });
+    return products;
+  }
+
+  function buildCategoryPills(products) {
+    const cats = ["All", ...new Set(products.map((p) => p.category))];
+    pillsWrap.innerHTML = "";
+    cats.forEach((cat) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "pill-btn" + (cat === "All" ? " active" : "");
+      btn.textContent = cat;
+      btn.addEventListener("click", () => {
+        activeCategory = cat;
+        pillsWrap.querySelectorAll(".pill-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        render();
+      });
+      pillsWrap.appendChild(btn);
+    });
+  }
+
+  searchInput.addEventListener("input", render);
+
+  function render() {
+    const query = searchInput.value.trim().toLowerCase();
+    const filtered = allProducts.filter((p) => {
+      const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+      const matchesQuery = !query ||
+        p.name.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query);
+      return matchesCategory && matchesQuery;
+    });
+
+    countRow.textContent = `Showing ${filtered.length} of ${allProducts.length} products`;
+    grid.innerHTML = "";
+
+    if (!filtered.length) {
+      const p = document.createElement("p");
+      p.style.color = "var(--ink-soft)";
+      p.style.gridColumn = "1 / -1";
+      p.textContent = "No products match that search.";
+      grid.appendChild(p);
+      return;
+    }
+
+    filtered.forEach((p) => grid.appendChild(buildCard(p)));
+  }
+
+  function buildCard(p) {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const media = document.createElement("div");
+    media.className = "card-media";
+    const fallback = document.createElement("div");
+    fallback.className = "fallback";
+    fallback.textContent = (p.name.trim()[0] || "?").toUpperCase();
+    media.appendChild(fallback);
+
+    if (p.image) {
+      const img = document.createElement("img");
+      img.src = p.image;
+      img.alt = p.name;
+      img.loading = "lazy";
+      img.addEventListener("error", () => img.remove());
+      media.appendChild(img);
+    }
+
+    const body = document.createElement("div");
+    body.className = "card-body";
+
+    const cat = document.createElement("div");
+    cat.className = "card-category";
+    cat.textContent = p.category;
+
+    const name = document.createElement("h3");
+    name.className = "card-name";
+    name.textContent = p.name;
+
+    body.appendChild(cat);
+    body.appendChild(name);
+
+    if (p.description) {
+      const desc = document.createElement("p");
+      desc.className = "card-desc";
+      desc.textContent = p.description;
+      body.appendChild(desc);
+    }
+
+    const foot = document.createElement("div");
+    foot.className = "card-foot";
+
+    const price = document.createElement("span");
+    price.className = "card-price";
+    price.textContent = formatPrice(p.price);
+    foot.appendChild(price);
+
+    if (p.link) {
+      const a = document.createElement("a");
+      a.className = "card-link";
+      a.href = p.link;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = "View →";
+      foot.appendChild(a);
+    }
+
+    body.appendChild(foot);
+    card.appendChild(media);
+    card.appendChild(body);
+    return card;
+  }
+
+  function formatPrice(value) {
+    if (value === "" || value == null) return "";
+    const num = parseFloat(value);
+    if (isNaN(num)) return String(value);
+    return "$" + num.toFixed(2).replace(/\.00$/, "");
+  }
+
+  function setStatus(isError, text, isLoading) {
+    statusText.textContent = text;
+    statusPill.classList.toggle("is-error", !!isError);
+    statusPill.classList.toggle("is-loading", !!isLoading);
+  }
+
+  function renderEmptyState() {
+    setStatus(false, "Connected · sheet is empty");
+    grid.innerHTML = "";
+    grid.style.display = "block";
+    grid.innerHTML = `
+      <div class="state">
+        <span class="glyph">🗒️</span>
+        <h2>The sheet connected, but has no rows yet</h2>
+        <p>Add a header row with columns like <code>Name</code>, <code>Price</code>, <code>Image</code>, <code>Description</code> and <code>Category</code>, then a row per product — this page will pick them up automatically.</p>
+      </div>`;
+  }
+
+  function renderErrorState() {
+    setStatus(true, "Couldn't reach the sheet");
+    grid.innerHTML = "";
+    grid.style.display = "block";
+    grid.innerHTML = `
+      <div class="state">
+        <span class="glyph">🔒</span>
+        <h2>Couldn't load the sheet</h2>
+        <p>This usually means the sheet isn't shared publicly, or this page is being opened from a <code>file://</code> path instead of a real web address.</p>
+        <div class="howto">
+          <h3>To fix it</h3>
+          <ol>
+            <li>In Google Sheets, click <strong>Share</strong> → set access to <strong>"Anyone with the link"</strong> → <strong>Viewer</strong>.</li>
+            <li>Give the sheet a header row: <code>Name</code>, <code>Price</code>, <code>Image</code>, <code>Description</code>, <code>Category</code> (any order — extra columns are ignored).</li>
+            <li>Serve this file over <code>http(s)://</code> — e.g. from GitHub Pages — rather than opening it straight from your file system.</li>
+          </ol>
+        </div>
+      </div>`;
+  }
+})();
+</script>
+</body>
+</html>

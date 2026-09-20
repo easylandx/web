@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>easylandx para peluqueros caninos y felinos</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🐕%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Figtree:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cobalt:#17307A;
+    --cobalt-deep:#0F2258;
+    --gold:#F0C040;
+    --gold-deep:#D4AF37;
+    --aqua:#6FD3F0;
+    --pink:#F7A8C8;
+    --ink:#F5F8FF;
+    --ink-dim:#C9D6F5;
+    --surface: rgba(245,248,255,0.08);
+    --surface-strong: rgba(245,248,255,0.16);
+    --border-soft: rgba(245,248,255,0.24);
+    --font-display:'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+    --font-body:'Figtree', system-ui, sans-serif;
+    --font-mono:'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cobalt);
+    line-height:1.65;
+    font-size:1.03rem;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1080px; margin:0 auto; padding-left:28px; padding-right:28px;}
+
+  /* ---------- NAV ---------- */
+  nav{display:flex; align-items:center; justify-content:space-between; padding:26px 28px; max-width:1080px; margin:0 auto;}
+  .logo{font-family:var(--font-display); font-weight:700; font-size:1.25rem; display:flex; align-items:center; gap:10px;}
+  .logo svg{width:22px; height:22px; flex-shrink:0;}
+  .nav-btn{
+    font-family:var(--font-body); font-size:0.9rem; color:var(--cobalt-deep);
+    background:var(--gold); border:none; padding:10px 18px; border-radius:12px;
+    text-decoration:none; font-weight:700; transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-btn:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(240,192,64,0.3);}
+  .nav-btn:focus-visible{outline:3px solid var(--aqua); outline-offset:3px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding-top:44px; padding-bottom:10px;}
+  .hero-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:44px; align-items:center;}
+  .hero-art{order:-1;}
+  @media (max-width:840px){ .hero-grid{grid-template-columns:1fr;} .hero-art{order:0;} }
+  .eyebrow{font-family:var(--font-mono); font-size:0.85rem; color:var(--ink-dim); margin:0 0 18px;}
+  h1{font-family:var(--font-display); font-weight:700; font-size:clamp(2.1rem, 4.6vw, 3.2rem); line-height:1.1; letter-spacing:-0.01em; margin:0 0 20px; max-width:17ch;}
+  h1 em{font-style:normal; color:var(--gold);}
+  .lede{font-size:1.12rem; color:var(--ink-dim); max-width:54ch; margin:0 0 30px;}
+  .hero-actions{display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+  .btn-primary{
+    font-family:var(--font-body); font-weight:700; font-size:1rem;
+    color:var(--cobalt-deep); background:var(--gold); border:none;
+    padding:15px 28px; border-radius:12px; cursor:pointer; text-decoration:none;
+    display:inline-block; transition:transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(240,192,64,0.3);}
+  .btn-primary:focus-visible{outline:3px solid var(--aqua); outline-offset:3px;}
+  .btn-ghost{
+    font-family:var(--font-body); font-weight:700; font-size:0.95rem;
+    color:var(--ink); background:var(--surface-strong); border:1px solid var(--border-soft);
+    padding:12px 22px; border-radius:12px; cursor:pointer;
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-ghost:hover{transform:translateY(-2px); background:rgba(245,248,255,0.26);}
+  .btn-ghost:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+  .scroll-note{font-family:var(--font-mono); font-size:0.85rem; color:var(--ink-dim);}
+
+  .hero-art{display:flex; justify-content:center;}
+  .hero-art svg{width:100%; max-width:330px; height:auto; overflow:visible;}
+
+  /* ---------- BUBBLE DIVIDER ---------- */
+  .bubbles-line{
+    height:16px; margin-top:30px;
+    background-image:radial-gradient(circle, rgba(111,211,240,0.65) 0 4px, transparent 5px);
+    background-size:26px 16px; background-repeat:repeat-x; background-position:left center;
+  }
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{max-width:62ch; margin-bottom:36px;}
+  .section-head h2{font-family:var(--font-display); font-weight:700; font-size:clamp(1.55rem,2.9vw,2.05rem); line-height:1.2; letter-spacing:-0.01em; margin:0 0 14px;}
+  .section-head p{color:var(--ink-dim); margin:0; font-size:1.04rem;}
+
+  /* ---------- GROOM WIDGET ---------- */
+  section.groom{padding-top:48px; padding-bottom:70px;}
+  .groom-panel{
+    background:var(--surface); border:1px solid var(--border-soft); border-radius:22px;
+    padding:36px 32px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;
+  }
+  @media (max-width:760px){ .groom-panel{grid-template-columns:1fr; padding:28px 20px;} }
+  .groom-stage{display:flex; justify-content:center;}
+  .groom-stage svg{width:100%; max-width:320px; height:auto; overflow:visible;}
+  .groom-controls{display:flex; flex-direction:column; gap:18px;}
+  .minute-readout{font-family:var(--font-mono); font-weight:500; font-size:0.95rem; color:var(--gold); margin:0;}
+  .stage-text{font-family:var(--font-display); font-weight:500; font-size:1.3rem; line-height:1.3; margin:0; min-height:3.9em;}
+  input[type=range]{width:100%; accent-color:var(--gold); height:28px; cursor:pointer;}
+  input[type=range]:focus-visible{outline:3px solid var(--aqua); outline-offset:4px; border-radius:8px;}
+  .range-scale{display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.8rem; color:var(--ink-dim); margin-top:-8px;}
+  .groom-caption{color:var(--ink-dim); font-size:0.94rem; margin:0; max-width:44ch;}
+  #tubGroup, #bubblesGroup, #mudGroup, #scruffGroup, #puffsGroup, #bandanaGroup, #sparkleGroup{transition:opacity 0.35s ease;}
+
+  /* ---------- TABS ---------- */
+  section.audience{padding-top:20px; padding-bottom:70px;}
+  .tab-row{display:flex; gap:12px; margin-bottom:30px; flex-wrap:wrap;}
+  .tab-btn{
+    font-family:var(--font-body); font-weight:700; font-size:1rem;
+    color:var(--ink); background:var(--surface); border:1px solid var(--border-soft);
+    padding:12px 22px; border-radius:12px; cursor:pointer;
+    transition:background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+  .tab-btn.active{background:var(--aqua); border-color:var(--aqua); color:var(--cobalt-deep);}
+  .tab-btn:focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
+
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .feature-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:18px;}
+  @media (max-width:700px){ .feature-grid{grid-template-columns:1fr;} }
+  .feature-card{
+    background:var(--surface); border:1px solid var(--border-soft); border-radius:16px;
+    padding:20px 22px; display:flex; gap:14px; align-items:flex-start;
+  }
+  .feature-icon{width:34px; height:34px; flex-shrink:0;}
+  .feature-card h3{margin:0 0 6px; font-family:var(--font-display); font-weight:700; font-size:1.1rem;}
+  .feature-card p{margin:0; color:var(--ink-dim); font-size:0.95rem;}
+
+  /* ---------- WHY IT FITS ---------- */
+  section.fit{padding-top:20px; padding-bottom:70px;}
+  .fit-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;}
+  @media (max-width:900px){ .fit-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:540px){ .fit-grid{grid-template-columns:1fr;} }
+  .fit-card{
+    background:var(--surface); border:1px solid var(--border-soft); border-radius:16px;
+    padding:20px 18px; text-align:left;
+  }
+  .fit-card .spark{width:28px; height:28px; margin-bottom:12px; display:block;}
+  .fit-card h3{margin:0 0 8px; font-family:var(--font-display); font-weight:700; font-size:1.05rem; line-height:1.3;}
+  .fit-card p{margin:0; color:var(--ink-dim); font-size:0.93rem;}
+
+  /* ---------- FINAL CTA ---------- */
+  section.final-cta{padding-top:20px; padding-bottom:90px;}
+  .cta-panel{
+    background:rgba(240,192,64,0.12);
+    border:2px solid var(--gold); border-radius:22px; padding:56px 44px; text-align:center;
+  }
+  .cta-panel h2{font-family:var(--font-display); font-weight:700; font-size:clamp(1.6rem,3.1vw,2.25rem); line-height:1.2; letter-spacing:-0.01em; margin:0 auto 16px; max-width:24ch;}
+  .cta-panel p{color:var(--ink-dim); max-width:52ch; margin:0 auto 30px; font-size:1.04rem;}
+
+  footer{padding:34px 0 50px; text-align:center; color:var(--ink-dim); font-family:var(--font-mono); font-size:0.85rem;}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="paw" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="16.5" rx="5.6" ry="4.6"/>
+    <circle cx="4.6" cy="10.5" r="2.3"/>
+    <circle cx="9.4" cy="5.8" r="2.3"/>
+    <circle cx="14.6" cy="5.8" r="2.3"/>
+    <circle cx="19.4" cy="10.5" r="2.3"/>
+  </symbol>
+  <symbol id="sparkle" viewBox="-10 -10 20 20">
+    <path d="M0 -9 L2.6 -2.6 L9 0 L2.6 2.6 L0 9 L-2.6 2.6 L-9 0 L-2.6 -2.6 Z"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="logo"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#F0C040"><use href="#paw" width="24" height="24"/></svg> easylandx</div>
+  <a class="nav-btn" href="https://easylandx.github.io" target="_blank" rel="noopener">Visitar easylandx</a>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="hero-art">
+        <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de un perro peludo recién peinado con una pañoleta rosa, rodeado de burbujas de jabón y destellos dorados.">
+          <g stroke="#F0C040" stroke-width="1.4" fill="none" opacity="0.4">
+            <circle cx="130" cy="150" r="112"/>
+            <circle cx="130" cy="150" r="96"/>
+          </g>
+          <!-- burbujas -->
+          <g fill="rgba(111,211,240,0.18)" stroke="#6FD3F0" stroke-width="2.4">
+            <circle cx="38" cy="118" r="11"/>
+            <circle cx="226" cy="122" r="15"/>
+            <circle cx="214" cy="216" r="9"/>
+            <circle cx="50" cy="212" r="13"/>
+            <circle cx="66" cy="60" r="7"/>
+          </g>
+          <!-- destellos -->
+          <g fill="#F0C040">
+            <use href="#sparkle" x="196" y="52" width="26" height="26"/>
+            <use href="#sparkle" x="26" y="152" width="22" height="22"/>
+            <use href="#sparkle" x="222" y="168" width="18" height="18"/>
+            <use href="#sparkle" x="90" y="30" width="16" height="16"/>
+          </g>
+          <!-- pecho -->
+          <ellipse cx="130" cy="264" rx="54" ry="34" fill="#F7E6C8"/>
+          <!-- orejas -->
+          <ellipse cx="76" cy="142" rx="22" ry="38" transform="rotate(8 76 142)" fill="#EBD3A8"/>
+          <ellipse cx="184" cy="142" rx="22" ry="38" transform="rotate(-8 184 142)" fill="#EBD3A8"/>
+          <!-- moñitos de la cabeza -->
+          <g fill="#F7E6C8">
+            <circle cx="104" cy="100" r="20"/>
+            <circle cx="130" cy="88" r="24"/>
+            <circle cx="156" cy="100" r="20"/>
+          </g>
+          <!-- cabeza -->
+          <ellipse cx="130" cy="144" rx="50" ry="48" fill="#F7E6C8"/>
+          <ellipse cx="130" cy="167" rx="26" ry="20" fill="#FFF6E4"/>
+          <ellipse cx="130" cy="156" rx="10" ry="7" fill="#2A1E2E"/>
+          <path d="M130 163 V170 M130 170 C123 178 114 176 111 171 M130 170 C137 178 146 176 149 171" stroke="#2A1E2E" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="110" cy="136" r="6" fill="#2A1E2E"/>
+          <circle cx="150" cy="136" r="6" fill="#2A1E2E"/>
+          <circle cx="112" cy="134" r="2" fill="#F5F8FF"/>
+          <circle cx="152" cy="134" r="2" fill="#F5F8FF"/>
+          <!-- pañoleta -->
+          <path d="M82 196 C108 210 152 210 178 196 L130 250 Z" fill="#F7A8C8"/>
+          <g fill="#F0C040">
+            <circle cx="112" cy="208" r="3.2"/>
+            <circle cx="148" cy="208" r="3.2"/>
+            <circle cx="130" cy="226" r="3.2"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <p class="eyebrow">páginas web para peluquerías caninas y de mascotas · 2026</p>
+        <h1>Una página impecable, diseñada para <em>pelajes felices</em>.</h1>
+        <p class="lede">Una cita de peluquería es un pequeño acto de amor hacia una mascota. easylandx crea sitios web de una sola página sencillos que transmiten ese cuidado: un diseño limpio, un ritmo tranquilo y una forma fácil de decir «reserva a Bella para el sábado».</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#audience">Descubre tu página</a>
+          <span class="scroll-note">para peluquerías locales y spas de mascotas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bubbles-line" aria-hidden="true"></div>
+  </header>
+
+  <section class="groom">
+    <div class="section-head">
+      <h2>El tiempo de una sesión y el ritmo de una página van de la mano</h2>
+      <p>Mueve el deslizador para acompañar a un cachorro en una sesión de spa de noventa minutos, desde su llegada hasta la recogida. Ese mismo cuidado por los tiempos guía cada sección de una página de easylandx.</p>
+    </div>
+    <div class="groom-panel">
+      <div class="groom-stage">
+        <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de un perro en la peluquería: embarrado y despeinado al principio, luego un baño de burbujas, y finalmente esponjoso y arreglado con una pañoleta.">
+          <!-- pecho -->
+          <ellipse id="furChest" cx="150" cy="208" rx="58" ry="42" fill="#A98B6B"/>
+          <!-- orejas -->
+          <ellipse id="furEarL" cx="96" cy="126" rx="20" ry="36" transform="rotate(8 96 126)" fill="#8A6B4C"/>
+          <ellipse id="furEarR" cx="204" cy="126" rx="20" ry="36" transform="rotate(-8 204 126)" fill="#8A6B4C"/>
+          <!-- moñitos de la cabeza -->
+          <g id="puffsGroup" opacity="0" fill="#F7E6C8">
+            <circle cx="126" cy="74" r="18"/>
+            <circle cx="150" cy="64" r="22"/>
+            <circle cx="174" cy="74" r="18"/>
+          </g>
+          <!-- cabeza -->
+          <ellipse id="furHead" cx="150" cy="118" rx="52" ry="48" fill="#A98B6B"/>
+          <!-- mechones despeinados -->
+          <g id="scruffGroup" fill="#A98B6B">
+            <polygon points="100,94 88,76 110,84"/>
+            <polygon points="198,94 214,74 194,84"/>
+            <polygon points="124,72 116,54 134,66"/>
+            <polygon points="164,68 174,50 180,70"/>
+            <polygon points="202,126 226,116 204,140"/>
+            <polygon points="98,130 74,122 96,146"/>
+          </g>
+          <!-- barro -->
+          <g id="mudGroup" fill="#5E4632" opacity="0.6">
+            <circle cx="128" cy="96" r="5"/>
+            <circle cx="178" cy="108" r="7"/>
+            <circle cx="138" cy="132" r="4"/>
+            <circle cx="170" cy="88" r="4"/>
+            <circle cx="112" cy="116" r="5"/>
+          </g>
+          <!-- cara -->
+          <ellipse cx="150" cy="142" rx="26" ry="19" fill="#FFF0D6"/>
+          <ellipse cx="150" cy="133" rx="10" ry="7" fill="#2A1E2E"/>
+          <path d="M150 140 V147 M150 147 C143 155 134 153 131 148 M150 147 C157 155 166 153 169 148" stroke="#2A1E2E" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="130" cy="112" r="5.5" fill="#2A1E2E"/>
+          <circle cx="170" cy="112" r="5.5" fill="#2A1E2E"/>
+          <circle cx="132" cy="110" r="1.9" fill="#F5F8FF"/>
+          <circle cx="172" cy="110" r="1.9" fill="#F5F8FF"/>
+          <!-- pañoleta -->
+          <g id="bandanaGroup" opacity="0">
+            <path d="M108 164 C132 178 168 178 192 164 L150 214 Z" fill="#F7A8C8"/>
+            <g fill="#F0C040">
+              <circle cx="134" cy="176" r="3"/>
+              <circle cx="166" cy="176" r="3"/>
+              <circle cx="150" cy="194" r="3"/>
+            </g>
+          </g>
+          <!-- bañera -->
+          <g id="tubGroup" opacity="0">
+            <path d="M60 170 H240 C240 228 210 248 150 248 C90 248 60 228 60 170Z" fill="#2E6FB7"/>
+            <rect x="52" y="160" width="196" height="14" rx="7" fill="#4C9BE0"/>
+            <path d="M84 192 C90 214 110 228 132 232" stroke="#8CC4F2" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+          </g>
+          <!-- burbujas -->
+          <g id="bubblesGroup" opacity="0" fill="rgba(189,235,250,0.3)" stroke="#BDEBFA" stroke-width="2.2">
+            <circle cx="110" cy="90" r="10"/>
+            <circle cx="192" cy="96" r="12"/>
+            <circle cx="150" cy="60" r="8"/>
+            <circle cx="120" cy="152" r="9"/>
+            <circle cx="184" cy="152" r="7"/>
+            <circle cx="222" cy="70" r="7"/>
+            <circle cx="86" cy="140" r="8"/>
+            <circle cx="70" cy="180" r="11"/>
+            <circle cx="232" cy="150" r="9"/>
+          </g>
+          <!-- destellos -->
+          <g id="sparkleGroup" opacity="0" fill="#F0C040">
+            <use href="#sparkle" x="52" y="44" width="26" height="26"/>
+            <use href="#sparkle" x="224" y="48" width="24" height="24"/>
+            <use href="#sparkle" x="232" y="146" width="18" height="18"/>
+            <use href="#sparkle" x="46" y="150" width="18" height="18"/>
+          </g>
+        </svg>
+      </div>
+      <div class="groom-controls">
+        <p class="minute-readout" id="minuteReadout">Minuto 0 de 90</p>
+        <p class="stage-text" id="stageText" aria-live="polite">Llegada: un saludo afable y un comienzo tranquilo</p>
+        <input type="range" id="minuteRange" min="0" max="90" step="1" value="0" aria-label="Minutos de la sesión">
+        <div class="range-scale" aria-hidden="true"><span>Llegada</span><span>Baño</span><span>Estilo</span></div>
+        <p class="groom-caption">Cada minuto aporta brillo. Tu página funciona de la misma manera: una estructura pensada para disfrutarse desde el primer vistazo.</p>
+        <div><button class="btn-ghost" id="playBtn" type="button">Iniciar sesión</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="audience" id="audience">
+    <div class="section-head">
+      <h2>Diseñado a la medida de tu negocio de peluquería</h2>
+      <p>Un salón de peluquería canina y un centro de estética multimascota necesitan herramientas distintas construidas sobre la misma base impecable. Cambia de vista para ver cómo easylandx se adapta a cada uno.</p>
+    </div>
+
+    <div class="tab-row" role="tablist">
+      <button class="tab-btn active" data-tab="dogs" role="tab" aria-selected="true">Peluqueros caninos</button>
+      <button class="tab-btn" data-tab="pets" role="tab" aria-selected="false">Peluqueros de mascotas</button>
+    </div>
+
+    <div class="tab-panel active" data-panel="dogs">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="5" width="26" height="30" rx="4" fill="none" stroke="#F0C040" stroke-width="2"/><line x1="13" y1="14" x2="27" y2="14" stroke="#6FD3F0" stroke-width="2"/><line x1="13" y1="21" x2="27" y2="21" stroke="#6FD3F0" stroke-width="2"/><line x1="13" y1="28" x2="21" y2="28" stroke="#6FD3F0" stroke-width="2"/></svg>
+          <div><h3>Menú de servicios y precios</h3><p>Baños, arreglos completos, deslanado y corte de uñas en un menú claro, con guías por tamaño de raza para facilitar la elección.</p></div>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="8" width="32" height="24" rx="4" fill="none" stroke="#6FD3F0" stroke-width="2"/><path d="M20 8 H32 a4 4 0 0 1 4 4 V28 a4 4 0 0 1 -4 4 H20 Z" fill="#F0C040"/><line x1="20" y1="8" x2="20" y2="32" stroke="#0F2258" stroke-width="2"/></svg>
+          <div><h3>Galería de antes y después</h3><p>Transformaciones espectaculares mostradas frente a frente, dejando que tu trabajo hable por sí solo desde el primer desplazamiento.</p></div>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 30 L14 24 A12 12 0 1 1 20 30 Z" fill="#F7A8C8"/></svg>
+          <div><h3>Citas por WhatsApp</h3><p>Un botón directo transforma un «¿podría venir Bella el sábado?» en una cita reservada con solo un toque.</p></div>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 C10 4 4 12 4 20 C4 30 20 36 20 36 C20 36 36 30 36 20 C36 12 30 4 20 4 Z" fill="none" stroke="#F0C040" stroke-width="2"/><circle cx="20" cy="18" r="5" fill="#6FD3F0"/></svg>
+          <div><h3>Horario y ubicación del salón</h3><p>Mapa, horarios de atención y detalles de aparcamiento organizados para que encontrar tu peluquería sea facilísimo.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="pets">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><polygon points="8,17 10,5 19,11" fill="#F7A8C8"/><polygon points="32,17 30,5 21,11" fill="#F7A8C8"/><circle cx="20" cy="23" r="12" fill="none" stroke="#6FD3F0" stroke-width="2"/><circle cx="15" cy="21" r="2" fill="#F0C040"/><circle cx="25" cy="21" r="2" fill="#F0C040"/><path d="M18 27 Q20 29 22 27" stroke="#F0C040" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <div><h3>Gatos y pequeñas mascotas</h3><p>Estética suave y libre de estrés para gatos, conejos y otros pequeños compañeros, presentada con total tranquilidad.</p></div>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="12" width="22" height="17" rx="3" fill="#F0C040"/><path d="M25 17 H32 L37 23 V29 H25 Z" fill="#6FD3F0"/><circle cx="12" cy="31" r="4" fill="#F7A8C8" stroke="#17307A" stroke-width="1.5"/><circle cx="30" cy="31" r="4" fill="#F7A8C8" stroke="#17307A" stroke-width="1.5"/></svg>
+          <div><h3>Servicio móvil y a domicilio</h3><p>Tu ruta de furgoneta, zonas de cobertura y franjas de visita explicadas con claridad, llevando el spa a la puerta de casa.</p></div>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M32 20 A12 12 0 1 1 26 9.5" stroke="#6FD3F0" stroke-width="2.5" fill="none" stroke-linecap="round"/><polygon points="22,4 31,9 23,15" fill="#F0C040"/></svg>
+          <div><h3>Planes de cuidado y suscripciones</h3><p>Sesiones periódicas cada cuatro a seis semanas presentadas como planes sencillos, facilitando las visitas recurrentes.</p></div>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="16" y="6" width="8" height="7" rx="2" fill="#F7A8C8"/><rect x="12" y="13" width="16" height="22" rx="4" fill="#F0C040"/><rect x="16" y="20" width="8" height="8" rx="2" fill="#6FD3F0"/></svg>
+          <div><h3>Productos e ingredientes delicados</h3><p>Champús, tratamientos para el pelo y opciones para pieles sensibles descritos con palabras sencillas que inspiran confianza.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fit">
+    <div class="section-head">
+      <h2>Una combinación que va más allá de la buena imagen</h2>
+      <p>Dos ideas clave que easylandx aporta a cada proyecto de peluquería: un diseño claro que fomenta las reservas y un flujo de trabajo ágil que cuida tu presupuesto.</p>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-card">
+        <svg class="spark" viewBox="-10 -10 20 20" aria-hidden="true" fill="#F0C040"><use href="#sparkle" x="-10" y="-10" width="20" height="20"/></svg>
+        <h3>Frescura desde el primer segundo</h3>
+        <p>La vista principal transmite la sensación de un pelaje recién cepillado: limpio, brillante y acogedor.</p>
+      </div>
+      <div class="fit-card">
+        <svg class="spark" viewBox="-10 -10 20 20" aria-hidden="true" fill="#F0C040"><use href="#sparkle" x="-10" y="-10" width="20" height="20"/></svg>
+        <h3>Una cita, un camino claro</h3>
+        <p>Cada sección guía de manera fluida hacia un único objetivo: reservar una sesión, manteniendo la atención en lo importante.</p>
+      </div>
+      <div class="fit-card">
+        <svg class="spark" viewBox="-10 -10 20 20" aria-hidden="true" fill="#F0C040"><use href="#sparkle" x="-10" y="-10" width="20" height="20"/></svg>
+        <h3>Inversión optimizada</h3>
+        <p>Diseños a medida a un precio accesible, garantizando que el presupuesto de lanzamiento sea ligero como pelo recién secado.</p>
+      </div>
+      <div class="fit-card">
+        <svg class="spark" viewBox="-10 -10 20 20" aria-hidden="true" fill="#F0C040"><use href="#sparkle" x="-10" y="-10" width="20" height="20"/></svg>
+        <h3>En línea en días, perfeccionada cada semana</h3>
+        <p>Tu sitio se publica en cuestión de días y se pule con las interacciones reales de los clientes, como un corte perfeccionado visita tras visita.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="cta-panel">
+      <h2>Dale a tu negocio de peluquería una web tan radiante como un manto recién cepillado</h2>
+      <p>Descubre páginas web en vivo creadas para peluquerías caninas, salones de mascotas y servicios móviles en todo el mundo.</p>
+      <a class="btn-primary" href="https://easylandx.github.io" target="_blank" rel="noopener">Visitar easylandx</a>
+    </div>
+  </section>
+
+  <footer>easylandx — páginas de destino personalizadas, creadas con esmero. 2026.</footer>
+
+</div>
+
+<script>
+  (function(){
+    // --- Widget de Peluquería ---
+    var furChest = document.getElementById('furChest');
+    var furHead = document.getElementById('furHead');
+    var furEarL = document.getElementById('furEarL');
+    var furEarR = document.getElementById('furEarR');
+    var scruff = document.getElementById('scruffGroup');
+    var mud = document.getElementById('mudGroup');
+    var puffs = document.getElementById('puffsGroup');
+    var tub = document.getElementById('tubGroup');
+    var bubbles = document.getElementById('bubblesGroup');
+    var bandana = document.getElementById('bandanaGroup');
+    var sparkles = document.getElementById('sparkleGroup');
+    var range = document.getElementById('minuteRange');
+    var readout = document.getElementById('minuteReadout');
+    var stageText = document.getElementById('stageText');
+    var playBtn = document.getElementById('playBtn');
+    var MAX = 90;
+
+    var stages = [
+      [10, 'Llegada: un saludo afable y un comienzo tranquilo'],
+      [38, 'Baño tibio: burbujas, champú suave y mucho cuidado'],
+      [58, 'Secado a mano y cepillado: pelo suave y sin enredos'],
+      [76, 'Corte y estilismo: perfilado según la raza'],
+      [89, 'Toques finales: una pañoleta fresca y un toque de brillo'],
+      [90, '¡Listo para recoger! Fresco, esponjoso y listo para la foto']
+    ];
+
+    function clamp(v){ return Math.max(0, Math.min(1, v)); }
+    function hexToRgb(hex){ return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)]; }
+    function lerpColor(a, b, t){
+      var ca = hexToRgb(a), cb = hexToRgb(b);
+      return 'rgb(' + ca.map(function(v, i){ return Math.round(v + (cb[i] - v) * t); }).join(',') + ')';
+    }
+    function stageFor(m){
+      for(var i = 0; i < stages.length; i++){ if(m <= stages[i][0]) return stages[i][1]; }
+      return stages[stages.length - 1][1];
+    }
+
+    var minute = 0;
+    function setMinute(m){
+      minute = m;
+      var p = clamp((m - 10) / 38);
+      var fur = lerpColor('#A98B6B', '#F7E6C8', p);
+      var ear = lerpColor('#8A6B4C', '#EBD3A8', p);
+      furChest.setAttribute('fill', fur);
+      furHead.setAttribute('fill', fur);
+      furEarL.setAttribute('fill', ear);
+      furEarR.setAttribute('fill', ear);
+      scruff.setAttribute('fill', fur);
+      scruff.setAttribute('opacity', 1 - clamp((m - 44) / 18));
+      mud.setAttribute('opacity', 0.6 * (1 - clamp((m - 12) / 20)));
+      tub.setAttribute('opacity', (m >= 12 && m <= 44) ? 1 : 0);
+      bubbles.setAttribute('opacity', clamp((m - 10) / 6) * (1 - clamp((m - 40) / 6)));
+      puffs.setAttribute('opacity', clamp((m - 62) / 14));
+      bandana.setAttribute('opacity', m >= 80 ? 1 : 0);
+      sparkles.setAttribute('opacity', m >= 88 ? 1 : 0);
+      readout.textContent = 'Minuto ' + m + ' de ' + MAX;
+      stageText.textContent = stageFor(m);
+      range.value = m;
+      range.setAttribute('aria-valuetext', 'Minuto ' + m + ': ' + stageFor(m));
+    }
+
+    var timer = null;
+    function pausePlayback(){
+      if(timer){ clearInterval(timer); timer = null; }
+      playBtn.textContent = minute >= MAX ? 'Repetir sesión' : 'Iniciar sesión';
+    }
+    function startPlayback(){
+      if(minute >= MAX){ setMinute(0); }
+      playBtn.textContent = 'Pausar sesión';
+      timer = setInterval(function(){
+        if(minute >= MAX){ pausePlayback(); return; }
+        setMinute(minute + 1);
+        if(minute >= MAX){ pausePlayback(); }
+      }, 110);
+    }
+
+    range.addEventListener('input', function(){
+      setMinute(parseInt(range.value, 10));
+      pausePlayback();
+    });
+    playBtn.addEventListener('click', function(){
+      if(timer){ pausePlayback(); } else { startPlayback(); }
+    });
+
+    setMinute(0);
+
+    // --- Pestañas de Peluqueros caninos / mascotas ---
+    var tabButtons = document.querySelectorAll('.tab-btn');
+    var panels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var target = btn.getAttribute('data-tab');
+        tabButtons.forEach(function(b){
+          var isActive = b === btn;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        panels.forEach(function(p){
+          p.classList.toggle('active', p.getAttribute('data-panel') === target);
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

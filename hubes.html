@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EasyLandX — Centro de Ejemplos para Negocios</title>
+<base target="_blank">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕊️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --red:#E8291C;
+    --red-dark:#B81B10;
+    --yellow:#FFD400;
+    --yellow-dark:#C98E00;
+    --green:#12A44D;
+    --green-dark:#0C7A38;
+    --paper:#FFFFFF;
+    --ink:#171412;
+    --ink-soft:#4E4741;
+    --line: rgba(23,20,18,0.14);
+    --whatsapp:#25D366;
+    --radius: 12px;
+    --safe-t: env(safe-area-inset-top, 0px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top: calc(76px + var(--safe-t));
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.55;
+    padding-top: var(--safe-t);
+    padding-bottom: var(--safe-b);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Poppins',system-ui,sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+    margin:0 0 .5em;
+    color:inherit;
+  }
+  em{font-style:normal; font-weight:900; color:var(--red);}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .prose{max-width:680px;}
+  :focus-visible{outline:3px solid var(--ink); outline-offset:3px;}
+
+  /* ---------- top offer bar ---------- */
+  .offerbar{
+    background:#0066CC;
+    color:#fff;
+    font-weight:600;
+    font-size:.9rem;
+    text-align:center;
+    padding:10px 16px;
+  }
+  .offerbar a{color:var(--yellow); text-decoration:underline; text-underline-offset:3px; font-weight:700;}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:saturate(140%) blur(6px);
+    border-bottom:3px solid var(--ink);
+  }
+  .navrow{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1160px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Poppins',sans-serif; font-weight:900; font-size:1.25rem;
+    text-decoration:none; color:var(--ink);
+  }
+  .navlinks{display:flex; gap:26px; align-items:center; list-style:none; margin:0; padding:0;}
+  .navlinks a{text-decoration:none; font-size:.94rem; color:var(--ink); font-weight:600;}
+  .navlinks a:hover{color:var(--red);}
+  .navtoggle{display:none;}
+  @media (max-width:760px){
+    .navlinks{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:flex-start; gap:0;
+      background:var(--paper); border-bottom:3px solid var(--ink);
+      max-height:0; overflow:hidden; transition:max-height .25s ease;
+    }
+    .navlinks.open{max-height:280px;}
+    .navlinks li{width:100%; padding:14px 24px; border-top:1px solid var(--line);}
+    .navtoggle{
+      display:inline-flex; background:var(--ink); color:#fff; border:none; text-decoration:none;
+      border-radius:var(--radius); padding:8px 14px; font-size:.95rem; font-weight:700;
+    }
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 24px; border-radius:var(--radius);
+    font-weight:700; font-size:.96rem; text-decoration:none;
+    border:2px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--whatsapp); color:#fff;}
+  .btn-primary:hover{background:#1FAE58;}
+  .btn-gold{background:var(--yellow); color:var(--ink);}
+  .btn-gold:hover{background:var(--yellow-dark); color:#fff;}
+  .btn-red{background:var(--red); color:#fff;}
+  .btn-red:hover{background:var(--red-dark); color:#fff;}
+  .btn-ghost{background:transparent; border-color:var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:#fff;}
+  .btnrow{display:flex; flex-wrap:wrap; gap:12px;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 56px; position:relative; overflow:hidden; background:var(--yellow);}
+  .herogrid{
+    display:grid; grid-template-columns:1.5fr 1fr; gap:56px; align-items:end;
+  }
+  .kicker{
+    font-size:1rem; color:var(--ink); font-weight:700; margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.8vw, 4.2rem);
+  }
+  .hero-sub{
+    color:var(--ink); font-size:1.14rem; max-width:52ch; margin:20px 0 30px; font-weight:500;
+  }
+  .marginal{
+    border-left:4px solid var(--ink); padding-left:24px;
+    font-weight:600; font-size:1.08rem;
+    color:var(--ink); align-self:end;
+  }
+  @media (max-width:900px){
+    .herogrid{grid-template-columns:1fr;}
+    .marginal{border-left:none; border-top:4px solid var(--ink); padding-left:0; padding-top:20px;}
+  }
+  .stripe{
+    margin-top:52px; border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);
+    overflow:hidden; white-space:nowrap; padding:13px 0;
+  }
+  .stripe-track{
+    display:inline-block; padding-left:100%;
+    animation: scrollstripe 34s linear infinite;
+    font-size:.9rem; color:var(--ink); font-weight:700; letter-spacing:.02em;
+  }
+  @media (prefers-reduced-motion: reduce){ .stripe-track{animation:none; padding-left:0;} }
+  @keyframes scrollstripe{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section{padding:76px 0;}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .eyebrow{color:var(--red-dark); font-weight:700; font-size:.94rem; margin-bottom:10px;}
+
+  /* ---------- cards grid ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:24px;
+  }
+  .card{
+    background:var(--paper);
+    border:3px solid var(--ink);
+    border-radius:var(--radius);
+    padding:28px 26px;
+    text-decoration:none;
+    transition: transform .18s ease, box-shadow .18s ease;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:6px 6px 0 var(--ink);
+  }
+  .card-icon{font-size:2.1rem; margin-bottom:14px;}
+  .card h3{
+    font-size:1.25rem;
+    margin-bottom:10px;
+  }
+  .card p{
+    color:var(--ink-soft);
+    font-size:.98rem;
+    flex-grow:1;
+    margin:0 0 18px;
+  }
+  .card-link{
+    font-weight:700;
+    color:var(--red);
+    font-size:.95rem;
+  }
+
+  /* ---------- stats ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    border-top:3px solid var(--ink);
+    padding-top:36px;
+    margin-top:48px;
+  }
+  .stat b{
+    font-family:'Poppins',sans-serif;
+    font-weight:900;
+    font-size:2.3rem;
+    display:block;
+    color:var(--red);
+  }
+  .stat span{color:var(--ink-soft); font-size:.92rem; font-weight:600;}
+  @media (max-width:700px){ .stats{grid-template-columns:1fr 1fr;} }
+
+  /* ---------- offer ---------- */
+  .offer-box{
+    background:var(--yellow);
+    color:var(--ink);
+    border-radius:var(--radius);
+    padding:52px 44px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:26px;
+    border:3px solid var(--ink);
+  }
+  .offer-box h2{color:var(--ink); margin:0 0 8px;}
+  .offer-box p{color:var(--ink); margin:0; max-width:44ch; font-weight:500;}
+
+  /* ---------- final CTA ---------- */
+  .finalcta{
+    background:var(--red);
+    color:#fff;
+    text-align:center;
+    padding:80px 24px;
+  }
+  .finalcta h2{
+    font-size:clamp(2.1rem,4.6vw,2.9rem);
+    max-width:16ch;
+    margin:0 auto 20px;
+    color:#fff;
+  }
+  .finalcta .btnrow{justify-content:center;}
+
+  /* ---------- footer ---------- */
+  footer{padding:56px 0 40px; background:#0066CC; color:#fff;}
+  .footgrid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:32px;}
+  .footgrid h4{font-size:.86rem; color:rgba(255,255,255,0.6); margin:0 0 12px; font-weight:700;}
+  .footgrid a{display:block; text-decoration:none; color:#fff; font-size:.93rem; margin-bottom:8px; font-weight:500;}
+  .footgrid a:hover{color:var(--yellow);}
+  .footbrand{font-family:'Poppins',sans-serif; font-weight:900; font-size:1.3rem; margin-bottom:6px;}
+  .footnote{margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.2); font-size:.85rem; color:rgba(255,255,255,0.65);}
+  @media (max-width:760px){ .footgrid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+
+<div class="offerbar">🔥 Oferta — ¡consigue tu página de aterrizaje ahora! <a href="https://easylandx.github.io/why/89e.html">Ver oferta →</a></div>
+
+<header class="nav">
+  <div class="navrow">
+    <a class="brand" href="#top" target="_self">EasyLandX</a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#examples" target="_self">Ejemplos</a></li>
+      <li><a href="https://easylandx.github.io/why/ease.html">Sobre nosotros</a></li>
+      <li><a href="https://easylandx.github.io/why/89e.html">Oferta</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="herogrid">
+        <div>
+          <h1>Ejemplos de <em>negocios.</em></h1>
+          <p class="hero-sub">Cada página es un argumento para decir que sí.</p>
+          <div class="btnrow">
+            <a class="btn btn-red" href="https://easylandx.github.io/why/89e.html" target="_self">🔥 Ver oferta especial</a>
+            <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=34609204298">💬 WhatsApp</a>
+          </div>
+        </div>
+        <p class="marginal">"Una página persuasiva invita a tomar una decisión: de forma cercana, clara y directa hacia un único objetivo."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section id="examples">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Con quién trabajamos</div>
+        <h2>Diseñado para todo tipo de pequeños negocios</h2>
+      </div>
+
+      <div class="grid">
+
+        <a href="https://easylandx.github.io/web/yogaes.html" class="card">
+          <div class="card-icon">🧘‍♀️</div>
+          <h3>Profesores y Estudios de Yoga</h3>
+          <p>Una primera impresión serena que conecta con el ritmo de la práctica: horarios claros, historias personales y una forma sencilla de reservar.</p>
+          <span class="card-link">Ver ejemplo de yoga →</span>
+        </a>
+
+        <a href="https://easylandx.github.io/web/traineres.html" class="card">
+          <div class="card-icon">🏋️‍♂️</div>
+          <h3>Entrenadores Personales y Centros</h3>
+          <p>Una página solo necesita una buena repetición. Programas estructurados, transformaciones reales y contacto directo para reservar la primera sesión.</p>
+          <span class="card-link">Ver ejemplo de entrenador →</span>
+        </a>
+
+        <a href="https://easylandx.github.io/web/terapeuta.html" class="card">
+          <div class="card-icon">🧠</div>
+          <h3>Psicólogos y Consultas</h3>
+          <p>Una página que transmite la misma firmeza y calma que tu consulta: enfoque claro, preguntas frecuentes cercanas y una vía simple para contactar.</p>
+          <span class="card-link">Ver ejemplo de psicología →</span>
+        </a>
+
+        <a href="https://easylandx.github.io/web/gastronomia.html" class="card">
+          <div class="card-icon">🍞</div>
+          <h3>Panaderías y Alimentación Especializada</h3>
+          <p>Una página recién horneada e ideal para el buen pan: menú del día, reservas por WhatsApp y la calidez del horno en versión online.</p>
+          <span class="card-link">Ver ejemplo de panadería →</span>
+        </a>
+
+        <a href="https://easylandx.github.io/web/arte.html" class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Artistas y Talleres de Arte</h3>
+          <p>Una primera impresión llena de color para obras originales y talleres: portafolio por series, reservas claras y energía creativa.</p>
+          <span class="card-link">Ver ejemplo de arte →</span>
+        </a>
+
+        <a href="https://easylandx.github.io/web/mascotas.html" class="card">
+          <div class="card-icon">🐾</div>
+          <h3>Peluquerías y Salones Caninos</h3>
+          <p>Una página impecable para mascotas felices: carta de servicios, fotos de antes y después, y citas sencillas por WhatsApp.</p>
+          <span class="card-link">Ver ejemplo de mascotas →</span>
+        </a>
+
+        <a href="https://easylandx.github.io/web/makeupes.html" class="card">
+          <div class="card-icon">💄</div>
+          <h3>Maquilladores Profesionales</h3>
+          <p>Una página impecable para resultados radiantes: portafolio cuidado, paquetes de servicios y una forma rápida de consultar disponibilidad.</p>
+          <span class="card-link">Ver ejemplo de maquillaje →</span>
+        </a>
+
+        <a href="https://easylandx.github.io/why/ease.html" class="card">
+          <div class="card-icon">🔥</div>
+          <h3>La Idea Principal</h3>
+          <p>Cada página es un argumento para decir que sí. Descubre cómo EasyLandX enfoca la conversión para cualquier sector de pequeños negocios.</p>
+          <span class="card-link">Visitar la página principal →</span>
+        </a>
+
+      </div>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat"><b>100+</b><span>Páginas entregadas</span></div>
+        <div class="stat"><b>20+</b><span>Sectores atendidos</span></div>
+        <div class="stat"><b>ES+EN</b><span>Capacidad bilingüe</span></div>
+        <div class="stat"><b>24h</b><span>Tiempo medio de entrega</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offer box -->
+  <section>
+    <div class="wrap">
+      <div class="offer-box">
+        <div>
+          <h2>Aprovecha esta oportunidad.</h2>
+          <p>Una página de aterrizaje profesional, lista para convertir y a un precio imbatible. Consigue la tuya.</p>
+        </div>
+        <a class="btn btn-red" href="https://easylandx.github.io/why/89e.html">🚀 Oferta Especial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="finalcta">
+    <h2>Tu próximo cliente está a solo una página de distancia.</h2>
+    <div class="btnrow">
+      <a class="btn btn-gold" href="https://easylandx.github.io/why/89e.html">Ver la oferta</a>
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=34609204298">💬 WhatsApp</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <div class="footbrand">EasyLandX</div>
+        <p style="margin:0; opacity:.85; max-width:32ch;">Landing pages diseñadas con la solidez de un argumento: para pequeños negocios que buscan un sí definitivo.</p>
+      </div>
+      <div>
+        <h4>Ejemplos</h4>
+        <a href="https://easylandx.github.io/web/yogaes.html">Yoga</a>
+        <a href="https://easylandx.github.io/web/traineres.html">Entrenadores</a>
+        <a href="https://easylandx.github.io/web/terapeuta.html">Psicólogos</a>
+        <a href="https://easylandx.github.io/web/gastronomia.html">Panaderías</a>
+      </div>
+      <div>
+        <h4>Más</h4>
+        <a href="https://easylandx.github.io/web/arte.html">Artistas</a>
+        <a href="https://easylandx.github.io/web/mascotas.html">Estética Canina</a>
+        <a href="https://easylandx.github.io/web/makeupes.html">Maquillaje</a>
+        <a href="https://easylandx.github.io/why/ease.html">Página principal</a>
+      </div>
+    </div>
+    <div class="footnote">
+      Todos los ejemplos por EasyLandX · Landing pages de alta conversión para pequeños negocios
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

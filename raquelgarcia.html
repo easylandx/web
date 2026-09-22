@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raquel García | Liderazgo Personal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF3E9;
+    --sand:#F7E4CE;
+    --sunset:#F2A65A;
+    --coral:#E2703A;
+    --teal:#2F6F68;
+    --teal-light:#DCEBE8;
+    --gold:#C99A3E;
+    --ink:#3F2E27;
+    --ink-soft:#6B564C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.12;
+    color:var(--ink);
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(253,243,233,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(63,46,39,0.08);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1080px; margin:0 auto;
+  }
+  .brand{font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600;}
+  .brand span{color:var(--coral); font-style:italic;}
+  .btn-wa-mini{
+    background:var(--teal);
+    color:var(--cream);
+    padding:10px 18px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+    white-space:nowrap;
+    box-shadow:0 4px 14px rgba(47,111,104,0.3);
+    transition:transform .2s ease;
+  }
+  .btn-wa-mini:hover{transform:translateY(-2px);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:64px 0 44px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:44px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--teal-light);
+    color:var(--teal);
+    padding:7px 16px;
+    border-radius:100px;
+    font-size:0.82rem;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--teal);}
+  .hero h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.5rem);
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:italic; color:var(--coral);}
+  .hero p.lede{
+    font-size:1.1rem;
+    color:var(--ink-soft);
+    max-width:48ch;
+    margin-bottom:30px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--coral);
+    color:var(--cream);
+    padding:15px 30px;
+    border-radius:100px;
+    font-weight:700;
+    box-shadow:0 8px 22px rgba(226,112,58,0.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(226,112,58,0.45);}
+  .btn-secondary{
+    border:1.5px solid var(--gold);
+    color:var(--ink);
+    padding:14px 28px;
+    border-radius:100px;
+    font-weight:600;
+    transition:background .2s ease;
+  }
+  .btn-secondary:hover{background:rgba(201,154,62,0.12);}
+
+  .hero-art{display:flex; justify-content:center; align-items:center;}
+  .hero-art svg{width:100%; max-width:320px; height:auto;}
+
+  .facts{
+    display:flex; flex-wrap:wrap; gap:26px;
+    margin-top:44px; padding-top:30px;
+    border-top:1px solid rgba(63,46,39,0.12);
+  }
+  .fact{display:flex; align-items:center; gap:10px; font-size:0.95rem; color:var(--ink-soft);}
+  .fact .num{font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; color:var(--coral);}
+
+  /* ---------- Sections ---------- */
+  section{padding:70px 0;}
+  .section-head{max-width:56ch; margin-bottom:44px;}
+  .section-head .tag{color:var(--coral); font-weight:700; font-size:0.85rem; margin-bottom:10px; display:block;}
+  .section-head h2{font-size:clamp(1.9rem, 3.4vw, 2.5rem);}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--sand);}
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .service-card{background:var(--cream); border-radius:22px; padding:32px 26px; box-shadow:0 10px 30px rgba(63,46,39,0.06);}
+  .service-card .icon{width:52px; height:52px; margin-bottom:18px;}
+  .service-card h3{font-size:1.25rem; margin-bottom:10px;}
+  .service-card p{color:var(--ink-soft); font-size:0.96rem;}
+
+  /* ---------- Interactive: estilo de liderazgo ---------- */
+  .quiz{
+    background:linear-gradient(135deg, var(--teal-light) 0%, var(--sand) 100%);
+    border-radius:28px;
+    padding:48px 36px;
+  }
+  .quiz h2{font-size:clamp(1.8rem,3vw,2.3rem); margin-bottom:10px;}
+  .quiz > p{color:var(--ink-soft); max-width:52ch; margin-bottom:30px;}
+  .quiz-options{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px;}
+  .quiz-option{
+    background:var(--cream);
+    border:2px solid transparent;
+    border-radius:16px;
+    padding:18px 14px;
+    text-align:center;
+    cursor:pointer;
+    font-weight:600;
+    font-size:0.92rem;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .quiz-option:hover{transform:translateY(-3px);}
+  .quiz-option.active{border-color:var(--coral); color:var(--coral);}
+  .quiz-result{
+    background:var(--cream);
+    border-radius:20px;
+    padding:28px;
+    min-height:120px;
+  }
+  .quiz-result h3{font-size:1.2rem; margin-bottom:8px; color:var(--teal);}
+  .quiz-result p{color:var(--ink-soft); font-size:0.96rem;}
+
+  /* ---------- Quote ---------- */
+  .quote-section{text-align:center;}
+  .quote-section blockquote{
+    font-family:'Fraunces',serif; font-style:italic;
+    font-size:clamp(1.5rem, 3vw, 2.1rem);
+    max-width:26ch; margin:0 auto 18px;
+  }
+  .quote-section cite{font-style:normal; color:var(--coral); font-size:0.9rem; font-weight:700;}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    background:var(--teal);
+    border-radius:28px;
+    padding:56px 40px;
+    text-align:center;
+    color:var(--cream);
+  }
+  .final-cta h2{color:var(--cream); font-size:clamp(1.9rem,3.6vw,2.6rem); margin-bottom:14px;}
+  .final-cta p{color:rgba(253,243,233,0.85); max-width:46ch; margin:0 auto 30px;}
+  .cta-buttons{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .cta-buttons a{padding:15px 28px; border-radius:100px; font-weight:700; display:inline-flex; align-items:center; gap:9px;}
+  .cta-wa{background:var(--cream); color:var(--teal);}
+  .cta-ghost{border:1.5px solid rgba(253,243,233,0.6); color:var(--cream);}
+  .cta-buttons a:hover{transform:translateY(-2px); transition:transform .2s ease;}
+
+  footer{padding:32px 0 40px; text-align:center; font-size:0.85rem; color:var(--ink-soft);}
+  footer a{color:var(--coral); font-weight:700;}
+
+  @media (max-width: 860px){
+    .hero{grid-template-columns:1fr; padding-top:40px;}
+    .hero-art{order:-1;}
+    .hero-art svg{max-width:220px;}
+    .service-grid{grid-template-columns:1fr;}
+    .quiz-options{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">Raquel <span>García</span></div>
+    <a class="btn-wa-mini" href="http://bit.ly/RaquelGarciaAmador" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Liderazgo Personal · Formaciones en Empresas</div>
+      <h1>El liderazgo <em>empieza en ti</em></h1>
+      <p class="lede">Acompaño a personas y equipos a superar sus propias barreras y liderar desde la coherencia. Hablo desde la experiencia: yo también tuve que reconstruirme tras una crisis personal.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="http://bit.ly/RaquelGarciaAmador" target="_blank" rel="noopener">Quiero mi sesión</a>
+        <a class="btn-secondary" href="https://www.instagram.com/raquelgarciaoficialcoach" target="_blank" rel="noopener">Ver en Instagram</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="num">Empresas</span> formaciones a medida</div>
+        <div class="fact"><span class="num">Personal</span> superación de crisis</div>
+        <div class="fact"><span class="num">Online</span> y presencial</div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="290" rx="110" ry="16" fill="#E2703A" opacity="0.15"/>
+        <path d="M150 250 L150 130" stroke="#C99A3E" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="150" cy="100" r="34" fill="#F2A65A"/>
+        <path d="M120 250 C110 210 120 170 150 130 C180 170 190 210 180 250 Z" fill="#2F6F68"/>
+        <circle cx="90" cy="190" r="16" fill="#E2703A"/>
+        <circle cx="210" cy="160" r="12" fill="#C99A3E"/>
+        <circle cx="220" cy="220" r="9" fill="#F2A65A"/>
+        <path d="M60 260 C100 230 200 230 240 260" stroke="#C99A3E" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Cómo puedo ayudarte</span>
+        <h2>Formación y acompañamiento para liderar de verdad</h2>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 52 52" fill="none"><rect x="8" y="14" width="36" height="26" rx="4" fill="#F2A65A"/><path d="M18 14v-4h16v4" stroke="#3F2E27" stroke-width="2" fill="none"/><path d="M8 30h36" stroke="#3F2E27" stroke-width="1.5"/></svg>
+          <h3>Formaciones en empresas</h3>
+          <p>Talleres y programas a medida para equipos y directivos que quieren liderar con coherencia y propósito.</p>
+        </div>
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="18" r="10" fill="#E2703A"/><path d="M10 44c2-12 10-18 16-18s14 6 16 18" stroke="#2F6F68" stroke-width="2" fill="none"/></svg>
+          <h3>Coaching de liderazgo personal</h3>
+          <p>Sesiones individuales para reconectar con tu voz, tomar decisiones y avanzar tras un momento difícil.</p>
+        </div>
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 52 52" fill="none"><path d="M10 40 L26 12 L42 40 Z" fill="#C99A3E"/><circle cx="26" cy="30" r="4" fill="#FDF3E9"/></svg>
+          <h3>Charlas inspiracionales</h3>
+          <p>Historias reales de superación que conectan y movilizan a tu equipo o comunidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE -->
+  <section id="quiz">
+    <div class="section-head">
+      <span class="tag">Pruébalo tú misma</span>
+      <h2>¿Cuál es tu estilo de liderazgo hoy?</h2>
+    </div>
+    <div class="quiz">
+      <h2>Elige lo que más se parezca a ti ahora mismo</h2>
+      <p>Una primera pista de por dónde empezar a trabajar. En la sesión real vamos mucho más a fondo.</p>
+      <div class="quiz-options" id="quizOptions">
+        <div class="quiz-option active" data-style="reconstructor">Estoy reconstruyéndome</div>
+        <div class="quiz-option" data-style="silencioso">Lidero, pero en silencio</div>
+        <div class="quiz-option" data-style="agotado">Doy todo y me agoto</div>
+        <div class="quiz-option" data-style="buscador">Busco mi siguiente paso</div>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <h3 id="resultTitle">La reconstructora</h3>
+        <p id="resultDesc">Estás en un proceso de volver a ti tras un momento difícil. Necesitas espacio para ordenar antes de avanzar, no prisa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <blockquote>"Mi felicidad está donde comienza la tuya."</blockquote>
+    <cite>— Raquel García</cite>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="final-cta">
+      <h2>Demos el primer paso juntas</h2>
+      <p>Para ti, para tu equipo o para tu empresa. Cuéntame dónde estás y te respondo hoy mismo.</p>
+      <div class="cta-buttons">
+        <a class="cta-wa" href="http://bit.ly/RaquelGarciaAmador" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+        <a class="cta-ghost" href="https://www.instagram.com/raquelgarciaoficialcoach" target="_blank" rel="noopener">📷 Seguir en Instagram</a>
+        <a class="cta-ghost" href="https://linktr.ee/RaquelGarciaAmador" target="_blank" rel="noopener">🔗 Ver todos mis enlaces</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Raquel García · Liderazgo Personal · Formaciones en Empresas ·
+  <a href="https://www.instagram.com/raquelgarciaoficialcoach" target="_blank" rel="noopener">@raquelgarciaoficialcoach</a>
+</footer>
+
+<script>
+  const styles = {
+    reconstructor: {
+      title: "La reconstructora",
+      desc: "Estás en un proceso de volver a ti tras un momento difícil. Necesitas espacio para ordenar antes de avanzar, no prisa."
+    },
+    silencioso: {
+      title: "El líder silencioso",
+      desc: "Sostienes mucho sin pedir ayuda. Tu reto no es liderar más fuerte, sino liderar más visible."
+    },
+    agotado: {
+      title: "La que da todo",
+      desc: "Tu entrega es real, pero sin límites se agota. Toca aprender a liderar sin desaparecer en el intento."
+    },
+    buscador: {
+      title: "En busca del siguiente paso",
+      desc: "Ya hiciste el trabajo interno. Ahora necesitas claridad para decidir hacia dónde dar el siguiente paso."
+    }
+  };
+
+  const options = document.querySelectorAll('.quiz-option');
+  const resultTitle = document.getElementById('resultTitle');
+  const resultDesc = document.getElementById('resultDesc');
+
+  options.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      options.forEach(o=>o.classList.remove('active'));
+      opt.classList.add('active');
+      const data = styles[opt.dataset.style];
+      resultTitle.textContent = data.title;
+      resultDesc.textContent = data.desc;
+    });
+  });
+</script>
+
+</body>
+</html>

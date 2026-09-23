@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LET'S MOVE 3C — Campeonato de Danza Urbana</title>
+<style>
+  :root{
+    --violet:#5B1E9E;
+    --magenta:#E8127A;
+    --cyan:#12C9E0;
+    --gold:#F0C040;
+    --gold2:#D4AF37;
+    --dark:#170B2B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI',Arial,sans-serif;
+    background:linear-gradient(160deg,var(--violet) 0%, var(--magenta) 55%, var(--dark) 100%);
+    color:#fff;
+    min-height:100vh;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding-left:22px;padding-right:22px;}
+
+  /* HERO */
+  .hero{padding-top:48px;padding-bottom:36px;text-align:center;}
+  .hero .tag{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--dark);
+    font-weight:800;
+    font-size:0.78rem;
+    letter-spacing:1.5px;
+    padding:6px 16px;
+    border-radius:30px;
+    margin-bottom:18px;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:2.6rem;
+    line-height:1.05;
+    font-weight:900;
+    letter-spacing:-1px;
+    text-shadow:0 4px 0 rgba(0,0,0,0.25);
+  }
+  .hero h1 span{color:var(--cyan);}
+  .hero p.sub{
+    margin-top:14px;
+    font-size:1.05rem;
+    color:#F3E9FF;
+    font-weight:600;
+  }
+  .hero .place{
+    margin-top:6px;
+    font-size:1rem;
+    color:var(--gold);
+    font-weight:700;
+  }
+
+  /* COUNTDOWN */
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:30px 0 10px;
+    flex-wrap:wrap;
+  }
+  .countdown .box{
+    background:rgba(255,255,255,0.12);
+    border:2px solid var(--gold);
+    border-radius:14px;
+    padding:12px 14px;
+    min-width:72px;
+    text-align:center;
+  }
+  .countdown .box .num{
+    font-size:1.7rem;
+    font-weight:900;
+    color:#fff;
+    display:block;
+  }
+  .countdown .box .lbl{
+    font-size:0.68rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+  }
+
+  /* CTA BUTTONS */
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:26px;
+  }
+  .btn{
+    position:relative;
+    overflow:hidden;
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:40px;
+    font-weight:800;
+    font-size:1rem;
+    text-decoration:none;
+    cursor:pointer;
+    border:none;
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(0.96);}
+  .btn-gold{
+    background:linear-gradient(90deg,var(--gold2),var(--gold));
+    color:var(--dark);
+  }
+  .btn-outline{
+    background:transparent;
+    color:#fff;
+    border:2px solid var(--cyan);
+  }
+  .ripple{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.6);
+    transform:scale(0);
+    animation:ripple .55s linear;
+    pointer-events:none;
+  }
+  @keyframes ripple{
+    to{transform:scale(4);opacity:0;}
+  }
+
+  /* SECTIONS */
+  section{padding-top:40px;padding-bottom:40px;}
+  .section-title{
+    font-size:1.5rem;
+    font-weight:900;
+    margin-bottom:16px;
+    color:var(--gold);
+  }
+  .card{
+    background:rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:22px;
+    border:1px solid rgba(240,192,64,0.35);
+  }
+  .card p{font-size:0.98rem;line-height:1.6;color:#F3E9FF;}
+  .card p + p{margin-top:10px;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:16px;
+  }
+  .grid .item{
+    background:rgba(255,255,255,0.08);
+    border-radius:14px;
+    padding:16px;
+    text-align:center;
+    border:1px solid rgba(18,201,224,0.4);
+  }
+  .grid .item .emoji{font-size:1.6rem;display:block;margin-bottom:6px;}
+  .grid .item span.t{font-weight:800;font-size:0.9rem;}
+
+  .orgs{
+    margin-top:18px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .orgs .pill{
+    background:rgba(255,255,255,0.1);
+    border:1px solid var(--gold);
+    color:var(--gold);
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:0.85rem;
+    font-weight:700;
+  }
+
+  footer{
+    text-align:center;
+    padding:36px 20px 44px;
+    color:#E9D9FF;
+    font-size:0.85rem;
+  }
+  footer .foot-links{
+    margin-top:14px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  footer a{color:var(--cyan);font-weight:700;text-decoration:none;}
+
+  @media (max-width:420px){
+    .hero h1{font-size:2.1rem;}
+    .countdown .box{min-width:62px;padding:10px 8px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero wrap">
+    <span class="tag">Desde 2012 · #TresCantos</span>
+    <h1>LET'S MOVE <span>3C</span></h1>
+    <p class="sub">Campeonato de Danza Urbana</p>
+    <p class="place">📍 Tres Cantos, Madrid</p>
+
+    <div class="countdown" id="countdown">
+      <div class="box"><span class="num" id="d">--</span><span class="lbl">Días</span></div>
+      <div class="box"><span class="num" id="h">--</span><span class="lbl">Horas</span></div>
+      <div class="box"><span class="num" id="m">--</span><span class="lbl">Min</span></div>
+      <div class="box"><span class="num" id="s">--</span><span class="lbl">Seg</span></div>
+    </div>
+    <p style="margin-top:8px;font-weight:700;color:#F3E9FF;">para la próxima edición · 4 de abril de 2027</p>
+
+    <div class="cta-row">
+      <a class="btn btn-gold" id="igBtn" href="https://www.instagram.com/letsmove3c" target="_blank" rel="noopener">📸 Síguenos en Instagram</a>
+      <a class="btn btn-outline" id="linkBtn" href="https://linktr.ee/letsmove3c" target="_blank" rel="noopener">🔗 Todos los enlaces</a>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="section-title">¿Qué es LET'S MOVE 3C?</div>
+    <div class="card">
+      <p>El campeonato de danza urbana más vibrante de Tres Cantos, en marcha desde 2012. Una cita anual donde bailarines de todos los estilos suben al escenario a competir, compartir y celebrar la cultura urbana.</p>
+      <p>Próxima edición: <strong style="color:var(--gold);">4 de abril de 2027</strong>. ¡No te lo pierdas!</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-title">Por qué venir</div>
+    <div class="grid">
+      <div class="item"><span class="emoji">🔥</span><span class="t">Batallas en vivo</span></div>
+      <div class="item"><span class="emoji">🎤</span><span class="t">Ambiente único</span></div>
+      <div class="item"><span class="emoji">🏆</span><span class="t">Talento de toda España</span></div>
+      <div class="item"><span class="emoji">🎶</span><span class="t">Música y energía</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-title">Organizado por</div>
+    <div class="orgs">
+      <span class="pill">@circodiverso3c</span>
+      <span class="pill">@studio_letsmove3c</span>
+      <span class="pill">@hproductionseventos</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>LET'S MOVE 3C · Campeonato de Danza Urbana · Tres Cantos</p>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/letsmove3c" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://linktr.ee/letsmove3c" target="_blank" rel="noopener">Linktree</a>
+    </div>
+  </footer>
+
+<script>
+  // Countdown to April 4, 2027
+  var target = new Date("2027-04-04T00:00:00").getTime();
+  function updateCountdown(){
+    var now = new Date().getTime();
+    var diff = target - now;
+    if(diff < 0){
+      document.getElementById('countdown').innerHTML = "<p style='font-weight:800;color:var(--gold)'>¡Ya estamos en marcha! 🔥</p>";
+      return;
+    }
+    var d = Math.floor(diff/(1000*60*60*24));
+    var h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    var m = Math.floor((diff%(1000*60*60))/(1000*60));
+    var s = Math.floor((diff%(1000*60))/1000);
+    document.getElementById('d').textContent = d;
+    document.getElementById('h').textContent = h;
+    document.getElementById('m').textContent = m;
+    document.getElementById('s').textContent = s;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Simple button ripple interactivity
+  document.querySelectorAll('.btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var circle = document.createElement('span');
+      var d = Math.max(btn.clientWidth, btn.clientHeight);
+      circle.style.width = circle.style.height = d + 'px';
+      var rect = btn.getBoundingClientRect();
+      circle.style.left = (e.clientX - rect.left - d/2) + 'px';
+      circle.style.top = (e.clientY - rect.top - d/2) + 'px';
+      circle.classList.add('ripple');
+      btn.appendChild(circle);
+      setTimeout(function(){ circle.remove(); }, 550);
+    });
+  });
+</script>
+
+</body>
+</html>

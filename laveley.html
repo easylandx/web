@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Vele y Lavandería | Tres Cantos, Madrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0FA3A3;
+    --teal-dark:#0B7A7A;
+    --coral:#FF6F61;
+    --pink:#FF9AC1;
+    --gold:#F0C040;
+    --gold-dark:#D4AF37;
+    --cream:#FFF8EE;
+    --ink:#1B3A3A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:linear-gradient(180deg,var(--teal) 0%,var(--teal-dark) 100%);
+    color:var(--ink);
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px;}
+
+  /* HERO */
+  .hero{position:relative;padding-top:48px;padding-bottom:60px;text-align:center;color:#fff;overflow:hidden;}
+  .bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,.18);animation:float 9s ease-in-out infinite;}
+  .b1{width:70px;height:70px;top:10%;left:8%;animation-delay:0s;}
+  .b2{width:40px;height:40px;top:60%;left:85%;animation-delay:2s;}
+  .b3{width:90px;height:90px;top:75%;left:5%;animation-delay:4s;}
+  .b4{width:30px;height:30px;top:20%;left:80%;animation-delay:1s;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) scale(1);}
+    50%{transform:translateY(-28px) scale(1.08);}
+  }
+  .logo-emoji{font-size:56px;margin-bottom:6px;}
+  .hero h1{font-size:2.3rem;line-height:1.2;text-shadow:0 3px 0 rgba(0,0,0,.12);}
+  .hero .owner{margin-top:8px;font-size:1.05rem;opacity:.95;}
+  .hero .tag{margin-top:14px;font-size:1.15rem;font-weight:700;background:var(--gold);color:var(--ink);display:inline-block;padding:8px 20px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.2);}
+
+  /* WASHER INTERACTIVE */
+  .washer-zone{text-align:center;margin-top:34px;}
+  .washer-btn{
+    background:none;border:none;cursor:pointer;font-size:70px;
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));
+    transition:transform .2s;
+  }
+  .washer-btn:active{transform:scale(.9);}
+  .washer-btn.spinning{animation:spin 1.1s linear infinite;}
+  @keyframes spin{100%{transform:rotate(360deg);}}
+  .washer-hint{color:#fff;font-size:.95rem;margin-top:6px;opacity:.9;}
+  .washer-msg{
+    margin-top:14px;font-weight:700;color:var(--ink);background:#fff;
+    display:inline-block;padding:10px 22px;border-radius:16px;
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+    opacity:0;transform:translateY(-6px);transition:all .35s;
+  }
+  .washer-msg.show{opacity:1;transform:translateY(0);}
+
+  /* SECTIONS */
+  section{padding:44px 0;}
+  .cream{background:var(--cream);border-radius:34px 34px 0 0;}
+  .section-title{text-align:center;font-size:1.7rem;color:var(--teal-dark);margin-bottom:26px;}
+  .section-title span{color:var(--coral);}
+
+  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+  .service-card{
+    background:#fff;border-radius:20px;padding:22px 18px;text-align:center;
+    border:3px solid var(--gold);box-shadow:0 6px 0 var(--gold-dark);
+    cursor:pointer;transition:transform .18s;
+  }
+  .service-card:hover{transform:translateY(-4px);}
+  .service-card .emoji{font-size:2.4rem;margin-bottom:8px;}
+  .service-card h3{color:var(--teal-dark);font-size:1.15rem;margin-bottom:6px;}
+  .service-card p{font-size:.92rem;color:#444;display:none;}
+  .service-card.open p{display:block;margin-top:8px;}
+
+  /* CTA STRIP */
+  .cta{background:linear-gradient(90deg,var(--coral),var(--pink));text-align:center;color:#fff;padding-top:38px;padding-bottom:38px;}
+  .cta h2{font-size:1.6rem;margin-bottom:16px;}
+  .btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-size:1rem;padding:14px 26px;border-radius:40px;
+    text-decoration:none;box-shadow:0 5px 0 rgba(0,0,0,.18);transition:transform .15s;
+  }
+  .btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.18);}
+  .btn-wa{background:#25D366;color:#0b3d1f;}
+  .btn-ig{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);color:#fff;}
+
+  /* INFO */
+  .info{background:var(--teal-dark);color:#fff;text-align:center;padding-top:36px;padding-bottom:calc(36px + env(safe-area-inset-bottom,0px));}
+  .info p{margin:6px 0;font-size:1.02rem;}
+  .info .gold{color:var(--gold);font-weight:700;}
+  .flowers{margin-top:14px;font-size:1.4rem;letter-spacing:6px;}
+  .footer-note{margin-top:22px;font-size:.8rem;opacity:.7;}
+
+  @media(prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){--cream:#20302f;--ink:#f2f2f2;}
+    :root:not([data-theme="light"]) .service-card{background:#294240;}
+    :root:not([data-theme="light"]) .service-card p{color:#ddd;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
+  <div class="bubble b4"></div>
+  <div class="wrap">
+    <div class="logo-emoji">💦🌀</div>
+    <h1>La Vele y Lavandería</h1>
+    <p class="owner">Elena Irusteta Cuesta</p>
+    <div class="tag">Autoservicio · Empresas · Recogida y entrega</div>
+
+    <div class="washer-zone">
+      <button class="washer-btn" id="washerBtn" onclick="spinWasher()">🧺</button>
+      <p class="washer-hint">Toca la cesta y descubre por qué elegirnos</p>
+      <div class="washer-msg" id="washerMsg"></div>
+    </div>
+  </div>
+</div>
+
+<section class="cream">
+  <div class="wrap">
+    <h2 class="section-title">Nuestros <span>servicios</span></h2>
+    <div class="services">
+      <div class="service-card" onclick="this.classList.toggle('open')">
+        <div class="emoji">🌀</div>
+        <h3>Autoservicio</h3>
+        <p>Lava y seca tu ropa tú mismo, rápido y a tu ritmo, cuando más te convenga.</p>
+      </div>
+      <div class="service-card" onclick="this.classList.toggle('open')">
+        <div class="emoji">🏢</div>
+        <h3>Servicio a Empresas</h3>
+        <p>Soluciones de lavandería para hoteles, restaurantes y negocios locales.</p>
+      </div>
+      <div class="service-card" onclick="this.classList.toggle('open')">
+        <div class="emoji">🚚</div>
+        <h3>Recogida y entrega</h3>
+        <p>Para particulares: recogemos tu ropa y te la devolvemos lista, sin salir de casa.</p>
+      </div>
+      <div class="service-card" onclick="this.classList.toggle('open')">
+        <div class="emoji">👔</div>
+        <h3>Planchado</h3>
+        <p>Tu ropa perfectamente planchada y lista para usar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>¡Escríbenos ahora! 🌸</h2>
+    <div class="btn-row">
+      <a class="btn btn-wa" href="https://wa.me/34686164131" target="_blank" rel="noopener">📲 WhatsApp</a>
+      <a class="btn btn-ig" href="https://www.instagram.com/laveleylavanderia/" target="_blank" rel="noopener">📸 Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div class="info">
+  <div class="wrap">
+    <p>🌍 Sector Pueblos, 2 · Tres Cantos, Madrid 28760</p>
+    <p class="gold">☎️ 686 16 41 31</p>
+    <div class="flowers">🌸💦🌺🌀🏵️</div>
+    <p class="footer-note">La Vele y Lavandería · Tres Cantos</p>
+  </div>
+</div>
+
+<script>
+function spinWasher(){
+  const btn = document.getElementById('washerBtn');
+  const msg = document.getElementById('washerMsg');
+  const messages = [
+    "Cuidamos tu ropa como si fuera nuestra 💦",
+    "Rápido, cerca y sin complicaciones 🌀",
+    "Recogida y entrega a domicilio disponible 🚚",
+    "También lavamos para empresas y negocios 🏢"
+  ];
+  btn.classList.add('spinning');
+  msg.classList.remove('show');
+  setTimeout(()=>{
+    btn.classList.remove('spinning');
+    msg.textContent = messages[Math.floor(Math.random()*messages.length)];
+    msg.classList.add('show');
+  }, 900);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sound and Circus · Arte, sonido y circo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF0;
+    --violet:#7C3AED;
+    --pink:#FF3D81;
+    --orange:#FF7A2F;
+    --yellow:#FFC93C;
+    --blue:#1FA2CE;
+    --ink:#241B3A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fredoka',sans-serif;
+    margin:0;
+    line-height:1.1;
+  }
+  a{text-decoration:none;color:inherit;}
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 22px;}
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    padding:26px 0 0;
+  }
+  .topbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-size:22px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand span.dot{
+    width:12px;height:12px;border-radius:50%;
+    background:var(--pink);
+    display:inline-block;
+  }
+  .top-links{display:flex;gap:14px;}
+  .pill{
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:14px;
+    padding:9px 16px;
+    border-radius:999px;
+    border:2px solid var(--ink);
+    transition:transform .15s ease;
+  }
+  .pill:hover{transform:translateY(-2px);}
+  .pill.whatsapp{background:#25D366;border-color:#189952;color:#fff;}
+  .pill.insta{background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5);color:#fff;border-color:transparent;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:64px 0 80px;
+    overflow:hidden;
+  }
+  .stripe-bg{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:repeating-linear-gradient(
+      100deg,
+      var(--yellow) 0 40px,
+      var(--orange) 40px 80px,
+      var(--pink) 80px 120px,
+      var(--violet) 120px 160px,
+      var(--blue) 160px 200px
+    );
+    opacity:0.13;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:36px;
+    align-items:center;
+  }
+  @media(max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;}
+  }
+  .eyebrow-emoji{font-size:34px;display:block;margin-bottom:6px;}
+  .hero h1{
+    font-size:clamp(38px,6vw,58px);
+    color:var(--violet);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--pink);
+  }
+  .hero p.lead{
+    font-size:19px;
+    max-width:46ch;
+    margin:20px 0 28px;
+    font-weight:600;
+    color:#4a3f63;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:17px;
+    padding:15px 26px;
+    border-radius:16px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:5px 5px 0 var(--ink);
+    border:2.5px solid var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{
+    transform:translate(-2px,-2px);
+    box-shadow:7px 7px 0 var(--ink);
+  }
+  .btn.primary{background:var(--yellow);color:var(--ink);}
+  .btn.secondary{background:#25D366;color:#fff;}
+
+  .hero-visual{
+    position:relative;
+    height:280px;
+  }
+  .tent{
+    width:100%;
+    height:100%;
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee-band{
+    background:var(--ink);
+    color:var(--cream);
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-block;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:18px;
+    animation:scroll 22s linear infinite;
+  }
+  .marquee-track span{margin:0 22px; color:var(--yellow);}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{animation:none;}
+  }
+
+  /* ---------- Section generic ---------- */
+  section.block{padding:70px 0;}
+  .section-head{max-width:56ch;margin-bottom:34px;}
+  .section-head h2{
+    font-size:clamp(28px,4vw,36px);
+    color:var(--violet);
+  }
+  .section-head p{
+    font-size:17px;
+    color:#4a3f63;
+    font-weight:600;
+    margin-top:10px;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media(max-width:700px){.about-grid{grid-template-columns:1fr;}}
+  .about-card{
+    background:#fff;
+    border:2.5px solid var(--ink);
+    border-radius:20px;
+    padding:26px 22px;
+    box-shadow:6px 6px 0 rgba(36,27,58,0.15);
+  }
+  .about-card .icon{font-size:30px;margin-bottom:10px;display:block;}
+  .about-card h3{font-size:19px;margin-bottom:8px;}
+  .about-card p{font-size:15px;color:#5a4f70;margin:0;font-weight:600;}
+  .about-card:nth-child(1){background:#FFF3D6;}
+  .about-card:nth-child(2){background:#FFE1EC;}
+  .about-card:nth-child(3){background:#E4E1FF;}
+
+  /* ---------- Wheel section ---------- */
+  .wheel-section{
+    background:var(--violet);
+    color:#fff;
+    border-radius:32px;
+    margin:0 16px;
+    padding:56px 24px;
+  }
+  @media(min-width:640px){.wheel-section{margin:0 32px;}}
+  .wheel-section .wrap{
+    max-width:900px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media(max-width:760px){
+    .wheel-section .wrap{grid-template-columns:1fr;text-align:center;}
+  }
+  .wheel-section h2{
+    font-size:clamp(26px,4vw,34px);
+    color:var(--yellow);
+  }
+  .wheel-section p{
+    font-size:16px;
+    font-weight:600;
+    margin-top:12px;
+    color:#ECE7FF;
+  }
+  .wheel-holder{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+  #wheelCanvas{
+    filter:drop-shadow(0 8px 0 rgba(0,0,0,0.25));
+  }
+  .wheel-wrap{position:relative;width:260px;height:260px;}
+  .pointer{
+    position:absolute;
+    top:-6px;left:50%;
+    transform:translateX(-50%);
+    width:0;height:0;
+    border-left:14px solid transparent;
+    border-right:14px solid transparent;
+    border-top:24px solid var(--yellow);
+    z-index:3;
+    filter:drop-shadow(0 2px 0 rgba(0,0,0,.3));
+  }
+  #spinBtn{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    padding:13px 28px;
+    border-radius:14px;
+    background:var(--yellow);
+    color:var(--ink);
+    border:2.5px solid var(--ink);
+    cursor:pointer;
+    box-shadow:4px 4px 0 rgba(0,0,0,.35);
+    transition:transform .15s ease;
+  }
+  #spinBtn:hover{transform:translateY(-2px);}
+  #spinBtn:disabled{opacity:0.6;cursor:default;}
+  #wheelResult{
+    min-height:26px;
+    font-weight:800;
+    font-size:16px;
+    color:#fff;
+    background:rgba(255,255,255,0.12);
+    padding:10px 16px;
+    border-radius:12px;
+    max-width:280px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:60px 0 46px;
+    text-align:center;
+  }
+  footer h2{
+    color:var(--pink);
+    font-size:clamp(26px,4vw,32px);
+    margin-bottom:16px;
+  }
+  .footer-links{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .foot-note{
+    margin-top:36px;
+    font-size:13px;
+    color:#8a7fa0;
+    font-weight:600;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Sound and Circus</div>
+    <div class="top-links">
+      <a class="pill insta" href="https://www.instagram.com/sound_andcircus/" target="_blank" rel="noopener">Instagram</a>
+      <a class="pill whatsapp" href="https://wa.me/34616585337" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="stripe-bg"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow-emoji">🎪🎶</span>
+      <h1>Cuando el circo<br>se encuentra con los <em>beats</em> electrónicos</h1>
+      <p class="lead">Arte, sonido y circo. Creamos eventos que transforman y unen a través de la cultura — para fiestas, ferias, colegios y celebraciones de empresa.</p>
+      <div class="cta-row">
+        <a class="btn secondary" href="https://wa.me/34616585337" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+        <a class="btn primary" href="https://www.instagram.com/sound_andcircus/" target="_blank" rel="noopener">📸 Míranos en Instagram</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="tent" viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="160,20 40,180 280,180" fill="var(--pink)"/>
+        <polygon points="160,20 100,180 160,180" fill="var(--yellow)"/>
+        <polygon points="160,20 160,180 220,180" fill="var(--orange)"/>
+        <rect x="40" y="180" width="240" height="70" rx="6" fill="var(--blue)"/>
+        <rect x="40" y="180" width="240" height="70" rx="6" fill="url(#stripes)" opacity="0.35"/>
+        <defs>
+          <pattern id="stripes" width="24" height="24" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="12" height="24" fill="#fff"/>
+          </pattern>
+        </defs>
+        <circle cx="160" cy="20" r="9" fill="var(--violet)"/>
+        <rect x="156" y="4" width="8" height="18" fill="var(--violet)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-band">
+  <div class="marquee-track">
+    <span>🎪 EVENTOS EN VIVO</span><span>🎶 MÚSICA ELECTRÓNICA</span><span>🤹‍♀️ ARTES CIRCENSES</span><span>✨ MAGIA GARANTIZADA</span>
+    <span>🎪 EVENTOS EN VIVO</span><span>🎶 MÚSICA ELECTRÓNICA</span><span>🤹‍♀️ ARTES CIRCENSES</span><span>✨ MAGIA GARANTIZADA</span>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>¿Quiénes somos?</h2>
+      <p>Una asociación dedicada a la difusión de las artes escénicas, especialmente el circo, mezclada con sonido y cultura urbana.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="icon">🎡</span>
+        <h3>Eventos a medida</h3>
+        <p>Diseñamos experiencias de circo y sonido para fiestas, ferias y empresas.</p>
+      </div>
+      <div class="about-card">
+        <span class="icon">🔊</span>
+        <h3>Alquiler de equipos</h3>
+        <p>Sonido e iluminación profesional para que tu evento suene y brille.</p>
+      </div>
+      <div class="about-card">
+        <span class="icon">🤹</span>
+        <h3>Talleres y artistas</h3>
+        <p>Circo en vivo, acrobacias y dinámicas para todas las edades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block wheel-section">
+  <div class="wrap">
+    <div>
+      <h2>Gira la Rueda del Circo</h2>
+      <p>Dale al botón, escucha la fanfarria y descubre una sorpresa para tu próximo evento con nosotros.</p>
+    </div>
+    <div class="wheel-holder">
+      <div class="wheel-wrap">
+        <div class="pointer"></div>
+        <canvas id="wheelCanvas" width="260" height="260"></canvas>
+      </div>
+      <button id="spinBtn">🎪 ¡Girar la rueda!</button>
+      <div id="wheelResult"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>¿Listo para crear magia en tu evento?</h2>
+    <p style="font-weight:700;color:#4a3f63;">Cuéntanos tu idea y la convertimos en un espectáculo de circo y sonido.</p>
+    <div class="footer-links">
+      <a class="btn secondary" href="https://wa.me/34616585337" target="_blank" rel="noopener">💬 WhatsApp: 616 58 53 37</a>
+      <a class="btn primary" href="https://www.instagram.com/sound_andcircus/" target="_blank" rel="noopener">📸 @sound_andcircus</a>
+    </div>
+    <div class="foot-note">Sound and Circus — Asociación dedicada a la difusión de las artes escénicas · soundcircus.asociacion@gmail.com</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const segments = [
+    {label:"10% dto", color:"#FF7A2F"},
+    {label:"Brindis sorpresa", color:"#1FA2CE"},
+    {label:"Taller gratis", color:"#FFC93C"},
+    {label:"Foto con artista", color:"#FF3D81"},
+    {label:"Sigue intentando", color:"#7C3AED"},
+    {label:"Descuento grupo", color:"#22B07D"}
+  ];
+  const canvas = document.getElementById('wheelCanvas');
+  const ctx = canvas.getContext('2d');
+  const cx = 130, cy = 130, r = 125;
+  const n = segments.length;
+  const arc = (Math.PI*2)/n;
+  let rotation = 0;
+
+  function drawWheel(){
+    ctx.clearRect(0,0,260,260);
+    for(let i=0;i<n;i++){
+      const start = rotation + i*arc;
+      const end = start + arc;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.arc(cx,cy,r,start,end);
+      ctx.closePath();
+      ctx.fillStyle = segments[i].color;
+      ctx.fill();
+      ctx.strokeStyle = "#241B3A";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      ctx.save();
+      ctx.translate(cx,cy);
+      ctx.rotate(start+arc/2);
+      ctx.textAlign = "right";
+      ctx.fillStyle = "#fff";
+      ctx.font = "700 13px Fredoka, sans-serif";
+      ctx.fillText(segments[i].label, r-14, 5);
+      ctx.restore();
+    }
+    ctx.beginPath();
+    ctx.arc(cx,cy,20,0,Math.PI*2);
+    ctx.fillStyle = "#241B3A";
+    ctx.fill();
+  }
+  drawWheel();
+
+  function honk(){
+    try{
+      const AC = window.AudioContext || window.webkitAudioContext;
+      const ac = new AC();
+      const o = ac.createOscillator();
+      const g = ac.createGain();
+      o.type = "sawtooth";
+      o.frequency.setValueAtTime(220, ac.currentTime);
+      o.frequency.exponentialRampToValueAtTime(110, ac.currentTime + 0.25);
+      g.gain.setValueAtTime(0.18, ac.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.3);
+      o.connect(g); g.connect(ac.destination);
+      o.start(); o.stop(ac.currentTime + 0.32);
+    }catch(e){}
+  }
+
+  let spinning = false;
+  const btn = document.getElementById('spinBtn');
+  const resultEl = document.getElementById('wheelResult');
+
+  btn.addEventListener('click', function(){
+    if(spinning) return;
+    spinning = true;
+    resultEl.textContent = "";
+    honk();
+
+    const extraTurns = 5 + Math.random()*2;
+    const targetIndex = Math.floor(Math.random()*n);
+    const targetAngle = (Math.PI*1.5) - (targetIndex*arc + arc/2);
+    const finalRotation = rotation + extraTurns*Math.PI*2 + ((targetAngle - rotation) % (Math.PI*2) + Math.PI*2) % (Math.PI*2);
+
+    const duration = 3200;
+    const startRotation = rotation;
+    const startTime = performance.now();
+
+    function easeOutCubic(t){ return 1 - Math.pow(1-t,3); }
+
+    function animate(now){
+      const elapsed = now - startTime;
+      const t = Math.min(elapsed/duration, 1);
+      rotation = startRotation + (finalRotation - startRotation)*easeOutCubic(t);
+      drawWheel();
+      if(t < 1){
+        requestAnimationFrame(animate);
+      }else{
+        spinning = false;
+        resultEl.textContent = "🎉 " + segments[targetIndex].label + " — ¡escríbenos por WhatsApp para reclamarlo!";
+      }
+    }
+    requestAnimationFrame(animate);
+  });
+})();
+</script>
+
+</body>
+</html>

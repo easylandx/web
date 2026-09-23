@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pole Dance Tres Cantos · 7º Aniversario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#33104a;
+    --bg2:#43105c;
+    --pink:#ff2e93;
+    --gold:#f0c040;
+    --gold-deep:#d4af37;
+    --cream:#fdf3e2;
+    --ink:#1b0826;
+    color-scheme: dark;
+  }
+  :root:not([data-theme="light"]) body{ background:var(--bg); color:var(--cream); }
+  :root[data-theme="light"] body{ background:#fdf3e2; color:#33104a; }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]) body{ background:#fdf3e2; color:#33104a; }
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    overflow-x:hidden;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 24px;}
+
+  header.top{
+    padding-top:calc(18px + env(safe-area-inset-top,0px));
+    padding-bottom:18px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .brand{font-family:'Anton',sans-serif; letter-spacing:.5px; font-size:1.1rem; color:var(--gold);}
+  .icon-links{display:flex; gap:14px;}
+  .icon-links a{
+    color:var(--cream); text-decoration:none; font-size:1.4rem;
+    width:40px; height:40px; border:2px solid var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .hero{padding:20px 0 36px; text-align:center;}
+  .badge{
+    display:inline-block; border:3px solid var(--gold); color:var(--gold);
+    border-radius:999px; padding:6px 20px; font-weight:700; font-size:.85rem;
+    margin-bottom:22px;
+  }
+  h1{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(2.6rem,11vw,4.4rem);
+    line-height:0.95;
+    margin:0 0 18px;
+    color:var(--cream);
+  }
+  h1 span{color:var(--pink);}
+  .lead{font-size:1.05rem; max-width:420px; margin:0 auto 30px; line-height:1.5;}
+  .cta-row{display:flex; flex-direction:column; gap:12px; max-width:340px; margin:0 auto;}
+  .btn{
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:1rem;
+    padding:15px 22px; border-radius:12px; text-decoration:none;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    border:2px solid transparent;
+  }
+  .btn-primary{background:var(--pink); color:#fff;}
+  .btn-secondary{background:transparent; border-color:var(--gold); color:var(--gold);}
+
+  .divider{height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:10px 0 34px;}
+
+  .info{padding:10px 0 30px;}
+  .info h2{font-family:'Anton',sans-serif; font-size:1.6rem; color:var(--gold); margin:0 0 16px;}
+  .card{
+    background:var(--bg2); border:1px solid var(--gold-deep); border-radius:16px;
+    padding:20px; margin-bottom:14px; display:flex; gap:14px; align-items:flex-start;
+  }
+  .card .em{font-size:1.4rem;}
+  .card b{display:block; color:var(--gold); margin-bottom:3px;}
+  .card p{margin:0; font-size:.95rem; line-height:1.4;}
+
+  .party{
+    text-align:center; padding:20px 0 40px;
+    background:var(--bg2); border-radius:20px; margin:10px 0 30px;
+  }
+  .party h2{font-family:'Anton',sans-serif; color:var(--pink); font-size:1.7rem; margin:0 0 8px;}
+  .party p{margin:0 0 20px; font-size:.95rem;}
+  #celebrar{
+    background:var(--gold); color:var(--ink); border:none; border-radius:999px;
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:1.05rem;
+    padding:16px 30px; cursor:pointer;
+  }
+  #celebrar:active{transform:scale(0.97);}
+  #msg{margin-top:14px; font-weight:700; color:var(--pink); min-height:20px;}
+
+  footer{
+    padding:24px 0 calc(30px + env(safe-area-inset-bottom,0px));
+    text-align:center; font-size:.85rem; opacity:.85;
+  }
+  footer a{color:var(--gold); text-decoration:none; font-weight:600;}
+
+  #confetti-layer{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:50;}
+  .confetti{position:absolute; top:-20px; border-radius:2px; opacity:.95;}
+
+  @media (prefers-reduced-motion: reduce){
+    .confetti{animation:none !important; display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="confetti-layer"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">POLE DANCE TRES CANTOS</div>
+    <div class="icon-links">
+      <a href="https://www.instagram.com/pole_dance_tres_cantos/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a href="https://wa.me/34618467959" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="badge">🎪 7º ANIVERSARIO</span>
+    <h1>7 años haciendo<br>girar <span>Tres Cantos</span></h1>
+    <p class="lead">Somos la Asociación de Circo Diverso 3C. Siete años de pole dance, comunidad y ganas de celebrarlo contigo.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/34618467959" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/pole_dance_tres_cantos/" target="_blank" rel="noopener">📷 Síguenos en Instagram</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="info">
+    <h2>Dónde encontrarnos</h2>
+    <div class="card">
+      <div class="em">📍</div>
+      <div><b>Polideportivo Ciudad de Columbia</b><p>Calle Yelmo, 19 · Tres Cantos, Madrid · 28760</p></div>
+    </div>
+    <div class="card">
+      <div class="em">📲</div>
+      <div><b>618 46 79 59</b><p>Llamadas o WhatsApp, lo que prefieras.</p></div>
+    </div>
+  </section>
+
+  <section class="party">
+    <div class="wrap">
+      <h2>¡Es nuestra fiesta y queremos que la celebres!</h2>
+      <p>Toca el botón y suma tu confeti a los 7 años.</p>
+      <button id="celebrar">🎉 ¡Celebrar!</button>
+      <div id="msg"></div>
+    </div>
+  </section>
+
+  <footer>
+    Asociación de Circo Diverso 3C · Tres Cantos, Madrid<br>
+    <a href="https://www.instagram.com/pole_dance_tres_cantos/" target="_blank" rel="noopener">@pole_dance_tres_cantos</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('celebrar');
+  var layer = document.getElementById('confetti-layer');
+  var msg = document.getElementById('msg');
+  var colors = ['#ff2e93','#f0c040','#d4af37','#fdf3e2'];
+  var count = 0;
+  var phrases = ['¡Gracias por celebrar 7 años! 🎪','¡Eso es, así se gira! 🌀','¡Sois lo mejor de Tres Cantos! ✨'];
+
+  btn.addEventListener('click', function(){
+    for(var i=0;i<28;i++){
+      var c = document.createElement('div');
+      c.className = 'confetti';
+      var size = 6 + Math.random()*8;
+      c.style.left = Math.random()*100+'vw';
+      c.style.width = size+'px';
+      c.style.height = (size*0.4)+'px';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      var duration = 2.2 + Math.random()*1.6;
+      var rotate = 360 + Math.random()*720;
+      c.style.animation = 'fall '+duration+'s linear forwards';
+      c.style.transform = 'rotate('+Math.random()*360+'deg)';
+      layer.appendChild(c);
+      (function(el){ setTimeout(function(){ el.remove(); }, 4000); })(c);
+    }
+    count++;
+    msg.textContent = phrases[(count-1) % phrases.length];
+  });
+
+  var styleTag = document.createElement('style');
+  styleTag.textContent = '@keyframes fall{to{transform:translateY(110vh) rotate(480deg); opacity:.2;}}';
+  document.head.appendChild(styleTag);
+})();
+</script>
+
+</body>
+</html>

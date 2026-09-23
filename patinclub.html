@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tres Cantos Patín Club | Hockey sobre patines en Tres Cantos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1E4FE8;
+    --blue-deep:#0F2E96;
+    --yellow:#FFC933;
+    --orange:#FF7A29;
+    --pink:#FF3E8E;
+    --violet:#7C4DFF;
+    --ink:#131A33;
+    --paper:#FFFDF8;
+    --paper2:#FFF5E6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Archivo Black', sans-serif;
+    line-height:1.1;
+    font-weight:400;
+  }
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,253,248,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:3px solid var(--ink);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Archivo Black', sans-serif;
+    font-size:1.15rem;
+    letter-spacing:0.2px;
+  }
+  .brand .puck{
+    width:34px; height:34px; border-radius:50%;
+    background:var(--blue);
+    display:flex; align-items:center; justify-content:center;
+    color:white; font-family:'Archivo Black', sans-serif;
+    font-size:0.85rem;
+    flex-shrink:0;
+  }
+  .nav-links{display:flex; gap:28px; font-weight:600; font-size:0.95rem;}
+  .nav-links a{text-decoration:none; border-bottom:2px solid transparent; padding-bottom:2px; transition:border-color .15s;}
+  .nav-links a:hover{border-color:var(--pink);}
+  @media (max-width:720px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 96px;
+    background:
+      radial-gradient(circle at 88% 8%, var(--yellow) 0, var(--yellow) 130px, transparent 131px),
+      radial-gradient(circle at 4% 88%, var(--pink) 0, var(--pink) 90px, transparent 91px);
+    overflow:hidden;
+  }
+  .hero-tag{
+    display:inline-block;
+    background:var(--violet);
+    color:white;
+    font-weight:700;
+    font-size:0.85rem;
+    padding:8px 18px;
+    border-radius:999px;
+    margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4.1rem);
+    color:var(--blue-deep);
+    max-width:12ch;
+  }
+  .hero h1 .accent{color:var(--orange);}
+  .hero p.lede{
+    margin-top:24px;
+    font-size:1.2rem;
+    max-width:46ch;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .hero-ctas{
+    margin-top:38px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:700;
+    font-size:1rem;
+    padding:16px 30px;
+    border-radius:14px;
+    text-decoration:none;
+    border:3px solid var(--ink);
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{background:var(--blue); color:white;}
+  .btn-secondary{background:var(--paper); color:var(--ink);}
+
+  .stat-row{
+    margin-top:64px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    max-width:640px;
+  }
+  .stat{
+    background:white;
+    border:3px solid var(--ink);
+    border-radius:16px;
+    padding:20px 18px;
+    text-align:left;
+  }
+  .stat .num{
+    font-family:'Archivo Black', sans-serif;
+    font-size:2rem;
+    color:var(--blue);
+  }
+  .stat .label{font-size:0.85rem; font-weight:600; margin-top:4px;}
+  @media (max-width:640px){ .stat-row{grid-template-columns:1fr;} .hero{padding:60px 0 70px;} }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:86px 0;}
+  .eyebrow-free h2{
+    font-size:clamp(1.8rem, 3.4vw, 2.6rem);
+    color:var(--blue-deep);
+    max-width:16ch;
+  }
+  .section-lede{
+    margin-top:16px;
+    font-size:1.05rem;
+    max-width:56ch;
+    color:#3A3F55;
+  }
+
+  /* ---------- LIGAS ---------- */
+  .ligas{background:var(--paper2);}
+  .liga-grid{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+  }
+  @media (max-width:720px){ .liga-grid{grid-template-columns:1fr;} }
+  .liga-card{
+    background:white;
+    border:3px solid var(--ink);
+    border-radius:20px;
+    padding:32px;
+    position:relative;
+  }
+  .liga-card .dot{
+    width:20px; height:20px; border-radius:50%;
+    display:inline-block; margin-bottom:16px;
+  }
+  .liga-card h3{font-size:1.4rem; font-family:'Poppins',sans-serif; font-weight:800;}
+  .liga-card p{margin-top:10px; color:#3A3F55; font-size:0.98rem;}
+  .dot-plata{background:silver; border:2px solid var(--ink);}
+  .dot-bronce{background:#CD7F32;}
+
+  /* ---------- TECNIFICACION ---------- */
+  .tecni{
+    background:var(--blue-deep);
+    color:white;
+  }
+  .tecni .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:800px){ .tecni .wrap{grid-template-columns:1fr;} }
+  .tecni h2{color:var(--yellow); max-width:none;}
+  .tecni p{color:#DDE4FF; margin-top:16px; font-size:1.05rem;}
+  .coach-card{
+    background:white;
+    color:var(--ink);
+    border-radius:20px;
+    padding:32px;
+    border:3px solid var(--yellow);
+  }
+  .coach-card .role{
+    display:inline-block;
+    background:var(--pink);
+    color:white;
+    font-weight:700;
+    font-size:0.8rem;
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .coach-card h3{font-family:'Poppins'; font-weight:800; font-size:1.3rem;}
+  .coach-card p{color:#3A3F55; margin-top:10px; font-size:0.95rem;}
+
+  /* ---------- CATEGORY FINDER (interactive) ---------- */
+  .finder{
+    background:white;
+  }
+  .finder-box{
+    margin-top:44px;
+    background:var(--paper2);
+    border:3px solid var(--ink);
+    border-radius:24px;
+    padding:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media (max-width:760px){ .finder-box{grid-template-columns:1fr; padding:28px;} }
+  .finder-box label{font-weight:700; font-size:0.95rem; display:block; margin-bottom:10px;}
+  .finder-box input{
+    width:100%;
+    padding:14px 16px;
+    font-size:1.1rem;
+    font-family:'Poppins';
+    border:3px solid var(--ink);
+    border-radius:12px;
+    background:white;
+  }
+  .finder-box input:focus{outline:3px solid var(--violet); outline-offset:2px;}
+  .finder-result{
+    background:var(--ink);
+    color:white;
+    border-radius:16px;
+    padding:26px;
+    min-height:120px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .finder-result .cat-name{
+    font-family:'Archivo Black', sans-serif;
+    font-size:1.5rem;
+    color:var(--yellow);
+  }
+  .finder-result .cat-note{
+    margin-top:8px;
+    font-size:0.9rem;
+    color:#D7DBEF;
+  }
+  .finder-note{
+    margin-top:18px;
+    font-size:0.82rem;
+    color:#6B7089;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--violet);
+    color:white;
+    text-align:center;
+  }
+  .contact h2{color:white; max-width:none; margin:0 auto;}
+  .contact p.section-lede{color:#EDE8FF; margin-left:auto; margin-right:auto;}
+  .contact-ctas{
+    margin-top:40px;
+    display:flex;
+    gap:18px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .contact .btn-primary{background:var(--yellow); color:var(--ink); border-color:var(--ink);}
+  .contact .btn-secondary{background:white; color:var(--ink);}
+
+  footer{
+    padding:40px 0;
+    text-align:center;
+    font-size:0.85rem;
+    color:#6B7089;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="puck">TC</span> Tres Cantos Patín Club</div>
+    <div class="nav-links">
+      <a href="#ligas">Ligas</a>
+      <a href="#tecnificacion">Tecnificación</a>
+      <a href="#categoria">Mi categoría</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-tag">Club de hockey sobre patines</span>
+    <h1>Tu hijo o hija tiene <span class="accent">sitio en la pista</span></h1>
+    <p class="lede">19 equipos en todas las categorías base, un primer equipo femenino en OK Liga Plata y uno masculino en OK Liga Bronce. Aquí empieza la temporada.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://forms.gle/moju6nL5fpanU8Dz6" target="_blank" rel="noopener">Apúntate ahora</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/trescantospc/" target="_blank" rel="noopener">Ver en Instagram</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num">19</div><div class="label">Equipos base</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">Femenino en OK Liga Plata</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">Equipo en OK Liga Bronce</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="ligas eyebrow-free" id="ligas">
+  <div class="wrap">
+    <h2>Nuestros equipos compiten arriba</h2>
+    <p class="section-lede">Desde la escuela hasta la máxima competición autonómica, el club tiene un equipo para cada edad y cada nivel.</p>
+    <div class="liga-grid">
+      <div class="liga-card">
+        <span class="dot dot-plata"></span>
+        <h3>OK Liga Plata Femenina</h3>
+        <p>Nuestro primer equipo femenino compite en una de las categorías más exigentes del hockey sobre patines nacional.</p>
+      </div>
+      <div class="liga-card">
+        <span class="dot dot-bronce"></span>
+        <h3>OK Liga Bronce</h3>
+        <p>El primer equipo masculino defiende los colores del club fin de semana tras fin de semana en OK Liga Bronce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tecni" id="tecnificacion">
+  <div class="wrap">
+    <div>
+      <h2>Tecnificación con Lluís Rodero</h2>
+      <p>Un programa pensado para dar ese salto de calidad: técnica individual, control de stick y visión de juego, con la experiencia de un entrenador especializado en el desarrollo de jugadores jóvenes.</p>
+      <p>Plazas limitadas cada temporada — resérvala antes de que se agoten.</p>
+    </div>
+    <div class="coach-card">
+      <span class="role">Entrenador de tecnificación</span>
+      <h3>Lluís Rodero</h3>
+      <p>Sesiones específicas para pulir el detalle técnico que marca la diferencia en la pista, complementando el entrenamiento habitual de cada equipo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="finder" id="categoria">
+  <div class="wrap eyebrow-free">
+    <h2>¿En qué categoría juega tu hijo o hija?</h2>
+    <p class="section-lede">Escribe el año de nacimiento y te decimos, de forma orientativa, en qué categoría base encajaría esta temporada.</p>
+    <div class="finder-box">
+      <div>
+        <label for="birthYear">Año de nacimiento</label>
+        <input type="number" id="birthYear" placeholder="Ej. 2016" min="2000" max="2026">
+      </div>
+      <div class="finder-result" id="finderResult">
+        <div class="cat-name">Escribe un año 👆</div>
+        <div class="cat-note">Verás aquí la categoría orientativa al instante.</div>
+      </div>
+    </div>
+    <p class="finder-note">Orientativo para la temporada 2026/2027. Las categorías oficiales las confirma la federación — contáctanos para saber el equipo exacto.</p>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <h2>Súbete a la pista con nosotros</h2>
+    <p class="section-lede">Escríbenos, síguenos o rellena la ficha de inscripción. Te contamos todo sobre horarios, equipos y la próxima prueba.</p>
+    <div class="contact-ctas">
+      <a class="btn btn-primary" href="https://forms.gle/moju6nL5fpanU8Dz6" target="_blank" rel="noopener">Rellenar ficha de inscripción</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/trescantospc/" target="_blank" rel="noopener">Instagram @trescantospc</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Tres Cantos Patín Club — Sports Club
+</footer>
+
+<script>
+  const categorias = [
+    {min:2019, max:2020, name:"Prebenjamín"},
+    {min:2017, max:2018, name:"Benjamín"},
+    {min:2015, max:2016, name:"Alevín"},
+    {min:2013, max:2014, name:"Infantil"},
+    {min:2011, max:2012, name:"Cadete"},
+    {min:2009, max:2010, name:"Juvenil"},
+    {min:2007, max:2008, name:"Junior"}
+  ];
+
+  const input = document.getElementById('birthYear');
+  const result = document.getElementById('finderResult');
+
+  input.addEventListener('input', () => {
+    const year = parseInt(input.value, 10);
+    if (!year || year < 2000 || year > 2026) {
+      result.innerHTML = '<div class="cat-name">Escribe un año 👆</div><div class="cat-note">Verás aquí la categoría orientativa al instante.</div>';
+      return;
+    }
+    const match = categorias.find(c => year >= c.min && year <= c.max);
+    if (match) {
+      result.innerHTML = `<div class="cat-name">${match.name}</div><div class="cat-note">Categoría orientativa para la temporada 2026/2027.</div>`;
+    } else if (year > 2020) {
+      result.innerHTML = '<div class="cat-name">Escuela</div><div class="cat-note">Edad ideal para empezar en la escuela del club.</div>';
+    } else {
+      result.innerHTML = '<div class="cat-name">Senior / Primer equipo</div><div class="cat-note">Edad para competir con los equipos absolutos.</div>';
+    }
+  });
+</script>
+
+</body>
+</html>

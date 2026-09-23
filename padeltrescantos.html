@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pádel Tres Cantos League</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#2FB8E8;
+    --amarillo:#FFD23F;
+    --rosa:#FF5DA2;
+    --naranja:#FF8A3D;
+    --violeta:#8B5CF6;
+    --tinta:#1B1B2F;
+    --crema:#FFFDF7;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.5;
+  }
+  h1,h2,h3,.brand{font-family:'Fredoka',sans-serif;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
+  a{color:inherit;}
+
+  /* NAV */
+  header{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+    background:var(--crema);
+    border-bottom:3px solid var(--tinta);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1040px;margin:0 auto;}
+  .brand{font-size:1.3rem;font-weight:600;}
+  .brand span{color:var(--rosa);}
+  .nav-links{display:flex;gap:14px;align-items:center;}
+  .btn{
+    display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;
+    padding:12px 26px;border-radius:100px;border:3px solid var(--tinta);
+    text-decoration:none;background:var(--amarillo);color:var(--tinta);
+    box-shadow:4px 4px 0 var(--tinta);
+    transition:transform .15s ease, box-shadow .15s ease;
+    font-size:0.95rem;white-space:nowrap;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tinta);}
+  .btn:active{transform:translate(0,0);box-shadow:2px 2px 0 var(--tinta);}
+  .btn-ghost{background:transparent;box-shadow:none;}
+  .btn-ghost:hover{box-shadow:none;transform:none;text-decoration:underline;}
+
+  /* HERO */
+  .hero{
+    background:radial-gradient(circle at 20% 20%, #6fd6f7 0%, var(--azul) 55%, #1e9fd1 100%);
+    color:var(--crema);
+    padding:90px 32px 100px;
+    text-align:center;
+    border-bottom:4px solid var(--tinta);
+  }
+  .hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;line-height:1.05;max-width:760px;margin:0 auto 22px;}
+  .hero p{font-size:1.2rem;max-width:560px;margin:0 auto 34px;opacity:.95;}
+  .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--rosa);color:var(--crema);}
+  .btn-secondary{background:var(--crema);}
+
+  /* SECTION GENERIC */
+  section{padding:70px 32px;}
+  .section-title{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:600;margin-bottom:14px;}
+  .section-lead{max-width:600px;font-size:1.05rem;color:#3a3a4d;margin-bottom:40px;}
+
+  /* ABOUT */
+  .about{background:var(--crema);}
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;}
+  .about-card{
+    background:var(--amarillo);border:3px solid var(--tinta);border-radius:24px;
+    padding:32px;box-shadow:8px 8px 0 var(--tinta);
+  }
+  .about-card p{font-size:1.05rem;}
+  .stat-row{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap;}
+  .stat{background:var(--crema);border:3px solid var(--tinta);border-radius:16px;padding:14px 20px;font-weight:600;font-family:'Fredoka',sans-serif;}
+
+  /* OFFER CARDS */
+  .offer{background:var(--violeta);color:var(--crema);border-bottom:4px solid var(--tinta);}
+  .offer .section-lead{color:#ece6ff;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{
+    background:var(--crema);color:var(--tinta);border-radius:20px;border:3px solid var(--tinta);
+    padding:28px 24px;box-shadow:6px 6px 0 var(--tinta);
+  }
+  .card .emoji{font-size:2rem;margin-bottom:10px;display:block;}
+  .card h3{font-size:1.25rem;margin-bottom:8px;}
+  .card:nth-child(1){background:#FFF2C7;}
+  .card:nth-child(2){background:#FFD9EE;}
+  .card:nth-child(3){background:#FFE3CC;}
+
+  /* GAME */
+  .game{background:var(--naranja);text-align:center;border-bottom:4px solid var(--tinta);}
+  .game .section-title, .game .section-lead{color:var(--tinta);margin-left:auto;margin-right:auto;}
+  .game-box{
+    background:var(--crema);border:3px solid var(--tinta);border-radius:28px;
+    max-width:420px;margin:0 auto;padding:36px 24px;box-shadow:8px 8px 0 var(--tinta);
+  }
+  #ball{
+    font-size:4.5rem;cursor:pointer;user-select:none;display:inline-block;
+    transition:transform .08s ease;
+  }
+  #ball:active{transform:scale(0.85);}
+  #score{font-family:'Fredoka',sans-serif;font-size:1.6rem;margin:16px 0 6px;}
+  #feedback{min-height:24px;font-weight:600;color:var(--rosa);}
+  .game small{display:block;margin-top:10px;color:#5a5a6e;}
+
+  /* CTA / FOOTER */
+  footer{
+    background:var(--tinta);color:var(--crema);padding:60px 32px 40px;text-align:center;
+  }
+  footer h2{font-family:'Fredoka',sans-serif;font-size:2rem;margin-bottom:18px;}
+  .footer-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
+  .footer-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-size:.95rem;margin-bottom:20px;}
+  .footer-links a{text-decoration:none;border-bottom:2px solid var(--amarillo);}
+  .copy{font-size:.8rem;color:#a9a9c0;}
+
+  @media(max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+    .cards{grid-template-columns:1fr;}
+    nav{flex-direction:column;gap:14px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">🎾 Pádel Tres Cantos <span>League</span></div>
+    <div class="nav-links">
+      <a class="btn btn-ghost" href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScFyBlaVDnHLqTuKw6psH5k3mRMiJ-HqzOhV32qADqoIexaaA/viewform" target="_blank" rel="noopener">Apúntate</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Juega al pádel como te gusta: con amigos, por niveles y sin complicaciones</h1>
+    <p>Club deportivo en Tres Cantos. Organizamos ligas y pozos por niveles para que cada partido esté igualado y te lo pases bien de verdad.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScFyBlaVDnHLqTuKw6psH5k3mRMiJ-HqzOhV32qADqoIexaaA/viewform" target="_blank" rel="noopener">Inscríbete a la liga</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener">Ver en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div>
+      <h2 class="section-title">Una forma divertida y cómoda de jugar al pádel</h2>
+      <p class="section-lead">Nada de buscar rival por tu cuenta ni jugar siempre contra los mismos. Nosotros armamos los grupos, ajustamos los niveles y tú solo te preocupas de sacar bien.</p>
+      <div class="stat-row">
+        <div class="stat">🏆 Ligas por niveles</div>
+        <div class="stat">🎯 Pozos abiertos</div>
+        <div class="stat">📍 Tres Cantos</div>
+      </div>
+    </div>
+    <div class="about-card">
+      <p>Cada temporada agrupamos a los jugadores según su nivel real, para que los partidos sean parejos desde el primer punto. Ya seas principiante o lleves años pisando pista, hay un grupo pensado para ti.</p>
+    </div>
+  </div>
+</section>
+
+<section class="offer">
+  <div class="wrap">
+    <h2 class="section-title">Lo que organizamos</h2>
+    <p class="section-lead">Dos formatos, un mismo objetivo: que juegues más y mejor.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="emoji">📅</span>
+        <h3>Ligas</h3>
+        <p>Competición regular por niveles a lo largo de la temporada, con clasificación y ascensos.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🎲</span>
+        <h3>Pozos por niveles</h3>
+        <p>Jornadas sueltas para jugar varios partidos el mismo día, rotando de rival y de pareja.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🤝</span>
+        <h3>Comunidad</h3>
+        <p>Un grupo de jugadores de Tres Cantos con ganas de pádel, más allá del marcador.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="game">
+  <div class="wrap">
+    <h2 class="section-title">Pon a prueba tu reflejo de pared</h2>
+    <p class="section-lead">Toca la pelota tantas veces como puedas antes de que se pare. ¿Aguantas el peloteo?</p>
+    <div class="game-box">
+      <div id="ball">🎾</div>
+      <div id="score">Golpes: 0</div>
+      <div id="feedback">Toca la pelota para empezar</div>
+      <small>El peloteo se para si tardas más de 1 segundo en volver a tocarla.</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>¿Jugamos esta temporada?</h2>
+    <div class="footer-actions">
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScFyBlaVDnHLqTuKw6psH5k3mRMiJ-HqzOhV32qADqoIexaaA/viewform" target="_blank" rel="noopener">Inscríbete ahora</a>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/padel_tres_cantos_league/" target="_blank" rel="noopener">📷 Instagram</a>
+    </div>
+    <div class="copy">Pádel Tres Cantos League — Club Deportivo</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ball = document.getElementById('ball');
+  var scoreEl = document.getElementById('score');
+  var feedbackEl = document.getElementById('feedback');
+  var score = 0;
+  var best = 0;
+  var timer = null;
+  var running = false;
+
+  function resetRally(missed){
+    if(running && missed){
+      best = Math.max(best, score);
+      feedbackEl.textContent = score === 0
+        ? '¡Vamos, tócala para empezar el peloteo!'
+        : 'Se paró en ' + score + ' golpes. ¡Mejor marca: ' + best + '! Vuelve a intentarlo.';
+    }
+    score = 0;
+    running = false;
+    scoreEl.textContent = 'Golpes: 0';
+    clearTimeout(timer);
+  }
+
+  ball.addEventListener('click', function(){
+    score++;
+    running = true;
+    scoreEl.textContent = 'Golpes: ' + score;
+    if(score < 5){
+      feedbackEl.textContent = '¡Sigue así!';
+    } else if(score < 12){
+      feedbackEl.textContent = '¡Vas cogiendo ritmo!';
+    } else {
+      feedbackEl.textContent = '¡Nivel liga! 🔥';
+    }
+    ball.style.transform = 'scale(1.15)';
+    setTimeout(function(){ ball.style.transform = 'scale(1)'; }, 80);
+    clearTimeout(timer);
+    timer = setTimeout(function(){ resetRally(true); }, 1000);
+  });
+})();
+</script>
+
+</body>
+</html>

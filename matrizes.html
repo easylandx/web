@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MatriZes · Culturas que inspiran, raíces que conectan</title>
+<meta name="description" content="Arte, diversidad y comunidad. Talleres, eventos y expresiones vivas con MatriZes.">
+<style>
+:root{--bg:#0a0a14;--card:#141428;--txt:#f4f4ff;--mut:#a9a9c9;--pink:#ff2e93;--cyan:#00f0ff;--lime:#b6ff00;--yel:#ffe600;--accent:var(--pink);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:"Trebuchet MS",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h1,h2,h3{margin:0;line-height:1.1}
+.glow{color:var(--pink);text-shadow:0 0 8px var(--pink),0 0 24px var(--pink)}
+.glow2{color:var(--cyan);text-shadow:0 0 8px var(--cyan),0 0 24px var(--cyan)}
+.glow3{color:var(--lime);text-shadow:0 0 8px var(--lime),0 0 24px var(--lime)}
+.hero{text-align:center;padding:72px 0 48px}
+.hero .tag{display:inline-block;border:2px solid var(--cyan);color:var(--cyan);padding:6px 16px;border-radius:99px;font-weight:700;letter-spacing:.08em;box-shadow:0 0 14px var(--cyan),inset 0 0 10px rgba(0,240,255,.25)}
+.hero h1{font-size:clamp(2.8rem,12vw,6rem);margin:22px 0 10px;letter-spacing:.04em}
+.hero p{font-size:clamp(1.1rem,3.4vw,1.5rem);max-width:620px;margin:0 auto 28px;color:var(--txt)}
+.btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.btn{display:inline-block;padding:14px 26px;border-radius:99px;font-weight:800;text-decoration:none;color:#0a0a14;background:var(--accent);box-shadow:0 0 18px var(--accent);transition:transform .2s,box-shadow .2s;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 32px var(--accent)}
+.btn.alt{background:transparent;color:var(--lime);border:2px solid var(--lime);box-shadow:0 0 14px var(--lime)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
+.pills span{padding:6px 14px;border-radius:99px;background:var(--card);color:var(--mut);font-size:.95rem}
+h2{font-size:clamp(1.8rem,6vw,2.6rem);text-align:center;margin-bottom:10px}
+.sub{text-align:center;color:var(--mut);max-width:560px;margin:0 auto 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border-radius:20px;padding:26px;border:2px solid var(--c);box-shadow:0 0 16px var(--c),inset 0 0 18px rgba(255,255,255,.03)}
+.card h3{color:var(--c);font-size:1.5rem;margin:8px 0}
+.card .ic{font-size:2.2rem}
+.card p{margin:0;color:var(--mut)}
+.pick{background:var(--card);border-radius:24px;padding:28px 20px;text-align:center;border:2px solid var(--accent);box-shadow:0 0 22px var(--accent);transition:border-color .3s,box-shadow .3s}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:18px 0}
+.chip{font:inherit;font-weight:800;padding:12px 22px;border-radius:99px;border:2px solid var(--mut);background:transparent;color:var(--txt);cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--yel);color:var(--yel)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#0a0a14;box-shadow:0 0 18px var(--accent)}
+#msg{min-height:3.4em;font-size:1.15rem;margin:8px auto 18px;max-width:560px}
+.cta{text-align:center;background:linear-gradient(135deg,rgba(255,46,147,.18),rgba(0,240,255,.18));border-radius:28px;padding:44px 20px}
+footer{text-align:center;color:var(--mut);padding:32px 20px 48px;font-size:.95rem}
+footer b{color:var(--yel)}
+:focus-visible{outline:3px solid var(--yel);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero wrap">
+  <span class="tag">🎭 ORGANIZACIÓN SIN ÁNIMO DE LUCRO</span>
+  <h1><span class="glow">Matri</span><span class="glow2">Zes</span></h1>
+  <p>🌱 Culturas que inspiran, raíces que conectan. ¡Ven a crear, compartir y vibrar con nuestra comunidad!</p>
+  <div class="btns">
+    <a class="btn" id="igMain" href="https://www.instagram.com/matrizes.oficial/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+    <a class="btn alt" href="#elige">Descubre qué te inspira</a>
+  </div>
+  <div class="pills"><span>🎨 Arte</span><span>✨ Diversidad</span><span>🤝 Comunidad</span><span>#trescantos</span></div>
+</header>
+
+<section class="wrap" id="que-hacemos">
+  <h2 class="glow3">Vive la cultura</h2>
+  <p class="sub">Tres ideas que nos mueven y una comunidad con sitio para ti.</p>
+  <div class="grid">
+    <article class="card" style="--c:var(--pink)"><div class="ic">🎨</div><h3>Arte</h3><p>Expresiones vivas que dan color a cada raíz y cada historia.</p></article>
+    <article class="card" style="--c:var(--cyan)"><div class="ic">✨</div><h3>Diversidad</h3><p>Muchas culturas, una misma alegría: celebrar lo que nos hace únicos.</p></article>
+    <article class="card" style="--c:var(--lime)"><div class="ic">🤝</div><h3>Comunidad</h3><p>Personas que se encuentran, aprenden juntas y crecen en equipo.</p></article>
+  </div>
+</section>
+
+<section class="wrap" id="elige">
+  <h2 class="glow">¿Qué te inspira?</h2>
+  <p class="sub">Elige una opción y te contamos cómo puedes formar parte.</p>
+  <div class="pick" id="pick">
+    <div class="chips" role="group" aria-label="Elige tu interés">
+      <button class="chip" data-k="arte" aria-pressed="false">🎨 Arte</button>
+      <button class="chip" data-k="diversidad" aria-pressed="false">✨ Diversidad</button>
+      <button class="chip" data-k="comunidad" aria-pressed="false">🤝 Comunidad</button>
+      <button class="chip" data-k="talleres" aria-pressed="false">📅 Talleres y eventos</button>
+    </div>
+    <p id="msg" aria-live="polite">👆 Toca una opción para empezar.</p>
+    <div class="btns">
+      <a class="btn" id="igPick" href="https://www.instagram.com/matrizes.oficial/" target="_blank" rel="noopener">Escríbenos por Instagram</a>
+      <a class="btn alt" id="waPick" href="#" target="_blank" rel="noopener" hidden>Escríbenos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="cta">
+    <h2 class="glow2">¡Te esperamos!</h2>
+    <p class="sub">Talleres, eventos y mucha energía cultural. Únete a MatriZes y trae a tus amistades.</p>
+    <div class="btns">
+      <a class="btn" id="igCta" href="https://www.instagram.com/matrizes.oficial/" target="_blank" rel="noopener">@matrizes.oficial</a>
+      <a class="btn alt" id="waCta" href="#" target="_blank" rel="noopener" hidden>Hablemos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>🎭 <b>MatriZes</b> · Culturas que inspiran, raíces que conectan 🌱<br>#trescantos</footer>
+
+<script>
+// Pon aquí el número de WhatsApp con prefijo de país y sin signos (ej.: "34600123456").
+// Mientras esté vacío, los botones de WhatsApp permanecen ocultos.
+var WA_NUMBER = "";
+var IG = "https://www.instagram.com/matrizes.oficial/";
+var data = {
+  arte:       {c:"#ff2e93", t:"🎨 ¡Genial! Pinta, baila, canta o crea con nosotros: el arte es nuestro idioma común.", q:"Hola MatriZes, me inspira el arte y quiero saber cómo participar."},
+  diversidad: {c:"#00f0ff", t:"✨ ¡Bienvenida y bienvenido! Aquí cada cultura suma y cada voz brilla.", q:"Hola MatriZes, me encanta la diversidad y quiero saber cómo unirme."},
+  comunidad:  {c:"#b6ff00", t:"🤝 ¡Perfecto! Ven a conocer gente, compartir ideas y crecer en comunidad.", q:"Hola MatriZes, quiero formar parte de la comunidad."},
+  talleres:   {c:"#ffe600", t:"📅 ¡Genial! Cuéntanos qué te apetece y te avisamos de los próximos talleres y eventos.", q:"Hola MatriZes, quiero información sobre los próximos talleres y eventos."}
+};
+var root = document.documentElement, msg = document.getElementById("msg");
+var chips = document.querySelectorAll(".chip");
+function waLink(text){ return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text); }
+if (WA_NUMBER) {
+  ["waPick","waCta"].forEach(function(id){ var a = document.getElementById(id); a.hidden = false; a.href = waLink("Hola MatriZes, me gustaría saber más."); });
+}
+chips.forEach(function(ch){
+  ch.addEventListener("click", function(){
+    var d = data[ch.dataset.k];
+    chips.forEach(function(x){ x.setAttribute("aria-pressed", x === ch ? "true" : "false"); });
+    root.style.setProperty("--accent", d.c);
+    msg.textContent = d.t;
+    if (WA_NUMBER) document.getElementById("waPick").href = waLink(d.q);
+  });
+});
+</script>
+</body>
+</html>

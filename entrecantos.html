@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EnTreCantos · Coral de la Asociación Vecinal de Tres Cantos</title>
+<meta name="description" content="Coral vecinal de Tres Cantos. Ven a cantar con nosotr@s.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sun:#FFD23F; --coral:#FF5A5F; --sky:#2D8CFF; --leaf:#22B573; --ink:#1B1F3B; --paper:#FFFDF6;
+  --on-sun:#1B1F3B; --card:#FFFFFF;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#15182F;--card:#232849;--ink:#F6F3E8}
+}
+:root[data-theme="dark"]{--paper:#15182F;--card:#232849;--ink:#F6F3E8}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;font-size:1.1rem;line-height:1.6}
+h1,h2,h3{font-family:'Fredoka','Nunito',system-ui,sans-serif;line-height:1.1;margin:0}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+
+/* Hero */
+.hero{background:var(--sun);color:#1B1F3B;padding:56px 0 64px;text-align:center}
+.name{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+.name span{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(2.4rem,9vw,4.6rem);padding:.05em .3em .12em;border-radius:22px;color:#fff;transform:rotate(-2deg)}
+.name span:nth-child(1){background:var(--coral)}
+.name span:nth-child(2){background:var(--sky);transform:rotate(2deg)}
+.name span:nth-child(3){background:var(--leaf)}
+.hero p{font-size:clamp(1.15rem,3.5vw,1.5rem);font-weight:800;margin:0 auto 28px;max-width:32ch}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-block;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem;text-decoration:none;padding:14px 26px;border-radius:999px;background:#1B1F3B;color:#fff;border:3px solid #1B1F3B;transition:transform .15s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn.alt{background:#fff;color:#1B1F3B}
+.btn.wa{background:#22B573;border-color:#22B573}
+
+/* Voice picker */
+.pick{padding:64px 0}
+.pick h2,.why h2{font-size:clamp(1.9rem,6vw,2.8rem);text-align:center;margin-bottom:8px}
+.lead{text-align:center;margin:0 auto 28px;max-width:44ch}
+.voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:22px}
+.voices button{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.25rem;padding:18px 10px;border-radius:20px;border:4px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .15s,background .15s}
+.voices button:hover{transform:translateY(-3px)}
+.voices button[aria-pressed="true"]{background:var(--c);color:#fff;border-color:var(--c);transform:scale(1.05)}
+.result{border-radius:26px;padding:28px 24px;background:var(--card);border:4px dashed var(--ink);text-align:center;transition:background .3s,color .3s,border-color .3s}
+.result h3{font-size:1.8rem;margin-bottom:8px}
+.result p{margin:0 auto 18px;max-width:46ch}
+.result.on{background:var(--c);border:4px solid var(--c);color:#fff}
+.result .btn{background:#fff;color:#1B1F3B;border-color:#fff}
+
+/* Why */
+.why{padding:8px 0 72px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+.card{border-radius:26px;padding:26px;color:#fff}
+.card h3{font-size:1.5rem;margin-bottom:8px}
+.card p{margin:0}
+.card:nth-child(1){background:var(--coral)}
+.card:nth-child(2){background:var(--sky)}
+.card:nth-child(3){background:var(--leaf)}
+
+/* Footer */
+.cta{background:var(--ink);color:#FFFDF6;text-align:center;padding:56px 0 48px}
+:root[data-theme="dark"] .cta,:root:not([data-theme="light"]) .cta{}
+.cta h2{font-size:clamp(1.9rem,6vw,2.8rem);margin-bottom:12px}
+.cta p{margin:0 auto 24px;max-width:40ch}
+.cta .btn{background:var(--sun);color:#1B1F3B;border-color:var(--sun)}
+.cta .btn.alt{background:transparent;color:#FFFDF6;border-color:#FFFDF6}
+.cta .btn.wa{background:#22B573;color:#fff;border-color:#22B573}
+.small{margin-top:26px !important;font-size:.95rem;opacity:.85}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="name" aria-label="EnTreCantos"><span>En</span><span>Tre</span><span>Cantos</span></h1>
+    <p>La coral de tu vecindario en Tres Cantos. ¡Ven a cantar con nosotr@s!</p>
+    <div class="btns">
+      <a class="btn" href="#voz">Encuentra tu voz</a>
+      <a class="btn alt" href="https://www.instagram.com/coralvecinaltrescantos/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+      <a class="btn wa" id="waTop" href="#" target="_blank" rel="noopener" hidden>Escríbenos por WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pick" id="voz">
+    <div class="wrap">
+      <h2>¿Cuál es tu voz?</h2>
+      <p class="lead">Toca una opción y descubre tu sitio en el coro.</p>
+      <div class="voices" id="voices">
+        <button type="button" style="--c:#FF5A5F" data-v="soprano" aria-pressed="false">Soprano</button>
+        <button type="button" style="--c:#2D8CFF" data-v="alto" aria-pressed="false">Alto</button>
+        <button type="button" style="--c:#22B573" data-v="tenor" aria-pressed="false">Tenor</button>
+        <button type="button" style="--c:#8A4FFF" data-v="bajo" aria-pressed="false">Bajo</button>
+        <button type="button" style="--c:#FF8A1F" data-v="nose" aria-pressed="false">Aún lo descubro</button>
+      </div>
+      <div class="result" id="result" aria-live="polite">
+        <h3>Tu sitio te espera</h3>
+        <p>Elige una voz y te contamos cómo suena tu cuerda dentro de EnTreCantos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Cantar juntos suena genial</h2>
+      <div class="cards">
+        <div class="card"><h3>Buen ambiente</h3><p>Un grupo de vecinas y vecinos que disfruta de cada ensayo entre risas y buena música.</p></div>
+        <div class="card"><h3>Todas las voces</h3><p>Cada persona suma su color. Ven con tus ganas de cantar y aprende con el grupo.</p></div>
+        <div class="card"><h3>Tu barrio en directo</h3><p>Cantamos por Tres Cantos y compartimos la música con toda la comunidad.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="cta">
+  <div class="wrap">
+    <h2>Te esperamos con una sonrisa</h2>
+    <p>Escríbenos y te contamos horarios, lugar de ensayo y cómo unirte.</p>
+    <div class="btns">
+      <a class="btn" id="mail" href="mailto:avv.trescantos@gmail.com?subject=Quiero%20cantar%20en%20EnTreCantos">Escribir por email</a>
+      <a class="btn alt" href="https://www.instagram.com/coralvecinaltrescantos/" target="_blank" rel="noopener">@coralvecinaltrescantos</a>
+      <a class="btn wa" id="waBottom" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
+    </div>
+    <p class="small">Coral de la Asociación Vecinal de #TresCantos · <a href="https://www.instagram.com/asociacionvecinaltrescantos/" target="_blank" rel="noopener">@asociacionvecinaltrescantos</a></p>
+  </div>
+</footer>
+
+<script>
+// Añade aquí el número de WhatsApp con prefijo, sin signos (ej. "34600123456"). Vacío = el botón queda oculto.
+const WHATSAPP = "";
+
+const voices = {
+  soprano:{t:"¡Eres soprano!",p:"Las voces agudas que iluminan la melodía. Tu sitio brilla en primera fila."},
+  alto:{t:"¡Eres alto!",p:"Las voces que dan calidez y armonía al conjunto. Tu cuerda es el corazón del coro."},
+  tenor:{t:"¡Eres tenor!",p:"Las voces que aportan fuerza y energía. Tu cuerda te espera con los brazos abiertos."},
+  bajo:{t:"¡Eres bajo!",p:"Las voces profundas que sostienen todo el sonido. Tu cuerda es la base del coro."},
+  nose:{t:"¡Perfecto, lo descubrimos juntos!",p:"Ven a probar y encontrarás tu cuerda ideal con el apoyo del grupo."}
+};
+const box=document.getElementById('result'), btns=document.querySelectorAll('#voices button');
+const wa=n=>WHATSAPP?`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(n)}`:"";
+
+btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+  const v=voices[b.dataset.v], msg=`Hola, quiero cantar en EnTreCantos (${b.textContent}).`;
+  box.classList.add('on'); box.style.setProperty('--c',b.style.getPropertyValue('--c'));
+  const link = WHATSAPP
+    ? `<a class="btn" href="${wa(msg)}" target="_blank" rel="noopener">Apúntate por WhatsApp</a>`
+    : `<a class="btn" href="mailto:avv.trescantos@gmail.com?subject=${encodeURIComponent('Quiero cantar en EnTreCantos')}&body=${encodeURIComponent(msg)}">Apúntate por email</a>`;
+  box.innerHTML=`<h3>${v.t}</h3><p>${v.p}</p>${link}`;
+}));
+
+if(WHATSAPP){
+  const m="Hola, quiero información sobre EnTreCantos.";
+  ['waTop','waBottom'].forEach(id=>{const a=document.getElementById(id);a.href=wa(m);a.hidden=false});
+}
+</script>
+</body>
+</html>

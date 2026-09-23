@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Club Frontenis Tres Cantos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde: #1B7A3D;
+    --verde-osc: #0E5A29;
+    --naranja: #F2650C;
+    --oro: #E8B923;
+    --crema: #FFF8EC;
+    --tinta: #133A22;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', system-ui, sans-serif;
+    background: var(--crema);
+    color: var(--tinta);
+    line-height:1.5;
+  }
+  h1,h2,h3{ font-family:'Fredoka', 'Inter', sans-serif; }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  .wrap{ max-width: 960px; margin:0 auto; padding:0 24px; }
+
+  /* HERO */
+  .hero{
+    background: var(--verde);
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.10) 0%, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(0,0,0,0.12) 0%, transparent 40%);
+    color: #fff;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    position:relative;
+    top: env(safe-area-inset-top, 0px);
+  }
+  .hero .wrap{ display:flex; flex-direction:column; align-items:flex-start; gap:18px; }
+  .badge{
+    display:inline-block;
+    background: var(--oro);
+    color: var(--verde-osc);
+    font-weight:700;
+    font-size:0.85rem;
+    padding:6px 14px;
+    border-radius:999px;
+  }
+  .hero h1{
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    font-weight:700;
+    max-width: 14ch;
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    max-width: 46ch;
+    color: #E7F5EC;
+  }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:600;
+    padding:13px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:1rem;
+    transition: transform .15s ease;
+  }
+  .btn:active{ transform: scale(0.97); }
+  .btn-primary{ background: var(--naranja); color:#fff; }
+  .btn-secondary{ background: rgba(255,255,255,0.14); color:#fff; border:1.5px solid rgba(255,255,255,0.5); }
+
+  /* INFO STRIP */
+  .info-strip{
+    background: var(--verde-osc);
+    color:#fff;
+  }
+  .info-strip .wrap{
+    display:flex; flex-wrap:wrap; gap: 10px 28px;
+    padding-top: 18px; padding-bottom:18px;
+    font-size:0.98rem;
+    align-items:center;
+  }
+  .info-strip span{ display:flex; align-items:center; gap:8px; }
+
+  /* SECTION */
+  section{ padding-top: 56px; padding-bottom: 56px; }
+  .section-title{
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight:600;
+    color: var(--verde-osc);
+    margin-bottom: 8px;
+  }
+  .section-sub{ color:#4A5A4F; max-width: 56ch; margin-bottom: 32px; }
+
+  /* HIGHLIGHT CARDS */
+  .cards{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; }
+  .card{
+    background:#fff;
+    border: 2px solid #E4DEC9;
+    border-radius:14px;
+    padding: 22px;
+  }
+  .card .emoji{ font-size:1.8rem; }
+  .card h3{ font-size:1.1rem; margin:10px 0 6px; color:var(--verde-osc); }
+  .card p{ font-size:0.95rem; color:#525f56; }
+
+  /* PICKER (interactive) */
+  .picker{
+    background: #fff;
+    border: 2px solid #E4DEC9;
+    border-radius: 18px;
+    padding: 8px;
+    max-width: 640px;
+  }
+  .picker-tabs{
+    display:flex; gap:6px; margin-bottom: 4px;
+  }
+  .picker-tabs button{
+    flex:1;
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:12px 8px;
+    border:none;
+    border-radius:12px;
+    background:transparent;
+    color:#5B6B5F;
+    cursor:pointer;
+    transition: background .15s ease, color .15s ease;
+  }
+  .picker-tabs button[aria-selected="true"]{
+    background: var(--verde);
+    color:#fff;
+  }
+  .picker-panel{ display:none; padding: 20px 16px 8px; }
+  .picker-panel.active{ display:block; }
+  .picker-panel h3{ color:var(--verde-osc); font-size:1.25rem; margin-bottom:8px; }
+  .picker-panel p{ color:#4A5A4F; margin-bottom: 14px; }
+  .picker-panel .btn-primary{ padding:11px 18px; font-size:0.95rem; }
+
+  /* CTA */
+  .cta{
+    background: var(--naranja);
+    color:#fff;
+    text-align:center;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  .cta h2{ font-size: clamp(1.6rem, 5vw, 2.3rem); margin-bottom:10px; }
+  .cta p{ color: #FFE9D9; margin-bottom:22px; font-size:1.05rem; }
+  .cta-actions{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+  .cta .btn-secondary{ border-color: rgba(255,255,255,0.6); }
+  .cta .btn-primary{ background: var(--verde-osc); }
+
+  /* FOOTER */
+  footer{
+    background: var(--tinta);
+    color: #C9D6CC;
+    padding-top: 28px;
+    padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+    font-size:0.9rem;
+  }
+  footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center; }
+  footer a{ color:#fff; text-decoration:none; font-weight:600; }
+
+  @media (max-width: 720px){
+    .cards{ grid-template-columns: 1fr; }
+    .picker-tabs{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="wrap">
+      <span class="badge">Sector Literatos 12 · Tres Cantos</span>
+      <h1>Frontenis de barrio, nivel de competición</h1>
+      <p class="lead">El Club Frontenis Tres Cantos entrena, compite y forma a jugadores de todas las edades. Equipos federados, escuela para niños y liga social abierta a todos.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/frontenis_trescantos/" target="_blank" rel="noopener">📩 Escríbenos por Instagram</a>
+        <a class="btn btn-secondary" href="https://www.instagram.com/frontenis_trescantos/" target="_blank" rel="noopener">Ver Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-strip">
+    <div class="wrap">
+      <span>🏆 1ª y 2ª división</span>
+      <span>🧒 Escuela para niños</span>
+      <span>🎾 Liga social</span>
+      <span>📍 Sector Literatos 12</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Lo que hacemos en el club</h2>
+      <p class="section-sub">Tres formas de vivir el frontenis, desde la competición federada hasta jugar los fines de semana con los amigos.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="emoji">🏆</div>
+          <h3>Equipos federados</h3>
+          <p>Competimos en 1ª y 2ª división, representando a Tres Cantos partido a partido.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🧒</div>
+          <h3>Escuela para niños</h3>
+          <p>Iniciación y perfeccionamiento para los más pequeños, con entrenadores del club.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🎾</div>
+          <h3>Liga social</h3>
+          <p>Frontenis sin presión, pensado para jugar, mejorar y conocer gente del barrio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">¿Cuál eres tú?</h2>
+      <p class="section-sub">Toca tu perfil y te contamos por dónde empezar.</p>
+      <div class="picker" role="tablist" aria-label="Elige tu perfil">
+        <div class="picker-tabs">
+          <button aria-selected="true" data-target="ninos">🧒 Niño/a</button>
+          <button aria-selected="false" data-target="social">🎾 Quiero jugar</button>
+          <button aria-selected="false" data-target="competicion">🏆 Competición</button>
+        </div>
+
+        <div class="picker-panel active" id="ninos">
+          <h3>Escuela para niños</h3>
+          <p>Clases pensadas para aprender frontenis desde cero, con grupos por edad y entrenadores del club. Es la puerta de entrada de la mayoría de nuestros jugadores.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/frontenis_trescantos/" target="_blank" rel="noopener">Preguntar por la escuela</a>
+        </div>
+
+        <div class="picker-panel" id="social">
+          <h3>Liga social de frontenis</h3>
+          <p>Si ya sabes jugar o quieres empezar sin compromiso de club, la liga social es tu sitio: partidos entre semana o el fin de semana, a tu ritmo.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/frontenis_trescantos/" target="_blank" rel="noopener">Apuntarme a la liga</a>
+        </div>
+
+        <div class="picker-panel" id="competicion">
+          <h3>Equipos en 1ª y 2ª división</h3>
+          <p>Si compites o has competido antes y quieres nivel, hablamos contigo sobre pruebas y hueco en nuestros equipos federados.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/frontenis_trescantos/" target="_blank" rel="noopener">Hablar sobre el equipo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div class="wrap">
+      <h2>¿Te animas?</h2>
+      <p>Escríbenos por Instagram y te contamos horarios, precios y cómo empezar.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/frontenis_trescantos/" target="_blank" rel="noopener">📩 Instagram: @frontenis_trescantos</a>
+        <a class="btn btn-secondary" href="https://youtube.com/@clubfrontenistrescantos2409" target="_blank" rel="noopener">▶️ Ver en YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <span>Club Frontenis Tres Cantos · Sector Literatos 12, Tres Cantos</span>
+      <span>
+        <a href="https://www.instagram.com/frontenis_trescantos/" target="_blank" rel="noopener">Instagram</a>
+        &nbsp;·&nbsp;
+        <a href="https://youtube.com/@clubfrontenistrescantos2409" target="_blank" rel="noopener">YouTube</a>
+      </span>
+    </div>
+  </footer>
+
+<script>
+  const tabs = document.querySelectorAll('.picker-tabs button');
+  const panels = document.querySelectorAll('.picker-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.setAttribute('aria-selected','false'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

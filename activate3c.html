@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Actívate y Dona 3C · Jornadas Deportivo-Solidarias en Tres Cantos</title>
+<meta name="description" content="Jornadas Deportivo-Solidarias en Tres Cantos del 11 al 27 de septiembre de 2026. ¡Apúntate y muévete por una buena causa!">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏃</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sol:#FFE14D; --azul:#2D6BFF; --coral:#FF6B5B; --menta:#19C3B1; --rosa:#FF9ACB; --tinta:#14213D; --blanco:#FFFDF5; --wa:#25D366;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;font-family:Figtree,system-ui,sans-serif;font-weight:500;font-size:1.125rem;line-height:1.55;color:var(--tinta);background:var(--blanco)}
+h1,h2,h3{font-family:"Bowlby One",Impact,sans-serif;font-weight:400;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--tinta);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+
+/* Hero */
+.hero{background:var(--sol);padding:3.5rem 0 4.5rem;position:relative;overflow:hidden}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(2.6rem,9vw,5.6rem);letter-spacing:-.01em}
+.hero h1 span{display:block;color:var(--azul)}
+.fechas{display:inline-block;background:var(--tinta);color:var(--sol);font-weight:800;padding:.4rem 1rem;border-radius:99px;margin:0 0 1.25rem;font-size:1rem}
+.lema{font-size:clamp(1.15rem,3vw,1.5rem);font-weight:700;max-width:30ch;margin:1.25rem 0 1.75rem}
+.botones{display:flex;flex-wrap:wrap;gap:.9rem}
+.btn{display:inline-block;font-weight:800;font-size:1.1rem;text-decoration:none;padding:.95rem 1.6rem;border-radius:14px;border:3px solid var(--tinta);box-shadow:5px 5px 0 var(--tinta);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--tinta)}
+.btn.wa{background:var(--wa)}
+.btn.ig{background:var(--rosa)}
+.sello{position:absolute;right:.5rem;top:-1.5rem;width:clamp(96px,22vw,170px);aspect-ratio:1;border-radius:50%;background:var(--coral);border:4px solid var(--tinta);display:grid;place-items:center;text-align:center;font-family:"Bowlby One",sans-serif;font-size:clamp(.95rem,3vw,1.5rem);line-height:1;transform:rotate(12deg);animation:giro 9s ease-in-out infinite alternate}
+@keyframes giro{to{transform:rotate(-8deg)}}
+
+/* Calendario */
+.dias{background:var(--azul);color:#fff;padding:3.5rem 0}
+.dias h2{font-size:clamp(1.9rem,5vw,3rem)}
+.estado{font-weight:800;font-size:1.25rem;margin:.9rem 0 1.5rem;color:var(--sol)}
+.tira{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:.6rem}
+.dia{font:inherit;font-weight:800;cursor:pointer;background:#fff;color:var(--tinta);border:3px solid var(--tinta);border-radius:12px;padding:.5rem .2rem;display:flex;flex-direction:column;align-items:center;line-height:1.1;transition:transform .12s,background .12s}
+.dia small{font-weight:700;font-size:.78rem;text-transform:capitalize}
+.dia b{font-size:1.5rem}
+.dia:hover{transform:translateY(-3px)}
+.dia.pasado{opacity:.6}
+.dia.hoy{background:var(--coral)}
+.dia[aria-pressed="true"]{background:var(--sol);transform:translateY(-3px);box-shadow:0 5px 0 var(--tinta)}
+.detalle{background:#fff;color:var(--tinta);border:3px solid var(--tinta);border-radius:16px;padding:1.25rem 1.4rem;margin-top:1.5rem;box-shadow:6px 6px 0 var(--tinta)}
+.detalle h3{font-size:1.4rem;margin-bottom:.4rem;text-transform:capitalize}
+.detalle p{margin:0 0 .9rem}
+.detalle a{font-weight:800;color:var(--azul)}
+
+/* Motivos */
+.motivos{padding:3.5rem 0;background:var(--blanco)}
+.motivos h2{font-size:clamp(1.9rem,5vw,3rem);margin-bottom:1.75rem}
+.rejilla{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.caja{border:3px solid var(--tinta);border-radius:20px;padding:1.5rem;box-shadow:6px 6px 0 var(--tinta)}
+.caja h3{font-size:1.7rem;margin-bottom:.6rem}
+.caja p{margin:0}
+.caja:nth-child(1){background:var(--menta)}
+.caja:nth-child(2){background:var(--coral)}
+.caja:nth-child(3){background:var(--rosa);}
+
+/* Final */
+.final{background:var(--coral);padding:4rem 0;text-align:center;border-top:4px solid var(--tinta)}
+.final h2{font-size:clamp(2.2rem,7vw,4.2rem);margin-bottom:.8rem}
+.final p{max-width:36ch;margin:0 auto 1.6rem;font-weight:700;font-size:1.25rem}
+.final .botones{justify-content:center}
+footer{background:var(--tinta);color:var(--blanco);padding:1.75rem 0;text-align:center;font-size:1rem}
+footer a{color:var(--sol);font-weight:700}
+
+@media (max-width:560px){.sello{position:static;margin:0 0 1rem auto;transform:rotate(8deg)}.btn{width:100%;text-align:center}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="sello" aria-hidden="true">¿Te<br>apuntas?</div>
+    <p class="fechas">Del 11 al 27 de septiembre de 2026</p>
+    <h1>Actívate <span>y Dona 3C</span></h1>
+    <p class="lema">Jornadas Deportivo-Solidarias en Tres Cantos. Muévete, pásalo genial y suma por una buena causa.</p>
+    <div class="botones">
+      <a class="btn wa" href="https://whatsapp.com/channel/0029VbDTRZ70AgW6DLR4pB3P" target="_blank" rel="noopener">Únete al canal de WhatsApp</a>
+      <a class="btn ig" href="https://www.instagram.com/activateydona3c/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+    </div>
+  </div>
+</header>
+
+<section class="dias" aria-labelledby="t-dias">
+  <div class="wrap">
+    <h2 id="t-dias">Elige tu día</h2>
+    <p class="estado" id="estado" aria-live="polite"></p>
+    <div class="tira" id="tira" role="group" aria-label="Días de las jornadas"></div>
+    <div class="detalle" id="detalle" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="motivos" aria-labelledby="t-motivos">
+  <div class="wrap">
+    <h2 id="t-motivos">Tres motivos para sumarte</h2>
+    <div class="rejilla">
+      <div class="caja"><h3>Muévete</h3><p>Deporte para todos los ritmos: ven, prueba y disfruta con energía.</p></div>
+      <div class="caja"><h3>Suma</h3><p>Cada jornada une movimiento y solidaridad. Tu participación cuenta.</p></div>
+      <div class="caja"><h3>Comparte</h3><p>Conoce a tus vecinos y vecinas y vive Tres Cantos en comunidad.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>¡Te esperamos!</h2>
+    <p>Entra en el canal de WhatsApp y sigue el Instagram para no perderte ninguna jornada.</p>
+    <div class="botones">
+      <a class="btn wa" href="https://whatsapp.com/channel/0029VbDTRZ70AgW6DLR4pB3P" target="_blank" rel="noopener">Me apunto por WhatsApp</a>
+      <a class="btn ig" href="https://www.instagram.com/activateydona3c/" target="_blank" rel="noopener">@activateydona3c</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Organiza la <a href="https://www.instagram.com/asociacionvecinaltrescantos/" target="_blank" rel="noopener">Asociación Vecinal de Tres Cantos</a> · #TresCantos</div>
+</footer>
+
+<script>
+(function(){
+  var dias=[],ini=new Date(2026,8,11),n=17,i;
+  for(i=0;i<n;i++){dias.push(new Date(2026,8,11+i));}
+  var hoy=new Date();hoy=new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate());
+  var MS=86400000;
+  var tira=document.getElementById('tira'),det=document.getElementById('detalle'),est=document.getElementById('estado');
+  var idxHoy=Math.round((hoy-ini)/MS);
+
+  // Estado según la fecha de hoy
+  if(idxHoy<0){var f=-idxHoy;est.textContent=f===1?'¡Empezamos mañana!':'¡Faltan '+f+' días para empezar!';}
+  else if(idxHoy<n){var q=n-idxHoy;est.textContent=q===1?'¡Hoy es el último día! Todavía puedes sumarte.':'¡Quedan '+q+' días para sumarte!';}
+  else{est.textContent='¡Gracias por moverte con nosotros! Síguenos para las próximas jornadas.';}
+
+  var largo=function(d){return d.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});};
+  var botones=[];
+
+  function elegir(k){
+    botones.forEach(function(b,j){b.setAttribute('aria-pressed',j===k?'true':'false');});
+    var d=dias[k],txt;
+    if(k===idxHoy)txt='¡Hoy toca moverse! Descubre qué actividades hay y apúntate ahora mismo.';
+    else if(k<idxHoy)txt='Este día ya ha pasado. Revive los mejores momentos en nuestro Instagram.';
+    else txt='Te esperamos. Consulta las actividades de este día en nuestro Instagram y en el canal de WhatsApp.';
+    det.innerHTML='<h3></h3><p></p><a target="_blank" rel="noopener" href="https://www.instagram.com/activateydona3c/">Ver las actividades en Instagram</a>';
+    det.querySelector('h3').textContent=largo(d)+(k===idxHoy?' · Hoy':'');
+    det.querySelector('p').textContent=txt;
+  }
+
+  dias.forEach(function(d,k){
+    var b=document.createElement('button');
+    b.type='button';b.className='dia'+(k<idxHoy?' pasado':'')+(k===idxHoy?' hoy':'');
+    b.innerHTML='<small></small><b></b>';
+    b.querySelector('small').textContent=d.toLocaleDateString('es-ES',{weekday:'short'}).replace('.','');
+    b.querySelector('b').textContent=d.getDate();
+    b.setAttribute('aria-label',largo(d));
+    b.addEventListener('click',function(){elegir(k);});
+    tira.appendChild(b);botones.push(b);
+  });
+  elegir(idxHoy>=0&&idxHoy<n?idxHoy:0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conecta Yoga | Amaya - Kundalini Yoga en Madrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fff8ec;
+    --ivory:#fffdf7;
+    --gold:#e8a940;
+    --coral:#ff7a59;
+    --magenta:#e0518f;
+    --turquoise:#2bb3a3;
+    --violet:#8a5cf6;
+    --ink:#4a3728;
+    --ink-soft:#7a6552;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 8% 12%, rgba(255,122,89,0.18), transparent 40%),
+      radial-gradient(circle at 92% 18%, rgba(43,179,163,0.16), transparent 42%),
+      radial-gradient(circle at 15% 88%, rgba(138,92,246,0.14), transparent 45%),
+      radial-gradient(circle at 90% 85%, rgba(224,81,143,0.15), transparent 42%);
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+    background:rgba(255,248,236,0.88);backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(232,169,64,0.25);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;}
+  .logo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:var(--magenta);}
+  .logo span{color:var(--turquoise);}
+  header nav a{font-weight:700;color:var(--ink);padding:8px 16px;border-radius:20px;font-size:.95rem;}
+  header nav a:hover{background:rgba(232,169,64,0.18);}
+
+  .hero{padding:70px 0 60px;text-align:center;position:relative;}
+  .badge{
+    display:inline-block;background:linear-gradient(90deg,var(--coral),var(--magenta));
+    color:#fff;padding:6px 18px;border-radius:30px;font-weight:800;font-size:.8rem;
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px;
+  }
+  .hero h1{font-size:2.8rem;line-height:1.1;color:var(--ink);margin-bottom:14px;}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--gold),var(--coral) 50%,var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.sub{font-size:1.15rem;color:var(--ink-soft);max-width:560px;margin:0 auto 36px;line-height:1.55;}
+  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:40px;
+    font-weight:800;font-size:1rem;box-shadow:0 8px 20px rgba(74,55,40,0.15);
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-whatsapp{background:linear-gradient(90deg,#25D366,#1fb955);color:#fff;}
+  .btn-instagram{background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af);color:#fff;}
+  .btn svg{width:20px;height:20px;fill:#fff;}
+
+  .lotus{width:120px;height:120px;margin:0 auto 10px;}
+
+  section{padding:60px 0;}
+  .card-section{background:var(--ivory);border-radius:32px;box-shadow:0 10px 40px rgba(74,55,40,0.08);}
+  .about{display:flex;gap:36px;align-items:center;flex-wrap:wrap;}
+  .about .avatar{
+    flex:0 0 140px;width:140px;height:140px;border-radius:50%;
+    background:linear-gradient(135deg,var(--gold),var(--coral),var(--magenta),var(--violet));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;
+    font-size:2.4rem;font-weight:700;box-shadow:0 10px 24px rgba(224,81,143,0.35);
+  }
+  .about .text{flex:1;min-width:240px;}
+  .about h2{font-size:1.7rem;color:var(--magenta);margin-bottom:10px;}
+  .about p{color:var(--ink-soft);font-size:1.05rem;line-height:1.6;}
+  .tagpill{display:inline-block;margin-top:14px;background:rgba(43,179,163,0.15);color:var(--turquoise);
+    font-weight:800;padding:6px 14px;border-radius:20px;font-size:.85rem;}
+
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:34px;}
+  .pill-card{
+    background:var(--ivory);border-radius:22px;padding:28px 22px;text-align:center;
+    box-shadow:0 8px 24px rgba(74,55,40,0.08);border-top:5px solid var(--accent);
+  }
+  .pill-card .icon{font-size:2.2rem;margin-bottom:12px;}
+  .pill-card h3{font-size:1.05rem;color:var(--ink);margin-bottom:8px;}
+  .pill-card p{font-size:.92rem;color:var(--ink-soft);line-height:1.5;}
+
+  .section-title{text-align:center;margin-bottom:8px;font-size:2rem;color:var(--ink);}
+  .section-sub{text-align:center;color:var(--ink-soft);max-width:520px;margin:0 auto 10px;}
+
+  .info-strip{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:30px;
+  }
+  .info-chip{
+    background:#fff;border:2px solid rgba(232,169,64,0.4);border-radius:30px;
+    padding:10px 20px;font-weight:700;font-size:.95rem;color:var(--ink);
+    display:flex;align-items:center;gap:8px;
+  }
+
+  .final-cta{
+    text-align:center;padding:70px 0;border-radius:36px;
+    background:linear-gradient(120deg,var(--gold),var(--coral) 45%,var(--magenta) 80%,var(--violet));
+    color:#fff;
+  }
+  .final-cta h2{color:#fff;font-size:2rem;margin-bottom:12px;}
+  .final-cta p{color:rgba(255,255,255,0.92);max-width:480px;margin:0 auto 30px;font-size:1.05rem;}
+  .final-cta .btn-whatsapp{background:#fff;color:#1fb955;}
+  .final-cta .btn-instagram{background:#fff;color:#dd2a7b;}
+
+  footer{padding:34px 0;text-align:center;color:var(--ink-soft);font-size:.88rem;}
+  footer a{color:var(--magenta);font-weight:700;}
+
+  @media (max-width:600px){
+    .hero h1{font-size:2.1rem;}
+    section{padding:40px 0;}
+    .card-section{padding:34px 22px !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Conecta <span>Yoga</span></div>
+    <nav>
+      <a href="#kundalini">Kundalini</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="badge">Kundalini Yoga · Presencial en Madrid</div>
+    <h1>Amaya · <em>Conecta Yoga</em></h1>
+    <p class="sub">Instructora de yoga y facilitadora de procesos de conexión a través del cuerpo, la respiración y la presencia.</p>
+    <div class="cta-row">
+      <a class="btn btn-whatsapp" href="https://wa.me/34600000000?text=Hola%20Amaya%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20clases%20de%20Kundalini%20Yoga" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.6 6.3A8.8 8.8 0 0 0 12 4a8.8 8.8 0 0 0-7.6 13.2L3 21l3.9-1.4A8.8 8.8 0 0 0 12 20.8 8.8 8.8 0 0 0 20.8 12a8.7 8.7 0 0 0-3.2-5.7Zm-5.6 13.3a7.3 7.3 0 0 1-3.7-1l-.3-.2-2.3.8.8-2.2-.2-.3a7.3 7.3 0 1 1 5.7 3Zm4-5.5c-.2-.1-1.3-.6-1.5-.7s-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.7 6.7 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.2-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.4.5.2.9.4 1.3.5.6.2 1 .1 1.4-.1.4-.2 1.3-.5 1.5-1s.2-.9.1-1c0-.1-.2-.2-.4-.3Z"/></svg>
+        WhatsApp
+      </a>
+      <a class="btn btn-instagram" href="https://www.instagram.com/conecta_yoga/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.16.55.55.9 1.11 1.16 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.16 1.77 4.9 4.9 0 0 1-1.77 1.16c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.16 4.9 4.9 0 0 1-1.16-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.16-1.77a4.9 4.9 0 0 1 1.77-1.16c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2Zm0 1.8c-2.66 0-2.99.01-4.04.06-.86.04-1.33.18-1.64.3-.41.16-.7.35-1.01.66-.31.31-.5.6-.66 1.01-.12.31-.26.78-.3 1.64C4.31 9.02 4.3 9.34 4.3 12s.01 2.99.06 4.04c.04.86.18 1.33.3 1.64.16.41.35.7.66 1.01.31.31.6.5 1.01.66.31.12.78.26 1.64.3C9.02 19.7 9.34 19.7 12 19.7s2.99-.01 4.04-.06c.86-.04 1.33-.18 1.64-.3.41-.16.7-.35 1.01-.66.31-.31.5-.6.66-1.01.12-.31.26-.78.3-1.64.05-1.05.06-1.37.06-4.03s-.01-2.99-.06-4.04c-.04-.86-.18-1.33-.3-1.64-.16-.41-.35-.7-.66-1.01a2.8 2.8 0 0 0-1.01-.66c-.31-.12-.78-.26-1.64-.3C14.99 4.31 14.66 4.3 12 4.3Zm0 3.4a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6Zm0 1.8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm4.5-2.02a1 1 0 1 1 0 2.01 1 1 0 0 1 0-2.01Z"/></svg>
+        @conecta_yoga
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap card-section" style="padding:44px;">
+    <div class="about">
+      <div class="avatar">A</div>
+      <div class="text">
+        <h2>Sobre Amaya</h2>
+        <p>Instructora de yoga y facilitadora de procesos de conexión a través del cuerpo, la respiración y la presencia. Un espacio para volver a ti, soltar el ruido y encontrar calma real.</p>
+        <span class="tagpill">Kundalini Yoga · Clases presenciales en Madrid</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kundalini">
+  <div class="wrap">
+    <h2 class="section-title">¿Por qué Kundalini Yoga?</h2>
+    <p class="section-sub">Una práctica que combina posturas, respiración, mantra y meditación para reconectar cuerpo, mente y energía.</p>
+    <div class="grid3">
+      <div class="pill-card" style="--accent:var(--coral);">
+        <div class="icon">🌬️</div>
+        <h3>Respiración consciente</h3>
+        <p>Técnicas de pranayama para calmar el sistema nervioso y ganar claridad mental.</p>
+      </div>
+      <div class="pill-card" style="--accent:var(--turquoise);">
+        <div class="icon">🧘‍♀️</div>
+        <h3>Cuerpo y presencia</h3>
+        <p>Kriyas y posturas que liberan tensión física y abren espacio interior.</p>
+      </div>
+      <div class="pill-card" style="--accent:var(--violet);">
+        <div class="icon">✨</div>
+        <h3>Conexión real</h3>
+        <p>Un proceso de conexión contigo misma/o, más allá de la esterilla.</p>
+      </div>
+    </div>
+    <div class="info-strip">
+      <div class="info-chip">📍 Madrid, presencial</div>
+      <div class="info-chip">🧘 Kundalini Yoga</div>
+      <div class="info-chip">👥 Todos los niveles</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap final-cta">
+    <h2>¿Lista/o para conectar?</h2>
+    <p>Escríbeme y te cuento cómo empezar tu práctica de Kundalini Yoga en Madrid.</p>
+    <div class="cta-row">
+      <a class="btn btn-whatsapp" href="https://wa.me/34600000000?text=Hola%20Amaya%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20clases%20de%20Kundalini%20Yoga" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" style="fill:currentColor;"><path d="M17.6 6.3A8.8 8.8 0 0 0 12 4a8.8 8.8 0 0 0-7.6 13.2L3 21l3.9-1.4A8.8 8.8 0 0 0 12 20.8 8.8 8.8 0 0 0 20.8 12a8.7 8.7 0 0 0-3.2-5.7Zm-5.6 13.3a7.3 7.3 0 0 1-3.7-1l-.3-.2-2.3.8.8-2.2-.2-.3a7.3 7.3 0 1 1 5.7 3Zm4-5.5c-.2-.1-1.3-.6-1.5-.7s-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.7 6.7 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.2-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.4.5.2.9.4 1.3.5.6.2 1 .1 1.4-.1.4-.2 1.3-.5 1.5-1s.2-.9.1-1c0-.1-.2-.2-.4-.3Z"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <a class="btn btn-instagram" href="https://www.instagram.com/conecta_yoga/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" style="fill:currentColor;"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.16.55.55.9 1.11 1.16 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.16 1.77 4.9 4.9 0 0 1-1.77 1.16c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.16 4.9 4.9 0 0 1-1.16-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.16-1.77a4.9 4.9 0 0 1 1.77-1.16c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2Z"/></svg>
+        Seguir en Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Conecta Yoga · Amaya · Madrid · <a href="https://www.instagram.com/conecta_yoga/" target="_blank" rel="noopener">@conecta_yoga</a> · © 2026
+  </div>
+</footer>
+
+</body>
+</html>

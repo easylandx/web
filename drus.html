@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drus · Salud Cíclica &amp; Hormonal Femenina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#170a10; --wine900:#2b0f1a; --wine700:#521a2c; --wine500:#8f2b46;
+    --rose:#e3577c; --cream:#f5ece2; --creamdim:#cdb8ad;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:'Work Sans', -apple-system, Helvetica, Arial, sans-serif;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{background:var(--ink); color:var(--cream); font-family:var(--sans); line-height:1.6; overflow-x:hidden;}
+  img,svg{max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  section{padding:96px 0;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; line-height:1.08; letter-spacing:-0.01em;}
+  .eyebrow{font-family:var(--serif); font-style:italic; font-weight:500; color:var(--rose); font-size:1.05rem;}
+
+  /* Nav */
+  header{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:rgba(23,10,16,.88); backdrop-filter:blur(6px); border-bottom:1px solid var(--wine700);}
+  header .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .logo{font-family:var(--serif); font-size:1.4rem; font-style:italic; font-weight:600;}
+  .nav-ig{display:flex; align-items:center; gap:8px; border:1px solid var(--wine500); padding:8px 16px; border-radius:999px; font-size:.92rem; transition:background .2s,border-color .2s;}
+  .nav-ig:hover{background:var(--wine700); border-color:var(--rose);}
+  .nav-ig svg{width:18px; height:18px; flex:none;}
+
+  /* Hero */
+  .hero{position:relative; padding:72px 0 64px; overflow:hidden;}
+  .hero .wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;}
+  .hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem); color:var(--cream);}
+  .hero h1 em{font-style:italic; color:var(--rose);}
+  .hero p.lede{margin-top:22px; max-width:46ch; font-size:1.15rem; color:var(--creamdim);}
+  .cta-row{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; font-family:var(--sans); font-weight:600; font-size:.98rem; cursor:pointer; text-decoration:none; border:1px solid transparent;}
+  .btn-solid{background:var(--rose); color:var(--ink);}
+  .btn-solid:hover{background:var(--cream);}
+  .btn-outline{border-color:var(--wine500); color:var(--cream);}
+  .btn-outline:hover{border-color:var(--rose); color:var(--rose);}
+  .btn:focus-visible, a:focus-visible, .phase-btn:focus-visible{outline:2px solid var(--rose); outline-offset:3px;}
+
+  .moon-art{aspect-ratio:1/1;}
+  .moon-art .ring{stroke:var(--wine500); fill:none; stroke-width:1;}
+  .moon-art .ring-bold{stroke:var(--rose); fill:none; stroke-width:1.6;}
+  .moon-art .dot{fill:var(--rose);}
+  .moon-art .petal{fill:none; stroke:var(--wine500); stroke-width:1.2;}
+
+  /* Bio */
+  .bio{border-top:1px solid var(--wine700); border-bottom:1px solid var(--wine700);}
+  .bio .wrap{display:grid; grid-template-columns:.8fr 1.2fr; gap:56px; align-items:center;}
+  .bio h2{font-size:clamp(1.9rem,3.4vw,2.6rem);}
+  .bio p{margin-top:18px; color:var(--creamdim); max-width:56ch; font-size:1.05rem;}
+  .botanical{stroke:var(--rose); fill:none; stroke-width:1.4; stroke-linecap:round;}
+
+  /* Wheel */
+  .wheel-section{text-align:center;}
+  .wheel-section h2{font-size:clamp(2rem,3.6vw,2.8rem);}
+  .wheel-section > .wrap > p{max-width:52ch; margin:16px auto 0; color:var(--creamdim);}
+  .wheel-grid{margin-top:56px; display:grid; grid-template-columns:340px 1fr; gap:56px; align-items:center; text-align:left;}
+  .wheel-svg{width:100%; height:auto;}
+  .phase-seg{cursor:pointer; fill:var(--wine700); stroke:var(--ink); stroke-width:3; transition:fill .25s;}
+  .phase-seg:hover{fill:var(--wine500);}
+  .phase-seg.active{fill:var(--rose);}
+  .phase-label{font-family:var(--sans); font-size:11px; font-weight:600; fill:var(--cream); pointer-events:none;}
+  .wheel-center-label{font-family:var(--serif); font-style:italic; fill:var(--cream); font-size:15px; text-anchor:middle;}
+  .panel{background:var(--wine900); border:1px solid var(--wine700); border-radius:18px; padding:36px;}
+  .panel .tag{font-family:var(--sans); font-size:.82rem; font-weight:600; letter-spacing:.03em; color:var(--rose);}
+  .panel h3{margin-top:10px; font-size:1.7rem;}
+  .panel .archetype{font-family:var(--serif); font-style:italic; color:var(--creamdim); margin-top:4px; font-size:1.05rem;}
+  .panel p.desc{margin-top:16px; color:var(--creamdim); font-size:1.02rem; max-width:48ch;}
+
+  /* Events */
+  .events{border-top:1px solid var(--wine700);}
+  .events h2{font-size:clamp(2rem,3.6vw,2.8rem); text-align:center;}
+  .events > .wrap > p.center{text-align:center; color:var(--creamdim); max-width:50ch; margin:16px auto 0;}
+  .event-grid{margin-top:52px; display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .event-card{border:1px solid var(--wine700); border-radius:18px; padding:34px; display:flex; flex-direction:column; gap:16px;}
+  .event-card .icon{width:56px; height:56px;}
+  .event-card .date{font-family:var(--sans); font-weight:600; color:var(--rose); font-size:.92rem;}
+  .event-card h3{font-size:1.5rem; margin-top:2px;}
+  .event-card p{color:var(--creamdim); flex:1;}
+  .event-card .btn{align-self:flex-start; margin-top:4px;}
+
+  /* Footer */
+  footer{border-top:1px solid var(--wine700); text-align:center; padding:72px 0 calc(56px + env(safe-area-inset-bottom,0px));}
+  footer .ig-big{display:inline-flex; align-items:center; gap:12px; font-family:var(--serif); font-style:italic; font-size:1.6rem; color:var(--cream); text-decoration:none; padding-bottom:6px; border-bottom:2px solid var(--rose);}
+  footer .ig-big svg{width:26px; height:26px;}
+  footer .handle{margin-top:14px; color:var(--creamdim); font-size:.95rem;}
+  footer .copy{margin-top:40px; color:var(--wine500); font-size:.8rem;}
+
+  @media (max-width:820px){
+    .hero .wrap{grid-template-columns:1fr; text-align:left;}
+    .hero .moon-wrap{max-width:280px; margin:0 auto;}
+    .bio .wrap{grid-template-columns:1fr;}
+    .wheel-grid{grid-template-columns:1fr; gap:32px;}
+    .wheel-svg{max-width:320px; margin:0 auto; display:block;}
+    .event-grid{grid-template-columns:1fr;}
+    section{padding:68px 0;}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="logo">Drus</span>
+    <a class="nav-ig" href="https://www.instagram.com/drus.holisticoach/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      @drus.holisticoach
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Terapeuta · Salud Cíclica &amp; Hormonal Femenina</p>
+      <h1>Donde tu biología<br>y tu espíritu<br>se <em>encuentran</em></h1>
+      <p class="lede">Acompaño a mujeres a reconectar con la sabiduría de su ciclo — a escuchar sus fases, sus hormonas y su intuición como un mismo lenguaje. Tu diosa cíclica está lista para despertar.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#eventos">Ver próximos encuentros</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/drus.holisticoach/" target="_blank" rel="noopener">Seguir en Instagram</a>
+      </div>
+    </div>
+    <div class="moon-wrap">
+      <svg class="moon-art" viewBox="0 0 320 320" role="img" aria-label="Mandala lunar decorativa">
+        <circle class="ring" cx="160" cy="160" r="140"/>
+        <circle class="ring-bold" cx="160" cy="160" r="104"/>
+        <circle class="ring" cx="160" cy="160" r="66"/>
+        <g class="petal">
+          <path d="M160 56 C185 96 185 224 160 264"/>
+          <path d="M160 56 C135 96 135 224 160 264"/>
+          <path d="M56 160 C96 135 224 135 264 160"/>
+          <path d="M56 160 C96 185 224 185 264 160"/>
+        </g>
+        <g>
+          <circle class="dot" cx="160" cy="20" r="4"/>
+          <circle class="dot" cx="160" cy="300" r="4"/>
+          <circle class="dot" cx="20" cy="160" r="4"/>
+          <circle class="dot" cx="300" cy="160" r="4"/>
+        </g>
+        <circle class="dot" cx="160" cy="160" r="10"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="bio">
+  <div class="wrap">
+    <svg viewBox="0 0 200 260" aria-hidden="true" style="width:100%;max-width:220px;">
+      <path class="botanical" d="M100 250 C100 180 70 160 60 100 C90 120 100 150 100 180"/>
+      <path class="botanical" d="M100 250 C100 180 130 160 140 100 C110 120 100 150 100 180"/>
+      <circle class="botanical" cx="100" cy="60" r="34"/>
+      <path class="botanical" d="M100 26 C112 38 112 54 100 60 C88 54 88 38 100 26 Z"/>
+    </svg>
+    <div>
+      <p class="eyebrow">Sobre mí</p>
+      <h2>Rus, guía de tu ciclicidad</h2>
+      <p>Trabajo como terapeuta holística especializada en la biología y el espíritu de la mujer cíclica. Mi propuesta une el conocimiento hormonal con la sabiduría ancestral de las cuatro fases, para que cada mujer aprenda a planear, crear y descansar en sintonía con su propio ritmo — en vez de luchar contra él.</p>
+      <p>A través de masterclasses, retiros y acompañamiento íntimo, abro un espacio para que te reconozcas cíclica: cuerpo, hormonas y espíritu como una sola voz.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wheel-section" id="ciclo">
+  <div class="wrap">
+    <p class="eyebrow">Interactivo</p>
+    <h2>Descubre tu fase cíclica</h2>
+    <p>Toca cada estación de la rueda para conocer su energía, su arquetipo y cómo habitarla.</p>
+
+    <div class="wheel-grid">
+      <svg class="wheel-svg" viewBox="0 0 300 300" role="group" aria-label="Rueda de las cuatro fases del ciclo femenino">
+        <path class="phase-seg" data-phase="invierno" d="M10,150 A140,140 0 0,1 150,10 L150,75 A75,75 0 0,0 75,150 Z"></path>
+        <path class="phase-seg active" data-phase="primavera" d="M150,10 A140,140 0 0,1 290,150 L225,150 A75,75 0 0,0 150,75 Z"></path>
+        <path class="phase-seg" data-phase="verano" d="M290,150 A140,140 0 0,1 150,290 L150,225 A75,75 0 0,0 225,150 Z"></path>
+        <path class="phase-seg" data-phase="otono" d="M150,290 A140,140 0 0,1 10,150 L75,150 A75,75 0 0,0 150,225 Z"></path>
+        <text class="phase-label" x="78" y="65" text-anchor="middle">INVIERNO</text>
+        <text class="phase-label" x="222" y="65" text-anchor="middle">PRIMAVERA</text>
+        <text class="phase-label" x="222" y="242" text-anchor="middle">VERANO</text>
+        <text class="phase-label" x="78" y="242" text-anchor="middle">OTOÑO</text>
+        <circle cx="150" cy="150" r="72" fill="var(--ink)" stroke="var(--wine500)" stroke-width="1"/>
+        <text class="wheel-center-label" x="150" y="146">tu rueda</text>
+        <text class="wheel-center-label" x="150" y="166">cíclica</text>
+      </svg>
+
+      <div class="panel" id="phase-panel">
+        <p class="tag" id="phase-tag">FASE FOLICULAR</p>
+        <h3 id="phase-title">Primavera</h3>
+        <p class="archetype" id="phase-archetype">Arquetipo: La Doncella</p>
+        <p class="desc" id="phase-desc">Energía renovadora, curiosa y creativa. Las ideas nuevas florecen: es momento de explorar, planear e iniciar proyectos con ligereza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="events" id="eventos">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center; display:block;">Próximos encuentros</p>
+    <h2>Vive tu ciclicidad en comunidad</h2>
+    <p class="center">Dos espacios para reencontrarte con tu ritmo, tu cuerpo y tu círculo de mujeres.</p>
+
+    <div class="event-grid">
+      <article class="event-card">
+        <svg class="icon" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="26" fill="none" stroke="var(--rose)" stroke-width="1.4"/><path d="M30 8 A22 22 0 0 0 30 52 A16 16 0 0 1 30 8 Z" fill="var(--rose)"/></svg>
+        <p class="date">🌀 29 de agosto</p>
+        <h3>Masterclass Ciclicidad Femenina</h3>
+        <p>Un encuentro en vivo para aprender a leer tus cuatro fases y empezar a planificar tu vida — y tu energía — de forma cíclica.</p>
+        <a class="btn btn-outline" href="https://www.instagram.com/drus.holisticoach/" target="_blank" rel="noopener">Reservar mi lugar</a>
+      </article>
+      <article class="event-card">
+        <svg class="icon" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6 L36 24 L54 24 L39 35 L45 53 L30 42 L15 53 L21 35 L6 24 L24 24 Z" fill="none" stroke="var(--rose)" stroke-width="1.4"/></svg>
+        <p class="date">🌸 9 – 12 de octubre</p>
+        <h3>Retiro Mujer Sagrada</h3>
+        <p>Cuatro días para soltar el ritmo lineal, habitar tu cuerpo cíclico y celebrar en círculo con otras mujeres que despiertan a su diosa interior.</p>
+        <a class="btn btn-outline" href="https://www.instagram.com/drus.holisticoach/" target="_blank" rel="noopener">Quiero más info</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="eyebrow">Sígueme y acompaña tu ciclo cada semana</p>
+    <a class="ig-big" href="https://www.instagram.com/drus.holisticoach/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      @drus.holisticoach
+    </a>
+    <p class="handle">Instagram · Drus | Salud Cíclica &amp; Hormonal Femenina</p>
+    <p class="copy">Hecho con ciclicidad. © Drus Holistic Coach</p>
+  </div>
+</footer>
+
+<script>
+  const phases = {
+    invierno: { tag: "FASE MENSTRUAL", title: "Invierno", archetype: "Arquetipo: La Bruja Sabia", desc: "Energía introspectiva, de descanso y revisión. Es tiempo de soltar, escuchar tu intuición y bajar el ritmo sin culpa." },
+    primavera:{ tag: "FASE FOLICULAR", title: "Primavera", archetype: "Arquetipo: La Doncella", desc: "Energía renovadora, curiosa y creativa. Las ideas nuevas florecen: es momento de explorar, planear e iniciar proyectos con ligereza." },
+    verano:   { tag: "FASE OVULATORIA", title: "Verano", archetype: "Arquetipo: La Madre", desc: "Energía expansiva, magnética y comunicativa. Es momento de brillar, conectar con otras y compartir tu visión al mundo." },
+    otono:    { tag: "FASE LÚTEA", title: "Otoño", archetype: "Arquetipo: La Hechicera", desc: "Energía organizadora, intensa y detallista. Tiempo de aterrizar ideas, poner límites y cerrar ciclos con claridad." }
+  };
+  const segs = document.querySelectorAll('.phase-seg');
+  segs.forEach(seg => {
+    seg.addEventListener('click', () => {
+      segs.forEach(s => s.classList.remove('active'));
+      seg.classList.add('active');
+      const p = phases[seg.dataset.phase];
+      document.getElementById('phase-tag').textContent = p.tag;
+      document.getElementById('phase-title').textContent = p.title;
+      document.getElementById('phase-archetype').textContent = p.archetype;
+      document.getElementById('phase-desc').textContent = p.desc;
+    });
+  });
+</script>
+</body>
+</html>

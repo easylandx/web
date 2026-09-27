@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ohana Sounds — Sonoterapia con cuencos tibetanos</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌀</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17140f;
+    --paper:#f6f2e9;
+    --mist:#e8e1d1;
+    --stone:#9c9484;
+    --accent:#b5652c;
+    --accent-soft:#e3c7a9;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#f2ede2; --paper:#1a1712; --mist:#26221a; --stone:#7d7565; --accent:#e08a49; --accent-soft:#4a3423;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#f2ede2; --paper:#1a1712; --mist:#26221a; --stone:#7d7565; --accent:#e08a49; --accent-soft:#4a3423;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Work Sans", -apple-system, "Segoe UI", sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:"Fraunces", Georgia, "Times New Roman", serif; font-weight:500; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  section{padding:96px 0;}
+
+  /* Texture: hand-drawn spiral motif reused sparingly */
+  .spiral{position:absolute; opacity:.5; pointer-events:none;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    padding-top:env(safe-area-inset-top,0px);
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--mist);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:"Fraunces",serif; font-size:1.15rem;}
+  .brand svg{width:26px; height:26px;}
+  nav .links{display:flex; gap:26px; font-size:.92rem;}
+  nav .links a{text-decoration:none; opacity:.8; transition:opacity .2s;}
+  nav .links a:hover{opacity:1; color:var(--accent);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding-top:72px;
+    padding-bottom:60px;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem, 5.6vw, 4.1rem);
+    line-height:1.02;
+    max-width:11ch;
+  }
+  .hero .lede{
+    margin-top:22px;
+    max-width:38ch;
+    font-size:1.08rem;
+    color:var(--stone);
+  }
+  .hero .cta-row{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px;
+    border-radius:2px;
+    font-size:.95rem;
+    text-decoration:none;
+    border:1px solid var(--ink);
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+  }
+  .btn.solid{background:var(--ink); color:var(--paper);}
+  .btn.solid:hover{transform:translateY(-2px); background:var(--accent); border-color:var(--accent);}
+  .btn.ghost:hover{transform:translateY(-2px); border-color:var(--accent); color:var(--accent);}
+
+  .hero-art{position:relative; aspect-ratio:1/1;}
+  .hero-art svg{width:100%; height:100%;}
+
+  /* ---------- Section headings ---------- */
+  .kicker{color:var(--accent); font-size:.85rem; margin-bottom:10px;}
+  h2{font-size:clamp(1.7rem,3.2vw,2.4rem); max-width:16ch;}
+  .section-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+
+  /* ---------- About ---------- */
+  #sobre .section-grid p{color:var(--stone); margin-top:16px; max-width:52ch;}
+  #sobre .section-grid p:first-of-type{margin-top:0;}
+
+  /* ---------- Interactive bowls ---------- */
+  #cuencos{background:var(--mist);}
+  .bowls-intro{max-width:60ch; margin-bottom:52px;}
+  .bowls-intro p{color:var(--stone); margin-top:14px;}
+  .bowl-stage{
+    display:flex; justify-content:center; align-items:flex-end; gap:6vw;
+    padding:20px 0 6px;
+  }
+  .bowl-unit{display:flex; flex-direction:column; align-items:center; gap:14px;}
+  .bowl-btn{
+    background:none; border:none; cursor:pointer; padding:0;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .bowl-btn svg{display:block; touch-action:manipulation;}
+  .bowl-btn:focus-visible{outline:2px solid var(--accent); outline-offset:6px; border-radius:50%;}
+  .bowl-label{font-size:.85rem; color:var(--stone); text-align:center;}
+  .bowl-hint{text-align:center; margin-top:36px; color:var(--stone); font-size:.9rem;}
+
+  /* ---------- Sessions ---------- */
+  .sessions-list{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--mist); margin-top:44px; border:1px solid var(--mist);}
+  .session-card{background:var(--paper); padding:34px 30px;}
+  .session-card h3{font-size:1.3rem; font-weight:500;}
+  .session-card p{color:var(--stone); margin-top:12px; font-size:.96rem;}
+
+  /* ---------- Contact ---------- */
+  #contacto{
+    background:var(--ink); color:var(--paper);
+  }
+  #contacto .kicker{color:var(--accent-soft);}
+  #contacto h2{color:var(--paper); max-width:20ch;}
+  #contacto p.lede{color:color-mix(in srgb, var(--paper) 65%, transparent); max-width:42ch; margin-top:16px;}
+  .contact-row{display:flex; gap:16px; flex-wrap:wrap; margin-top:38px;}
+  #contacto .btn.solid{background:var(--accent); border-color:var(--accent); color:var(--ink);}
+  #contacto .btn.solid:hover{background:var(--paper); border-color:var(--paper);}
+  #contacto .btn.ghost{border-color:color-mix(in srgb, var(--paper) 40%, transparent); color:var(--paper);}
+  #contacto .btn.ghost:hover{border-color:var(--paper); color:var(--paper);}
+  .phone-note{margin-top:26px; font-size:.9rem; color:color-mix(in srgb, var(--paper) 55%, transparent);}
+
+  footer{padding:34px 0; text-align:center; font-size:.82rem; color:var(--stone);}
+
+  @media (max-width:760px){
+    section{padding:64px 0;}
+    .hero{grid-template-columns:1fr; padding-top:40px;}
+    .hero-art{max-width:280px; margin:0 auto;}
+    .section-grid{grid-template-columns:1fr; gap:24px;}
+    .sessions-list{grid-template-columns:1fr;}
+    .bowl-stage{gap:8vw;}
+    nav .links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 40 40" fill="none"><path d="M20 4c6 0 6 6 0 6s-6 6 0 6 6 6 0 6-6 6 0 6" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></svg>
+      Ohana Sounds
+    </div>
+    <div class="links">
+      <a href="#sobre">Sonoterapia</a>
+      <a href="#cuencos">Escucha</a>
+      <a href="#sesiones">Sesiones</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div>
+      <h1>El sonido<br>como camino<br>de calma</h1>
+      <p class="lede">Sonoterapia y masajes con cuencos tibetanos, guiados por Maica Vélez. Sesiones individuales o en grupo, pensadas para soltar tensión y volver a respirar despacio.</p>
+      <div class="cta-row">
+        <a class="btn solid" href="#cuencos">Escucha un cuenco</a>
+        <a class="btn ghost" href="https://wa.me/34622366232" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="150" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
+        <circle cx="200" cy="200" r="110" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
+        <ellipse cx="200" cy="255" rx="115" ry="34" fill="var(--ink)"/>
+        <path d="M85 255 a115 60 0 0 0 230 0" fill="none" stroke="var(--accent)" stroke-width="3"/>
+        <ellipse cx="200" cy="226" rx="115" ry="30" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+        <path d="M140 220c14-10 30-10 60 0s46 10 60 0" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <g stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity=".55">
+          <path d="M60 150c10-30 40-50 80-50" fill="none"/>
+          <path d="M340 150c-10-30-40-50-80-50" fill="none"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section id="sobre" class="wrap">
+    <div class="section-grid">
+      <div>
+        <p class="kicker">Sobre las sesiones</p>
+        <h2>Vibración que relaja cuerpo y mente</h2>
+      </div>
+      <div>
+        <p>Cada sesión combina sonoterapia, relajación guiada y masaje con cuencos tibetanos: el metal se apoya y se hace sonar directamente sobre el cuerpo, y la vibración se siente tanto como se escucha.</p>
+        <p>Trabajamos a un ritmo pausado, sin prisa, adaptando la intensidad y la postura a lo que cada persona necesita ese día.</p>
+        <p>Las sesiones son grupales o individuales, según prefieras acompañarte de otras personas o tener el espacio para ti sola.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cuencos">
+    <div class="wrap">
+      <div class="bowls-intro">
+        <p class="kicker">Pruébalo aquí</p>
+        <h2>Toca un cuenco</h2>
+        <p>Pulsa cualquiera de los tres cuencos para hacerlo sonar, como al inicio de una sesión real. Cada uno tiene un tono distinto — combínalos y deja que la vibración se apague sola.</p>
+      </div>
+
+      <div class="bowl-stage" id="bowlStage">
+        <div class="bowl-unit">
+          <button class="bowl-btn" data-freq="196" data-size="small" aria-label="Sonar cuenco pequeño">
+            <svg width="120" height="90" viewBox="0 0 140 110">
+              <ellipse class="ripple" cx="70" cy="46" rx="0" ry="0" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              <ellipse cx="70" cy="60" rx="46" ry="16" fill="var(--ink)"/>
+              <ellipse class="rim" cx="70" cy="46" rx="46" ry="14" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+            </svg>
+          </button>
+          <span class="bowl-label">Cuenco agudo</span>
+        </div>
+        <div class="bowl-unit">
+          <button class="bowl-btn" data-freq="147" data-size="medium" aria-label="Sonar cuenco mediano">
+            <svg width="150" height="112" viewBox="0 0 170 130">
+              <ellipse class="ripple" cx="85" cy="54" rx="0" ry="0" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              <ellipse cx="85" cy="72" rx="58" ry="20" fill="var(--ink)"/>
+              <ellipse class="rim" cx="85" cy="54" rx="58" ry="17" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+            </svg>
+          </button>
+          <span class="bowl-label">Cuenco medio</span>
+        </div>
+        <div class="bowl-unit">
+          <button class="bowl-btn" data-freq="98" data-size="large" aria-label="Sonar cuenco grande">
+            <svg width="184" height="138" viewBox="0 0 210 160">
+              <ellipse class="ripple" cx="105" cy="66" rx="0" ry="0" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              <ellipse cx="105" cy="90" rx="72" ry="25" fill="var(--ink)"/>
+              <ellipse class="rim" cx="105" cy="66" rx="72" ry="21" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+            </svg>
+          </button>
+          <span class="bowl-label">Cuenco grave</span>
+        </div>
+      </div>
+      <p class="bowl-hint" id="bowlHint">Activa el sonido de tu dispositivo y pulsa un cuenco.</p>
+    </div>
+  </section>
+
+  <section id="sesiones" class="wrap">
+    <p class="kicker">Formatos</p>
+    <h2>Elige cómo acompañarte</h2>
+    <div class="sessions-list">
+      <div class="session-card">
+        <h3>Sesión individual</h3>
+        <p>Espacio de uno a uno, con los cuencos apoyados sobre el cuerpo y el ritmo ajustado a tu respiración.</p>
+      </div>
+      <div class="session-card">
+        <h3>Sesión grupal</h3>
+        <p>Baño de sonido en grupo, tumbadas en círculo, dejando que la vibración viaje por toda la sala.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <p class="kicker">Reserva tu sesión</p>
+      <h2>Escribe y buscamos un hueco</h2>
+      <p class="lede">Cuéntame si prefieres sesión individual o grupal y te propongo horarios.</p>
+      <div class="contact-row">
+        <a class="btn solid" href="https://wa.me/34622366232" target="_blank" rel="noopener">WhatsApp · 622 366 232</a>
+        <a class="btn ghost" href="https://www.instagram.com/ohanasounds2023/" target="_blank" rel="noopener">Instagram @ohanasounds2023</a>
+      </div>
+      <p class="phone-note">Maica Vélez — Ohana Sounds</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Ohana Sounds · Sonoterapia con cuencos tibetanos</footer>
+
+<script>
+(function(){
+  var ctx = null;
+  function getCtx(){
+    if(!ctx){
+      var AC = window.AudioContext || window.webkitAudioContext;
+      ctx = new AC();
+    }
+    if(ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+
+  function strike(freq, btn){
+    try{
+      var ac = getCtx();
+      var now = ac.currentTime;
+      var master = ac.createGain();
+      master.gain.setValueAtTime(0.0001, now);
+      master.gain.exponentialRampToValueAtTime(0.5, now + 0.04);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 4.6);
+      master.connect(ac.destination);
+
+      var partials = [1, 2.005, 3.01, 4.02];
+      var gains = [1, 0.5, 0.28, 0.14];
+      partials.forEach(function(mult, i){
+        var osc = ac.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq * mult, now);
+        var g = ac.createGain();
+        g.gain.setValueAtTime(gains[i], now);
+        osc.connect(g);
+        g.connect(master);
+        osc.start(now);
+        osc.stop(now + 4.7);
+      });
+
+      // subtle detuned partner oscillator for the characteristic "beating" shimmer
+      var beat = ac.createOscillator();
+      beat.type = 'sine';
+      beat.frequency.setValueAtTime(freq * 1.004, now);
+      var bg = ac.createGain();
+      bg.gain.setValueAtTime(0.35, now);
+      beat.connect(bg); bg.connect(master);
+      beat.start(now); beat.stop(now + 4.7);
+
+      animateBowl(btn);
+    }catch(e){
+      var hint = document.getElementById('bowlHint');
+      if(hint) hint.textContent = 'El sonido no está disponible en este navegador, pero disfruta de la vibración visual.';
+      animateBowl(btn);
+    }
+  }
+
+  function animateBowl(btn){
+    var svg = btn.querySelector('svg');
+    var ripple = btn.querySelector('.ripple');
+    var rim = btn.querySelector('.rim');
+    var rx = parseFloat(rim.getAttribute('rx'));
+    var ry = parseFloat(rim.getAttribute('ry'));
+
+    svg.style.transition = 'transform .08s ease-out';
+    svg.style.transform = 'scale(1.04)';
+    setTimeout(function(){ svg.style.transition='transform 1.4s cubic-bezier(.2,.7,.3,1)'; svg.style.transform='scale(1)'; }, 90);
+
+    var start = null;
+    var dur = 1800;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      ripple.setAttribute('rx', rx * p * 1.7);
+      ripple.setAttribute('ry', ry * p * 1.7);
+      ripple.setAttribute('stroke-opacity', 1 - p);
+      if(p < 1) requestAnimationFrame(step);
+      else { ripple.setAttribute('rx', 0); ripple.setAttribute('ry', 0); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll('.bowl-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var freq = parseFloat(btn.getAttribute('data-freq'));
+      strike(freq, btn);
+      var hint = document.getElementById('bowlHint');
+      if(hint) hint.textContent = 'Deja que el sonido se apague… o prueba otro cuenco.';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

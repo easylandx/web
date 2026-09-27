@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elena Cristóbal · Ingeniera de Cambio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%A3%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#221b14;
+    --paper:#f3ecd8;
+    --paper-soft:#e9ddc0;
+    --shell:#fffaf2;
+    --yolk:#e8a73d;
+    --yolk-dark:#b97a1c;
+    --line:rgba(34,27,20,.16);
+    --font-display:'Fraunces', serif;
+    --font-body:'Work Sans', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.05;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--font-display);margin:0;font-weight:600;}
+  p{margin:0;}
+
+  /* header */
+  .site-header{padding:26px 0;position:relative;z-index:1;}
+  .header-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .brand{font-family:var(--font-display);font-weight:600;font-size:1.05rem;}
+  .nav-link{font-weight:600;text-decoration:none;font-size:.95rem;border-bottom:2px solid var(--yolk);padding-bottom:2px;}
+  .nav-link:hover{color:var(--yolk-dark);}
+
+  /* hero */
+  .hero{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:48px;
+    align-items:center;
+    padding:36px 28px 70px;
+  }
+  .hero h1{font-size:clamp(2.9rem,3.6vw + 1.6rem,5.2rem);font-style:italic;letter-spacing:-.01em;line-height:.98;}
+  .role{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(1.2rem,1vw + 1rem,1.6rem);
+    color:var(--yolk-dark);
+    margin-top:10px;
+  }
+  .tagline{
+    margin-top:22px;
+    font-size:1.18rem;
+    max-width:46ch;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+  .btn{
+    display:inline-block;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:1rem;
+    padding:13px 26px;
+    border-radius:100px;
+    text-decoration:none;
+    border:2px solid var(--ink);
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--yolk-dark);border-color:var(--yolk-dark);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
+
+  .hero-art{display:flex;justify-content:center;}
+  .hero-art svg{width:100%;max-width:300px;height:auto;}
+
+  /* duality */
+  .duality{padding:50px 28px 80px;}
+  .duality h2{font-size:clamp(1.8rem,1.6vw + 1.2rem,2.6rem);font-style:italic;max-width:20ch;}
+  .duality-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:40px;
+  }
+  .duality-col{padding-top:8px;border-top:2px solid var(--line);}
+  .duality-col svg{margin-bottom:16px;}
+  .duality-col h3{font-size:1.4rem;font-style:italic;margin-bottom:10px;}
+  .duality-col p{max-width:36ch;color:#3a2f22;}
+
+  /* egg section */
+  .egg-section{
+    background:var(--ink);
+    color:var(--paper);
+    padding:80px 28px 90px;
+    position:relative;
+    z-index:1;
+  }
+  .egg-section .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;}
+  .egg-section h2{color:var(--paper);font-size:clamp(1.9rem,1.8vw + 1.2rem,2.7rem);font-style:italic;max-width:18ch;}
+  .egg-intro{margin-top:14px;color:var(--paper-soft);font-size:1.08rem;max-width:40ch;}
+  .egg-btn{
+    background:none;
+    border:none;
+    padding:0;
+    margin:40px 0 18px;
+    cursor:pointer;
+    position:relative;
+    display:inline-block;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .egg-btn:focus-visible{outline:3px solid var(--yolk);outline-offset:8px;border-radius:50%;}
+  .egg-btn svg{width:min(64vw,260px);height:auto;display:block;}
+  #eggGroup{transform-origin:150px 190px;}
+  #eggGroup.shake{animation:shake .38s ease;}
+  #eggGroup.hatching{opacity:0;transform:scale(.82);transition:opacity .5s ease, transform .5s ease;}
+  @keyframes shake{
+    0%,100%{transform:rotate(0deg) translateX(0);}
+    20%{transform:rotate(-3.5deg) translateX(-3px);}
+    40%{transform:rotate(3deg) translateX(3px);}
+    60%{transform:rotate(-2deg) translateX(-2px);}
+    80%{transform:rotate(2deg) translateX(2px);}
+  }
+  .crack{transition:opacity .25s ease;}
+  .chick-inner{
+    opacity:0;
+    transform:scale(.2);
+    transform-box:fill-box;
+    transform-origin:center;
+    transition:opacity .5s ease .15s, transform .65s cubic-bezier(.34,1.56,.64,1) .15s;
+  }
+  .chick-inner.visible{opacity:1;transform:scale(1);}
+  .confetti{position:absolute;inset:0;pointer-events:none;overflow:visible;}
+  .confetti span{
+    position:absolute;
+    top:52%;left:50%;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--yolk);
+    opacity:0;
+  }
+  .confetti span.go{animation:pop 1s ease-out forwards;}
+  @keyframes pop{
+    0%{opacity:1;transform:translate(0,0) scale(1);}
+    100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.4);}
+  }
+  .egg-status{
+    min-height:1.4em;
+    font-weight:600;
+    font-size:1.1rem;
+    color:var(--yolk);
+  }
+  .reset-btn{
+    margin-top:18px;
+    background:none;
+    border:2px solid var(--paper-soft);
+    color:var(--paper);
+    border-radius:100px;
+    padding:9px 20px;
+    font-family:var(--font-body);
+    font-weight:600;
+    cursor:pointer;
+  }
+  .reset-btn:hover{border-color:var(--yolk);color:var(--yolk);}
+  .hatch-cta{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:opacity .5s ease, max-height .6s ease;
+    margin-top:0;
+  }
+  .hatch-cta.visible{max-height:220px;opacity:1;margin-top:34px;}
+  .hatch-cta p{color:var(--paper-soft);max-width:38ch;margin:0 auto;}
+  .hatch-cta .cta-row{justify-content:center;}
+  .hatch-cta .btn-primary{background:var(--yolk);border-color:var(--yolk);color:var(--ink);}
+  .hatch-cta .btn-primary:hover{background:var(--paper);border-color:var(--paper);}
+  .hatch-cta .btn-ghost{border-color:var(--paper-soft);color:var(--paper);}
+  .hatch-cta .btn-ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+
+  /* agenda / stamp */
+  .agenda{
+    padding:90px 28px 100px;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .stamp-wrap{transform:rotate(-7deg);}
+  .stamp-svg{width:190px;height:190px;}
+  .agenda-text h2{font-size:clamp(1.9rem,1.8vw + 1.2rem,2.6rem);font-style:italic;}
+  .agenda-text p{margin-top:16px;max-width:44ch;color:#3a2f22;font-size:1.05rem;}
+  .agenda-text .cta-row{margin-top:26px;}
+
+  /* footer */
+  .site-footer{border-top:2px solid var(--line);padding:30px 28px 50px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.92rem;color:#4a3d2c;}
+  .footer-inner a{font-weight:600;text-decoration:none;border-bottom:2px solid var(--yolk);}
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;text-align:left;padding-bottom:40px;}
+    .hero-art{order:-1;max-width:220px;margin:0 auto;}
+    .duality-grid{grid-template-columns:1fr;gap:34px;}
+    .agenda{grid-template-columns:1fr;text-align:center;justify-items:center;}
+    .stamp-wrap{margin:0 auto;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    #eggGroup.shake{animation:none;}
+    .chick-inner{transition:opacity .3s ease;}
+    .confetti span.go{animation:none;opacity:0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <span class="brand">Elena Cristóbal</span>
+    <a class="nav-link" href="https://www.instagram.com/elenacristobal/" target="_blank" rel="noopener">@elenacristobal</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero wrap">
+    <div class="hero-text">
+      <h1>Elena Cristóbal</h1>
+      <p class="role">Ingeniera de Cambio</p>
+      <p class="tagline">❤️‍🔥 Soy buenísima en los negocios, pero ahora mismo estoy criando un polluelo 🐣</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.instagram.com/elenacristobal/" target="_blank" rel="noopener">Ir a Instagram</a>
+        <a class="btn btn-ghost" href="https://linktr.ee/elenacristobal" target="_blank" rel="noopener">Ver el Linktree</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 260 260" aria-hidden="true">
+        <g transform="rotate(-6 115 170)">
+          <rect x="40" y="120" width="150" height="96" rx="5" fill="var(--paper-soft)" stroke="var(--ink)" stroke-width="4"/>
+        </g>
+        <g transform="rotate(3 130 150)">
+          <rect x="55" y="100" width="150" height="96" rx="5" fill="var(--shell)" stroke="var(--ink)" stroke-width="4"/>
+          <line x1="75" y1="128" x2="185" y2="128" stroke="var(--ink)" stroke-width="3" opacity=".55"/>
+          <line x1="75" y1="146" x2="175" y2="146" stroke="var(--ink)" stroke-width="3" opacity=".55"/>
+          <line x1="75" y1="164" x2="180" y2="164" stroke="var(--ink)" stroke-width="3" opacity=".55"/>
+          <line x1="75" y1="182" x2="150" y2="182" stroke="var(--ink)" stroke-width="3" opacity=".55"/>
+        </g>
+        <path d="M130,45 C160,45 178,88 178,116 C178,148 158,168 130,168 C102,168 82,148 82,116 C82,88 100,45 130,45 Z" fill="var(--yolk)" stroke="var(--ink)" stroke-width="5"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="duality wrap">
+    <h2>El despacho y el nido</h2>
+    <div class="duality-grid">
+      <div class="duality-col">
+        <svg viewBox="0 0 80 80" width="48" height="48" aria-hidden="true">
+          <rect x="14" y="30" width="52" height="36" rx="4" fill="none" stroke="var(--ink)" stroke-width="4"/>
+          <path d="M30,30 V22 a6,6 0 0 1 6,-6 h8 a6,6 0 0 1 6,6 v8" fill="none" stroke="var(--ink)" stroke-width="4"/>
+          <line x1="14" y1="46" x2="66" y2="46" stroke="var(--ink)" stroke-width="4"/>
+          <rect x="36" y="42" width="8" height="8" fill="var(--yolk)" stroke="var(--ink)" stroke-width="3"/>
+        </svg>
+        <h3>El despacho</h3>
+        <p>Años ayudando a empresas a atravesar el cambio sin romperse: estrategia, procesos y equipos que se transforman sin perder el rumbo.</p>
+      </div>
+      <div class="duality-col">
+        <svg viewBox="0 0 80 80" width="48" height="48" aria-hidden="true">
+          <path d="M10,55 Q40,70 70,55" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M14,48 Q40,62 66,48" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M20,42 Q40,54 60,42" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+          <ellipse cx="40" cy="38" rx="12" ry="15" fill="var(--yolk)" stroke="var(--ink)" stroke-width="4"/>
+        </svg>
+        <h3>El nido</h3>
+        <p>Ahora el cambio se mide en gramos, en horas de sueño y en la primera sonrisa. Mismo talento, escala distinta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="egg-section">
+    <div class="wrap">
+      <h2>Ahora mismo, todo gira en torno a esto</h2>
+      <p class="egg-intro">Toca el huevo. A ver qué tal se te da a ti eso de gestionar el cambio.</p>
+
+      <button type="button" class="egg-btn" id="eggBtn" aria-label="Toca el huevo para ver qué pasa" aria-describedby="eggStatus">
+        <div class="confetti" id="confetti"></div>
+        <svg viewBox="0 0 300 400" aria-hidden="true">
+          <g class="nest">
+            <path d="M30,362 Q150,405 270,362" fill="none" stroke="var(--paper-soft)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M45,347 Q150,387 255,347" fill="none" stroke="var(--paper-soft)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M65,332 Q150,364 235,332" fill="none" stroke="var(--paper-soft)" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <g id="eggGroup">
+            <path id="eggBody" d="M150,32 C222,32 258,150 258,218 C258,296 212,338 150,338 C88,338 42,296 42,218 C42,150 78,32 150,32 Z" fill="var(--shell)" stroke="var(--ink)" stroke-width="6"/>
+            <path class="crack" id="crack1" d="M112,132 L132,168 L104,190 L138,222" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+            <path class="crack" id="crack2" d="M172,120 L154,158 L184,182 L158,212" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+            <path class="crack" id="crack3" d="M88,210 L150,192 L138,222 L202,204 L184,236" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+          </g>
+          <g transform="translate(150,205)">
+            <g class="chick-inner" id="chickInner">
+              <ellipse cx="0" cy="35" rx="58" ry="48" fill="var(--yolk)" stroke="var(--ink)" stroke-width="6"/>
+              <circle cx="0" cy="-24" r="32" fill="var(--yolk)" stroke="var(--ink)" stroke-width="6"/>
+              <path d="M-44,32 Q-70,42 -50,68 Q-33,54 -44,32 Z" fill="var(--yolk-dark)" stroke="var(--ink)" stroke-width="4"/>
+              <path d="M-6,-55 Q0,-68 8,-54" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="-10" cy="-28" r="4" fill="var(--ink)"/>
+              <circle cx="10" cy="-28" r="4" fill="var(--ink)"/>
+              <path d="M-9,-13 L9,-13 L0,2 Z" fill="var(--yolk-dark)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+            </g>
+          </g>
+        </svg>
+      </button>
+
+      <p class="egg-status" id="eggStatus" role="status" aria-live="polite">Toca para empezar.</p>
+      <button type="button" class="reset-btn" id="resetBtn" hidden>Otra vez</button>
+
+      <div class="hatch-cta" id="hatchCta">
+        <p>Enhorabuena — acabas de vivir un rato cualquiera en la vida de Elena.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.instagram.com/elenacristobal/" target="_blank" rel="noopener">Seguir en Instagram</a>
+          <a class="btn btn-ghost" href="https://linktr.ee/elenacristobal" target="_blank" rel="noopener">Ver el Linktree</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="agenda wrap">
+    <div class="stamp-wrap">
+      <svg class="stamp-svg" viewBox="0 0 220 220" aria-hidden="true">
+        <defs>
+          <path id="stampCircle" d="M110,20 a90,90 0 1,1 -0.1,0" fill="none"/>
+        </defs>
+        <circle cx="110" cy="110" r="96" fill="none" stroke="var(--ink)" stroke-width="4" stroke-dasharray="2 7"/>
+        <circle cx="110" cy="110" r="72" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <text font-family="Work Sans, sans-serif" font-size="13" font-weight="700" letter-spacing="2" fill="var(--ink)">
+          <textPath href="#stampCircle" startOffset="1%">AGENDA CERRADA • AGENDA CERRADA •</textPath>
+        </text>
+        <text x="110" y="102" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="30" font-weight="600" fill="var(--ink)">Cerrado</text>
+        <text x="110" y="128" text-anchor="middle" font-family="Work Sans, sans-serif" font-size="12" fill="var(--ink)">hasta que despegue el polluelo</text>
+        <path d="M62,150 Q82,160 72,180 Q92,168 87,190" fill="none" stroke="var(--yolk)" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="agenda-text">
+      <h2>La agenda, cerrada</h2>
+      <p>Mientras cría a su polluelo, Elena tiene la agenda cerrada. Pero puedes anotarte para cuando reabra, o simplemente seguir el vuelo, en el Linktree.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://linktr.ee/elenacristobal" target="_blank" rel="noopener">Ver el Linktree</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>@elenacristobal — Ingeniera de Cambio (de estrategias y, ahora también, de pañales).</p>
+    <a href="https://www.instagram.com/elenacristobal/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var eggBtn = document.getElementById('eggBtn');
+  var eggGroup = document.getElementById('eggGroup');
+  var chickInner = document.getElementById('chickInner');
+  var statusEl = document.getElementById('eggStatus');
+  var resetBtn = document.getElementById('resetBtn');
+  var hatchCta = document.getElementById('hatchCta');
+  var confetti = document.getElementById('confetti');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var messages = [
+    'Toc, toc…',
+    '¡Se ha movido algo ahí dentro!',
+    'Las grietas van creciendo…',
+    'Huele a café frío y a reunión pospuesta…',
+    '¡Un poquito más!',
+    '¡Ha nacido! 🐣'
+  ];
+
+  var taps = 0;
+  var maxTaps = messages.length;
+  var audioCtx = null;
+
+  function getCtx(){
+    if(!audioCtx){
+      try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){ audioCtx = null; }
+    }
+    return audioCtx;
+  }
+
+  function playTock(){
+    var ctx = getCtx();
+    if(!ctx) return;
+    var t = ctx.currentTime;
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(320, t);
+    osc.frequency.exponentialRampToValueAtTime(140, t + 0.08);
+    gain.gain.setValueAtTime(0.001, t);
+    gain.gain.exponentialRampToValueAtTime(0.16, t + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.11);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.12);
+  }
+
+  function playPeep(){
+    var ctx = getCtx();
+    if(!ctx) return;
+    var t = ctx.currentTime;
+    [0, 0.16].forEach(function(delay){
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(900, t + delay);
+      osc.frequency.exponentialRampToValueAtTime(1500, t + delay + 0.1);
+      gain.gain.setValueAtTime(0.001, t + delay);
+      gain.gain.exponentialRampToValueAtTime(0.14, t + delay + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + delay + 0.16);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(t + delay);
+      osc.stop(t + delay + 0.18);
+    });
+  }
+
+  function shakeEgg(){
+    if(reduceMotion) return;
+    eggGroup.classList.remove('shake');
+    void eggGroup.offsetWidth;
+    eggGroup.classList.add('shake');
+  }
+
+  function revealCrack(id){
+    var el = document.getElementById(id);
+    if(el) el.style.opacity = 1;
+  }
+
+  function burstConfetti(){
+    if(reduceMotion) return;
+    confetti.innerHTML = '';
+    var colors = ['var(--yolk)', 'var(--yolk-dark)', 'var(--paper)'];
+    for(var i=0;i<10;i++){
+      var s = document.createElement('span');
+      var angle = (Math.PI * 2 * i) / 10 + Math.random()*0.4;
+      var dist = 60 + Math.random()*50;
+      s.style.setProperty('--dx', (Math.cos(angle)*dist)+'px');
+      s.style.setProperty('--dy', (Math.sin(angle)*dist - 20)+'px');
+      s.style.background = colors[i % colors.length];
+      confetti.appendChild(s);
+    }
+    requestAnimationFrame(function(){
+      Array.prototype.forEach.call(confetti.children, function(s){ s.classList.add('go'); });
+    });
+  }
+
+  function hatch(){
+    playPeep();
+    if(!reduceMotion) eggGroup.classList.add('hatching');
+    burstConfetti();
+    setTimeout(function(){
+      chickInner.classList.add('visible');
+      hatchCta.classList.add('visible');
+      resetBtn.hidden = false;
+    }, reduceMotion ? 0 : 260);
+  }
+
+  function handleTap(){
+    if(taps >= maxTaps) return;
+    taps++;
+    shakeEgg();
+    playTock();
+    if(taps === 2) revealCrack('crack1');
+    if(taps === 4) revealCrack('crack2');
+    if(taps === 5) revealCrack('crack3');
+    statusEl.textContent = messages[taps-1];
+    if(taps === maxTaps) hatch();
+  }
+
+  function reset(){
+    taps = 0;
+    ['crack1','crack2','crack3'].forEach(function(id){ document.getElementById(id).style.opacity = 0; });
+    eggGroup.classList.remove('hatching','shake');
+    chickInner.classList.remove('visible');
+    hatchCta.classList.remove('visible');
+    resetBtn.hidden = true;
+    confetti.innerHTML = '';
+    statusEl.textContent = 'Toca para empezar.';
+  }
+
+  eggBtn.addEventListener('click', handleTap);
+  resetBtn.addEventListener('click', reset);
+})();
+</script>
+
+</body>
+</html>

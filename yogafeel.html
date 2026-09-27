@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>yoga.feel_ · Vanessa Bahamontes Jorcano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --g-950:#0e1a14;
+    --g-850:#16281f;
+    --g-700:#2c4636;
+    --g-500:#527457;
+    --g-300:#9db6a2;
+    --g-150:#d7e1d8;
+    --cream:#efece0;
+    --gold:#c79a4b;
+    --ink:#101914;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:inherit;}
+  html{scroll-behavior:smooth; scroll-padding-top:20px;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(239,236,224,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(16,25,20,0.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1100px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:1.25rem; text-decoration:none; color:var(--ink);
+  }
+  .brand span{color:var(--g-500);}
+  .ig-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--cream);
+    padding:9px 18px; border-radius:100px;
+    text-decoration:none; font-size:0.88rem; font-weight:500;
+    transition:background .2s ease;
+  }
+  .ig-pill:hover{background:var(--g-700);}
+  .ig-pill svg{width:15px; height:15px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--g-950);
+    color:var(--g-150);
+    position:relative;
+    overflow:hidden;
+    padding:76px 0 96px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:0.95rem; color:var(--g-300); margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.5rem);
+    color:var(--cream);
+    line-height:1.08;
+  }
+  .hero h1 em{font-style:italic; color:var(--g-300); font-weight:400;}
+  .hero p.lead{
+    margin-top:22px; max-width:36ch; color:var(--g-150);
+    font-size:1.08rem;
+  }
+  .hero-ctas{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-gold{
+    background:var(--gold); color:var(--ink);
+    padding:13px 26px; border-radius:100px; text-decoration:none;
+    font-weight:600; font-size:0.95rem; display:inline-block;
+    transition:transform .2s ease;
+  }
+  .btn-gold:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid rgba(215,225,216,0.35); color:var(--g-150);
+    padding:13px 26px; border-radius:100px; text-decoration:none;
+    font-weight:500; font-size:0.95rem; display:inline-block;
+    background:transparent; cursor:pointer; font-family:inherit;
+  }
+  .hero-art{position:relative;}
+
+  /* ---------- section rhythm ---------- */
+  section{padding:90px 0;}
+  .kicker{color:var(--g-500); font-size:0.95rem; margin-bottom:10px;}
+  .section-head{max-width:52ch; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.35rem); line-height:1.15;}
+
+  /* ---------- about ---------- */
+  .about{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  .about p{font-size:1.06rem; max-width:48ch;}
+  .about p + p{margin-top:16px;}
+
+  /* ---------- practices ---------- */
+  .practices{background:var(--g-950); color:var(--g-150);}
+  .practices .kicker{color:var(--g-300);}
+  .practice-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:rgba(215,225,216,0.15);
+    border-radius:18px; overflow:hidden;
+  }
+  .practice-card{
+    background:var(--g-950); padding:38px 30px 34px;
+  }
+  .practice-card svg{width:56px; height:56px; margin-bottom:22px;}
+  .practice-card h3{color:var(--cream); font-size:1.3rem; margin-bottom:10px;}
+  .practice-card p{color:var(--g-300); font-size:0.96rem; margin:0;}
+
+  /* ---------- breathing widget ---------- */
+  .breathe{background:var(--cream);}
+  .breathe-inner{
+    display:grid; grid-template-columns:0.95fr 1.05fr; gap:56px; align-items:center;
+  }
+  .breathe-copy p{font-size:1.05rem; max-width:42ch;}
+  .breathe-copy p + p{margin-top:14px;}
+  .breath-box{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:44px 20px; background:var(--g-950); border-radius:24px;
+  }
+  .breath-stage{
+    position:relative; width:220px; height:220px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .breath-ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:1px solid rgba(215,225,216,0.25);
+  }
+  .breath-circle{
+    width:96px; height:96px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--g-300), var(--g-700) 72%);
+    transition:transform 4s ease-in-out;
+    transform:scale(1);
+  }
+  .breath-label{
+    margin-top:26px; color:var(--cream); font-family:'Fraunces', serif;
+    font-size:1.3rem; font-style:italic; min-height:1.6em; text-align:center;
+  }
+  .breath-count{color:var(--g-300); font-size:0.85rem; letter-spacing:0.02em; margin-top:4px;}
+  .breath-controls{margin-top:26px; display:flex; gap:12px;}
+  @media (prefers-reduced-motion:reduce){
+    .breath-circle{transition:none;}
+  }
+
+  /* ---------- philosophy ---------- */
+  .philosophy{
+    background:var(--g-150);
+  }
+  .phil-inner{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+  }
+  .phil-list{list-style:none; margin:26px 0 0; padding:0;}
+  .phil-list li{
+    display:flex; gap:16px; padding:16px 0;
+    border-top:1px solid rgba(16,25,20,0.12);
+    font-size:1.02rem;
+  }
+  .phil-list li:last-child{border-bottom:1px solid rgba(16,25,20,0.12);}
+  .phil-list svg{width:20px; height:20px; flex-shrink:0; margin-top:3px; color:var(--g-700);}
+
+  /* ---------- instagram cta ---------- */
+  .ig-cta{
+    background:var(--g-950); color:var(--cream); text-align:center;
+    padding:100px 0;
+  }
+  .ig-cta h2{font-size:clamp(1.9rem,4vw,2.7rem); color:var(--cream); max-width:22ch; margin:0 auto;}
+  .ig-cta p{color:var(--g-300); margin:18px auto 34px; max-width:40ch;}
+  .handle{
+    display:inline-flex; align-items:center; gap:10px;
+    color:var(--g-300); font-size:0.98rem; margin-top:22px;
+  }
+
+  footer{
+    background:var(--g-950); color:var(--g-500);
+    padding:26px 0 40px; text-align:center; font-size:0.85rem;
+  }
+
+  @media (max-width: 860px){
+    .hero .wrap, .about, .breathe-inner, .phil-inner{grid-template-columns:1fr;}
+    .hero-art{order:-1;}
+    .practice-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top">yoga<span>.feel_</span></a>
+    <a class="ig-pill" href="https://www.instagram.com/yoga.feel_/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>
+      @yoga.feel_
+    </a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="hero-eyebrow">Vanessa Bahamontes Jorcano</div>
+        <h1>Vuelve a tu cuerpo.<br><em>Vuelve a casa.</em></h1>
+        <p class="lead">Yoga y vida consciente 🌿 — cuerpo, mente y alma libres de tóxicos, una respiración a la vez.</p>
+        <div class="hero-ctas">
+          <a class="btn-gold" href="https://www.instagram.com/yoga.feel_/" target="_blank" rel="noopener">Seguir en Instagram</a>
+          <a class="btn-ghost" href="#respira">Prueba una respiración</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 400 420" width="100%">
+          <circle cx="200" cy="150" r="130" fill="none" stroke="#2c4636" stroke-width="1"/>
+          <circle cx="200" cy="150" r="98" fill="none" stroke="#2c4636" stroke-width="1"/>
+          <!-- seated figure, lotus pose, line art -->
+          <g fill="none" stroke="#d7e1d8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="200" cy="128" r="26"/>
+            <path d="M200 154 C 190 190, 150 200, 120 232 C 110 244, 118 256, 132 250 C 160 238, 178 216, 200 210"/>
+            <path d="M200 154 C 210 190, 250 200, 280 232 C 290 244, 282 256, 268 250 C 240 238, 222 216, 200 210"/>
+            <path d="M200 210 C 150 232, 112 268, 112 300 C 112 322, 288 322, 288 300 C 288 268, 250 232, 200 210 Z"/>
+          </g>
+          <g stroke="#527457" stroke-width="1.2" opacity="0.8">
+            <path d="M120 90 C 110 60, 90 45, 70 40" fill="none"/>
+            <path d="M280 90 C 290 60, 310 45, 330 40" fill="none"/>
+            <path d="M200 40 C 200 20, 200 10, 200 2" fill="none"/>
+          </g>
+          <g fill="#c79a4b">
+            <ellipse cx="70" cy="36" rx="7" ry="4" transform="rotate(-30 70 36)"/>
+            <ellipse cx="330" cy="36" rx="7" ry="4" transform="rotate(30 330 36)"/>
+            <ellipse cx="200" cy="0" rx="5" ry="3.4"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about">
+    <div class="wrap about">
+      <svg viewBox="0 0 260 260" width="100%">
+        <g fill="none" stroke="#2c4636" stroke-width="2">
+          <path d="M130 20 C 60 20, 20 70, 20 130 C 20 200, 70 240, 130 240 C 190 240, 240 190, 240 130" stroke-linecap="round"/>
+        </g>
+        <g fill="none" stroke="#527457" stroke-width="1.6">
+          <path d="M90 150 C 90 110, 130 100, 130 60 C 130 100, 170 110, 170 150 C 170 175, 150 190, 130 190 C 110 190, 90 175, 90 150 Z"/>
+          <path d="M130 190 L130 60" stroke-dasharray="2 5"/>
+        </g>
+      </svg>
+      <div>
+        <div class="kicker">Sobre Vanessa</div>
+        <h2 style="font-size:1.9rem; margin-bottom:20px;">Un camino de vuelta a lo simple</h2>
+        <p>Enseño yoga como un espacio para desacelerar y escuchar el cuerpo, no para exigirle. Cada clase — sea Hatha, Yin o meditación — busca el mismo lugar: quietud, presencia y una respiración consciente a la vez.</p>
+        <p>Creo en una vida libre de tóxicos, dentro y fuera de la esterilla: en lo que comemos, en lo que pensamos, en lo que dejamos ir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICAS -->
+  <section class="practices">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Prácticas</div>
+        <h2>Tres formas de volver al cuerpo</h2>
+      </div>
+      <div class="practice-grid">
+        <div class="practice-card">
+          <svg viewBox="0 0 60 60" stroke="#9db6a2" stroke-width="2" fill="none" stroke-linecap="round">
+            <circle cx="30" cy="14" r="7"/>
+            <path d="M30 21 L30 38 M30 26 L16 40 M30 26 L44 40 M30 38 L20 56 M30 38 L40 56"/>
+          </svg>
+          <h3>Hatha</h3>
+          <p>Fuerza y alineación consciente. Posturas sostenidas para construir estabilidad en el cuerpo y en la mente.</p>
+        </div>
+        <div class="practice-card">
+          <svg viewBox="0 0 60 60" stroke="#9db6a2" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M10 44 C 10 30, 22 30, 22 44 C 22 30, 34 30, 34 44"/>
+            <circle cx="42" cy="20" r="7"/>
+            <path d="M42 27 C 30 34, 22 38, 22 44"/>
+          </svg>
+          <h3>Yin</h3>
+          <p>Quietud profunda. Posturas largas que sueltan el tejido conectivo y calman el sistema nervioso.</p>
+        </div>
+        <div class="practice-card">
+          <svg viewBox="0 0 60 60" stroke="#9db6a2" stroke-width="2" fill="none" stroke-linecap="round">
+            <circle cx="30" cy="30" r="4"/>
+            <circle cx="30" cy="30" r="12"/>
+            <circle cx="30" cy="30" r="20"/>
+          </svg>
+          <h3>Meditación</h3>
+          <p>Silencio interior. Un espacio diario para observar la mente sin intentar cambiarla.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPIRA - interactive -->
+  <section class="breathe" id="respira">
+    <div class="wrap breathe-inner">
+      <div class="breathe-copy">
+        <div class="kicker">Practica ahora</div>
+        <h2 style="font-size:1.9rem; margin-bottom:18px;">Respira conmigo</h2>
+        <p>Antes de seguir leyendo, prueba esto. Es la misma respiración cuadrada que usamos para abrir cada clase: inhala, sostén, exhala, sostén — cuatro tiempos iguales.</p>
+        <p>Pulsa comenzar y sigue el círculo con la mirada. Tres o cuatro ciclos bastan para bajar un cambio.</p>
+      </div>
+      <div class="breath-box">
+        <div class="breath-stage">
+          <div class="breath-ring"></div>
+          <div class="breath-circle" id="breathCircle"></div>
+        </div>
+        <div class="breath-label" id="breathLabel">Pulsa comenzar</div>
+        <div class="breath-count" id="breathCount">&nbsp;</div>
+        <div class="breath-controls">
+          <button class="btn-gold" id="breathToggle" type="button">Comenzar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILOSOFIA -->
+  <section class="philosophy">
+    <div class="wrap phil-inner">
+      <div>
+        <div class="kicker">Vida consciente</div>
+        <h2 style="font-size:1.9rem;">Cuerpo, mente y alma libres de tóxicos</h2>
+        <ul class="phil-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 C7 3, 4 7, 4 12 C4 17, 8 21, 12 21 C16 21, 20 17, 20 12" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>Cuerpo — movimiento consciente, alimentación simple, descanso real.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8" stroke-width="1.8"/><path d="M12 8v4l3 2" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>Mente — pausas diarias, menos ruido, más presencia.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21 C7 17, 4 13, 4 9 C4 5.5, 7 3, 10 4.5 C11 5, 12 6, 12 6 C12 6, 13 5, 14 4.5 C17 3, 20 5.5, 20 9 C20 13, 17 17, 12 21 Z" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span>Alma — vínculos honestos, tiempo en la naturaleza, gratitud.</span>
+          </li>
+        </ul>
+      </div>
+      <svg viewBox="0 0 260 300" width="100%">
+        <g fill="none" stroke="#2c4636" stroke-width="1.8" stroke-linecap="round">
+          <path d="M130 280 C 130 220, 130 180, 130 150"/>
+          <path d="M130 220 C 100 210, 80 190, 70 160"/>
+          <path d="M130 190 C 160 178, 180 158, 190 130"/>
+          <path d="M130 150 C 105 140, 88 118, 82 90"/>
+          <path d="M130 150 C 155 140, 172 118, 178 90"/>
+        </g>
+        <g fill="#c79a4b" opacity="0.9">
+          <ellipse cx="70" cy="158" rx="9" ry="5" transform="rotate(-40 70 158)"/>
+          <ellipse cx="190" cy="128" rx="9" ry="5" transform="rotate(35 190 128)"/>
+          <ellipse cx="82" cy="88" rx="8" ry="5" transform="rotate(-45 82 88)"/>
+          <ellipse cx="178" cy="88" rx="8" ry="5" transform="rotate(45 178 88)"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- IG CTA -->
+  <section class="ig-cta">
+    <div class="wrap">
+      <h2>Practiquemos juntas, dentro y fuera de la esterilla.</h2>
+      <p>Clases, reflexiones y recordatorios para una vida más consciente — todos los días en Instagram.</p>
+      <a class="btn-gold" href="https://www.instagram.com/yoga.feel_/" target="_blank" rel="noopener">Ir a @yoga.feel_</a>
+      <div class="handle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+        instagram.com/yoga.feel_
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Vanessa Bahamontes Jorcano · yoga.feel_ · Yoga y vida consciente 🌿</div>
+</footer>
+
+<script>
+(function(){
+  var circle = document.getElementById('breathCircle');
+  var label = document.getElementById('breathLabel');
+  var count = document.getElementById('breathCount');
+  var toggle = document.getElementById('breathToggle');
+  var running = false;
+  var cycle = 0;
+  var timer = null;
+  var stepIndex = 0;
+
+  var steps = [
+    { text: 'Inhala…', scale: 1.55, dur: 4000 },
+    { text: 'Sostén', scale: 1.55, dur: 4000 },
+    { text: 'Exhala…', scale: 1.0, dur: 4000 },
+    { text: 'Sostén', scale: 1.0, dur: 4000 }
+  ];
+
+  function applyStep(i){
+    var s = steps[i];
+    circle.style.transitionDuration = (s.dur/1000) + 's';
+    circle.style.transform = 'scale(' + s.scale + ')';
+    label.textContent = s.text;
+    if (i === 0) {
+      cycle++;
+      count.textContent = 'Ciclo ' + cycle;
+    }
+  }
+
+  function tick(){
+    if (!running) return;
+    applyStep(stepIndex);
+    var dur = steps[stepIndex].dur;
+    stepIndex = (stepIndex + 1) % steps.length;
+    timer = setTimeout(tick, dur);
+  }
+
+  function start(){
+    running = true;
+    stepIndex = 0;
+    cycle = 0;
+    toggle.textContent = 'Detener';
+    tick();
+  }
+
+  function stop(){
+    running = false;
+    clearTimeout(timer);
+    circle.style.transitionDuration = '1.2s';
+    circle.style.transform = 'scale(1)';
+    label.textContent = 'Pulsa comenzar';
+    count.textContent = '\u00A0';
+    toggle.textContent = 'Comenzar';
+  }
+
+  toggle.addEventListener('click', function(){
+    if (running) { stop(); } else { start(); }
+  });
+})();
+</script>
+
+</body>
+</html>

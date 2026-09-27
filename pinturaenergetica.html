@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pilar Sánchez — Pintura Energética para el Alma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#120a15;
+    --bg-soft:#1c1122;
+    --surface:#241530;
+    --line: rgba(246,239,233,.14);
+    --text:#f6efe9;
+    --text-dim:#c9b8c8;
+    --accent:#ff3d78;
+    --accent-soft: rgba(255,61,120,.16);
+    --gold:#f0c34c;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+    padding-top:24px;
+    padding-left:24px;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:.2px;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  section{position:relative; padding:110px 0;}
+
+  /* ---------- background texture ---------- */
+  .bg-glow{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(600px 500px at 12% 8%, rgba(255,61,120,.13), transparent 60%),
+      radial-gradient(700px 600px at 90% 30%, rgba(240,195,76,.08), transparent 60%),
+      radial-gradient(800px 700px at 50% 95%, rgba(255,61,120,.08), transparent 60%);
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:40;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 28px 22px 48px;
+    background:rgba(18,10,21,.72);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{font-family:'Fraunces', serif; font-style:italic; font-size:1.25rem;}
+  .nav-ig{
+    display:flex; align-items:center; gap:9px;
+    padding:9px 18px; border-radius:999px;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    text-decoration:none;
+    font-size:.85rem; letter-spacing:.3px;
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav-ig:hover{background:var(--accent); color:var(--bg);}
+  .nav-ig svg{width:15px; height:15px; fill:currentColor;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:90px 0 70px;
+    display:grid; grid-template-columns:1.1fr .9fr; gap:50px; align-items:center;
+  }
+  .eyebrow{color:var(--gold); font-size:.95rem; letter-spacing:.4px; margin-bottom:18px;}
+  .hero h1{
+    font-size:clamp(2.5rem, 6vw, 4.4rem);
+    line-height:1.03;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--accent);
+  }
+  .hero p.lede{
+    margin-top:26px; max-width:46ch; color:var(--text-dim); font-size:1.08rem;
+  }
+  .hero-cta{margin-top:36px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; border-radius:999px;
+    font-size:.95rem; text-decoration:none; cursor:pointer; border:none;
+    font-family:'Work Sans', sans-serif;
+  }
+  .btn-solid{background:var(--accent); color:var(--bg); font-weight:600;}
+  .btn-solid:hover{background:#ff5c90;}
+  .btn-ghost{border:1px solid var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-dim);}
+
+  .hero-art{position:relative; height:380px;}
+
+  /* ---------- pillars ---------- */
+  .pillars{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden;
+  }
+  .pillar{background:var(--bg-soft); padding:40px 32px;}
+  .pillar svg{width:34px; height:34px; margin-bottom:20px;}
+  .pillar h3{font-size:1.25rem; margin-bottom:10px; font-weight:500;}
+  .pillar p{color:var(--text-dim); font-size:.95rem; margin:0;}
+
+  .section-head{max-width:56ch; margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
+  .section-head p{color:var(--text-dim); margin-top:16px; font-size:1.02rem;}
+
+  /* ---------- about ---------- */
+  .about{display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:center;}
+  .about-frame{
+    aspect-ratio:4/5; border-radius:20px;
+    background:linear-gradient(155deg, var(--surface), var(--bg-soft));
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .about-frame svg{width:70%; height:70%;}
+  .about-text p{color:var(--text-dim); font-size:1.05rem; margin-bottom:18px;}
+  .about-text strong{color:var(--text); font-weight:500;}
+  .quote{
+    margin-top:26px; padding-left:22px; border-left:2px solid var(--accent);
+    font-family:'Fraunces', serif; font-style:italic; font-size:1.2rem; color:var(--text);
+  }
+
+  /* ---------- interactive ---------- */
+  .studio{
+    background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .studio-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .studio-copy p{color:var(--text-dim); font-size:1.02rem; margin-bottom:14px;}
+  .studio-copy ul{margin:22px 0; padding:0; list-style:none; color:var(--text-dim); font-size:.95rem;}
+  .studio-copy li{margin-bottom:10px; padding-left:20px; position:relative;}
+  .studio-copy li::before{content:"·"; color:var(--accent); position:absolute; left:0; font-size:1.4rem; line-height:.7;}
+  .canvas-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:22px;
+    padding:26px; text-align:center; position:relative;
+  }
+  #butterflyCanvas{
+    width:100%; max-width:420px; aspect-ratio:1/1; touch-action:none;
+    cursor:crosshair; border-radius:14px;
+  }
+  .canvas-controls{display:flex; justify-content:center; gap:14px; margin-top:18px;}
+  .canvas-controls button{
+    background:transparent; border:1px solid var(--line); color:var(--text-dim);
+    padding:10px 20px; border-radius:999px; font-family:'Work Sans',sans-serif;
+    font-size:.85rem; cursor:pointer; transition:border-color .2s, color .2s;
+  }
+  .canvas-controls button:hover{border-color:var(--accent); color:var(--text);}
+  .reveal{
+    margin-top:20px; min-height:34px;
+    font-family:'Fraunces', serif; font-style:italic; color:var(--gold);
+    font-size:1.05rem; opacity:0; transform:translateY(6px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.show{opacity:1; transform:translateY(0);}
+  .canvas-hint{margin-top:14px; font-size:.82rem; color:var(--text-dim); letter-spacing:.2px;}
+
+  /* ---------- gallery ---------- */
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .art{
+    background:var(--surface); border:1px solid var(--line); border-radius:18px;
+    overflow:hidden;
+  }
+  .art-canvas{aspect-ratio:1/1; display:block; width:100%;}
+  .art-cap{padding:18px 20px;}
+  .art-cap h3{font-size:1.05rem; font-weight:500;}
+  .art-cap span{color:var(--text-dim); font-size:.85rem;}
+
+  /* ---------- closing ---------- */
+  .closing{text-align:center;}
+  .closing h2{font-size:clamp(2rem,4.5vw,3rem); max-width:18ch; margin:0 auto;}
+  .closing h2 em{color:var(--accent); font-style:italic;}
+  .closing p{color:var(--text-dim); margin:20px auto 36px; max-width:44ch;}
+  .ig-block{
+    display:inline-flex; align-items:center; gap:14px;
+    background:var(--surface); border:1px solid var(--line);
+    padding:16px 28px; border-radius:999px;
+  }
+  .ig-icon{
+    width:42px; height:42px; border-radius:12px;
+    background:linear-gradient(135deg, var(--accent), var(--gold));
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .ig-icon svg{width:22px; height:22px; fill:var(--bg);}
+  .ig-text{text-align:left;}
+  .ig-text strong{display:block; font-size:1rem;}
+  .ig-text span{color:var(--text-dim); font-size:.85rem;}
+
+  footer{
+    padding:36px 0; text-align:center; color:var(--text-dim); font-size:.82rem;
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr; gap:36px;}
+    .hero-art{height:280px; order:-1;}
+    .pillars{grid-template-columns:1fr;}
+    .about{grid-template-columns:1fr; gap:34px;}
+    .studio-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:1fr;}
+    section{padding:70px 0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<nav>
+  <div class="brand">Pilar Sánchez</div>
+  <a class="nav-ig" href="https://www.instagram.com/pinturaenergeticaparaelalma/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.92 4.92 0 0 1-1.15 1.77 4.92 4.92 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.92 4.92 0 0 1-1.77-1.15 4.92 4.92 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.92 4.92 0 0 1 5.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.3 0 12 0zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.17 1.17 0 1 1 0-2.34 1.17 1.17 0 0 1 0 2.34z"/></svg>
+    @pinturaenergeticaparaelalma
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="wrap" style="display:contents;">
+    <div>
+      <div class="eyebrow">Pintura energética para el alma</div>
+      <h1>Sé <em>auténtica</em>, no perfecta.</h1>
+      <p class="lede">El amor, la transformación y la evolución hacia ti misma y hacia los demás son el camino. Cada obra de Pilar Sánchez nace de ese lugar: un pincel que sana, un color que acompaña.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#estudio">Pintar mi energía</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/pinturaenergeticaparaelalma/" target="_blank" rel="noopener">Ver en Instagram</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" width="100%" height="100%">
+        <defs>
+          <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ff3d78"/>
+            <stop offset="100%" stop-color="#f0c34c"/>
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(246,239,233,.12)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="110" fill="none" stroke="rgba(246,239,233,.1)" stroke-width="1"/>
+        <g transform="translate(200,205)">
+          <path d="M0,0 C10,-70 100,-105 115,-45 C125,-5 65,10 0,0 Z" fill="url(#heroGrad)" opacity="0.9"/>
+          <path d="M0,0 C-10,-70 -100,-105 -115,-45 C-125,-5 -65,10 0,0 Z" fill="url(#heroGrad)" opacity="0.75"/>
+          <path d="M0,0 C8,45 70,70 55,100 C42,125 8,80 0,0 Z" fill="url(#heroGrad)" opacity="0.6"/>
+          <path d="M0,0 C-8,45 -70,70 -55,100 C-42,125 -8,80 0,0 Z" fill="url(#heroGrad)" opacity="0.5"/>
+          <line x1="0" y1="0" x2="0" y2="60" stroke="#f6efe9" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="pillars">
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ff3d78" stroke-width="1.4"><path d="M12 21s-8-5.6-8-11.3C4 6.5 6.4 4 9.3 4 11 4 12 5 12 5s1-1 2.7-1C17.6 4 20 6.5 20 9.7 20 15.4 12 21 12 21z"/></svg>
+        <h3>Amor</h3>
+        <p>El punto de partida de cada pieza: mirarse con ternura antes de mirar hacia afuera.</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f0c34c" stroke-width="1.4"><path d="M12 2v3M12 19v3M4.2 7l-2.6-1.5M20.4 18.5 22.4 17M4.2 17l-2.6 1.5M20.4 5.5 22.4 7M6 12a6 6 0 1 0 12 0 6 6 0 0 0-12 0Z"/></svg>
+        <h3>Transformación</h3>
+        <p>El color como puente entre quien fuiste y quien te estás animando a ser.</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ff3d78" stroke-width="1.4"><path d="M12 3a9 9 0 1 0 6.36 15.36M12 3v7l5 3"/></svg>
+        <h3>Evolución</h3>
+        <p>Un proceso, nunca un destino. El lienzo avanza a tu propio ritmo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pilar">
+  <div class="wrap about">
+    <div class="about-frame">
+      <svg viewBox="0 0 300 300">
+        <defs>
+          <radialGradient id="pGrad" cx="35%" cy="30%" r="80%">
+            <stop offset="0%" stop-color="#3a2140"/>
+            <stop offset="100%" stop-color="#1c1122"/>
+          </radialGradient>
+        </defs>
+        <circle cx="150" cy="150" r="140" fill="url(#pGrad)"/>
+        <g stroke="#ff3d78" stroke-width="2" fill="none" opacity=".8">
+          <path d="M60,190 C90,110 140,90 150,150 C160,90 210,110 240,190"/>
+        </g>
+        <g stroke="#f0c34c" stroke-width="2" fill="none" opacity=".6">
+          <circle cx="150" cy="150" r="60"/>
+        </g>
+        <circle cx="150" cy="150" r="6" fill="#f6efe9"/>
+      </svg>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">Sobre la artista</div>
+      <h2 style="font-size:2rem; margin-bottom:22px;">Pilar Sánchez</h2>
+      <p>Pilar pinta desde un lugar poco común: no busca la perfección de la forma, busca la verdad del trazo. Su trabajo es un ejercicio de <strong>pintura energética</strong>, donde cada color y cada gesto acompañan un proceso interior de amor propio y transformación.</p>
+      <p>No es una técnica que se enseña con reglas fijas — es una invitación a soltar el control y dejar que la mano diga lo que la mente todavía no sabe nombrar.</p>
+      <div class="quote">"Se auténtica, no perfecta."</div>
+    </div>
+  </div>
+</section>
+
+<section class="studio" id="estudio">
+  <div class="wrap studio-grid">
+    <div class="studio-copy">
+      <div class="eyebrow">Experiencia interactiva</div>
+      <h2 style="font-size:2rem;">Pinta tu propia energía</h2>
+      <p>Antes de conocer la obra de Pilar, vívela. Dentro de la silueta de la mariposa hay un mensaje esperando a ser revelado, igual que en vos.</p>
+      <ul>
+        <li>Dibujá libremente con el dedo o el mouse dentro de la mariposa.</li>
+        <li>El color cambia solo, como tu energía en movimiento.</li>
+        <li>Cuando pintes lo suficiente, aparece un mensaje para vos.</li>
+      </ul>
+      <p style="font-size:.9rem;">Un pequeño espejo de lo que Pilar hace en cada sesión: transformar el gesto en sentido.</p>
+    </div>
+    <div class="canvas-card">
+      <canvas id="butterflyCanvas" width="420" height="420"></canvas>
+      <div class="canvas-controls">
+        <button id="resetCanvas">Limpiar lienzo</button>
+      </div>
+      <div class="reveal" id="revealMsg"></div>
+      <div class="canvas-hint">Dibujá dentro de la mariposa para revelar tu frase</div>
+    </div>
+  </div>
+</section>
+
+<section id="obras">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Una mirada a su obra</div>
+      <h2>Trazos que nacen del alma</h2>
+      <p>Composiciones inspiradas en el proceso energético de Pilar: círculos que sanan, gestos que sueltan, colores que acompañan.</p>
+    </div>
+    <div class="gallery" id="artGallery"></div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>Tu transformación también <em>merece color</em>.</h2>
+    <p>Seguí el proceso de Pilar, sus obras y sus próximas sesiones de pintura energética en Instagram.</p>
+    <a class="ig-block" href="https://www.instagram.com/pinturaenergeticaparaelalma/" target="_blank" rel="noopener">
+      <span class="ig-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.92 4.92 0 0 1-1.15 1.77 4.92 4.92 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.92 4.92 0 0 1-1.77-1.15 4.92 4.92 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.92 4.92 0 0 1 5.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.3 0 12 0zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.17 1.17 0 1 1 0-2.34 1.17 1.17 0 0 1 0 2.34z"/></svg>
+      </span>
+      <span class="ig-text">
+        <strong>@pinturaenergeticaparaelalma</strong>
+        <span>Seguir a Pilar Sánchez</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  Pilar Sánchez · Pintura energética para el alma
+</footer>
+
+<script>
+/* ---------------- Interactive butterfly canvas ---------------- */
+(function(){
+  const canvas = document.getElementById('butterflyCanvas');
+  const ctx = canvas.getContext('2d');
+  const resetBtn = document.getElementById('resetCanvas');
+  const revealEl = document.getElementById('revealMsg');
+  const W = canvas.width, H = canvas.height;
+
+  const phrases = [
+    "Eres luz en constante transformación.",
+    "Tu autenticidad es tu mayor obra de arte.",
+    "Cada trazo es un acto de amor hacia ti misma.",
+    "Evolucionar es honrar quién eres hoy.",
+    "No naciste para ser perfecta, naciste para ser real.",
+    "El amor que buscás también vive dentro de ti.",
+    "Sos proceso, no producto terminado."
+  ];
+
+  function butterflyPath(cx, cy, s){
+    const p = new Path2D();
+    p.moveTo(cx, cy);
+    p.bezierCurveTo(cx+0.10*s, cy-0.62*s, cx+0.92*s, cy-0.95*s, cx+0.98*s, cy-0.28*s);
+    p.bezierCurveTo(cx+1.02*s, cy+0.14*s, cx+0.50*s, cy+0.05*s, cx, cy);
+    p.bezierCurveTo(cx+0.05*s, cy+0.10*s, cx+0.72*s, cy+0.50*s, cx+0.55*s, cy+0.88*s);
+    p.bezierCurveTo(cx+0.34*s, cy+1.08*s, cx+0.05*s, cy+0.50*s, cx, cy);
+    p.bezierCurveTo(cx-0.10*s, cy-0.62*s, cx-0.92*s, cy-0.95*s, cx-0.98*s, cy-0.28*s);
+    p.bezierCurveTo(cx-1.02*s, cy+0.14*s, cx-0.50*s, cy+0.05*s, cx, cy);
+    p.bezierCurveTo(cx-0.05*s, cy+0.10*s, cx-0.72*s, cy+0.50*s, cx-0.55*s, cy+0.88*s);
+    p.bezierCurveTo(cx-0.34*s, cy+1.08*s, cx-0.05*s, cy+0.50*s, cx, cy);
+    p.closePath();
+    return p;
+  }
+
+  const cx = W/2, cy = H*0.46, scale = W*0.34;
+  const bPath = butterflyPath(cx, cy, scale);
+
+  function drawGuide(){
+    ctx.save();
+    ctx.strokeStyle = 'rgba(246,239,233,.28)';
+    ctx.lineWidth = 1.4;
+    ctx.setLineDash([5,6]);
+    ctx.stroke(bPath);
+    ctx.restore();
+    // body line
+    ctx.save();
+    ctx.strokeStyle = 'rgba(246,239,233,.35)';
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(cx, cy-scale*0.05);
+    ctx.lineTo(cx, cy+scale*1.02);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function initCanvas(){
+    ctx.clearRect(0,0,W,H);
+    drawGuide();
+    ctx.clip(bPath);
+  }
+  initCanvas();
+
+  let drawing = false;
+  let hue = 320;
+  let strokeCount = 0;
+  let revealed = false;
+  let lastX = 0, lastY = 0;
+  const THRESHOLD = 130;
+
+  function pos(e){
+    const r = canvas.getBoundingClientRect();
+    const cxx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+    const cyy = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+    return { x: cxx * (W/r.width), y: cyy * (H/r.height) };
+  }
+
+  function start(e){
+    drawing = true;
+    const p = pos(e);
+    lastX = p.x; lastY = p.y;
+    e.preventDefault();
+  }
+  function move(e){
+    if(!drawing) return;
+    const p = pos(e);
+    hue = (hue + 2.4) % 360;
+    ctx.strokeStyle = `hsl(${hue}, 88%, 62%)`;
+    ctx.lineWidth = 20;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowBlur = 18;
+    ctx.shadowColor = `hsl(${hue}, 90%, 55%)`;
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    lastX = p.x; lastY = p.y;
+    strokeCount++;
+    if(!revealed && strokeCount > THRESHOLD){
+      revealed = true;
+      const msg = phrases[Math.floor(Math.random()*phrases.length)];
+      revealEl.textContent = msg;
+      revealEl.classList.add('show');
+    }
+    e.preventDefault();
+  }
+  function end(){ drawing = false; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, {passive:false});
+  canvas.addEventListener('touchmove', move, {passive:false});
+  canvas.addEventListener('touchend', end);
+
+  resetBtn.addEventListener('click', () => {
+    ctx.save();
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,W,H);
+    ctx.restore();
+    initCanvas();
+    strokeCount = 0;
+    revealed = false;
+    revealEl.classList.remove('show');
+  });
+})();
+
+/* ---------------- Generative gallery artwork ---------------- */
+(function(){
+  const gallery = document.getElementById('artGallery');
+  const pieces = [
+    { title:"Renacer", tag:"Serie Transformación" },
+    { title:"Alma en movimiento", tag:"Serie Amor" },
+    { title:"Círculo propio", tag:"Serie Evolución" }
+  ];
+  const palette = ['#ff3d78', '#f0c34c', '#ff6f9c', '#c9853f'];
+
+  function seededRand(seed){
+    let s = seed;
+    return function(){ s = (s*9301+49297) % 233280; return s/233280; };
+  }
+
+  pieces.forEach((piece, i) => {
+    const art = document.createElement('div');
+    art.className = 'art';
+    const rand = seededRand(i*97+13);
+    let strokes = '';
+    for(let k=0;k<7;k++){
+      const x1 = 20 + rand()*260, y1 = 20 + rand()*260;
+      const x2 = 20 + rand()*260, y2 = 20 + rand()*260;
+      const cx1 = 20 + rand()*260, cy1 = 20 + rand()*260;
+      const color = palette[Math.floor(rand()*palette.length)];
+      const w = 6 + rand()*22;
+      strokes += `<path d="M${x1},${y1} Q${cx1},${cy1} ${x2},${y2}" stroke="${color}" stroke-width="${w.toFixed(1)}" fill="none" stroke-linecap="round" opacity="${(0.5+rand()*0.4).toFixed(2)}"/>`;
+    }
+    let circles = '';
+    for(let k=0;k<3;k++){
+      const rcx = 40+rand()*220, rcy = 40+rand()*220, rr = 20+rand()*50;
+      const color = palette[Math.floor(rand()*palette.length)];
+      circles += `<circle cx="${rcx}" cy="${rcy}" r="${rr}" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.55"/>`;
+    }
+    art.innerHTML = `
+      <svg class="art-canvas" viewBox="0 0 300 300">
+        <rect width="300" height="300" fill="#1c1122"/>
+        ${circles}
+        ${strokes}
+      </svg>
+      <div class="art-cap">
+        <h3>${piece.title}</h3>
+        <span>${piece.tag}</span>
+      </div>`;
+    gallery.appendChild(art);
+  });
+})();
+</script>
+</body>
+</html>

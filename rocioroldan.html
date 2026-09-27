@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rocío Roldán · Constelaciones familiares</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16241a;
+    --pine:#243c2c;
+    --moss:#4c6e51;
+    --sage:#a3b89b;
+    --paper:#f4efe1;
+    --paper-dim:#eae3d0;
+    --gold:#c7a355;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; line-height:1.08; letter-spacing:-.01em;}
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  section{padding:96px 0;}
+  @media(max-width:640px){ section{padding:64px 0;} }
+
+  /* NAV */
+  nav.top{
+    position:sticky; top:0; z-index:20;
+    background:rgba(244,239,225,.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(22,36,26,.12);
+  }
+  nav.top .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem;}
+  .nav-ig{
+    display:flex; align-items:center; gap:8px;
+    font-size:.85rem; font-weight:500;
+    border:1px solid var(--ink); border-radius:999px;
+    padding:7px 14px;
+    transition:background .2s, color .2s;
+    text-decoration:none;
+  }
+  .nav-ig:hover{background:var(--ink); color:var(--paper);}
+  .nav-ig svg{width:15px; height:15px;}
+
+  /* HERO */
+  .hero{
+    background:var(--ink); color:var(--paper);
+    position:relative; overflow:hidden;
+    padding:0;
+  }
+  .hero .wrap{
+    padding-top:88px; padding-bottom:72px;
+    display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;
+    position:relative; z-index:2;
+  }
+  @media(max-width:760px){ .hero .wrap{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(2.5rem, 6vw, 4rem); color:var(--paper);}
+  .hero .eyebrow{color:var(--sage); font-size:.95rem; margin-bottom:18px; max-width:34ch;}
+  .hero p.lede{margin-top:22px; max-width:44ch; color:var(--paper-dim); font-size:1.08rem;}
+  .hero .cta-row{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; text-decoration:none;
+    padding:13px 24px; border-radius:999px;
+    font-weight:600; font-size:.95rem;
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-solid{background:var(--gold); color:var(--ink);}
+  .btn-outline{border:1px solid var(--sage); color:var(--paper);}
+  .hero-art{width:100%; height:auto;}
+
+  /* ABOUT */
+  .about .wrap{display:grid; grid-template-columns:.8fr 1.2fr; gap:52px; align-items:center;}
+  @media(max-width:760px){ .about .wrap{grid-template-columns:1fr;} }
+  .about-avatar{width:100%; max-width:280px;}
+  .about h2{font-size:2.1rem; margin-bottom:18px;}
+  .about p{max-width:52ch; color:var(--pine); font-size:1.02rem;}
+  .about p + p{margin-top:14px;}
+
+  /* INTERACTIVE */
+  .lab{background:var(--pine); color:var(--paper);}
+  .lab h2{font-size:2.1rem; color:var(--paper);}
+  .lab .intro{max-width:56ch; color:var(--paper-dim); margin-top:14px; font-size:1rem;}
+  .chips{margin-top:30px; display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    border:1px solid var(--sage); background:transparent; color:var(--paper);
+    font-family:'Work Sans', sans-serif; font-size:.88rem; font-weight:500;
+    padding:9px 16px; border-radius:999px; cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .chip:hover{background:var(--sage); color:var(--ink);}
+  .chip:disabled{opacity:.35; cursor:not-allowed;}
+  .chip:disabled:hover{background:transparent; color:var(--paper);}
+
+  .field-shell{margin-top:30px; position:relative;}
+  .field{
+    position:relative; height:420px; border-radius:18px;
+    background:
+      radial-gradient(circle at 50% 62%, rgba(199,163,85,.08), transparent 55%),
+      var(--ink);
+    border:1px solid rgba(163,184,155,.35);
+    overflow:hidden;
+    touch-action:none;
+  }
+  @media(max-width:640px){ .field{height:360px;} }
+  .field-ring{
+    position:absolute; left:50%; top:50%;
+    width:78%; aspect-ratio:1/1; max-width:340px;
+    border:1px dashed rgba(163,184,155,.3);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+  .node{
+    position:absolute; left:0; top:0;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    transform:translate(-50%,-50%);
+    cursor:grab; user-select:none;
+    touch-action:none;
+  }
+  .node:active{cursor:grabbing;}
+  .node .dot{
+    width:30px; height:30px; border-radius:50%;
+    background:var(--sage); border:2px solid var(--paper);
+    box-shadow:0 2px 10px rgba(0,0,0,.35);
+  }
+  .node.me .dot{background:var(--gold); width:36px; height:36px;}
+  .node .lbl{
+    font-size:.72rem; font-weight:600; color:var(--paper);
+    background:rgba(22,36,26,.7); padding:2px 8px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .reading{
+    margin-top:24px; padding:20px 22px; border-radius:14px;
+    background:rgba(244,239,225,.06); border:1px solid rgba(163,184,155,.25);
+    font-size:.98rem; color:var(--paper-dim); min-height:1.6em;
+  }
+  .reading strong{color:var(--paper); font-weight:600;}
+  .disclaimer{margin-top:14px; font-size:.78rem; color:var(--sage); max-width:56ch;}
+  .field-actions{margin-top:16px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .link-reset{background:none; border:none; color:var(--sage); font-size:.85rem; text-decoration:underline; cursor:pointer; padding:0;}
+
+  /* OFFERINGS */
+  .offer h2{font-size:2.1rem; margin-bottom:8px;}
+  .offer .intro{max-width:56ch; color:var(--pine); margin-bottom:44px;}
+  .offer-list{display:grid; gap:0;}
+  .offer-item{
+    display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:start;
+    padding:30px 0; border-top:1px solid rgba(22,36,26,.15);
+  }
+  .offer-list .offer-item:last-child{border-bottom:1px solid rgba(22,36,26,.15);}
+  @media(max-width:640px){ .offer-item{grid-template-columns:44px 1fr; row-gap:12px;} .offer-item .btn{grid-column:2;} }
+  .offer-icon{width:44px; height:44px;}
+  .offer-item h3{font-size:1.35rem; margin-bottom:6px;}
+  .offer-item p{color:var(--moss); max-width:48ch; font-size:.98rem;}
+
+  /* FOOTER */
+  footer{background:var(--ink); color:var(--paper);}
+  footer .wrap{padding-top:80px; padding-bottom:48px; text-align:center;}
+  footer h2{font-size:2.3rem; margin-bottom:22px; max-width:22ch; margin-left:auto; margin-right:auto;}
+  .ig-big{
+    display:inline-flex; align-items:center; gap:12px;
+    font-size:1.15rem; font-weight:600;
+    border:1px solid var(--gold); color:var(--paper);
+    padding:16px 30px; border-radius:999px; text-decoration:none;
+    transition:background .15s, color .15s;
+  }
+  .ig-big:hover{background:var(--gold); color:var(--ink);}
+  .ig-big svg{width:20px; height:20px;}
+  footer .links{margin-top:26px; font-size:.9rem; color:var(--sage);}
+  footer .links a{text-decoration:underline;}
+  footer .credit{margin-top:56px; font-size:.78rem; color:rgba(244,239,225,.45);}
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <span class="brand">Rocío Roldán</span>
+    <a class="nav-ig" href="https://www.instagram.com/_rocio.roldan/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      @_rocio.roldan
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Constelaciones familiares · mirada sistémica</p>
+      <h1>Ocupa tu&nbsp;lugar.</h1>
+      <p class="lede">Acompaño a mujeres a mirar sus relaciones desde otro lugar: el del sistema al que pertenecen. Círculo, sesiones individuales y talleres de constelaciones familiares.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#laboratorio">Probar el ejercicio</a>
+        <a class="btn btn-outline" href="https://linktr.ee/rocio.roldan" target="_blank" rel="noopener">Ver propuestas</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 360 340" fill="none">
+      <g stroke="#a3b89b" stroke-width="1" opacity=".55">
+        <line x1="180" y1="250" x2="90" y2="90"/>
+        <line x1="180" y1="250" x2="180" y2="60"/>
+        <line x1="180" y1="250" x2="270" y2="100"/>
+        <line x1="180" y1="250" x2="120" y2="180"/>
+        <line x1="180" y1="250" x2="255" y2="190"/>
+      </g>
+      <g>
+        <circle cx="180" cy="250" r="22" fill="#c7a355"/>
+        <circle cx="90" cy="90" r="9" fill="#a3b89b"/>
+        <circle cx="180" cy="60" r="7" fill="#a3b89b"/>
+        <circle cx="270" cy="100" r="10" fill="#a3b89b"/>
+        <circle cx="120" cy="180" r="6" fill="#a3b89b"/>
+        <circle cx="255" cy="190" r="8" fill="#a3b89b"/>
+      </g>
+      <path d="M180 272 C 160 300, 150 320, 130 336 M180 272 C 175 305, 175 322, 178 338 M180 272 C 200 300, 212 318, 232 334" stroke="#4c6e51" stroke-width="1.4" fill="none" opacity=".6"/>
+    </svg>
+  </div>
+</header>
+
+<section class="about">
+  <div class="wrap">
+    <svg class="about-avatar" viewBox="0 0 240 260" fill="none">
+      <path d="M120 20 C 60 20, 30 70, 30 120 C 30 175, 60 210, 60 240 L 180 240 C 180 210, 210 175, 210 120 C 210 70, 180 20, 120 20 Z" fill="#243c2c"/>
+      <circle cx="90" cy="105" r="5" fill="#f4efe1"/>
+      <circle cx="150" cy="105" r="5" fill="#f4efe1"/>
+      <path d="M85 150 Q120 172 155 150" stroke="#f4efe1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M20 235 C 60 220, 180 220, 220 235 L 220 260 L 20 260 Z" fill="#c7a355" opacity=".9"/>
+    </svg>
+    <div>
+      <h2>Una mirada sistémica, con los pies en la tierra.</h2>
+      <p>Trabajo con constelaciones familiares porque muchas veces lo que se repite en una relación no empieza en ella: viene de más atrás, del sistema del que formamos parte.</p>
+      <p>Mi trabajo es ayudarte a ver ese orden invisible y, desde ahí, encontrar tu propio lugar: uno donde puedas amar sin perderte.</p>
+    </div>
+  </div>
+</section>
+
+<section class="lab" id="laboratorio">
+  <div class="wrap">
+    <h2>Tu constelación, en miniatura</h2>
+    <p class="intro">Añade a las personas de tu sistema y arrástralas al lugar donde sientes que están hoy. Cerca, lejos, delante, detrás. Después, observa qué aparece.</p>
+
+    <div class="chips" id="chips">
+      <button class="chip" data-label="Pareja">+ Pareja</button>
+      <button class="chip" data-label="Madre">+ Madre</button>
+      <button class="chip" data-label="Padre">+ Padre</button>
+      <button class="chip" data-label="Hijo/a">+ Hijo/a</button>
+      <button class="chip" data-label="Hermano/a">+ Hermano/a</button>
+      <button class="chip" data-label="Otra persona">+ Otra persona</button>
+    </div>
+
+    <div class="field-shell">
+      <div class="field" id="field">
+        <div class="field-ring"></div>
+      </div>
+    </div>
+
+    <div class="field-actions">
+      <button class="link-reset" id="reset">Reiniciar constelación</button>
+    </div>
+
+    <div class="reading" id="reading">Coloca al menos una figura para empezar a leer tu constelación.</div>
+    <p class="disclaimer">Este ejercicio es simbólico y orientativo, pensado para abrir preguntas — no sustituye una constelación guiada en sesión real.</p>
+  </div>
+</section>
+
+<section class="offer">
+  <div class="wrap">
+    <h2>Formas de trabajar juntas</h2>
+    <p class="intro">Tres espacios distintos según lo que estés atravesando ahora mismo.</p>
+    <div class="offer-list">
+      <div class="offer-item">
+        <svg class="offer-icon" viewBox="0 0 44 44" fill="none" stroke="#243c2c" stroke-width="1.6"><circle cx="22" cy="14" r="5"/><circle cx="10" cy="30" r="5"/><circle cx="34" cy="30" r="5"/><path d="M22 19 L10 25 M22 19 L34 25 M10 30 L34 30" stroke-opacity=".5"/></svg>
+        <div>
+          <h3>Círculo</h3>
+          <p>Encuentro grupal mensual de mujeres. Se constela en compañía, con la fuerza de mirarse en las historias de otras.</p>
+        </div>
+        <a class="btn btn-outline" style="border-color:#243c2c; color:#243c2c;" href="https://linktr.ee/rocio.roldan" target="_blank" rel="noopener">Más info</a>
+      </div>
+      <div class="offer-item">
+        <svg class="offer-icon" viewBox="0 0 44 44" fill="none" stroke="#243c2c" stroke-width="1.6"><circle cx="22" cy="22" r="15"/><circle cx="22" cy="22" r="4" fill="#243c2c"/></svg>
+        <div>
+          <h3>Sesiones individuales</h3>
+          <p>Trabajo uno a uno para constelar una relación o situación concreta, a tu ritmo y con total privacidad.</p>
+        </div>
+        <a class="btn btn-outline" style="border-color:#243c2c; color:#243c2c;" href="https://linktr.ee/rocio.roldan" target="_blank" rel="noopener">Más info</a>
+      </div>
+      <div class="offer-item">
+        <svg class="offer-icon" viewBox="0 0 44 44" fill="none" stroke="#243c2c" stroke-width="1.6"><path d="M22 8 L22 30 M14 30 L30 30 M22 8 C16 14, 16 20, 22 24 C28 20, 28 14, 22 8 Z"/></svg>
+        <div>
+          <h3>Talleres</h3>
+          <p>Encuentros temáticos —vínculos de pareja, maternidad, herencias familiares— para explorar en profundidad un solo hilo del sistema.</p>
+        </div>
+        <a class="btn btn-outline" style="border-color:#243c2c; color:#243c2c;" href="https://linktr.ee/rocio.roldan" target="_blank" rel="noopener">Más info</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Sígueme para más sobre vínculos, raíces y el lugar que ocupamos.</h2>
+    <a class="ig-big" href="https://www.instagram.com/_rocio.roldan/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      @_rocio.roldan
+    </a>
+    <div class="links"><a href="https://linktr.ee/rocio.roldan" target="_blank" rel="noopener">linktr.ee/rocio.roldan</a></div>
+    <div class="credit">Rocío Roldán — Constelaciones familiares y mirada sistémica</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const field = document.getElementById('field');
+  const chips = document.querySelectorAll('.chip');
+  const reading = document.getElementById('reading');
+  const resetBtn = document.getElementById('reset');
+  let nodes = []; // {el, label, x, y} x,y in 0..1 of field
+  const MAX_EXTRA = 6;
+
+  function fieldRect(){ return field.getBoundingClientRect(); }
+
+  function addNode(label, isMe, px, py){
+    const el = document.createElement('div');
+    el.className = 'node' + (isMe ? ' me' : '');
+    el.innerHTML = '<div class="dot"></div><div class="lbl">'+label+'</div>';
+    field.appendChild(el);
+    const node = {el, label, x:px, y:py, isMe};
+    nodes.push(node);
+    place(node);
+    makeDraggable(node);
+    return node;
+  }
+
+  function place(node){
+    const r = fieldRect();
+    node.el.style.left = (node.x * r.width) + 'px';
+    node.el.style.top = (node.y * r.height) + 'px';
+  }
+
+  function makeDraggable(node){
+    let dragging = false;
+    node.el.addEventListener('pointerdown', (e)=>{
+      dragging = true;
+      node.el.setPointerCapture(e.pointerId);
+    });
+    node.el.addEventListener('pointermove', (e)=>{
+      if(!dragging) return;
+      const r = fieldRect();
+      let x = (e.clientX - r.left) / r.width;
+      let y = (e.clientY - r.top) / r.height;
+      x = Math.min(0.96, Math.max(0.04, x));
+      y = Math.min(0.94, Math.max(0.08, y));
+      node.x = x; node.y = y;
+      place(node);
+    });
+    function end(){ if(dragging){ dragging=false; updateReading(); } }
+    node.el.addEventListener('pointerup', end);
+    node.el.addEventListener('pointercancel', end);
+  }
+
+  function ensureMe(){
+    if(!nodes.find(n=>n.isMe)){
+      addNode('Yo', true, 0.5, 0.72);
+    }
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      const extra = nodes.filter(n=>!n.isMe).length;
+      if(extra >= MAX_EXTRA){ chips.forEach(c=>c.disabled=true); return; }
+      ensureMe();
+      const label = chip.dataset.label;
+      const angle = Math.random()*Math.PI - Math.PI/2 - Math.PI/4;
+      const dist = 0.22 + Math.random()*0.16;
+      const x = 0.5 + Math.cos(angle)*dist*1.3;
+      const y = 0.72 + Math.sin(angle)*dist - 0.15;
+      addNode(label, false,
+        Math.min(0.9, Math.max(0.1, x)),
+        Math.min(0.85, Math.max(0.12, y)));
+      updateReading();
+    });
+  });
+
+  resetBtn.addEventListener('click', ()=>{
+    nodes.forEach(n=>n.el.remove());
+    nodes = [];
+    chips.forEach(c=>c.disabled=false);
+    reading.textContent = 'Coloca al menos una figura para empezar a leer tu constelación.';
+  });
+
+  window.addEventListener('resize', ()=> nodes.forEach(place));
+
+  function dist(a,b){
+    const dx=(a.x-b.x), dy=(a.y-b.y);
+    return Math.sqrt(dx*dx+dy*dy);
+  }
+
+  function updateReading(){
+    const me = nodes.find(n=>n.isMe);
+    const others = nodes.filter(n=>!n.isMe);
+    if(!me || others.length===0){
+      reading.textContent = 'Coloca al menos una figura para empezar a leer tu constelación.';
+      return;
+    }
+    const withDist = others.map(o=>({o, d: dist(me,o)}));
+    withDist.sort((a,b)=>a.d-b.d);
+    const closest = withDist[0];
+    const farthest = withDist[withDist.length-1];
+    const behind = others.filter(o=> o.y < me.y - 0.04);
+    const veryClose = withDist.filter(w=>w.d < 0.09);
+
+    let parts = [];
+    parts.push('<strong>'+closest.o.label+'</strong> quedó como la presencia más cercana a ti.');
+    if(veryClose.length > 1){
+      parts.push('Hay varias figuras casi pegadas entre sí: puede señalar un vínculo muy fusionado, donde cuesta distinguir dónde termina uno y empieza el otro.');
+    } else if(closest.d < 0.1){
+      parts.push('Está muy cerca — a veces la cercanía sostiene, y a veces confunde los límites.');
+    }
+    if(others.length>1 && farthest.d - closest.d > 0.18){
+      parts.push('<strong>'+farthest.o.label+'</strong> aparece más alejada: quizá sea una relación que hoy sientes distante, o que necesita más espacio.');
+    }
+    if(behind.length>0){
+      parts.push(behind.map(b=>b.label).join(' y ')+' quedó por detrás de ti — en una constelación real, eso a veces habla de algo que te sostiene desde atrás, aunque no lo veas de frente.');
+    }
+    reading.innerHTML = parts.join(' ');
+  }
+
+  ensureMe();
+})();
+</script>
+
+</body>
+</html>

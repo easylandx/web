@@ -881,7 +881,9 @@
       <div class="membership-form">
         <h3>Formulario de Contacto</h3>
         <p class="form-intro">Responderemos a tu solicitud en la mayor brevedad posible.</p>
-        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Nos pondremos en contacto pronto.');">
+        <form id="form-contacto" action="https://formsubmit.co/secretaria@aspm.es" method="POST" novalidate>
+          <!-- Anti-spam (campo oculto): los bots lo rellenan, las personas no -->
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true">
           <div class="form-grid">
             <div class="form-field">
               <label for="nombre">Nombre completo</label>
@@ -909,6 +911,7 @@
             <label for="privacy">Acepto la política de privacidad y el tratamiento de mis datos para responder a la consulta.</label>
           </div>
           <button type="submit" class="btn btn-primary form-submit">Enviar Solicitud</button>
+          <p id="form-status" role="status" aria-live="polite" style="display:none;margin-top:1rem;padding:0.85rem 1rem;border-radius:10px;font-size:0.95rem;text-align:center;"></p>
         </form>
       </div>
     </div>
@@ -957,5 +960,77 @@
     </div>
   </footer>
 
+
+  <script>
+    // Envío del formulario de contacto/solicitud por email a secretaria@aspm.es
+    (function () {
+      var form = document.getElementById('form-contacto');
+      if (!form) return;
+      var status = document.getElementById('form-status');
+      var btn = form.querySelector('button[type="submit"]');
+      var DESTINO = 'secretaria@aspm.es';
+
+      function show(msg, ok) {
+        status.style.display = 'block';
+        status.style.background = ok ? '#dcfce7' : '#fee2e2';
+        status.style.color = ok ? '#166534' : '#991b1b';
+        status.textContent = msg;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (form.elements['_honey'].value) return; // bot
+
+        var f = form.elements;
+        var datos = {
+          'Nombre completo': f['nombre'].value.trim(),
+          'Email': f['email'].value.trim(),
+          'Teléfono': f['telefono'].value.trim() || '—',
+          'Empresa / Cargo': f['empresa'].value.trim() || '—',
+          'Mensaje': f['mensaje'].value.trim() || '—',
+          'Política de privacidad aceptada': 'Sí'
+        };
+
+        var payload = Object.assign({}, datos, {
+          _subject: 'Nueva solicitud desde la web de ASPM: ' + datos['Nombre completo'],
+          _replyto: datos['Email'],
+          _template: 'table',
+          _captcha: 'false'
+        });
+
+        btn.disabled = true;
+        var textoBtn = btn.textContent;
+        btn.textContent = 'Enviando…';
+
+        fetch('https://formsubmit.co/ajax/' + DESTINO, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && String(res.j.success) === 'true') {
+            form.reset();
+            show('¡Gracias! Hemos recibido tu mensaje y nos pondremos en contacto contigo muy pronto.', true);
+          } else {
+            throw new Error('envio_fallido');
+          }
+        })
+        .catch(function () {
+          // Plan B: abrir el correo del usuario con los datos ya escritos
+          var cuerpo = Object.keys(datos).map(function (k) { return k + ': ' + datos[k]; }).join('\n');
+          window.location.href = 'mailto:' + DESTINO +
+            '?subject=' + encodeURIComponent('Solicitud desde la web de ASPM') +
+            '&body=' + encodeURIComponent(cuerpo);
+          show('No hemos podido enviar el formulario automáticamente. Se ha abierto tu programa de correo para que puedas enviarnos el mensaje desde ahí.', false);
+        })
+        .finally(function () {
+          btn.disabled = false;
+          btn.textContent = textoBtn;
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

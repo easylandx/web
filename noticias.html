@@ -493,9 +493,13 @@
       </div>
 
       <div class="membership-form">
-        <h3>Solicitud de Ingreso / Contacto</h3>
+        <h3>Solicitud de alta como socia</h3>
         <p class="form-intro">Déjanos tus datos y nos pondremos en contacto contigo a la mayor brevedad posible.</p>
-        <form action="#" method="post">
+        <form id="form-alta" action="https://formsubmit.co/secretaria@aspm.es" method="post">
+          <input type="hidden" name="_subject" value="Nueva solicitud de alta como socia - ASPM">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-grid">
             <div class="form-field">
               <label for="nombre">Nombre</label>
@@ -527,6 +531,7 @@
             <label for="politica">Acepto la política de privacidad y el tratamiento de mis datos para la gestión de la solicitud.</label>
           </div>
           <button type="submit" class="btn btn-primary form-submit">Enviar Solicitud</button>
+          <p id="form-status" role="status" aria-live="polite" style="margin-top:1rem;font-weight:600;"></p>
         </form>
         <div class="newsletter-note">
           Al enviar este formulario quedará registrada su solicitud para la asociación y suscripción a novedades.
@@ -567,5 +572,79 @@
     </div>
   </footer>
 
+
+  <script>
+    (function () {
+      var form = document.getElementById('form-alta');
+      var status = document.getElementById('form-status');
+      var btn = form.querySelector('button[type="submit"]');
+      var DEST = 'secretaria@aspm.es';
+
+      function mailtoFallback(data) {
+        var body = 'Solicitud de alta como socia\n\n' +
+          'Nombre: ' + data.nombre + '\n' +
+          'Apellidos: ' + data.apellidos + '\n' +
+          'Correo electrónico: ' + data.email + '\n' +
+          'Teléfono: ' + (data.telefono || '-') + '\n' +
+          'Empresa / Cargo: ' + (data.empresa || '-') + '\n' +
+          'Mensaje: ' + (data.mensaje || '-') + '\n';
+        window.location.href = 'mailto:' + DEST +
+          '?subject=' + encodeURIComponent('Solicitud de alta como socia - ASPM') +
+          '&body=' + encodeURIComponent(body);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = {
+          nombre: form.nombre.value.trim(),
+          apellidos: form.apellidos.value.trim(),
+          email: form.email.value.trim(),
+          telefono: form.telefono.value.trim(),
+          empresa: form.empresa.value.trim(),
+          mensaje: form.mensaje.value.trim(),
+          politica: 'Aceptada'
+        };
+        if (form._honey.value) return; // anti-spam
+
+        btn.disabled = true;
+        status.style.color = 'inherit';
+        status.textContent = 'Enviando solicitud…';
+
+        fetch('https://formsubmit.co/ajax/' + DEST, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: 'Nueva solicitud de alta como socia - ASPM',
+            _template: 'table',
+            _captcha: 'false',
+            _replyto: data.email,
+            Nombre: data.nombre,
+            Apellidos: data.apellidos,
+            'Correo electrónico': data.email,
+            'Teléfono': data.telefono || '-',
+            'Empresa / Cargo': data.empresa || '-',
+            'Mensaje': data.mensaje || '-',
+            'Política de privacidad': data.politica
+          })
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (res.success === 'true' || res.success === true) {
+            status.style.color = '#2e7d32';
+            status.textContent = '¡Gracias! Tu solicitud se ha enviado correctamente. Nos pondremos en contacto contigo pronto.';
+            form.reset();
+          } else {
+            throw new Error(res.message || 'Error');
+          }
+        })
+        .catch(function () {
+          status.style.color = '#b26a00';
+          status.textContent = 'No se pudo enviar automáticamente. Se abrirá tu programa de correo con los datos ya incluidos.';
+          mailtoFallback(data);
+        })
+        .finally(function () { btn.disabled = false; });
+      });
+    })();
+  </script>
 </body>
 </html>

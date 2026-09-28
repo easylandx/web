@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASPM — Quiénes Somos | Asociación del Secretariado Profesional de Madrid</title>
+  <meta name="description" content="Conoce la historia, la Junta Directiva y el compromiso de la Asociación del Secretariado Profesional de Madrid (ASPM).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0a2540;
+      --primary-light: #1e40af;
+      --accent: #d97706;
+      --accent-hover: #b45309;
+      --bg-light: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 30px -5px rgba(10, 37, 64, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Topbar */
+    .topbar {
+      background: var(--primary);
+      color: #94a3b8;
+      font-size: 0.85rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.5rem;
+    }
+    .site-logo {
+      display: block;
+      width: 190px;
+      height: auto;
+      max-width: 100%;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+      list-style: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--primary-light); }
+
+    .btn {
+      padding: 0.75rem 1.4rem;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background-color: var(--accent); color: var(--white); }
+    .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary { background-color: var(--primary); color: var(--white); }
+    .btn-secondary:hover { background-color: var(--primary-light); transform: translateY(-1px); }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 60%, #0f172a 100%);
+      color: var(--white);
+      padding: 5rem 0 4.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      color: #93c5fd;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+      max-width: 620px;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .hero-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #f8fafc; }
+    .hero-card p { font-size: 0.95rem; color: #94a3b8; margin-bottom: 1.2rem; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    /* Sections General */
+    section { padding: 4.5rem 0; }
+    .section-alt { background-color: var(--bg-alt); }
+    .section-header {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 3rem;
+    }
+    .section-header .tag {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin: 0.5rem 0 1rem;
+      letter-spacing: -0.5px;
+    }
+    .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+    /* Grid & Cards */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+    }
+    .card h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.8rem; }
+    .card p { color: var(--text-muted); font-size: 0.98rem; }
+
+    /* Tarjetas de Miembros de la Junta */
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px -5px rgba(10, 37, 64, 0.12);
+    }
+    .team-header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .team-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .team-info h3 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+    .team-role {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .team-bio {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+    .team-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #0077b5;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: color 0.2s ease;
+      align-self: flex-start;
+    }
+    .team-linkedin:hover {
+      color: #004182;
+      text-decoration: underline;
+    }
+    .team-linkedin svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Historia / Bloques de Texto */
+    .history-content {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2.8rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .history-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .history-block h3 {
+      color: var(--primary);
+      font-size: 1.35rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .history-block p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Formulario único: contacto / unirse */
+    .membership-form {
+      margin: 3rem auto 0;
+      max-width: 760px;
+      text-align: left;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .membership-form h3 {
+      color: var(--primary);
+      font-size: 1.45rem;
+      margin-bottom: 0.5rem;
+    }
+    .membership-form .form-intro {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+    .form-field label {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font: inherit;
+      color: var(--text-dark);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+    }
+    .form-field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .form-check input {
+      margin-top: 0.25rem;
+      accent-color: var(--primary-light);
+    }
+    .form-submit {
+      margin-top: 1.5rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Footer */
+    footer {
+      background: #071729;
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+      font-size: 0.9rem;
+    }
+    footer a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand h4 { color: var(--white); font-size: 1.4rem; margin-bottom: 0.5rem; }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.2s ease;
+    }
+    .social-icon:hover {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .social-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .history-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .site-logo { width: 165px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: auto; }
+      .membership-form { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <span>Asociación del Secretariado Profesional de Madrid (Desde 1987)</span>
+      <span><a href="mailto:secretaria@aspm.es" style="color: inherit; text-decoration: underline;">secretaria@aspm.es</a></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <div>
+        <a href="#" aria-label="ASPM — Asociación del Secretariado Profesional de Madrid">
+          <strong style="color: var(--primary); font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px;">ASPM</strong>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#historia">Nuestra Historia</a></li>
+        <li><a href="#junta">Junta Directiva</a></li>
+        <li><a href="#valores">Valores</a></li>
+        <li><a href="#contacto" class="btn btn-primary">Hazte Socia</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">Quiénes Somos</div>
+        <h1>Líderes e impulsoras del Secretariado Profesional</h1>
+        <p>Desde 1987, la ASPM representa, capacita y conecta a secretarias, asistentes de dirección y profesionales de la gestión ejecutiva en la Comunidad de Madrid.</p>
+        <div class="hero-cta">
+          <a href="#junta" class="btn btn-primary">Conoce la Junta Directiva</a>
+          <a href="#historia" class="btn btn-outline" style="color: #fff; border-color: rgba(255,255,255,0.4);">Nuestra Historia</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <span class="hero-badge">Desde 1987</span>
+        <h3>Compromiso y Excelencia</h3>
+        <p>Promovemos la constante dignificación y actualización del rol estratégico del secretariado y la asistencia de dirección en las empresas.</p>
+        <a href="#contacto" class="btn btn-secondary" style="width: 100%; justify-content: center;">Únete a la Red</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Historia y Misión -->
+  <section id="historia" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Trayectoria & Misión</span>
+        <h2>Más de tres décadas impulsando la profesión</h2>
+        <p>Una asociación independiente e innovadora comprometida con el desarrollo profesional.</p>
+      </div>
+
+      <div class="history-content">
+        <div class="history-grid">
+          <div class="history-block">
+            <h3>
+              <span>🏛️</span> Origen e Historia
+            </h3>
+            <p>La <strong>Asociación del Secretariado Profesional de Madrid (ASPM)</strong> fue fundada en 1987 como una entidad sin ánimo de lucro. Nació con el propósito fundamental de revalorizar y visibilizar la función del secretariado y la asistencia ejecutiva, transformando el perfil profesional a la par de las exigencias del entorno empresarial.</p>
+          </div>
+          <div class="history-block">
+            <h3>
+              <span>🎯</span> Misión y Visión
+            </h3>
+            <p>Nuestra misión es empoderar a los profesionales de la administración y asistencia de dirección a través de la formación continua, el networking colaborativo y la bolsa de empleo especializada, adaptándolos a los retos de la transformación digital y el liderazgo organizativo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Junta Directiva -->
+  <section id="junta">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Equipo Lider</span>
+        <h2>Junta Directiva</h2>
+        <p>Profesionales en activo comprometidas con la gestión, innovación y crecimiento de nuestra asociación.</p>
+      </div>
+
+      <div class="grid-3">
+
+        <!-- Miembro 1 -->
+        <div class="team-card">
+          <div>
+            <div class="team-header">
+              <div class="team-avatar">MC</div>
+              <div class="team-info">
+                <h3>Manuelita Costa</h3>
+                <span class="team-role">Presidenta</span>
+              </div>
+            </div>
+            <p class="team-bio">Lidera la estrategia y representación institucional de la ASPM, impulsando alianzas clave e innovación continua para las asociadas.</p>
+          </div>
+          <a href="https://www.linkedin.com/in/manuelita-costa-04663a8/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            Ver Perfil LinkedIn
+          </a>
+        </div>
+
+        <!-- Miembro 2 -->
+        <div class="team-card">
+          <div>
+            <div class="team-header">
+              <div class="team-avatar">AR</div>
+              <div class="team-info">
+                <h3>Ainhoa Ros</h3>
+                <span class="team-role">Vicepresidenta y RR.PP.</span>
+              </div>
+            </div>
+            <p class="team-bio">Responsable de las relaciones públicas e institucionales, potenciando la red de contactos y el prestigio de la asociación.</p>
+          </div>
+          <a href="https://www.linkedin.com/in/ainhoaros/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            Ver Perfil LinkedIn
+          </a>
+        </div>
+
+        <!-- Miembro 3 -->
+        <div class="team-card">
+          <div>
+            <div class="team-header">
+              <div class="team-avatar">AP</div>
+              <div class="team-info">
+                <h3>Aída Pérez</h3>
+                <span class="team-role">Secretaria General</span>
+              </div>
+            </div>
+            <p class="team-bio">Coordinadora de la gestión administrativa, documental y legal de la ASPM, garantizando la excelencia operativa interna.</p>
+          </div>
+          <a href="https://www.linkedin.com/in/a%C3%ADda-p%C3%A9rez-40b49234/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            Ver Perfil LinkedIn
+          </a>
+        </div>
+
+        <!-- Miembro 4 -->
+        <div class="team-card">
+          <div>
+            <div class="team-header">
+              <div class="team-avatar">DR</div>
+              <div class="team-info">
+                <h3>Dolores del Rio</h3>
+                <span class="team-role">Tesorera</span>
+              </div>
+            </div>
+            <p class="team-bio">Gestora del área económica y financiera de la asociación, velando por la transparencia y sostenibilidad presupuestaria.</p>
+          </div>
+          <a href="https://www.linkedin.com/in/dolores-del-rio-27b92631/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            Ver Perfil LinkedIn
+          </a>
+        </div>
+
+        <!-- Miembro 5 -->
+        <div class="team-card">
+          <div>
+            <div class="team-header">
+              <div class="team-avatar">MA</div>
+              <div class="team-info">
+                <h3>María José Añón</h3>
+                <span class="team-role">Vocal de Formación</span>
+              </div>
+            </div>
+            <p class="team-bio">Diseña e impulsa el programa académico y los talleres de capacitación técnica y habilidades directivas para socias.</p>
+          </div>
+          <a href="https://www.linkedin.com/in/mar%C3%ADa-jos%C3%A9-a%C3%B1%C3%B3n-fern%C3%A1ndez-076a5a22/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            Ver Perfil LinkedIn
+          </a>
+        </div>
+
+        <!-- Miembro 6 -->
+        <div class="team-card">
+          <div>
+            <div class="team-header">
+              <div class="team-avatar">SR</div>
+              <div class="team-info">
+                <h3>Sonia Ruiz</h3>
+                <span class="team-role">Vocal de Eventos</span>
+              </div>
+            </div>
+            <p class="team-bio">Planifica y coordina los encuentros, congresos y jornadas de networking profesional organizadas por la ASPM.</p>
+          </div>
+          <a href="https://www.linkedin.com/in/sonia-ruiz-albiol-b5860b37/" target="_blank" rel="noopener noreferrer" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            Ver Perfil LinkedIn
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Pilares / Valores -->
+  <section id="valores" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Nuestros Valores</span>
+        <h2>¿Por qué formar parte de ASPM?</h2>
+        <p>Tres pilares sólidos que guían nuestras iniciativas y beneficios para los miembros.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <h3>Formación Continua</h3>
+          <p>Cursos, seminarios y workshops diseñados para potenciar habilidades técnicas, herramientas digitales y competencias clave de gestión.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Comunidad y Networking</h3>
+          <p>Pertenecer a una red profesional sólida donde compartir experiencias, resolver dudas e intercambiar mejores prácticas del sector.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">💼</div>
+          <h3>Bolsa de Empleo</h3>
+          <p>Acceso exclusivo a ofertas laborales especializadas y contacto directo con empresas que buscan perfiles de asistencia ejecutiva de alto nivel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de Contacto / Solicitud -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Contacto & Solicitudes</span>
+        <h2>Únete o Contacta con ASPM</h2>
+        <p>Completa el siguiente formulario para solicitar tu incorporación o solicitar información sobre la asociación.</p>
+      </div>
+
+      <div class="membership-form">
+        <h3>Formulario de Contacto</h3>
+        <p class="form-intro">Responderemos a tu solicitud en la mayor brevedad posible.</p>
+        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Nos pondremos en contacto pronto.');">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre y apellidos" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000">
+            </div>
+            <div class="form-field">
+              <label for="empresa">Empresa / Cargo</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Ej. Asistente de Dirección">
+            </div>
+            <div class="form-field full">
+              <label for="mensaje">Mensaje o consulta</label>
+              <textarea id="mensaje" name="mensaje" placeholder="¿En qué podemos ayudarte o qué información necesitas?"></textarea>
+            </div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="privacy" required>
+            <label for="privacy">Acepto la política de privacidad y el tratamiento de mis datos para responder a la consulta.</label>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Enviar Solicitud</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>ASPM</h4>
+          <p>Asociación del Secretariado Profesional de Madrid. Impulsando la excelencia en la asistencia de dirección desde 1987.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/aspm-asociacion-del-secretariado-profesional-de-madrid/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn de ASPM">
+              <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h5 style="color: #fff; font-size: 1rem; margin-bottom: 1rem;">Navegación</h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="#historia">Nuestra Historia</a></li>
+            <li><a href="#junta">Junta Directiva</a></li>
+            <li><a href="#valores">Valores</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="color: #fff; font-size: 1rem; margin-bottom: 1rem;">Contacto</h5>
+          <p>Email: <a href="mailto:secretaria@aspm.es">secretaria@aspm.es</a></p>
+          <p>Comunidad de Madrid, España</p>
+        </div>
+        <div>
+          <h5 style="color: #fff; font-size: 1rem; margin-bottom: 1rem;">Legal</h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="#">Aviso Legal</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Política de Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ASPM — Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

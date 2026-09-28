@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASPM — La red que impulsa a quienes sostienen la dirección</title>
+  <meta name="description" content="Asociación del Secretariado Profesional de Madrid. Comunidad, formación, bolsa de empleo y Hub privado para socias.">
+  <style>
+    :root {
+      --primary: #0a2540;
+      --primary-light: #1e40af;
+      --accent: #d97706;
+      --accent-hover: #b45309;
+      --bg-light: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 30px -5px rgba(10, 37, 64, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Topbar */
+    .topbar {
+      background: var(--primary);
+      color: #94a3b8;
+      font-size: 0.85rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.5rem;
+    }
+    .site-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    .site-logo span {
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+      list-style: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--primary-light); }
+
+    .btn {
+      padding: 0.75rem 1.4rem;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background-color: var(--accent); color: var(--white); }
+    .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary { background-color: var(--primary); color: var(--white); }
+    .btn-secondary:hover { background-color: var(--primary-light); transform: translateY(-1px); }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 60%, #0f172a 100%);
+      color: var(--white);
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      color: #93c5fd;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+      max-width: 620px;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .hero-card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: #f8fafc; }
+    .hero-card p { font-size: 0.95rem; color: #94a3b8; margin-bottom: 1.5rem; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    /* Sections General */
+    section { padding: 5rem 0; }
+    .section-alt { background-color: var(--bg-alt); }
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3.5rem;
+    }
+    .section-header .tag {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin: 0.5rem 0 1rem;
+      letter-spacing: -0.5px;
+    }
+    .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+    /* Noticias y Contenidos Embebidos WordPress */
+    .news-embed-container {
+      width: 100%;
+      min-height: 450px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+    .embed-section-title {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+
+    /* Formulario único */
+    .membership-form {
+      margin: 3rem auto 0;
+      max-width: 760px;
+      text-align: left;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .membership-form h3 {
+      color: var(--primary);
+      font-size: 1.45rem;
+      margin-bottom: 0.5rem;
+    }
+    .membership-form .form-intro {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+    .form-field label {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font: inherit;
+      color: var(--text-dark);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+    }
+    .form-field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .form-check input {
+      margin-top: 0.25rem;
+      accent-color: var(--primary-light);
+    }
+    .form-submit {
+      margin-top: 1.5rem;
+      width: 100%;
+      justify-content: center;
+    }
+    .newsletter-note {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: #071729;
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+      font-size: 0.9rem;
+    }
+    footer a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand h4 { color: var(--white); font-size: 1.4rem; margin-bottom: 0.5rem; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem;
+      text-align: center;
+    }
+
+    /* Sección Secretaría del presente y del futuro */
+    .future-secretary {
+      background: #ffffff;
+      padding: 4.5rem 0;
+    }
+    .future-secretary-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .future-secretary-text .tag {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.7rem;
+    }
+    .future-secretary-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.15;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+    .future-secretary-text p {
+      color: var(--text-muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    @media (max-width: 900px) {
+      .future-secretary-content { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: auto; }
+      .membership-form { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <span>Asociación del Secretariado Profesional de Madrid (Desde 1987)</span>
+      <span><a href="mailto:secretaria@aspm.es" style="color: inherit; text-decoration: underline;">secretaria@aspm.es</a></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <div>
+        <a href="#" class="site-logo" aria-label="ASPM — Asociación del Secretariado Profesional de Madrid">
+          ASPM<span>.es</span>
+        </a>
+      </div>
+
+      </nav>
+      <a href="#asociate" class="btn btn-primary">Unirse a ASPM</a>
+          <li><a href="https://easylandx.github.io/web/junta.html">Junta Directiva</a></li>
+          <li><a href="https://easylandx.github.io/web/noticias.html">Noticias</a></li>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">Comunidad & Desarrollo Profesional</div>
+        <h1>La red que impulsa a quienes sostienen la dirección</h1>
+        <p>Potenciamos el valor estratégico del secretariado y la asistencia de dirección a través de la formación continua, el networking y el apoyo mutuo.</p>
+        <div class="hero-cta">
+          <a href="#asociate" class="btn btn-primary">Hazte Socia</a>
+          <a href="#noticias" class="btn btn-outline" style="color: #fff; border-color: #fff;">Explorar Noticias</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <span class="hero-badge">Actualidad ASPM</span>
+        <h3>Noticias y Eventos</h3>
+        <p>Accede a las últimas publicaciones, entrevistas, relaciones institucionales y actividades de la asociación.</p>
+        <a href="#actividades" class="btn btn-secondary">Ver Actividades</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Noticias y Novedades (WordPress Embedded) -->
+  <section id="noticias">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Actualidad</span>
+        <h2>Noticias y Colaboradores</h2>
+        <p>Mantente al día con las últimas novedades de ASPM, nuestras asociadas y socios colaboradores.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 3rem;">
+        <div>
+          <h3 class="embed-section-title">Noticias ASPM</h3>
+          <iframe src="https://aspm.es/noticias/noticias-aspm/" class="news-embed-container" title="Noticias ASPM"></iframe>
+        </div>
+
+        <div>
+          <h3 class="embed-section-title">Socios Colaboradores</h3>
+          <iframe src="https://aspm.es/noticias/socios-colaboradores/" class="news-embed-container" title="Socios Colaboradores"></iframe>
+        </div>
+
+        <div>
+          <h3 class="embed-section-title">Entrevista Asociada del Mes</h3>
+          <iframe src="https://aspm.es/noticias/entrevista-asociada-del-mes/" class="news-embed-container" title="Entrevista Asociada del Mes"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Actividades (WordPress Embedded) -->
+  <section id="actividades" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Eventos y Red</span>
+        <h2>Actividades y Eventos</h2>
+        <p>Descubre nuestras actividades institucionales, viajes, encuentros de networking y celebraciones.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 3rem;">
+        <div>
+          <h3 class="embed-section-title">Eventos</h3>
+          <iframe src="https://aspm.es/actividades/eventos/" class="news-embed-container" title="Eventos"></iframe>
+        </div>
+
+        <div>
+          <h3 class="embed-section-title">Viajes</h3>
+          <iframe src="https://aspm.es/actividades/viajes/" class="news-embed-container" title="Viajes"></iframe>
+        </div>
+
+        <div>
+          <h3 class="embed-section-title">Relaciones Institucionales</h3>
+          <iframe src="https://aspm.es/actividades/relaciones-institucionales/" class="news-embed-container" title="Relaciones Institucionales"></iframe>
+        </div>
+
+        <div>
+          <h3 class="embed-section-title">Día de la Secretaria</h3>
+          <iframe src="https://aspm.es/actividades/dia-de-la-secretaria/" class="news-embed-container" title="Día de la Secretaria"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Secretaría del presente y del futuro -->
+  <section class="future-secretary">
+    <div class="container future-secretary-content">
+      <div class="future-secretary-text">
+        <span class="tag">Visión y Liderazgo</span>
+        <h2>La Secretaría del presente y del futuro</h2>
+        <p>En un entorno empresarial dinámico y digitalizado, la profesión del secretariado y la asistencia de dirección evoluciona hacia roles de gestión estratégica, coordinación global y adaptación tecnológica, manteniendo la excelencia organizativa y humana que nos caracteriza.</p>
+      </div>
+      <div>
+        <div style="background: var(--bg-alt); padding: 3rem; border-radius: var(--radius); text-align: center; border: 1px solid var(--border);">
+          <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem;">Criterio Humano + Tecnología</h3>
+          <p style="color: var(--text-muted);">Transformándonos en gestoras estratégicas indispensables mediante el aprendizaje constante y el uso de herramientas digitales de vanguardia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario Único: Solicitud de Socia / Contacto -->
+  <section id="asociate">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Comunidad</span>
+        <h2>Únete a ASPM</h2>
+        <p>Forma parte de la red profesional líder en Madrid. Rellena el formulario para solicitar tu incorporación o recibir más información.</p>
+      </div>
+
+      <div class="membership-form">
+        <h3>Solicitud de Ingreso / Contacto</h3>
+        <p class="form-intro">Déjanos tus datos y nos pondremos en contacto contigo a la mayor brevedad posible.</p>
+        <form action="#" method="post">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+            </div>
+            <div class="form-field">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" id="apellidos" name="apellidos" required placeholder="Tus apellidos">
+            </div>
+            <div class="form-field">
+              <label for="email">Correo Electrónico</label>
+              <input type="email" id="email" name="email" required placeholder="tu@email.com">
+            </div>
+            <div class="form-field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Tu teléfono">
+            </div>
+            <div class="form-field full">
+              <label for="empresa">Empresa / Cargo</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Empresa y cargo actual">
+            </div>
+            <div class="form-field full">
+              <label for="mensaje">Mensaje o Comentarios</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..."></textarea>
+            </div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="politica" name="politica" required>
+            <label for="politica">Acepto la política de privacidad y el tratamiento de mis datos para la gestión de la solicitud.</label>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Enviar Solicitud</button>
+        </form>
+        <div class="newsletter-note">
+          Al enviar este formulario quedará registrada su solicitud para la asociación y suscripción a novedades.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>ASPM</h4>
+          <p>Asociación del Secretariado Profesional de Madrid. Impulsando la excelencia en la asistencia de dirección desde 1987.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 1rem;">Navegación</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="#noticias">Noticias</a></li>
+            <li><a href="#actividades">Actividades</a></li>
+            <li><a href="#asociate">Asóciate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 1rem;">Contacto</h4>
+          <p>Email: <a href="mailto:secretaria@aspm.es">secretaria@aspm.es</a></p>
+          <p>Madrid, España</p>
+        </div>
+        <div>
+          <h4 style="color: var(--white); font-size: 1.1rem; margin-bottom: 1rem;">Asociación</h4>
+          <p style="color: #94a3b8;">Secretariado Profesional de Madrid</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ASPM - Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

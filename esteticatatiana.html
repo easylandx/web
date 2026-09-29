@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Estética Dra. Tatiana Díaz · Campana</title>
+<meta name="description" content="Bienvenido al nuevo espacio de estética y belleza creado por la Dra. Tatiana Díaz. Campana. Sacá tu turno por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --r50:#FFF4F8;
+    --r100:#FFE1EC;
+    --r200:#FFC0D6;
+    --r300:#FF94B8;
+    --r500:#E8386F;
+    --r600:#D01C57;
+    --r700:#A8123F;
+    --ink:#5A0A2A;
+    --gold:#FFC629;
+    --gold-soft:#FFE08A;
+    --radius:28px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',system-ui,sans-serif;
+    background:var(--r50);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.05;letter-spacing:-.02em}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--gold);
+    border-bottom:3px solid var(--ink);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .logo{font-family:'Fraunces',serif;font-weight:800;font-size:1.15rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+  .logo svg{width:28px;height:28px}
+  nav ul{display:flex;gap:22px;list-style:none;font-weight:700;font-size:.95rem}
+  nav ul a{text-decoration:none;position:relative}
+  nav ul a::after{content:"";position:absolute;left:0;bottom:-3px;height:3px;width:0;background:var(--r600);transition:width .25s}
+  nav ul a:hover::after{width:100%}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--r600);color:#fff;text-decoration:none;
+    font-weight:800;padding:14px 26px;border-radius:999px;
+    border:3px solid var(--ink);
+    box-shadow:5px 5px 0 var(--ink);
+    transition:transform .15s, box-shadow .15s;
+    cursor:pointer;font-size:1rem;font-family:inherit;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+  .btn.gold{background:var(--gold);color:var(--ink)}
+  .btn.white{background:#fff;color:var(--r700)}
+  .btn.small{padding:9px 18px;font-size:.9rem;box-shadow:3px 3px 0 var(--ink)}
+  @media(max-width:760px){nav ul{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--r500);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    padding:70px 0 110px;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:2}
+  .tag{
+    display:inline-block;background:var(--gold);color:var(--ink);
+    font-weight:800;padding:6px 16px;border-radius:999px;
+    border:3px solid var(--ink);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;
+    transform:rotate(-2deg);margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);font-weight:800}
+  .hero h1 em{font-style:italic;color:var(--gold);font-weight:600}
+  .hero p.lead{font-size:1.2rem;margin:22px 0 32px;max-width:32em;color:var(--r50)}
+  .hero .cta{display:flex;flex-wrap:wrap;gap:16px}
+  .hero-art{position:relative}
+  .hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(8px 10px 0 rgba(90,10,42,.35))}
+  .spark{position:absolute;color:var(--gold);animation:twinkle 2.6s ease-in-out infinite}
+  @keyframes twinkle{0%,100%{transform:scale(.6) rotate(0);opacity:.6}50%{transform:scale(1.15) rotate(20deg);opacity:1}}
+  .blob{position:absolute;border-radius:50%;z-index:1}
+  .b1{width:380px;height:380px;background:var(--r600);left:-140px;top:-120px}
+  .b2{width:260px;height:260px;background:var(--r300);opacity:.55;right:-80px;bottom:-90px}
+  .float{animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .wave{position:absolute;bottom:-1px;left:0;width:100%;line-height:0;z-index:3}
+  .wave svg{width:100%;height:70px}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:380px;margin:0 auto}}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{background:var(--gold);border-block:3px solid var(--ink);overflow:hidden;padding:12px 0;white-space:nowrap}
+  .marquee-track{display:inline-block;animation:scroll 28s linear infinite;font-family:'Fraunces',serif;font-weight:800;font-size:1.4rem}
+  .marquee-track span{margin:0 22px}
+  .marquee-track i{font-style:normal;color:var(--r600)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:90px 0;position:relative}
+  .eyebrow{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;color:var(--r600);margin-bottom:10px}
+  h2{font-size:clamp(2rem,4.6vw,3.5rem);font-weight:800;margin-bottom:18px}
+  .center{text-align:center}
+  .sub{max-width:38em;font-size:1.1rem;margin-inline:auto}
+
+  /* Welcome */
+  .welcome{background:var(--r50)}
+  .welcome .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .portrait{
+    background:var(--r200);border:4px solid var(--ink);border-radius:var(--radius);
+    box-shadow:10px 10px 0 var(--r600);padding:26px;position:relative;
+  }
+  .portrait svg{width:100%;height:auto;display:block}
+  .badge{
+    position:absolute;right:-18px;top:-22px;background:var(--gold);border:3px solid var(--ink);
+    border-radius:50%;width:104px;height:104px;display:grid;place-items:center;text-align:center;
+    font-weight:800;font-size:.78rem;line-height:1.15;transform:rotate(12deg);
+    animation:spin 14s linear infinite;
+  }
+  .badge b{display:block;font-family:'Fraunces',serif;font-size:1.5rem}
+  @keyframes spin{to{transform:rotate(372deg)}}
+  .welcome p{margin-bottom:16px;font-size:1.1rem}
+  .pins{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .pin{background:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 18px;font-weight:700;display:flex;gap:8px;align-items:center}
+  @media(max-width:860px){.welcome .wrap{grid-template-columns:1fr}.portrait{max-width:380px;margin:0 auto}}
+
+  /* Services */
+  .services{background:var(--r600);color:#fff}
+  .services .eyebrow{color:var(--gold)}
+  .services .sub{color:var(--r100)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:50px}
+  .flip{perspective:1000px;height:330px;cursor:pointer}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+  .flip:hover .flip-inner,.flip.on .flip-inner{transform:rotateY(180deg)}
+  .face{
+    position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);
+    border:4px solid var(--ink);padding:24px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;gap:14px;
+  }
+  .front{background:var(--r100);color:var(--ink);box-shadow:8px 8px 0 var(--ink)}
+  .front svg{width:120px;height:120px}
+  .front h3{font-size:1.5rem;font-weight:800}
+  .front small{font-weight:700;color:var(--r600)}
+  .back{background:var(--gold);color:var(--ink);transform:rotateY(180deg);box-shadow:8px 8px 0 var(--ink)}
+  .back p{font-size:1rem;font-weight:500}
+  .back h3{font-size:1.4rem}
+
+  /* Quiz */
+  .quiz{background:var(--gold-soft)}
+  .quiz-box{
+    max-width:720px;margin:44px auto 0;background:#fff;border:4px solid var(--ink);
+    border-radius:var(--radius);box-shadow:12px 12px 0 var(--r500);padding:34px;
+  }
+  .progress{height:14px;border:3px solid var(--ink);border-radius:99px;background:var(--r100);overflow:hidden;margin-bottom:26px}
+  .progress div{height:100%;width:0;background:var(--r500);transition:width .4s}
+  .q-title{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:800;margin-bottom:20px;line-height:1.15}
+  .opts{display:grid;gap:12px}
+  .opt{
+    text-align:left;background:var(--r50);border:3px solid var(--ink);border-radius:18px;
+    padding:15px 20px;font-weight:700;font-size:1.05rem;font-family:inherit;color:var(--ink);cursor:pointer;
+    transition:transform .12s, background .12s;
+  }
+  .opt:hover{background:var(--r200);transform:translateX(6px)}
+  .result{text-align:center}
+  .result svg{width:130px;height:130px;margin:0 auto 10px;display:block}
+  .result h3{font-size:2rem;color:var(--r600);margin-bottom:10px}
+  .result p{margin-bottom:22px}
+  .redo{display:block;margin:16px auto 0;background:none;border:none;font-weight:700;text-decoration:underline;cursor:pointer;color:var(--r700);font-family:inherit;font-size:1rem}
+
+  /* Ritual steps */
+  .ritual{background:var(--r100)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;margin-top:50px;counter-reset:s}
+  .step{
+    background:#fff;border:4px solid var(--ink);border-radius:var(--radius);padding:30px 24px 26px;
+    position:relative;counter-increment:s;box-shadow:8px 8px 0 var(--r500);
+  }
+  .step::before{
+    content:counter(s);position:absolute;top:-24px;left:22px;
+    width:52px;height:52px;border-radius:50%;background:var(--gold);border:4px solid var(--ink);
+    display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:800;font-size:1.5rem;
+  }
+  .step h3{font-size:1.4rem;margin:8px 0 8px}
+  .step:nth-child(even){transform:translateY(18px)}
+  @media(max-width:700px){.step:nth-child(even){transform:none}}
+
+  /* Turnos CTA */
+  .turnos{background:var(--r500);color:#fff;text-align:center;overflow:hidden}
+  .turnos h2{font-size:clamp(2.4rem,6vw,4.6rem)}
+  .turnos h2 em{color:var(--gold);font-style:italic}
+  .turnos p{max-width:34em;margin:0 auto 34px;font-size:1.15rem}
+  .turnos .row{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+  .turnos .deco{position:absolute;opacity:.9}
+  .d1{left:4%;top:12%;width:110px}
+  .d2{right:5%;bottom:10%;width:130px}
+  @media(max-width:700px){.turnos .deco{display:none}}
+
+  /* Contact */
+  .contact{background:var(--r50)}
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:44px}
+  .link-card{
+    text-decoration:none;background:#fff;border:4px solid var(--ink);border-radius:var(--radius);
+    padding:26px;display:flex;flex-direction:column;gap:8px;box-shadow:8px 8px 0 var(--r600);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .link-card:hover{transform:translate(-3px,-3px);box-shadow:12px 12px 0 var(--r600)}
+  .link-card svg{width:44px;height:44px}
+  .link-card h3{font-size:1.4rem}
+  .link-card span{font-weight:700;color:var(--r600);word-break:break-all;font-size:.95rem}
+
+  footer{background:var(--r600);color:#fff;text-align:center;padding:36px 22px;border-top:4px solid var(--ink)}
+  footer p{font-size:.95rem}
+  footer b{color:var(--gold)}
+
+  /* Floating WhatsApp */
+  .wa-float{
+    position:fixed;right:20px;bottom:20px;z-index:60;width:66px;height:66px;border-radius:50%;
+    background:var(--gold);border:4px solid var(--ink);display:grid;place-items:center;
+    box-shadow:5px 5px 0 var(--ink);animation:pulse 2.2s infinite;text-decoration:none;
+  }
+  .wa-float svg{width:34px;height:34px}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+
+  /* Reveal */
+  .js .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s, transform .7s}
+  .js .reveal.in{opacity:1;transform:none}
+  .js .step.reveal.in:nth-child(even){transform:translateY(18px)}
+  @media(max-width:700px){.js .step.reveal.in:nth-child(even){transform:none}}
+
+  /* trail */
+  .trail{position:fixed;pointer-events:none;z-index:100;font-size:18px;color:var(--gold);text-shadow:1px 1px 0 var(--ink);animation:fade .9s forwards}
+  @keyframes fade{to{opacity:0;transform:translateY(24px) scale(.3) rotate(120deg)}}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav>
+  <div class="wrap">
+    <a href="#inicio" class="logo">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <g fill="#D01C57" stroke="#5A0A2A" stroke-width="2">
+          <path d="M20 6c4 5 4 12 0 18-4-6-4-13 0-18z"/>
+          <path d="M20 24c-6-1-11-5-13-11 6 0 11 3 13 11z"/>
+          <path d="M20 24c6-1 11-5 13-11-6 0-11 3-13 11z"/>
+        </g>
+        <path d="M8 30h24M13 35h14" stroke="#5A0A2A" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      Dra. Tatiana Díaz
+    </a>
+    <ul>
+      <li><a href="#bienvenida">Bienvenida</a></li>
+      <li><a href="#tratamientos">Tratamientos</a></li>
+      <li><a href="#test">Test</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="btn small" href="https://wa.me/5493489700620" target="_blank" rel="noopener">Sacá tu turno</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="inicio">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap">
+    <div>
+      <span class="tag">📍 Campana · Nuevo espacio</span>
+      <h1>Tu belleza,<br>en manos <em>de una doctora</em>.</h1>
+      <p class="lead">Bienvenida al nuevo espacio de estética y belleza creado por la <strong>Dra. Tatiana Díaz</strong>. Ciencia, cuidado y un toque de magia para que te veas y te sientas increíble.</p>
+      <div class="cta">
+        <a class="btn gold" href="https://wa.me/5493489700620?text=Hola!%20Quiero%20sacar%20un%20turno%20en%20el%20Centro%20de%20Est%C3%A9tica%20Dra.%20Tatiana%20D%C3%ADaz" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#5A0A2A"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.900s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 1.900c.1.200.1.400 0 .5l-.4.600c-.2.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.4-.2.700-.1l1.800.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg>
+          Pedí tu turno
+        </a>
+        <a class="btn white" href="#tratamientos">Ver tratamientos ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-art float">
+      <span class="spark" style="left:2%;top:8%;font-size:38px">✦</span>
+      <span class="spark" style="right:4%;top:2%;font-size:26px;animation-delay:.8s">✦</span>
+      <span class="spark" style="right:0;bottom:16%;font-size:44px;animation-delay:1.4s">✦</span>
+      <!-- Ilustración: rostro line-art -->
+      <svg viewBox="0 0 420 460" role="img" aria-label="Ilustración de un rostro femenino con hojas y destellos">
+        <circle cx="210" cy="230" r="196" fill="#FFC0D6" stroke="#5A0A2A" stroke-width="6"/>
+        <!-- pelo trasero -->
+        <path d="M118 210c-14-92 44-150 104-150 70 0 118 62 96 168-6 34-2 70 18 100-46 14-88-4-104-38-30 34-78 44-118 26 16-26 10-70 4-106z" fill="#5A0A2A"/>
+        <!-- cuello -->
+        <path d="M180 320h62v58c0 14-62 14-62 0z" fill="#FFE1EC" stroke="#5A0A2A" stroke-width="6" stroke-linejoin="round"/>
+        <!-- rostro -->
+        <path d="M144 200c0-56 30-88 68-88s68 32 68 88c0 62-34 122-68 122s-68-60-68-122z" fill="#FFE1EC" stroke="#5A0A2A" stroke-width="6"/>
+        <!-- flequillo -->
+        <path d="M140 196c8-46 40-86 92-80 26 3 46 20 52 48-30-6-62-28-78-50-6 34-34 62-66 82z" fill="#5A0A2A"/>
+        <!-- cejas, ojos -->
+        <path d="M168 210q16-10 32-2" stroke="#5A0A2A" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M228 208q16-8 32 2" stroke="#5A0A2A" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M170 232q16 14 32 0" stroke="#5A0A2A" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M228 232q16 14 32 0" stroke="#5A0A2A" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M174 240l-6 8M186 244l-2 10M198 240l4 8M232 240l-4 8M244 244l2 10M256 240l6 8" stroke="#5A0A2A" stroke-width="4" stroke-linecap="round"/>
+        <!-- nariz -->
+        <path d="M216 240q-8 26-2 36q6 4 14 0" stroke="#5A0A2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- labios -->
+        <path d="M188 296q26-16 52 0q-26 26-52 0z" fill="#D01C57" stroke="#5A0A2A" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M190 297q24 6 48 0" stroke="#5A0A2A" stroke-width="3" fill="none"/>
+        <!-- mejillas -->
+        <circle cx="166" cy="272" r="14" fill="#FF94B8" opacity=".8"/>
+        <circle cx="262" cy="272" r="14" fill="#FF94B8" opacity=".8"/>
+        <!-- pendiente -->
+        <circle cx="146" cy="290" r="9" fill="#FFC629" stroke="#5A0A2A" stroke-width="4"/>
+        <!-- hojas -->
+        <g stroke="#5A0A2A" stroke-width="5" stroke-linejoin="round">
+          <path d="M64 372c4-40 34-66 74-70-2 42-30 68-74 70z" fill="#E8386F"/>
+          <path d="M64 372c20-24 40-42 74-70" fill="none"/>
+          <path d="M360 330c-6-36-32-58-66-60 0 38 26 60 66 60z" fill="#D01C57"/>
+          <path d="M360 330c-20-20-40-36-66-60" fill="none"/>
+        </g>
+        <!-- corona flor -->
+        <g transform="translate(300 96)" stroke="#5A0A2A" stroke-width="4">
+          <circle r="7" fill="#5A0A2A" stroke="none"/>
+          <g fill="#FFC629">
+            <ellipse cx="0" cy="-20" rx="9" ry="14"/>
+            <ellipse cx="19" cy="-6" rx="9" ry="14" transform="rotate(72 19 -6)"/>
+            <ellipse cx="12" cy="17" rx="9" ry="14" transform="rotate(144 12 17)"/>
+            <ellipse cx="-12" cy="17" rx="9" ry="14" transform="rotate(216 -12 17)"/>
+            <ellipse cx="-19" cy="-6" rx="9" ry="14" transform="rotate(288 -19 -6)"/>
+          </g>
+          <circle r="6" fill="#D01C57"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="wave">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0 40c120 40 240 40 360 10s240-40 360-10 240 40 360 10 240-30 360-10v30H0z" fill="#FFC629"/></svg>
+  </div>
+</header>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Estética</span><i>✦</i><span>Belleza</span><i>✦</i><span>Cuidado</span><i>✦</i><span>Bienestar</span><i>✦</i><span>Campana</span><i>✦</i><span>Turnos abiertos</span><i>✦</i>
+    <span>Estética</span><i>✦</i><span>Belleza</span><i>✦</i><span>Cuidado</span><i>✦</i><span>Bienestar</span><i>✦</i><span>Campana</span><i>✦</i><span>Turnos abiertos</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ================= BIENVENIDA ================= -->
+<section class="welcome" id="bienvenida">
+  <div class="wrap">
+    <div class="portrait reveal">
+      <div class="badge"><div>Nuevo<b>2026</b>espacio</div></div>
+      <!-- Ilustración: espejo de mano + flores -->
+      <svg viewBox="0 0 320 360" role="img" aria-label="Ilustración de un espejo de mano con flores y destellos">
+        <circle cx="160" cy="130" r="98" fill="#FFC629" stroke="#5A0A2A" stroke-width="6"/>
+        <circle cx="160" cy="130" r="74" fill="#FFF4F8" stroke="#5A0A2A" stroke-width="5"/>
+        <path d="M120 100q20-30 60-14" stroke="#FFC0D6" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M148 224l-14 96q26 26 52 0l-14-96z" fill="#D01C57" stroke="#5A0A2A" stroke-width="6" stroke-linejoin="round"/>
+        <circle cx="160" cy="330" r="12" fill="#FFC629" stroke="#5A0A2A" stroke-width="5"/>
+        <path d="M160 96l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#E8386F" stroke="#5A0A2A" stroke-width="4" stroke-linejoin="round"/>
+        <g transform="translate(56 300)" stroke="#5A0A2A" stroke-width="4">
+          <g fill="#E8386F"><circle cy="-16" r="12"/><circle cx="15" cy="-5" r="12"/><circle cx="9" cy="13" r="12"/><circle cx="-9" cy="13" r="12"/><circle cx="-15" cy="-5" r="12"/></g>
+          <circle r="8" fill="#FFC629"/>
+        </g>
+        <g transform="translate(262 286)" stroke="#5A0A2A" stroke-width="4">
+          <g fill="#FF94B8"><circle cy="-14" r="10"/><circle cx="13" cy="-4" r="10"/><circle cx="8" cy="11" r="10"/><circle cx="-8" cy="11" r="10"/><circle cx="-13" cy="-4" r="10"/></g>
+          <circle r="7" fill="#FFC629"/>
+        </g>
+        <path d="M40 60l6 14 14 6-14 6-6 14-6-14-14-6 14-6zM278 40l5 11 11 5-11 5-5 11-5-11-11-5 11-5z" fill="#D01C57" stroke="#5A0A2A" stroke-width="3" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">Bienvenida</p>
+      <h2>Un espacio pensado para que brilles.</h2>
+      <p>El Centro de Estética de la <strong>Dra. Tatiana Díaz</strong> nace con una idea simple: que cuidarte sea un placer y que cada tratamiento tenga el respaldo de una profesional de la salud.</p>
+      <p>Acá vas a encontrar atención cercana, un ambiente cálido y todo el cuidado que merecés. Entrá, relajate y dejá el resto en nuestras manos.</p>
+      <div class="pins">
+        <div class="pin">👩‍⚕️ Dra. Tatiana Díaz</div>
+        <div class="pin">📍 Campana</div>
+        <div class="pin">📅 Con turno previo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRATAMIENTOS ================= -->
+<section class="services" id="tratamientos">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Tratamientos</p>
+    <h2 class="reveal">Tocá una carta y descubrí.</h2>
+    <p class="sub reveal">Una muestra de lo que podés encontrar en el centro. Consultanos por WhatsApp para conocer todas las opciones y armar tu plan a medida.</p>
+
+    <div class="cards">
+      <!-- Facial -->
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="face front">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <ellipse cx="60" cy="62" rx="34" ry="44" fill="#FFC0D6" stroke="#5A0A2A" stroke-width="5"/>
+              <path d="M44 56q6-6 12 0M64 56q6-6 12 0" stroke="#5A0A2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <path d="M48 82q12 10 24 0" stroke="#D01C57" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <path d="M96 20l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#FFC629" stroke="#5A0A2A" stroke-width="3" stroke-linejoin="round"/>
+            </svg>
+            <h3>Cuidado facial</h3>
+            <small>Tocá para dar vuelta ↻</small>
+          </div>
+          <div class="face back">
+            <h3>Piel con luz propia</h3>
+            <p>Limpieza, hidratación y tratamientos para revitalizar tu rostro, elegidos según lo que tu piel necesita.</p>
+            <a class="btn small" href="https://wa.me/5493489700620?text=Hola!%20Quiero%20consultar%20por%20cuidado%20facial" target="_blank" rel="noopener">Consultar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Corporal -->
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="face front">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <path d="M60 14c22 20 22 40 0 58-22-18-22-38 0-58z" fill="#E8386F" stroke="#5A0A2A" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M60 72c-24-2-40-16-46-38 24 0 42 12 46 38zM60 72c24-2 40-16 46-38-24 0-42 12-46 38z" fill="#FFC0D6" stroke="#5A0A2A" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M30 96h60M40 108h40" stroke="#5A0A2A" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <h3>Estética corporal</h3>
+            <small>Tocá para dar vuelta ↻</small>
+          </div>
+          <div class="face back">
+            <h3>Bienestar de pies a cabeza</h3>
+            <p>Técnicas para modelar, relajar y mejorar la calidad de tu piel en todo el cuerpo.</p>
+            <a class="btn small" href="https://wa.me/5493489700620?text=Hola!%20Quiero%20consultar%20por%20est%C3%A9tica%20corporal" target="_blank" rel="noopener">Consultar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Antiage -->
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="face front">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <rect x="42" y="40" width="36" height="60" rx="10" fill="#FFC0D6" stroke="#5A0A2A" stroke-width="5"/>
+              <rect x="50" y="22" width="20" height="20" rx="4" fill="#E8386F" stroke="#5A0A2A" stroke-width="5"/>
+              <path d="M52 40v-8h16v8" stroke="#5A0A2A" stroke-width="4" fill="none"/>
+              <circle cx="60" cy="72" r="10" fill="#FFC629" stroke="#5A0A2A" stroke-width="4"/>
+              <path d="M96 30l4 10 10 4-10 4-4 10-4-10-10-4 10-4zM18 60l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#FFC629" stroke="#5A0A2A" stroke-width="3" stroke-linejoin="round"/>
+            </svg>
+            <h3>Rejuvenecimiento</h3>
+            <small>Tocá para dar vuelta ↻</small>
+          </div>
+          <div class="face back">
+            <h3>Verte como te sentís</h3>
+            <p>Opciones para suavizar signos del tiempo, siempre con evaluación profesional y resultados naturales.</p>
+            <a class="btn small" href="https://wa.me/5493489700620?text=Hola!%20Quiero%20consultar%20por%20rejuvenecimiento" target="_blank" rel="noopener">Consultar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Relax -->
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="face front">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <g stroke="#5A0A2A" stroke-width="5" stroke-linejoin="round">
+                <path d="M60 30c10 12 10 30 0 44-10-14-10-32 0-44z" fill="#E8386F"/>
+                <path d="M60 74c-18 2-34-8-42-26 18-4 36 6 42 26z" fill="#FF94B8"/>
+                <path d="M60 74c18 2 34-8 42-26-18-4-36 6-42 26z" fill="#FF94B8"/>
+                <path d="M60 78c-10 10-26 12-38 6 8-14 24-18 38-6zM60 78c10 10 26 12 38 6-8-14-24-18-38-6z" fill="#FFC0D6"/>
+              </g>
+              <path d="M24 100h72" stroke="#5A0A2A" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <h3>Momento relax</h3>
+            <small>Tocá para dar vuelta ↻</small>
+          </div>
+          <div class="face back">
+            <h3>Pausa que se agradece</h3>
+            <p>Un rato para vos: desconectá, respirá y salí renovada. Tu bienestar también es prioridad.</p>
+            <a class="btn small" href="https://wa.me/5493489700620?text=Hola!%20Quiero%20consultar%20por%20tratamientos%20de%20relax" target="_blank" rel="noopener">Consultar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEST ================= -->
+<section class="quiz" id="test">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Juego rápido</p>
+    <h2 class="reveal">¿Qué mimo necesitás hoy?</h2>
+    <p class="sub reveal">Respondé 3 preguntas y te decimos por dónde empezar. Después seguimos la charla por WhatsApp. 💬</p>
+
+    <div class="quiz-box reveal" id="quizBox">
+      <div class="progress"><div id="bar"></div></div>
+      <div id="quizBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RITUAL ================= -->
+<section class="ritual">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Cómo funciona</p>
+    <h2 class="reveal">Tu turno en 3 pasos.</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <h3>Escribinos</h3>
+        <p>Mandá un mensaje por WhatsApp o Instagram contándonos qué te gustaría mejorar o cuidar.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Reservá</h3>
+        <p>Coordinamos el día y horario que mejor te quede. Sin vueltas.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Disfrutá</h3>
+        <p>Venite al centro en Campana y dejate cuidar por la Dra. Tatiana Díaz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TURNOS ================= -->
+<section class="turnos" id="turnos">
+  <svg class="deco d1" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4l10 34 34 12-34 12-10 34-10-34-34-12 34-12z" fill="#FFC629" stroke="#5A0A2A" stroke-width="4" stroke-linejoin="round"/></svg>
+  <svg class="deco d2" viewBox="0 0 120 120" aria-hidden="true">
+    <g stroke="#5A0A2A" stroke-width="5" stroke-linejoin="round"><path d="M60 14c14 16 14 40 0 58-14-18-14-42 0-58z" fill="#FFC0D6"/><path d="M60 72c-26 2-46-12-54-36 26-4 50 10 54 36z" fill="#D01C57"/><path d="M60 72c26 2 46-12 54-36-26-4-50 10-54 36z" fill="#D01C57"/></g>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow reveal" style="color:var(--gold)">Turnos</p>
+    <h2 class="reveal">Es tu momento.<br><em>Reservá hoy.</em></h2>
+    <p class="reveal">Los turnos se coordinan por mensaje. Escribinos y te respondemos a la brevedad.</p>
+    <div class="row reveal">
+      <a class="btn gold" href="https://wa.me/5493489700620?text=Hola!%20Quiero%20sacar%20un%20turno" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="btn white" href="https://www.instagram.com/estetica_tatianadiaz/" target="_blank" rel="noopener">📸 Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contact" id="contacto">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Contacto</p>
+    <h2 class="reveal">Encontranos en todos lados.</h2>
+    <p class="sub reveal">📍 Campana, Buenos Aires</p>
+    <div class="links">
+      <a class="link-card reveal" href="https://www.instagram.com/estetica_tatianadiaz/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="11" fill="#E8386F" stroke="#5A0A2A" stroke-width="4"/><circle cx="24" cy="24" r="8" fill="none" stroke="#fff" stroke-width="4"/><circle cx="34" cy="14" r="2.500" fill="#FFC629"/></svg>
+        <h3>Instagram</h3>
+        <span>@estetica_tatianadiaz</span>
+      </a>
+      <a class="link-card reveal" href="https://wa.me/5493489700620" target="_blank" rel="noopener">
+        <svg viewBox="0 0 48 48"><path d="M24 5a19 19 0 0 0-16.400 28.600L5 43l9.700-2.500A19 19 0 1 0 24 5z" fill="#FFC629" stroke="#5A0A2A" stroke-width="4" stroke-linejoin="round"/><path d="M17 15c-1 1-2 3 0 7s6 8 11 9c2 .5 4-1 4.500-2.500l-4-2-2 1.500c-2-1-4-3-5-5l1.500-2-2-4z" fill="#5A0A2A"/></svg>
+        <h3>WhatsApp</h3>
+        <span>+54 9 3489 70-0620</span>
+      </a>
+      <a class="link-card reveal" href="https://facebook.com/dra.tatianadiazestetica/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="19" fill="#D01C57" stroke="#5A0A2A" stroke-width="4"/><path d="M26 39V26h5l1-6h-6v-3c0-2 1-3 3-3h3V9c-1 0-3-.3-5-.3-5 0-8 3-8 8V20h-5v6h5v13z" fill="#fff"/></svg>
+        <h3>Facebook</h3>
+        <span>dra.tatianadiazestetica</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Centro de Estética Dra. Tatiana Díaz</b> · Campana</p>
+  <p>© 2026 Todos los derechos reservados.</p>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5493489700620" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#5A0A2A"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm5.200 13.900c-.2.600-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.900s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 1.900c.1.200.1.400 0 .5l-.4.600c-.2.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.700-.1l1.800.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg>
+</a>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* Reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.15});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Flip cards (touch / keyboard) */
+document.querySelectorAll('.flip').forEach(c => {
+  c.addEventListener('click', e => { if(!e.target.closest('a')) c.classList.toggle('on'); });
+  c.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' '){ e.preventDefault(); c.classList.toggle('on'); }});
+});
+
+/* Sparkle trail */
+let last = 0;
+window.addEventListener('pointermove', e => {
+  if(e.pointerType==='touch') return;
+  const now = performance.now();
+  if(now - last < 70) return; last = now;
+  const s = document.createElement('span');
+  s.className = 'trail'; s.textContent = '✦';
+  s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 900);
+});
+
+/* Quiz */
+const questions = [
+  { q:'¿Cómo te sentís hoy?', o:[['Cansada, necesito parar un rato','relax'],['Quiero ver mi piel más luminosa','facial'],['Quiero sentirme bien en mi cuerpo','corporal'],['Quiero verme más joven','antiage']] },
+  { q:'¿Qué palabra te representa más?', o:[['Calma','relax'],['Brillo','facial'],['Energía','corporal'],['Elegancia','antiage']] },
+  { q:'Tu plan ideal del finde es…', o:[['Una tarde de spa en casa','relax'],['Salir con la cara lista sin maquillaje','facial'],['Caminar, moverme, disfrutar','corporal'],['Una foto donde salga perfecta','antiage']] }
+];
+const results = {
+  facial:{t:'Cuidado facial',d:'Tu piel pide luz y cuidado. Un tratamiento facial es el mejor punto de partida.',
+    svg:'<svg viewBox="0 0 120 120"><ellipse cx="60" cy="62" rx="34" ry="44" fill="#FFC0D6" stroke="#5A0A2A" stroke-width="5"/><path d="M44 56q6-6 12 0M64 56q6-6 12 0" stroke="#5A0A2A" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M48 82q12 10 24 0" stroke="#D01C57" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M96 20l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#FFC629" stroke="#5A0A2A" stroke-width="3"/></svg>'},
+  corporal:{t:'Estética corporal',d:'Es hora de un mimo para tu cuerpo. Consultá por nuestros tratamientos corporales.',
+    svg:'<svg viewBox="0 0 120 120"><path d="M60 14c22 20 22 40 0 58-22-18-22-38 0-58z" fill="#E8386F" stroke="#5A0A2A" stroke-width="5"/><path d="M60 72c-24-2-40-16-46-38 24 0 42 12 46 38zM60 72c24-2 40-16 46-38-24 0-42 12-46 38z" fill="#FFC0D6" stroke="#5A0A2A" stroke-width="5"/></svg>'},
+  antiage:{t:'Rejuvenecimiento',d:'Tenés que consultar por opciones para renovar tu piel con resultados naturales.',
+    svg:'<svg viewBox="0 0 120 120"><rect x="42" y="40" width="36" height="60" rx="10" fill="#FFC0D6" stroke="#5A0A2A" stroke-width="5"/><rect x="50" y="22" width="20" height="20" rx="4" fill="#E8386F" stroke="#5A0A2A" stroke-width="5"/><circle cx="60" cy="72" r="10" fill="#FFC629" stroke="#5A0A2A" stroke-width="4"/></svg>'},
+  relax:{t:'Momento relax',d:'Lo que necesitás es una pausa. Reservá un rato solo para vos.',
+    svg:'<svg viewBox="0 0 120 120"><path d="M60 30c10 12 10 30 0 44-10-14-10-32 0-44z" fill="#E8386F" stroke="#5A0A2A" stroke-width="5"/><path d="M60 74c-18 2-34-8-42-26 18-4 36 6 42 26zM60 74c18 2 34-8 42-26-18-4-36 6-42 26z" fill="#FF94B8" stroke="#5A0A2A" stroke-width="5"/></svg>'}
+};
+let step = 0, score = {};
+const body = document.getElementById('quizBody'), bar = document.getElementById('bar');
+
+function render(){
+  bar.style.width = (step/questions.length*100) + '%';
+  if(step >= questions.length){ return showResult(); }
+  const cur = questions[step];
+  body.innerHTML = '<div class="q-title">' + cur.q + '</div><div class="opts"></div>';
+  const box = body.querySelector('.opts');
+  cur.o.forEach(([label,key]) => {
+    const b = document.createElement('button');
+    b.className = 'opt'; b.textContent = label;
+    b.onclick = () => { score[key] = (score[key]||0)+1; step++; render(); };
+    box.appendChild(b);
+  });
+}
+function showResult(){
+  bar.style.width = '100%';
+  const key = Object.entries(score).sort((a,b)=>b[1]-a[1])[0][0];
+  const r = results[key];
+  const msg = encodeURIComponent('Hola! Hice el test en la web y me salió "' + r.t + '". Quiero sacar un turno.');
+  body.innerHTML = '<div class="result">' + r.svg + '<p class="eyebrow">Tu resultado</p><h3>' + r.t + '</h3><p>' + r.d + '</p>' +
+    '<a class="btn" target="_blank" rel="noopener" href="https://wa.me/5493489700620?text=' + msg + '">💬 Pedir turno para esto</a>' +
+    '<button class="redo" id="redo">Volver a jugar</button></div>';
+  document.getElementById('redo').onclick = () => { step = 0; score = {}; render(); };
+}
+render();
+</script>
+</body>
+</html>

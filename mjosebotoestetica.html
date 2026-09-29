@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mª José Boto Estética · Tu momento de belleza</title>
+<style>
+:root{--bg:#ffe3ec;--ink:#2b0715;--main:#e0245e;--soft:#ffc2d6;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b0715;--ink:#ffe3ec;--main:#ff4d86;--soft:#5a1230;--card:#3d0c21}}
+:root[data-theme="dark"]{--bg:#2b0715;--ink:#ffe3ec;--main:#ff4d86;--soft:#5a1230;--card:#3d0c21}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;line-height:1.5;overflow-x:hidden}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.05;margin:0}
+a{color:inherit}
+.wrap{max-width:1050px;margin:auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;max-width:1050px;margin:auto;font-weight:800}
+nav a{text-decoration:none}
+.btn{display:inline-block;background:var(--main);color:#fff;font-weight:800;padding:14px 26px;border-radius:50px;text-decoration:none;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:.15s;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.alt{background:var(--card);color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;padding:30px 0 50px}
+.hero h1{font-size:clamp(2.6rem,8vw,5.2rem);color:var(--main)}
+.hero h1 span{color:var(--ink);font-style:italic}
+.hero p{font-size:1.2rem;max-width:480px}
+.tag{display:inline-block;background:var(--ink);color:var(--bg);padding:6px 14px;border-radius:30px;font-weight:800;font-size:.85rem;letter-spacing:.08em;margin-bottom:16px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+.art{width:100%;max-width:420px;margin:auto;animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(2deg)}}
+.spark{animation:tw 2s infinite;transform-box:fill-box;transform-origin:center}
+.spark:nth-of-type(2){animation-delay:.6s}.spark:nth-of-type(3){animation-delay:1.2s}
+@keyframes tw{50%{transform:scale(.3);opacity:.4}}
+.marquee{background:var(--ink);color:var(--bg);overflow:hidden;white-space:nowrap;padding:14px 0;font-weight:900;font-size:1.3rem;transform:rotate(-1.5deg);margin:10px -10px}
+.marquee div{display:inline-block;animation:mq 22s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:60px 0}
+h2{font-size:clamp(2rem,6vw,3.4rem);margin-bottom:10px}
+h2 em{color:var(--main)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;margin-top:30px}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:24px;padding:22px;box-shadow:6px 6px 0 var(--main);transition:.2s}
+.card:hover{transform:rotate(-2deg) translateY(-6px)}
+.card svg{width:84px;height:84px}
+.card h3{font-size:1.4rem;margin:10px 0 6px}
+.quiz{background:var(--main);color:#fff;border:3px solid var(--ink);border-radius:32px;padding:34px 24px;box-shadow:10px 10px 0 var(--ink);text-align:center}
+.quiz h2{color:#fff}
+.quiz h2 em{color:var(--ink)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:22px}
+.opt{background:var(--bg);color:var(--ink);border:3px solid var(--ink);border-radius:20px;padding:16px 10px;font-weight:800;font-size:1rem;cursor:pointer;font-family:inherit;transition:.15s}
+.opt:hover{transform:scale(1.05) rotate(-1deg);background:var(--ink);color:var(--bg)}
+.opt b{display:block;font-size:2rem}
+.bar{height:12px;background:rgba(0,0,0,.25);border-radius:10px;margin:0 auto 20px;max-width:300px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ink);width:0;transition:.4s}
+.res{background:var(--bg);color:var(--ink);border:3px solid var(--ink);border-radius:24px;padding:24px;max-width:560px;margin:20px auto 0;animation:pop .5s}
+@keyframes pop{from{transform:scale(.6) rotate(-6deg);opacity:0}}
+.res svg{width:110px;height:110px}
+.res h3{font-size:2rem;color:var(--main)}
+.link{background:none;border:none;color:#fff;text-decoration:underline;font-weight:800;cursor:pointer;margin-top:16px;font-family:inherit;font-size:1rem}
+.hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:26px}
+.pill{background:var(--soft);border:3px solid var(--ink);border-radius:20px;padding:16px;font-weight:800;text-align:center}
+.contact{background:var(--ink);color:var(--bg);border-radius:32px;padding:44px 24px;text-align:center}
+.contact h2 em{color:var(--main)}
+.phone{display:block;font-size:clamp(2.2rem,9vw,4.4rem);font-weight:900;color:var(--main);text-decoration:none;margin:12px 0;font-family:Georgia,serif}
+footer{text-align:center;padding:30px 20px 40px;font-weight:700}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:9}
+@media(max-width:760px){.hero{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.cta{justify-content:center}}
+</style>
+</head>
+<body>
+<nav><a href="#top">✿ Mª José Boto</a><a href="#ritual">Tu ritual</a></nav>
+<div class="wrap" id="top">
+ <div class="hero">
+  <div>
+   <span class="tag">CENTRO DE ESTÉTICA</span>
+   <h1>Tu piel, <span>tu momento,</span> tu brillo.</h1>
+   <p>Mª José Boto Ortega te cuida con cariño, manos expertas y mucho mimo. Sal de aquí sintiéndote increíble.</p>
+   <div class="cta">
+    <a class="btn" href="tel:918953847">📞 Pídenos cita: 918 953 847</a>
+    <a class="btn alt" href="https://www.instagram.com/mjosebotoestetica/" target="_blank" rel="noopener">Instagram @mjosebotoestetica</a>
+   </div>
+  </div>
+  <svg class="art" viewBox="0 0 400 420" fill="none" stroke="var(--ink)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-label="Ilustración de rostro con flores">
+   <circle cx="200" cy="210" r="185" fill="var(--soft)" stroke="none"/>
+   <path d="M120 200c0-70 35-110 80-110s80 40 80 110c0 70-35 120-80 120s-80-50-80-120z" fill="var(--card)"/>
+   <path d="M108 190c10-70 50-120 100-120 55 0 90 50 88 120-25-45-60-60-100-60s-65 20-88 60z" fill="var(--main)"/>
+   <path d="M150 205q15-14 30 0M220 205q15-14 30 0"/>
+   <path d="M165 202l-2 8M172 200l-1 8M235 202l-2 8M242 200l-1 8" stroke-width="3"/>
+   <path d="M200 215v28l-8 3"/>
+   <path d="M172 272q28 22 56 0q-28 8-56 0z" fill="var(--main)"/>
+   <circle cx="150" cy="248" r="12" fill="var(--main)" stroke="none" opacity=".45"/>
+   <circle cx="250" cy="248" r="12" fill="var(--main)" stroke="none" opacity=".45"/>
+   <g transform="translate(300 90)"><circle r="14" fill="var(--main)"/><path d="M0-14c-14-22 14-30 0-38M0 14c14 22-14 30 0 38M-14 0c-22 14-30-14-38 0M14 0c22-14 30 14 38 0" fill="none"/></g>
+   <path class="spark" d="M70 90l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="var(--ink)"/>
+   <path class="spark" d="M330 300l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="var(--main)"/>
+   <path class="spark" d="M60 320l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="var(--ink)"/>
+  </svg>
+ </div>
+</div>
+
+<div class="marquee"><div>✿ CUIDADO FACIAL ✿ DEPILACIÓN ✿ MANICURA Y PEDICURA ✿ MASAJES ✿ TRATAMIENTOS CORPORALES ✿ CUIDADO FACIAL ✿ DEPILACIÓN ✿ MANICURA Y PEDICURA ✿ MASAJES ✿ TRATAMIENTOS CORPORALES ✿ </div></div>
+
+<div class="wrap">
+ <section id="servicios">
+  <h2>Mímate <em>de pies a cabeza</em></h2>
+  <p>Consulta con nosotras todos los tratamientos disponibles. Estos son algunos de nuestros favoritos.</p>
+  <div class="grid">
+   <div class="card"><svg viewBox="0 0 100 100" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 10C30 40 22 55 22 68a28 28 0 0056 0c0-13-8-28-28-58z" fill="var(--soft)"/><path d="M38 70a13 13 0 0010 12" stroke="var(--main)"/></svg><h3>Cuidado facial</h3><p>Limpieza, hidratación y luz para tu cara.</p></div>
+   <div class="card"><svg viewBox="0 0 100 100" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 80C30 40 55 20 82 18c-2 30-20 55-62 62z" fill="var(--soft)"/><path d="M20 80L60 40" stroke="var(--main)"/><path d="M40 62h14M50 52h14" stroke-width="3"/></svg><h3>Depilación</h3><p>Piel suave y duradera, con mucho cuidado.</p></div>
+   <div class="card"><svg viewBox="0 0 100 100" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="26" width="32" height="52" rx="14" fill="var(--soft)"/><path d="M40 26v-12h20v12" fill="var(--main)"/><path d="M42 44v22" stroke="var(--main)"/></svg><h3>Manicura y pedicura</h3><p>Uñas de revista, colores que enamoran.</p></div>
+   <div class="card"><svg viewBox="0 0 100 100" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 78C30 78 14 66 10 46c16 0 30 6 40 20 10-14 24-20 40-20-4 20-20 32-40 32z" fill="var(--soft)"/><path d="M50 66C38 52 38 30 50 16c12 14 12 36 0 50z" fill="var(--main)"/></svg><h3>Masajes y relax</h3><p>Desconecta y recarga pilas.</p></div>
+  </div>
+ </section>
+
+ <section id="ritual">
+  <div class="quiz" id="quiz">
+   <h2>Descubre <em>tu ritual</em> ideal</h2>
+   <p>Responde 2 preguntas y te decimos qué mimo necesitas.</p>
+   <div id="qbody"></div>
+  </div>
+ </section>
+
+ <section>
+  <h2>Ven cuando <em>quieras</em></h2>
+  <div class="hours">
+   <div class="pill">🌸 Cita previa</div>
+   <div class="pill">💬 Atención cercana</div>
+   <div class="pill">✨ Productos de calidad</div>
+   <div class="pill">💖 Resultados que se notan</div>
+  </div>
+ </section>
+
+ <section>
+  <div class="contact">
+   <h2>¿Lista para <em>brillar</em>?</h2>
+   <p>Pídenos cita llamando al</p>
+   <a class="phone" href="tel:918953847">918 953 847</a>
+   <div class="cta" style="justify-content:center">
+    <a class="btn" href="https://wa.me/34918953847" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn alt" href="https://www.instagram.com/mjosebotoestetica/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+   </div>
+  </div>
+ </section>
+</div>
+<footer>© Mª José Boto Ortega · <a href="https://www.instagram.com/mjosebotoestetica/" target="_blank" rel="noopener">@mjosebotoestetica</a></footer>
+<a class="btn fab" href="tel:918953847">📞 Cita</a>
+
+<script>
+const icons={
+ cara:'<path d="M50 10C30 40 22 55 22 68a28 28 0 0056 0c0-13-8-28-28-58z" fill="var(--soft)"/><path d="M38 70a13 13 0 0010 12" stroke="var(--main)"/>',
+ piel:'<path d="M20 80C30 40 55 20 82 18c-2 30-20 55-62 62z" fill="var(--soft)"/><path d="M20 80L60 40" stroke="var(--main)"/>',
+ unas:'<rect x="34" y="26" width="32" height="52" rx="14" fill="var(--soft)"/><path d="M40 26v-12h20v12" fill="var(--main)"/>',
+ relax:'<path d="M50 78C30 78 14 66 10 46c16 0 30 6 40 20 10-14 24-20 40-20-4 20-20 32-40 32z" fill="var(--soft)"/><path d="M50 66C38 52 38 30 50 16c12 14 12 36 0 50z" fill="var(--main)"/>'
+};
+const q1=[["🌟","Piel radiante","cara"],["🪶","Piel suave","piel"],["💅","Manos y pies bonitos","unas"],["🧘","Desconectar","relax"]];
+const q2=[["⚡","Poco tiempo","corto"],["🌿","Me lo tomo con calma","largo"]];
+const out={
+ cara:{corto:["Limpieza facial express","Un chute de luz e hidratación para volver a casa con cara de vacaciones."],largo:["Facial completo de lujo","Limpieza profunda, mascarilla y masaje facial. Tu piel te lo va a agradecer."]},
+ piel:{corto:["Depilación rápida y precisa","Zonas concretas, resultado impecable y piel suave al instante."],largo:["Depilación + hidratación corporal","Piel de seda de arriba abajo, con un final súper hidratante."]},
+ unas:{corto:["Manicura exprés","Uñas cuidadas y con color en un ratito."],largo:["Manicura + pedicura completa","Manos y pies mimados, con el color que más te guste."]},
+ relax:{corto:["Masaje relajante localizado","Suelta tensión en cuello y espalda en un momento."],largo:["Masaje corporal completo","Apaga el mundo durante un rato. Salir de aquí flotando es opcional."]}
+};
+const qb=document.getElementById('qbody');let goal;
+function step1(){
+ qb.innerHTML='<div class="bar"><i style="width:10%"></i></div><h3 style="font-size:1.6rem;margin-bottom:6px">¿Qué te apetece hoy?</h3><div class="opts">'+q1.map(o=>`<button class="opt" data-g="${o[2]}"><b>${o[0]}</b>${o[1]}</button>`).join('')+'</div>';
+ qb.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{goal=b.dataset.g;step2()});
+}
+function step2(){
+ qb.innerHTML='<div class="bar"><i style="width:55%"></i></div><h3 style="font-size:1.6rem;margin-bottom:6px">¿Cuánto tiempo tienes?</h3><div class="opts">'+q2.map(o=>`<button class="opt" data-t="${o[2]}"><b>${o[0]}</b>${o[1]}</button>`).join('')+'</div>';
+ qb.querySelectorAll('.opt').forEach(b=>b.onclick=()=>result(b.dataset.t));
+}
+function result(t){
+ const r=out[goal][t];
+ qb.innerHTML=`<div class="bar"><i style="width:100%"></i></div><div class="res"><svg viewBox="0 0 100 100" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">${icons[goal]}</svg><h3>${r[0]}</h3><p>${r[1]}</p><a class="btn" href="tel:918953847">📞 Reserva: 918 953 847</a></div><button class="link" id="again">↺ Volver a empezar</button>`;
+ document.getElementById('again').onclick=step1;
+}
+step1();
+</script>
+</body>
+</html>

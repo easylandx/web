@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valeria Saciuk · Cosmiatra y Cosmetóloga en Sarandí</title>
+<meta name="description" content="Belleza real y cuidado consciente. Cosmiatría, estética corporal y drenaje en Sarandí, Buenos Aires.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF1F4; --soft:#FFD6E0; --mid:#FF8FAB; --bold:#E0135A; --deep:#8A0B3A; --ink:#4A0A22; --pop:#FFE066;
+  --serif:"Fraunces",Georgia,serif; --sans:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-size:1.05rem;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.4rem}
+h1,h2,h3{font-family:var(--serif);line-height:1.02;letter-spacing:-.02em}
+h1{font-size:clamp(3rem,9vw,6.6rem);font-weight:800;color:var(--bold)}
+h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;color:var(--deep)}
+h3{font-size:1.5rem;font-weight:600}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:3px solid var(--bold)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:.8rem;padding-bottom:.8rem;gap:1rem}
+.logo{font-family:var(--serif);font-weight:800;font-size:1.25rem;text-decoration:none;color:var(--bold)}
+nav ul{list-style:none;display:flex;gap:1.3rem;padding:0;font-weight:500}
+nav ul a{text-decoration:none}
+nav ul a:hover{text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:var(--mid)}
+@media(max-width:640px){nav ul{display:none}}
+
+.btn{display:inline-block;font-weight:700;text-decoration:none;padding:.95rem 1.6rem;border-radius:999px;border:3px solid var(--ink);background:var(--bold);color:#fff;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.alt{background:var(--pop);color:var(--ink)}
+.btn.ghost{background:var(--bg);color:var(--ink)}
+
+/* hero */
+.hero{padding:3rem 0 4rem;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+.hero p.lead{font-size:1.3rem;max-width:32ch;margin:1.4rem 0 2rem;color:var(--deep)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:1rem}
+.art{width:100%;height:auto;overflow:visible}
+.float{animation:bob 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.float.b{animation-delay:-2s}.float.c{animation-delay:-4s}
+@keyframes bob{50%{transform:translateY(-12px) rotate(4deg)}}
+.twinkle{animation:tw 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes tw{50%{transform:scale(.5);opacity:.5}}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero .art-box{max-width:380px;margin:0 auto}}
+
+/* ribbon */
+.ribbon{background:var(--bold);color:var(--bg);border-block:3px solid var(--ink);overflow:hidden;white-space:nowrap;padding:.8rem 0;font-family:var(--serif);font-weight:600;font-size:1.4rem}
+.ribbon div{display:inline-block;animation:slide 30s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:5rem 0}
+
+/* mood picker */
+.mood{background:var(--soft);border-block:3px solid var(--ink)}
+.mood .head{max-width:34rem;margin-bottom:2rem}
+.mood .head p{margin-top:.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:2rem}
+.chip{font:inherit;font-weight:700;cursor:pointer;padding:.7rem 1.2rem;border-radius:999px;border:3px solid var(--ink);background:var(--bg);color:var(--ink);transition:background .15s,transform .15s}
+.chip:hover{transform:rotate(-2deg)}
+.chip[aria-pressed="true"]{background:var(--bold);color:#fff}
+.answer{display:grid;grid-template-columns:150px 1fr;gap:1.5rem;align-items:center;background:var(--bg);border:3px solid var(--ink);border-radius:28px;padding:1.6rem;box-shadow:8px 8px 0 var(--deep)}
+.answer h3{color:var(--bold);margin-bottom:.4rem;font-size:1.8rem}
+.answer .btn{margin-top:1rem;padding:.7rem 1.2rem;font-size:.95rem}
+@media(max-width:560px){.answer{grid-template-columns:1fr;justify-items:start}.answer svg{width:110px}}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem;margin-top:2.5rem}
+.card{border:3px solid var(--ink);border-radius:28px 28px 28px 6px;padding:1.6rem;background:var(--bg);transition:transform .2s}
+.card:nth-child(1){background:var(--soft)}
+.card:nth-child(2){background:var(--mid)}
+.card:nth-child(3){background:var(--bold);color:#fff}
+.card:nth-child(4){background:var(--pop)}
+.card:hover{transform:translateY(-6px) rotate(-1deg)}
+.card svg{width:88px;height:88px;margin-bottom:1rem}
+.card p{margin-top:.5rem}
+
+/* manifesto */
+.manifesto{background:var(--deep);color:var(--bg);border-block:3px solid var(--ink);position:relative;overflow:hidden}
+.manifesto h2{color:var(--pop);max-width:16ch}
+.manifesto .cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.manifesto ul{list-style:none;padding:0;display:grid;gap:1rem;font-size:1.15rem}
+.manifesto li{padding-left:2.2rem;position:relative}
+.manifesto li::before{content:"";position:absolute;left:0;top:.35rem;width:1.2rem;height:1.2rem;background:var(--mid);border-radius:60% 40% 60% 40%;transform:rotate(-20deg)}
+@media(max-width:760px){.manifesto .cols{grid-template-columns:1fr}}
+
+/* visit */
+.visit .box{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;border:3px solid var(--ink);border-radius:36px;padding:2.4rem;background:var(--mid);box-shadow:10px 10px 0 var(--ink)}
+.visit address{font-style:normal;font-weight:700;font-size:1.25rem;margin:1rem 0 1.6rem}
+.visit .btns{display:flex;flex-wrap:wrap;gap:1rem}
+@media(max-width:760px){.visit .box{grid-template-columns:1fr;padding:1.6rem}}
+
+footer{padding:2rem 0 3rem;text-align:center;font-size:.95rem;color:var(--deep)}
+
+.wa-float{position:fixed;right:1rem;bottom:1rem;z-index:6}
+.wa-float .btn{padding:.8rem 1.3rem;font-size:.95rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#inicio">Valeria Saciuk</a>
+    <ul>
+      <li><a href="#piel">Tu piel hoy</a></li>
+      <li><a href="#servicios">Tratamientos</a></li>
+      <li><a href="#filosofia">Filosofía</a></li>
+      <li><a href="#visita">Visitame</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <h1>Belleza real, cuidado consciente.</h1>
+      <p class="lead">Piel, bienestar y amor propio con Valeria Saciuk, cosmiatra y cosmetóloga en Sarandí.</p>
+      <div class="cta">
+        <a class="btn" href="https://wa.me/c/5491135613933" target="_blank" rel="noopener">Ver catálogo en WhatsApp</a>
+        <a class="btn ghost" href="https://www.instagram.com/valeriasaciuk.consultorio/" target="_blank" rel="noopener">Seguime en Instagram</a>
+      </div>
+    </div>
+    <div class="art-box">
+      <svg class="art" viewBox="0 0 400 420" role="img" aria-label="Ilustración de un rostro sereno rodeado de flores, hojas y gotas">
+        <circle cx="200" cy="215" r="185" fill="#FFD6E0" stroke="#4A0A22" stroke-width="5"/>
+        <!-- hojas -->
+        <g class="float"><path d="M40 330c10-60 60-90 110-80-5 60-50 95-110 80z" fill="#FF8FAB" stroke="#4A0A22" stroke-width="5"/><path d="M48 322c30-20 60-40 90-62" fill="none" stroke="#4A0A22" stroke-width="4"/></g>
+        <g class="float b"><path d="M360 300c-5-55-50-85-100-75 5 55 45 90 100 75z" fill="#E0135A" stroke="#4A0A22" stroke-width="5"/><path d="M352 292c-28-18-55-38-80-58" fill="none" stroke="#4A0A22" stroke-width="4"/></g>
+        <!-- rostro -->
+        <path d="M200 90c-62 0-95 48-95 112 0 74 42 128 95 128s95-54 95-128c0-64-33-112-95-112z" fill="#FFF1F4" stroke="#4A0A22" stroke-width="6"/>
+        <!-- pelo -->
+        <path d="M105 200c-8-70 30-125 100-122 62 3 100 50 90 122-20-45-50-70-100-72-50 0-70 30-90 72z" fill="#8A0B3A" stroke="#4A0A22" stroke-width="5"/>
+        <!-- ojos cerrados -->
+        <path d="M143 213q22 20 44 0M213 213q22 20 44 0" fill="none" stroke="#4A0A22" stroke-width="6" stroke-linecap="round"/>
+        <path d="M148 222l-8 9M165 227l-2 11M182 222l6 9M218 222l-6 9M235 227l2 11M252 222l8 9" stroke="#4A0A22" stroke-width="4" stroke-linecap="round"/>
+        <!-- mejillas -->
+        <circle cx="140" cy="262" r="16" fill="#FF8FAB"/><circle cx="260" cy="262" r="16" fill="#FF8FAB"/>
+        <!-- nariz y boca -->
+        <path d="M200 228v34q-9 6-16 2" fill="none" stroke="#4A0A22" stroke-width="5" stroke-linecap="round"/>
+        <path d="M172 295q28 26 56 0q-28-9-56 0z" fill="#E0135A" stroke="#4A0A22" stroke-width="5" stroke-linejoin="round"/>
+        <!-- flor corona -->
+        <g transform="translate(300 105)"><g fill="#FFE066" stroke="#4A0A22" stroke-width="4"><circle cx="0" cy="-24" r="16"/><circle cx="23" cy="-8" r="16"/><circle cx="14" cy="20" r="16"/><circle cx="-14" cy="20" r="16"/><circle cx="-23" cy="-8" r="16"/></g><circle r="13" fill="#E0135A" stroke="#4A0A22" stroke-width="4"/></g>
+        <g transform="translate(96 120) scale(.7)"><g fill="#E0135A" stroke="#4A0A22" stroke-width="5"><circle cx="0" cy="-24" r="16"/><circle cx="23" cy="-8" r="16"/><circle cx="14" cy="20" r="16"/><circle cx="-14" cy="20" r="16"/><circle cx="-23" cy="-8" r="16"/></g><circle r="13" fill="#FFE066" stroke="#4A0A22" stroke-width="5"/></g>
+        <!-- gotas -->
+        <path class="float c" d="M335 205q18 28 0 40q-18-12 0-40z" fill="#FF8FAB" stroke="#4A0A22" stroke-width="4"/>
+        <path class="float" d="M62 215q14 22 0 32q-14-10 0-32z" fill="#FFE066" stroke="#4A0A22" stroke-width="4"/>
+        <!-- destellos -->
+        <path class="twinkle" d="M330 50l6 18 18 6-18 6-6 18-6-18-18-6 18-6z" fill="#E0135A"/>
+        <path class="twinkle" style="animation-delay:-1.2s" d="M70 60l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" fill="#8A0B3A"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="ribbon" aria-hidden="true"><div>
+  Piel con cariño ✿ Drenaje ✿ Estética corporal ✿ Amor propio ✿ Bienestar ✿ Belleza real ✿ Piel con cariño ✿ Drenaje ✿ Estética corporal ✿ Amor propio ✿ Bienestar ✿ Belleza real ✿
+  Piel con cariño ✿ Drenaje ✿ Estética corporal ✿ Amor propio ✿ Bienestar ✿ Belleza real ✿ Piel con cariño ✿ Drenaje ✿ Estética corporal ✿ Amor propio ✿ Bienestar ✿ Belleza real ✿
+</div></div>
+
+<section class="mood" id="piel">
+  <div class="wrap">
+    <div class="head">
+      <h2>¿Cómo está tu piel hoy?</h2>
+      <p>Elegí cómo te sentís y te muestro por dónde empezar. Es un juego: en la consulta lo evaluamos de verdad.</p>
+    </div>
+    <div class="chips" role="group" aria-label="Elegí cómo te sentís">
+      <button class="chip" data-k="cansada" aria-pressed="true">Cansada</button>
+      <button class="chip" data-k="seca" aria-pressed="false">Seca y tirante</button>
+      <button class="chip" data-k="sensible" aria-pressed="false">Sensible</button>
+      <button class="chip" data-k="hinchada" aria-pressed="false">Me siento hinchada</button>
+      <button class="chip" data-k="mimo" aria-pressed="false">Quiero un mimo</button>
+    </div>
+    <div class="answer" aria-live="polite">
+      <svg id="ans-art" viewBox="0 0 120 120" width="150" height="150" aria-hidden="true"></svg>
+      <div>
+        <h3 id="ans-t"></h3>
+        <p id="ans-p"></p>
+        <a class="btn" id="ans-b" href="https://wa.me/c/5491135613933" target="_blank" rel="noopener">Consultá por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <h2>Tratamientos pensados para vos</h2>
+    <div class="grid">
+      <article class="card">
+        <svg viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="38" fill="#FFF1F4" stroke="#4A0A22" stroke-width="4"/><path d="M45 20q16 22 0 36q-16-14 0-36z" fill="#E0135A" stroke="#4A0A22" stroke-width="4"/><circle cx="60" cy="62" r="6" fill="#FFE066" stroke="#4A0A22" stroke-width="3"/></svg>
+        <h3>Cosmiatría facial</h3>
+        <p>Cuidado profesional para tu rostro, con foco en lo que tu piel necesita.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="38" fill="#FFF1F4" stroke="#4A0A22" stroke-width="4"/><path d="M14 50q10-16 20 0t20 0t20 0" fill="none" stroke="#E0135A" stroke-width="6" stroke-linecap="round"/><path d="M14 64q10-16 20 0t20 0t20 0" fill="none" stroke="#4A0A22" stroke-width="4" stroke-linecap="round"/></svg>
+        <h3>Estética corporal</h3>
+        <p>Tratamientos para el cuerpo que te hacen sentir cómoda y renovada.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="38" fill="#FFD6E0" stroke="#4A0A22" stroke-width="4"/><path d="M45 45m0 0q-2-14 10-14t8 14q0 16-18 16q-22 0-22-20q0-24 26-24" fill="none" stroke="#FFF1F4" stroke-width="6" stroke-linecap="round"/><circle cx="66" cy="66" r="6" fill="#FFE066" stroke="#4A0A22" stroke-width="3"/></svg>
+        <h3>Drenaje</h3>
+        <p>Masajes suaves y rítmicos para acompañar tu bienestar y tu descanso.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="38" fill="#FFF1F4" stroke="#4A0A22" stroke-width="4"/><path d="M45 66C22 50 22 30 35 27q10-2 10 8q0-10 10-8c13 3 13 23-10 39z" fill="#E0135A" stroke="#4A0A22" stroke-width="4" stroke-linejoin="round"/></svg>
+        <h3>Amor propio</h3>
+        <p>Un momento tuyo, sin apuro y sin exigencias. Cada consulta empieza escuchándote.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto" id="filosofia">
+  <div class="wrap cols">
+    <h2>Real, consciente, tuya.</h2>
+    <ul>
+      <li>Tu piel tiene su propia historia y la cuidamos como es.</li>
+      <li>Sin filtros: buscamos que te veas y te sientas vos.</li>
+      <li>Cuidarte es un acto de cariño, no una obligación.</li>
+      <li>Cada persona es distinta, por eso cada consulta también.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="visit" id="visita">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Vení a conocer el consultorio</h2>
+        <address>Av. Roca 2275<br>Sarandí, Buenos Aires (1872)</address>
+        <div class="btns">
+          <a class="btn alt" href="https://wa.me/c/5491135613933" target="_blank" rel="noopener">Abrir catálogo</a>
+          <a class="btn ghost" href="https://www.instagram.com/valeriasaciuk.consultorio/" target="_blank" rel="noopener">@valeriasaciuk.consultorio</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Av.+Roca+2275+Sarandi+Buenos+Aires" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+      <svg viewBox="0 0 300 260" role="img" aria-label="Ilustración de un consultorio con una planta, un espejo y una flor">
+        <rect x="20" y="215" width="260" height="14" rx="7" fill="#4A0A22"/>
+        <ellipse cx="150" cy="110" rx="70" ry="90" fill="#FFF1F4" stroke="#4A0A22" stroke-width="6"/>
+        <ellipse cx="150" cy="110" rx="52" ry="72" fill="#FFD6E0"/>
+        <path d="M118 90q10-24 32-30" stroke="#FFF1F4" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <rect x="232" y="160" width="36" height="55" rx="6" fill="#E0135A" stroke="#4A0A22" stroke-width="5"/>
+        <path d="M250 160c-30-20-30-55-10-70 10 25 22 35 10 70zM250 160c25-20 32-45 18-62-12 25-22 32-18 62z" fill="#FFE066" stroke="#4A0A22" stroke-width="5"/>
+        <g transform="translate(55 180)"><g fill="#8A0B3A" stroke="#4A0A22" stroke-width="4"><circle cx="0" cy="-16" r="11"/><circle cx="15" cy="-5" r="11"/><circle cx="9" cy="13" r="11"/><circle cx="-9" cy="13" r="11"/><circle cx="-15" cy="-5" r="11"/></g><circle r="9" fill="#FFE066" stroke="#4A0A22" stroke-width="4"/></g>
+        <path class="twinkle" d="M220 40l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" fill="#E0135A"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Valeria Saciuk · Cosmiatra y Cosmetóloga · © 2026</div>
+</footer>
+
+<div class="wa-float"><a class="btn alt" href="https://wa.me/c/5491135613933" target="_blank" rel="noopener">WhatsApp</a></div>
+
+<script>
+const data={
+  cansada:{t:"Piel cansada, cuerpo pidiendo pausa",p:"Un cuidado facial revitalizante junto con un momento de descanso puede ser un buen punto de partida.",c:"#FFE066",s:'<path d="M30 70q30 20 60 0" fill="none" stroke="#4A0A22" stroke-width="6" stroke-linecap="round"/><path d="M32 50q10 10 20 0M68 50q10 10 20 0" fill="none" stroke="#4A0A22" stroke-width="6" stroke-linecap="round"/>'},
+  seca:{t:"Piel seca y tirante",p:"Hidratación y nutrición son la prioridad. Vemos qué necesita tu piel y armamos una rutina simple.",c:"#FF8FAB",s:'<path d="M60 26q26 30 0 52q-26-22 0-52z" fill="#FFF1F4" stroke="#4A0A22" stroke-width="5"/><path d="M50 60q10 12 20 0" fill="none" stroke="#4A0A22" stroke-width="5" stroke-linecap="round"/>'},
+  sensible:{t:"Piel sensible",p:"Vamos despacio y con productos y técnicas suaves. Te escucho antes de tocar nada.",c:"#FFD6E0",s:'<path d="M60 92C30 70 28 44 46 38q10-3 14 8q4-11 14-8c18 6 16 32-14 54z" fill="#E0135A" stroke="#4A0A22" stroke-width="5" stroke-linejoin="round"/>'},
+  hinchada:{t:"Sensación de hinchazón",p:"El drenaje es un masaje suave que puede ayudarte a sentirte más liviana. Consultá cómo funciona.",c:"#E0135A",s:'<path d="M20 55q10-18 20 0t20 0t20 0" fill="none" stroke="#FFF1F4" stroke-width="7" stroke-linecap="round"/><path d="M20 78q10-18 20 0t20 0t20 0" fill="none" stroke="#4A0A22" stroke-width="5" stroke-linecap="round"/>'},
+  mimo:{t:"Hoy toca mimarte",p:"Sin excusas: un turno solo para vos. Mirá el catálogo y elegí lo que más te tiente.",c:"#FFE066",s:'<g fill="#E0135A" stroke="#4A0A22" stroke-width="5"><circle cx="60" cy="34" r="16"/><circle cx="82" cy="50" r="16"/><circle cx="74" cy="76" r="16"/><circle cx="46" cy="76" r="16"/><circle cx="38" cy="50" r="16"/></g><circle cx="60" cy="58" r="13" fill="#FFE066" stroke="#4A0A22" stroke-width="5"/>'}
+};
+const chips=document.querySelectorAll('.chip'),art=document.getElementById('ans-art');
+function show(k){
+  const d=data[k];
+  document.getElementById('ans-t').textContent=d.t;
+  document.getElementById('ans-p').textContent=d.p;
+  art.innerHTML='<circle cx="60" cy="60" r="56" fill="'+d.c+'" stroke="#4A0A22" stroke-width="5"/>'+d.s;
+  const msg=encodeURIComponent('Hola Valeria! Vi tu web y me interesa consultar: '+d.t.toLowerCase());
+  chips.forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===k));
+}
+chips.forEach(c=>c.addEventListener('click',()=>show(c.dataset.k)));
+show('cansada');
+</script>
+</body>
+</html>

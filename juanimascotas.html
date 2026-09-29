@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Juani Mascotas · Todo para mimar a tu mascota</title>
+<meta name="description" content="Juani Mascotas en Quilmes Mall: alimento, juguetes y accesorios para tu mascota. Envíos, venta mayorista y minorista.">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF6A13;--od:#B83E00;--ol:#FFB27A;--op:#FFE6D2;--cream:#FFF6EC;--ink:#5A1F00;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--cream);color:var(--ink);font:800 1.05rem/1.55 Nunito,system-ui,sans-serif}
+h1,h2,h3,.btn{font-family:Fredoka,"Trebuchet MS",sans-serif;font-weight:700;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;padding:14px 26px;border-radius:99px;background:var(--ink);color:var(--cream);text-decoration:none;font-size:1.1rem;border:3px solid var(--ink);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-3px) rotate(-1.5deg)}
+.btn.alt{background:transparent;color:var(--ink)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:12px}
+.logo{font-family:Fredoka,sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo svg{width:34px}
+/* hero */
+.hero{background:var(--o);color:var(--cream);border-radius:0 0 48px 48px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;padding-bottom:56px}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);color:var(--cream)}
+.hero h1 span{display:block;color:var(--ink)}
+.hero p{max-width:34ch;font-size:1.2rem}
+.hero .btn{background:var(--cream);color:var(--od);border-color:var(--cream)}
+.hero .btn.alt{background:transparent;color:var(--cream)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.stage{position:relative;min-height:320px}
+.stage svg{position:absolute;cursor:pointer;transition:transform .2s}
+.stage .dog{width:62%;left:0;bottom:0}
+.stage .cat{width:48%;right:0;bottom:10px}
+.stage svg:hover{transform:rotate(-4deg) scale(1.04)}
+.bubble{position:absolute;background:var(--cream);color:var(--ink);font:700 1.3rem Fredoka,sans-serif;padding:8px 16px;border-radius:20px;opacity:0;transform:scale(.4);transition:.25s;pointer-events:none;z-index:2}
+.bubble.on{opacity:1;transform:scale(1)}
+.wag{transform-origin:20% 90%;animation:wag 1.1s ease-in-out infinite}
+@keyframes wag{50%{transform:rotate(-14deg)}}
+/* ticker */
+.ticker{background:var(--ink);color:var(--op);overflow:hidden;white-space:nowrap;margin-top:-1px;padding:12px 0;font:700 1.2rem Fredoka,sans-serif;transform:rotate(-1.2deg);margin:34px -10px}
+.ticker div{display:inline-block;animation:tick 26s linear infinite}
+@keyframes tick{to{transform:translateX(-50%)}}
+/* sections */
+section{padding:56px 0}
+h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:10px}
+.lead{max-width:52ch;margin:0 0 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--op);border-radius:28px;padding:22px;border:3px solid var(--ink);transition:transform .2s,background .2s}
+.card:nth-child(even){border-radius:28px 60px 28px 60px}
+.card:nth-child(odd){border-radius:60px 28px 60px 28px}
+.card:hover{transform:rotate(-2deg) translateY(-4px);background:var(--ol)}
+.card svg{width:100px;height:100px;display:block;margin-bottom:8px}
+.card h3{font-size:1.5rem;margin-bottom:4px}
+.card p{margin:0}
+/* quiz */
+.quiz{background:var(--o);color:var(--cream);border-radius:48px;padding:40px 28px;text-align:center}
+.quiz h2{color:var(--cream)}
+.opts{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0}
+.opt{font:700 1.2rem Fredoka,sans-serif;background:var(--cream);color:var(--od);border:3px solid var(--cream);border-radius:99px;padding:12px 24px;cursor:pointer;transition:.15s}
+.opt:hover{transform:scale(1.07)}
+.opt[aria-pressed=true]{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.result{background:var(--cream);color:var(--ink);border-radius:28px;max-width:560px;margin:0 auto;padding:22px;min-height:120px}
+.result h3{font-size:1.6rem;margin-bottom:6px}
+.result ul{list-style:none;padding:0;margin:8px 0 16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.result li{background:var(--op);border:2px solid var(--ink);border-radius:99px;padding:4px 14px}
+.pop{animation:pop .35s}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+/* info */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.tile{border-radius:28px;padding:26px;background:var(--ol);border:3px solid var(--ink)}
+.tile.dk{background:var(--ink);color:var(--op)}
+.tile h3{font-size:1.6rem;margin-bottom:8px}
+.tile p{margin:0 0 6px}
+.tile .btn{margin-top:10px;background:var(--cream);color:var(--ink);border-color:var(--cream)}
+footer{background:var(--o);color:var(--cream);text-align:center;padding:44px 20px;margin-top:56px;border-radius:48px 48px 0 0}
+footer .btn{background:var(--cream);color:var(--od);border-color:var(--cream)}
+footer p{margin:14px 0 0}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.stage{min-height:260px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav style="grid-column:1/-1">
+      <a class="logo" href="#"><svg viewBox="0 0 60 60" aria-hidden="true"><g fill="#FFF6EC"><ellipse cx="30" cy="40" rx="15" ry="12"/><circle cx="12" cy="26" r="6"/><circle cx="24" cy="14" r="6"/><circle cx="38" cy="14" r="6"/><circle cx="50" cy="26" r="6"/></g></svg>Juani Mascotas</a>
+      <a class="btn alt" href="https://www.instagram.com/juanimascotas/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <div>
+      <h1>Todo para mimar <span>a tu mascota</span></h1>
+      <p>Alimento, juguetes y accesorios en Quilmes Mall. Pasá por el local o pedí con envío.</p>
+      <div class="cta">
+        <a class="btn" href="https://wa.me/5491166689229?text=Hola%20Juani%20Mascotas!%20Quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">Pedí por WhatsApp</a>
+        <a class="btn alt" href="#pack">Armá tu pack</a>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="bubble" id="bub" style="left:30%;top:6%">¡Guau!</div>
+      <!-- perro -->
+      <svg class="dog" id="dog" viewBox="0 0 220 240" role="img" aria-label="Perro ilustrado. Tocalo para que ladre">
+        <path class="wag" d="M190 170 Q225 140 212 100" stroke="#5A1F00" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <ellipse cx="110" cy="185" rx="70" ry="52" fill="#FFF6EC" stroke="#5A1F00" stroke-width="6"/>
+        <ellipse cx="66" cy="228" rx="20" ry="11" fill="#FFE6D2" stroke="#5A1F00" stroke-width="6"/>
+        <ellipse cx="146" cy="228" rx="20" ry="11" fill="#FFE6D2" stroke="#5A1F00" stroke-width="6"/>
+        <ellipse cx="46" cy="70" rx="24" ry="48" fill="#5A1F00" transform="rotate(14 46 70)"/>
+        <ellipse cx="174" cy="70" rx="24" ry="48" fill="#5A1F00" transform="rotate(-14 174 70)"/>
+        <circle cx="110" cy="90" r="64" fill="#FFF6EC" stroke="#5A1F00" stroke-width="6"/>
+        <circle cx="86" cy="80" r="9" fill="#5A1F00"/><circle cx="134" cy="80" r="9" fill="#5A1F00"/>
+        <circle cx="89" cy="77" r="3" fill="#FFF6EC"/><circle cx="137" cy="77" r="3" fill="#FFF6EC"/>
+        <ellipse cx="110" cy="108" rx="34" ry="24" fill="#FFE6D2"/>
+        <ellipse cx="110" cy="98" rx="13" ry="9" fill="#5A1F00"/>
+        <path d="M110 107 V118 M92 116 Q110 132 128 116" stroke="#5A1F00" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M104 124 Q110 152 118 124 Z" fill="#FF6A13" stroke="#5A1F00" stroke-width="4"/>
+        <rect x="70" y="146" width="80" height="14" rx="7" fill="#B83E00"/><circle cx="110" cy="166" r="9" fill="#FFB27A" stroke="#5A1F00" stroke-width="4"/>
+      </svg>
+      <!-- gato -->
+      <svg class="cat" id="cat" viewBox="0 0 180 220" role="img" aria-label="Gato ilustrado. Tocalo para que maúlle">
+        <path d="M20 190 Q-10 130 30 120" stroke="#5A1F00" stroke-width="14" fill="none" stroke-linecap="round"/>
+        <ellipse cx="90" cy="170" rx="56" ry="46" fill="#FFB27A" stroke="#5A1F00" stroke-width="6"/>
+        <path d="M34 60 L40 8 L84 40 Z M146 60 L140 8 L96 40 Z" fill="#FFB27A" stroke="#5A1F00" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M46 42 L48 24 L64 36 Z M134 42 L132 24 L116 36 Z" fill="#FFE6D2"/>
+        <ellipse cx="90" cy="88" rx="62" ry="52" fill="#FFB27A" stroke="#5A1F00" stroke-width="6"/>
+        <path d="M80 42 V58 M90 40 V58 M100 42 V58" stroke="#B83E00" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="66" cy="86" rx="10" ry="13" fill="#FFF6EC" stroke="#5A1F00" stroke-width="4"/><ellipse cx="114" cy="86" rx="10" ry="13" fill="#FFF6EC" stroke="#5A1F00" stroke-width="4"/>
+        <ellipse cx="66" cy="88" rx="4" ry="9" fill="#5A1F00"/><ellipse cx="114" cy="88" rx="4" ry="9" fill="#5A1F00"/>
+        <path d="M83 104 L97 104 L90 113 Z" fill="#B83E00"/>
+        <path d="M90 113 Q82 124 72 116 M90 113 Q98 124 108 116" stroke="#5A1F00" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M40 106 L8 98 M40 114 L8 118 M140 106 L172 98 M140 114 L172 118" stroke="#5A1F00" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div>
+  ✦ Envíos ✦ Mayor y menor ✦ Alimento ✦ Juguetes ✦ Accesorios ✦ Hospedaje ✦ Quilmes Mall ✦ Local 248 ✦ Envíos ✦ Mayor y menor ✦ Alimento ✦ Juguetes ✦ Accesorios ✦ Hospedaje ✦ Quilmes Mall ✦ Local 248 ✦
+</div></div>
+
+<main class="wrap">
+  <section id="tienda">
+    <h2>Qué vas a encontrar</h2>
+    <p class="lead">Para perros, gatos, peces y aves. Todo lo que tu mascota necesita, en un solo lugar.</p>
+    <div class="grid">
+      <article class="card">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 38 a12 12 0 1 1 10 -14 L70 64 a12 12 0 1 1 10 14 a12 12 0 1 1 -14 -10 L26 30 a12 12 0 0 1 -6 8Z" fill="#FF6A13" stroke="#5A1F00" stroke-width="5" stroke-linejoin="round"/></svg>
+        <h3>Perros</h3><p>Alimento, huesos, correas, camas y juguetes para morder sin culpa.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 14 C30 30 30 50 50 56 C70 50 70 30 50 14Z" fill="#FF6A13" stroke="#5A1F00" stroke-width="5"/><circle cx="50" cy="72" r="16" fill="#FFB27A" stroke="#5A1F00" stroke-width="5"/><path d="M50 56 Q80 70 66 92" stroke="#5A1F00" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+        <h3>Gatos</h3><p>Arena, rascadores, ovillos y snacks para consentir a los dueños de la casa.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M8 50 Q40 14 72 50 Q40 86 8 50Z" fill="#FF6A13" stroke="#5A1F00" stroke-width="5" stroke-linejoin="round"/><path d="M72 50 L94 30 V70Z" fill="#FFB27A" stroke="#5A1F00" stroke-width="5" stroke-linejoin="round"/><circle cx="26" cy="46" r="5" fill="#5A1F00"/></svg>
+        <h3>Peces y aves</h3><p>Alimento, peceras, jaulas y accesorios para un hogar lleno de vida.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 50 a30 30 0 0 1 60 0 V74 a6 6 0 0 1 -6 6 H26 a6 6 0 0 1 -6 -6Z" fill="#FF6A13" stroke="#5A1F00" stroke-width="5"/><circle cx="50" cy="60" r="12" fill="#FFE6D2" stroke="#5A1F00" stroke-width="5"/></svg>
+        <h3>Accesorios</h3><p>Collares, ropita, comederos, transportadoras y todo lo que suma.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="pack" class="quiz">
+    <h2>Armá tu pack de mimos</h2>
+    <p>Elegí tu mascota y mirá qué te recomendamos.</p>
+    <div class="opts" id="opts" role="group" aria-label="Tipo de mascota">
+      <button class="opt" data-k="perro" aria-pressed="false">Perro</button>
+      <button class="opt" data-k="gato" aria-pressed="false">Gato</button>
+      <button class="opt" data-k="pez" aria-pressed="false">Peces</button>
+      <button class="opt" data-k="ave" aria-pressed="false">Aves</button>
+    </div>
+    <div class="result" id="res" aria-live="polite"><p>Tocá una opción para empezar.</p></div>
+  </section>
+
+  <section id="servicios">
+    <h2>Más que una tienda</h2>
+    <p class="lead">Comprás como quieras y tu mascota se queda tranquila.</p>
+    <div class="info">
+      <div class="tile"><h3>Envíos</h3><p>Te llevamos el pedido a casa.</p><p>Vendemos al por mayor y al por menor.</p></div>
+      <div class="tile"><h3>Hospedaje</h3><p>¿Te vas de viaje? Cuidamos a tu mascota como si fuera nuestra.</p><a class="btn" href="https://www.instagram.com/hospedaje_juanimascotas/" target="_blank" rel="noopener">@hospedaje_juanimascotas</a></div>
+      <div class="tile dk"><h3>Visitanos</h3><p>Quilmes Mall, Local 248, 1° piso.</p><p>WhatsApp: 11 6668-9229</p><a class="btn" href="https://wa.me/5491166689229" target="_blank" rel="noopener">Escribinos</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <h2 style="color:var(--cream)">Seguinos y sumate a la manada</h2>
+  <p>Ofertas, novedades y mascotas adorables todos los días.</p>
+  <p><a class="btn" href="https://www.instagram.com/juanimascotas/" target="_blank" rel="noopener">@juanimascotas en Instagram</a></p>
+  <p>© 2026 Juani Mascotas · Quilmes Mall, Local 248</p>
+</footer>
+
+<script>
+(function(){
+  var bub=document.getElementById('bub'),t;
+  function say(txt,left){bub.textContent=txt;bub.style.left=left;bub.classList.add('on');clearTimeout(t);t=setTimeout(function(){bub.classList.remove('on')},1200)}
+  document.getElementById('dog').addEventListener('click',function(){say('¡Guau!','12%')});
+  document.getElementById('cat').addEventListener('click',function(){say('¡Miau!','58%')});
+  var D={
+    perro:['Pack perruno','Alimento balanceado,Hueso masticable,Correa y collar,Cama mullida'],
+    gato:['Pack gatuno','Alimento premium,Rascador,Arena sanitaria,Ratón de juguete'],
+    pez:['Pack acuático','Alimento en escamas,Acondicionador de agua,Filtro,Decoración'],
+    ave:['Pack alado','Mix de semillas,Jaula y comedero,Juguetes colgantes,Piedra de calcio']
+  };
+  var res=document.getElementById('res'),btns=document.querySelectorAll('.opt');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){x.setAttribute('aria-pressed','false')});
+    b.setAttribute('aria-pressed','true');
+    var d=D[b.dataset.k],items=d[1].split(',');
+    var msg=encodeURIComponent('Hola Juani Mascotas! Quiero armar un pack para mi '+b.textContent.toLowerCase());
+    res.innerHTML='<div class="pop"><h3>'+d[0]+'</h3><ul>'+items.map(function(i){return '<li>'+i+'</li>'}).join('')+'</ul><a class="btn" href="https://wa.me/5491166689229?text='+msg+'" target="_blank" rel="noopener">Pedir este pack</a></div>';
+  })});
+})();
+</script>
+</body>
+</html>

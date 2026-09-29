@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sol Medina Sosa · Estética y cuidado facial</title>
+<meta name="description" content="Sol Medina Sosa: dermatocosmiatra, cosmiatra y cosmetóloga. Tratamientos faciales y cuidado de la piel en Garín. Reservá tu turno por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,700;1,9..144,900&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2B1D00;
+  --ink-soft:#5A4100;
+  --cream:#FFF6D6;
+  --g100:#FFE9A6;
+  --g200:#FFE082;
+  --g300:#FFD54F;
+  --g400:#FFC93C;
+  --g500:#F5B301;
+  --g600:#D99A00;
+  --white:#FFFDF5;
+  --radius:28px;
+  --shadow:6px 6px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  font-size:17px;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.05;font-weight:900;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+section{padding:96px 0;position:relative}
+.eyebrow{
+  display:inline-block;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;
+  border:2.5px solid var(--ink);border-radius:999px;padding:6px 16px;background:var(--white);margin-bottom:20px;
+}
+h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:18px}
+h2 em{font-style:italic;position:relative;display:inline-block;z-index:1}
+h2 em::after{content:"";position:absolute;left:-4px;right:-4px;bottom:.06em;height:.32em;background:var(--g400);z-index:-1;border-radius:8px}
+.on-gold h2 em::after{background:var(--white)}
+.lead{font-size:1.15rem;max-width:620px;color:var(--ink-soft)}
+.icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;
+  padding:16px 28px;border-radius:999px;border:3px solid var(--ink);
+  background:var(--ink);color:var(--g300);box-shadow:5px 5px 0 var(--g600);
+  transition:transform .15s, box-shadow .15s;cursor:pointer;font-size:1rem;font-family:inherit;
+}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--g600)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--g600)}
+.btn.alt{background:var(--white);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn.alt:hover{box-shadow:8px 8px 0 var(--ink)}
+.btn .icon{font-size:1.3em}
+
+/* Nav */
+header{position:sticky;top:0;z-index:50;background:var(--g400);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.35rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo svg{width:34px;height:34px}
+nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+nav a{text-decoration:none;font-weight:700;font-size:.95rem;position:relative}
+nav ul a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-4px;height:3px;width:0;background:var(--ink);transition:width .2s}
+nav ul a:not(.btn):hover::after{width:100%}
+nav .btn{padding:9px 18px;font-size:.9rem;box-shadow:3px 3px 0 var(--g600)}
+.burger{display:none;background:none;border:3px solid var(--ink);border-radius:12px;width:46px;height:46px;font-size:1.3rem;cursor:pointer;color:var(--ink)}
+
+/* Hero */
+.hero{background:var(--g400);padding:70px 0 110px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(3rem,8vw,6.2rem);margin-bottom:22px}
+.hero h1 .swash{font-style:italic;display:inline-block;background:var(--white);border:3px solid var(--ink);border-radius:18px;padding:0 .22em;transform:rotate(-2.5deg);box-shadow:var(--shadow)}
+.hero p{font-size:1.25rem;max-width:520px;margin-bottom:32px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:16px}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;display:block;overflow:visible}
+.spin{transform-origin:200px 235px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.float{animation:float 5s ease-in-out infinite}
+.float.d2{animation-delay:-1.6s;animation-duration:6.5s}
+.float.d3{animation-delay:-3s;animation-duration:4.2s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.twinkle{animation:twinkle 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.twinkle.d2{animation-delay:-.8s}.twinkle.d3{animation-delay:-1.6s}
+@keyframes twinkle{0%,100%{transform:scale(.6) rotate(0);opacity:.6}50%{transform:scale(1.15) rotate(45deg);opacity:1}}
+.hero-badge{
+  position:absolute;right:-6px;bottom:6%;background:var(--white);border:3px solid var(--ink);border-radius:20px;
+  padding:12px 18px;font-weight:800;box-shadow:var(--shadow);transform:rotate(4deg);font-size:.95rem
+}
+.wave{position:absolute;left:0;right:0;bottom:-1px;line-height:0}
+.wave svg{width:100%;height:60px;display:block}
+
+/* Marquee */
+.marquee{background:var(--g500);border-block:3px solid var(--ink);overflow:hidden;padding:16px 0;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:38px;animation:marq 28s linear infinite;font-family:'Fraunces',serif;font-weight:900;font-size:1.6rem;font-style:italic}
+.marquee-track span{display:inline-flex;align-items:center;gap:38px}
+.marquee-track svg{width:26px;height:26px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* About */
+.about{background:var(--cream)}
+.about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.portrait{
+  position:relative;aspect-ratio:1/1.08;background:var(--g300);border:4px solid var(--ink);border-radius:46% 54% 42% 58% / 52% 44% 56% 48%;
+  box-shadow:var(--shadow);overflow:hidden;animation:morph 12s ease-in-out infinite
+}
+@keyframes morph{0%,100%{border-radius:46% 54% 42% 58% / 52% 44% 56% 48%}50%{border-radius:58% 42% 55% 45% / 44% 56% 44% 56%}}
+.portrait svg{width:100%;height:100%}
+.about p{margin-bottom:16px;color:var(--ink-soft)}
+.about p strong{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.stat{background:var(--g200);border:3px solid var(--ink);border-radius:20px;padding:14px 12px;text-align:center}
+.stat b{display:block;font-family:'Fraunces',serif;font-size:1.9rem;line-height:1}
+.stat span{font-size:.82rem;font-weight:700}
+
+/* Credentials */
+.creds{background:var(--g200)}
+.cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.cred{
+  background:var(--white);border:3px solid var(--ink);border-radius:var(--radius);padding:26px;
+  box-shadow:var(--shadow);transition:transform .2s, box-shadow .2s;position:relative;overflow:hidden
+}
+.cred:hover{transform:translate(-4px,-4px) rotate(-.6deg);box-shadow:10px 10px 0 var(--ink)}
+.cred .ic{
+  width:64px;height:64px;border-radius:20px;background:var(--g400);border:3px solid var(--ink);
+  display:grid;place-items:center;font-size:2rem;margin-bottom:16px
+}
+.cred:nth-child(even) .ic{background:var(--g500)}
+.cred h3{font-size:1.4rem;margin-bottom:6px}
+.cred p{font-size:.95rem;color:var(--ink-soft)}
+.cred .num{position:absolute;right:16px;top:6px;font-family:'Fraunces',serif;font-weight:900;font-size:4rem;color:var(--g200);line-height:1}
+
+/* Treatments */
+.treat{background:var(--g400)}
+.treat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:44px}
+.tcard{
+  display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;
+  background:var(--cream);border:3px solid var(--ink);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+  transition:transform .2s
+}
+.tcard:hover{transform:translateY(-6px)}
+.tcard:nth-child(2){background:var(--white)}
+.tcard:nth-child(3){background:var(--g100)}
+.tcard svg{width:150px;height:150px}
+.tcard h3{font-size:1.55rem;margin-bottom:8px}
+.tcard p{font-size:.98rem;color:var(--ink-soft)}
+.tag{display:inline-block;margin-top:12px;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;background:var(--g300)}
+.treat-note{margin-top:34px;text-align:center;font-weight:700}
+
+/* Ritual */
+.ritual{background:var(--cream)}
+.ritual-box{
+  margin-top:44px;display:grid;grid-template-columns:.8fr 1.2fr;gap:0;border:4px solid var(--ink);border-radius:36px;overflow:hidden;box-shadow:var(--shadow);background:var(--white)
+}
+.steps{background:var(--g300);border-right:4px solid var(--ink);display:flex;flex-direction:column}
+.step-btn{
+  all:unset;cursor:pointer;padding:20px 26px;font-weight:800;display:flex;gap:14px;align-items:center;border-bottom:3px solid var(--ink);
+  transition:background .2s;font-size:1.05rem
+}
+.step-btn:last-child{border-bottom:0}
+.step-btn i{font-style:normal;font-family:'Fraunces',serif;font-size:1.6rem;width:42px;height:42px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center;background:var(--white);flex:none}
+.step-btn:hover{background:var(--g400)}
+.step-btn[aria-selected="true"]{background:var(--ink);color:var(--g300)}
+.step-btn[aria-selected="true"] i{background:var(--g400);color:var(--ink)}
+.step-btn:focus-visible{outline:4px dashed var(--ink);outline-offset:-8px}
+.panel{padding:44px;display:grid;grid-template-columns:1fr 190px;gap:24px;align-items:center;min-height:340px;background:var(--g100)}
+.panel h3{font-size:2.1rem;margin-bottom:12px}
+.panel p{color:var(--ink-soft)}
+.panel svg{width:190px;height:190px}
+.panel-anim{animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+
+/* Quiz */
+.quiz{background:var(--g500)}
+.quiz-card{
+  margin-top:40px;background:var(--white);border:4px solid var(--ink);border-radius:36px;padding:38px;box-shadow:var(--shadow);max-width:820px;position:relative
+}
+.progress{height:14px;border:3px solid var(--ink);border-radius:999px;background:var(--g100);overflow:hidden;margin-bottom:26px}
+.progress div{height:100%;width:0;background:var(--g500);transition:width .4s;border-right:3px solid var(--ink)}
+.qtitle{font-family:'Fraunces',serif;font-weight:900;font-size:1.9rem;margin-bottom:22px;line-height:1.15}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opt{
+  all:unset;cursor:pointer;padding:16px 18px;border:3px solid var(--ink);border-radius:18px;background:var(--cream);font-weight:700;
+  transition:transform .15s, background .15s;display:flex;gap:12px;align-items:center
+}
+.opt:hover{background:var(--g300);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.opt:focus-visible{outline:4px dashed var(--ink);outline-offset:3px}
+.opt span{font-size:1.5rem}
+.result h3{font-size:2.3rem;margin-bottom:10px}
+.result .big{width:120px;height:120px;margin:0 auto 12px;display:block}
+.result p{color:var(--ink-soft);margin-bottom:12px}
+.result .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px}
+.disc{font-size:.82rem;opacity:.85}
+.restart{background:none;border:none;font:inherit;font-weight:800;text-decoration:underline;cursor:pointer;color:var(--ink)}
+
+/* Docente */
+.docente{background:var(--g100)}
+.docente .band{
+  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;background:var(--g300);border:4px solid var(--ink);border-radius:36px;padding:44px;box-shadow:var(--shadow)
+}
+.docente h2{margin-bottom:10px}
+.docente svg{width:200px;height:200px}
+
+/* Location */
+.where{background:var(--g200)}
+.where-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;margin-top:40px;align-items:stretch}
+.info{background:var(--white);border:3px solid var(--ink);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:20px}
+.row{display:flex;gap:16px;align-items:flex-start}
+.row .ic{width:52px;height:52px;border-radius:16px;background:var(--g400);border:3px solid var(--ink);display:grid;place-items:center;font-size:1.5rem;flex:none}
+.row b{display:block;font-size:1.05rem}
+.row a{font-weight:700}
+.map{border:4px solid var(--ink);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);min-height:380px;background:var(--g100)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:sepia(.55) saturate(1.6) hue-rotate(-8deg)}
+
+/* Final CTA */
+.final{background:var(--g400);text-align:center;overflow:hidden}
+.final h2{font-size:clamp(2.6rem,7vw,5.4rem)}
+.final p{margin:0 auto 34px;max-width:560px;font-size:1.2rem}
+.final .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+.final .deco{position:absolute;pointer-events:none}
+.final .d1{left:4%;top:12%;width:110px}
+.final .d2{right:5%;bottom:12%;width:130px}
+
+footer{background:var(--g100);border-top:3px solid var(--ink);padding:34px 0;text-align:center;font-weight:600;font-size:.95rem}
+footer .soc{display:flex;gap:14px;justify-content:center;margin-bottom:14px}
+footer .soc a{width:48px;height:48px;border-radius:50%;background:var(--g400);border:3px solid var(--ink);display:grid;place-items:center;font-size:1.4rem;transition:transform .2s}
+footer .soc a:hover{transform:rotate(-10deg) scale(1.1)}
+
+.wa-float{
+  position:fixed;right:18px;bottom:18px;z-index:60;width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--g300);
+  display:grid;place-items:center;font-size:2rem;border:3px solid var(--g300);box-shadow:0 0 0 3px var(--ink);text-decoration:none;
+  animation:pulse 2.4s infinite
+}
+@keyframes pulse{0%{box-shadow:0 0 0 3px var(--ink),0 0 0 3px rgba(245,179,1,.7)}70%{box-shadow:0 0 0 3px var(--ink),0 0 0 22px rgba(245,179,1,0)}100%{box-shadow:0 0 0 3px var(--ink),0 0 0 3px rgba(245,179,1,0)}}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s, transform .7s cubic-bezier(.2,.9,.3,1.2)}
+.reveal.in{opacity:1;transform:none}
+
+/* Spark burst */
+.spark{position:fixed;pointer-events:none;z-index:100;width:18px;height:18px;animation:burst .8s ease-out forwards}
+@keyframes burst{from{opacity:1;transform:translate(0,0) scale(1) rotate(0)}to{opacity:0;transform:translate(var(--x),var(--y)) scale(.2) rotate(240deg)}}
+
+@media (max-width:900px){
+  section{padding:70px 0}
+  .hero .wrap,.about .wrap,.where-grid,.docente .band{grid-template-columns:1fr}
+  .hero-art{max-width:420px;margin:0 auto}
+  .cred-grid{grid-template-columns:1fr 1fr}
+  .treat-grid{grid-template-columns:1fr}
+  .ritual-box{grid-template-columns:1fr}
+  .steps{border-right:0;border-bottom:4px solid var(--ink)}
+  .panel{grid-template-columns:1fr;padding:30px}
+  .panel svg{margin:0 auto;order:-1}
+  .docente svg{margin:0 auto}
+  .final .deco{display:none}
+  .burger{display:block}
+  nav ul{
+    position:absolute;top:70px;left:0;right:0;background:var(--g300);border-bottom:3px solid var(--ink);
+    flex-direction:column;padding:22px;gap:18px;display:none
+  }
+  nav ul.open{display:flex}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .cred-grid{grid-template-columns:1fr}
+  .tcard{grid-template-columns:1fr;text-align:center}
+  .tcard svg{margin:0 auto}
+  .opts{grid-template-columns:1fr}
+  .quiz-card{padding:24px}
+  .stats{grid-template-columns:1fr}
+  .hero-badge{right:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Iconos -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2s-7 8-7 13a7 7 0 0014 0c0-5-7-13-7-13z"/><path d="M9 15a3 3 0 003 3"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C10 4 4 10 4 18c0 1 .2 2 .5 2C12 20 20 16 20 4z"/><path d="M4 20c3-6 7-9 12-11"/></symbol>
+    <symbol id="i-lotus" viewBox="0 0 24 24"><path d="M12 4c2.5 3 2.5 8 0 11-2.5-3-2.5-8 0-11z"/><path d="M12 15c-1-4-5-6-9-6 0 5 4 8 9 6z"/><path d="M12 15c1-4 5-6 9-6 0 5-4 8-9 6z"/><path d="M6 20h12"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 5h7a2 2 0 012 2v13a2 2 0 00-2-2H3z"/><path d="M21 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></symbol>
+    <symbol id="i-face" viewBox="0 0 24 24"><path d="M12 3c4 0 6 3 6 8s-2.5 10-6 10-6-5-6-10 2-8 6-8z"/><path d="M9 11q1 1 2 0M13 11q1 1 2 0M10.5 16q1.5 1 3 0"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 5.5-8 11-8 11z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".8" fill="currentColor"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/><path d="M7.5 15h9"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7L18.3 22 12 18l-6.3 4 1.6-7.7L2 9.6 9 9z"/></symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo" aria-label="Sol Medina Sosa, inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="9" fill="#2B1D00"/><g stroke="#2B1D00" stroke-width="3" stroke-linecap="round"><path d="M20 3v5M20 32v5M3 20h5M32 20h5M8 8l3.5 3.5M28.5 28.5L32 32M8 32l3.5-3.5M28.5 11.5L32 8"/></g></svg>
+      Sol Medina Sosa
+    </a>
+    <nav aria-label="Principal">
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" id="burger"><svg class="icon"><use href="#i-menu"/></svg></button>
+      <ul id="menu">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#tratamientos">Tratamientos</a></li>
+        <li><a href="#ritual">Ritual</a></li>
+        <li><a href="#quiz">Test de piel</a></li>
+        <li><a href="#ubicacion">Dónde</a></li>
+        <li><a class="btn" href="https://wa.me/541165019740" target="_blank" rel="noopener">Turnos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Estética · Tratamientos · Cuidado facial</span>
+      <h1>Tu piel, <br><span class="swash">radiante</span> <br>de verdad.</h1>
+      <p>Soy Sol: dermatocosmiatra, cosmiatra y cosmetóloga. Cuidamos tu rostro con ciencia, manos expertas y un toque holístico que se siente.</p>
+      <div class="cta">
+        <a class="btn" href="https://wa.me/541165019740?text=Hola%20Sol!%20Quiero%20reservar%20un%20turno%20%E2%9C%A8" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg> Reservar por WhatsApp</a>
+        <a class="btn alt" href="https://www.instagram.com/solmedinasosa_estetica/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg> @solmedinasosa_estetica</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 470" role="img" aria-label="Ilustración de un rostro con piel luminosa rodeado de destellos y gotas">
+        <circle cx="200" cy="235" r="178" fill="#FFE082" stroke="#2B1D00" stroke-width="5"/>
+        <g class="spin"><circle cx="200" cy="235" r="196" fill="none" stroke="#2B1D00" stroke-width="4" stroke-dasharray="3 16" stroke-linecap="round"/></g>
+        <!-- hair back -->
+        <path d="M108 235C84 120 165 48 262 76c52 16 52 92 34 160-10-70-50-104-96-104s-84 34-92 103z" fill="#F5B301" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <!-- neck -->
+        <path d="M168 372v58c0 10 64 10 64 0v-58" fill="#FFF6D6" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <!-- face -->
+        <path d="M200 96c70 0 98 60 93 138-5 84-45 146-93 150-48-4-88-66-93-150-5-78 23-138 93-138z" fill="#FFF6D6" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <!-- fringe -->
+        <path d="M107 226c2-70 40-104 92-108 20 30 62 46 94 44-4-46-40-72-93-72s-97 40-93 136z" fill="#F5B301" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <!-- brows -->
+        <path d="M146 208q22-14 42-3M212 205q20-11 42 3" fill="none" stroke="#2B1D00" stroke-width="6" stroke-linecap="round"/>
+        <!-- closed eyes -->
+        <path d="M148 232q20 20 40 0M212 232q20 20 40 0" fill="none" stroke="#2B1D00" stroke-width="6" stroke-linecap="round"/>
+        <path d="M156 244l-5 8M168 248l-2 9M180 246l3 8M220 246l-3 8M232 248l2 9M244 244l5 8" stroke="#2B1D00" stroke-width="4" stroke-linecap="round"/>
+        <!-- nose -->
+        <path d="M201 250c-8 22-10 32 0 40 6 3 12 1 16-4" fill="none" stroke="#2B1D00" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- cheeks glow -->
+        <circle cx="140" cy="290" r="22" fill="#FFC93C" opacity=".85"/>
+        <circle cx="262" cy="290" r="22" fill="#FFC93C" opacity=".85"/>
+        <!-- lips -->
+        <path d="M168 330q16-14 32-4 16-10 32 4-16 26-32 26t-32-26z" fill="#2B1D00" stroke="#2B1D00" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M172 331q14 5 28 0 14 5 28 0" fill="none" stroke="#FFC93C" stroke-width="3" stroke-linecap="round"/>
+        <!-- glow marks on face -->
+        <g stroke="#F5B301" stroke-width="5" stroke-linecap="round"><path d="M126 258l-10-4M124 274l-12 0M262 262l10-6M266 278l12 0"/></g>
+        <!-- sparkles -->
+        <g fill="#2B1D00">
+          <path class="twinkle" d="M330 110l7 20 20 7-20 7-7 20-7-20-20-7 20-7z"/>
+          <path class="twinkle d2" d="M60 170l5 14 14 5-14 5-5 14-5-14-14-5 14-5z"/>
+          <path class="twinkle d3" d="M340 330l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+        </g>
+        <!-- drops -->
+        <g class="float"><path d="M62 330s-18 24-18 40a18 18 0 0036 0c0-16-18-40-18-40z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="5"/><path d="M52 372a10 10 0 009 9" fill="none" stroke="#2B1D00" stroke-width="4" stroke-linecap="round"/></g>
+        <g class="float d2"><path d="M350 200s-12 16-12 28a12 12 0 0024 0c0-12-12-28-12-28z" fill="#FFC93C" stroke="#2B1D00" stroke-width="5"/></g>
+        <!-- leaf -->
+        <g class="float d3"><path d="M40 60c50-6 86 30 74 80-52 6-84-26-74-80z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/><path d="M46 68c26 16 48 34 62 62" fill="none" stroke="#2B1D00" stroke-width="4" stroke-linecap="round"/></g>
+      </svg>
+      <div class="hero-badge">✦ Tratamientos faciales personalizados</div>
+    </div>
+  </div>
+  <div class="wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 60V30Q150 0 300 30T600 30T900 30T1200 30V60z" fill="#F5B301" stroke="#2B1D00" stroke-width="3"/></svg></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Piel radiante <svg class="icon" style="stroke-width:2.4"><use href="#i-sparkle"/></svg> Cosmiatría <svg class="icon" style="stroke-width:2.4"><use href="#i-drop"/></svg> Cuidado facial <svg class="icon" style="stroke-width:2.4"><use href="#i-lotus"/></svg> Dermatocosmiatría <svg class="icon" style="stroke-width:2.4"><use href="#i-sparkle"/></svg> Bienestar <svg class="icon" style="stroke-width:2.4"><use href="#i-leaf"/></svg></span>
+    <span>Piel radiante <svg class="icon" style="stroke-width:2.4"><use href="#i-sparkle"/></svg> Cosmiatría <svg class="icon" style="stroke-width:2.4"><use href="#i-drop"/></svg> Cuidado facial <svg class="icon" style="stroke-width:2.4"><use href="#i-lotus"/></svg> Dermatocosmiatría <svg class="icon" style="stroke-width:2.4"><use href="#i-sparkle"/></svg> Bienestar <svg class="icon" style="stroke-width:2.4"><use href="#i-leaf"/></svg></span>
+  </div>
+</div>
+
+<!-- SOBRE MI -->
+<section class="about" id="sobre-mi">
+  <div class="wrap">
+    <div class="portrait reveal" role="img" aria-label="Ilustración de una mano cuidando un rostro bajo el sol">
+      <svg viewBox="0 0 400 430">
+        <rect width="400" height="430" fill="#FFD54F"/>
+        <circle cx="200" cy="180" r="120" fill="#FFF6D6" stroke="#2B1D00" stroke-width="5"/>
+        <g stroke="#2B1D00" stroke-width="6" stroke-linecap="round"><path d="M200 20v30M200 310v30M40 180h30M330 180h30M88 68l22 22M290 270l22 22M88 292l22-22M290 90l22-22"/></g>
+        <circle cx="200" cy="180" r="62" fill="#F5B301" stroke="#2B1D00" stroke-width="5"/>
+        <path d="M176 172q10 10 20 0M206 172q10 10 20 0" fill="none" stroke="#2B1D00" stroke-width="5" stroke-linecap="round"/>
+        <path d="M184 202q16 14 32 0" fill="none" stroke="#2B1D00" stroke-width="5" stroke-linecap="round"/>
+        <!-- hands -->
+        <path d="M20 430c10-70 50-110 110-120l30 20c-4 14-14 22-30 24 20 4 34 0 46-12l52 20c12 30 12 60 12 68z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M380 430c-10-70-50-110-110-120l-30 20c4 14 14 22 30 24-20 4-34 0-46-12" fill="#FFF6D6" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <g fill="#2B1D00"><path class="twinkle" d="M330 60l6 16 16 6-16 6-6 16-6-16-16-6 16-6z"/><path class="twinkle d2" d="M62 90l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/></g>
+      </svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Sobre mí</span>
+      <h2>Ciencia para tu piel, <em>alma</em> para tu momento</h2>
+      <p>Soy <strong>Sol Medina Sosa</strong> y hace de la estética mi forma de cuidar a las personas. Combino la mirada técnica de la <strong>dermatocosmiatría</strong> con la calidez de la <strong>cosmiatría holística</strong>: cada rostro es distinto, y cada tratamiento se piensa a medida.</p>
+      <p>Además de atender en mi espacio, soy <strong>docente en cosmetología</strong>: me encanta compartir lo que sé para que tu cuidado también continúe en casa.</p>
+      <div class="stats">
+        <div class="stat"><b>6</b><span>Especialidades</span></div>
+        <div class="stat"><b>100%</b><span>Personalizado</span></div>
+        <div class="stat"><b>✦</b><span>Piel + bienestar</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENCIALES -->
+<section class="creds on-gold" id="especialidades">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Especialidades</span>
+      <h2>Seis formas de <em>cuidarte</em></h2>
+      <p class="lead">Formación y práctica que se juntan en cada sesión.</p>
+    </div>
+    <div class="cred-grid">
+      <article class="cred reveal"><span class="num">01</span><div class="ic"><svg class="icon"><use href="#i-face"/></svg></div><h3>Dermatocosmiatra</h3><p>Cuidado de la piel con mirada dermatológica y cosmética.</p></article>
+      <article class="cred reveal"><span class="num">02</span><div class="ic"><svg class="icon"><use href="#i-flask"/></svg></div><h3>Cosmiatra</h3><p>Técnicas y activos para tratar el rostro con criterio profesional.</p></article>
+      <article class="cred reveal"><span class="num">03</span><div class="ic"><svg class="icon"><use href="#i-sparkle"/></svg></div><h3>Cosmetóloga</h3><p>Conocimiento integral de cosmética, piel y bienestar estético.</p></article>
+      <article class="cred reveal"><span class="num">04</span><div class="ic"><svg class="icon"><use href="#i-drop"/></svg></div><h3>Tratamientos faciales</h3><p>Protocolos pensados para lo que tu piel necesita hoy.</p></article>
+      <article class="cred reveal"><span class="num">05</span><div class="ic"><svg class="icon"><use href="#i-book"/></svg></div><h3>Docente en cosmetología</h3><p>Enseñanza con pasión: compartir es parte del oficio.</p></article>
+      <article class="cred reveal"><span class="num">06</span><div class="ic"><svg class="icon"><use href="#i-lotus"/></svg></div><h3>Cosmiatra holística</h3><p>Cuerpo, mente y piel en equilibrio durante el tratamiento.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS -->
+<section class="treat" id="tratamientos">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Tratamientos</span>
+      <h2>Cuidado facial que <em>se nota</em></h2>
+      <p class="lead" style="color:var(--ink)">Una guía de lo que podés encontrar. Los protocolos se definen en la consulta según tu tipo de piel.</p>
+    </div>
+    <div class="treat-grid">
+      <article class="tcard reveal">
+        <svg viewBox="0 0 150 150" role="img" aria-label="Ilustración de una gota y burbujas de limpieza">
+          <circle cx="75" cy="75" r="66" fill="#FFE082" stroke="#2B1D00" stroke-width="4"/>
+          <path d="M75 28s-28 30-28 52a28 28 0 0056 0c0-22-28-52-28-52z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="4"/>
+          <path d="M60 82a15 15 0 0014 14" fill="none" stroke="#2B1D00" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="112" cy="46" r="8" fill="#FFC93C" stroke="#2B1D00" stroke-width="3"/><circle cx="36" cy="100" r="6" fill="#FFC93C" stroke="#2B1D00" stroke-width="3"/><circle cx="118" cy="104" r="5" fill="#FFFDF5" stroke="#2B1D00" stroke-width="3"/>
+        </svg>
+        <div><h3>Limpieza profunda</h3><p>Purifica, descongestiona y prepara la piel para que respire y absorba mejor cada activo.</p><span class="tag">Base de todo</span></div>
+      </article>
+      <article class="tcard reveal">
+        <svg viewBox="0 0 150 150" role="img" aria-label="Ilustración de un sol y destellos de luminosidad">
+          <circle cx="75" cy="75" r="66" fill="#FFC93C" stroke="#2B1D00" stroke-width="4"/>
+          <circle cx="75" cy="75" r="26" fill="#FFFDF5" stroke="#2B1D00" stroke-width="4"/>
+          <g stroke="#2B1D00" stroke-width="5" stroke-linecap="round"><path d="M75 20v14M75 116v14M20 75h14M116 75h14M36 36l10 10M104 104l10 10M36 114l10-10M104 46l10-10"/></g>
+        </svg>
+        <div><h3>Hidratación y luz</h3><p>Devuelve confort, elasticidad y ese brillo sano que hace que la piel se vea descansada.</p><span class="tag">Glow natural</span></div>
+      </article>
+      <article class="tcard reveal">
+        <svg viewBox="0 0 150 150" role="img" aria-label="Ilustración de un frasco de laboratorio cosmético">
+          <circle cx="75" cy="75" r="66" fill="#FFE9A6" stroke="#2B1D00" stroke-width="4"/>
+          <path d="M60 28h30M64 28v30l-20 38a10 10 0 009 15h44a10 10 0 009-15L86 58V28" fill="#FFFDF5" stroke="#2B1D00" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M50 92h50l8 16a6 6 0 01-5 9H47a6 6 0 01-5-9z" fill="#F5B301" stroke="#2B1D00" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="68" cy="102" r="4" fill="#FFFDF5" stroke="#2B1D00" stroke-width="2"/><circle cx="84" cy="98" r="3" fill="#FFFDF5" stroke="#2B1D00" stroke-width="2"/>
+        </svg>
+        <div><h3>Dermatocosmiatría</h3><p>Abordaje técnico para necesidades específicas: manchas, sensibilidad, textura y más.</p><span class="tag">Con criterio</span></div>
+      </article>
+      <article class="tcard reveal">
+        <svg viewBox="0 0 150 150" role="img" aria-label="Ilustración de una flor de loto">
+          <circle cx="75" cy="75" r="66" fill="#FFD54F" stroke="#2B1D00" stroke-width="4"/>
+          <path d="M75 30c18 22 18 52 0 72-18-20-18-50 0-72z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M75 102c-8-28-34-42-58-40 0 34 24 52 58 40z" fill="#FFF6D6" stroke="#2B1D00" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M75 102c8-28 34-42 58-40 0 34-24 52-58 40z" fill="#FFF6D6" stroke="#2B1D00" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M40 116h70" stroke="#2B1D00" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div><h3>Ritual holístico</h3><p>Masaje, respiración y pausa. Un momento para vos donde la piel y la mente se relajan juntas.</p><span class="tag">Relax total</span></div>
+      </article>
+    </div>
+    <p class="treat-note reveal">¿No sabés cuál te conviene? Hacé el test o escribime y lo vemos juntas ✦</p>
+  </div>
+</section>
+
+<!-- RITUAL -->
+<section class="ritual" id="ritual">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Cómo es tu sesión</span>
+      <h2>Un ritual en <em>5 pasos</em></h2>
+      <p class="lead">Tocá cada paso y mirá cómo se vive la experiencia.</p>
+    </div>
+    <div class="ritual-box reveal">
+      <div class="steps" role="tablist" aria-label="Pasos del ritual" id="steps"></div>
+      <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz on-gold" id="quiz">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Test rápido</span>
+      <h2>¿Qué necesita tu <em>piel</em> hoy?</h2>
+      <p class="lead" style="color:var(--ink)">Tres preguntas, treinta segundos. Es una guía orientativa para arrancar la conversación.</p>
+    </div>
+    <div class="quiz-card reveal" id="quizCard" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- DOCENTE -->
+<section class="docente">
+  <div class="wrap">
+    <div class="band reveal">
+      <div>
+        <span class="eyebrow">Docencia</span>
+        <h2>Aprender también es <em>cuidarse</em></h2>
+        <p class="lead" style="color:var(--ink)">Como docente en cosmetología, comparto conocimiento para quienes quieren formarse o entender mejor el cuidado de la piel. Escribime por WhatsApp para consultar por formaciones y contenidos.</p>
+        <p style="margin-top:22px"><a class="btn" href="https://wa.me/541165019740?text=Hola%20Sol!%20Quiero%20consultar%20por%20formaciones%20%F0%9F%93%9A" target="_blank" rel="noopener"><svg class="icon"><use href="#i-book"/></svg> Consultar por formaciones</a></p>
+      </div>
+      <svg viewBox="0 0 200 200" role="img" aria-label="Ilustración de un libro abierto con destellos">
+        <circle cx="100" cy="100" r="90" fill="#FFE082" stroke="#2B1D00" stroke-width="5"/>
+        <path d="M32 66h60a10 10 0 0110 10v72a10 10 0 00-10-10H32z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M168 66h-60a10 10 0 00-10 10v72a10 10 0 0110-10h60z" fill="#FFF6D6" stroke="#2B1D00" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M46 88h40M46 102h40M46 116h30M114 88h40M114 102h40M114 116h30" stroke="#2B1D00" stroke-width="4" stroke-linecap="round"/>
+        <g fill="#2B1D00"><path class="twinkle" d="M100 20l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/><path class="twinkle d2" d="M160 36l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section class="where" id="ubicacion">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Dónde encontrarme</span>
+      <h2>Venite a <em>Garín</em></h2>
+    </div>
+    <div class="where-grid">
+      <div class="info reveal">
+        <div class="row"><div class="ic"><svg class="icon"><use href="#i-pin"/></svg></div><div><b>Dirección</b>Lavalle 3308, Garín (1619)<br><a href="https://www.google.com/maps/search/?api=1&query=Lavalle+3308+Gar%C3%ADn+1619" target="_blank" rel="noopener">Abrir en Google Maps →</a></div></div>
+        <div class="row"><div class="ic"><svg class="icon"><use href="#i-chat"/></svg></div><div><b>WhatsApp</b><a href="https://wa.me/541165019740" target="_blank" rel="noopener">+54 9 11 6501-9740</a><br>Escribime para reservar tu turno.</div></div>
+        <div class="row"><div class="ic"><svg class="icon"><use href="#i-ig"/></svg></div><div><b>Instagram</b><a href="https://www.instagram.com/solmedinasosa_estetica/" target="_blank" rel="noopener">@solmedinasosa_estetica</a><br>Tips, tratamientos y novedades.</div></div>
+      </div>
+      <div class="map reveal">
+        <iframe title="Mapa: Lavalle 3308, Garín" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Lavalle+3308,+Gar%C3%ADn,+1619&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <svg class="deco d1 float" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4l10 32 32 10-32 10-10 32-10-32-32-10 32-10z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="4" stroke-linejoin="round"/></svg>
+  <svg class="deco d2 float d2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6s-34 36-34 58a34 34 0 0068 0c0-22-34-58-34-58z" fill="#FFFDF5" stroke="#2B1D00" stroke-width="4"/></svg>
+  <div class="wrap reveal">
+    <h2>Es hora de <em>brillar</em></h2>
+    <p>Reservá tu turno y empecemos a cuidar tu piel como se merece.</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/541165019740?text=Hola%20Sol!%20Quiero%20reservar%20un%20turno%20%E2%9C%A8" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg> Escribime por WhatsApp</a>
+      <a class="btn alt" href="https://www.instagram.com/solmedinasosa_estetica/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg> Seguime en Instagram</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="soc">
+      <a href="https://www.instagram.com/solmedinasosa_estetica/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-ig"/></svg></a>
+      <a href="https://wa.me/541165019740" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon"><use href="#i-chat"/></svg></a>
+    </div>
+    © 2026 Sol Medina Sosa · Estética, tratamientos y cuidado facial · Lavalle 3308, Garín
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/541165019740" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg class="icon"><use href="#i-chat"/></svg></a>
+
+<script>
+// Menú móvil
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+menu.addEventListener('click',e=>{if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+
+// Revelar al hacer scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Chispas al hacer clic
+document.addEventListener('click',e=>{
+  for(let i=0;i<8;i++){
+    const s=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    s.setAttribute('viewBox','0 0 24 24');s.classList.add('spark');
+    s.innerHTML='<path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#2B1D00"/>';
+    const a=Math.PI*2*i/8+Math.random()*.5,d=40+Math.random()*40;
+    s.style.left=(e.clientX-9)+'px';s.style.top=(e.clientY-9)+'px';
+    s.style.setProperty('--x',Math.cos(a)*d+'px');s.style.setProperty('--y',Math.sin(a)*d+'px');
+    document.body.appendChild(s);setTimeout(()=>s.remove(),800);
+  }
+});
+
+// Ritual
+const ritual=[
+  {t:'Escucha y diagnóstico',d:'Empezamos charlando: cómo es tu piel, tu rutina y qué querés lograr. Observamos tu rostro con atención para definir el plan de la sesión.',i:'i-face'},
+  {t:'Limpieza y preparación',d:'Retiramos maquillaje e impurezas y dejamos la piel receptiva, lista para recibir cada paso del tratamiento.',i:'i-drop'},
+  {t:'Tratamiento a medida',d:'Elegimos técnicas y activos según lo que tu piel necesita hoy, no una receta igual para todas.',i:'i-flask'},
+  {t:'Masaje y relax holístico',d:'Un momento de pausa: manos suaves, respiración y calma para que el beneficio también se sienta por dentro.',i:'i-lotus'},
+  {t:'Protección y rutina',d:'Cerramos con protección y te llevás recomendaciones simples para cuidar tu piel en casa.',i:'i-sparkle'}
+];
+const stepsEl=document.getElementById('steps'),panel=document.getElementById('panel');
+function showStep(n){
+  [...stepsEl.children].forEach((b,i)=>b.setAttribute('aria-selected',i===n));
+  const r=ritual[n];
+  panel.innerHTML=`<div class="panel-anim"><h3>${r.t}</h3><p>${r.d}</p></div>
+  <svg viewBox="0 0 190 190" class="panel-anim" role="img" aria-label="${r.t}"><circle cx="95" cy="95" r="86" fill="#FFD54F" stroke="#2B1D00" stroke-width="5"/><circle cx="95" cy="95" r="62" fill="#FFFDF5" stroke="#2B1D00" stroke-width="4" stroke-dasharray="2 12" stroke-linecap="round"/><svg x="55" y="55" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#2B1D00" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><use href="#${r.i}"/></svg></svg>`;
+}
+ritual.forEach((r,i)=>{
+  const b=document.createElement('button');b.className='step-btn';b.setAttribute('role','tab');
+  b.innerHTML=`<i>${i+1}</i>${r.t}`;b.addEventListener('click',()=>showStep(i));stepsEl.appendChild(b);
+});
+showStep(0);
+
+// Quiz
+const Q=[
+  {q:'A media tarde, ¿cómo sentís tu piel?',o:[['✨','Con brillo, sobre todo en la frente y la nariz','grasa'],['🏜️','Tirante o con descamación','seca'],['⚖️','Mixta: brillo en la zona T y seca en las mejillas','mixta'],['🌸','Sensible, se enrojece con facilidad','sensible']]},
+  {q:'¿Qué te gustaría mejorar primero?',o:[['🌞','Luminosidad y aspecto de cansancio','luz'],['💧','Hidratación y confort','hidrata'],['🧼','Poros, granitos e imperfecciones','purifica'],['🕊️','Calmar y equilibrar mi piel','calma']]},
+  {q:'¿Qué buscás en tu momento de cuidado?',o:[['🎯','Resultados visibles y técnicos','res'],['🧘','Relax y desconectar','relax'],['📚','Aprender a cuidarme en casa','edu'],['💛','Un poco de todo','todo']]}
+];
+const RES={
+  luz:{t:'Tu piel pide luz',d:'Un tratamiento enfocado en luminosidad y renovación suave puede devolverle vitalidad.',i:'i-sparkle'},
+  hidrata:{t:'Tu piel pide agua',d:'Un protocolo de hidratación profunda y confort puede ser un gran punto de partida.',i:'i-drop'},
+  purifica:{t:'Tu piel pide equilibrio y limpieza',d:'Una limpieza profunda con abordaje personalizado ayuda a descongestionar y ordenar la piel.',i:'i-flask'},
+  calma:{t:'Tu piel pide calma',d:'Un ritual suave, con activos respetuosos y enfoque holístico, puede ser ideal.',i:'i-lotus'}
+};
+const SK={grasa:'tendencia a producir más brillo',seca:'tendencia a la sequedad',mixta:'comportamiento mixto',sensible:'sensibilidad a cuidar con delicadeza'};
+const EX={res:'Buscás resultados visibles: vale la pena trabajar con un plan por etapas.',relax:'Sumá el ritual holístico para que la sesión también sea un momento de pausa.',edu:'Te voy a explicar cada paso para que puedas continuar el cuidado en casa.',todo:'Podemos combinar técnica, relax y consejos para tu rutina diaria.'};
+const card=document.getElementById('quizCard');let step=0,ans=[];
+function render(){
+  if(step<Q.length){
+    const q=Q[step];
+    card.innerHTML=`<div class="progress"><div style="width:${(step/Q.length)*100}%"></div></div><div class="qtitle">${q.q}</div><div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}"><span>${o[0]}</span>${o[1]}</button>`).join('')}</div>`;
+    card.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{ans.push(Q[step].o[b.dataset.i][2]);step++;render()}));
+  }else{
+    const r=RES[ans[1]];
+    const msg=encodeURIComponent(`Hola Sol! Hice el test de piel en tu web: mi piel tiene ${SK[ans[0]]} y quiero mejorar: ${r.t.toLowerCase()}. Me gustaría reservar una consulta ✨`);
+    card.innerHTML=`<div class="progress"><div style="width:100%"></div></div><div class="result">
+      <svg class="big" viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="#FFD54F" stroke="#2B1D00" stroke-width="4"/><svg x="30" y="30" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2B1D00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#${r.i}"/></svg></svg>
+      <h3>${r.t}</h3><p>Tu piel muestra ${SK[ans[0]]}. ${r.d}</p><p>${EX[ans[2]]}</p>
+      <div class="cta"><a class="btn" href="https://wa.me/541165019740?text=${msg}" target="_blank" rel="noopener">Consultar por WhatsApp</a><button class="restart">Repetir test</button></div>
+      <p class="disc" style="margin-top:16px">Resultado orientativo. La indicación final siempre se define en una consulta profesional.</p></div>`;
+    card.querySelector('.restart').addEventListener('click',()=>{step=0;ans=[];render()});
+  }
+}
+render();
+</script>
+</body>
+</html>

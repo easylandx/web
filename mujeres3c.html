@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Asociación de Mujeres de Tres Cantos · Creciendo juntas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0B4B48;--mid:#178079;--soft:#7CC4BD;--tint:#DCF0ED;--gold:#D4AF37;--ink:#062B29;--bg:#DCF0ED;--card:#FFFFFF;--on-deep:#F3FBF9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#062B29;--card:#0B4B48;--ink:#F3FBF9;--tint:#0B4B48}}
+:root[data-theme="dark"]{--bg:#062B29;--card:#0B4B48;--ink:#F3FBF9;--tint:#0B4B48}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Work Sans",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.05;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:22px;padding-right:22px}
+section{padding-top:72px;padding-bottom:72px}
+a{color:inherit}
+.btn{display:inline-block;font-weight:800;text-decoration:none;padding:14px 26px;border-radius:999px;border:3px solid var(--ink);background:var(--gold);color:#062B29;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.alt{background:var(--on-deep);}
+nav{background:var(--deep);color:var(--on-deep)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px;gap:12px}
+nav b{font-family:Fraunces,serif;font-size:1.1rem}
+nav a{text-decoration:none;font-weight:600;margin-left:16px;font-size:.92rem}
+.hero{background:var(--deep);color:var(--on-deep);padding-top:56px;padding-bottom:0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.tag{display:inline-block;background:var(--gold);color:#062B29;font-weight:800;padding:6px 14px;border-radius:999px;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:900;margin:18px 0}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:1.15rem;max-width:34ch;margin:0 0 26px}
+.hero svg{width:100%;max-width:420px;justify-self:center;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.marquee{background:var(--gold);color:#062B29;overflow:hidden;white-space:nowrap;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);margin-top:48px}
+.marquee div{display:inline-block;padding:12px 0;font-family:Fraunces,serif;font-weight:900;font-size:1.4rem;animation:mq 22s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;margin-bottom:12px}
+.lead{max-width:60ch;font-size:1.1rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:34px}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:26px;padding:24px;box-shadow:7px 7px 0 var(--ink);transition:transform .2s}
+.card:hover{transform:rotate(-1.5deg) translateY(-4px)}
+.card svg{width:84px;height:84px;margin-bottom:8px}
+.card h3{font-size:1.6rem;margin-bottom:8px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+.band{background:var(--mid);color:#fff}
+.band .card{color:var(--ink);background:#fff}
+.picks{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.pick{font:inherit;font-weight:800;padding:12px 20px;border-radius:999px;border:3px solid var(--ink);background:#fff;color:#062B29;cursor:pointer;transition:.15s}
+.pick[aria-pressed="true"],.pick:hover{background:var(--gold);transform:scale(1.05)}
+#result{background:#fff;color:#062B29;border:3px solid var(--ink);border-radius:26px;padding:26px;box-shadow:7px 7px 0 var(--ink);display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:center;min-height:170px}
+#result svg{width:120px;height:120px}
+#result h3{font-size:1.8rem;margin-bottom:6px}
+.paint{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.paint svg{width:100%;max-width:440px;justify-self:center;touch-action:manipulation}
+.paint path{cursor:pointer;stroke:var(--ink);stroke-width:3;transition:fill .25s,transform .25s;transform-box:fill-box;transform-origin:50% 100%}
+.paint path:hover{transform:scale(1.06)}
+.sw{display:flex;gap:8px;margin:14px 0}
+.sw i{width:34px;height:34px;border-radius:50%;border:3px solid var(--ink)}
+.meter{height:16px;border:3px solid var(--ink);border-radius:99px;background:var(--card);overflow:hidden;margin:14px 0}
+.meter b{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+.tools{display:flex;gap:12px;flex-wrap:wrap}
+.place{background:var(--deep);color:var(--on-deep)}
+.place .wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.place h2 span{color:var(--gold)}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
+footer{background:var(--ink);color:var(--on-deep);text-align:center;padding-top:26px;padding-bottom:26px;font-size:.9rem}
+footer{color:#F3FBF9;background:#062B29}
+@media(max-width:760px){.hero .wrap,.paint,.place .wrap{grid-template-columns:1fr}#result{grid-template-columns:1fr}nav a{margin-left:10px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>🪷 Mujeres de Tres Cantos</b><span><a href="#hacemos">Qué hacemos</a><a href="#elige">Tu plan</a><a href="#loto">Crea</a><a href="#ven">Ven</a></span></div></nav>
+
+<header class="hero">
+<div class="wrap">
+<div>
+<span class="tag">Sin ánimo de lucro · Tres Cantos</span>
+<h1>Creciendo <em>juntas</em></h1>
+<p>Desde el corazón de Tres Cantos: talleres, encuentros y cultura hechos por y para mujeres.</p>
+<a class="btn" href="#elige">Encuentra tu plan</a>
+</div>
+<svg id="heroLotus" viewBox="-130 -130 260 260" aria-hidden="true"></svg>
+</div>
+<div class="marquee"><div id="mq"></div></div>
+</header>
+
+<section id="hacemos"><div class="wrap">
+<h2 class="reveal">Tres formas de florecer</h2>
+<p class="lead reveal">Un espacio para aprender, compartir y sentirse acompañada. Aquí cada mujer trae algo y se lleva mucho más.</p>
+<div class="cards">
+<div class="card reveal"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#178079" stroke="#062B29" stroke-width="4"/><circle cx="35" cy="38" r="7" fill="#D4AF37"/><circle cx="60" cy="32" r="7" fill="#DCF0ED"/><circle cx="68" cy="55" r="7" fill="#7CC4BD"/><path d="M30 82 L72 34" stroke="#062B29" stroke-width="7" stroke-linecap="round"/><circle cx="74" cy="31" r="6" fill="#D4AF37" stroke="#062B29" stroke-width="3"/></svg><h3>Talleres</h3><p>Manos a la obra: aprender, crear y descubrir talentos nuevos en buena compañía.</p></div>
+<div class="card reveal"><svg viewBox="0 0 100 100"><path d="M10 25h55a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H38L22 78V63h-12a8 8 0 0 1-8-8V33a8 8 0 0 1 8-8z" fill="#7CC4BD" stroke="#062B29" stroke-width="4"/><path d="M40 45h48a8 8 0 0 1 8 8v20a8 8 0 0 1-8 8h-8v14L64 81H40a8 8 0 0 1-8-8V53a8 8 0 0 1 8-8z" fill="#D4AF37" stroke="#062B29" stroke-width="4" transform="translate(-4 -14) scale(.95)"/></svg><h3>Encuentros</h3><p>Charlas, risas y red de apoyo. Nadie crece sola, y aquí lo sabemos bien.</p></div>
+<div class="card reveal"><svg viewBox="0 0 100 100"><path d="M14 20h34c6 0 10 3 10 8v56c0-5-4-8-10-8H14z" fill="#178079" stroke="#062B29" stroke-width="4"/><path d="M86 20H52c-6 0-10 3-10 8v56c0-5 4-8 10-8h34z" fill="#DCF0ED" stroke="#062B29" stroke-width="4"/><path d="M50 8l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z" fill="#D4AF37" stroke="#062B29" stroke-width="3"/></svg><h3>Cultura</h3><p>Arte, historias y actividades que despiertan la curiosidad de toda la comunidad.</p></div>
+</div></div></section>
+
+<section id="elige" class="band"><div class="wrap">
+<h2 class="reveal">¿Qué te apetece hoy?</h2>
+<p class="lead">Cuéntanos tu ánimo y te sugerimos por dónde empezar.</p>
+<div class="picks" id="picks" role="group" aria-label="Elige tu ánimo">
+<button class="pick" data-k="crear" aria-pressed="false">🎨 Quiero crear</button>
+<button class="pick" data-k="charlar" aria-pressed="false">💬 Quiero charlar</button>
+<button class="pick" data-k="inspirar" aria-pressed="false">📖 Quiero inspirarme</button>
+<button class="pick" data-k="conocer" aria-pressed="false">🤝 Quiero conocer gente</button>
+</div>
+<div id="result" aria-live="polite"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="#DCF0ED" stroke="#062B29" stroke-width="4"/><text x="50" y="64" font-size="46" text-anchor="middle">🪷</text></svg><div><h3>Elige una opción</h3><p>Toca un botón y descubre tu plan ideal.</p></div></div>
+</div></section>
+
+<section id="loto"><div class="wrap paint">
+<div>
+<h2 class="reveal">Pinta tu loto</h2>
+<p class="lead">Como en un taller de arte: toca cada pétalo para cambiarle el color. ¡Consigue que el loto florezca entero!</p>
+<div class="sw"><i style="background:#0B4B48"></i><i style="background:#178079"></i><i style="background:#7CC4BD"></i><i style="background:#DCF0ED"></i><i style="background:#D4AF37"></i></div>
+<div class="meter"><b id="bar"></b></div>
+<p id="msg"><strong>0 / 16</strong> pétalos pintados</p>
+<div class="tools"><button class="btn" id="rnd">Sorpréndeme</button><button class="btn alt" id="clr">Empezar de nuevo</button></div>
+</div>
+<svg id="paintLotus" viewBox="-130 -110 260 220" role="img" aria-label="Loto para colorear"></svg>
+</div></section>
+
+<section id="ven" class="place"><div class="wrap">
+<div>
+<h2>Te esperamos en el <span>Centro 21 de Marzo</span></h2>
+<p class="lead">📍 Tres Cantos, Madrid. Síguenos para conocer los próximos talleres, encuentros y actividades culturales.</p>
+<div class="links">
+<a class="btn" href="https://www.instagram.com/asociaciondemujeres3c/" target="_blank" rel="noopener">📸 Instagram</a>
+<a class="btn alt" href="https://www.facebook.com/asociaciondemujeres3C" target="_blank" rel="noopener">👍 Facebook</a>
+</div>
+</div>
+<svg viewBox="0 0 300 220" aria-hidden="true"><rect x="20" y="90" width="260" height="110" rx="10" fill="#178079" stroke="#F3FBF9" stroke-width="4"/><path d="M10 92L150 20l140 72z" fill="#D4AF37" stroke="#F3FBF9" stroke-width="4"/><rect x="125" y="140" width="50" height="60" rx="25" fill="#062B29"/><rect x="45" y="115" width="40" height="40" rx="6" fill="#DCF0ED"/><rect x="215" y="115" width="40" height="40" rx="6" fill="#DCF0ED"/><text x="150" y="80" text-anchor="middle" font-size="26">🪷</text></svg>
+</div></section>
+
+<footer>🪷 Asociación de Mujeres de Tres Cantos · Creciendo juntas · Talleres. Encuentros. Cultura.</footer>
+
+<script>
+const NS="http://www.w3.org/2000/svg",PAL=["#0B4B48","#178079","#7CC4BD","#DCF0ED","#D4AF37"];
+const P="M0,0C-22,-30 -20,-75 0,-100C20,-75 22,-30 0,0Z";
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e}
+// Hero lotus
+(function(){const s=document.getElementById("heroLotus");
+for(let l=0;l<3;l++)for(let k=0;k<8;k++){el("path",{d:P,fill:PAL[[2,1,4][l]],stroke:"#F3FBF9","stroke-width":3,transform:`rotate(${k*45+l*15}) scale(${[1.2,.9,.55][l]})`},s)}
+el("circle",{r:12,fill:"#F3FBF9"},s)})();
+// Marquee
+document.getElementById("mq").textContent=("✦ TALLERES ✦ ENCUENTROS ✦ CULTURA ✦ CRECIENDO JUNTAS ").repeat(8);
+// Picker
+const R={
+crear:["Talleres creativos","Pinceles, manualidades y mucha imaginación. Ideal si necesitas soltar las manos y dejar volar la creatividad.","#178079","M30 82L72 34"],
+charlar:["Encuentros","Una tarde de conversación, cafés y complicidad. Perfecto para desahogarte, reír y sentirte escuchada.","#7CC4BD","M20 40h60v30H45l-15 12V70H20z"],
+inspirar:["Cultura","Arte, historias y actividades que te llenan de ideas nuevas. Ideal para alimentar la curiosidad.","#D4AF37","M15 25h32v55H15zM53 25h32v55H53z"],
+conocer:["Comunidad","Ven a conocernos: aquí siempre hay una silla libre y alguien con ganas de saludarte.","#DCF0ED","M30 55a12 12 0 1 0 0-.1M70 55a12 12 0 1 0 0-.1M30 80c10-14 30-14 40 0"]};
+const res=document.getElementById("result");
+document.querySelectorAll(".pick").forEach(b=>b.onclick=()=>{
+document.querySelectorAll(".pick").forEach(x=>x.setAttribute("aria-pressed",x===b));
+const [t,d,c,p]=R[b.dataset.k];
+res.innerHTML=`<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="${c}" stroke="#062B29" stroke-width="4"/><path d="${p}" fill="none" stroke="#062B29" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>${t}</h3><p>${d}</p><a class="btn" href="https://www.instagram.com/asociaciondemujeres3c/" target="_blank" rel="noopener">Ver próximas actividades</a></div>`});
+// Paint lotus
+const ps=document.getElementById("paintLotus"),petals=[],idx=[];
+function add(a,sc){const p=el("path",{d:P,fill:"#F3FBF9",transform:`rotate(${a}) scale(${sc})`},ps);idx.push(-1);const i=idx.length-1;p.onclick=()=>set(i,(idx[i]+1)%PAL.length);petals.push(p)}
+for(let k=0;k<8;k++)add(k*45+(k%2?0:0),1);
+for(let k=0;k<8;k++)add(k*45+22.5,.66);
+el("circle",{r:11,fill:"#D4AF37",stroke:"#062B29","stroke-width":3},ps);
+function set(i,v){idx[i]=v;petals[i].setAttribute("fill",v<0?"#F3FBF9":PAL[v]);
+const n=idx.filter(x=>x>=0).length;document.getElementById("bar").style.width=n/16*100+"%";
+document.getElementById("msg").innerHTML=n==16?"<strong>¡Tu loto ha florecido! 🪷✨</strong> Así crecemos: juntas y con color.":`<strong>${n} / 16</strong> pétalos pintados`}
+document.getElementById("rnd").onclick=()=>petals.forEach((_,i)=>set(i,Math.floor(Math.random()*5)));
+document.getElementById("clr").onclick=()=>petals.forEach((_,i)=>set(i,-1));
+// Reveal
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.15});
+document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

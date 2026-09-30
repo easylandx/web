@@ -605,75 +605,120 @@
     <span class="eyebrow">ASESOR NUTRICIONAL &amp; ENTRENADOR ONLINE</span>
     <h1 id="hero-title">Comer con sentido. <em style="font-style:italic; color:var(--blue);">Moverse con intención.</em> Vivir sin extremos.</h1>
     <script>
-    // Random hero headline on every visit/refresh. *text* = blue italic accent.
+    /* Titular aleatorio: lee las frases de la hoja de Google Sheets (columna A)
+       y muestra una distinta en cada visita o recarga.
+       Para cambiar las frases, edita la hoja: no hace falta tocar este código.
+       Las palabras entre *asteriscos* se muestran en azul cursiva (var(--blue)).
+       La hoja debe estar compartida como "Cualquier persona con el enlace: Lector". */
     (function () {
-      var phrases = [
-    "Comer con sentido. *Moverse con intención.* Vivir sin extremos.",
-    "*Platos reales.* Sudor honesto. *Balance que se sostiene.*",
-    "Nutrientes que nutren. *Esfuerzo que construye.* Vida que no se interrumpe.",
-    "*Alimentación consciente.* Entrenamiento sostenible. *Equilibrio cotidiano.*",
-    "Comida que te llena. *Movimiento que te eleva.* Realidad que te ancla.",
-    "*Nutrición sin dogmas.* Entrenamiento sin poses. *Equilibrio sin filtros.*",
-    "Cuerpo alimentado. *Músculo trabajado.* Vida equilibrada.",
-    "*Platos simples.* Sesiones honestas. *Días que fluyen.*",
-    "Nutrir sin obsesionar. *Entrenar sin castigar.* Vivir sin renunciar.",
-    "*Comida real.* Esfuerzo constante. *Balance que cabe en tu día a día.*",
-    "Elegir mejor. *Comer con calma.* Vivir con energía.",
-    "*Hábitos reales.* Cambios sostenibles. Resultados que perduran.",
-    "Cuidar el cuerpo. *Fortalecer la mente.* Disfrutar el camino.",
-    "*Menos restricciones.* Más conciencia. Más equilibrio.",
-    "Alimentar bien. *Moverse mejor.* Sentirse mejor.",
-    "*Pequeños cambios.* Grandes hábitos. Una vida más plena.",
-    "Comer sin culpa. *Entrenar con propósito.* Descansar sin remordimientos.",
-    "*Salud sin extremos.* Movimiento sin presión. Bienestar sin complicaciones.",
-    "Conectar con el cuerpo. *Escuchar sus señales.* Respetar sus ritmos.",
-    "*Constancia antes que perfección.* Equilibrio antes que obsesión. Disfrute antes que sacrificio.",
-    "*Comer bien.* Moverse. Vivir mejor.",
-    "*Cuerpo fuerte.* Mente en calma.",
-    "*Hábitos simples.* Resultados que perduran.",
-    "*Más equilibrio.* Menos extremos. Más vida.",
-    "*Nutrir.* Moverse. Descansar. Repetir. Disfrutar.",
-    "*Comida real.* Movimiento. Equilibrio. Bienestar.",
-    "*Sin culpa.* Sin extremos. Consciente.",
-    "*Pequeños cambios.* Grandes resultados. Cada día.",
-    "*Escucha tu cuerpo.* Cuida tu mente.",
-    "*Constancia.* Equilibrio. Energía. Salud. Vida.",
-    "*Come bien.* Vive mejor.",
-    "*Muévete.* Cuida. Disfruta.",
-    "*Equilibrio.* Fuerza. Bienestar.",
-    "*Nutre.* Mueve. Respira.",
-    "*Cuida tu cuerpo.*",
-    "*Hábitos que transforman.*",
-    "*Vive sin extremos.*",
-    "*Alimenta. Entrena. Descansa.*",
-    "*Salud. Energía. Equilibrio.*",
-    "*Come. Muévete. Disfruta.*",
-    "*Come con calma.*",
-    "*Muévete con intención.*",
-    "*Alimenta tu energía.*",
-    "*Entrena sin extremos.*",
-    "*Vive con equilibrio.*",
-    "*Escucha tu cuerpo.*",
-    "*Construye buenos hábitos.*",
-    "*Disfruta el proceso.*",
-    "*Prioriza tu bienestar.*"
-      ];
-      var h1 = document.getElementById("hero-title");
+      var SHEET_ID = '1bECvfbBwRWugfGd5jN_IGb7qxel-RzdAOuI2AJDgn-A';
+      var BASE = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?headers=0&_=' + Date.now();
+      var h1 = document.getElementById('hero-title');
       if (!h1) return;
-      var pick = phrases[Math.floor(Math.random() * phrases.length)];
-      h1.textContent = "";
-      pick.split("*").forEach(function (part, i) {
-        if (!part) return;
-        if (i % 2 === 1) {
-          var em = document.createElement("em");
-          em.style.fontStyle = "italic";
-          em.style.color = "var(--blue)";
-          em.textContent = part;
-          h1.appendChild(em);
-        } else {
-          h1.appendChild(document.createTextNode(part));
+
+      var terminado = false;
+
+      // Oculta el titular por defecto unos instantes para evitar un "salto" de texto
+      h1.style.opacity = '0';
+      h1.style.transition = 'opacity .35s ease';
+      function revelar() { h1.style.opacity = '1'; }
+      setTimeout(function () { if (!terminado) revelar(); }, 2500);
+
+      function pintar(frase) {
+        h1.textContent = '';
+        frase.split('*').forEach(function (parte, i) {
+          if (!parte) return;
+          if (i % 2 === 1) {
+            var em = document.createElement('em');
+            em.style.fontStyle = 'italic';
+            em.style.color = 'var(--blue)';
+            em.textContent = parte;
+            h1.appendChild(em);
+          } else {
+            h1.appendChild(document.createTextNode(parte));
+          }
+        });
+      }
+
+      function elegir(frases) {
+        var frase = frases[Math.floor(Math.random() * frases.length)];
+        try {
+          // Evita repetir la misma frase dos visitas seguidas
+          var ultima = sessionStorage.getItem('heroFrase');
+          if (frases.length > 1 && ultima === frase) {
+            var otras = frases.filter(function (f) { return f !== ultima; });
+            frase = otras[Math.floor(Math.random() * otras.length)];
+          }
+          sessionStorage.setItem('heroFrase', frase);
+        } catch (e) {}
+        return frase;
+      }
+
+      function usar(frases) {
+        frases = (frases || []).map(function (t) { return String(t == null ? '' : t).trim(); })
+                               .filter(function (t) { return t.length > 0; });
+        if (!frases.length || terminado) return false;
+        terminado = true;
+        pintar(elegir(frases));
+        revelar();
+        try { localStorage.setItem('heroFrases', JSON.stringify(frases)); } catch (e) {}
+        return true;
+      }
+
+      // Último recurso: últimas frases leídas con éxito; si no hay, el titular original
+      function planB() {
+        if (terminado) return;
+        try {
+          var g = JSON.parse(localStorage.getItem('heroFrases') || '[]');
+          if (usar(g)) return;
+        } catch (e) {}
+        terminado = true;
+        revelar(); // se queda el titular original del HTML (ya tiene el acento azul)
+      }
+
+      // Método 1 (principal): carga de la hoja como un script externo (JSONP). No depende de CORS,
+      // así que funciona también abriendo el archivo en local o desde cualquier dominio.
+      var cb = '__heroFrases_' + Date.now();
+      window[cb] = function (resp) {
+        try {
+          var filas = (resp && resp.table && resp.table.rows) || [];
+          var frases = filas.map(function (r) { return r.c && r.c[0] ? r.c[0].v : ''; });
+          if (!usar(frases)) throw new Error('hoja vacía');
+        } catch (e) { console.log('Hoja de frases: formato inesperado', e); }
+      };
+      var sc = document.createElement('script');
+      sc.src = BASE + '&tqx=out:json;responseHandler:' + cb;
+      sc.onerror = function () { console.log('No se pudo cargar la hoja de frases (script)'); };
+      document.head.appendChild(sc);
+
+      // Método 2 (respaldo): CSV con fetch, por si el método 1 fuera bloqueado
+      function parseCSV(t) {
+        var filas = [], fila = [], campo = '', entre = false;
+        for (var i = 0; i < t.length; i++) {
+          var c = t[i];
+          if (entre) {
+            if (c === '"') { if (t[i + 1] === '"') { campo += '"'; i++; } else entre = false; }
+            else campo += c;
+          } else if (c === '"') entre = true;
+          else if (c === ',') { fila.push(campo); campo = ''; }
+          else if (c === '\n' || c === '\r') {
+            if (c === '\r' && t[i + 1] === '\n') i++;
+            fila.push(campo); filas.push(fila); fila = []; campo = '';
+          } else campo += c;
         }
-      });
+        if (campo !== '' || fila.length) { fila.push(campo); filas.push(fila); }
+        return filas;
+      }
+      setTimeout(function () {
+        if (terminado) return;
+        fetch(BASE + '&tqx=out:csv', { cache: 'no-store' })
+          .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+          .then(function (csv) { usar(parseCSV(csv).map(function (f) { return f[0]; })); })
+          .catch(function (e) { console.log('Respaldo CSV falló:', e); });
+      }, 1500);
+
+      // Si en 4 segundos nada ha funcionado, plan B
+      setTimeout(planB, 4000);
     })();
     </script>
     <p class="lede">Tu vida ya tiene suficientes exigencias. Cuidarte no debería ser una más.<br>Que la alimentación se adapte a ti. No tú a ella.</p>

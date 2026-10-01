@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grok and Grok Bot · Quick Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6efe3;--card:#fffaf1;--ink:#1d1a16;--muted:#6b6258;--accent:#d9552b;--accent2:#2f5d50;--line:#e3d7c3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17140f;--card:#211d16;--ink:#f4ead8;--muted:#b3a893;--accent:#ff7a4d;--accent2:#7cc4ad;--line:#38301f}}
+:root[data-theme="dark"]{--bg:#17140f;--card:#211d16;--ink:#f4ead8;--muted:#b3a893;--accent:#ff7a4d;--accent2:#7cc4ad;--line:#38301f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.25rem}
+.logo span{color:var(--accent)}
+nav a.btn{padding:9px 16px;font-size:.9rem}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;padding:14px 24px;border-radius:999px;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--accent);color:#fff}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.alt:hover{background:var(--ink);color:var(--bg)}
+.hero{padding:56px 0 40px}
+.tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag{color:#10261f}}
+h1{font-family:Fraunces,Georgia,serif;font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.05;margin:18px 0 18px;letter-spacing:-.02em}
+h1 em{color:var(--accent);font-style:italic}
+.lead{font-size:1.15rem;color:var(--muted);max-width:620px;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:44px 0}
+h2{font-family:Fraunces,Georgia,serif;font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 28px;max-width:600px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.card .n{font-family:Fraunces,Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}
+.card h3{margin:10px 0 6px;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.97rem}
+.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:6px}
+.fact{border-top:2px solid var(--ink);padding-top:10px}
+.fact b{display:block;font-family:Fraunces,Georgia,serif;font-size:1.5rem}
+.fact span{color:var(--muted);font-size:.9rem}
+.compare{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.compare .card.hl{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.compare .card.hl p,.compare .card.hl li{color:inherit;opacity:.85}
+.compare h3{font-family:Fraunces,Georgia,serif;font-size:1.5rem;margin:0 0 8px}
+.compare ul{padding-left:18px;margin:12px 0 0;color:var(--muted)}
+.compare li{margin:5px 0}
+.final{text-align:center;background:var(--accent);color:#fff;border-radius:28px;padding:52px 24px;margin:20px 0 48px}
+.final h2{color:#fff}
+.final p{max-width:520px;margin:0 auto 24px;opacity:.95}
+.final .btn{background:#fff;color:#1d1a16}
+.final .btn:hover{background:#1d1a16;color:#fff}
+footer{padding:0 0 36px;color:var(--muted);font-size:.85rem;text-align:center}
+footer a{color:var(--accent)}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo">Grok<span>.</span>guide</div>
+    <a class="btn" href="https://x.ai/bot" target="_blank" rel="noopener">Go to Grok Bot</a>
+  </nav>
+
+  <header class="hero">
+    <span class="tag">Quick guide · 2026</span>
+    <h1>Meet <em>Grok</em> and its new teammate, <em>Grok Bot</em></h1>
+    <p class="lead">Grok is xAI's AI assistant. Grok Bot takes it a step further: AI teammates that work alongside you and come back with finished work.</p>
+    <div class="cta">
+      <a class="btn" href="https://x.ai/bot" target="_blank" rel="noopener">Discover Grok Bot</a>
+      <a class="btn alt" href="https://grok.com" target="_blank" rel="noopener">Try Grok at grok.com</a>
+    </div>
+  </header>
+
+  <section class="reveal">
+    <h2>Grok, the assistant</h2>
+    <p class="sub">A chatbot built by xAI, Elon Musk's AI company. Its name comes from the sci-fi term "grok", meaning to understand something deeply.</p>
+    <div class="facts">
+      <div class="fact"><b>Nov 2023</b><span>Launch date</span></div>
+      <div class="fact"><b>xAI</b><span>The company behind it</span></div>
+      <div class="fact"><b>Direct</b><span>Clear, helpful and witty style</span></div>
+      <div class="fact"><b>Real time</b><span>Web search and live info from X</span></div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>What you can do with Grok</h2>
+    <p class="sub">A conversation partner for exploring, learning and creating.</p>
+    <div class="grid">
+      <div class="card"><div class="n">01</div><h3>Ask and reason</h3><p>Get answers, clear explanations and help thinking things through step by step.</p></div>
+      <div class="card"><div class="n">02</div><h3>Code</h3><p>Write, review and improve code together.</p></div>
+      <div class="card"><div class="n">03</div><h3>Create images and videos</h3><p>Turn your ideas into visual content.</p></div>
+      <div class="card"><div class="n">04</div><h3>Analyze documents</h3><p>Summarize files and pull out what matters most.</p></div>
+      <div class="card"><div class="n">05</div><h3>Chat by voice</h3><p>Talk out loud whenever that suits you best.</p></div>
+      <div class="card"><div class="n">06</div><h3>Find it everywhere</h3><p>On grok.com, in the iOS and Android apps, on X and in some Tesla vehicles.</p></div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Grok Bot, the teammate that works with you</h2>
+    <p class="sub">Launched in early beta in August 2026. Message it like a colleague and it returns with the task done.</p>
+    <div class="grid">
+      <div class="card"><div class="n">💻</div><h3>Its own computer</h3><p>Each bot works in its own cloud environment.</p></div>
+      <div class="card"><div class="n">🔑</div><h3>Signs into your tools</h3><p>Log it in once and it works with the apps and services you already use.</p></div>
+      <div class="card"><div class="n">🚀</div><h3>Autonomous work</h3><p>Handles multi-step tasks and checks in when it needs your approval.</p></div>
+      <div class="card"><div class="n">🎓</div><h3>Learns routines</h3><p>Show it a task once and it repeats it whenever you ask.</p></div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Grok and Grok Bot at a glance</h2>
+    <p class="sub">Two ways to collaborate with AI, built for different moments.</p>
+    <div class="compare">
+      <div class="card">
+        <h3>Grok</h3>
+        <p>Your assistant for chatting, learning and creating.</p>
+        <ul><li>Instant answers</li><li>Code, images, video and voice</li><li>Available on web, mobile and X</li></ul>
+      </div>
+      <div class="card hl">
+        <h3>Grok Bot</h3>
+        <p>Your teammate for ongoing work.</p>
+        <ul><li>A team of bots, each with its own computer</li><li>Works inside your tools</li><li>Apps for macOS, Windows, Linux and iOS; Android on the way</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="card">
+      <h3>How to join the beta</h3>
+      <p>Grok Bot is available in beta for SuperGrok Heavy, Cursor Ultra and Cursor Teams Premium subscribers. Check the official site for the latest updates and access details.</p>
+    </div>
+  </section>
+
+  <div class="final reveal">
+    <h2>Ready to add an AI teammate?</h2>
+    <p>Head to the official site and see how Grok Bot can take care of your tasks.</p>
+    <a class="btn" href="https://x.ai/bot" target="_blank" rel="noopener">Visit x.ai/bot</a>
+  </div>
+
+  <footer>
+    Independent informational guide. Grok and Grok Bot are xAI products · <a href="https://x.ai/bot" target="_blank" rel="noopener">x.ai/bot</a> · <a href="https://grok.com" target="_blank" rel="noopener">grok.com</a>
+  </footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

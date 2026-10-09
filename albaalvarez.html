@@ -14,9 +14,7 @@ html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{background:var(--g1);color:var(--ink);font-family:"Helvetica Neue",Arial,sans-serif;line-height:1.55}
 section,header,footer{padding:clamp(48px,9vw,96px) clamp(24px,9vw,140px)}
 h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.1}
-h1{font-size:clamp(2.4rem,7vw,5rem);text-wrap:balance}
-h1.m{font-size:clamp(2rem,5.4vw,3.6rem)}
-h1.l{font-size:clamp(1.7rem,4.2vw,2.8rem)}
+h1{font-size:clamp(1.8rem,4.6vw,3.2rem);text-wrap:balance}
 h1 .hl{color:var(--hl) !important}
 h2{font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:12px}
 .btn{display:inline-block;background:var(--ink);color:var(--w);padding:15px 28px;border-radius:999px;text-decoration:none;font-weight:700;border:2px solid var(--ink);transition:.2s;cursor:pointer;font-size:1rem}
@@ -104,7 +102,7 @@ footer a{color:var(--ink);font-weight:700}
       do{i=Math.floor(Math.random()*S.length)}while(i===last&&S.length>1);
       try{localStorage.setItem(LK,i)}catch(e){}
       var s=S[i].replace(/\uFF0A/g,"*"),len=s.replace(/\*/g,"").length;
-      h.className=len>75?"l":len>40?"m":"";
+      
       h.textContent="";
       // text between asterisks (*word* or **word**) gets the accent color
       var re=/\*+([^*]+?)\*+/g,pos=0,m;

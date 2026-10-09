@@ -98,7 +98,7 @@ footer a:hover{color:#fff;text-decoration:underline}
   <div>
     <div class="hero-eyebrow">Asistente virtual</div>
     <h1>Hola, soy <span>Aspi</span>, el bot amistoso de ASPM</h1>
-    <p>Pregúntame lo que quieras sobre la asociación, cómo hacerte socia, los patrocinadores, el contacto o incluso cómo está hecha la web.</p>
+    <p>Pregúntame lo que quieras sobre la asociación, cómo hacerte socia, los patrocinadores, contacto...</p>
     <div class="hero-cta">
       <a href="https://easylandx.github.io/web/aspm.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Hazme socia</a>
       <a href="mailto:secretaria@aspm.es" class="btn btn-outline" style="color:#fff;border-color:#fff">Contactar</a>
@@ -181,7 +181,7 @@ const KB=[
 {k:"enlaces secciones navegacion menu estructura partes pagina web contiene",
  a:`La página tiene: barra superior (LinkedIn y email), cabecera con <b>Área Privada</b> y <b>Hazte Socia</b>, portada con titular y Hub, «La secretaría del presente y del futuro», <b>Beneficios</b>, <b>Colaboradores</b>, <b>Noticias</b>, <b>Únete</b> (formulario + marcas) y pie de página.`},
 {k:"hola buenas buenos dias tardes noches hey saludos que tal",
- a:`¡Hola! 👋 Soy <b>Aspi</b>, el bot de ASPM. Pregúntame por la asociación, cómo hacerte socia, los patrocinadores o incluso cómo está hecha la web.`},
+ a:`¡Hola! 👋 Soy <b>Aspi</b>, el bot de ASPM. Pregúntame por la asociación, cómo hacerte socia, los patrocinadores...`},
 {k:"gracias genial perfecto vale ok",a:`¡De nada! 😊 Si quieres saber algo más, aquí estoy.`},
 {k:"nombre llamas quien eres bot aspi",a:`Me llamo <b>Aspi</b> (de <b>ASP</b>M 💛). Soy un bot amistoso que responde usando solo la información de la web de ASPM.`},
 ];
@@ -214,7 +214,7 @@ function ask(t){
   },450+Math.random()*350);
 }
 document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();ask(q.value)});
-add(`¡Hola! 👋 Soy <b>Aspi</b>, el bot amistoso de <b>ASPM</b>. Respondo preguntas sobre la asociación, los beneficios, los patrocinadores, el contacto y hasta sobre cómo está hecha la web. ¿Por dónde empezamos?`,'bot',SUG);
+add(`¡Hola! 👋 Soy <b>Aspi</b>, el bot amistoso de <b>ASPM</b>. Respondo preguntas sobre la asociación, los beneficios, los patrocinadores, el contacto... ¿Por dónde empezamos?`,'bot',SUG);
 </script>
 </body>
 </html>

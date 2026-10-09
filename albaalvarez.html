@@ -74,51 +74,68 @@ footer a{color:var(--ink);font-weight:700}
   <h1 id="hl-h1">Tu <span class="hl">mejor piel</span>, con <span class="hl">resultados reales</span>.</h1>
   <script>
   (function(){
-    // Wrap words in *asterisks* to show them in the accent color.
-    var S=[
-      "Tu *mejor piel*, con *resultados reales*.",
-      "Porque no se trata solo de estética… se trata de sentirte *segura*, *cuidada* y en las *mejores manos*.",
-      "Piel *suave*, sin irritación y sin preocuparte más.",
-      "*Tecnología avanzada* al alcance de tus manos.",
-      "*Resultados reales* • *Atención personalizada* • *Tecnología avanzada*.",
-      "Invertí en vos, en tu bienestar y en sentirte *increíble* todos los días.",
-      "La *depilación definitiva* no solo es estética… también es *comodidad* y *confianza* todos los días.",
-      "La *depilación láser* que todas están queriendo.",
-      "Una *limpieza facial* no es solo estética, también es *cuidado* para tu piel.",
-      "*Resultados progresivos*, *relajación total* y una piel con mucho más *glow*.",
-      "El tratamiento favorito para mejorar *cicatrices*, *manchas*, *acné* y *líneas de expresión*.",
-      "Hay tratamientos que no solo transforman tu cuerpo, también te regalan un momento para *desconectar*.",
-      "Porque al final, una piel bonita no es una piel perfecta. Es una piel *cuidada*, *respetada* y tratada con *amor*.",
-      "¿Hace cuánto no le das a tu piel el *cuidado que merece*?",
-      "Porque la *confianza* es el primer paso para cualquier *resultado*.",
-      "Una piel *limpia*, *luminosa* y *saludable* comienza con el cuidado adecuado.",
-      "¿Hace tiempo que venís pensando en empezar? Esta es *tu señal*.",
-      "Dale a tu piel el *mimo* que necesita.",
-      "Decile *chau al bozo* y empezá tu tratamiento de *depilación láser*.",
-      "El *fotorejuvenecimiento facial* con láser puede ayudarte a devolverle a tu piel un aspecto más *luminoso*, *uniforme* y *rejuvenecido*.",
-      "*Renová* tu piel y devolvele la *frescura* que pierde con el ritmo de todos los días.",
-      "El cambio empieza por dentro, pero tu piel es el *primer reflejo* de cómo te cuidás.",
-      "Decile adiós a la rutina de todos los días y regalate un *momento exclusivo* para vos.",
-      "Protocolos diseñados a la *medida de tu piel* y de tus objetivos.",
-      "Sentirte bien con lo que ves en el espejo no es un lujo, es tu *prioridad*.",
-      "Mantené tu piel *firme*, *elástica* e *hidratada* en cada etapa del año.",
-      "Tecnología de *última generación* pensada para cuidar la *salud de tu piel* sin invasión.",
-      "No esperes a una ocasión especial para darle a tu piel la *atención que necesita*.",
-      "Cuidar tu cuerpo no es vanidad, es una forma diaria de *respetarte*.",
-      "*Agendá tu turno hoy* y empezá a notar la diferencia desde la *primera sesión*."
-    ];
-    var h=document.getElementById("hl-h1"),K="albaFrase",last=-1,i;
-    try{last=parseInt(localStorage.getItem(K),10);if(isNaN(last))last=-1}catch(e){}
-    do{i=Math.floor(Math.random()*S.length)}while(i===last&&S.length>1);
-    try{localStorage.setItem(K,i)}catch(e){}
-    var s=S[i],len=s.replace(/\*/g,"").length;
-    h.className=len>75?"l":len>40?"m":"";
-    h.textContent="";
-    s.split("*").forEach(function(t,n){
-      if(!t)return;
-      if(n%2){var e=document.createElement("span");e.className="hl";e.textContent=t;h.appendChild(e)}
-      else h.appendChild(document.createTextNode(t));
-    });
+    // Sentences come live from the Google Sheet (column A, one sentence per row).
+    // Wrap words in *asterisks* in the sheet to show them in the accent color.
+    var SHEET_ID="1DB14Ib1rYexSV8FdgZhFWwQImghd_1IG4sLaSlxUBI0";
+    var URL="https://docs.google.com/spreadsheets/d/"+SHEET_ID+"/gviz/tq?tqx=out:csv&headers=0";
+    var CK="albaFrasesCache",LK="albaFrase";
+    var h=document.getElementById("hl-h1");
+
+    function parseCol(csv){ // first column of a CSV, handles quotes/commas/newlines
+      var out=[],row=[],cell="",q=false,i,c;
+      for(i=0;i<csv.length;i++){
+        c=csv[i];
+        if(q){
+          if(c==='"'){ if(csv[i+1]==='"'){cell+='"';i++} else q=false }
+          else cell+=c;
+        }else if(c==='"') q=true;
+        else if(c===","){row.push(cell);cell=""}
+        else if(c==="\n"||c==="\r"){
+          if(c==="\r"&&csv[i+1]==="\n")i++;
+          row.push(cell);cell="";out.push(row);row=[];
+        }else cell+=c;
+      }
+      if(cell!==""||row.length){row.push(cell);out.push(row)}
+      return out.map(function(r){return (r[0]||"").trim()}).filter(Boolean);
+    }
+
+    function render(S){
+      if(!S||!S.length)return;
+      var last=-1,i;
+      try{last=parseInt(localStorage.getItem(LK),10);if(isNaN(last))last=-1}catch(e){}
+      do{i=Math.floor(Math.random()*S.length)}while(i===last&&S.length>1);
+      try{localStorage.setItem(LK,i)}catch(e){}
+      var s=S[i],len=s.replace(/\*/g,"").length;
+      h.className=len>75?"l":len>40?"m":"";
+      h.textContent="";
+      s.split("*").forEach(function(t,n){
+        if(!t)return;
+        if(n%2){var e=document.createElement("span");e.className="hl";e.textContent=t;h.appendChild(e)}
+        else h.appendChild(document.createTextNode(t));
+      });
+    }
+
+    // Hide the headline for a moment so there is no flash of the default text.
+    h.style.visibility="hidden";
+    var shown=false;
+    function reveal(){h.style.visibility="visible"}
+    function useCache(){
+      if(shown)return;shown=true;
+      var c=null;try{c=JSON.parse(localStorage.getItem(CK)||"null")}catch(e){}
+      render(c);reveal();
+    }
+    var timer=setTimeout(useCache,2500); // slow/offline: fall back to last copy (or default text)
+
+    fetch(URL,{cache:"no-store"}).then(function(r){
+      if(!r.ok)throw new Error(r.status);
+      return r.text();
+    }).then(function(t){
+      var S=parseCol(t);
+      if(!S.length)throw new Error("empty");
+      try{localStorage.setItem(CK,JSON.stringify(S))}catch(e){}
+      if(shown)return;shown=true;clearTimeout(timer);
+      render(S);reveal();
+    }).catch(function(){clearTimeout(timer);useCache()});
   })();
   </script>
   <p>Depilación láser y tratamientos faciales y corporales con tecnología avanzada, pensados para vos.</p>

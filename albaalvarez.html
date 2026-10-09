@@ -17,7 +17,7 @@ h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.1}
 h1{font-size:clamp(2.4rem,7vw,5rem);text-wrap:balance}
 h1.m{font-size:clamp(2rem,5.4vw,3.6rem)}
 h1.l{font-size:clamp(1.7rem,4.2vw,2.8rem)}
-h1 .hl{color:var(--hl)}
+h1 .hl{color:var(--hl) !important}
 h2{font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:12px}
 .btn{display:inline-block;background:var(--ink);color:var(--w);padding:15px 28px;border-radius:999px;text-decoration:none;font-weight:700;border:2px solid var(--ink);transition:.2s;cursor:pointer;font-size:1rem}
 .btn:hover{background:var(--w);color:var(--ink)}
@@ -76,66 +76,76 @@ footer a{color:var(--ink);font-weight:700}
   (function(){
     // Sentences come live from the Google Sheet (column A, one sentence per row).
     // Wrap words in *asterisks* in the sheet to show them in the accent color.
+    // Loaded with a <script> tag (JSONP style) so it works from any page, no CORS issues.
     var SHEET_ID="1DB14Ib1rYexSV8FdgZhFWwQImghd_1IG4sLaSlxUBI0";
-    var URL="https://docs.google.com/spreadsheets/d/"+SHEET_ID+"/gviz/tq?tqx=out:csv&headers=0";
+    var SRC="https://docs.google.com/spreadsheets/d/"+SHEET_ID+"/gviz/tq?tqx=out:json&headers=0";
     var CK="albaFrasesCache",LK="albaFrase";
     var h=document.getElementById("hl-h1");
+    var shown=false,timer;
 
-    function parseCol(csv){ // first column of a CSV, handles quotes/commas/newlines
-      var out=[],row=[],cell="",q=false,i,c;
-      for(i=0;i<csv.length;i++){
-        c=csv[i];
-        if(q){
-          if(c==='"'){ if(csv[i+1]==='"'){cell+='"';i++} else q=false }
-          else cell+=c;
-        }else if(c==='"') q=true;
-        else if(c===","){row.push(cell);cell=""}
-        else if(c==="\n"||c==="\r"){
-          if(c==="\r"&&csv[i+1]==="\n")i++;
-          row.push(cell);cell="";out.push(row);row=[];
-        }else cell+=c;
-      }
-      if(cell!==""||row.length){row.push(cell);out.push(row)}
-      return out.map(function(r){return (r[0]||"").trim()}).filter(Boolean);
+    function fromTable(t){
+      var out=[];
+      if(!t)return out;
+      (t.rows||[]).forEach(function(r){
+        var c=r.c&&r.c[0];
+        var v=c&&(c.v!=null?c.v:c.f);
+        if(v!=null&&String(v).trim())out.push(String(v).trim());
+      });
+      // if Google treated row 1 as a header, keep it too
+      var lab=t.cols&&t.cols[0]&&t.cols[0].label;
+      if(lab&&out.indexOf(String(lab).trim())<0&&out.length&&!/^[A-Z]$/.test(lab))out.unshift(String(lab).trim());
+      return out;
     }
 
     function render(S){
-      if(!S||!S.length)return;
+      if(!S||!S.length)return false;
       var last=-1,i;
       try{last=parseInt(localStorage.getItem(LK),10);if(isNaN(last))last=-1}catch(e){}
       do{i=Math.floor(Math.random()*S.length)}while(i===last&&S.length>1);
       try{localStorage.setItem(LK,i)}catch(e){}
-      var s=S[i],len=s.replace(/\*/g,"").length;
+      var s=S[i].replace(/\uFF0A/g,"*"),len=s.replace(/\*/g,"").length;
       h.className=len>75?"l":len>40?"m":"";
       h.textContent="";
-      s.split("*").forEach(function(t,n){
-        if(!t)return;
-        if(n%2){var e=document.createElement("span");e.className="hl";e.textContent=t;h.appendChild(e)}
-        else h.appendChild(document.createTextNode(t));
-      });
+      // text between asterisks (*word* or **word**) gets the accent color
+      var re=/\*+([^*]+?)\*+/g,pos=0,m;
+      function plain(t){t=t.replace(/\*/g,"");if(t)h.appendChild(document.createTextNode(t))}
+      while((m=re.exec(s))){
+        plain(s.slice(pos,m.index));
+        var e=document.createElement("span");e.className="hl";e.textContent=m[1];h.appendChild(e);
+        pos=re.lastIndex;
+      }
+      plain(s.slice(pos));
+      return true;
     }
 
-    // Hide the headline for a moment so there is no flash of the default text.
-    h.style.visibility="hidden";
-    var shown=false;
     function reveal(){h.style.visibility="visible"}
     function useCache(){
-      if(shown)return;shown=true;
+      if(shown)return;shown=true;clearTimeout(timer);
       var c=null;try{c=JSON.parse(localStorage.getItem(CK)||"null")}catch(e){}
       render(c);reveal();
     }
-    var timer=setTimeout(useCache,2500); // slow/offline: fall back to last copy (or default text)
 
-    fetch(URL,{cache:"no-store"}).then(function(r){
-      if(!r.ok)throw new Error(r.status);
-      return r.text();
-    }).then(function(t){
-      var S=parseCol(t);
-      if(!S.length)throw new Error("empty");
-      try{localStorage.setItem(CK,JSON.stringify(S))}catch(e){}
-      if(shown)return;shown=true;clearTimeout(timer);
-      render(S);reveal();
-    }).catch(function(){clearTimeout(timer);useCache()});
+    // Google's response calls google.visualization.Query.setResponse(...)
+    window.google=window.google||{};
+    google.visualization=google.visualization||{};
+    google.visualization.Query=google.visualization.Query||{};
+    google.visualization.Query.setResponse=function(resp){
+      try{
+        if(shown)return;
+        var S=fromTable(resp&&resp.table);
+        if(!S.length){console.warn("alba frases: sheet returned no rows",resp);return useCache()}
+        try{localStorage.setItem(CK,JSON.stringify(S))}catch(e){}
+        shown=true;clearTimeout(timer);
+        render(S);reveal();
+      }catch(e){console.warn("alba frases error",e);useCache()}
+    };
+
+    h.style.visibility="hidden";           // avoid a flash of the default text
+    timer=setTimeout(useCache,3500);       // slow/offline: last copy or default text
+    var sc=document.createElement("script");
+    sc.src=SRC+"&_="+Date.now();           // bust caches so edits show right away
+    sc.onerror=function(){console.warn("alba frases: could not load the sheet");useCache()};
+    document.head.appendChild(sc);
   })();
   </script>
   <p>Depilación láser y tratamientos faciales y corporales con tecnología avanzada, pensados para vos.</p>

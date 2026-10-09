@@ -210,7 +210,7 @@ function ask(t){
   const ty=add('<div class="typing"><i></i><i></i><i></i></div>','bot');
   setTimeout(()=>{ty.remove();const e=pick(t);
     if(e)add(e.a,'bot',e.c);
-    else add(`Mmm, eso no lo encuentro en la web de ASPM 🤔. Prueba con otra pregunta o escribe a <a href="mailto:secretaria@aspm.es">secretaria@aspm.es</a>.`,'bot',SUG.slice(0,4));
+    else add(`🤔 Prueba con otra pregunta o escribe a <a href="mailto:secretaria@aspm.es">secretaria@aspm.es</a>.`,'bot',SUG.slice(0,4));
   },450+Math.random()*350);
 }
 document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();ask(q.value)});

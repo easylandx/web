@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Alba Álvarez Estética Avanzada · San Juan</title>
 <style>
-:root{--g1:#FFD84D;--g2:#FFE68A;--g3:#F5C21B;--ink:#111;--w:#fff;
+:root{--g1:#FFD84D;--g2:#FFE68A;--g3:#F5C21B;--ink:#111;--w:#fff;--hl:#7B2CBF;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--g1:#FFD84D}}
 :root[data-theme="dark"]{--g1:#FFD84D}
@@ -14,7 +14,10 @@ html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{background:var(--g1);color:var(--ink);font-family:"Helvetica Neue",Arial,sans-serif;line-height:1.55}
 section,header,footer{padding:clamp(48px,9vw,96px) clamp(24px,9vw,140px)}
 h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.1}
-h1{font-size:clamp(2.4rem,7vw,5rem)}
+h1{font-size:clamp(2.4rem,7vw,5rem);text-wrap:balance}
+h1.m{font-size:clamp(2rem,5.4vw,3.6rem)}
+h1.l{font-size:clamp(1.7rem,4.2vw,2.8rem)}
+h1 .hl{color:var(--hl)}
 h2{font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:12px}
 .btn{display:inline-block;background:var(--ink);color:var(--w);padding:15px 28px;border-radius:999px;text-decoration:none;font-weight:700;border:2px solid var(--ink);transition:.2s;cursor:pointer;font-size:1rem}
 .btn:hover{background:var(--w);color:var(--ink)}
@@ -68,7 +71,56 @@ footer a{color:var(--ink);font-weight:700}
   </nav>
   <div class="hero"><div>
   <span class="tag">📍 San Juan Capital</span>
-  <h1>Tu mejor piel,<br>con resultados reales.</h1>
+  <h1 id="hl-h1">Tu <span class="hl">mejor piel</span>, con <span class="hl">resultados reales</span>.</h1>
+  <script>
+  (function(){
+    // Wrap words in *asterisks* to show them in the accent color.
+    var S=[
+      "Tu *mejor piel*, con *resultados reales*.",
+      "Porque no se trata solo de estética… se trata de sentirte *segura*, *cuidada* y en las *mejores manos*.",
+      "Piel *suave*, sin irritación y sin preocuparte más.",
+      "*Tecnología avanzada* al alcance de tus manos.",
+      "*Resultados reales* • *Atención personalizada* • *Tecnología avanzada*.",
+      "Invertí en vos, en tu bienestar y en sentirte *increíble* todos los días.",
+      "La *depilación definitiva* no solo es estética… también es *comodidad* y *confianza* todos los días.",
+      "La *depilación láser* que todas están queriendo.",
+      "Una *limpieza facial* no es solo estética, también es *cuidado* para tu piel.",
+      "*Resultados progresivos*, *relajación total* y una piel con mucho más *glow*.",
+      "El tratamiento favorito para mejorar *cicatrices*, *manchas*, *acné* y *líneas de expresión*.",
+      "Hay tratamientos que no solo transforman tu cuerpo, también te regalan un momento para *desconectar*.",
+      "Porque al final, una piel bonita no es una piel perfecta. Es una piel *cuidada*, *respetada* y tratada con *amor*.",
+      "¿Hace cuánto no le das a tu piel el *cuidado que merece*?",
+      "Porque la *confianza* es el primer paso para cualquier *resultado*.",
+      "Una piel *limpia*, *luminosa* y *saludable* comienza con el cuidado adecuado.",
+      "¿Hace tiempo que venís pensando en empezar? Esta es *tu señal*.",
+      "Dale a tu piel el *mimo* que necesita.",
+      "Decile *chau al bozo* y empezá tu tratamiento de *depilación láser*.",
+      "El *fotorejuvenecimiento facial* con láser puede ayudarte a devolverle a tu piel un aspecto más *luminoso*, *uniforme* y *rejuvenecido*.",
+      "*Renová* tu piel y devolvele la *frescura* que pierde con el ritmo de todos los días.",
+      "El cambio empieza por dentro, pero tu piel es el *primer reflejo* de cómo te cuidás.",
+      "Decile adiós a la rutina de todos los días y regalate un *momento exclusivo* para vos.",
+      "Protocolos diseñados a la *medida de tu piel* y de tus objetivos.",
+      "Sentirte bien con lo que ves en el espejo no es un lujo, es tu *prioridad*.",
+      "Mantené tu piel *firme*, *elástica* e *hidratada* en cada etapa del año.",
+      "Tecnología de *última generación* pensada para cuidar la *salud de tu piel* sin invasión.",
+      "No esperes a una ocasión especial para darle a tu piel la *atención que necesita*.",
+      "Cuidar tu cuerpo no es vanidad, es una forma diaria de *respetarte*.",
+      "*Agendá tu turno hoy* y empezá a notar la diferencia desde la *primera sesión*."
+    ];
+    var h=document.getElementById("hl-h1"),K="albaFrase",last=-1,i;
+    try{last=parseInt(localStorage.getItem(K),10);if(isNaN(last))last=-1}catch(e){}
+    do{i=Math.floor(Math.random()*S.length)}while(i===last&&S.length>1);
+    try{localStorage.setItem(K,i)}catch(e){}
+    var s=S[i],len=s.replace(/\*/g,"").length;
+    h.className=len>75?"l":len>40?"m":"";
+    h.textContent="";
+    s.split("*").forEach(function(t,n){
+      if(!t)return;
+      if(n%2){var e=document.createElement("span");e.className="hl";e.textContent=t;h.appendChild(e)}
+      else h.appendChild(document.createTextNode(t));
+    });
+  })();
+  </script>
   <p>Depilación láser y tratamientos faciales y corporales con tecnología avanzada, pensados para vos.</p>
   <div class="cta">
     <a class="btn" href="https://wa.link/fkrk0e" target="_blank" rel="noopener">📲 Reservar por WhatsApp</a>

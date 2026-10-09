@@ -444,6 +444,51 @@
       justify-content: center;
     }
 
+
+    /* Biografías y código deontológico: vista resumida con expansión */
+    .team-bio,
+    .deontological-content {
+      position: relative;
+    }
+    .team-bio.is-collapsed,
+    .deontological-content.is-collapsed {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .team-bio.is-collapsed {
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+    }
+    .deontological-content.is-collapsed {
+      -webkit-line-clamp: 5;
+      line-clamp: 5;
+    }
+    .expand-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+      padding: 0.45rem 0;
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .expand-toggle:hover,
+    .expand-toggle:focus-visible {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+    .expand-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
     /* Footer */
     footer {
       background: #0D0D0D;
@@ -839,35 +884,7 @@
   </section>
 
   <!-- Sección Pilares / Valores -->
-  <section id="valores" class="section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag">Nuestros Valores</span>
-        <h2>¿Por qué formar parte de ASPM?</h2>
-        <p>Tres pilares sólidos que guían nuestras iniciativas y beneficios para los miembros.</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-icon">📚</div>
-          <h3>Formación Continua</h3>
-          <p>Cursos, seminarios y workshops diseñados para potenciar habilidades técnicas, herramientas digitales y competencias clave de gestión.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🤝</div>
-          <h3>Comunidad y Networking</h3>
-          <p>Pertenecer a una red profesional sólida donde compartir experiencias, resolver dudas e intercambiar mejores prácticas del sector.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">💼</div>
-          <h3>Bolsa de Empleo</h3>
-          <p>Acceso exclusivo a ofertas laborales especializadas y contacto directo con empresas que buscan perfiles de asistencia ejecutiva de alto nivel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Formulario de Contacto / Solicitud -->
   <section id="contacto">
@@ -1032,5 +1049,58 @@
       });
     })();
   </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      function addExpandControl(element, collapsedClass, moreText, lessText) {
+        if (!element || element.dataset.expandReady === 'true') return;
+        element.dataset.expandReady = 'true';
+
+        const fullText = element.textContent.trim();
+        if (fullText.length < 180) return;
+
+        element.classList.add(collapsedClass);
+        element.setAttribute('data-expanded', 'false');
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'expand-toggle';
+        button.textContent = moreText;
+        button.setAttribute('aria-expanded', 'false');
+
+        button.addEventListener('click', function () {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!expanded));
+          element.classList.toggle(collapsedClass, expanded);
+          element.setAttribute('data-expanded', String(!expanded));
+          button.textContent = expanded ? moreText : lessText;
+        });
+
+        element.insertAdjacentElement('afterend', button);
+      }
+
+      // Una sola biografía ampliable por tarjeta, aunque la descripción tenga varios párrafos.
+      document.querySelectorAll('.team-card').forEach(function (card) {
+        const paragraphs = Array.from(card.querySelectorAll('.team-bio'));
+        if (!paragraphs.length) return;
+
+        const bio = document.createElement('div');
+        bio.className = 'team-bio';
+        paragraphs[0].parentNode.insertBefore(bio, paragraphs[0]);
+        paragraphs.forEach(function (paragraph) {
+          bio.appendChild(paragraph);
+        });
+
+        addExpandControl(bio, 'is-collapsed', 'Leer biografía completa', 'Mostrar menos');
+      });
+
+      const deontological = document.querySelector('.deontological-content');
+      if (deontological) {
+        // Keep the full code intact; initially show only its opening portion.
+        addExpandControl(deontological, 'is-collapsed', 'Leer código deontológico completo', 'Mostrar menos');
+      }
+    });
+  </script>
+
 </body>
 </html>

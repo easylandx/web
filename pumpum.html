@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pum Pum Bakery · Cafetería y panadería en Madrid</title>
+<meta name="description" content="Pum Pum Bakery: cafetería y bakery en Calle de la Esgrima 1, Madrid. Ven a desayunar, merendar o llévate algo dulce.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,800;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose-50:#FFF4F6;
+    --rose-100:#FFE3E9;
+    --rose-200:#FFCCD7;
+    --rose-300:#F9ADBF;
+    --rose-400:#F28BA3;
+    --rose-ink:#5B1B2D;
+    --rose-ink-soft:#8A3F55;
+    --radius:28px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'DM Sans',system-ui,sans-serif;
+    background:var(--rose-50);
+    color:var(--rose-ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:800;line-height:1.05;letter-spacing:-.02em}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(255,244,246,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--rose-ink);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Fraunces',serif;font-weight:800;font-size:1.5rem;text-decoration:none;letter-spacing:-.03em}
+  .logo span{font-style:italic;font-weight:500}
+  nav a.link{margin-left:22px;text-decoration:none;font-weight:500;font-size:.95rem}
+  nav a.link:hover{text-decoration:underline;text-underline-offset:5px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;border-radius:999px;
+    border:2px solid var(--rose-ink);
+    background:var(--rose-ink);color:var(--rose-50);
+    font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;
+    box-shadow:4px 4px 0 var(--rose-400);
+    transition:transform .15s, box-shadow .15s;
+    font-family:inherit;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--rose-400)}
+  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--rose-400)}
+  .btn.ghost{background:transparent;color:var(--rose-ink);box-shadow:4px 4px 0 var(--rose-300)}
+  .btn.small{padding:10px 18px;font-size:.9rem}
+  @media(max-width:720px){nav a.link{display:none}}
+
+  /* HERO */
+  .hero{background:var(--rose-100);padding:72px 0 88px;overflow:hidden;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .tag{
+    display:inline-block;padding:6px 16px;border:2px solid var(--rose-ink);
+    border-radius:999px;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--rose-200);margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.8rem,7vw,5.6rem);margin-bottom:22px}
+  .hero h1 em{font-weight:500;font-style:italic;background:linear-gradient(transparent 62%,var(--rose-300) 62%)}
+  .hero p.lead{font-size:1.2rem;max-width:520px;color:var(--rose-ink-soft);margin-bottom:32px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:16px}
+  .badge-card{
+    background:var(--rose-300);border:2px solid var(--rose-ink);border-radius:var(--radius);
+    padding:34px;position:relative;box-shadow:10px 10px 0 var(--rose-ink);
+    transform:rotate(2deg);
+  }
+  .badge-card .big{font-family:'Fraunces',serif;font-size:4.4rem;font-weight:800;line-height:.9}
+  .badge-card .big small{display:block;font-size:1.3rem;font-weight:500;font-style:italic;margin-top:10px}
+  .badge-card ul{list-style:none;margin-top:22px;display:grid;gap:10px}
+  .badge-card li{display:flex;gap:10px;align-items:center;font-weight:500}
+  .badge-card li::before{content:"✦";font-size:.9rem}
+  .spin{
+    position:absolute;top:-34px;right:-22px;width:104px;height:104px;border-radius:50%;
+    background:var(--rose-50);border:2px solid var(--rose-ink);
+    display:grid;place-items:center;text-align:center;font-weight:700;font-size:.78rem;line-height:1.15;
+    animation:wob 6s ease-in-out infinite;
+  }
+  @keyframes wob{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.badge-card{transform:none}}
+
+  /* MARQUEE */
+  .marquee{background:var(--rose-400);border-block:2px solid var(--rose-ink);overflow:hidden;white-space:nowrap}
+  .marquee div{display:inline-block;padding:14px 0;animation:slide 24s linear infinite;font-family:'Fraunces',serif;font-size:1.35rem;font-weight:800}
+  .marquee span{margin:0 26px}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* SECTIONS */
+  section{padding:88px 0}
+  .section-head{max-width:640px;margin-bottom:44px}
+  .section-head h2{font-size:clamp(2rem,4.5vw,3.4rem);margin-bottom:14px}
+  .section-head p{color:var(--rose-ink-soft);font-size:1.1rem}
+
+  /* PICKER */
+  #picker{background:var(--rose-200)}
+  .picker{
+    display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;
+  }
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .opt{
+    background:var(--rose-50);border:2px solid var(--rose-ink);border-radius:22px;
+    padding:22px 16px;text-align:left;cursor:pointer;font-family:inherit;color:inherit;
+    font-size:1rem;font-weight:700;transition:.15s;
+  }
+  .opt .emoji{display:block;font-size:2rem;margin-bottom:8px}
+  .opt small{display:block;font-weight:400;color:var(--rose-ink-soft);margin-top:2px}
+  .opt:hover{transform:translateY(-3px);background:var(--rose-100)}
+  .opt[aria-pressed="true"]{background:var(--rose-ink);color:var(--rose-50);box-shadow:5px 5px 0 var(--rose-400)}
+  .opt[aria-pressed="true"] small{color:var(--rose-200)}
+  .result{
+    background:var(--rose-300);border:2px solid var(--rose-ink);border-radius:var(--radius);
+    padding:34px;display:flex;flex-direction:column;justify-content:center;gap:16px;min-height:300px;
+    box-shadow:8px 8px 0 var(--rose-ink);
+  }
+  .result h3{font-size:2rem}
+  .result p{font-size:1.08rem}
+  .result .hint{font-size:.85rem;opacity:.8}
+  .fade{animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(max-width:860px){.picker{grid-template-columns:1fr}}
+
+  /* WHY */
+  #why{background:var(--rose-50)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    border:2px solid var(--rose-ink);border-radius:var(--radius);padding:30px;
+    transition:transform .2s;
+  }
+  .card:nth-child(1){background:var(--rose-100)}
+  .card:nth-child(2){background:var(--rose-200)}
+  .card:nth-child(3){background:var(--rose-300)}
+  .card:hover{transform:translateY(-6px) rotate(-1deg)}
+  .card .n{font-family:'Fraunces',serif;font-size:3rem;font-weight:800;line-height:1}
+  .card h3{font-size:1.5rem;margin:12px 0 8px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+
+  /* FAMILY */
+  #family{background:var(--rose-100)}
+  .chips{display:flex;flex-wrap:wrap;gap:14px}
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 22px;border:2px solid var(--rose-ink);border-radius:999px;
+    background:var(--rose-50);text-decoration:none;font-weight:700;transition:.15s;
+  }
+  .chip:hover{background:var(--rose-ink);color:var(--rose-50);transform:translateY(-3px)}
+
+  /* CONTACT */
+  #visit{background:var(--rose-400)}
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+  .visit h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:18px}
+  .info{display:grid;gap:12px;margin:22px 0 28px;font-size:1.1rem}
+  .form{
+    background:var(--rose-50);border:2px solid var(--rose-ink);border-radius:var(--radius);
+    padding:30px;box-shadow:8px 8px 0 var(--rose-ink);display:grid;gap:14px;
+  }
+  .form h3{font-size:1.6rem}
+  label{font-weight:700;font-size:.9rem}
+  input,textarea{
+    width:100%;padding:13px 16px;border:2px solid var(--rose-ink);border-radius:16px;
+    background:#fff;font-family:inherit;font-size:1rem;color:var(--rose-ink);margin-top:5px;
+  }
+  input:focus,textarea:focus,.btn:focus-visible,.opt:focus-visible,.chip:focus-visible{outline:3px solid var(--rose-ink);outline-offset:3px}
+  textarea{min-height:90px;resize:vertical}
+  .note{font-size:.85rem;color:var(--rose-ink-soft)}
+  .ok{font-weight:700;display:none}
+  @media(max-width:860px){.visit{grid-template-columns:1fr}}
+
+  footer{background:var(--rose-300);border-top:2px solid var(--rose-ink);padding:34px 0;font-size:.95rem}
+  .foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">Pum Pum <span>Bakery</span></a>
+    <nav>
+      <a class="link" href="#picker">¿Qué te apetece?</a>
+      <a class="link" href="#why">Por qué venir</a>
+      <a class="link" href="#family">Nuestra familia</a>
+      <a class="btn small" href="#visit">Visítanos</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">Cafetería · Bakery · Madrid</span>
+        <h1>Tu parada <em>dulce</em> del día en Madrid</h1>
+        <p class="lead">Café, bollería y ese antojo que te cambia la tarde. Pásate por Pum Pum Bakery, en la Calle de la Esgrima, y descubre tu nuevo sitio favorito del barrio.</p>
+        <div class="cta-row">
+          <a class="btn" href="#picker">Descubre qué pedir →</a>
+          <a class="btn ghost" href="https://www.instagram.com/pumpum_bakery/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+        </div>
+      </div>
+      <div class="badge-card">
+        <div class="spin">¡Ven a<br>probarlo!</div>
+        <div class="big">Pum<br>Pum<small>Bakery</small></div>
+        <ul>
+          <li>Cafetería y bakery en Madrid</li>
+          <li>Calle de la Esgrima, 1 · 28012</li>
+          <li>Novedades en @pumpum_bakery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div>
+      <span>✦ Café</span><span>✦ Bakery</span><span>✦ Desayunos</span><span>✦ Meriendas</span><span>✦ Para llevar</span><span>✦ Madrid</span>
+      <span>✦ Café</span><span>✦ Bakery</span><span>✦ Desayunos</span><span>✦ Meriendas</span><span>✦ Para llevar</span><span>✦ Madrid</span>
+    </div>
+  </div>
+
+  <section id="picker">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>¿Qué te apetece hoy?</h2>
+        <p>Elige tu momento y te decimos cómo disfrutarlo en Pum Pum.</p>
+      </div>
+      <div class="picker">
+        <div class="options" role="group" aria-label="Elige tu momento">
+          <button class="opt" data-k="desayuno" aria-pressed="false"><span class="emoji">☕</span>Desayuno<small>Empieza con buen pie</small></button>
+          <button class="opt" data-k="merienda" aria-pressed="false"><span class="emoji">🥐</span>Merienda<small>Pausa de tarde</small></button>
+          <button class="opt" data-k="llevar" aria-pressed="false"><span class="emoji">🛍️</span>Para llevar<small>Antojo en movimiento</small></button>
+          <button class="opt" data-k="celebrar" aria-pressed="false"><span class="emoji">🎉</span>Celebrar<small>Un detalle especial</small></button>
+        </div>
+        <div class="result" id="result" aria-live="polite">
+          <h3>Pulsa una opción 👈</h3>
+          <p>Te mostramos una idea para tu visita. Sin compromiso, solo ganas de algo rico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Tres motivos para pasarte</h2>
+        <p>Un rincón pensado para que entres a por un café y te quedes a por algo más.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="n">01</div><h3>Hecho para disfrutar</h3><p>Bakery y cafetería en un mismo lugar: dulce, café y buen rollo sin complicaciones.</p></div>
+        <div class="card"><div class="n">02</div><h3>En pleno barrio</h3><p>Calle de la Esgrima, 1. Fácil de encontrar y perfecto para una pausa en tu rutina.</p></div>
+        <div class="card"><div class="n">03</div><h3>Siempre hay novedades</h3><p>Mira lo último en nuestro Instagram y llega sabiendo qué te apetece probar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="family">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Una familia de sitios con encanto</h2>
+        <p>Pum Pum forma parte de un pequeño universo madrileño. Descubre el resto.</p>
+      </div>
+      <div class="chips">
+        <a class="chip" href="https://www.instagram.com/pumpumcafe/" target="_blank" rel="noopener">@pumpumcafe</a>
+        <a class="chip" href="https://www.instagram.com/petit_pumpumcafe/" target="_blank" rel="noopener">@petit_pumpumcafe</a>
+        <a class="chip" href="https://www.instagram.com/casa____victoria/" target="_blank" rel="noopener">@casa____victoria</a>
+        <a class="chip" href="https://www.instagram.com/pizzaposta/" target="_blank" rel="noopener">@pizzaposta</a>
+        <a class="chip" href="https://www.instagram.com/parque___/" target="_blank" rel="noopener">@parque___</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap visit">
+      <div>
+        <h2>Te esperamos en Pum Pum</h2>
+        <div class="info">
+          <div>📍 Calle de la Esgrima, 1, 28012 Madrid</div>
+          <div>📸 <a href="https://www.instagram.com/pumpum_bakery/" target="_blank" rel="noopener"><strong>@pumpum_bakery</strong></a></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Calle+de+la+Esgrima+1+Madrid+28012" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn ghost" href="https://www.instagram.com/pumpum_bakery/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+      </div>
+
+      <form class="form" id="form">
+        <h3>Escríbenos por Instagram</h3>
+        <p class="note">Rellena tu mensaje, lo copiamos y abrimos nuestro Instagram para que nos lo envíes por mensaje directo.</p>
+        <div><label for="name">Tu nombre</label><input id="name" required placeholder="Ej: Lucía"></div>
+        <div><label for="msg">¿Qué quieres preguntarnos o encargarnos?</label><textarea id="msg" required placeholder="Ej: Quiero encargar algo para un cumpleaños..."></textarea></div>
+        <button class="btn" type="submit">Enviar por Instagram →</button>
+        <p class="ok" id="ok">¡Mensaje copiado! Pégalo en el chat de Instagram que se acaba de abrir 💌</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <strong>Pum Pum Bakery · Madrid</strong>
+    <span>© 2026 Pum Pum Bakery. Todos los derechos reservados.</span>
+    <a href="https://www.instagram.com/pumpum_bakery/" target="_blank" rel="noopener"><strong>Instagram @pumpum_bakery</strong></a>
+  </div>
+</footer>
+
+<script>
+  const ideas = {
+    desayuno:{t:"Empieza el día con calma ☕",p:"Un buen café y algo de bollería para arrancar la mañana. Pasa por la Calle de la Esgrima y haz que tu desayuno sea el mejor momento del día."},
+    merienda:{t:"Pausa de tarde, merecida 🥐",p:"Cuando el cuerpo pide algo dulce, aquí tienes tu excusa perfecta. Café, algo rico y diez minutos solo para ti (o para compartir)."},
+    llevar:{t:"Llévate el antojo contigo 🛍️",p:"Entra, elige y sigue con tu día. Ideal para sorprender en la oficina, en casa o contigo mismo."},
+    celebrar:{t:"Un detalle que se recuerda 🎉",p:"¿Cumpleaños, visita o simplemente ganas de celebrar? Escríbenos por Instagram y te ayudamos a organizarlo."}
+  };
+  const result = document.getElementById('result');
+  document.querySelectorAll('.opt').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.opt').forEach(o=>o.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      const i = ideas[b.dataset.k];
+      result.innerHTML = `<div class="fade"><h3>${i.t}</h3><p style="margin:14px 0 20px">${i.p}</p>
+        <a class="btn small" href="https://www.google.com/maps/search/?api=1&query=Calle+de+la+Esgrima+1+Madrid+28012" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn small ghost" style="margin-left:8px" href="https://www.instagram.com/pumpum_bakery/" target="_blank" rel="noopener">Ver Instagram</a></div>`;
+    });
+  });
+
+  document.getElementById('form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const text = `Hola Pum Pum, soy ${document.getElementById('name').value}. ${document.getElementById('msg').value}`;
+    try{ navigator.clipboard.writeText(text); }catch(_){}
+    document.getElementById('ok').style.display='block';
+    window.open('https://www.instagram.com/pumpum_bakery/','_blank','noopener');
+  });
+</script>
+</body>
+</html>

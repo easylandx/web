@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCAKE Madrid · Pastelería y Tartas Personalizadas</title>
+<meta name="description" content="OCAKE Madrid: mini cakes y tartas personalizadas en Calle Ferrer del Río, 21. Tartas como lenguaje de amor. Pide la tuya por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose-50:#fff6f7;
+    --rose-100:#ffe6ea;
+    --rose-200:#fcd0d8;
+    --rose-300:#f7b3bf;
+    --rose-500:#d9627a;
+    --rose-700:#a8324d;
+    --rose-900:#4d1625;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',sans-serif;background:var(--rose-50);color:var(--rose-900);line-height:1.6;overflow-x:hidden}
+  h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  section{padding:84px 0}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,246,247,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--rose-200)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;letter-spacing:.04em;color:var(--rose-700)}
+  .logo span{font-style:italic;font-weight:500;color:var(--rose-500)}
+  nav ul{display:flex;gap:26px;list-style:none;font-size:.9rem;font-weight:500}
+  nav ul a:hover{color:var(--rose-500)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:.95rem;border:2px solid var(--rose-700);cursor:pointer;transition:.25s;font-family:inherit}
+  .btn-solid{background:var(--rose-700);color:var(--rose-50)}
+  .btn-solid:hover{background:var(--rose-900);border-color:var(--rose-900);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--rose-700)}
+  .btn-ghost:hover{background:var(--rose-700);color:var(--rose-50);transform:translateY(-2px)}
+  .nav .btn{padding:9px 20px;font-size:.85rem}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,var(--rose-100) 0%,var(--rose-200) 100%);padding:70px 0 90px;position:relative;overflow:hidden}
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:var(--rose-300);opacity:.35}
+  .hero::before{width:420px;height:420px;right:-120px;top:-120px}
+  .hero::after{width:260px;height:260px;left:-90px;bottom:-90px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:1}
+  .tag{display:inline-block;background:var(--rose-50);border:1px solid var(--rose-300);padding:6px 16px;border-radius:999px;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);color:var(--rose-900);margin-bottom:18px}
+  .hero h1 em{color:var(--rose-700)}
+  .hero p.lead{font-size:1.1rem;max-width:480px;margin-bottom:30px;font-weight:300}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{margin-top:30px;display:flex;gap:22px;flex-wrap:wrap;font-size:.88rem}
+  .hero-meta span{display:flex;align-items:center;gap:8px}
+  .cake-art{display:flex;justify-content:center}
+  .cake-art svg{width:100%;max-width:400px;filter:drop-shadow(0 24px 30px rgba(168,50,77,.25));animation:float 5s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-12px)}}
+
+  /* MARQUEE */
+  .strip{background:var(--rose-700);color:var(--rose-50);overflow:hidden;white-space:nowrap;padding:14px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem}
+  .strip div{display:inline-block;animation:slide 28s linear infinite}
+  .strip span{margin:0 26px}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* SECTION TITLES */
+  .eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--rose-500);margin-bottom:10px}
+  .sec-title{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:14px}
+  .sec-sub{max-width:560px;font-weight:300;margin-bottom:46px}
+
+  /* PRODUCTS */
+  .products{background:var(--rose-50)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--rose-100);border:1px solid var(--rose-200);border-radius:26px;padding:34px 28px;transition:.3s}
+  .card:hover{transform:translateY(-8px);background:var(--rose-200);box-shadow:0 18px 34px rgba(168,50,77,.15)}
+  .card .ico{width:60px;height:60px;border-radius:50%;background:var(--rose-700);color:var(--rose-50);display:grid;place-items:center;font-size:1.7rem;margin-bottom:20px}
+  .card h3{font-size:1.45rem;margin-bottom:10px}
+  .card p{font-weight:300;font-size:.95rem;margin-bottom:16px}
+  .card a{font-weight:600;color:var(--rose-700);font-size:.9rem}
+  .card a:hover{text-decoration:underline}
+
+  /* STEPS */
+  .steps{background:var(--rose-200)}
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s}
+  .step{position:relative;padding-top:20px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:'Playfair Display',serif;font-size:4.2rem;color:var(--rose-50);line-height:1;display:block;margin-bottom:6px;-webkit-text-stroke:1.5px var(--rose-700)}
+  .step h3{font-size:1.3rem;margin-bottom:8px}
+  .step p{font-weight:300;font-size:.95rem}
+
+  /* CONFIGURATOR */
+  .config{background:var(--rose-100)}
+  .config-box{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;background:var(--rose-50);border:1px solid var(--rose-300);border-radius:32px;padding:38px;box-shadow:0 20px 50px rgba(168,50,77,.12)}
+  .group{margin-bottom:22px}
+  .group label.t{display:block;font-weight:600;font-size:.88rem;margin-bottom:10px;letter-spacing:.03em}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{padding:9px 18px;border-radius:999px;border:1.5px solid var(--rose-300);background:var(--rose-50);color:var(--rose-900);font-family:inherit;font-size:.88rem;cursor:pointer;transition:.2s}
+  .chip:hover{border-color:var(--rose-700)}
+  .chip.on{background:var(--rose-700);border-color:var(--rose-700);color:var(--rose-50)}
+  input[type=text],input[type=date],textarea{width:100%;padding:12px 16px;border-radius:14px;border:1.5px solid var(--rose-300);background:var(--rose-50);font-family:inherit;font-size:.92rem;color:var(--rose-900)}
+  input:focus,textarea:focus{outline:none;border-color:var(--rose-700)}
+  textarea{resize:vertical;min-height:70px}
+  .preview{background:var(--rose-200);border-radius:24px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;border:1px dashed var(--rose-500)}
+  .preview h3{font-size:1.4rem;margin-bottom:6px}
+  .preview .mini{display:flex;justify-content:center;margin:12px 0}
+  .preview .mini svg{width:150px;transition:transform .4s}
+  .summary{list-style:none;font-size:.9rem;margin-bottom:18px}
+  .summary li{display:flex;justify-content:space-between;border-bottom:1px solid var(--rose-300);padding:7px 0;gap:10px}
+  .summary li b{font-weight:600;text-align:right}
+  .preview .btn{width:100%;justify-content:center}
+  .note{font-size:.76rem;font-weight:300;margin-top:10px;text-align:center}
+
+  /* FAQ */
+  .faq{background:var(--rose-50)}
+  details{background:var(--rose-100);border:1px solid var(--rose-200);border-radius:18px;padding:18px 24px;margin-bottom:12px;max-width:760px}
+  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--rose-700);transition:.2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin-top:12px;font-weight:300;font-size:.94rem}
+
+  /* VISIT */
+  .visit{background:var(--rose-300)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:stretch}
+  .info{background:var(--rose-50);border-radius:28px;padding:38px}
+  .info h3{font-size:1.7rem;margin-bottom:20px}
+  .info p{display:flex;gap:14px;margin-bottom:18px;font-weight:400}
+  .info p span.i{font-size:1.3rem}
+  .big-cta{background:var(--rose-700);color:var(--rose-50);border-radius:28px;padding:42px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+  .big-cta h3{font-size:2rem}
+  .big-cta p{font-weight:300}
+  .big-cta .btn-solid{background:var(--rose-50);color:var(--rose-700);border-color:var(--rose-50)}
+  .big-cta .btn-solid:hover{background:var(--rose-100)}
+  .big-cta .btn-ghost{color:var(--rose-50);border-color:var(--rose-50)}
+  .big-cta .btn-ghost:hover{background:var(--rose-50);color:var(--rose-700)}
+
+  footer{background:var(--rose-200);padding:34px 0;text-align:center;font-size:.85rem}
+  footer .logo{display:block;margin-bottom:8px}
+
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--rose-700);color:var(--rose-50);width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;box-shadow:0 10px 24px rgba(168,50,77,.4);transition:.25s}
+  .wa-float:hover{transform:scale(1.1) rotate(-6deg);background:var(--rose-900)}
+  .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--rose-500);animation:pulse 2s infinite}
+  @keyframes pulse{to{transform:scale(1.5);opacity:0}}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    nav ul{display:none}
+    .hero-grid,.config-box,.visit-grid{grid-template-columns:1fr}
+    .cards,.steps-grid{grid-template-columns:1fr}
+    section{padding:62px 0}
+    .config-box{padding:24px}
+    .cake-art{order:-1}
+    .cake-art svg{max-width:260px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo">O<span>cake</span></a>
+    <nav>
+      <ul>
+        <li><a href="#productos">Nuestras tartas</a></li>
+        <li><a href="#como">Cómo pedir</a></li>
+        <li><a href="#disena">Diseña tu tarta</a></li>
+        <li><a href="#faq">Dudas</a></li>
+        <li><a href="#visitanos">Visítanos</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-solid" href="https://wa.me/34691073496" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">Pastelería · Tartas · Madrid</span>
+        <h1>Tartas como <em>lenguaje de amor</em></h1>
+        <p class="lead">Mini cakes y tartas personalizadas hechas para decir lo que las palabras no alcanzan. Cuéntanos tu celebración y la convertimos en tarta.</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="#disena">🎂 Diseña tu tarta</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/ocake.madrid/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+        <div class="hero-meta">
+          <span>📍 Calle Ferrer del Río, 21 · Madrid</span>
+          <span>🗓️ Martes a Sábado</span>
+        </div>
+      </div>
+      <div class="cake-art" aria-hidden="true">
+        <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="200" cy="385" rx="150" ry="20" fill="#a8324d" opacity=".18"/>
+          <rect x="60" y="270" width="280" height="100" rx="14" fill="#f7b3bf"/>
+          <path d="M60 290 q23 34 46 0 q23 34 46 0 q23 34 46 0 q23 34 46 0 q23 34 46 0 q23 34 46 0 v-20 H60z" fill="#fff6f7"/>
+          <rect x="95" y="190" width="210" height="90" rx="14" fill="#d9627a"/>
+          <path d="M95 208 q18 28 35 0 q18 28 35 0 q18 28 35 0 q18 28 35 0 q18 28 35 0 q18 28 35 0 v-18 H95z" fill="#ffe6ea"/>
+          <rect x="135" y="120" width="130" height="78" rx="14" fill="#a8324d"/>
+          <path d="M135 136 q16 24 32 0 q16 24 32 0 q16 24 32 0 q16 24 32 0 v-16 H135z" fill="#fcd0d8"/>
+          <rect x="196" y="78" width="8" height="44" rx="4" fill="#4d1625"/>
+          <path d="M200 40 q14 20 0 34 q-14 -14 0 -34z" fill="#d9627a"/>
+          <circle cx="110" cy="338" r="9" fill="#fff6f7"/><circle cx="160" cy="344" r="9" fill="#fff6f7"/>
+          <circle cx="240" cy="344" r="9" fill="#fff6f7"/><circle cx="290" cy="338" r="9" fill="#fff6f7"/>
+          <circle cx="170" cy="236" r="7" fill="#fff6f7"/><circle cx="230" cy="236" r="7" fill="#fff6f7"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip" aria-hidden="true">
+    <div>
+      <span>🎂 Tartas personalizadas</span><span>🍰 Mini cakes</span><span>💌 Hechas con amor</span><span>📍 Madrid</span>
+      <span>🎂 Tartas personalizadas</span><span>🍰 Mini cakes</span><span>💌 Hechas con amor</span><span>📍 Madrid</span>
+      <span>🎂 Tartas personalizadas</span><span>🍰 Mini cakes</span><span>💌 Hechas con amor</span><span>📍 Madrid</span>
+      <span>🎂 Tartas personalizadas</span><span>🍰 Mini cakes</span><span>💌 Hechas con amor</span><span>📍 Madrid</span>
+    </div>
+  </div>
+
+  <section class="products" id="productos">
+    <div class="wrap">
+      <p class="eyebrow reveal">Lo que hacemos</p>
+      <h2 class="sec-title reveal">Cada tarta cuenta una historia</h2>
+      <p class="sec-sub reveal">Desde un detalle individual hasta la tarta protagonista de tu celebración.</p>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="ico">🍰</div>
+          <h3>Mini cakes</h3>
+          <p>Pequeñas, perfectas y pensadas para regalar. Ideales para una cita, un aniversario o un “porque sí”.</p>
+          <a href="#disena" data-pick="Mini cake">Diseñar mini cake →</a>
+        </article>
+        <article class="card reveal">
+          <div class="ico">🎂</div>
+          <h3>Tartas personalizadas</h3>
+          <p>Cumpleaños, bodas, bautizos, celebraciones de empresa. Tu idea, tus colores, tu mensaje.</p>
+          <a href="#disena" data-pick="Tarta personalizada">Diseñar mi tarta →</a>
+        </article>
+        <article class="card reveal">
+          <div class="ico">💌</div>
+          <h3>Regalos con significado</h3>
+          <p>¿Quieres sorprender a alguien especial? Cuéntanos quién es y creamos una tarta a su medida.</p>
+          <a href="https://wa.me/34691073496?text=Hola%20OCAKE%2C%20quiero%20una%20tarta%20para%20regalar%20" target="_blank" rel="noopener">Escríbenos →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps" id="como">
+    <div class="wrap">
+      <p class="eyebrow reveal">Sin complicaciones</p>
+      <h2 class="sec-title reveal">Pedir tu tarta es muy fácil</h2>
+      <p class="sec-sub reveal">Tres pasos y tu celebración queda resuelta.</p>
+      <div class="steps-grid">
+        <div class="step reveal"><h3>Cuéntanos tu idea</h3><p>Diseña tu tarta aquí abajo o escríbenos directamente por WhatsApp con la ocasión y la fecha.</p></div>
+        <div class="step reveal"><h3>La hacemos a tu medida</h3><p>Te confirmamos detalles, sabores y presupuesto para que todo esté a tu gusto.</p></div>
+        <div class="step reveal"><h3>Recógela y disfruta</h3><p>Pásate por nuestra pastelería de martes a sábado y celebra con una tarta única.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="config" id="disena">
+    <div class="wrap">
+      <p class="eyebrow reveal">Interactivo</p>
+      <h2 class="sec-title reveal">Diseña tu tarta en 1 minuto</h2>
+      <p class="sec-sub reveal">Elige tus opciones y envíanos el resumen por WhatsApp. Nosotros te respondemos con la propuesta.</p>
+
+      <div class="config-box reveal">
+        <form id="cfg" onsubmit="return false">
+          <div class="group">
+            <label class="t">1 · ¿Qué quieres?</label>
+            <div class="chips" data-key="tipo">
+              <button type="button" class="chip on">Tarta personalizada</button>
+              <button type="button" class="chip">Mini cake</button>
+            </div>
+          </div>
+          <div class="group">
+            <label class="t">2 · ¿Para cuántas personas?</label>
+            <div class="chips" data-key="raciones">
+              <button type="button" class="chip">1-2</button>
+              <button type="button" class="chip on">6-8</button>
+              <button type="button" class="chip">10-15</button>
+              <button type="button" class="chip">+15</button>
+            </div>
+          </div>
+          <div class="group">
+            <label class="t">3 · ¿Cuál es la ocasión?</label>
+            <div class="chips" data-key="ocasion">
+              <button type="button" class="chip on">Cumpleaños</button>
+              <button type="button" class="chip">Aniversario</button>
+              <button type="button" class="chip">Boda</button>
+              <button type="button" class="chip">Bautizo / Comunión</button>
+              <button type="button" class="chip">Otra</button>
+            </div>
+          </div>
+          <div class="group">
+            <label class="t" for="fecha">4 · ¿Para qué fecha la necesitas?</label>
+            <input type="date" id="fecha">
+          </div>
+          <div class="group">
+            <label class="t" for="idea">5 · Cuéntanos tu idea (opcional)</label>
+            <textarea id="idea" placeholder="Colores, mensaje, sabor favorito, alergias…"></textarea>
+          </div>
+        </form>
+
+        <aside class="preview">
+          <div>
+            <h3>Tu pedido</h3>
+            <div class="mini" aria-hidden="true">
+              <svg id="miniCake" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="100" cy="168" rx="70" ry="8" fill="#a8324d" opacity=".18"/>
+                <rect x="30" y="110" width="140" height="52" rx="10" fill="#f7b3bf"/>
+                <path d="M30 124 q12 18 23 0 q12 18 23 0 q12 18 23 0 q12 18 23 0 q12 18 23 0 q12 18 23 0 v-14 H30z" fill="#fff6f7"/>
+                <g id="tier2"><rect x="52" y="66" width="96" height="48" rx="10" fill="#d9627a"/>
+                <path d="M52 78 q12 16 24 0 q12 16 24 0 q12 16 24 0 q12 16 24 0 v-12 H52z" fill="#ffe6ea"/></g>
+                <g id="tier3"><rect x="72" y="28" width="56" height="42" rx="10" fill="#a8324d"/>
+                <rect x="98" y="8" width="4" height="22" rx="2" fill="#4d1625"/><path d="M100 0 q8 10 0 18 q-8 -8 0 -18z" fill="#d9627a"/></g>
+              </svg>
+            </div>
+            <ul class="summary">
+              <li>Tipo <b id="s-tipo"></b></li>
+              <li>Personas <b id="s-raciones"></b></li>
+              <li>Ocasión <b id="s-ocasion"></b></li>
+              <li>Fecha <b id="s-fecha">Por confirmar</b></li>
+            </ul>
+          </div>
+          <div>
+            <a class="btn btn-solid" id="sendWa" href="#" target="_blank" rel="noopener">💬 Enviar por WhatsApp</a>
+            <p class="note">Sin compromiso. Te respondemos con disponibilidad y presupuesto.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <p class="eyebrow reveal">Resolvemos tus dudas</p>
+      <h2 class="sec-title reveal">Preguntas frecuentes</h2>
+      <p class="sec-sub reveal">Si no encuentras tu respuesta, escríbenos y te ayudamos.</p>
+      <details class="reveal"><summary>¿Con cuánta antelación debo encargar mi tarta?</summary><p>Cuanto antes mejor, sobre todo en fechas señaladas. Escríbenos por WhatsApp con tu fecha y te confirmamos disponibilidad.</p></details>
+      <details class="reveal"><summary>¿Puedo personalizar el diseño?</summary><p>Sí, ese es nuestro punto fuerte. Puedes contarnos tu idea, colores y mensaje, y la adaptamos a tu celebración.</p></details>
+      <details class="reveal"><summary>¿Dónde recojo mi pedido?</summary><p>En Calle Ferrer del Río, 21, Madrid. Abrimos de martes a sábado. Coordinamos contigo el día de recogida por WhatsApp.</p></details>
+      <details class="reveal"><summary>¿Cómo puedo ver más trabajos?</summary><p>En nuestro Instagram <a href="https://www.instagram.com/ocake.madrid/" target="_blank" rel="noopener"><b>@ocake.madrid</b></a> publicamos nuestras creaciones.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="visitanos">
+    <div class="wrap visit-grid">
+      <div class="info reveal">
+        <h3>Visítanos en Madrid</h3>
+        <p><span class="i">📍</span><span><b>Calle Ferrer del Río, 21</b><br>Madrid · <a href="https://www.google.com/maps/search/?api=1&query=Calle+Ferrer+del+Rio+21+Madrid" target="_blank" rel="noopener"><u>Ver en el mapa</u></a></span></p>
+        <p><span class="i">🗓️</span><span><b>Martes a Sábado</b><br>Consulta el horario por WhatsApp</span></p>
+        <p><span class="i">📲</span><span><b>WhatsApp</b><br><a href="https://wa.me/34691073496" target="_blank" rel="noopener"><u>wa.me/34691073496</u></a></span></p>
+        <p><span class="i">📷</span><span><b>Instagram</b><br><a href="https://www.instagram.com/ocake.madrid/" target="_blank" rel="noopener"><u>@ocake.madrid</u></a></span></p>
+      </div>
+      <div class="big-cta reveal">
+        <h3>¿Lista tu próxima celebración?</h3>
+        <p>Pide tu tarta hoy y deja que el dulce hable por ti.</p>
+        <a class="btn btn-solid" href="https://wa.me/34691073496?text=Hola%20OCAKE%2C%20me%20gustar%C3%ADa%20pedir%20una%20tarta" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/ocake.madrid/" target="_blank" rel="noopener">📷 Ver Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">O<span>cake</span></span>
+    <p>OCAKE · Pastelería | Tartas · Calle Ferrer del Río, 21, Madrid</p>
+    <p>© 2026 OCAKE Madrid. Tartas como lenguaje de amor.</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/34691073496" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<script>
+  const state = {tipo:"Tarta personalizada", raciones:"6-8", ocasion:"Cumpleaños"};
+  const fecha = document.getElementById('fecha');
+  const idea = document.getElementById('idea');
+  const sendWa = document.getElementById('sendWa');
+  const today = new Date().toISOString().split('T')[0];
+  fecha.min = today;
+
+  function fmtDate(v){
+    if(!v) return "Por confirmar";
+    const [y,m,d] = v.split('-');
+    return d + "/" + m + "/" + y;
+  }
+
+  function update(){
+    ['tipo','raciones','ocasion'].forEach(k => document.getElementById('s-'+k).textContent = state[k]);
+    document.getElementById('s-fecha').textContent = fmtDate(fecha.value);
+
+    // Mini cake preview: number of tiers depends on servings / type
+    const tiers = state.tipo === "Mini cake" ? 1 : (["1-2","6-8"].includes(state.raciones) ? 2 : 3);
+    document.getElementById('tier2').style.display = tiers >= 2 ? '' : 'none';
+    document.getElementById('tier3').style.display = tiers >= 3 ? '' : 'none';
+    const svg = document.getElementById('miniCake');
+    svg.style.transform = 'scale(1.08)';
+    setTimeout(()=> svg.style.transform = '', 250);
+
+    let msg = "¡Hola OCAKE! 🎂 Me gustaría pedir:\n"
+      + "• Tipo: " + state.tipo + "\n"
+      + "• Personas: " + state.raciones + "\n"
+      + "• Ocasión: " + state.ocasion + "\n"
+      + "• Fecha: " + fmtDate(fecha.value);
+    if(idea.value.trim()) msg += "\n• Idea: " + idea.value.trim();
+    msg += "\n¿Me podéis confirmar disponibilidad y presupuesto? ¡Gracias!";
+    sendWa.href = "https://wa.me/34691073496?text=" + encodeURIComponent(msg);
+  }
+
+  document.querySelectorAll('.chips').forEach(group => {
+    group.addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if(!b) return;
+      group.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+      b.classList.add('on');
+      state[group.dataset.key] = b.textContent.trim();
+      update();
+    });
+  });
+  fecha.addEventListener('input', update);
+  idea.addEventListener('input', update);
+
+  // Product cards preselect type
+  document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => {
+    const val = a.dataset.pick;
+    const group = document.querySelector('.chips[data-key="tipo"]');
+    group.querySelectorAll('.chip').forEach(c => {
+      const on = c.textContent.trim() === val;
+      c.classList.toggle('on', on);
+      if(on) state.tipo = val;
+    });
+    update();
+  }));
+
+  // Scroll reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  update();
+</script>
+</body>
+</html>

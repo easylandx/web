@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma Nomad Bakery · Obrador artesano en Madrid</title>
+<meta name="description" content="Panes de masa madre ecológica y pastelería fina en el corazón de Madrid. Ven a conocer Alma Nomad Bakery, Calle Santa Feliciana 10.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Paleta monocromo: un único tono dorado en distintas luminosidades */
+  :root{
+    --c0:#fffaf0;
+    --c1:#fff4d6;
+    --c2:#fbe7ad;
+    --c3:#f5d77c;
+    --c4:#ecc25a;
+    --c5:#d9a431;
+    --accent:#8f5d0c;
+    --ink:#3a2705;
+    --ink-soft:#6b4a12;
+    --radius:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--c0);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.05;letter-spacing:-.02em}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,244,214,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(58,39,5,.12)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Fraunces',serif;font-weight:800;font-size:1.25rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+  .logo i{width:14px;height:14px;border-radius:50%;background:var(--accent);display:inline-block}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:.95rem;font-weight:500}
+  nav ul a{text-decoration:none;opacity:.8;transition:opacity .2s}
+  nav ul a:hover{opacity:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff8e6;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--accent);transition:transform .2s, background .2s, color .2s;cursor:pointer;font-size:1rem;font-family:inherit}
+  .btn:hover{transform:translateY(-2px);background:transparent;color:var(--accent)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--c1)}
+  .btn.small{padding:10px 20px;font-size:.9rem}
+  @media(max-width:760px){nav ul{display:none}}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,var(--c2) 0%,var(--c3) 100%);padding:80px 0 100px;overflow:hidden;position:relative}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .eyebrow{display:inline-block;font-size:.8rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;background:var(--c1);padding:8px 16px;border-radius:999px;margin-bottom:24px}
+  .hero h1{font-size:clamp(2.8rem,7vw,5.6rem);font-weight:800;margin-bottom:24px}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .hero p.lead{font-size:1.2rem;max-width:520px;color:var(--ink-soft);margin-bottom:36px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-art{position:relative;aspect-ratio:1;max-width:460px;margin-left:auto;width:100%}
+  .hero-art svg{width:100%;height:100%;animation:float 6s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-12px) rotate(1.5deg)}}
+  .badge{position:absolute;bottom:4%;left:-4%;background:var(--c0);border-radius:var(--radius);padding:14px 18px;box-shadow:0 14px 30px rgba(143,93,12,.25);font-size:.9rem;font-weight:500;max-width:200px}
+  .badge b{display:block;font-family:'Fraunces',serif;font-size:1.5rem}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-art{margin:0 auto;max-width:340px}}
+
+  /* MARQUEE */
+  .marquee{background:var(--c5);overflow:hidden;white-space:nowrap;padding:16px 0;border-block:2px solid var(--ink)}
+  .marquee div{display:inline-block;animation:slide 28s linear infinite;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600}
+  .marquee span{margin:0 28px}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ABOUT */
+  .about{background:var(--c1)}
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .about h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:24px}
+  .about p{margin-bottom:18px;color:var(--ink-soft);font-size:1.08rem}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stat{background:var(--c3);border-radius:var(--radius);padding:28px 22px}
+  .stat:nth-child(2){background:var(--c4)}
+  .stat:nth-child(3){background:var(--c2)}
+  .stat:nth-child(4){background:var(--c5)}
+  .stat b{font-family:'Fraunces',serif;font-size:2.4rem;display:block;line-height:1}
+  .stat small{font-size:.92rem;color:var(--ink-soft)}
+  @media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:36px}}
+
+  /* RECOMMENDER */
+  .picker{background:var(--c3)}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 48px}
+  .section-head h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:14px}
+  .section-head p{color:var(--ink-soft);font-size:1.1rem}
+  .chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+  .chip{font-family:inherit;font-size:1rem;font-weight:600;padding:14px 26px;border-radius:999px;border:2px solid var(--ink);background:var(--c1);color:var(--ink);cursor:pointer;transition:all .2s}
+  .chip:hover{transform:translateY(-2px)}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff8e6}
+  .result{max-width:820px;margin:0 auto;background:var(--c0);border-radius:30px;padding:44px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;box-shadow:0 20px 50px rgba(143,93,12,.22);min-height:230px;transition:opacity .25s, transform .25s}
+  .result.swap{opacity:0;transform:translateY(10px)}
+  .result .icon{width:110px;height:110px;border-radius:50%;background:var(--c3);display:grid;place-items:center;font-size:3.4rem}
+  .result h3{font-size:2rem;margin-bottom:10px}
+  .result p{color:var(--ink-soft);margin-bottom:18px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .tags span{background:var(--c2);padding:5px 14px;border-radius:999px;font-size:.82rem;font-weight:600}
+  @media(max-width:640px){.result{grid-template-columns:1fr;padding:30px;text-align:center}.result .icon{margin:0 auto}.tags{justify-content:center}}
+
+  /* PRESS */
+  .press{background:var(--c4)}
+  .press .logos{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:44px}
+  .press-tab{
+    font-family:'Fraunces',serif;
+    font-weight:800;
+    font-size:1.3rem;
+    background:var(--c1);
+    color:var(--ink);
+    padding:14px 28px;
+    border-radius:var(--radius);
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .press-tab:hover{
+    transform:translateY(-2px);
+    background:var(--c0);
+  }
+  .press-tab.active{
+    background:var(--accent);
+    color:#fff8e6;
+    border-color:var(--ink);
+    transform:scale(1.03);
+  }
+  .quote{max-width:780px;margin:0 auto;text-align:center;min-height:160px}
+  .quote p{font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2.1rem);font-style:italic;line-height:1.3;margin-bottom:20px;transition:opacity .2s ease}
+  .quote a{font-weight:600;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+  .quote a:hover{opacity:.8}
+
+  /* VISIT */
+  .visit{background:var(--c2)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .card{border-radius:30px;padding:44px}
+  .card.a{background:var(--c0)}
+  .card.b{background:var(--c5)}
+  .card h2{font-size:2.4rem;margin-bottom:18px}
+  .card p{margin-bottom:14px}
+  .address{font-weight:600;font-size:1.15rem;margin:16px 0 22px}
+  .collab{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .collab a{background:var(--c1);padding:8px 16px;border-radius:999px;font-weight:600;font-size:.9rem;text-decoration:none}
+  .collab a:hover{background:var(--c0)}
+  @media(max-width:860px){.visit .wrap{grid-template-columns:1fr}}
+
+  /* FOOTER */
+  footer{background:var(--c3);padding:48px 0 36px;border-top:2px solid var(--ink)}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  footer small{display:block;max-width:560px;color:var(--ink-soft);margin-top:6px}
+  .links{display:flex;gap:20px;font-weight:600}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s, transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#inicio"><i></i> Alma Nomad Bakery</a>
+      <ul>
+        <li><a href="#historia">Nuestra historia</a></li>
+        <li><a href="#antojo">¿Qué te apetece?</a></li>
+        <li><a href="#prensa">Prensa</a></li>
+        <li><a href="#visitanos">Visítanos</a></li>
+      </ul>
+      <a class="btn small" href="https://www.instagram.com/almanomadbakery/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Obrador artesano · Madrid</span>
+        <h1>Pan de verdad, <em>hecho con alma.</em></h1>
+        <p class="lead">Panes de masa madre ecológica y pastelería fina, con sabores clásicos, ingredientes honestos y mucho cariño. Ven a probarlo todavía caliente.</p>
+        <div class="cta-row">
+          <a class="btn" href="#visitanos">Cómo llegar</a>
+          <a class="btn ghost" href="#antojo">Encuentra tu antojo</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="185" fill="#fffaf0"/>
+          <circle cx="200" cy="200" r="150" fill="#fbe7ad"/>
+          <ellipse cx="200" cy="232" rx="120" ry="78" fill="#d9a431"/>
+          <ellipse cx="200" cy="218" rx="120" ry="78" fill="#ecc25a"/>
+          <path d="M120 200 Q145 170 165 205" stroke="#8f5d0c" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <path d="M175 190 Q200 155 220 192" stroke="#8f5d0c" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <path d="M232 200 Q256 168 280 205" stroke="#8f5d0c" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <circle cx="150" cy="240" r="4" fill="#8f5d0c"/><circle cx="200" cy="250" r="4" fill="#8f5d0c"/><circle cx="250" cy="240" r="4" fill="#8f5d0c"/>
+          <g stroke="#3a2705" stroke-width="3" stroke-linecap="round"><path d="M170 100 q-8 -14 0 -26 q8 -12 0 -24"/><path d="M200 92 q-8 -14 0 -26 q8 -12 0 -24"/><path d="M230 100 q-8 -14 0 -26 q8 -12 0 -24"/></g>
+        </svg>
+        <div class="badge"><b>Masa madre</b>ecológica, fermentada con paciencia</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div>
+      <span>Masa madre ecológica</span>✦<span>Pastelería fina</span>✦<span>Sabores clásicos</span>✦<span>Ingredientes de temporada</span>✦<span>Calle Santa Feliciana 10</span>✦
+      <span>Masa madre ecológica</span>✦<span>Pastelería fina</span>✦<span>Sabores clásicos</span>✦<span>Ingredientes de temporada</span>✦<span>Calle Santa Feliciana 10</span>✦
+    </div>
+  </div>
+
+  <!-- HISTORIA -->
+  <section class="about" id="historia">
+    <div class="wrap">
+      <div class="reveal">
+        <h2>Sencillez, honestidad y buen oficio.</h2>
+        <p>Alma Nomad Bakery nació de la mano de Timi Árgyélán y Joaqin Escriva, dos cocineros que llevaron su saber gastronómico al mundo del pan. Empezaron en Budapest, donde las colas se formaban cada mañana, y en 2019 trajeron su obrador a Madrid.</p>
+        <p>Su filosofía es clara: nada de innovar por innovar. Combinaciones clásicas, producto de temporada y una base perfecta de masa o relleno, para que lo demás pueda ser relajado y juguetón.</p>
+        <p>Una mezcla de herencias: quesos, jamones y embutidos locales por el lado español; amapola, scones y espirales de cacao por el lado húngaro.</p>
+        <a class="btn" href="https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid" target="_blank" rel="noopener">Leer la entrevista completa</a>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><b>2019</b><small>llegada a Madrid</small></div>
+        <div class="stat"><b>100%</b><small>cariño artesano</small></div>
+        <div class="stat"><b>Masa madre</b><small>ecológica</small></div>
+        <div class="stat"><b>De temporada</b><small>ingredientes clásicos</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVO -->
+  <section class="picker" id="antojo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>¿Qué te apetece hoy?</h2>
+        <p>Elige un antojo y te decimos por dónde empezar.</p>
+      </div>
+      <div class="chips reveal" role="group" aria-label="Elige tu antojo">
+        <button class="chip" data-k="pan" aria-pressed="true">🍞 Pan</button>
+        <button class="chip" data-k="dulce" aria-pressed="false">🥐 Dulce</button>
+        <button class="chip" data-k="salado" aria-pressed="false">🧀 Salado</button>
+        <button class="chip" data-k="sorpresa" aria-pressed="false">✨ Sorpréndeme</button>
+      </div>
+      <div class="result reveal" id="result" aria-live="polite">
+        <div class="icon" id="r-icon">🍞</div>
+        <div>
+          <h3 id="r-title"></h3>
+          <p id="r-text"></p>
+          <div class="tags" id="r-tags"></div>
+          <a class="btn small" href="https://www.instagram.com/almanomadbakery/" target="_blank" rel="noopener">Ver novedades en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRENSA -->
+  <section class="press" id="prensa">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Lo que se cuenta de nosotros</h2>
+        <p>Medios de referencia han destacado el obrador.</p>
+      </div>
+      
+      <!-- Botones / Pestañas de Medios -->
+      <div class="logos reveal" role="tablist" aria-label="Medios de comunicación">
+        <button class="press-tab active" data-press="elpais" role="tab" aria-selected="true">El País</button>
+        <button class="press-tab" data-press="condenast" role="tab" aria-selected="false">Condé Nast</button>
+        <button class="press-tab" data-press="vogue" role="tab" aria-selected="false">Vogue España</button>
+        <button class="press-tab" data-press="monocle" role="tab" aria-selected="false">Monocle</button>
+      </div>
+
+      <!-- Cita Dinámica -->
+      <div class="quote reveal" id="press-quote-container">
+        <p id="press-quote-text">«Una cocina sin artificios, donde la perfección está en los cimientos.»</p>
+        <a id="press-quote-link" href="https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid" target="_blank" rel="noopener">El País · «Honesty is everything» →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISITA -->
+  <section class="visit" id="visitanos">
+    <div class="wrap">
+      <div class="card a reveal">
+        <h2>Ven a visitarnos</h2>
+        <p>Estamos en una plaza familiar de Madrid. Pasa, huele el pan recién horneado y llévate algo rico para hoy.</p>
+        <p class="address">📍 Calle Santa Feliciana 10<br>28010 Madrid, España</p>
+        <div class="cta-row">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Alma+Nomad+Bakery+Calle+Santa+Feliciana+10+Madrid" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <button class="btn ghost" id="copyBtn" type="button">Copiar dirección</button>
+        </div>
+      </div>
+      <div class="card b reveal">
+        <h2>Síguenos y no te pierdas nada</h2>
+        <p>Horarios, novedades y fornadas especiales, siempre actualizados en nuestro Instagram. Escríbenos por mensaje directo si tienes dudas.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://www.instagram.com/almanomadbakery/" target="_blank" rel="noopener">@almanomadbakery</a>
+          <a class="btn ghost" href="https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid" target="_blank" rel="noopener">Nuestra historia</a>
+        </div>
+        <div class="collab">
+          <a href="https://www.instagram.com/pizzapronto___/" target="_blank" rel="noopener">@pizzapronto___</a>
+          <a href="https://www.instagram.com/almanomadfabrica/" target="_blank" rel="noopener">@almanomadfabrica</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#inicio"><i></i> Alma Nomad Bakery</a>
+      <small>© 2026 Concepto de landing page no oficial, sin vinculación con Alma Nomad Bakery. Contenido basado en su perfil público de Instagram y en la entrevista de Hype&amp;Hyper.</small>
+    </div>
+    <div class="links">
+      <a href="https://www.instagram.com/almanomadbakery/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid" target="_blank" rel="noopener">Hype&amp;Hyper</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const data = {
+    pan:{icon:'🍞',title:'Pan de masa madre ecológica',text:'El corazón del obrador: fermentación lenta, corteza crujiente y miga con carácter. Ideal para tus desayunos y comidas de la semana.',tags:['Masa madre','Ecológico','Artesano']},
+    dulce:{icon:'🥐',title:'Pastelería fina y bollería',text:'Brioche, scones, espirales de cacao y toques de amapola: sabores clásicos, de textura profunda y con un aire cálido de casa de la abuela.',tags:['Brioche','Cacao','Amapola']},
+    salado:{icon:'🧀',title:'Hojaldres y bollos salados',text:'Con quesos, jamones y embutidos locales. Perfectos para una comida rápida y deliciosa, o para llevar a un picnic.',tags:['Quesos locales','Jamón','Embutidos']},
+    sorpresa:{icon:'✨',title:'Pregunta por la fornada del día',text:'Los sabores van cambiando con la temporada. Entra, pregunta qué acaba de salir del horno y déjate aconsejar por el equipo.',tags:['De temporada','Novedades','Descubre']}
+  };
+  const result=document.getElementById('result');
+  function show(k){
+    result.classList.add('swap');
+    setTimeout(()=>{
+      const d=data[k];
+      document.getElementById('r-icon').textContent=d.icon;
+      document.getElementById('r-title').textContent=d.title;
+      document.getElementById('r-text').textContent=d.text;
+      document.getElementById('r-tags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
+      result.classList.remove('swap');
+    },220);
+  }
+  document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+    document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
+    c.setAttribute('aria-pressed','true');
+    show(c.dataset.k);
+  }));
+  // estado inicial
+  (function(){const d=data.pan;
+    document.getElementById('r-title').textContent=d.title;
+    document.getElementById('r-text').textContent=d.text;
+    document.getElementById('r-tags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');})();
+
+  // datos y interactividad de prensa
+  const pressData = {
+    elpais: {
+      quote: "«Una cocina sin artificios, donde la perfección está en los cimientos.»",
+      label: "El País · «Honesty is everything» →",
+      url: "https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid"
+    },
+    condenast: {
+      quote: "«Alma Nomad Bakery ha transformado la masa madre en un arte cotidiano en pleno centro de Madrid.»",
+      label: "Condé Nast Traveler · Descubrir más →",
+      url: "https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid"
+    },
+    vogue: {
+      quote: "«El rincón imprescindible para los amantes del buen hojaldre, la bollería delicada y el diseño honesto.»",
+      label: "Vogue España · Ver artículo →",
+      url: "https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid"
+    },
+    monocle: {
+      quote: "«A neighborhood bakery bringing Hungarian heritage and Spanish ingredients into perfect harmony.»",
+      label: "Monocle Magazine · Read feature →",
+      url: "https://hypeandhyper.com/honesty-is-everything-alma-nomad-bakery-in-madrid"
+    }
+  };
+
+  const quoteText = document.getElementById('press-quote-text');
+  const quoteLink = document.getElementById('press-quote-link');
+  const pressTabs = document.querySelectorAll('.press-tab');
+
+  pressTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      pressTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      const item = pressData[tab.dataset.press];
+      if (item) {
+        quoteText.style.opacity = '0';
+        setTimeout(() => {
+          quoteText.textContent = item.quote;
+          quoteLink.textContent = item.label;
+          quoteLink.href = item.url;
+          quoteText.style.opacity = '1';
+        }, 150);
+      }
+    });
+  });
+
+  // copiar dirección
+  const copyBtn=document.getElementById('copyBtn');
+  copyBtn.addEventListener('click',async()=>{
+    try{await navigator.clipboard.writeText('Alma Nomad Bakery, Calle Santa Feliciana 10, 28010 Madrid, España');copyBtn.textContent='¡Copiada! ✓'}
+    catch(e){copyBtn.textContent='Calle Santa Feliciana 10'}
+    setTimeout(()=>copyBtn.textContent='Copiar dirección',2200);
+  });
+
+  // aparición al hacer scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

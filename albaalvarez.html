@@ -37,16 +37,6 @@ header p{font-size:1.2rem;max-width:560px;margin:20px 0 32px}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
 .hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px);align-items:center}
 figure img{width:100%;height:auto;display:block;border-radius:28px;border:4px solid var(--ink);box-shadow:12px 12px 0 var(--ink)}
-.quiz{background:var(--w);border-radius:28px;padding:clamp(24px,4vw,40px);max-width:680px;border:3px solid var(--ink)}
-.qbar{height:10px;background:var(--g2);border-radius:99px;overflow:hidden;margin-bottom:20px}
-.qbar i{display:block;height:100%;width:0;background:var(--ink);transition:width .3s}
-.qs{font-family:Georgia,serif;font-size:clamp(1.3rem,3vw,1.8rem);margin-bottom:20px}
-.qa{display:flex;gap:12px;flex-wrap:wrap}
-.qa .btn{flex:1;min-width:130px;text-align:center}
-.qf{margin-top:20px;padding:16px 18px;border-radius:16px;background:var(--g2)}
-.qf b{display:block;margin-bottom:4px}
-.qf .btn{margin-top:14px}
-.big{font-family:Georgia,serif;font-size:3rem}
 .band{background:var(--ink);color:var(--g2);text-align:center;padding:18px 24px;font-weight:700;letter-spacing:.06em}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:32px}
 .card{background:var(--w);border-radius:24px;padding:28px}
@@ -199,15 +189,6 @@ footer a{color:var(--ink);font-weight:700}
   </div>
 </section>
 
-<section id="juego" class="alt-bg">
-  <h2>¿Mito o verdad? 🧠✨</h2>
-  <p>Poné a prueba lo que sabés sobre el cuidado de tu piel.</p>
-  <div class="quiz" style="margin-top:28px" aria-live="polite">
-    <div class="qbar"><i id="qb"></i></div>
-    <div id="qbody"></div>
-  </div>
-</section>
-
 <div class="final">
   <h2>¿Lista para tu turno?</h2>
   <p>Escribinos hoy y empezá tu cambio en San Juan Capital.</p>
@@ -236,37 +217,6 @@ function show(k){
 }
 document.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){show(c.dataset.k)})});
 show("laser");
-
-var Q=[
-{s:"Si me depilo seguido con cera o afeitadora, el vello sale más grueso.",a:false,e:"Mito. Afeitar o depilar no cambia el grosor real del vello; solo da esa sensación al volver a crecer."},
-{s:"El protector solar se usa todo el año, no solo en verano.",a:true,e:"Verdad. Los rayos UV están presentes también en invierno y en días nublados."},
-{s:"La depilación láser se realiza en varias sesiones.",a:true,e:"Verdad. El vello crece por ciclos, por eso se trabaja en sesiones. Cuántas necesitás se evalúa en cada caso."},
-{s:"Exfoliar el rostro todos los días es lo mejor para tener buena piel.",a:false,e:"Mito. El exceso de exfoliación puede irritar y debilitar la barrera protectora de la piel."},
-{s:"Reventar los granitos con las manos ayuda a que se vayan más rápido.",a:false,e:"Mito. Puede inflamar, infectar y dejar marcas. Mejor consultar con una profesional."}
-];
-var qi=0,qs=0;
-function qShow(){
-  var b=document.getElementById("qbody");
-  document.getElementById("qb").style.width=(qi/Q.length*100)+"%";
-  if(qi>=Q.length){
-    var m=qs>=4?"¡Sabés mucho de cuidado de la piel! 💎":qs>=2?"¡Vas muy bien! Hay cosas para descubrir ✨":"¡Hoy aprendiste algo nuevo! 💛";
-    b.innerHTML='<div class="big">'+qs+' / '+Q.length+'</div><p class="qs">'+m+'</p><p>En tu turno te asesoramos según tu piel y lo que buscás.</p><div class="qa" style="margin-top:16px"><a class="btn wa" href="https://wa.link/fkrk0e" target="_blank" rel="noopener">📲 Agenda tu turno</a><button class="btn alt" id="qr">Jugar de nuevo</button></div>';
-    document.getElementById("qr").onclick=function(){qi=0;qs=0;qShow()};
-    return;
-  }
-  b.innerHTML='<p style="font-size:.85rem;font-weight:700;letter-spacing:.08em">PREGUNTA '+(qi+1)+' DE '+Q.length+'</p><p class="qs">'+Q[qi].s+'</p><div class="qa"><button class="btn" id="qm">❌ Mito</button><button class="btn alt" id="qv" style="border-color:var(--ink)">✅ Verdad</button></div><div id="qf"></div>';
-  document.getElementById("qm").onclick=function(){qAns(false)};
-  document.getElementById("qv").onclick=function(){qAns(true)};
-}
-function qAns(v){
-  var ok=v===Q[qi].a;
-  if(ok)qs++;
-  document.getElementById("qm").disabled=true;
-  document.getElementById("qv").disabled=true;
-  document.getElementById("qf").innerHTML='<div class="qf"><b>'+(ok?"¡Correcto! 🎉":"Casi 💛")+'</b>'+Q[qi].e+'<br><button class="btn" id="qn">'+(qi===Q.length-1?"Ver resultado":"Siguiente →")+'</button></div>';
-  document.getElementById("qn").onclick=function(){qi++;qShow()};
-}
-qShow();
 </script>
 </body>
 </html>

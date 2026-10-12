@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>EasyLandX 2026</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;position:fixed;width:100%;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#stage{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab;
+background:radial-gradient(circle at 40px 60px,#fff 0,#fff .9px,transparent 1.4px),radial-gradient(circle at 120px 20px,#fff 0,#fff .7px,transparent 1.2px),radial-gradient(circle at 70px 150px,#fff 0,#fff 1.1px,transparent 1.6px),radial-gradient(circle at 200px 90px,#fff 0,#fff .8px,transparent 1.3px),radial-gradient(circle at 30px 240px,#fff 0,#fff 1px,transparent 1.5px),radial-gradient(circle at 250px 300px,#fff 0,#fff .7px,transparent 1.2px),linear-gradient(#0a1238,#0e1f5c 55%,#070d2b);
+background-size:131px 131px,173px 173px,211px 211px,257px 257px,307px 307px,353px 353px,100% 100%}
+#stage:active{cursor:grabbing}
+#world{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
+.p{position:absolute;left:-210px;top:-210px;width:420px;height:420px;display:flex;align-items:center;justify-content:center;text-align:center;
+backface-visibility:hidden;-webkit-backface-visibility:hidden;pointer-events:none}
+.p a{pointer-events:auto;cursor:pointer;text-decoration:none;-webkit-tap-highlight-color:transparent;font:700 46px/1.2 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#fff;text-shadow:0 0 14px rgba(255,255,255,.35)}
+.p b{font-weight:inherit}
+.p b.g{color:#ffe600;text-shadow:0 0 14px rgba(255,230,0,.5)}
+</style></head><body><div id="stage"><div id="world"></div></div>
+<script>
+var TXT=["Clarity turns *hesitation* into *action*.", "Make the *right choice* impossible to miss.", "When the *value is clear*, the *decision gets easier*.", "Earn the *yes*.", "Let people choose freely.", "The *strongest argument* is the one people understand instantly.", "Replace *uncertainty* with *evidence*.", "A *clear message* moves people forward.", "Make the *next step* feel natural.", "People act when the *reason is clear*.", "*Trust* is built one clear answer at a time.", "*Confusion delays decisions.*", "*Clarity unlocks them.*", "*Explain better.*", "*Explain better.*", "The best *persuasion* feels like *recognition*, not pressure.", "Give people a *reason to believe*—and a *reason to act*.", "Make the *benefit obvious* before asking for *commitment*.", "Every second should make the *value clearer*.", "Your *homepage* has one job: make the *next step obvious*.", "If visitors have to *guess*, they will *leave*.", "A great page answers the *question behind the click*.", "Make understanding your *value* effortless.", "Lead with *what matters to them*.", "Every *scroll* should earn the next.", "Make the *promise clear*.", "Make the *proof visible*.", "A strong *headline* earns *attention*; a clear *offer* earns *action*.", "Remove the *friction*.", "Reveal the *value*.", "The best *design* makes the important thing *impossible to miss*.", "A *website* should *guide*, not confuse.", "Less *noise*.", "More *meaning*.", "Better *decisions*.", "Show the *outcome*, not just the *features*.", "Turn a *first glance* into a *clear understanding*.", "*Trust* grows when *promises meet proof*.", "*Credibility* is built in the details.", "Say less.", "*Demonstrate more*.", "Make *claims you can prove*.", "People remember how clearly you helped them *decide*.", "*Transparency* is a *competitive advantage*.", "A *believable promise* beats a spectacular exaggeration.", "*Confidence* comes from *clarity, consistency, and proof*.", "Show your work.", "Let the *evidence speak*.", "*Trust* is earned before the *sale* and tested after it.", "*Attention* is borrowed.", "*Relevance* earns it.", "Say something worth *stopping for*.", "The right words make the right people feel *understood*.", "*One clear idea* beats *ten competing messages*.", "Prioritize so the important things stand out.", "Be *specific* enough to be remembered.", "Speak to the *problem people already want solved*.", "Make every sentence *pull its weight*.", "*Clarity cuts through noise*.", "The message that matters is the one people *remember*.", "Build what people *need*, not what you hope they want.", "*Test the idea* before you *scale the dream*.", "*Progress beats perfection* when learning is the goal.", "*Small teams* can make *big things happen*.", "Start *lean*.", "Learn *fast*.", "Improve *constantly*.", "A *setback* is *information*, if you use it.", "The market rewards *value*, not effort alone.", "Solve a *real problem* and explain the solution clearly.", "*Momentum* comes from *decisions followed by action*.", "Great businesses make life better in *measurable ways*.", "Start with the *customer*.", "Build from the *evidence*.", "A good idea becomes *valuable* when it works in the real world.", "*Focus* turns limited resources into *meaningful progress*.", "Start with a *smart experiment*.", "Run a *smart experiment*.", "*Consistency* turns a promising idea into a *reliable business*.", "*AI* can accelerate the work; *people* must define what matters.", "Let *machines handle repetition*.", "Let *people bring judgment*.", "*Technology* is powerful when it serves a *human purpose*.", "*AI expands possibilities*; *human choices* give them direction.", "*Automation saves time*.", "*Insight gives that time value*.", "The future belongs to people who learn to work with *new tools*.", "Use *AI to move faster*, not to *think less*.", "*Human creativity* gives *technology* its purpose.", "The best results combine *machine speed* with *human understanding*.", "Let *technology* do more of the routine, so people can do more of the *meaningful*.", "*Insight matters* when it changes what you do next.", "A *clear next step* turns *intention into progress*.", "Start *small*.", "Make it *real*.", "Improve as you go.", "The *first move* creates the information the plan cannot.", "Channel attention somewhere *useful*.", "Give it somewhere *useful* to go.", "Make *progress visible*."];
+var stage=document.getElementById('stage'),world=document.getElementById('world');
+var N=TXT.length,D=1000,fov=75,P=600,dirs=[],els=[];
+for(var i=0;i<N;i++){
+  var y=1-2*(i+.5)/N,el=Math.asin(y),th=i*2.399963;
+  var d=document.createElement('div');d.className='p';
+  var s=document.createElement('a'),g=false;s.href='https://easylandx.github.io/';s.target='_blank';s.rel='noopener';
+  TXT[i].split('*').forEach(function(part){if(part){var q=document.createElement('b');q.textContent=part;if(g)q.className='g';s.appendChild(q)}g=!g});
+  d.appendChild(s);
+  d.style.transform='rotateY('+th+'rad) rotateX('+(-el)+'rad) translateZ(-'+D+'px)';
+  world.appendChild(d);els.push(d);
+  dirs.push([-Math.cos(el)*Math.sin(th),-Math.sin(el),-Math.cos(el)*Math.cos(th)]);
+}
+function setP(){P=(innerHeight/2)/Math.tan(fov*Math.PI/360);stage.style.perspective=P+'px';stage.style.webkitPerspective=P+'px'}
+addEventListener('resize',setP);setP();
+var yaw=0,pitch=0,vx=0,vy=0,drag=false,lx=0,ly=0;
+function k(){return fov*Math.PI/180/innerHeight}
+var ptr={},pd0=0,pf0=75;document.addEventListener('gesturestart',function(e){e.preventDefault()});stage.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;vx=vy=0;ptr[e.pointerId]=[e.clientX,e.clientY];var ids=Object.keys(ptr);if(ids.length===2){var a=ptr[ids[0]],b=ptr[ids[1]];pd0=Math.hypot(a[0]-b[0],a[1]-b[1]);pf0=fov}try{stage.setPointerCapture(e.pointerId)}catch(_){}});
+stage.addEventListener('pointermove',function(e){if(!drag)return;if(ptr[e.pointerId])ptr[e.pointerId]=[e.clientX,e.clientY];var ids=Object.keys(ptr);if(ids.length>=2){var a=ptr[ids[0]],b=ptr[ids[1]],dd=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd0>0&&dd>0){fov=Math.min(100,Math.max(30,pf0*pd0/dd));setP()}vx=vy=0;return}
+  var dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
+  vx=-dx*k();vy=dy*k();yaw+=vx;pitch+=vy});
+function up(e){delete ptr[e.pointerId];pd0=0;var ids=Object.keys(ptr);if(ids.length===1){lx=ptr[ids[0]][0];ly=ptr[ids[0]][1]}else if(!ids.length)drag=false}
+stage.addEventListener('pointerup',up);stage.addEventListener('pointercancel',up);
+stage.addEventListener('touchmove',function(e){e.preventDefault()},{passive:false});
+stage.addEventListener('wheel',function(e){e.preventDefault();fov=Math.min(100,Math.max(30,fov+e.deltaY*.05));setP()},{passive:false});
+var tap=null;
+stage.addEventListener('pointerdown',function(e){tap={x:e.clientX,y:e.clientY,t:Date.now(),a:e.target.closest?e.target.closest('a'):null}});
+stage.addEventListener('pointerup',function(e){if(tap&&tap.a&&Math.hypot(e.clientX-tap.x,e.clientY-tap.y)<8&&Date.now()-tap.t<700)window.open(tap.a.href,'_blank','noopener');tap=null});
+function loop(){
+  requestAnimationFrame(loop);
+  if(!drag){yaw+=vx;pitch+=vy;vx*=.95;vy*=.95;if(Math.abs(vx)<.0004&&Math.abs(vy)<.0004)yaw+=.0006}
+  var L=Math.PI/2-.02;pitch=Math.max(-L,Math.min(L,pitch));
+  world.style.transform='translateZ('+P+'px) rotateX('+pitch+'rad) rotateY('+yaw+'rad)';
+  var f=[Math.cos(pitch)*Math.sin(yaw),-Math.sin(pitch),-Math.cos(pitch)*Math.cos(yaw)];
+  for(var i=0;i<N;i++){var a=dirs[i],dot=a[0]*f[0]+a[1]*f[1]+a[2]*f[2];els[i].style.visibility=dot>.1?'visible':'hidden'}
+  var s=(-yaw*P)+'px '+(pitch*P)+'px';stage.style.backgroundPosition=[s,s,s,s,s,s,'0 0'].join(',');
+}
+loop();
+</script></body></html>

@@ -547,66 +547,12 @@
       .hero-grid { grid-template-columns: 1fr; }
       .history-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 
-      /* Mobile header: keep requested navigation and buttons visible */
-      .nav-container {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        padding: 0.75rem 1rem;
-      }
-
-      .nav-container > div {
-        flex: 1 1 100%;
-        display: flex;
-        justify-content: center;
-      }
-
-      .site-logo { width: 165px; }
-
-      .nav-links {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        width: 100%;
-        gap: 0.6rem;
-        font-size: 0.9rem;
-      }
-
-      .nav-links li { min-width: 0; }
-
-      .nav-links li a:not(.btn) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 42px;
-        padding: 0.55rem 0.4rem;
-        text-align: center;
-        border-radius: 10px;
-        background: var(--bg-alt);
-      }
-
-      .nav-links .nav-action {
-        width: 100%;
-        min-height: 44px;
-        justify-content: center;
-        padding: 0.65rem 0.5rem;
-        white-space: nowrap;
-      }
-
       .footer-grid { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
       .form-field.full { grid-column: auto; }
       .membership-form { padding: 1.5rem; }
     }
 
-    @media (max-width: 420px) {
-      .nav-links {
-        gap: 0.45rem;
-        font-size: 0.82rem;
-      }
-
-      .nav-links .nav-action {
-        font-size: 0.82rem;
-      }
-    }
   
 
     /* ASPM reference redesign: warm sand surfaces, refined typography */
@@ -690,7 +636,42 @@
       .topbar-actions { width: 100%; justify-content: space-between; gap: 0.5rem; }
     }
 
-  </style>
+  
+/* ===== Header identical to aspm.html (same format, links and responsive behaviour) ===== */
+header{background:rgba(243,229,216,.96);border-bottom:1px solid rgba(32,55,70,.12);box-shadow:none}
+.nav-container{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;padding:.9rem 1.5rem}
+.nav-container > div{flex:0 0 auto;display:block}
+.site-logo{display:block;width:190px;height:auto;max-width:100%}
+.nav-links{display:flex;gap:1.8rem;align-items:center;list-style:none;color:#203746;font-weight:500;font-size:.95rem;letter-spacing:-.025em}
+.nav-links a:hover{color:var(--primary-light)}
+.nav-links .btn-outline{padding:.5rem 1rem}
+header .btn-primary{background-color:#C9000A;color:#FFF9F3}
+header .btn-primary:hover{background-color:#A90008;color:#FFF9F3}
+header .btn-outline{border:1.5px solid #203746;color:#203746;background:transparent}
+header .btn-outline:hover{background:#203746;color:#FFF9F3}
+@media (max-width:900px){
+  .nav-links{gap:.6rem;font-size:.85rem}
+  .nav-links .btn{padding:.5rem .9rem;white-space:nowrap}
+  .site-logo{width:165px}
+}
+@media (max-width:480px){
+  .nav-container{padding:.6rem .9rem;gap:.5rem}
+  .site-logo{width:100px}
+  .nav-links{gap:.4rem;font-size:.75rem}
+  .nav-links .btn{padding:.45rem .7rem;font-size:.75rem}
+}
+@media (max-width:600px){
+  .nav-container{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:.45rem;padding:.55rem .7rem}
+  .nav-container > div:first-child{flex:0 0 auto;width:auto;min-width:0}
+  .site-logo{display:block;width:clamp(92px,30vw,125px);max-width:100%;height:auto;flex-shrink:0}
+  .nav-links{flex:1 1 auto;min-width:0;width:auto;display:grid;grid-template-columns:repeat(2,max-content);justify-content:end;align-items:center;gap:.42rem .55rem;margin:0;padding:0;font-size:.72rem}
+  .nav-links li{min-width:0}
+  .nav-links li:nth-child(1),.nav-links li:nth-child(2){order:1}
+  .nav-links li:nth-child(3),.nav-links li:nth-child(4){order:2}
+  .nav-links a{white-space:nowrap}
+  .nav-links .btn{white-space:nowrap;padding:.36rem .48rem;font-size:.68rem}
+}
+</style>
 </head>
 <body>
 
@@ -717,8 +698,8 @@
       <ul class="nav-links">
         <li><a href="https://easylandx.github.io/web/junta.html">Junta Directiva</a></li>
         <li><a href="https://easylandx.github.io/web/noticias.html">Noticias</a></li>
-        <li><a href="https://easylandx.github.io/web/asociados.html" class="btn btn-outline nav-action">Área Privada</a></li>
-        <li><a href="#contacto" class="btn btn-primary nav-action">Hazte Socia</a></li>
+        <li><a href="https://easylandx.github.io/web/asociados.html" class="btn btn-outline">Área Privada</a></li>
+        <li><a href="#contacto" class="btn btn-primary">Hazte Socia</a></li>
       </ul>
     </div>
   </header>

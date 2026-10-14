@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rosisella | Nutricionista Clínico · Caracas y online</title>
+<meta name="description" content="Planes de alimentación personalizados según tu patología, de forma sencilla y científica. Consulta presencial en Caracas y online.">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f3faf5; --surface:#ffffff; --ink:#10281a; --muted:#4b6455;
+  --t1:#dff3e5; --t2:#bfe6cb; --t3:#2f8f56; --t4:#14532d; --on-t4:#f3faf5;
+  --line:#cfe5d6; --shadow:0 10px 30px rgba(20,83,45,.12);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0c1a12; --surface:#13271b; --ink:#e8f5ec; --muted:#9db8a8;
+    --t1:#17331f; --t2:#1f4a2d; --t3:#4cc17a; --t4:#8fe3b0; --on-t4:#0c1a12;
+    --line:#244633; --shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0c1a12; --surface:#13271b; --ink:#e8f5ec; --muted:#9db8a8;
+  --t1:#17331f; --t2:#1f4a2d; --t3:#4cc17a; --t4:#8fe3b0; --on-t4:#0c1a12;
+  --line:#244633; --shadow:0 10px 30px rgba(0,0,0,.4);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:max(24px,5vw)}
+section{padding-block:72px}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--t4);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--t4);color:var(--on-t4)}
+.btn.ghost{background:transparent;color:var(--t4)}
+.eyebrow{display:inline-block;background:var(--t2);color:var(--t4);padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:700;letter-spacing:.04em}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:12px}
+nav b{font-family:Georgia,serif;font-size:1.15rem}
+nav a.btn{padding:8px 18px;font-size:.9rem}
+
+.hero{background:linear-gradient(160deg,var(--t1),var(--bg) 70%)}
+.hero .wrap{display:grid;gap:40px;align-items:center}
+@media(min-width:820px){.hero .wrap{grid-template-columns:1.2fr .8fr}}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);color:var(--t4)}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.badge-card{background:var(--surface);border-radius:28px;padding:32px;box-shadow:var(--shadow);text-align:center}
+.badge-card .apple{font-size:4.5rem;display:block}
+.badge-card ul{list-style:none;padding:0;margin:18px 0 0;text-align:left}
+.badge-card li{padding:8px 0;border-top:1px solid var(--line)}
+
+.sel{background:var(--t2)}
+.sel h2,.how h2,.modal h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 28px}
+.chip{border:2px solid var(--t4);background:var(--surface);color:var(--t4);padding:10px 18px;border-radius:999px;font:inherit;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--t4);color:var(--on-t4)}
+.result{background:var(--surface);border-radius:24px;padding:28px;box-shadow:var(--shadow);border-left:8px solid var(--t3)}
+.result h3{color:var(--t4)}
+.result p{color:var(--muted);margin:0 0 18px}
+
+.steps{display:grid;gap:18px;margin-top:28px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{padding:26px;border-radius:22px}
+.step:nth-child(1){background:var(--t1)}
+.step:nth-child(2){background:var(--t2)}
+.step:nth-child(3){background:var(--t4);color:var(--on-t4)}
+.step .n{font-family:Georgia,serif;font-size:2.4rem;font-weight:700;opacity:.8}
+.step h3{font-size:1.2rem}
+.step p{margin:0}
+
+.modal{background:var(--t1)}
+.modal .grid{display:grid;gap:18px;margin-top:24px}
+@media(min-width:760px){.modal .grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.card .ic{font-size:2rem}
+.card h3{color:var(--t4);margin-top:.3em}
+
+.final{background:var(--t4);color:var(--on-t4);text-align:center}
+.final h2{font-size:clamp(1.8rem,4.5vw,2.8rem)}
+.final .btn.main{background:var(--on-t4);color:var(--t4);border-color:var(--on-t4)}
+.final .btn.ghost{color:var(--on-t4);border-color:var(--on-t4)}
+.final .cta{justify-content:center}
+
+footer{padding-block:28px;color:var(--muted);font-size:.9rem;text-align:center}
+footer a{margin-inline:8px}
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:#1fa855;color:#fff;border-radius:999px;padding:14px 20px;font-weight:700;text-decoration:none;box-shadow:var(--shadow)}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>🍎 Rosisella</b><a class="btn main" href="https://wa.me/message/UHOSYJFQ3WZCM1">Agenda</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow">NUTRICIONISTA CLÍNICO</span>
+    <h1 style="margin-top:.4em">Comer bien, según lo que tu cuerpo necesita.</h1>
+    <p class="lead">Te ayudo con planes de alimentación personalizados según tu patología, de forma sencilla y científica.</p>
+    <div class="cta">
+      <a class="btn main" href="https://wa.me/message/UHOSYJFQ3WZCM1">💚 Agenda por WhatsApp</a>
+      <a class="btn ghost" href="#objetivo">Descubre cómo te ayudo</a>
+    </div>
+  </div>
+  <div class="badge-card">
+    <span class="apple">🍎</span>
+    <h3>Consulta presencial y online</h3>
+    <ul><li>📍 Presencial en Caracas</li><li>💻 Online, desde donde estés</li><li>🔬 Enfoque clínico y científico</li></ul>
+  </div>
+</div></header>
+
+<section class="sel" id="objetivo"><div class="wrap">
+  <h2>¿Qué te gustaría mejorar?</h2>
+  <p>Elige una opción y mira cómo se adapta un plan a ti.</p>
+  <div class="chips" id="chips" role="group" aria-label="Elige tu objetivo"></div>
+  <div class="result" aria-live="polite">
+    <h3 id="rt"></h3><p id="rp"></p>
+    <a class="btn main" id="rb" href="https://wa.me/message/UHOSYJFQ3WZCM1">💚 Quiero mi plan</a>
+  </div>
+</div></section>
+
+<section class="how"><div class="wrap">
+  <h2>Así trabajamos juntas</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Escríbeme</h3><p>Cuéntame tu situación y agenda tu cita por WhatsApp.</p></div>
+    <div class="step"><div class="n">2</div><h3>Evaluación</h3><p>Revisamos tu historia clínica, hábitos y objetivos.</p></div>
+    <div class="step"><div class="n">3</div><h3>Tu plan</h3><p>Recibes un plan sencillo, hecho a tu medida y a tu patología.</p></div>
+  </div>
+</div></section>
+
+<section class="modal"><div class="wrap">
+  <h2>Elige cómo atenderte</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">📍</div><h3>Presencial en Caracas</h3><p>Consulta cara a cara, con valoración completa y seguimiento cercano.</p></div>
+    <div class="card"><div class="ic">💻</div><h3>Online</h3><p>La misma atención profesional, sin traslados y desde cualquier lugar.</p></div>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Empieza hoy a cuidar tu salud</h2>
+  <p>Escríbeme y agendamos tu consulta.</p>
+  <div class="cta">
+    <a class="btn main" href="https://wa.me/message/UHOSYJFQ3WZCM1">💚 WhatsApp</a>
+    <a class="btn ghost" href="https://www.instagram.com/nutricionista_rosisella/">Instagram</a>
+    <a class="btn ghost" href="https://linktr.ee/nutricionista_rosisella">Linktree</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <a href="https://www.instagram.com/nutricionista_rosisella/">@nutricionista_rosisella</a>·
+  <a href="https://linktr.ee/nutricionista_rosisella">linktr.ee/nutricionista_rosisella</a>
+  <p>La información de este sitio es orientativa y no sustituye una consulta nutricional.</p>
+</div></footer>
+
+<a class="fab" href="https://wa.me/message/UHOSYJFQ3WZCM1" aria-label="WhatsApp">💚 WhatsApp</a>
+
+<script>
+const data=[
+ ["Diabetes / glucosa","Plan para mantener tus niveles de glucosa estables, con comidas variadas y fáciles de preparar."],
+ ["Hipertensión","Alimentación que cuida tu presión arterial sin volver tu comida aburrida."],
+ ["Colesterol y triglicéridos","Ajustes claros y prácticos para mejorar tu perfil de lípidos."],
+ ["Bajar de peso","Un proceso sostenible, sin dietas extremas, adaptado a tu ritmo y tu salud."],
+ ["Problemas digestivos","Pautas para sentirte mejor con tu digestión, según lo que tu cuerpo tolera."],
+ ["Otra patología","Cuéntame tu caso: cada plan se diseña a la medida de tu diagnóstico."]
+];
+const chips=document.getElementById('chips'),rt=document.getElementById('rt'),rp=document.getElementById('rp'),rb=document.getElementById('rb');
+function pick(i){
+  [...chips.children].forEach((c,j)=>c.setAttribute('aria-pressed',j===i));
+  rt.textContent=data[i][0];rp.textContent=data[i][1];
+}
+data.forEach((d,i)=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=d[0];b.onclick=()=>pick(i);chips.appendChild(b)});
+pick(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Micaela Cúneo · Personal Trainer Online</title>
+<meta name="description" content="Rutinas personalizadas online. Entrená fácil, constante y con resultados. Cupos limitados cada semana.">
+<style>
+:root{
+  --bg:#f4f4f2;--surface:#ffffff;--ink:#0d0d0d;--muted:#5c5c5c;--line:#d9d9d6;--accent:#ff4d3d;--on-accent:#fff;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0b;--surface:#161616;--ink:#f5f5f2;--muted:#a3a3a0;--line:#2a2a2a}}
+:root[data-theme="dark"]{--bg:#0b0b0b;--surface:#161616;--ink:#f5f5f2;--muted:#a3a3a0;--line:#2a2a2a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Arial,system-ui,sans-serif;line-height:1.55;transition:background .3s}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding-inline:clamp(22px,6vw,48px)}
+a{color:inherit}
+header{display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+.logo{font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-size:15px}
+.logo b{color:var(--accent);transition:color .3s}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);padding:15px 26px;border-radius:999px;font-weight:800;text-decoration:none;transition:transform .15s,background .3s}
+.btn:hover{transform:translateY(-2px) scale(1.02)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.sm{padding:10px 18px;font-size:14px}
+.hero{padding-block:clamp(36px,8vw,90px) 56px}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--muted)}
+.tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px;animation:p 1.6s infinite;transition:background .3s}
+@keyframes p{50%{opacity:.25}}
+h1{font-size:clamp(40px,10vw,96px);line-height:.95;letter-spacing:-.04em;margin:22px 0;font-weight:900;text-transform:uppercase}
+h1 span{color:var(--accent);transition:color .3s}
+.lead{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.marq{overflow:hidden;border-block:1px solid var(--line);padding-block:14px;white-space:nowrap}
+.marq div{display:inline-block;animation:m 22s linear infinite;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+.marq span{margin-inline:22px}.marq span:nth-child(4n+1){color:var(--accent)}
+@keyframes m{to{transform:translateX(-50%)}}
+section{padding-block:clamp(48px,8vw,90px)}
+h2{font-size:clamp(28px,5vw,48px);letter-spacing:-.03em;line-height:1.05;margin:0 0 14px;text-transform:uppercase;font-weight:900}
+.sub{color:var(--muted);max-width:560px;margin:0 0 30px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px}
+.card .n{font-size:40px;font-weight:900;color:var(--accent);transition:color .3s;line-height:1}
+.card h3{margin:12px 0 6px;font-size:19px}.card p{margin:0;color:var(--muted);font-size:15px}
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,40px)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.chip{font:inherit;font-weight:700;cursor:pointer;background:transparent;color:var(--ink);border:2px solid var(--line);border-radius:999px;padding:12px 20px;transition:all .2s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.res{border-left:6px solid var(--accent);padding-left:20px;transition:border-color .3s}
+.res h3{font-size:clamp(22px,3.5vw,30px);margin:0 0 8px;text-transform:uppercase;letter-spacing:-.02em}
+.res ul{padding:0;margin:14px 0 22px;list-style:none}
+.res li{padding:7px 0;border-bottom:1px solid var(--line)}
+.res li::before{content:"✓ ";color:var(--accent);font-weight:900}
+.cupos{background:var(--ink);color:var(--bg);border-radius:28px;padding:clamp(26px,5vw,54px);text-align:center}
+.cupos h2{color:var(--bg)}.cupos p{max-width:520px;margin:0 auto 26px;opacity:.8}
+.cupos .btn{background:var(--accent)}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:800;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--accent);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin:10px 0 0}
+footer{padding-block:40px 60px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}
+.float{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Mica<b>Cúneo</b></div>
+    <a class="btn sm" href="https://wa.me/message/JLZXAD5DDLGYC1" target="_blank" rel="noopener">Pedir info</a>
+  </header>
+
+  <div class="hero">
+    <span class="tag"><i></i>Cupos limitados cada semana</span>
+    <h1>Entrená <span>fácil.</span><br>Sé constante.<br>Mirá resultados.</h1>
+    <p class="lead">Soy Micaela, personal trainer. Te armo una rutina personalizada online, adaptada a tu objetivo, tu tiempo y tu nivel. Sin vueltas, sin excusas.</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/message/JLZXAD5DDLGYC1" target="_blank" rel="noopener">Pedime info “RUTINA” 👇</a>
+      <a class="btn ghost" href="#objetivo">Descubrí tu plan</a>
+    </div>
+  </div>
+</div>
+
+<div class="marq" aria-hidden="true"><div>
+  <span>Rutinas personalizadas</span><span>Online</span><span>Constancia</span><span>Resultados</span><span>Rutinas personalizadas</span><span>Online</span><span>Constancia</span><span>Resultados</span><span>Rutinas personalizadas</span><span>Online</span><span>Constancia</span><span>Resultados</span><span>Rutinas personalizadas</span><span>Online</span><span>Constancia</span><span>Resultados</span>
+</div></div>
+
+<div class="wrap">
+  <section>
+    <h2>Cómo funciona</h2>
+    <p class="sub">Tres pasos y empezás a entrenar desde donde estés.</p>
+    <div class="grid">
+      <div class="card"><div class="n">01</div><h3>Escribime</h3><p>Mandame “RUTINA” por WhatsApp y charlamos de tu objetivo y tu disponibilidad.</p></div>
+      <div class="card"><div class="n">02</div><h3>Recibí tu plan</h3><p>Una rutina hecha a tu medida, clara y fácil de seguir, en tu celular.</p></div>
+      <div class="card"><div class="n">03</div><h3>Entrená y avanzá</h3><p>Seguimiento y ajustes para que mantengas la constancia y veas progreso.</p></div>
+    </div>
+  </section>
+
+  <section id="objetivo">
+    <h2>¿Cuál es tu objetivo?</h2>
+    <p class="sub">Elegí una opción y mirá cómo sería tu enfoque.</p>
+    <div class="quiz">
+      <div class="chips" role="group" aria-label="Objetivo">
+        <button class="chip" data-k="0" aria-pressed="true">🔥 Bajar grasa</button>
+        <button class="chip" data-k="1" aria-pressed="false">💪 Ganar fuerza</button>
+        <button class="chip" data-k="2" aria-pressed="false">✨ Tonificar</button>
+        <button class="chip" data-k="3" aria-pressed="false">🚀 Empezar de cero</button>
+      </div>
+      <div class="res" aria-live="polite">
+        <h3 id="rt"></h3>
+        <p id="rd" style="margin:0;color:var(--muted)"></p>
+        <ul id="rl"></ul>
+        <a class="btn" id="rc" href="https://wa.me/message/JLZXAD5DDLGYC1" target="_blank" rel="noopener">Quiero esta rutina</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cupos">
+      <h2>Cupos limitados</h2>
+      <p>Trabajo con un número reducido de personas cada semana para darte atención real. Escribime hoy y reservá tu lugar.</p>
+      <a class="btn" href="https://wa.me/message/JLZXAD5DDLGYC1" target="_blank" rel="noopener">Pedime info “RUTINA”</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Necesito equipamiento?</summary><p>Armamos la rutina según lo que tengas: gimnasio, casa o con poco material. Contame y lo adapto.</p></details>
+    <details><summary>¿Sirve si nunca entrené?</summary><p>Sí. Empezamos desde tu nivel, con ejercicios explicados y una progresión simple.</p></details>
+    <details><summary>¿Cómo pido información?</summary><p>Tocá cualquiera de los botones y escribime “RUTINA” por WhatsApp. Te respondo con los detalles.</p></details>
+  </section>
+
+  <footer>
+    <div><strong style="color:var(--ink)">Micaela Cúneo</strong> · Personal Trainer</div>
+    <nav>
+      <a href="https://www.instagram.com/micacuneo/" target="_blank" rel="noopener">Instagram @micacuneo</a>
+      <a href="https://wa.me/message/JLZXAD5DDLGYC1" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://linktr.ee/micacuneofit" target="_blank" rel="noopener">Linktree</a>
+    </nav>
+  </footer>
+</div>
+
+<a class="btn float" href="https://wa.me/message/JLZXAD5DDLGYC1" target="_blank" rel="noopener">WhatsApp 💬</a>
+
+<script>
+var D=[
+ {c:"#ff4d3d",t:"Plan quema-grasa",d:"Entrenamientos dinámicos para activar tu metabolismo y sostener el hábito.",l:["Fuerza + cardio combinados","3 a 5 sesiones por semana","Progresión semanal"]},
+ {c:"#3d7bff",t:"Plan de fuerza",d:"Construí músculo y potencia con una estructura clara y progresiva.",l:["Ejercicios base y técnica","Cargas que avanzan contigo","Trabajo por grupos musculares"]},
+ {c:"#a855f7",t:"Plan tonificación",d:"Definí y fortalecé tu cuerpo con rutinas variadas y efectivas.",l:["Tren superior e inferior","Core y glúteos","Sesiones de 40 a 60 min"]},
+ {c:"#12b886",t:"Plan primeros pasos",d:"Empezá fácil, con constancia, sin abrumarte y con buenos cimientos.",l:["Rutinas cortas y simples","Técnica paso a paso","Ritmo que se adapta a vos"]}
+];
+var chips=document.querySelectorAll(".chip");
+function pick(k){
+  var o=D[k];
+  document.documentElement.style.setProperty("--accent",o.c);
+  document.getElementById("rt").textContent=o.t;
+  document.getElementById("rd").textContent=o.d;
+  document.getElementById("rl").innerHTML=o.l.map(function(x){return "<li>"+x+"</li>"}).join("");
+  chips.forEach(function(c,i){c.setAttribute("aria-pressed",i==k)});
+}
+chips.forEach(function(c){c.addEventListener("click",function(){pick(+c.dataset.k)})});
+pick(0);
+</script>
+</body>
+</html>

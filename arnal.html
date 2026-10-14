@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adriana Arnal · Fuerza femenina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--paper:#faf7f2;--coral:#ff6b4a;--lime:#d4f25a;--lilac:#c9b8ff;--butter:#ffe48a;--accent:#ff6b4a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#161513}}
+:root[data-theme="dark"]{--paper:#161513}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;line-height:1.55}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{color:#faf7f2}}
+:root[data-theme="dark"] body{color:#faf7f2}
+section,header,footer{padding:clamp(48px,9vw,96px) clamp(22px,6vw,56px)}
+.in{max-width:1000px;margin:0 auto}
+h1,h2,h3{font-family:"Archivo Black",Impact,sans-serif;line-height:1.02;font-weight:400;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,10vw,6rem)}
+h2{font-size:clamp(1.9rem,6vw,3.4rem);margin-bottom:20px}
+.tag{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;border:2px solid currentColor;border-radius:99px;padding:6px 14px;margin-bottom:22px}
+.btn{display:inline-block;background:#111;color:#faf7f2;text-decoration:none;font-weight:700;padding:16px 28px;border-radius:99px;border:2px solid #111;transition:transform .15s,background .2s,color .2s;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn:hover{transform:translateY(-3px) rotate(-1deg)}
+.btn.o{background:transparent;color:#111}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero{background:var(--coral);color:#111;min-height:92vh;display:flex;align-items:center}
+.hero p{font-size:clamp(1.05rem,2.5vw,1.35rem);max-width:520px;margin-top:20px}
+.hero h1 span{display:block;-webkit-text-stroke:2px #111;color:transparent}
+.s2{background:var(--lime);color:#111}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:28px}
+.card{background:#111;color:#faf7f2;border-radius:24px;padding:26px}
+.card b{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:2.2rem;color:var(--lime);display:block}
+.card h3{font-size:1.25rem;margin:6px 0 8px}
+.s3{background:var(--lilac);color:#111}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{font:700 1rem "DM Sans",sans-serif;padding:12px 20px;border-radius:99px;border:2px solid #111;background:transparent;color:#111;cursor:pointer;transition:.15s}
+.chip[aria-pressed="true"]{background:#111;color:#faf7f2}
+.res{background:#faf7f2;color:#111;border-radius:28px;padding:clamp(22px,4vw,36px);border:3px solid #111;box-shadow:8px 8px 0 #111;margin-top:18px;transition:background .3s}
+.res h3{font-size:1.6rem;margin-bottom:8px}
+.res ul{margin:14px 0 6px 20px}
+.s4{background:var(--butter);color:#111}
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:24px}
+.steps li{list-style:none;counter-increment:s;display:flex;gap:18px;align-items:flex-start;background:#faf7f2;border-radius:20px;padding:20px}
+.steps li:before{content:counter(s);font-family:"Archivo Black",sans-serif;background:#111;color:var(--butter);min-width:44px;height:44px;border-radius:50%;display:grid;place-items:center}
+.cta{background:#111;color:#faf7f2;text-align:center}
+.cta h2{color:var(--lime)}
+.cta .btn{background:var(--coral);border-color:var(--coral);color:#111}
+.cta .btn.o{background:transparent;color:#faf7f2;border-color:#faf7f2}
+footer{background:#111;color:#faf7f2;opacity:.9;text-align:center;font-size:.9rem;padding-block:28px;border-top:1px solid #333}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<div class="in">
+<span class="tag">Coach · Preparadora física</span>
+<h1>Fuerza<span>femenina</span></h1>
+<p>Soy Adriana Arnal y te ayudo a ganar fuerza 🏋🏼‍♀️ Entrena conmigo, presencial u online, con un plan pensado para ti.</p>
+<div class="row">
+<a class="btn" href="https://forms.gle/bAKEcXQiaaxiy4Bd6" target="_blank" rel="noopener">Cuéntame tu objetivo →</a>
+<a class="btn o" href="https://www.instagram.com/adriana.arnall/" target="_blank" rel="noopener">@adriana.arnall</a>
+</div>
+</div>
+</header>
+
+<section class="s2">
+<div class="in">
+<span class="tag">Por qué entrenar conmigo</span>
+<h2>Fuerte por dentro y por fuera</h2>
+<div class="grid">
+<div class="card"><b>01</b><h3>Plan a tu medida</h3><p>Sin recetas genéricas: parto de tu objetivo, tu nivel y tu tiempo.</p></div>
+<div class="card"><b>02</b><h3>Técnica y seguridad</h3><p>Como docente y preparadora física, te enseño a moverte bien para progresar sin lesiones.</p></div>
+<div class="card"><b>03</b><h3>Presencial u online</h3><p>Tú eliges cómo entrenar, con el mismo acompañamiento cercano.</p></div>
+</div>
+</div>
+</section>
+
+<section class="s3">
+<div class="in">
+<span class="tag">Pruébalo</span>
+<h2>¿Cuál es tu objetivo?</h2>
+<p>Elige uno y mira por dónde empezaríamos.</p>
+<div class="chips" id="goals" role="group" aria-label="Objetivo"></div>
+<div class="chips" id="mode" role="group" aria-label="Modalidad"></div>
+<div class="res" id="res" aria-live="polite"></div>
+</div>
+</section>
+
+<section class="s4">
+<div class="in">
+<span class="tag">Así de fácil</span>
+<h2>Empezar es sencillo</h2>
+<ol class="steps">
+<li><div><strong>Cuéntame tu objetivo.</strong><br>Rellena el formulario, solo te llevará un par de minutos.</div></li>
+<li><div><strong>Diseñamos tu plan.</strong><br>Te propongo cómo entrenar según tu punto de partida.</div></li>
+<li><div><strong>Entrena y avanza.</strong><br>Te acompaño para que ganes fuerza semana a semana.</div></li>
+</ol>
+</div>
+</section>
+
+<section class="cta">
+<div class="in">
+<h2>Tu fuerza empieza hoy</h2>
+<p>Cuéntame qué quieres lograr y damos el primer paso juntas.</p>
+<div class="row" style="justify-content:center">
+<a class="btn" href="https://forms.gle/bAKEcXQiaaxiy4Bd6" target="_blank" rel="noopener">Quiero empezar →</a>
+<a class="btn o" href="https://www.instagram.com/adriana.arnall/" target="_blank" rel="noopener">Seguirme en Instagram</a>
+</div>
+</div>
+</section>
+
+<footer>© Adriana Arnal · Fuerza femenina · <a href="https://www.instagram.com/adriana.arnall/" target="_blank" rel="noopener">Instagram</a></footer>
+
+<script>
+var goals={
+"Ganar fuerza":{c:"#d4f25a",t:"Fuerza base",d:"Trabajamos los grandes patrones de movimiento con progresión clara para que cada semana levantes mejor.",l:["Técnica de sentadilla, bisagra y empuje/tracción","Progresión de cargas segura","Rutina de 2–4 días según tu agenda"]},
+"Tonificar":{c:"#ffe48a",t:"Cuerpo firme",d:"Combinamos fuerza y trabajo muscular para que te sientas firme, con energía y confianza.",l:["Fuerza por zonas y cuerpo completo","Ritmo ajustado a tu nivel","Hábitos sencillos que se mantienen"]},
+"Movilidad y postura":{c:"#c9b8ff",t:"Muévete sin dolor",d:"Mejoramos tu movilidad y control corporal para entrenar y vivir con más comodidad.",l:["Activación y movilidad guiada","Control de postura y core","Ejercicios fáciles de hacer en casa"]},
+"Empezar de cero":{c:"#ff9d85",t:"Primer paso",d:"Si nunca has entrenado, empezamos despacio y bien: aprendes los básicos y ganas seguridad.",l:["Fundamentos explicados paso a paso","Sesiones cortas y realistas","Acompañamiento cercano desde el día uno"]}};
+var modes=["Presencial","Online"],g="Ganar fuerza",m="Presencial";
+var G=document.getElementById("goals"),M=document.getElementById("mode"),R=document.getElementById("res");
+function chips(el,arr,cur,set){el.innerHTML="";arr.forEach(function(k){var b=document.createElement("button");b.className="chip";b.textContent=k;b.setAttribute("aria-pressed",k===cur);b.onclick=function(){set(k);render()};el.appendChild(b)})}
+function render(){
+chips(G,Object.keys(goals),g,function(k){g=k});
+chips(M,modes,m,function(k){m=k});
+var o=goals[g];
+R.style.background=o.c;
+R.innerHTML="<h3>"+o.t+" · "+m+"</h3><p>"+o.d+"</p><ul>"+o.l.map(function(x){return "<li>"+x+"</li>"}).join("")+"</ul><div class='row'><a class='btn' target='_blank' rel='noopener' href='https://forms.gle/bAKEcXQiaaxiy4Bd6'>Quiero esto →</a></div>";
+}
+render();
+</script>
+</body>
+</html>

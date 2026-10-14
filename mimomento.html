@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Momento · Pilates Reformer y Bienestar en Pamplona</title>
+<meta name="description" content="Studio Mi Momento: pilates reformer, bienestar y eventos wellness en Calle Aoiz 12, Pamplona.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g1:#f3f7f2;--g2:#e1ebdf;--g3:#c3d6c0;--g4:#8fb08b;--g5:#5b835a;--g6:#35573a;--g7:#1f3524;
+  --bg:var(--g1);--text:var(--g7);--muted:#4d6650;--card:#ffffff;--soft:var(--g2);--accent:var(--g6);--onaccent:#f3f7f2;
+  --pad:clamp(22px,6vw,72px);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#13201a;--text:#e8f0e6;--muted:#a9bfa9;--card:#1b2c22;--soft:#223629;--accent:#a9cba5;--onaccent:#13201a}}
+:root[data-theme="dark"]{--bg:#13201a;--text:#e8f0e6;--muted:#a9bfa9;--card:#1b2c22;--soft:#223629;--accent:#a9cba5;--onaccent:#13201a}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.65 'DM Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:var(--pad)}
+section{padding-block:clamp(56px,9vw,104px)}
+.btn{display:inline-block;background:var(--accent);color:var(--onaccent);padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:700;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--accent)}
+nav{display:flex;justify-content:space-between;align-items:center;padding-block:22px;gap:16px}
+.logo{font-family:'Fraunces',Georgia,serif;font-size:1.5rem}
+.logo i{color:var(--g5)}
+nav a.btn{padding:10px 20px;font-size:.95rem}
+.hero{background:linear-gradient(160deg,var(--g2),var(--g3) 55%,var(--g4));color:#1f3524;border-radius:0 0 48px 48px;overflow:hidden;position:relative}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{background:linear-gradient(160deg,#223629,#2c4a35 60%,#3b6044);color:#e8f0e6}}
+.hero .wrap{padding-block:clamp(48px,10vw,112px)}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:700;opacity:.75}
+.hero h1{font-size:clamp(2.6rem,8vw,5.4rem);margin:18px 0 22px;max-width:12ch}
+.hero h1 em{font-style:italic;color:var(--g6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero h1 em{color:#a9cba5}}
+.hero p{max-width:46ch;font-size:1.15rem}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero .btn{background:#1f3524;color:#f3f7f2}
+.hero .btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;animation:float 9s ease-in-out infinite}
+.o1{width:280px;height:280px;background:var(--g5);right:-60px;top:40px}
+.o2{width:160px;height:160px;background:var(--g1);right:22%;bottom:-40px;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-22px)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}html{scroll-behavior:auto}}
+h2{font-size:clamp(2rem,5vw,3.1rem);margin-bottom:14px}
+.lead{color:var(--muted);max-width:56ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}
+.chip{border:1.5px solid var(--g4);background:transparent;color:var(--text);padding:11px 22px;border-radius:999px;font:inherit;font-weight:500;cursor:pointer;transition:.2s}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--onaccent);border-color:var(--accent)}
+.result{background:var(--soft);border-radius:28px;padding:clamp(24px,4vw,40px);display:grid;gap:10px;min-height:190px}
+.result h3{font-size:1.8rem}
+.result p{margin:0;color:var(--muted);max-width:60ch}
+.result .btn{justify-self:start;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:36px}
+.card{border-radius:28px;padding:32px 28px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between}
+.card .n{font-family:'Fraunces',Georgia,serif;font-size:3rem;opacity:.5;line-height:1}
+.card h3{font-size:1.65rem;margin:12px 0 8px}
+.card p{margin:0;font-size:.98rem}
+.c1{background:var(--g3);color:#1f3524}.c2{background:var(--g5);color:#f3f7f2}.c3{background:var(--g7);color:#e1ebdf}
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:32px}
+.step{display:flex;gap:18px;align-items:flex-start;background:var(--card);border-radius:22px;padding:22px 24px}
+.step::before{counter-increment:s;content:counter(s);flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--onaccent);display:grid;place-items:center;font-weight:700}
+.step b{display:block}
+.step span{color:var(--muted)}
+.cta-band{background:var(--g6);color:#f3f7f2;border-radius:40px;padding:clamp(36px,7vw,72px);text-align:center}
+.cta-band h2{margin-inline:auto;max-width:16ch}
+.cta-band p{max-width:46ch;margin:0 auto 26px;opacity:.88}
+.cta-band .btn{background:#f3f7f2;color:#1f3524}
+.loc{display:grid;gap:8px;margin-top:20px}
+footer{padding-block:40px;color:var(--muted);font-size:.92rem;text-align:center}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="wrap">
+    <nav>
+      <span class="logo">Mi <i>Momento</i></span>
+      <a class="btn" href="https://www.instagram.com/studio.mimomento/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <p class="eyebrow">Pilates reformer · Bienestar · Pamplona</p>
+    <h1>Tu <em>momento</em> para ti</h1>
+    <p>Un estudio donde moverte, respirar y desconectar. Pilates reformer y experiencias wellness en pleno corazón de Pamplona.</p>
+    <div class="cta">
+      <a class="btn" href="https://www.instagram.com/studio.mimomento/" target="_blank" rel="noopener">Reserva tu clase</a>
+      <a class="btn ghost" href="#encuentra">Encuentra tu clase</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="encuentra"><div class="wrap">
+  <h2>¿Qué necesitas hoy?</h2>
+  <p class="lead">Elige lo que más te apetece y te contamos por dónde empezar.</p>
+  <div class="chips" role="group" aria-label="Objetivo">
+    <button class="chip" data-k="fuerza" aria-pressed="true">💪 Ganar fuerza</button>
+    <button class="chip" data-k="flex" aria-pressed="false">🧘 Flexibilidad</button>
+    <button class="chip" data-k="calma" aria-pressed="false">🌿 Calma y desconexión</button>
+    <button class="chip" data-k="grupo" aria-pressed="false">🎉 Plan en grupo</button>
+  </div>
+  <div class="result" aria-live="polite">
+    <h3 id="rt"></h3><p id="rp"></p>
+    <a class="btn" id="rb" href="https://www.instagram.com/studio.mimomento/" target="_blank" rel="noopener">Escríbenos por Instagram</a>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Lo que vivirás aquí</h2>
+  <div class="grid">
+    <article class="card c1"><span class="n">01</span><div><h3>Pilates reformer</h3><p>Trabajo guiado en máquina reformer: postura, fuerza profunda y control, adaptado a tu nivel.</p></div></article>
+    <article class="card c2"><span class="n">02</span><div><h3>Bienestar</h3><p>Un espacio para cuidarte con calma, de dentro hacia fuera, sin prisas.</p></div></article>
+    <article class="card c3"><span class="n">03</span><div><h3>Eventos wellness</h3><p>Encuentros y experiencias para compartir bienestar con tu gente.</p></div></article>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Empezar es fácil</h2>
+  <div class="steps">
+    <div class="step"><div><b>Escríbenos</b><span>Mándanos un mensaje por Instagram y cuéntanos qué buscas.</span></div></div>
+    <div class="step"><div><b>Elige tu clase</b><span>Te orientamos según tu objetivo y tu experiencia.</span></div></div>
+    <div class="step"><div><b>Ven a probar</b><span>Llega, respira y disfruta tu momento.</span></div></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="cta-band">
+    <h2>Reserva tu momento</h2>
+    <p>Plazas limitadas para que cada sesión se sienta cuidada. Escríbenos y te contamos todo.</p>
+    <a class="btn" href="https://www.instagram.com/studio.mimomento/" target="_blank" rel="noopener">@studio.mimomento</a>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Dónde encontrarnos</h2>
+  <div class="loc">
+    <p class="lead" style="margin:0">📍 Calle Aoiz 12, Pamplona</p>
+    <a class="btn ghost" style="justify-self:start" href="https://www.google.com/maps/search/?api=1&query=Calle+Aoiz+12+Pamplona" target="_blank" rel="noopener">Ver en el mapa</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Studio Mi Momento · Pamplona · <a href="https://www.instagram.com/studio.mimomento/" target="_blank" rel="noopener">Instagram</a></div></footer>
+
+<script>
+const D={
+fuerza:["Pilates reformer para ganar fuerza","Trabaja el core y la musculatura profunda con resistencia progresiva, con control y sin impacto."],
+flex:["Movilidad y flexibilidad","Alarga, suelta tensiones y gana rango de movimiento con ejercicios guiados en el reformer."],
+calma:["Un rato de calma y bienestar","Baja el ritmo, conecta con tu respiración y sal del estudio más ligera."],
+grupo:["Eventos wellness para compartir","Reúne a tus amigas o a tu equipo y viváis una experiencia de bienestar juntas."]};
+const t=document.getElementById('rt'),p=document.getElementById('rp');
+function show(k){t.textContent=D[k][0];p.textContent=D[k][1].replace(/\u200b/g,'');
+document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===k))}
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>show(c.dataset.k)));
+show('fuerza');
+</script>
+</body>
+</html>

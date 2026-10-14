@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sinerkia Fisioterapia · Clínica en Tres Cantos</title>
+<meta name="description" content="Clínica de fisioterapia en Tres Cantos: terapia manual, ejercicio terapéutico, INDIBA y ecografía musculoesquelética. Pide cita por WhatsApp.">
+<style>
+:root{
+  --bg:#f6f6f4;--surface:#ffffff;--ink:#141414;--muted:#5d5d5a;--line:#e3e3df;
+  --accent:#ff5a36;--accent-ink:#ffffff;--soft:#ffe4dc;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f0f0e;--surface:#1a1a18;--ink:#f4f4f1;--muted:#a3a39e;--line:#2b2b28;--soft:#2a1b17}
+}
+:root[data-theme="dark"]{--bg:#0f0f0e;--surface:#1a1a18;--ink:#f4f4f1;--muted:#a3a39e;--line:#2b2b28;--soft:#2a1b17}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;transition:background .3s}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:1.15rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--accent);transition:background .4s}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;transition:transform .15s,background .4s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.hero{padding:72px 0 56px}
+.tag{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--soft);font-size:.85rem;font-weight:700;transition:background .4s}
+h1{font-size:clamp(2.3rem,7vw,4.6rem);line-height:1.04;letter-spacing:-.035em;margin:18px 0}
+h1 em{font-style:normal;color:var(--accent);transition:color .4s}
+.lead{font-size:1.15rem;color:var(--muted);max-width:620px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:48px}
+.stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--surface);font-weight:700}
+.stat span{display:block;font-weight:400;color:var(--muted);font-size:.9rem}
+section{padding:56px 0}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem);letter-spacing:-.025em;margin:0 0 10px;line-height:1.1}
+.sub{color:var(--muted);margin:0 0 30px;max-width:560px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{padding:26px;border-radius:22px;border:1px solid var(--line);background:var(--surface);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card i{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;font-style:normal;font-size:1.3rem;margin-bottom:14px;color:#fff}
+.card h3{margin:0 0 6px}.card p{margin:0;color:var(--muted);font-size:.95rem}
+.c1 i{background:#ff5a36}.c2 i{background:#2e7df6}.c3 i{background:#12a36e}.c4 i{background:#9b5cf6}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,40px)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 24px}
+.chip{padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-size:.98rem;font-weight:600;transition:all .2s}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.result{padding:22px;border-radius:18px;background:var(--soft);transition:background .4s}
+.result h3{margin:0 0 6px}.result p{margin:0 0 16px;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;counter-reset:s}
+.step{padding:22px;border-top:3px solid var(--ink)}
+.step b{display:block;font-size:2rem;letter-spacing:-.03em;color:var(--accent);transition:color .4s}
+.contact{background:var(--ink);color:var(--bg);border-radius:32px;padding:clamp(28px,6vw,60px);margin-bottom:56px}
+.contact h2{color:var(--bg)}.contact p{opacity:.8;max-width:520px}
+.contact .btn.ghost{color:var(--bg);border-color:var(--bg)}
+footer{padding:0 0 40px;color:var(--muted);font-size:.9rem}
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#top"><span class="dot"></span>Sinerkia</a>
+  <a class="btn" href="https://wa.me/34684741268?text=Hola%2C%20quiero%20pedir%20cita%20en%20Sinerkia%20Fisioterapia" target="_blank" rel="noopener">Pedir cita</a>
+</div></header>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <span class="tag">Fisioterapia en Tres Cantos</span>
+    <h1>Muévete sin dolor. <em>Vuelve a hacer lo que te gusta.</em></h1>
+    <p class="lead">Terapia manual, ejercicio terapéutico y tecnología INDIBA con ecografía musculoesquelética para saber exactamente qué te pasa y cómo tratarlo.</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/34684741268?text=Hola%2C%20quiero%20pedir%20cita%20en%20Sinerkia%20Fisioterapia" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      <a class="btn ghost" href="https://www.instagram.com/sinerkiafisio/" target="_blank" rel="noopener">@sinerkiafisio</a>
+    </div>
+    <div class="stats">
+      <div class="stat">Terapia manual<span>Tratamiento personalizado</span></div>
+      <div class="stat">INDIBA<span>Tecnología avanzada</span></div>
+      <div class="stat">Ecografía<span>Diagnóstico visual</span></div>
+      <div class="stat">Cita rápida<span>Por DM o WhatsApp</span></div>
+    </div>
+  </div>
+
+  <section id="servicios">
+    <h2>Cómo te ayudamos</h2>
+    <p class="sub">Cuatro herramientas combinadas en un plan hecho para ti.</p>
+    <div class="grid">
+      <div class="card c1"><i>✋</i><h3>Terapia manual</h3><p>Técnicas manuales para aliviar dolor, soltar tensión y recuperar movilidad.</p></div>
+      <div class="card c2"><i>🏋</i><h3>Ejercicio terapéutico</h3><p>Pautas de ejercicio adaptadas para que los resultados duren.</p></div>
+      <div class="card c3"><i>⚡</i><h3>Tecnología INDIBA</h3><p>Radiofrecuencia para favorecer la recuperación de tejidos y reducir el dolor.</p></div>
+      <div class="card c4"><i>🔍</i><h3>Ecografía musculoesquelética</h3><p>Vemos músculos, tendones y articulaciones para afinar el tratamiento.</p></div>
+    </div>
+  </section>
+
+  <section id="orienta">
+    <div class="tool">
+      <h2>¿Dónde te duele?</h2>
+      <p class="sub">Elige tu zona y te decimos por dónde podríamos empezar.</p>
+      <div class="chips" id="chips" role="group" aria-label="Zona del dolor"></div>
+      <div class="result" id="result" aria-live="polite">
+        <h3>Selecciona una zona</h3>
+        <p>Te mostraremos una orientación y podrás pedir cita con el mensaje ya escrito.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Así de fácil</h2>
+    <p class="sub">Sin complicaciones desde el primer mensaje.</p>
+    <div class="steps">
+      <div class="step"><b>01</b>Escríbenos por WhatsApp o DM.</div>
+      <div class="step"><b>02</b>Valoramos tu caso, con ecografía si hace falta.</div>
+      <div class="step"><b>03</b>Empezamos tu plan de recuperación.</div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>Pide tu cita hoy</h2>
+    <p>Avenida de Viñuelas 13, Tres Cantos, Madrid 28760.<br>WhatsApp: 684 74 12 68</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/34684741268?text=Hola%2C%20quiero%20pedir%20cita%20en%20Sinerkia%20Fisioterapia" target="_blank" rel="noopener">WhatsApp 684 74 12 68</a>
+      <a class="btn ghost" href="https://www.instagram.com/sinerkiafisio/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </section>
+</div>
+</main>
+<footer><div class="wrap">© Sinerkia Fisioterapia · Tres Cantos</div></footer>
+<a class="btn wa" href="https://wa.me/34684741268?text=Hola%2C%20quiero%20pedir%20cita%20en%20Sinerkia%20Fisioterapia" target="_blank" rel="noopener" aria-label="WhatsApp">💬 WhatsApp</a>
+
+<script>
+const zonas=[
+ {n:"Cuello y espalda",c:"#ff5a36",s:"#ffe4dc",t:"Terapia manual + ejercicio terapéutico",d:"Ideal para tensión, sobrecargas y dolor por postura. Trabajamos la zona y te damos pautas para mantener el resultado."},
+ {n:"Hombro",c:"#2e7df6",s:"#dce9ff",t:"Ecografía + terapia manual",d:"La ecografía nos ayuda a ver tendones y bursas para elegir el tratamiento más preciso."},
+ {n:"Rodilla",c:"#12a36e",s:"#d7f4e8",t:"INDIBA + ejercicio terapéutico",d:"Combinamos tecnología para la recuperación del tejido con ejercicio para fortalecer y estabilizar."},
+ {n:"Pie y tobillo",c:"#9b5cf6",s:"#ebe0ff",t:"Terapia manual + INDIBA",d:"Pensado para esguinces, fascitis y sobrecargas al caminar o correr."},
+ {n:"Lesión deportiva",c:"#f2a900",s:"#fff0c7",t:"Valoración completa + plan de vuelta",d:"Ecografía, tratamiento y ejercicio para volver a entrenar con confianza."}
+];
+const chips=document.getElementById('chips'),res=document.getElementById('result'),root=document.documentElement;
+zonas.forEach((z,i)=>{
+ const b=document.createElement('button');b.className='chip';b.textContent=z.n;b.setAttribute('aria-pressed','false');
+ b.onclick=()=>{
+  chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+  root.style.setProperty('--accent',z.c);root.style.setProperty('--soft',z.s);
+  const msg=encodeURIComponent('Hola, tengo molestias en: '+z.n.toLowerCase()+'. Quiero pedir cita en Sinerkia Fisioterapia.');
+  res.innerHTML='<h3></h3><p></p><a class="btn" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>';
+  res.querySelector('h3').textContent=z.t;
+  res.querySelector('p').textContent=z.d;
+  res.querySelector('a').href='https://wa.me/34684741268?text='+msg;
+ };
+ chips.appendChild(b);
+});
+</script>
+</body>
+</html>

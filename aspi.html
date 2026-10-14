@@ -152,8 +152,11 @@ footer{background:#20394A;color:#E5D9D0}
   pointer-events:none;
 }
 /* Keep the photo fully visible and prevent a dark/transparent overlay. */
+/* Mobile: the same photo was drawn twice (background + inline <img>), offset from each other, which looked like a glitch.
+   On small screens only the inline image is shown, in normal flow. */
 @media(max-width:900px){
-  .hero::before{width:100%;background-size:contain;background-position:left top;opacity:1}
+  .hero::before{display:none}
+  .hero-aspi-image{width:100%;max-width:420px;height:auto;margin:0 auto 1.5rem;object-fit:contain}
 }
 
 /* Topbar y footer idénticos a ASPM */

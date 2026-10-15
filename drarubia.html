@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dra. Rubia Villalobos Brito | Medicina Estética en Caracas</title>
+<meta name="description" content="Médico Estético y Anestesiólogo en Caracas, Venezuela. Te ayudo a exteriorizar tu belleza interior. Agenda tu valoración.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --p50:#FFF1F8;
+    --p100:#FFE0F0;
+    --p200:#FFC2E1;
+    --p300:#FF99CE;
+    --p400:#FF63B4;
+    --p500:#FF2E9A;
+    --p600:#E5127F;
+    --p700:#B80A63;
+    --ink:#5A0537;
+    --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--p50);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  h1,h2,h3{font-family:'Fraunces',serif;line-height:1.1}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,241,248,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--p200)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:var(--p600)}
+  .logo span{color:var(--ink)}
+  .nav-links{display:flex;gap:26px;align-items:center;font-weight:700;font-size:.92rem}
+  .nav-links a:hover{color:var(--p500)}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:800;font-size:1rem;border:none;cursor:pointer;transition:.25s;font-family:inherit}
+  .btn-main{background:var(--p500);color:#fff;box-shadow:0 10px 28px rgba(255,46,154,.45)}
+  .btn-main:hover{background:var(--p600);transform:translateY(-3px);box-shadow:0 16px 34px rgba(255,46,154,.55)}
+  .btn-light{background:#fff;color:var(--p600)}
+  .btn-light:hover{transform:translateY(-3px);background:var(--p100)}
+  .btn-line{background:transparent;color:var(--p600);border:2px solid var(--p500)}
+  .btn-line:hover{background:var(--p500);color:#fff}
+  .nav-cta{padding:10px 20px;font-size:.9rem}
+
+  /* HERO */
+  .hero{position:relative;background:linear-gradient(135deg,var(--p100),var(--p200));padding:84px 0 96px;overflow:hidden}
+  .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;animation:float 9s ease-in-out infinite}
+  .b1{width:340px;height:340px;background:var(--p300);top:-90px;right:-80px}
+  .b2{width:200px;height:200px;background:var(--p400);bottom:-60px;left:-50px;animation-delay:-3s}
+  .b3{width:90px;height:90px;background:var(--p500);top:40%;left:46%;animation-delay:-6s;opacity:.35}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative;z-index:2}
+  .tag{display:inline-block;background:#fff;color:var(--p600);font-weight:800;font-size:.82rem;padding:8px 16px;border-radius:999px;letter-spacing:.04em;margin-bottom:22px;box-shadow:0 4px 14px rgba(229,18,127,.15)}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,4.1rem);color:var(--ink);margin-bottom:20px}
+  .hero h1 em{color:var(--p500);font-style:italic}
+  .hero p.lead{font-size:1.15rem;max-width:520px;margin-bottom:32px;color:var(--p700)}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+  .card-hero{background:var(--p500);color:#fff;border-radius:32px;padding:38px 32px;box-shadow:0 30px 60px rgba(229,18,127,.35);transform:rotate(2deg);position:relative}
+  .card-hero .spark{font-size:2.4rem;margin-bottom:10px}
+  .card-hero h3{font-size:1.7rem;margin-bottom:14px}
+  .card-hero ul{list-style:none;display:grid;gap:10px;font-weight:700}
+  .card-hero li::before{content:"✦ ";color:var(--p100)}
+  .card-hero small{display:block;margin-top:20px;opacity:.9}
+
+  /* SECTIONS */
+  section{padding:88px 0}
+  .kicker{color:var(--p500);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px}
+  h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px}
+  .sec-head{max-width:640px;margin-bottom:46px}
+  .sec-head p{font-size:1.05rem;color:var(--p700)}
+
+  /* ABOUT */
+  .about{background:#fff}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .about-visual{background:linear-gradient(160deg,var(--p400),var(--p600));border-radius:40px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:30px;position:relative;box-shadow:0 24px 50px rgba(229,18,127,.3)}
+  .about-visual .mono{font-family:'Fraunces',serif;font-size:7rem;font-weight:700;line-height:1}
+  .about-visual p{font-weight:700;margin-top:12px}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+  .pill{background:var(--p100);color:var(--p700);font-weight:700;padding:9px 16px;border-radius:999px;font-size:.9rem}
+
+  /* SERVICES */
+  .services{background:var(--p100)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .svc{background:#fff;border-radius:28px;padding:30px 26px;transition:.3s;border:2px solid transparent}
+  .svc:hover{transform:translateY(-8px);border-color:var(--p400);box-shadow:0 18px 40px rgba(255,46,154,.22)}
+  .svc .ico{width:54px;height:54px;border-radius:16px;background:var(--p500);color:#fff;display:grid;place-items:center;font-size:1.5rem;margin-bottom:18px}
+  .svc h3{font-size:1.3rem;margin-bottom:8px}
+  .svc p{color:var(--p700);font-size:.96rem}
+
+  /* QUIZ */
+  .quiz{background:var(--p500);color:#fff;position:relative;overflow:hidden}
+  .quiz .kicker{color:var(--p100)}
+  .quiz .sec-head p{color:#fff;opacity:.95}
+  .quiz-box{background:#fff;color:var(--ink);border-radius:32px;padding:36px;max-width:820px;box-shadow:0 30px 60px rgba(90,5,55,.25)}
+  .quiz-box h3{font-size:1.5rem;margin-bottom:20px}
+  .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .opt{background:var(--p50);border:2px solid var(--p200);border-radius:18px;padding:18px;font-weight:800;font-size:1rem;cursor:pointer;text-align:left;color:var(--ink);font-family:inherit;transition:.2s}
+  .opt:hover{border-color:var(--p500);background:var(--p100);transform:scale(1.02)}
+  .progress{height:8px;background:var(--p100);border-radius:99px;margin-bottom:24px;overflow:hidden}
+  .progress i{display:block;height:100%;width:33%;background:var(--p500);border-radius:99px;transition:.4s}
+  .result{display:none;animation:pop .45s}
+  .result.show{display:block}
+  .result .badge{display:inline-block;background:var(--p500);color:#fff;font-weight:800;padding:6px 14px;border-radius:99px;font-size:.8rem;margin-bottom:12px}
+  .result p{margin:12px 0 22px;color:var(--p700)}
+  .result .acts{display:flex;gap:12px;flex-wrap:wrap}
+  .restart{background:none;border:none;color:var(--p600);font-weight:800;cursor:pointer;font-family:inherit;font-size:.95rem;text-decoration:underline;padding:14px 6px}
+  @keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  /* STEPS */
+  .steps{background:#fff}
+  .step{background:var(--p50);border-radius:28px;padding:30px 26px;position:relative;border:2px solid var(--p200)}
+  .step .n{font-family:'Fraunces',serif;font-size:3.4rem;font-weight:700;color:var(--p400);line-height:1;margin-bottom:10px}
+  .step h3{font-size:1.25rem;margin-bottom:6px}
+  .step p{color:var(--p700);font-size:.96rem}
+
+  /* FAQ */
+  .faq{background:var(--p200)}
+  .faq-list{max-width:780px;display:grid;gap:12px}
+  details{background:#fff;border-radius:20px;padding:20px 24px;cursor:pointer;transition:.2s}
+  details[open]{box-shadow:0 10px 26px rgba(229,18,127,.2)}
+  summary{font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--p500);font-size:1.5rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:12px;color:var(--p700)}
+
+  /* CTA */
+  .cta{background:linear-gradient(135deg,var(--p400),var(--p600));color:#fff;text-align:center}
+  .cta h2{max-width:720px;margin:0 auto 16px}
+  .cta p{max-width:560px;margin:0 auto 32px;font-size:1.1rem}
+  .cta .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{background:var(--p300);color:var(--ink);padding:36px 0;text-align:center;font-weight:700}
+  footer a{color:var(--p700);text-decoration:underline}
+  footer small{display:block;margin-top:8px;font-weight:500}
+
+  /* FLOATING WA */
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--p500);color:#fff;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;box-shadow:0 10px 30px rgba(229,18,127,.6);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,46,154,.6)}70%{box-shadow:0 0 0 22px rgba(255,46,154,0)}100%{box-shadow:0 0 0 0 rgba(255,46,154,0)}}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:.7s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .hero-grid,.about-grid{grid-template-columns:1fr}
+    .grid3{grid-template-columns:1fr}
+    .nav-links a:not(.btn){display:none}
+    .card-hero{transform:none}
+    .opts{grid-template-columns:1fr}
+    .quiz-box{padding:26px 20px}
+    .about-visual{aspect-ratio:auto;padding:50px 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#inicio" class="logo">Dra. Rubia <span>Villalobos</span></a>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#test">Test</a>
+      <a href="#faq">Preguntas</a>
+      <a class="btn btn-main nav-cta" href="https://wa.link/5mez93" target="_blank" rel="noopener">Agendar</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">✨ MEDICINA ESTÉTICA · CARACAS</span>
+      <h1>Te ayudo a exteriorizar tu <em>belleza interior</em></h1>
+      <p class="lead">Medicina estética con enfoque médico, seguro y personalizado. Resalta lo mejor de ti con una profesional que cuida cada detalle.</p>
+      <div class="hero-btns">
+        <a class="btn btn-main" href="https://wa.link/5mez93" target="_blank" rel="noopener">📱 Agenda tu valoración</a>
+        <a class="btn btn-line" href="#test">Descubre qué te conviene</a>
+      </div>
+    </div>
+    <aside class="card-hero reveal">
+      <div class="spark">💕</div>
+      <h3>Tu valoración, a tu medida</h3>
+      <ul>
+        <li>Médico Estético y Anestesiólogo</li>
+        <li>Atención personalizada</li>
+        <li>Resultados naturales</li>
+        <li>Caracas, Venezuela 🇻🇪</li>
+      </ul>
+      <small>CEO de @33medicalclinic</small>
+    </aside>
+  </div>
+</header>
+
+<section class="about" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <div>
+        <div class="mono">RV</div>
+        <p>Dra. Rubia Villalobos Brito</p>
+        <p style="font-weight:500;opacity:.9">Medicina Estética</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="kicker">Sobre mí</div>
+      <h2>Ciencia médica y sensibilidad estética</h2>
+      <p>Soy médico estético y anestesióloga. Esa combinación me permite cuidar tu seguridad y tu comodidad en cada paso, buscando siempre resultados armoniosos que respeten tu esencia.</p>
+      <div class="pills">
+        <span class="pill">👩🏻‍⚕️ Médico Estético</span>
+        <span class="pill">💉 Anestesiólogo</span>
+        <span class="pill">🏥 CEO @33medicalclinic</span>
+        <span class="pill">📍 Caracas</span>
+      </div>
+      <a class="btn btn-main" href="https://www.instagram.com/dra.rubiavillalobos/" target="_blank" rel="noopener">Conóceme en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="tratamientos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Tratamientos</div>
+      <h2>Áreas que puedes consultar</h2>
+      <p>Cada plan se define en tu valoración personal. Consulta disponibilidad y opciones directamente conmigo.</p>
+    </div>
+    <div class="grid3">
+      <div class="svc reveal"><div class="ico">✨</div><h3>Rostro</h3><p>Armonización y cuidado facial para realzar tus rasgos de forma natural.</p></div>
+      <div class="svc reveal"><div class="ico">🌸</div><h3>Piel</h3><p>Tratamientos para mejorar luminosidad, textura y calidad de tu piel.</p></div>
+      <div class="svc reveal"><div class="ico">💎</div><h3>Rejuvenecimiento</h3><p>Opciones médicas para lucir descansada y fresca, sin perder tu expresión.</p></div>
+      <div class="svc reveal"><div class="ico">💋</div><h3>Detalles que enamoran</h3><p>Definición y volumen sutil en zonas clave, con criterio médico.</p></div>
+      <div class="svc reveal"><div class="ico">🩺</div><h3>Valoración médica</h3><p>Evaluación individual para recomendarte lo que realmente necesitas.</p></div>
+      <div class="svc reveal"><div class="ico">💕</div><h3>Plan personalizado</h3><p>Un camino a tu ritmo, con seguimiento y acompañamiento cercano.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quiz" id="test">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Test interactivo</div>
+      <h2>¿Por dónde empezar?</h2>
+      <p>Responde 2 preguntas rápidas y descubre qué conversar en tu valoración.</p>
+    </div>
+    <div class="quiz-box reveal">
+      <div class="progress"><i id="bar"></i></div>
+
+      <div id="q1">
+        <h3>1. ¿Qué te gustaría mejorar primero?</h3>
+        <div class="opts">
+          <button class="opt" data-a="rostro">✨ Mi rostro</button>
+          <button class="opt" data-a="piel">🌸 La calidad de mi piel</button>
+          <button class="opt" data-a="rejuv">💎 Verme más descansada</button>
+          <button class="opt" data-a="detalle">💋 Un detalle puntual</button>
+        </div>
+      </div>
+
+      <div id="q2" style="display:none">
+        <h3>2. ¿Qué tipo de resultado buscas?</h3>
+        <div class="opts">
+          <button class="opt" data-b="natural">🌿 Muy natural y sutil</button>
+          <button class="opt" data-b="notable">🔥 Un cambio más notable</button>
+        </div>
+      </div>
+
+      <div id="res" class="result">
+        <span class="badge">TU PUNTO DE PARTIDA</span>
+        <h3 id="rt"></h3>
+        <p id="rp"></p>
+        <div class="acts">
+          <a class="btn btn-main" href="https://wa.link/5mez93" target="_blank" rel="noopener">📱 Hablar por WhatsApp</a>
+          <button class="restart" id="again">Repetir test</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Cómo funciona</div>
+      <h2>Tres pasos hacia tu mejor versión</h2>
+    </div>
+    <div class="grid3">
+      <div class="step reveal"><div class="n">1</div><h3>Escríbeme</h3><p>Contáctame por WhatsApp y cuéntame qué te gustaría mejorar.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Valoración</h3><p>Evaluamos tu caso y definimos opciones seguras y adecuadas para ti.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Tu plan</h3><p>Avanzamos con un plan personalizado y acompañamiento cercano.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Preguntas frecuentes</div>
+      <h2>Resuelve tus dudas</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details><summary>¿Dónde atiendes?</summary><p>En Caracas, Venezuela. Escríbeme por WhatsApp para confirmar ubicación y disponibilidad.</p></details>
+      <details><summary>¿Cómo agendo mi valoración?</summary><p>Haz clic en cualquiera de los botones de WhatsApp de esta página y coordinamos tu cita.</p></details>
+      <details><summary>¿Qué tratamiento me conviene?</summary><p>Depende de tu caso. En la valoración médica revisamos tus objetivos y te recomiendo la mejor opción.</p></details>
+      <details><summary>¿Dónde veo más de tu trabajo?</summary><p>En mi Instagram <a href="https://www.instagram.com/dra.rubiavillalobos/" target="_blank" rel="noopener" style="color:var(--p600);font-weight:800">@dra.rubiavillalobos</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Tu belleza interior merece brillar ✨</h2>
+    <p>Da el primer paso hoy y agenda tu valoración con la Dra. Rubia Villalobos.</p>
+    <div class="btns">
+      <a class="btn btn-light" href="https://wa.link/5mez93" target="_blank" rel="noopener">📱 Contáctame por WhatsApp</a>
+      <a class="btn btn-line" style="color:#fff;border-color:#fff" href="https://www.instagram.com/dra.rubiavillalobos/" target="_blank" rel="noopener">📸 Ver Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Dra. Rubia Villalobos Brito · Medicina Estética · Caracas, Venezuela 🇻🇪<br>
+    <a href="https://www.instagram.com/dra.rubiavillalobos/" target="_blank" rel="noopener">@dra.rubiavillalobos</a> ·
+    <a href="https://wa.link/5mez93" target="_blank" rel="noopener">WhatsApp</a>
+    <small>© 2026 Dra. Rubia Villalobos Brito. Todos los derechos reservados. Los resultados dependen de cada paciente y requieren valoración médica.</small>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.link/5mez93" target="_blank" rel="noopener" aria-label="WhatsApp">📱</a>
+
+<script>
+  // Test interactivo
+  const q1=document.getElementById('q1'),q2=document.getElementById('q2'),res=document.getElementById('res'),bar=document.getElementById('bar');
+  let pick='';
+  const out={
+    rostro:['Armonización facial','Conversemos sobre un plan que realce tus rasgos de forma equilibrada, respetando tu identidad.'],
+    piel:['Calidad y luminosidad de la piel','Evaluaremos el estado de tu piel para elegir tratamientos que mejoren textura y brillo.'],
+    rejuv:['Rejuvenecimiento natural','Buscaremos opciones para que luzcas fresca y descansada, sin perder tu expresión.'],
+    detalle:['Definición de un detalle puntual','Analizaremos la zona que te interesa para recomendarte lo más adecuado y seguro.']
+  };
+  q1.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{pick=b.dataset.a;q1.style.display='none';q2.style.display='block';bar.style.width='66%'});
+  q2.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    const t=b.dataset.b==='natural'?' Prioridad: un resultado muy natural y sutil.':' Prioridad: un cambio más notable, siempre con criterio médico.';
+    document.getElementById('rt').textContent=out[pick][0];
+    document.getElementById('rp').textContent=out[pick][1]+t+' Agenda tu valoración para confirmar la mejor opción para ti.';
+    q2.style.display='none';res.classList.add('show');bar.style.width='100%';
+  });
+  document.getElementById('again').onclick=()=>{res.classList.remove('show');q2.style.display='none';q1.style.display='block';bar.style.width='33%'};
+
+  // Reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

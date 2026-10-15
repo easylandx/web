@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outgluten | Harinas y mezclas sin gluten</title>
+<style>
+:root{
+  --bg:#f3fff6;--surface:#ffffff;--ink:#032b14;--muted:#2f6b47;
+  --g1:#00e05a;--g2:#00b848;--g3:#007a30;--tint:#d6ffe3;--line:#b8f2cb;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#02150a;--surface:#06261100;--ink:#eafff1;--muted:#8fe3ae;--g1:#2dff7e;--g2:#00d85a;--g3:#00a640;--tint:#0a3a1c;--line:#0f5228;--surface:#072a14;}}
+:root[data-theme="dark"]{--bg:#02150a;--ink:#eafff1;--muted:#8fe3ae;--g1:#2dff7e;--g2:#00d85a;--g3:#00a640;--tint:#0a3a1c;--line:#0f5228;--surface:#072a14}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Trebuchet MS",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;overflow-x:hidden}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding-inline:clamp(20px,6vw,48px)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:12px}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:-.5px;color:var(--ink);text-decoration:none}
+.logo b{color:var(--g2)}
+nav a{color:var(--muted);text-decoration:none;font-weight:700;margin-left:18px;font-size:.95rem}
+@media(max-width:560px){nav a.h{display:none}}
+.btn{display:inline-block;background:var(--g1);color:#032b14;font-weight:900;text-decoration:none;padding:14px 26px;border-radius:999px;border:0;font-size:1rem;cursor:pointer;box-shadow:0 8px 24px -8px var(--g1);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.o{background:transparent;color:var(--ink);border:2px solid var(--g2);box-shadow:none}
+.hero{background:linear-gradient(160deg,var(--g1),var(--g2) 60%,var(--g3));color:#02150a;padding-block:72px 84px;border-radius:0 0 40px 40px}
+.hero h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.05;margin:0 0 16px;letter-spacing:-1.5px;font-weight:900}
+.hero p{font-size:1.15rem;max-width:560px;margin:0 0 28px}
+.hero .btn{background:#02150a;color:#2dff7e;box-shadow:none}
+.hero .btn.o{background:transparent;color:#02150a;border-color:#02150a}
+.tag{display:inline-block;background:#02150a;color:#2dff7e;padding:6px 14px;border-radius:999px;font-weight:800;font-size:.82rem;margin-bottom:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+section{padding-block:64px}
+h2{font-size:clamp(1.6rem,4.5vw,2.4rem);margin:0 0 10px;letter-spacing:-.8px;line-height:1.15}
+.lead{color:var(--muted);margin:0 0 32px;max-width:560px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:24px;transition:.2s}
+.card:hover{border-color:var(--g1);transform:translateY(-4px)}
+.card .i{font-size:2rem}
+.card h3{margin:8px 0 6px}
+.card p{margin:0;color:var(--muted)}
+.finder{background:var(--tint);border-radius:32px;padding:clamp(24px,5vw,44px)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{border:2px solid var(--g2);background:var(--surface);color:var(--ink);font-weight:800;padding:10px 18px;border-radius:999px;cursor:pointer;font-size:.98rem;font-family:inherit}
+.chip[aria-pressed="true"]{background:var(--g1);color:#032b14;border-color:var(--g1)}
+.result{background:var(--surface);border-radius:22px;padding:24px;border-left:8px solid var(--g1);min-height:130px}
+.result h3{margin:0 0 6px}
+.result p{margin:0 0 16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stats div{background:var(--g1);color:#02150a;border-radius:22px;padding:22px 10px}
+.stats b{display:block;font-size:2rem;line-height:1}
+.cta{background:var(--ink);color:var(--bg);border-radius:36px;padding:clamp(28px,6vw,56px);text-align:center}
+.cta h2{color:var(--g1)}
+.cta p{margin:0 auto 26px;max-width:480px;opacity:.85}
+.cta .row{justify-content:center}
+.cta .btn.o{color:var(--bg);border-color:var(--g1)}
+footer{padding-block:32px;color:var(--muted);font-size:.9rem;text-align:center}
+footer a{color:var(--g3);font-weight:800}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">out<b>gluten</b></a>
+  <nav><a class="h" href="#productos">Productos</a><a class="h" href="#clases">Clases</a><a href="#descubre">Descubre</a></nav>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <span class="tag">🇻🇪 Hecho para toda la familia</span>
+  <h1>Come rico.<br>Sin gluten.<br>Sin complicarte.</h1>
+  <p>Harinas y mezclas sin gluten para panes, arepas, tortas y mucho más. Recetas, tips y cooking class desde Acarigua para toda Venezuela.</p>
+  <div class="row">
+    <a class="btn" href="https://www.instagram.com/outgluten/" target="_blank" rel="noopener">Pedir por Instagram</a>
+    <a class="btn o" href="#descubre">¿Qué quieres preparar?</a>
+  </div>
+</div></div>
+
+<section id="productos"><div class="wrap">
+  <h2>Harinas y mezclas sin gluten</h2>
+  <p class="lead">Productos pensados para que toda la familia disfrute en la mesa, sin quedarse por fuera.</p>
+  <div class="grid">
+    <div class="card"><div class="i">🌾</div><h3>Harinas</h3><p>Opciones sin gluten para tus preparaciones del día a día.</p></div>
+    <div class="card"><div class="i">🥣</div><h3>Mezclas listas</h3><p>Practicidad para cocinar más rápido y con buen resultado.</p></div>
+    <div class="card"><div class="i">👨‍👩‍👧</div><h3>Para todos</h3><p>Sabores que se comparten en familia, sin diferencias en la mesa.</p></div>
+    <div class="card"><div class="i">💚</div><h3>Recetas y tips</h3><p>Ideas e información útil para cocinar sin gluten con confianza.</p></div>
+  </div>
+</div></section>
+
+<section id="descubre"><div class="wrap">
+  <div class="finder">
+    <h2>¿Qué quieres preparar hoy?</h2>
+    <p class="lead" style="margin-bottom:0">Elige una opción y te damos una idea para empezar.</p>
+    <div class="chips" id="chips" role="group" aria-label="Elige qué preparar">
+      <button class="chip" data-k="pan" aria-pressed="false">🍞 Pan</button>
+      <button class="chip" data-k="arepas" aria-pressed="false">🫓 Arepas y empanadas</button>
+      <button class="chip" data-k="torta" aria-pressed="false">🎂 Tortas y dulces</button>
+      <button class="chip" data-k="pasta" aria-pressed="false">🍝 Pasta y pizza</button>
+    </div>
+    <div class="result" id="res" aria-live="polite">
+      <h3>👆 Elige una opción</h3>
+      <p>Descubre qué puedes cocinar con harinas y mezclas sin gluten.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="clases"><div class="wrap">
+  <h2>Aprende con nuestra Cooking Class</h2>
+  <p class="lead">Cocinar sin gluten es más fácil cuando alguien te lo explica paso a paso.</p>
+  <div class="stats">
+    <div><b>🍳</b>Cooking class</div>
+    <div><b>📖</b>Recetas</div>
+    <div><b>💡</b>Tips</div>
+    <div><b>📍</b>Acarigua</div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="cta">
+    <h2>Haz tu pedido hoy</h2>
+    <p>Escríbenos por Instagram y cuéntanos qué quieres cocinar. Te ayudamos a elegir.</p>
+    <div class="row">
+      <a class="btn" href="https://www.instagram.com/outgluten/" target="_blank" rel="noopener">Instagram @outgluten</a>
+      <a class="btn o" href="https://www.facebook.com/Outgluten" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p>© Outgluten · Harinas sin gluten · 📍 Acarigua, Venezuela · RIF J405347821</p>
+  <p><a href="https://www.instagram.com/outgluten/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/Outgluten" target="_blank" rel="noopener">Facebook</a></p>
+</div></footer>
+
+<script>
+const data={
+  pan:["🍞 Pan casero sin gluten","Un pan suave para el desayuno o los sándwiches de la semana. Pregúntanos qué mezcla te conviene."],
+  arepas:["🫓 Arepas y empanadas","Nuestro clásico venezolano, para que nadie se quede sin su arepa. Te recomendamos la harina ideal."],
+  torta:["🎂 Tortas y dulces","Cumpleaños, meriendas y antojos: repostería sin gluten que se disfruta en familia."],
+  pasta:["🍝 Pasta y pizza","Noche de pizza o pasta para todos. Escríbenos y te orientamos con la mezcla adecuada."]
+};
+const res=document.getElementById('res');
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+  const d=data[b.dataset.k];
+  res.innerHTML='<h3></h3><p></p><a class="btn" target="_blank" rel="noopener" href="https://www.instagram.com/outgluten/">Pedir esta idea por Instagram</a>';
+  res.querySelector('h3').textContent=d[0];res.querySelector('p').textContent=d[1];
+}));
+</script>
+</body>
+</html>

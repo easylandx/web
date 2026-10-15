@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dra. Yosely Hurtado | Otorrinolaringología y Cirugía de Cabeza y Cuello en Caracas</title>
+<meta name="description" content="Otorrinolaringóloga y cirujana de cabeza y cuello en Caracas. Agenda tu consulta por WhatsApp con la Dra. Yosely Hurtado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7ff;--surface:#ffffff;--ink:#1d0b45;--muted:#5b4a86;
+  --brand:#7c3aed;--brand-strong:#5b21b6;--soft:#ede4ff;--line:#d9c9fb;--on-brand:#ffffff;
+  --hero1:#5b21b6;--hero2:#8b5cf6;--hero-ink:#ffffff;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#150833;--surface:#1f0f4a;--ink:#f3ecff;--muted:#c2b0ee;
+    --brand:#a78bfa;--brand-strong:#c4b5fd;--soft:#2a1664;--line:#3d2587;--on-brand:#1d0b45;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#150833;--surface:#1f0f4a;--ink:#f3ecff;--muted:#c2b0ee;
+  --brand:#a78bfa;--brand-strong:#c4b5fd;--soft:#2a1664;--line:#3d2587;--on-brand:#1d0b45;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+.wrap{width:100%;max-width:1080px;margin-inline:auto;padding-inline:clamp(1.25rem,6vw,2.5rem)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.6rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid transparent;font-family:var(--body);font-size:1rem;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-main{background:var(--brand);color:var(--on-brand);box-shadow:0 10px 28px -10px var(--brand)}
+.btn-light{background:#fff;color:#4c1d95}
+.btn-ghost{border-color:currentColor;background:transparent}
+
+/* Cabecera */
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.logo{font-family:var(--head);font-weight:800;text-decoration:none;font-size:1.1rem;color:var(--brand-strong)}
+.top nav{display:flex;align-items:center;gap:1.4rem}
+.top nav a{text-decoration:none;font-weight:500;font-size:.95rem}
+.top nav a.btn{padding:.55rem 1.1rem;font-size:.92rem}
+@media(max-width:640px){.top nav a:not(.btn){display:none}}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:var(--hero-ink);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding-block:clamp(3rem,9vw,6.5rem)}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800}
+.hero p.lead{margin-top:1.3rem;font-size:1.2rem;max-width:34rem;opacity:.95}
+.hero .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.badge{display:inline-block;margin-bottom:1.2rem;padding:.4rem .95rem;border:1.5px solid rgba(255,255,255,.55);border-radius:999px;font-size:.9rem;font-weight:500}
+.rings{position:relative;aspect-ratio:1;width:100%;max-width:340px;margin-inline:auto}
+.rings i{position:absolute;inset:0;margin:auto;border-radius:50%;border:2px solid rgba(255,255,255,.55)}
+.rings i:nth-child(1){width:100%;height:100%;opacity:.35}
+.rings i:nth-child(2){width:76%;height:76%;opacity:.55}
+.rings i:nth-child(3){width:52%;height:52%;opacity:.8}
+.rings i:nth-child(4){width:28%;height:28%;background:#fff;border:0}
+.rings i:nth-child(1),.rings i:nth-child(2),.rings i:nth-child(3){animation:pulse 3.6s ease-out infinite}
+.rings i:nth-child(2){animation-delay:.5s}.rings i:nth-child(3){animation-delay:1s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.rings{max-width:200px;order:-1;margin-inline:0}}
+
+/* Secciones */
+section{padding-block:clamp(3rem,8vw,5.5rem)}
+.sec-head{max-width:38rem;margin-bottom:2.2rem}
+.sec-head h2{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:800;color:var(--brand-strong)}
+.sec-head p{margin-top:.9rem;color:var(--muted)}
+
+/* Interactivo */
+.checker{background:var(--surface);border:2px solid var(--line);border-radius:28px;padding:clamp(1.2rem,4vw,2.4rem)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{font:inherit;font-weight:600;padding:.7rem 1.3rem;border-radius:999px;border:2px solid var(--brand);background:transparent;color:var(--brand-strong);cursor:pointer;transition:background .15s,color .15s}
+.chip:hover{background:var(--soft)}
+.chip[aria-selected="true"]{background:var(--brand);color:var(--on-brand)}
+.panel{margin-top:1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;animation:swap .35s ease}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.panel h3{font-size:1.6rem;color:var(--brand-strong)}
+.panel ul{margin:1rem 0 0;padding:0;list-style:none;display:grid;gap:.6rem}
+.panel li{padding-left:1.7rem;position:relative}
+.panel li::before{content:"";position:absolute;left:0;top:.5em;width:.8rem;height:.8rem;border-radius:50%;background:var(--brand)}
+.panel .side{background:var(--soft);border-radius:20px;padding:1.4rem;display:flex;flex-direction:column;gap:1rem;justify-content:center}
+.panel .side p{color:var(--muted)}
+@media(max-width:700px){.panel{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.panel,.rings i{animation:none}.btn{transition:none}}
+
+/* Servicios */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.card{background:var(--soft);border-radius:24px;padding:1.8rem}
+.card:nth-child(2){background:var(--brand);color:var(--on-brand)}
+.card:nth-child(2) p{color:inherit;opacity:.92}
+.card h3{font-size:1.4rem;margin-bottom:.7rem}
+.card p{color:var(--muted)}
+@media(max-width:820px){.cards{grid-template-columns:1fr}}
+
+/* Pasos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;counter-reset:s;padding:0;margin:0;list-style:none}
+.steps li{counter-increment:s;border-top:4px solid var(--brand);padding-top:1.1rem}
+.steps li::before{content:counter(s);display:block;font-family:var(--head);font-weight:800;font-size:2.6rem;color:var(--brand)}
+.steps strong{display:block;font-family:var(--head);font-size:1.25rem;margin:.2rem 0 .4rem}
+.steps span{color:var(--muted)}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* Cierre */
+.final{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;text-align:center;border-radius:32px;padding:clamp(2.2rem,7vw,4.5rem) clamp(1.2rem,5vw,3rem)}
+.final h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;max-width:30rem;margin-inline:auto}
+.final p{margin:1rem auto 1.8rem;max-width:32rem;opacity:.95}
+.final .cta{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+
+footer{padding-block:2rem 2.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between}
+footer a{color:var(--brand-strong);font-weight:600}
+.wa-float{position:fixed;right:max(1rem,env(safe-area-inset-right,0px));bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 12px 30px -8px rgba(91,33,182,.6)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio">Dra. Yosely Hurtado</a>
+    <nav>
+      <a href="#consulta">¿Cuándo consultar?</a>
+      <a href="#servicios">Servicios</a>
+      <a class="btn btn-main" href="https://wa.link/wcw274" target="_blank" rel="noopener">Agendar cita</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="badge">Caracas · Otorrinolaringología</span>
+        <h1>Oye mejor. Respira mejor. Vive mejor.</h1>
+        <p class="lead">Atención especializada en oído, nariz, garganta y cirugía de cabeza y cuello, con formación en cirugía oncológica. Consulta con la Dra. Yosely Hurtado.</p>
+        <div class="cta">
+          <a class="btn btn-light" href="https://wa.link/wcw274" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/dra.yoselyhurtado/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+      </div>
+      <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+
+  <section id="consulta">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>¿Qué te está molestando?</h2>
+        <p>Elige la zona y mira señales por las que vale la pena consultar a un especialista.</p>
+      </div>
+      <div class="checker">
+        <div class="chips" role="tablist" aria-label="Zona de consulta">
+          <button class="chip" role="tab" aria-selected="true" data-k="oido">Oído</button>
+          <button class="chip" role="tab" aria-selected="false" data-k="nariz">Nariz y senos</button>
+          <button class="chip" role="tab" aria-selected="false" data-k="garganta">Garganta y voz</button>
+          <button class="chip" role="tab" aria-selected="false" data-k="cuello">Cabeza y cuello</button>
+        </div>
+        <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cómo puedo ayudarte</h2>
+        <p>Evaluación clara, explicada con calma y orientada a resolver tu caso.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>Otorrinolaringología</h3>
+          <p>Valoración de oído, nariz y garganta: pérdida de audición, zumbidos, congestión crónica, ronquidos, dolor de garganta recurrente.</p>
+        </article>
+        <article class="card">
+          <h3>Cirugía de cabeza y cuello</h3>
+          <p>Evaluación y manejo quirúrgico de masas y lesiones en el cuello, la boca y la garganta.</p>
+        </article>
+        <article class="card">
+          <h3>Enfoque oncológico</h3>
+          <p>Formación como fellow en cirugía oncológica de cabeza y cuello para estudiar con rigor los hallazgos que requieren atención especial.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Agendar es sencillo</h2>
+      </div>
+      <ol class="steps">
+        <li><strong>Escribe por WhatsApp</strong><span>Toca el botón y cuéntanos brevemente qué sientes.</span></li>
+        <li><strong>Coordina tu cita</strong><span>Te indicamos disponibilidad y cómo prepararte.</span></li>
+        <li><strong>Recibe tu evaluación</strong><span>Consulta en Caracas con un plan claro para tu caso.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="final">
+        <h2>Tu salud no tiene por qué esperar</h2>
+        <p>Si un síntoma lleva semanas contigo, es buen momento para que un especialista lo revise.</p>
+        <div class="cta">
+          <a class="btn btn-light" href="https://wa.link/wcw274" target="_blank" rel="noopener">Agendar por WhatsApp</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/dra.yoselyhurtado/" target="_blank" rel="noopener">@dra.yoselyhurtado</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>Dra. Yosely Hurtado</strong><br>
+      Otorrinolaringología · Cirugía de cabeza y cuello · Caracas<br>
+      RIF V177068078
+    </div>
+    <div>
+      <a href="https://wa.link/wcw274" target="_blank" rel="noopener">WhatsApp</a> ·
+      <a href="https://www.instagram.com/dra.yoselyhurtado/" target="_blank" rel="noopener">Instagram</a><br>
+      <small>Contenido informativo. No sustituye una consulta médica.</small>
+    </div>
+  </div>
+</footer>
+
+<a class="btn btn-main wa-float" href="https://wa.link/wcw274" target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+const data={
+  oido:{t:"Oído",l:["Pérdida o disminución de la audición","Zumbidos (tinnitus) que no se van","Dolor u oído tapado persistente","Mareos o sensación de giro","Secreción por el oído"],n:"Los problemas del oído suelen tratarse mejor cuando se evalúan a tiempo."},
+  nariz:{t:"Nariz y senos",l:["Congestión nasal de semanas","Sangrados de nariz frecuentes","Pérdida del olfato","Presión o dolor en la cara","Ronquidos y mal descanso"],n:"Una evaluación puede aclarar si es alergia, infección u otra causa."},
+  garganta:{t:"Garganta y voz",l:["Ronquera que dura más de 2 semanas","Dolor de garganta que se repite","Dificultad o dolor al tragar","Sensación de nudo en la garganta","Amígdalas inflamadas con frecuencia"],n:"Una ronquera que no mejora merece revisión por un especialista."},
+  cuello:{t:"Cabeza y cuello",l:["Bulto o masa en el cuello","Úlcera en la boca que no cicatriza","Cambios en la voz sin causa clara","Dolor persistente en un solo oído o lado de la garganta","Ganglios inflamados por más de 3 semanas"],n:"Cualquier masa o lesión que no desaparece debe ser evaluada cuanto antes."}
+};
+const panel=document.getElementById("panel");
+function show(k){
+  const d=data[k];
+  panel.innerHTML=`<div><h3>${d.t}: señales para consultar</h3><ul>${d.l.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+  <div class="side"><p>${d.n}</p><a class="btn btn-main" href="https://wa.link/wcw274" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>`;
+  panel.style.animation="none";panel.offsetHeight;panel.style.animation="";
+}
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-selected",c===b));
+  show(b.dataset.k);
+}));
+show("oido");
+</script>
+</body>
+</html>

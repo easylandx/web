@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lcda. María Fernanda Avellaneda | Nutricionista</title>
+<style>
+:root{
+  --bg:#f3fff6; --surface:#ffffff; --ink:#052e16; --muted:#3f6b50;
+  --brand:#16a34a; --brand2:#22c55e; --soft:#dcfce7; --line:#bbf7d0; --glow:#4ade80;
+  --on-brand:#ffffff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#03180b; --surface:#062b13; --ink:#ecfdf3; --muted:#86d9a6;
+    --brand:#22c55e; --brand2:#4ade80; --soft:#0a3a1b; --line:#14532d; --glow:#4ade80; --on-brand:#03180b;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#03180b; --surface:#062b13; --ink:#ecfdf3; --muted:#86d9a6;
+  --brand:#22c55e; --brand2:#4ade80; --soft:#0a3a1b; --line:#14532d; --glow:#4ade80; --on-brand:#03180b;
+}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 clamp(20px,6vw,40px)}
+section{padding:72px 0}
+h1,h2,h3{line-height:1.15;margin:0 0 14px;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,7vw,4rem)}
+h2{font-size:clamp(1.7rem,4.5vw,2.5rem)}
+p{margin:0 0 14px;color:var(--muted)}
+.btn{display:inline-block;background:var(--brand);color:var(--on-brand);padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;box-shadow:0 8px 28px -6px var(--glow);transition:transform .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--brand);box-shadow:none}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
+nav b{font-size:1.05rem}
+nav a.btn{padding:9px 18px;font-size:.9rem}
+.hero{position:relative;overflow:hidden;padding-top:64px}
+.hero::before{content:"";position:absolute;width:480px;height:480px;right:-140px;top:-120px;background:radial-gradient(circle,var(--glow),transparent 65%);opacity:.55;filter:blur(20px)}
+.tag{display:inline-block;background:var(--soft);color:var(--brand);font-weight:700;font-size:.85rem;padding:6px 14px;border-radius:999px;margin-bottom:18px;border:1px solid var(--line)}
+.hero h1 span{color:var(--brand)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px;position:relative}
+.stats div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center}
+.stats strong{display:block;font-size:1.5rem;color:var(--brand)}
+.stats small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:28px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px -18px var(--glow)}
+.card .ic{font-size:2rem}
+.alt{background:var(--soft)}
+.quiz{background:var(--surface);border:2px solid var(--brand);border-radius:26px;padding:clamp(20px,4vw,34px);margin-top:26px;box-shadow:0 20px 60px -25px var(--glow)}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.opt{background:var(--soft);color:var(--ink);border:2px solid var(--line);padding:11px 18px;border-radius:999px;font-weight:600;cursor:pointer;font-size:.95rem}
+.opt[aria-pressed="true"]{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+#result{background:var(--soft);border-radius:18px;padding:18px;margin-top:8px;min-height:90px}
+#result b{color:var(--brand)}
+.final{text-align:center;background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:32px;padding:clamp(30px,6vw,56px)}
+.final h2,.final p{color:var(--on-brand)}
+.final .btn{background:var(--on-brand);color:var(--brand);box-shadow:none}
+footer{padding:28px 0 36px;text-align:center;color:var(--muted);font-size:.9rem}
+footer a{color:var(--brand);font-weight:700}
+@media(max-width:560px){section{padding:52px 0}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>🍉 Lcda. María Fernanda</b><a class="btn" href="https://www.instagram.com/mfanutricionista/" target="_blank" rel="noopener">Instagram</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="tag">Nutricionista y Dietista · UCV</span>
+  <h1>Crea <span>hábitos saludables</span> que sí puedes mantener</h1>
+  <p style="font-size:1.15rem;max-width:560px">Soy la Lcda. María Fernanda Avellaneda O. Te acompaño con un plan real, sin dietas extremas, adaptado a tu vida y a tus metas.</p>
+  <div class="cta">
+    <a class="btn" href="#quiz">Descubre tu plan ✨</a>
+    <a class="btn ghost" href="https://www.instagram.com/mfanutricionista/" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+  </div>
+  <div class="stats">
+    <div><strong>3</strong><small>modalidades de consulta</small></div>
+    <div><strong>Clínica</strong><small>y deportiva</small></div>
+    <div><strong>100%</strong><small>plan personalizado</small></div>
+  </div>
+</div></header>
+
+<section id="servicios"><div class="wrap">
+  <h2>Cómo puedo ayudarte</h2>
+  <p>Una atención profesional, cercana y con resultados que se notan.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🩺</div><h3>Nutrición clínica</h3><p>Alimentación guiada para condiciones de salud, con seguimiento y ajustes constantes.</p></div>
+    <div class="card"><div class="ic">🏋🏼‍♀️</div><h3>Nutrición deportiva</h3><p>Rendimiento, recuperación y composición corporal para entrenar mejor.</p></div>
+    <div class="card"><div class="ic">🥙</div><h3>Hábitos y bienestar</h3><p>Aprende a comer rico y equilibrado, sin culpas ni prohibiciones.</p></div>
+  </div>
+</div></section>
+
+<section id="quiz" class="alt"><div class="wrap">
+  <h2>¿Cuál es tu objetivo?</h2>
+  <p>Elige una opción y te muestro por dónde empezaríamos.</p>
+  <div class="quiz">
+    <div class="opts" id="opts" role="group" aria-label="Objetivo">
+      <button class="opt" data-k="peso" aria-pressed="false">⚖️ Bajar de peso</button>
+      <button class="opt" data-k="musculo" aria-pressed="false">💪 Ganar músculo</button>
+      <button class="opt" data-k="salud" aria-pressed="false">🩺 Mejorar mi salud</button>
+      <button class="opt" data-k="habitos" aria-pressed="false">🍉 Comer mejor</button>
+    </div>
+    <div id="result"><p>👆 Selecciona tu objetivo para ver tu plan sugerido.</p></div>
+    <div class="opts" style="margin-bottom:0" id="mods" role="group" aria-label="Modalidad">
+      <button class="opt" data-m="Presencial" aria-pressed="false">📍 Presencial</button>
+      <button class="opt" data-m="Online" aria-pressed="false">💻 Online</button>
+      <button class="opt" data-m="A domicilio" aria-pressed="false">🏠 A domicilio</button>
+    </div>
+    <p style="margin:14px 0 18px" id="modmsg">Elige también tu modalidad preferida.</p>
+    <a class="btn" id="go" href="https://www.instagram.com/mfanutricionista/" target="_blank" rel="noopener">Quiero mi consulta →</a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="final">
+    <h2>Tu primer paso empieza hoy</h2>
+    <p>Escríbeme por Instagram y agenda tu consulta. Presencial, online o a domicilio.</p>
+    <a class="btn" href="https://www.instagram.com/mfanutricionista/" target="_blank" rel="noopener">@mfanutricionista</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Lcda. María Fernanda Avellaneda O. · Nutricionista · <a href="https://www.instagram.com/mfanutricionista/" target="_blank" rel="noopener">Instagram</a></div></footer>
+
+<script>
+const plans={
+  peso:["Pérdida de peso sostenible","Plan flexible con porciones y menús que disfrutas, sin dietas extremas."],
+  musculo:["Ganancia de masa muscular","Estrategia de energía y proteína ajustada a tu entrenamiento."],
+  salud:["Nutrición clínica","Plan según tu condición de salud, con seguimiento y ajustes."],
+  habitos:["Hábitos saludables","Empezamos por lo simple: compras, horarios y platos equilibrados."]
+};
+let goal="",mod="";
+const res=document.getElementById("result"),msg=document.getElementById("modmsg"),go=document.getElementById("go");
+function sel(box,btn){box.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",b===btn))}
+document.getElementById("opts").addEventListener("click",e=>{
+  const b=e.target.closest(".opt");if(!b)return;
+  goal=b.dataset.k;sel(b.parentNode,b);
+  res.innerHTML="<p><b>"+plans[goal][0]+"</b></p><p style='margin:0'>"+plans[goal][1]+"</p>";
+});
+document.getElementById("mods").addEventListener("click",e=>{
+  const b=e.target.closest(".opt");if(!b)return;
+  mod=b.dataset.m;sel(b.parentNode,b);
+  msg.textContent="Perfecto: consulta "+mod.toLowerCase()+". ¡Escríbeme por Instagram para agendar!";
+});
+</script>
+</body>
+</html>

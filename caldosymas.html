@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caldos & + | Productos saludables con envío a domicilio en El Salvador</title>
+<meta name="description" content="Caldos & + — tienda en línea de productos saludables con envíos a domicilio en El Salvador. Haz tu pedido por WhatsApp o Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --g50:#f2fff6;
+    --g100:#dcfce9;
+    --g200:#b6f7cf;
+    --g300:#7bf0a8;
+    --g400:#2fe07a;
+    --g500:#00c853;
+    --g600:#00a846;
+    --g700:#007a34;
+    --ink:#06381b;
+    --radius:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--g50);line-height:1.6;overflow-x:hidden}
+  h1,h2,h3{font-family:'Baloo 2','Nunito',sans-serif;line-height:1.08}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  section{padding:84px 0}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(242,255,246,.92);backdrop-filter:blur(10px);border-bottom:2px solid var(--g200)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Baloo 2';font-weight:800;font-size:1.6rem;text-decoration:none;letter-spacing:-.5px}
+  .logo span{background:var(--g500);color:#fff;padding:0 9px;border-radius:12px;margin-left:4px}
+  .nav ul{display:flex;gap:26px;list-style:none;font-weight:700}
+  .nav ul a{text-decoration:none;position:relative}
+  .nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:3px;width:0;background:var(--g500);border-radius:3px;transition:.25s}
+  .nav ul a:hover::after{width:100%}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--g500);color:#fff;font-weight:800;text-decoration:none;padding:14px 26px;border-radius:999px;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:.15s;cursor:pointer;font-size:1rem;font-family:inherit}
+  .btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+  .btn.alt{background:#fff;color:var(--ink)}
+  .btn.sm{padding:9px 18px;box-shadow:3px 3px 0 var(--ink);font-size:.92rem}
+  @media(max-width:760px){.nav ul{display:none}}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,var(--g300) 0%,var(--g200) 55%,var(--g100) 100%);position:relative;overflow:hidden;padding:90px 0 110px}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .tag{display:inline-block;background:#fff;border:3px solid var(--ink);padding:6px 16px;border-radius:999px;font-weight:800;font-size:.9rem;margin-bottom:20px}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;letter-spacing:-1.5px}
+  .hero h1 em{font-style:normal;background:var(--g500);color:#fff;padding:0 14px;border-radius:16px;display:inline-block;transform:rotate(-2deg)}
+  .hero p.lead{font-size:1.2rem;margin:22px 0 30px;max-width:520px;font-weight:600}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap}
+  .badge-row{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap;font-weight:800}
+  .badge-row span{display:flex;align-items:center;gap:8px}
+  .badge-row i{font-style:normal;background:#fff;border:2px solid var(--ink);width:30px;height:30px;border-radius:50%;display:grid;place-items:center}
+
+  .bowl{position:relative;aspect-ratio:1;max-width:420px;margin:0 auto;width:100%}
+  .bowl .circle{position:absolute;inset:6%;background:var(--g500);border:4px solid var(--ink);border-radius:50%;box-shadow:10px 10px 0 var(--ink);display:grid;place-items:center;font-size:8rem}
+  .steam{position:absolute;top:-4%;left:50%;display:flex;gap:18px;transform:translateX(-50%)}
+  .steam b{width:14px;height:70px;border-radius:20px;background:#fff;border:3px solid var(--ink);opacity:.9;animation:steam 2.4s ease-in-out infinite}
+  .steam b:nth-child(2){animation-delay:.5s;height:90px}
+  .steam b:nth-child(3){animation-delay:1s}
+  @keyframes steam{0%,100%{transform:translateY(0) scaleY(1);opacity:.9}50%{transform:translateY(-16px) scaleY(1.15);opacity:.4}}
+  .float{position:absolute;background:#fff;border:3px solid var(--ink);border-radius:18px;padding:8px 14px;font-weight:800;box-shadow:4px 4px 0 var(--ink);animation:bob 3.4s ease-in-out infinite}
+  .float.f1{top:8%;right:-2%}
+  .float.f2{bottom:10%;left:-4%;animation-delay:1.2s}
+  @keyframes bob{50%{transform:translateY(-10px)}}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.bowl{max-width:300px}.bowl .circle{font-size:5.5rem}}
+
+  /* MARQUEE */
+  .marquee{background:var(--g500);border-block:4px solid var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0;color:#fff;font-family:'Baloo 2';font-weight:800;font-size:1.4rem}
+  .marquee div{display:inline-block;animation:scroll 22s linear infinite}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* SECTION HEAD */
+  .head{text-align:center;max-width:640px;margin:0 auto 50px}
+  .head h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800}
+  .head p{margin-top:12px;font-weight:600;font-size:1.1rem}
+
+  /* BENEFITS */
+  #beneficios{background:var(--g50)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+  .card{background:#fff;border:3px solid var(--ink);border-radius:var(--radius);padding:30px;box-shadow:7px 7px 0 var(--g500);transition:.2s}
+  .card:hover{transform:translateY(-6px) rotate(-.6deg)}
+  .card .ico{font-size:2.6rem;background:var(--g200);width:70px;height:70px;border-radius:20px;display:grid;place-items:center;border:3px solid var(--ink);margin-bottom:16px}
+  .card h3{font-size:1.5rem;margin-bottom:8px}
+
+  /* STEPS */
+  #como{background:var(--g200)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;counter-reset:s}
+  .step{background:var(--g50);border:3px solid var(--ink);border-radius:var(--radius);padding:30px 24px;position:relative;counter-increment:s}
+  .step::before{content:counter(s);position:absolute;top:-22px;left:22px;background:var(--g500);color:#fff;border:3px solid var(--ink);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:'Baloo 2';font-size:1.5rem;font-weight:800}
+  .step h3{font-size:1.4rem;margin:8px 0}
+
+  /* ORDER BUILDER */
+  #pedido{background:var(--g100)}
+  .builder{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+  .panel{background:#fff;border:3px solid var(--ink);border-radius:var(--radius);padding:30px;box-shadow:8px 8px 0 var(--ink)}
+  .item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:2px dashed var(--g300)}
+  .item:last-of-type{border-bottom:0}
+  .item .nm{display:flex;gap:14px;align-items:center;font-weight:800;font-size:1.1rem}
+  .item .nm small{display:block;font-weight:600;opacity:.75;font-size:.85rem}
+  .item .em{font-size:1.8rem;background:var(--g100);border-radius:14px;width:52px;height:52px;display:grid;place-items:center;border:2px solid var(--ink)}
+  .qty{display:flex;align-items:center;gap:10px}
+  .qty button{width:38px;height:38px;border-radius:50%;border:3px solid var(--ink);background:var(--g400);font-size:1.3rem;font-weight:800;cursor:pointer;color:var(--ink);transition:.12s}
+  .qty button:hover{background:var(--g500);color:#fff;transform:scale(1.1)}
+  .qty output{min-width:26px;text-align:center;font-weight:800;font-size:1.2rem}
+  label{font-weight:800;display:block;margin:18px 0 6px}
+  input[type=text],textarea{width:100%;padding:12px 16px;border:3px solid var(--ink);border-radius:14px;font:inherit;background:var(--g50);color:var(--ink)}
+  input:focus,textarea:focus{outline:4px solid var(--g300)}
+  .summary{background:var(--g500);color:#fff;border-color:var(--ink)}
+  .summary h3{font-size:1.7rem;margin-bottom:10px}
+  .summary pre{white-space:pre-wrap;font-family:'Nunito';font-weight:700;background:rgba(255,255,255,.2);border:2px dashed #fff;border-radius:14px;padding:16px;min-height:130px;margin-bottom:18px}
+  .summary .btn{width:100%;justify-content:center;background:#fff;color:var(--ink);margin-bottom:12px}
+  .summary .btn.ghost{background:var(--g100)}
+  .hint{font-size:.88rem;font-weight:600}
+  @media(max-width:860px){.builder{grid-template-columns:1fr}}
+
+  /* FAQ */
+  #faq{background:var(--g50)}
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:14px}
+  details{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:18px 24px;transition:.2s}
+  details[open]{background:var(--g200);box-shadow:6px 6px 0 var(--g500)}
+  summary{font-weight:800;font-size:1.15rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::after{content:"+";font-size:1.8rem;font-family:'Baloo 2';transition:.25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin-top:10px;font-weight:600}
+
+  /* CTA FINAL */
+  .final{background:var(--g500);color:#fff;text-align:center;border-top:4px solid var(--ink)}
+  .final h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;margin-bottom:14px}
+  .final p{font-size:1.2rem;font-weight:700;margin-bottom:30px}
+  .links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .final .btn{background:#fff;color:var(--ink)}
+  .final .btn.alt{background:var(--g200)}
+  footer{background:var(--g200);border-top:4px solid var(--ink);padding:28px 0;text-align:center;font-weight:700}
+  footer a{text-decoration:underline}
+
+  /* FLOATING WA */
+  .wa{position:fixed;right:18px;bottom:18px;z-index:60;width:64px;height:64px;border-radius:50%;background:var(--g500);border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center;font-size:2rem;text-decoration:none;animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:4px 4px 0 var(--ink),0 0 0 0 rgba(0,200,83,.6)}70%{box-shadow:4px 4px 0 var(--ink),0 0 0 20px rgba(0,200,83,0)}100%{box-shadow:4px 4px 0 var(--ink),0 0 0 0 rgba(0,200,83,0)}}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:.7s}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo">Caldos<span>&amp; +</span></a>
+    <ul>
+      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#como">Cómo pedir</a></li>
+      <li><a href="#pedido">Arma tu pedido</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <a class="btn sm" href="https://api.whatsapp.com/send/?phone=50375659293" target="_blank" rel="noopener">💬 Pedir ahora</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="tag">🇸🇻 Tienda en línea · Envíos a domicilio</span>
+        <h1>Lo saludable, <em>directo</em> a tu puerta</h1>
+        <p class="lead">En Caldos &amp; + encuentras productos saludables para cuidarte sin complicarte. Haz tu pedido en minutos por WhatsApp o Instagram.</p>
+        <div class="cta-row">
+          <a class="btn" href="#pedido">🛒 Arma tu pedido</a>
+          <a class="btn alt" href="https://www.instagram.com/caldosymas.sv/" target="_blank" rel="noopener">📸 Ver Instagram</a>
+        </div>
+        <div class="badge-row">
+          <span><i>✓</i> Productos saludables</span>
+          <span><i>✓</i> Envío a domicilio</span>
+          <span><i>✓</i> Pedido por DM</span>
+        </div>
+      </div>
+      <div class="bowl" aria-hidden="true">
+        <div class="steam"><b></b><b></b><b></b></div>
+        <div class="circle">🍲</div>
+        <div class="float f1">🌿 Saludable</div>
+        <div class="float f2">🚚 A domicilio</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div>🍲 Caldos &nbsp;•&nbsp; 🌿 Productos saludables &nbsp;•&nbsp; 🚚 Envíos a domicilio &nbsp;•&nbsp; 💬 Pedidos por DM &nbsp;•&nbsp; 🇸🇻 El Salvador &nbsp;•&nbsp; 🍲 Caldos &nbsp;•&nbsp; 🌿 Productos saludables &nbsp;•&nbsp; 🚚 Envíos a domicilio &nbsp;•&nbsp; 💬 Pedidos por DM &nbsp;•&nbsp; 🇸🇻 El Salvador &nbsp;•&nbsp;</div>
+  </div>
+
+  <section id="beneficios">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>¿Por qué pedir en Caldos &amp; +?</h2>
+        <p>Cuidarte debe ser fácil, rico y cómodo.</p>
+      </div>
+      <div class="cards">
+        <div class="card reveal"><div class="ico">🥗</div><h3>Productos saludables</h3><p>Opciones pensadas para quienes quieren comer mejor todos los días.</p></div>
+        <div class="card reveal"><div class="ico">🚚</div><h3>Llega a tu casa</h3><p>Tienda en línea con envíos a domicilio. Tú pides, nosotros te lo llevamos.</p></div>
+        <div class="card reveal"><div class="ico">💬</div><h3>Pedido súper fácil</h3><p>Escríbenos por DM o WhatsApp y te atendemos directamente.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Pedir es así de simple</h2>
+        <p>Tres pasos y listo.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Elige</h3><p>Arma tu pedido en esta página o mira las novedades en Instagram.</p></div>
+        <div class="step reveal"><h3>Escríbenos</h3><p>Envía el mensaje por WhatsApp o DM y confirmamos tu pedido.</p></div>
+        <div class="step reveal"><h3>Recibe</h3><p>Coordinamos la entrega a domicilio y a disfrutar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pedido">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Arma tu pedido 🛒</h2>
+        <p>Elige cantidades, escribe tu nombre y envíalo listo por WhatsApp.</p>
+      </div>
+      <div class="builder reveal">
+        <div class="panel">
+          <div class="item">
+            <div class="nm"><span class="em">🍲</span><div>Caldos<small>Cuéntanos tu favorito en el chat</small></div></div>
+            <div class="qty"><button type="button" data-k="Caldos" data-d="-1" aria-label="Quitar">−</button><output id="q-Caldos">0</output><button type="button" data-k="Caldos" data-d="1" aria-label="Agregar">+</button></div>
+          </div>
+          <div class="item">
+            <div class="nm"><span class="em">🥗</span><div>Productos saludables<small>Variedad para tu día a día</small></div></div>
+            <div class="qty"><button type="button" data-k="Productos saludables" data-d="-1" aria-label="Quitar">−</button><output id="q-Productos saludables">0</output><button type="button" data-k="Productos saludables" data-d="1" aria-label="Agregar">+</button></div>
+          </div>
+          <div class="item">
+            <div class="nm"><span class="em">🎁</span><div>Algo más<small>Consulta disponibilidad</small></div></div>
+            <div class="qty"><button type="button" data-k="Algo más" data-d="-1" aria-label="Quitar">−</button><output id="q-Algo más">0</output><button type="button" data-k="Algo más" data-d="1" aria-label="Agregar">+</button></div>
+          </div>
+          <label for="nombre">Tu nombre</label>
+          <input type="text" id="nombre" placeholder="Ej: María López">
+          <label for="zona">Zona de entrega</label>
+          <input type="text" id="zona" placeholder="Ej: San Salvador, Santa Tecla...">
+          <label for="nota">Notas (opcional)</label>
+          <textarea id="nota" rows="2" placeholder="Alergias, horario, detalles..."></textarea>
+        </div>
+        <div class="panel summary">
+          <h3>Tu mensaje</h3>
+          <pre id="preview" aria-live="polite"></pre>
+          <a class="btn" id="send" href="#" target="_blank" rel="noopener">💬 Enviar por WhatsApp</a>
+          <button class="btn ghost" id="copy" type="button">📋 Copiar para DM de Instagram</button>
+          <p class="hint" id="copyMsg">Los precios y la disponibilidad te los confirmamos por el chat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="head reveal"><h2>Preguntas frecuentes</h2></div>
+      <div class="faq">
+        <details class="reveal"><summary>¿Cómo hago mi pedido?</summary><p>Por mensaje directo en Instagram o por WhatsApp al +503 7565-9293. También puedes armarlo aquí y enviarlo ya redactado.</p></details>
+        <details class="reveal"><summary>¿Hacen envíos a domicilio?</summary><p>Sí, somos una tienda en línea con envíos a domicilio. Coordinamos zona y horario contigo por el chat.</p></details>
+        <details class="reveal"><summary>¿Dónde veo más información?</summary><p>En nuestro Instagram @caldosymas.sv y en nuestro Linktree encuentras todos los enlaces actualizados.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap reveal">
+      <h2>¿Listo para cuidarte rico?</h2>
+      <p>Escríbenos hoy y recibe tu pedido en casa.</p>
+      <div class="links">
+        <a class="btn" href="https://api.whatsapp.com/send/?phone=50375659293" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn alt" href="https://www.instagram.com/caldosymas.sv/" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn alt" href="https://linktr.ee/caldosymassv" target="_blank" rel="noopener">🔗 Linktree</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Caldos &amp; + · El Salvador 🇸🇻 · <a href="https://www.instagram.com/caldosymas.sv/" target="_blank" rel="noopener">@caldosymas.sv</a> · <a href="https://linktr.ee/caldosymassv" target="_blank" rel="noopener">Linktree</a> · +503 7565-9293</div>
+</footer>
+
+<a class="wa" href="https://api.whatsapp.com/send/?phone=50375659293" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<script>
+  const qty = {"Caldos":0,"Productos saludables":0,"Algo más":0};
+  const $ = id => document.getElementById(id);
+  const WA = "https://api.whatsapp.com/send/?phone=50375659293";
+
+  function buildMsg(){
+    const lines = Object.entries(qty).filter(([,v])=>v>0).map(([k,v])=>`• ${k}: ${v}`);
+    const nombre = $("nombre").value.trim();
+    const zona = $("zona").value.trim();
+    const nota = $("nota").value.trim();
+    let m = "¡Hola Caldos & +! 👋 Quiero hacer un pedido";
+    if(nombre) m += ` a nombre de ${nombre}`;
+    m += ":\n";
+    m += lines.length ? lines.join("\n") : "• (Aún no elijo, ¿me cuentan qué tienen disponible?)";
+    if(zona) m += `\n📍 Zona de entrega: ${zona}`;
+    if(nota) m += `\n📝 Notas: ${nota}`;
+    m += "\n¡Gracias!";
+    return m;
+  }
+  function refresh(){
+    const m = buildMsg();
+    $("preview").textContent = m;
+    $("send").href = WA + "&text=" + encodeURIComponent(m);
+  }
+  document.querySelectorAll(".qty button").forEach(b=>{
+    b.addEventListener("click",()=>{
+      const k=b.dataset.k;
+      qty[k]=Math.max(0,Math.min(20,qty[k]+Number(b.dataset.d)));
+      $("q-"+k).textContent=qty[k];
+      refresh();
+    });
+  });
+  ["nombre","zona","nota"].forEach(id=>$(id).addEventListener("input",refresh));
+  $("copy").addEventListener("click",async()=>{
+    const m=buildMsg();
+    try{ await navigator.clipboard.writeText(m); $("copyMsg").textContent="¡Copiado! Pégalo en nuestro DM de Instagram 📸"; }
+    catch(e){ $("copyMsg").textContent="No se pudo copiar automáticamente; selecciona el texto y cópialo."; }
+  });
+  refresh();
+
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

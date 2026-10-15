@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lcda. Celiana Puente | Nutricionista en Caracas</title>
+<meta name="description" content="Nutrición clínica y funcional, epigenética y nutrición oncológica. Caracas, Maracay, Valencia y online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f3ff; --surface:#ffffff; --ink:#1a0b4d; --muted:#5b4d94;
+  --brand:#5b1fff; --brand2:#8a5cff; --tint:#e8deff; --line:#d6c8ff; --onbrand:#ffffff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#120a33; --surface:#1c1050; --ink:#f1ebff; --muted:#b9a9f0;
+    --brand:#8a5cff; --brand2:#b79cff; --tint:#2a1a73; --line:#3b2a8f; --onbrand:#0f0630;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#120a33; --surface:#1c1050; --ink:#f1ebff; --muted:#b9a9f0;
+  --brand:#8a5cff; --brand2:#b79cff; --tint:#2a1a73; --line:#3b2a8f; --onbrand:#0f0630;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.08;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(22px,6vw,48px)}
+section{padding-block:clamp(56px,9vw,96px)}
+:focus-visible{outline:3px solid var(--brand2);outline-offset:3px;border-radius:6px}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.95em 1.5em;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--brand);transition:transform .15s,background .15s}
+.btn-main{background:var(--brand);color:var(--onbrand)}
+.btn-main:hover{transform:translateY(-2px);background:var(--brand2);border-color:var(--brand2)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--brand)}
+
+/* cabecera */
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px;gap:16px}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;text-decoration:none}
+.logo span{color:var(--brand)}
+header .btn{padding:.6em 1.2em;font-size:.95rem}
+
+/* hero */
+.hero{background:var(--brand);color:var(--onbrand);border-radius:0 0 clamp(28px,6vw,64px) clamp(28px,6vw,64px);padding-block:clamp(48px,8vw,96px) clamp(56px,9vw,100px)}
+.hero header{margin:0}
+.hero .tag{display:inline-block;background:rgba(255,255,255,.18);padding:.4em 1em;border-radius:999px;font-size:.92rem;font-weight:500;margin-bottom:22px}
+.hero h1{font-size:clamp(2.5rem,8.5vw,5.6rem);font-weight:800;max-width:14ch}
+.hero p.lead{font-size:clamp(1.05rem,2.4vw,1.3rem);max-width:46ch;margin-top:22px;opacity:.95}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero .btn-main{background:#fff;color:var(--brand);border-color:#fff}
+.hero .btn-main:hover{background:var(--tint);border-color:var(--tint)}
+.hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+.hero .btn-ghost:hover{border-color:#fff}
+.hero-top{background:transparent}
+
+/* selector interactivo */
+.picker{margin-top:-56px;position:relative;z-index:2}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,40px)}
+.picker h2{font-size:clamp(1.6rem,4vw,2.4rem)}
+.picker .sub{color:var(--muted);margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.chip{font:inherit;font-weight:600;cursor:pointer;padding:.7em 1.3em;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--ink);transition:all .15s}
+.chip:hover{border-color:var(--brand)}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--onbrand)}
+.result{background:var(--tint);border-radius:20px;padding:clamp(18px,3vw,28px);min-height:150px}
+.result h3{font-size:1.4rem;margin-bottom:8px}
+.result ul{margin:12px 0 18px;padding-left:1.2em;color:var(--muted)}
+.result li{margin:.25em 0}
+.result.pop{animation:pop .35s ease}
+@keyframes pop{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* servicios */
+.head{max-width:620px;margin-bottom:36px}
+.head h2{font-size:clamp(2rem,5.5vw,3.4rem)}
+.head p{color:var(--muted);margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.svc{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:26px}
+.svc:nth-child(1){background:var(--brand);color:var(--onbrand);border-color:var(--brand)}
+.svc:nth-child(1) p{color:inherit;opacity:.92}
+.svc h3{font-size:1.35rem;margin-bottom:10px}
+.svc p{color:var(--muted);font-size:.98rem}
+.svc .ic{font-size:1.8rem;display:block;margin-bottom:14px}
+
+/* pasos */
+.steps{background:var(--ink);color:var(--bg);border-radius:clamp(28px,6vw,64px)}
+.steps .head p{color:var(--tint);opacity:.85}
+.steps ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;counter-reset:s}
+.steps li{counter-increment:s;border-top:3px solid var(--brand2);padding-top:18px}
+.steps li::before{content:counter(s);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.6rem;color:var(--brand2);display:block;line-height:1}
+.steps h3{font-size:1.25rem;margin:10px 0 6px}
+.steps li p{opacity:.85;font-size:.98rem}
+.steps-wrap{padding-inline:clamp(12px,3vw,24px)}
+
+/* ciudades */
+.cities{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.city{border:2px solid var(--brand);color:var(--brand);border-radius:999px;padding:.6em 1.3em;font-weight:600}
+.city.on{background:var(--brand);color:var(--onbrand)}
+
+/* cta final */
+.cta{background:var(--brand);color:var(--onbrand);border-radius:clamp(28px,6vw,64px);text-align:center;padding:clamp(44px,8vw,84px) clamp(22px,5vw,48px)}
+.cta h2{font-size:clamp(2rem,6vw,3.8rem);max-width:16ch;margin:0 auto}
+.cta p{margin:16px auto 28px;max-width:44ch;opacity:.95}
+.cta .btn-main{background:#fff;color:var(--brand);border-color:#fff}
+.cta-wrap{padding-inline:clamp(12px,3vw,24px)}
+
+footer{padding-block:36px 110px;color:var(--muted);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* WhatsApp flotante */
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 8px 24px rgba(91,31,255,.35)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <header class="hero-top"><div class="wrap">
+    <a class="logo" href="#">Celiana<span style="color:#fff;opacity:.7">.</span>Puente</a>
+    <a class="btn btn-main" href="https://wa.me/584243700244" target="_blank" rel="noopener">Pedir cita</a>
+  </div></header>
+  <div class="wrap">
+    <span class="tag">Nutricionista en Caracas · Presencial y online</span>
+    <h1>Sana tu metabolismo desde la raíz.</h1>
+    <p class="lead">Soy la Lcda. Celiana Puente. Te ayudo a mejorar tu metabolismo, tu digestión y tus hormonas con nutrición clínica y funcional.</p>
+    <div class="row">
+      <a class="btn btn-main" href="https://wa.me/584243700244?text=Hola%20Celiana%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">Agendar por WhatsApp</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/celianapuente/" target="_blank" rel="noopener">Ver Instagram</a>
+    </div>
+  </div>
+</div>
+
+<section class="picker" style="padding-block:0">
+  <div class="wrap">
+    <div class="card">
+      <h2>¿Qué quieres mejorar primero?</h2>
+      <p class="sub">Elige una opción y mira cómo puedo ayudarte.</p>
+      <div class="chips" id="chips" role="group" aria-label="Elige tu objetivo">
+        <button class="chip" data-k="metabolismo" aria-pressed="true">Mi metabolismo</button>
+        <button class="chip" data-k="digestion" aria-pressed="false">Mi digestión</button>
+        <button class="chip" data-k="hormonas" aria-pressed="false">Mis hormonas</button>
+        <button class="chip" data-k="oncologica" aria-pressed="false">Nutrición oncológica</button>
+      </div>
+      <div class="result" id="result" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <h2>Una nutrición que mira todo el cuadro.</h2>
+      <p>No se trata de dietas genéricas. Se trata de entender cómo funciona tu cuerpo y darle lo que necesita.</p>
+    </div>
+    <div class="grid">
+      <article class="svc"><span class="ic" aria-hidden="true">🔥</span><h3>Nutrición clínica</h3><p>Plan de alimentación basado en tu historia, tus análisis y tus objetivos de salud.</p></article>
+      <article class="svc"><span class="ic" aria-hidden="true">🌿</span><h3>Nutrición funcional</h3><p>Buscamos la causa de tus síntomas en digestión, metabolismo y hormonas, no solo el síntoma.</p></article>
+      <article class="svc"><span class="ic" aria-hidden="true">🧬</span><h3>Epigenética</h3><p>Cómo la alimentación y tu estilo de vida influyen en la forma en que se expresan tus genes.</p></article>
+      <article class="svc"><span class="ic" aria-hidden="true">🎗️</span><h3>Nutrición oncológica</h3><p>Acompañamiento nutricional antes, durante y después del tratamiento.</p></article>
+    </div>
+  </div>
+</section>
+
+<div class="steps-wrap">
+<section class="steps" id="como">
+  <div class="wrap">
+    <div class="head">
+      <h2>Empezar es sencillo.</h2>
+      <p>Tres pasos para tu primera consulta.</p>
+    </div>
+    <ol>
+      <li><h3>Escríbeme</h3><p>Cuéntame por WhatsApp qué quieres mejorar y si prefieres cita presencial u online.</p></li>
+      <li><h3>Agenda tu cita</h3><p>Elegimos juntas el día y la ciudad que mejor te quede.</p></li>
+      <li><h3>Recibe tu plan</h3><p>Sales con un plan claro, adaptado a ti y fácil de seguir.</p></li>
+    </ol>
+  </div>
+</section>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <h2>Donde estés, te atiendo.</h2>
+      <p>Consulta presencial en estas ciudades y atención online para el resto.</p>
+    </div>
+    <div class="cities">
+      <span class="city on">Caracas</span>
+      <span class="city">Maracay</span>
+      <span class="city">Valencia</span>
+      <span class="city">Online</span>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap">
+<section class="cta" style="padding-block:clamp(44px,8vw,84px)">
+  <h2>Tu primera cita empieza con un mensaje.</h2>
+  <p>Escríbeme hoy y empecemos a cuidar tu metabolismo, tu digestión y tus hormonas.</p>
+  <a class="btn btn-main" href="https://wa.me/584243700244?text=Hola%20Celiana%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+</section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© Lcda. Celiana Puente · Nutricionista</span>
+    <a href="https://www.instagram.com/celianapuente/" target="_blank" rel="noopener">@celianapuente en Instagram</a>
+  </div>
+</footer>
+
+<a class="btn btn-main fab" href="https://wa.me/584243700244" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">Citas por WhatsApp</a>
+
+<script>
+const data={
+  metabolismo:{t:"Un metabolismo que trabaje a tu favor",items:["Revisamos tus hábitos, tu energía y tus análisis","Ajustamos tu alimentación a tu ritmo real","Plan claro, sin dietas extremas"],msg:"Hola Celiana, quiero mejorar mi metabolismo y agendar una cita"},
+  digestion:{t:"Una digestión más tranquila",items:["Identificamos qué alimentos y hábitos te inflaman","Cuidamos tu intestino paso a paso","Menos molestias, más bienestar diario"],msg:"Hola Celiana, quiero mejorar mi digestión y agendar una cita"},
+  hormonas:{t:"Hormonas en equilibrio",items:["Relacionamos tus síntomas con tu alimentación","Apoyamos tu equilibrio hormonal desde la nutrición","Seguimiento cercano en cada etapa"],msg:"Hola Celiana, quiero equilibrar mis hormonas y agendar una cita"},
+  oncologica:{t:"Acompañamiento nutricional oncológico",items:["Alimentación adaptada a cada etapa del tratamiento","Apoyo para cuidar tu fuerza y tu energía","Orientación clara para ti y tu familia"],msg:"Hola Celiana, necesito nutrición oncológica y quiero agendar una cita"}
+};
+const res=document.getElementById('result'),chips=document.querySelectorAll('.chip');
+function show(k,anim){
+  const d=data[k];
+  res.innerHTML='<h3>'+d.t+'</h3><ul>'+d.items.map(i=>'<li>'+i+'</li>').join('')+'</ul><a class="btn btn-main" target="_blank" rel="noopener" href="https://wa.me/584243700244?text='+encodeURIComponent(d.msg)+'">Hablar con Celiana</a>';
+  chips.forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===k));
+  if(anim){res.classList.remove('pop');void res.offsetWidth;res.classList.add('pop')}
+}
+chips.forEach(c=>c.addEventListener('click',()=>show(c.dataset.k,true)));
+show('metabolismo',false);
+</script>
+</body>
+</html>

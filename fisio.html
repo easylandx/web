@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fisionova | Fisioterapia y Pilates en Caracas y Altos Mirandinos</title>
+<meta name="description" content="Ulianova Doria Siem, licenciada en Fisioterapia e instructora de Pilates suelo, reformer y suspensión. Caracas y Altos Mirandinos.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f5f5; --ink:#0a0a0a; --mute:#5c5c5c; --line:#d4d4d4; --card:#ffffff;
+  --dk:#0a0a0a; --dk-ink:#f5f5f5; --dk-mute:#a3a3a3; --dk-line:#2e2e2e;
+  --gutter:clamp(22px,6vw,72px);
+  --font:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#111;--ink:#f5f5f5;--mute:#a3a3a3;--line:#2e2e2e;--card:#181818;--dk:#000;}
+}
+:root[data-theme="dark"]{--bg:#111;--ink:#f5f5f5;--mute:#a3a3a3;--line:#2e2e2e;--card:#181818;--dk:#000;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:var(--gutter)}
+section{padding-block:clamp(64px,10vw,120px)}
+h1,h2,h3{font-weight:800;line-height:1.02;letter-spacing:-.03em;margin:0}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:.5em;max-width:16ch}
+p{margin:0 0 1em;max-width:60ch}
+.btn{display:inline-block;padding:16px 28px;border-radius:999px;background:var(--dk-ink);color:#0a0a0a;font-weight:600;text-decoration:none;border:2px solid var(--dk-ink);transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--dk-ink);border-color:var(--dk-ink)}
+.btn.ghost:hover{background:var(--dk-ink);color:#0a0a0a}
+.btn.solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:var(--dk);color:var(--dk-ink);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;letter-spacing:-.02em;text-decoration:none;font-size:1.15rem}
+nav a{margin-left:22px;text-decoration:none;font-size:.95rem;color:var(--dk-mute)}
+nav a:hover{color:var(--dk-ink)}
+nav .pill{color:#0a0a0a;background:var(--dk-ink);padding:8px 16px;border-radius:999px;font-weight:600}
+@media(max-width:640px){nav a:not(.pill){display:none}}
+
+/* hero */
+.hero{background:var(--dk);color:var(--dk-ink);padding-block:clamp(56px,9vw,120px) clamp(64px,9vw,110px);position:relative;overflow:hidden}
+.hero h1{font-size:clamp(3rem,11vw,8.5rem);max-width:9ch;position:relative;z-index:1}
+.hero h1 span{color:transparent;-webkit-text-stroke:2px var(--dk-ink)}
+.hero p{color:var(--dk-mute);font-size:1.15rem;margin-top:1.4em;position:relative;z-index:1}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:2em;position:relative;z-index:1}
+.ring{position:absolute;right:-8vw;top:50%;width:min(62vw,560px);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;border:1px solid var(--dk-line);pointer-events:none}
+.ring::before,.ring::after{content:"";position:absolute;inset:12%;border-radius:50%;border:1px solid var(--dk-line)}
+.ring::after{inset:26%}
+.ring i{position:absolute;inset:0;animation:spin 40s linear infinite}
+.ring i::after{content:"";position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--dk-ink)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.ring i{animation:none}html{scroll-behavior:auto}.btn{transition:none}}
+
+/* services */
+.svc{border-top:1px solid var(--line)}
+.svc details{border-bottom:1px solid var(--line)}
+.svc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;font-size:clamp(1.5rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-.025em}
+.svc summary::-webkit-details-marker{display:none}
+.svc summary::after{content:"+";font-weight:300;font-size:2rem;transition:transform .25s}
+.svc details[open] summary::after{transform:rotate(45deg)}
+.svc details p{color:var(--mute);padding-bottom:26px;margin:0}
+
+/* selector */
+.pick{background:var(--dk);color:var(--dk-ink)}
+.pick h2{max-width:18ch}
+.pick .sub{color:var(--dk-mute)}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
+.chip{font:inherit;color:var(--dk-ink);background:transparent;border:1.5px solid var(--dk-line);border-radius:999px;padding:14px 22px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:var(--dk-ink)}
+.chip[aria-pressed="true"]{background:var(--dk-ink);color:#0a0a0a;border-color:var(--dk-ink)}
+.result{border:1px solid var(--dk-line);border-radius:24px;padding:clamp(24px,4vw,44px);min-height:220px;max-width:720px}
+.result h3{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.4em}
+.result p{color:var(--dk-mute)}
+.result.empty{display:flex;align-items:center;color:var(--dk-mute)}
+.result .tag{display:inline-block;border:1px solid var(--dk-line);border-radius:999px;padding:3px 12px;font-size:.85rem;margin:0 8px 8px 0;color:var(--dk-ink)}
+.result.pop{animation:pop .35s ease}
+@keyframes pop{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.result.pop{animation:none}}
+
+/* about */
+.about{display:grid;gap:clamp(32px,6vw,80px);grid-template-columns:1fr}
+@media(min-width:860px){.about{grid-template-columns:1.1fr 1fr}}
+.facts{display:grid;gap:0;border-top:1px solid var(--line)}
+.facts div{padding:20px 0;border-bottom:1px solid var(--line)}
+.facts b{display:block;font-size:1.25rem;letter-spacing:-.01em}
+.facts span{color:var(--mute)}
+
+/* cta */
+.final{background:var(--dk);color:var(--dk-ink);text-align:center}
+.final h2{max-width:14ch;margin-inline:auto}
+.final p{margin-inline:auto;color:var(--dk-mute)}
+.final .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:2em}
+footer{background:var(--dk);color:var(--dk-mute);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--dk-line);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#inicio">Fisionova</a>
+    <nav>
+      <a href="#servicios">Pilates</a>
+      <a href="#elige">Tu objetivo</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a class="pill" href="https://ig.me/m/fisionova_ve" target="_blank" rel="noopener">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="ring" aria-hidden="true"><i></i></div>
+    <div class="wrap">
+      <h1>Muévete <span>sin dolor.</span></h1>
+      <p>Fisioterapia y Pilates guiados por una licenciada en Fisioterapia. Suelo, Reformer y Suspensión en Caracas y Altos Mirandinos.</p>
+      <div class="cta">
+        <a class="btn" href="https://ig.me/m/fisionova_ve" target="_blank" rel="noopener">Agenda tu primera clase</a>
+        <a class="btn ghost" href="#elige">Encuentra tu clase ideal</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="servicios">
+    <div class="wrap">
+      <h2>Tres formas de Pilates.</h2>
+      <p>Cada modalidad trabaja el cuerpo de manera distinta. Toca una para ver de qué trata.</p>
+      <div class="svc">
+        <details>
+          <summary>Pilates suelo</summary>
+          <p>Ejercicios sobre colchoneta con el peso de tu propio cuerpo. Mejora el control del core, la postura y la movilidad. Es el punto de partida ideal para empezar.</p>
+        </details>
+        <details>
+          <summary>Pilates Reformer</summary>
+          <p>Trabajo en la máquina Reformer, con resortes que guían y ajustan la resistencia. Fortalece, alinea y te permite progresar con precisión, desde la recuperación hasta el rendimiento.</p>
+        </details>
+        <details>
+          <summary>Pilates suspensión</summary>
+          <p>Ejercicios con apoyo en suspensión que descargan las articulaciones y exigen estabilidad. Una opción dinámica para ganar fuerza, equilibrio y control del movimiento.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="pick" id="elige">
+    <div class="wrap">
+      <h2>¿Qué quieres lograr?</h2>
+      <p class="sub">Elige tu objetivo y te digo por dónde empezar.</p>
+      <div class="chips" role="group" aria-label="Objetivo">
+        <button class="chip" aria-pressed="false" data-k="dolor">Aliviar molestias</button>
+        <button class="chip" aria-pressed="false" data-k="fuerza">Ganar fuerza</button>
+        <button class="chip" aria-pressed="false" data-k="postura">Mejorar mi postura</button>
+        <button class="chip" aria-pressed="false" data-k="rec">Recuperarme de una lesión</button>
+      </div>
+      <div class="result empty" id="res" aria-live="polite">Selecciona un objetivo para ver tu recomendación.</div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="wrap about">
+      <div>
+        <h2>Fisioterapia que se nota en cada clase.</h2>
+        <p>Soy Ulianova Doria Siem, licenciada en Fisioterapia e instructora de Pilates. Combino la mirada clínica de la fisioterapia con el movimiento consciente del Pilates para que entrenes con seguridad y con sentido.</p>
+        <p>Cada persona llega con una historia distinta. Por eso adapto los ejercicios a tu cuerpo y a tu objetivo.</p>
+        <a class="btn solid" href="https://www.instagram.com/fisionova_ve/" target="_blank" rel="noopener">Ver Instagram @fisionova_ve</a>
+      </div>
+      <div class="facts">
+        <div><b>Licenciada en Fisioterapia</b><span>Formación sanitaria detrás de cada sesión.</span></div>
+        <div><b>Instructora de Pilates</b><span>Suelo, Reformer y Suspensión.</span></div>
+        <div><b>Caracas y Altos Mirandinos</b><span>Escríbeme para coordinar sede y horario.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Tu primera clase empieza con un mensaje.</h2>
+      <p>Cuéntame cómo te sientes y qué quieres lograr. Te respondo por Instagram y coordinamos tu horario.</p>
+      <div class="cta">
+        <a class="btn" href="https://ig.me/m/fisionova_ve" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+        <a class="btn ghost" href="https://www.instagram.com/fisionova_ve/" target="_blank" rel="noopener">Ver perfil</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Fisionova · Ulianova Doria Siem</span>
+    <a href="https://www.instagram.com/fisionova_ve/" target="_blank" rel="noopener">@fisionova_ve</a>
+  </div>
+</footer>
+
+<script>
+const data={
+  dolor:{t:"Empieza con Pilates suelo",tags:["Suelo","Suspensión"],p:"Movimientos suaves y controlados para liberar tensión, mejorar la movilidad y aprender a moverte sin dolor. La suspensión descarga las articulaciones cuando lo necesitas."},
+  fuerza:{t:"Pilates Reformer",tags:["Reformer","Suspensión"],p:"Los resortes del Reformer te dan resistencia progresiva para fortalecer sin perder la técnica. La suspensión suma el reto de estabilidad."},
+  postura:{t:"Pilates suelo y Reformer",tags:["Suelo","Reformer"],p:"Trabajamos el core, la espalda y la alineación. En suelo aprendes la base y en Reformer la afinas con guía y resistencia."},
+  rec:{t:"Reformer con enfoque terapéutico",tags:["Reformer","Suspensión"],p:"Con formación en fisioterapia, adapto cada ejercicio a tu proceso para que vuelvas al movimiento de forma gradual y segura."}
+};
+const res=document.getElementById("res");
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));
+  const d=data[b.dataset.k];
+  res.className="result pop";
+  res.innerHTML="<div>"+d.tags.map(x=>'<span class="tag">'+x+"</span>").join("")+"</div><h3>"+d.t+"</h3><p>"+d.p+'</p><a class="btn" href="https://ig.me/m/fisionova_ve" target="_blank" rel="noopener">Reservar esta clase</a>';
+}));
+</script>
+</body>
+</html>

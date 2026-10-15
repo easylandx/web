@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Franyelin Colina | Nutricionista · Nutrición renal y microbiota</title>
+<meta name="description" content="Nutrición y metabolismo en manos expertas. Consultas y asesorías online con Franyelin Colina Estevez, especialista en nutrición renal y microbiota intestinal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2fff8; --ink:#04291a; --muted:#2f5a46; --brand:#00d26f; --brand-d:#008a47;
+  --soft:#d3f8e5; --card:#ffffff; --on-brand:#021a0f; --line:#b5ecd0;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --pad:clamp(22px,6vw,72px);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#03150d;--ink:#e8fff4;--muted:#9fdcbc;--brand:#2dff9a;--brand-d:#2dff9a;--soft:#0a2f1f;--card:#08241a;--on-brand:#02170d;--line:#12503404;--line:#145236}
+}
+:root[data-theme="dark"]{--bg:#03150d;--ink:#e8fff4;--muted:#9fdcbc;--brand:#2dff9a;--brand-d:#2dff9a;--soft:#0a2f1f;--card:#08241a;--on-brand:#02170d;--line:#145236}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:var(--pad)}
+section{padding-block:clamp(56px,9vw,104px)}
+:focus-visible{outline:3px solid var(--brand-d);outline-offset:3px;border-radius:6px}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font:800 1.15rem var(--head);text-decoration:none}
+.logo span{color:var(--brand-d)}
+.btn{display:inline-block;background:var(--brand);color:var(--on-brand);font:700 1rem var(--body);padding:14px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px var(--brand)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--brand-d)}
+.btn.small{padding:10px 20px;font-size:.95rem}
+
+/* hero */
+.hero{background:var(--brand);color:var(--on-brand);position:relative;overflow:hidden;padding-block:clamp(56px,10vw,120px)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,8.5vw,6rem);font-weight:800;max-width:11ch}
+.hero p{font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:34rem;margin:22px 0 32px;font-weight:500}
+.hero .btn{background:var(--on-brand);color:var(--brand)}
+.hero .btn.ghost{background:transparent;color:var(--on-brand);border-color:var(--on-brand)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.rings{position:absolute;right:-12vw;top:50%;width:min(62vw,560px);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;
+  background:radial-gradient(circle,var(--on-brand) 0 14%,transparent 14.5% 24%,rgba(2,26,15,.16) 24.5% 25.5%,transparent 26% 40%,rgba(2,26,15,.16) 40.5% 41.5%,transparent 42% 58%,rgba(2,26,15,.16) 58.5% 59.5%,transparent 60%);
+  animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{50%{transform:translateY(-50%) scale(1.05)}}
+@media (prefers-reduced-motion:reduce){.rings{animation:none}html{scroll-behavior:auto}}
+.creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;padding:0;list-style:none}
+.creds li{border:2px solid var(--on-brand);border-radius:999px;padding:8px 16px;font-weight:700;font-size:.95rem}
+
+/* sobre mi */
+.about{display:grid;gap:36px;grid-template-columns:1fr}
+.about h2,.services h2,.quiz h2,.steps h2,.contact h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:800}
+.about p{max-width:60ch;color:var(--muted)}
+.facts{display:grid;gap:14px;padding:0;margin:0;list-style:none}
+.facts li{background:var(--soft);border-radius:18px;padding:18px 20px;font-weight:500}
+.facts strong{display:block;font:800 1.15rem var(--head);color:var(--brand-d)}
+@media(min-width:820px){.about{grid-template-columns:1.1fr .9fr;align-items:start;gap:64px}}
+
+/* servicios */
+.services{background:var(--soft)}
+.cards{display:grid;gap:18px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:28px}
+.card:nth-child(1){border-color:var(--brand-d)}
+.card h3{font-size:1.4rem;margin-bottom:10px}
+.card p{margin:0;color:var(--muted)}
+
+/* quiz */
+.quiz{text-align:left}
+.quiz .lead{color:var(--muted);max-width:52ch;margin:12px 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:700 1rem var(--body);background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:999px;padding:12px 20px;cursor:pointer;transition:background .15s,border-color .15s}
+.chip:hover{border-color:var(--brand-d)}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.result{margin-top:28px;background:var(--brand);color:var(--on-brand);border-radius:28px;padding:clamp(24px,4vw,40px);display:none}
+.result.show{display:block;animation:pop .35s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}}
+.result h3{font-size:clamp(1.5rem,3.5vw,2.1rem);margin-bottom:10px}
+.result p{margin:0 0 20px;max-width:56ch;font-weight:500}
+.result .btn{background:var(--on-brand);color:var(--brand)}
+
+/* pasos */
+.steps ol{list-style:none;counter-reset:s;padding:0;margin:36px 0 0;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.steps li{counter-increment:s;border-top:4px solid var(--brand);padding-top:16px}
+.steps li::before{content:counter(s);font:800 2.4rem var(--head);color:var(--brand-d);display:block;line-height:1}
+.steps h3{font-size:1.25rem;margin:8px 0 6px}
+.steps p{margin:0;color:var(--muted)}
+
+/* contacto */
+.contact{background:var(--ink);color:var(--bg)}
+.contact h2{max-width:16ch}
+.contact p{color:inherit;opacity:.85;max-width:48ch;margin:14px 0 28px}
+.contact .btn.ghost{color:var(--bg);border-color:var(--brand)}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+.mail{margin-top:28px;font-weight:500}
+footer{padding-block:26px;text-align:center;font-size:.9rem;color:var(--muted)}
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:6;box-shadow:0 10px 28px -8px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#inicio">Franyelin<span>.</span>Colina</a>
+    <a class="btn small" href="#orientacion">Empezar</a>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero">
+  <div class="rings" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1>Nutrición y metabolismo en manos expertas</h1>
+    <p>Consultas y asesorías para cuidar tus riñones, equilibrar tu microbiota y comer con un plan que sí puedes sostener.</p>
+    <div class="cta">
+      <a class="btn" href="#orientacion">Encuentra tu plan</a>
+      <a class="btn ghost" href="https://api.whatsapp.com/send/?phone=584149029337" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+    <ul class="creds">
+      <li>Esp. en Nutrición Renal</li>
+      <li>Microbiota intestinal</li>
+      <li>Docente universitaria UCV · UC</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about">
+    <div>
+      <h2>Ciencia aplicada a tu plato</h2>
+      <p>Soy Franyelin Colina Estevez, nutricionista. Me especialicé en nutrición renal y en microbiota intestinal, y doy clases en la universidad, así que tu plan se apoya en evidencia y se explica en palabras claras.</p>
+      <p>Atiendo de forma personalizada, en consulta y online, desde cualquier país.</p>
+    </div>
+    <ul class="facts">
+      <li><strong>Nutrición renal</strong>Alimentación adaptada a tu función renal y tus análisis.</li>
+      <li><strong>Microbiota intestinal</strong>Estrategias para digestión, energía y bienestar.</li>
+      <li><strong>Atención online</strong>Consultas y asesorías para todo el mundo.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <h2>Cómo puedo ayudarte</h2>
+    <div class="cards">
+      <article class="card"><h3>Nutrición renal</h3><p>Plan alimentario para proteger tus riñones, con ajustes según tu etapa y tus laboratorios.</p></article>
+      <article class="card"><h3>Salud intestinal</h3><p>Orientación para mejorar tu microbiota y reducir molestias digestivas.</p></article>
+      <article class="card"><h3>Asesoría nutricional</h3><p>Seguimiento y metas realistas para tu peso, tu energía y tus hábitos.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="quiz" id="orientacion">
+  <div class="wrap">
+    <h2>¿Qué quieres mejorar?</h2>
+    <p class="lead">Elige tu objetivo y te muestro por dónde empezar.</p>
+    <div class="chips" role="group" aria-label="Objetivo">
+      <button class="chip" type="button" data-k="renal" aria-pressed="false">Cuidar mis riñones</button>
+      <button class="chip" type="button" data-k="gut" aria-pressed="false">Mejorar mi digestión</button>
+      <button class="chip" type="button" data-k="habits" aria-pressed="false">Ordenar mi alimentación</button>
+      <button class="chip" type="button" data-k="other" aria-pressed="false">Otro objetivo</button>
+    </div>
+    <div class="result" id="result" aria-live="polite">
+      <h3 id="rt"></h3>
+      <p id="rp"></p>
+      <a class="btn" id="rb" href="#" target="_blank" rel="noopener">Agendar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <h2>Así trabajamos</h2>
+    <ol>
+      <li><h3>Escríbeme</h3><p>Cuéntame tu objetivo por WhatsApp y coordinamos tu consulta.</p></li>
+      <li><h3>Evaluamos</h3><p>Revisamos tu historia, tus hábitos y tus análisis.</p></li>
+      <li><h3>Tu plan</h3><p>Recibes recomendaciones claras y un seguimiento a tu ritmo.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <h2>Da el primer paso hoy</h2>
+    <p>Consultas y asesorías disponibles. Escríbeme y resolvemos tus dudas.</p>
+    <div class="links">
+      <a class="btn" href="https://api.whatsapp.com/send/?phone=584149029337" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn ghost" href="https://www.instagram.com/biosanutplus/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn ghost" href="https://franyelincolina.my.canva.site/dahg9pozwpc" target="_blank" rel="noopener">Más información</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/franyelin-colina-estevez-35707068/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="mail">Correo: <a href="mailto:biosanut16@gmail.com">biosanut16@gmail.com</a></p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© Franyelin Colina Estevez · Nutricionista · @biosanutplus</div></footer>
+
+<a class="btn wa" href="https://api.whatsapp.com/send/?phone=584149029337" target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+const data={
+  renal:["Empecemos por tu nutrición renal","Revisamos tu etapa, tus análisis y tus hábitos para armar una alimentación que cuide tus riñones.","Hola Franyelin, quiero cuidar mis riñones con un plan de nutrición renal."],
+  gut:["Empecemos por tu microbiota","Trabajamos tu digestión y tu microbiota con un plan de alimentación adaptado a ti.","Hola Franyelin, quiero mejorar mi digestión y mi salud intestinal."],
+  habits:["Empecemos por tus hábitos","Armamos un plan realista, con metas claras y seguimiento, para que comer bien sea sostenible.","Hola Franyelin, quiero ordenar mi alimentación con una asesoría nutricional."],
+  other:["Cuéntame tu objetivo","Escríbeme qué necesitas y te oriento sobre la mejor forma de empezar.","Hola Franyelin, quiero una consulta nutricional."]
+};
+const chips=document.querySelectorAll('.chip'),box=document.getElementById('result');
+chips.forEach(c=>c.addEventListener('click',()=>{
+  chips.forEach(x=>x.setAttribute('aria-pressed',x===c));
+  const d=data[c.dataset.k];
+  rt.textContent=d[0];rp.textContent=d[1];
+  rb.href='https://api.whatsapp.com/send/?phone=584149029337&text='+encodeURIComponent(d[2]);
+  box.classList.remove('show');void box.offsetWidth;box.classList.add('show');
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dra. Valentina Salazar | Otorrino adultos y niños en Caracas</title>
+<meta name="description" content="Otorrinolaringóloga UCV. Cirugía endoscópica y láser. Consulta para adultos y niños en Caracas. Pide tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#effcff; --surface:#ffffff; --ink:#00262d; --muted:#3d6a73;
+  --brand:#00b8d9; --bright:#00e5ff; --deep:#003e4a; --on-brand:#00262d; --line:#bfeef7;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#00161a; --surface:#042a31; --ink:#e4fbff; --muted:#8fc6d1;
+    --brand:#00d4f5; --bright:#4df0ff; --deep:#00313a; --on-brand:#00262d; --line:#0a4955; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#00161a; --surface:#042a31; --ink:#e4fbff; --muted:#8fc6d1;
+  --brand:#00d4f5; --bright:#4df0ff; --deep:#00313a; --on-brand:#00262d; --line:#0a4955; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Figtree',system-ui,sans-serif;font-size:1.0625rem;line-height:1.6}
+h1,h2,h3{font-family:'Bricolage Grotesque','Figtree',system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:1080px;margin-inline:auto;padding-inline:clamp(22px,6vw,56px)}
+section{padding-block:clamp(56px,9vw,104px)}
+
+/* Hero */
+.hero{background:var(--brand);color:var(--on-brand);position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:var(--bright);opacity:.55}
+.hero::before{width:520px;height:520px;right:-180px;top:-160px}
+.hero::after{width:260px;height:260px;right:90px;bottom:-130px;background:var(--deep);opacity:.18}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-weight:800;font-size:clamp(2.6rem,8.5vw,5.6rem);max-width:12ch}
+.hero p{font-size:clamp(1.1rem,2.4vw,1.35rem);max-width:34ch;margin:22px 0 32px;font-weight:500}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:22px;font-weight:700}
+.nav a{text-decoration:none}
+.nav .ig{border:2px solid currentColor;padding:8px 16px;border-radius:99px;font-size:.95rem}
+.nav .ig:hover{background:var(--on-brand);color:var(--bright)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;font:700 1.05rem 'Figtree',system-ui,sans-serif;text-decoration:none;padding:15px 26px;border-radius:99px;border:2px solid var(--deep);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--deep);color:#e4fbff}
+.btn.alt{background:transparent;color:inherit}
+.hero .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:0;list-style:none}
+.hero .tags li{background:rgba(255,255,255,.55);padding:7px 15px;border-radius:99px;font-weight:700;font-size:.92rem}
+
+/* Servicios */
+h2{font-weight:800;font-size:clamp(2rem,5.5vw,3.4rem);max-width:16ch}
+.lead{color:var(--muted);max-width:52ch;margin:16px 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:26px}
+.card h3{font-size:1.45rem;margin-bottom:8px}
+.card p{margin:0;color:var(--muted)}
+.card.hl{background:var(--deep);border-color:var(--deep);color:#e4fbff}
+.card.hl p{color:#a9e9f5}
+
+/* Interactivo */
+.tool{background:var(--deep);color:#e4fbff}
+.tool h2{color:#e4fbff}
+.tool .lead{color:#a9e9f5}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.chip{font:700 1rem 'Figtree',system-ui,sans-serif;padding:12px 20px;border-radius:99px;border:2px solid var(--bright);background:transparent;color:#e4fbff;cursor:pointer;transition:background .15s,color .15s}
+.chip:hover{background:rgba(77,240,255,.18)}
+.chip[aria-pressed="true"]{background:var(--bright);color:#00262d}
+.result{background:var(--bright);color:#00262d;border-radius:26px;padding:clamp(22px,4vw,36px);min-height:200px;animation:pop .35s ease}
+@keyframes pop{from{opacity:.4;transform:scale(.98)}to{opacity:1;transform:none}}
+.result h3{font-size:1.8rem;margin-bottom:10px}
+.result p{margin:0 0 20px;max-width:56ch;font-weight:500}
+.result .btn.main{background:#00262d;color:var(--bright)}
+.note{font-size:.88rem;opacity:.8;margin-top:14px}
+
+/* Sedes */
+.sedes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.sede{background:var(--brand);color:var(--on-brand);border-radius:22px;padding:26px}
+.sede:nth-child(2){background:var(--bright)}
+.sede:nth-child(3){background:var(--surface);border:2px solid var(--brand);color:var(--ink)}
+.sede h3{font-size:1.4rem;margin-bottom:6px}
+.sede p{margin:0}
+
+/* CTA final */
+.final{background:var(--brand);color:var(--on-brand);text-align:center}
+.final h2{margin-inline:auto;max-width:14ch}
+.final p{max-width:40ch;margin:18px auto 30px;font-weight:500}
+.final .btns{justify-content:center}
+footer{padding-block:28px;text-align:center;color:var(--muted);font-size:.9rem}
+
+.wa-float{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;background:var(--deep);color:#e4fbff;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:99px;box-shadow:0 8px 24px rgba(0,62,74,.35)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <span>Dra. Valentina Salazar</span>
+      <a class="ig" href="https://www.instagram.com/laotorrino/" target="_blank" rel="noopener">Instagram @laotorrino</a>
+    </nav>
+    <div style="padding-block:clamp(40px,8vw,96px) clamp(48px,8vw,96px)">
+      <h1>Respira, escucha y habla sin molestias.</h1>
+      <p>Otorrinolaringóloga para adultos y niños en Caracas. Cirugía endoscópica y láser.</p>
+      <div class="btns">
+        <a class="btn main" href="https://wa.me/584127200091?text=Hola%20Dra.%20Valentina%2C%20quiero%20pedir%20una%20cita." target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+        <a class="btn alt" href="#orientacion">¿Qué molestia tengo?</a>
+      </div>
+      <ul class="tags">
+        <li>Otorrino UCV</li><li>Adultos y niños</li><li>3 sedes en Caracas</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <h2>Oído, nariz y garganta en un solo lugar.</h2>
+    <p class="lead">Consulta clara, con tiempo para tus preguntas y un plan de tratamiento que puedas seguir.</p>
+    <div class="grid">
+      <div class="card"><h3>Oído</h3><p>Dolor, zumbidos, pérdida de audición, mareos y tapones de cerumen.</p></div>
+      <div class="card"><h3>Nariz y senos</h3><p>Congestión, rinitis, sinusitis, sangrado, ronquidos y desviación del tabique.</p></div>
+      <div class="card"><h3>Garganta y voz</h3><p>Amigdalitis, ronquera, reflujo faríngeo y molestias al tragar.</p></div>
+      <div class="card hl"><h3>Cirugía endoscópica y láser</h3><p>Técnicas mínimamente invasivas cuando el caso lo requiere.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tool" id="orientacion">
+  <div class="wrap">
+    <h2>Cuéntanos qué sientes.</h2>
+    <p class="lead">Elige tu molestia y envía tu consulta por WhatsApp con el mensaje ya escrito.</p>
+    <div class="chips" role="group" aria-label="Molestia principal" id="chips"></div>
+    <div class="result" id="result" aria-live="polite"></div>
+    <p class="note">Esta guía es informativa y no sustituye la consulta médica. Ante dificultad para respirar o sangrado que no cede, acude a urgencias.</p>
+  </div>
+</section>
+
+<section id="sedes">
+  <div class="wrap">
+    <h2>Tres sedes para atenderte cerca.</h2>
+    <p class="lead">Escríbenos por WhatsApp y te indicamos horarios disponibles en cada una.</p>
+    <div class="sedes">
+      <div class="sede"><h3>Torre Majestic</h3><p>Av. Libertador, Caracas</p></div>
+      <div class="sede"><h3>Torre ALFA</h3><p>Santa Sofía, Caracas</p></div>
+      <div class="sede"><h3>Centro Clínico Fénix Salud</h3><p>Caracas</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Tu próxima consulta empieza con un mensaje.</h2>
+    <p>Cuéntanos tu caso y elige la sede que te quede mejor.</p>
+    <div class="btns">
+      <a class="btn main" href="https://wa.me/584127200091?text=Hola%20Dra.%20Valentina%2C%20quiero%20pedir%20una%20cita." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      <a class="btn alt" href="https://www.instagram.com/laotorrino/" target="_blank" rel="noopener">Ver Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Dra. Valentina Salazar · Otorrino adultos y niños · Caracas, Venezuela</div></footer>
+
+<a class="wa-float" href="https://wa.me/584127200091?text=Hola%20Dra.%20Valentina%2C%20quiero%20pedir%20una%20cita." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WhatsApp</a>
+
+<script>
+const casos=[
+ {k:"Oído",t:"Molestias en el oído",d:"Dolor, zumbidos, sensación de oído tapado o pérdida de audición merecen una revisión. La consulta incluye exploración del oído y orientación sobre el tratamiento."},
+ {k:"Nariz",t:"Congestión o sinusitis",d:"Nariz tapada, secreción, dolor facial o ronquidos que se repiten. Evaluamos la causa y definimos el tratamiento, médico o quirúrgico."},
+ {k:"Garganta",t:"Garganta y voz",d:"Dolor al tragar, amígdalas inflamadas, ronquera o carraspeo constante. Revisamos la garganta y buscamos el origen."},
+ {k:"Mi hijo",t:"Consulta pediátrica",d:"Infecciones de oído, amígdalas, adenoides o respiración por la boca en niños. Atención pensada para que el niño se sienta tranquilo."},
+ {k:"Cirugía",t:"Evaluación para cirugía",d:"Si te indicaron una operación, valoramos si la cirugía endoscópica o con láser es una opción para tu caso."}
+];
+const chips=document.getElementById('chips'),res=document.getElementById('result');
+function show(i){
+  const c=casos[i];
+  [...chips.children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+  const msg=encodeURIComponent("Hola Dra. Valentina, quiero pedir una cita. Motivo: "+c.t+".");
+  res.style.animation='none';res.offsetHeight;res.style.animation='';
+  res.innerHTML='<h3></h3><p></p><a class="btn main" target="_blank" rel="noopener">Pedir cita por este motivo</a>';
+  res.querySelector('h3').textContent=c.t;
+  res.querySelector('p').textContent=c.d;
+  res.querySelector('a').href="https://wa.me/584127200091?text="+msg;
+}
+casos.forEach((c,i)=>{
+  const b=document.createElement('button');
+  b.className='chip';b.type='button';b.textContent=c.k;
+  b.setAttribute('aria-pressed','false');
+  b.onclick=()=>show(i);
+  chips.appendChild(b);
+});
+show(0);
+</script>
+</body>
+</html>

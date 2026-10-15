@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Teaser | Pilates Studio · Reformer & Mat · Las Mercedes</title>
+<meta name="description" content="Pilates Reformer & Mat en grupos reducidos. Torre Jalisco, Las Mercedes. Est. 2024.">
+<style>
+:root{
+  --bg:#f6f1ff;--surface:#ffffff;--ink:#1a0638;--muted:#5b4682;
+  --p1:#7c3aed;--p2:#a855f7;--p3:#d8b4fe;--p4:#ede0ff;--glow:rgba(168,85,247,.45);
+  --pad:clamp(22px,6vw,64px);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12042b;--surface:#1e0a45;--ink:#f5edff;--muted:#c4a9f0;--p4:#2b0f5e;--glow:rgba(192,132,252,.5)}}
+:root[data-theme="dark"]{--bg:#12042b;--surface:#1e0a45;--ink:#f5edff;--muted:#c4a9f0;--p4:#2b0f5e;--glow:rgba(192,132,252,.5)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Arial,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:var(--pad)}
+nav{display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+.logo{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem}
+.logo b{color:var(--p2)}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;text-decoration:none;font-weight:700;padding:15px 28px;border-radius:999px;border:0;cursor:pointer;font-size:1rem;box-shadow:0 10px 30px var(--glow);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px var(--glow)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:none;border:2px solid var(--p2)}
+.btn.sm{padding:10px 20px;font-size:.9rem}
+.hero{position:relative;text-align:center;padding-block:56px 80px}
+.hero::before{content:"";position:absolute;inset:0 -10% auto;height:420px;background:radial-gradient(closest-side,var(--glow),transparent);z-index:-1;filter:blur(30px)}
+.tag{display:inline-block;background:var(--p4);color:var(--p1);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
+@media (prefers-color-scheme:dark){.tag{color:var(--p3)}}
+h1{font-size:clamp(2.6rem,9vw,5.6rem);line-height:1.02;font-weight:900;margin:22px 0 18px;letter-spacing:-.03em}
+h1 span{background:linear-gradient(135deg,var(--p1),var(--p2),var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:560px;margin:0 auto 30px;color:var(--muted);font-size:1.15rem}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.strip{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;padding-block:18px;overflow:hidden;white-space:nowrap}
+.strip div{display:inline-block;animation:run 28s linear infinite;font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.9rem}
+@keyframes run{to{transform:translateX(-50%)}}
+section{padding-block:76px}
+h2{font-size:clamp(1.9rem,5vw,3rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:14px}
+.lead{color:var(--muted);max-width:600px;margin-bottom:38px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--p3);border-radius:24px;padding:28px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px var(--glow)}
+.card .n{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;font-weight:800;margin-bottom:16px}
+.card h3{margin-bottom:6px}
+.card p{color:var(--muted);font-size:.97rem}
+.quiz{background:var(--surface);border:2px solid var(--p2);border-radius:32px;padding:clamp(24px,5vw,48px);box-shadow:0 20px 60px var(--glow)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:22px 0}
+.opt{background:var(--p4);color:var(--ink);border:2px solid transparent;border-radius:18px;padding:16px;font-size:1rem;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit}
+.opt:hover,.opt.on{border-color:var(--p2);background:var(--p2);color:#fff}
+#res{min-height:120px;border-radius:20px;background:var(--p4);padding:22px;display:none}
+#res.show{display:block;animation:pop .4s}
+@keyframes pop{from{opacity:0;transform:scale(.96)}}
+#res h3{color:var(--p1);margin-bottom:6px}
+@media (prefers-color-scheme:dark){#res h3{color:var(--p3)}}
+#res .btn{margin-top:14px}
+.loc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;align-items:center}
+.pill{display:inline-block;background:var(--p4);border-radius:999px;padding:6px 14px;margin:4px 6px 4px 0;font-weight:600;font-size:.9rem}
+.final{text-align:center;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;border-radius:36px;padding:clamp(36px,7vw,72px) var(--pad);margin-bottom:60px}
+.final .btn{background:#fff;color:var(--p1);box-shadow:none}
+.final .btn.ghost{background:transparent;color:#fff;border-color:#fff}
+.final p{opacity:.9;max-width:480px;margin:0 auto 26px}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding-bottom:40px}
+footer a{color:inherit}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo">The <b>Teaser</b></div>
+    <a class="btn sm" href="https://taplink.cc/theteaserstudio" target="_blank" rel="noopener">Reservar</a>
+  </nav>
+  <header class="hero">
+    <span class="tag">Est. 2024 · Las Mercedes</span>
+    <h1>Muévete con <span>intención.</span></h1>
+    <p>Pilates Reformer & Mat en grupos reducidos, con atención real a tu técnica y a tu cuerpo.</p>
+    <div class="cta">
+      <a class="btn" href="#clase">Encuentra tu clase</a>
+      <a class="btn ghost" href="https://www.instagram.com/theteaser_studio/" target="_blank" rel="noopener">@theteaser_studio</a>
+    </div>
+  </header>
+</div>
+
+<div class="strip"><div>Reformer ✦ Mat ✦ Grupos reducidos ✦ Certificaciones ✦ Reformer ✦ Mat ✦ Grupos reducidos ✦ Certificaciones ✦ Reformer ✦ Mat ✦ Grupos reducidos ✦ Certificaciones ✦ Reformer ✦ Mat ✦ Grupos reducidos ✦ Certificaciones ✦</div></div>
+
+<div class="wrap">
+  <section id="estudio">
+    <h2>Por qué The Teaser</h2>
+    <p class="lead">Un estudio pensado para que cada sesión cuente.</p>
+    <div class="grid">
+      <div class="card"><div class="n">01</div><h3>Grupos reducidos</h3><p>Más atención, correcciones al detalle y un ambiente cercano.</p></div>
+      <div class="card"><div class="n">02</div><h3>Reformer & Mat</h3><p>Dos formas de trabajar fuerza, control, postura y flexibilidad.</p></div>
+      <div class="card"><div class="n">03</div><h3>Certificaciones</h3><p>Formación y certificaciones: tu práctica en manos preparadas.</p></div>
+      <div class="card"><div class="n">04</div><h3>Las Mercedes</h3><p>En Torre Jalisco, un espacio cómodo y fácil de ubicar.</p></div>
+    </div>
+  </section>
+
+  <section id="clase">
+    <div class="quiz">
+      <span class="tag">Interactivo</span>
+      <h2 style="margin-top:14px">¿Qué clase es para ti?</h2>
+      <p class="lead" style="margin-bottom:0">Elige tu objetivo principal y te sugerimos por dónde empezar.</p>
+      <div class="opts" id="opts">
+        <button class="opt" data-k="fuerza">💪 Ganar fuerza</button>
+        <button class="opt" data-k="postura">🧘 Mejorar postura</button>
+        <button class="opt" data-k="flex">🌀 Flexibilidad</button>
+        <button class="opt" data-k="nuevo">✨ Soy nuevo/a</button>
+      </div>
+      <div id="res" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="ubicacion">
+    <div class="loc">
+      <div>
+        <h2>Encuéntranos</h2>
+        <p class="lead" style="margin-bottom:18px">Torre Jalisco, Las Mercedes. Escríbenos o reserva desde nuestros enlaces.</p>
+        <span class="pill">📍 Torre Jalisco</span><span class="pill">Las Mercedes</span><span class="pill">Est. 2024</span>
+      </div>
+      <div class="card">
+        <h3>Síguenos</h3>
+        <p style="margin-bottom:16px">Clases, novedades y comunidad en Instagram.</p>
+        <a class="btn sm" href="https://www.instagram.com/theteaser_studio/" target="_blank" rel="noopener">Ir a Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="final">
+    <h2>Tu primera clase te espera</h2>
+    <p>Cupos limitados por clase. Reserva tu lugar hoy.</p>
+    <div class="cta">
+      <a class="btn" href="https://taplink.cc/theteaserstudio" target="_blank" rel="noopener">Reservar en Taplink</a>
+      <a class="btn ghost" href="https://www.instagram.com/theteaser_studio/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <footer>© The Teaser | Pilates Studio · <a href="https://taplink.cc/theteaserstudio" target="_blank" rel="noopener">taplink.cc/theteaserstudio</a></footer>
+</div>
+
+<script>
+var R={
+ fuerza:["Reformer","La resistencia del reformer trabaja tu core y todo el cuerpo con control y progresión."],
+ postura:["Mat + Reformer","Combina la base del Mat con la guía del reformer para alinear y activar tu postura."],
+ flex:["Mat","Movimientos fluidos que ganan movilidad y elongación, a tu ritmo."],
+ nuevo:["Clase de introducción en grupo reducido","Con pocas personas por clase, te acompañamos desde el primer ejercicio."]
+};
+document.getElementById("opts").addEventListener("click",function(e){
+  var b=e.target.closest(".opt");if(!b)return;
+  document.querySelectorAll(".opt").forEach(function(o){o.classList.remove("on")});
+  b.classList.add("on");
+  var r=R[b.dataset.k],el=document.getElementById("res");
+  el.className="";void el.offsetWidth;
+  el.innerHTML="<h3>Te recomendamos: "+r[0]+"</h3><p>"+r[1]+"</p><a class='btn sm' target='_blank' rel='noopener' href='https://taplink.cc/theteaserstudio'>Reservar mi clase</a>";
+  el.className="show";
+});
+</script>
+</body>
+</html>

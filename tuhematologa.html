@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dra. Carina Araujo | Hematóloga y Hemato-Oncóloga</title>
+<meta name="description" content="Diagnósticos precisos y tratamientos avanzados para anemias complejas y enfermedades hemato-oncológicas. Agenda tu cita.">
+<style>
+:root{--bg:#fff5f6;--surface:#ffffff;--ink:#3a0610;--mute:#7a2a37;--p:#e11d48;--p2:#be123c;--soft:#ffe0e5;--line:#ffc2cc;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a0408;--surface:#2a0810;--ink:#ffe9ec;--mute:#ffb3c0;--p:#ff4d73;--p2:#ff7a98;--soft:#3d0c17;--line:#5c1426;--on:#1a0408}}
+:root[data-theme="dark"]{--bg:#1a0408;--surface:#2a0810;--ink:#ffe9ec;--mute:#ffb3c0;--p:#ff4d73;--p2:#ff7a98;--soft:#3d0c17;--line:#5c1426;--on:#1a0408}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif}
+.w{max-width:1040px;margin:0 auto;padding-inline:clamp(22px,6vw,48px)}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.5rem;border-radius:999px;background:var(--p);color:var(--on);font-weight:700;text-decoration:none;border:2px solid var(--p);transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px);background:var(--p2);border-color:var(--p2)}
+.btn.o{background:transparent;color:var(--p)}
+.btn.o:hover{background:var(--soft);color:var(--p2)}
+nav{display:flex;justify-content:space-between;align-items:center;padding-block:20px;gap:12px}
+.logo{font-weight:800;color:var(--p);letter-spacing:.02em}
+.hero{padding-block:48px 72px;display:grid;gap:36px;grid-template-columns:1.2fr .8fr;align-items:center}
+.tag{display:inline-block;background:var(--soft);color:var(--p);font-weight:700;font-size:.85rem;padding:.35rem .9rem;border-radius:999px;border:1px solid var(--line)}
+h1{font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.08;margin:.9rem 0;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--p)}
+.lead{color:var(--mute);font-size:1.1rem;max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.orb{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 28%,#ffb3c0,var(--p) 45%,var(--p2));display:grid;place-items:center;color:#fff;box-shadow:0 30px 80px -20px var(--p);max-width:340px;margin-inline:auto;width:100%;text-align:center;padding:24px}
+.orb b{font-size:3.6rem;display:block;line-height:1}
+.orb span{font-weight:600}
+section{padding-block:56px}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 .4rem;letter-spacing:-.01em}
+.sub{color:var(--mute);margin:0 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:inherit;cursor:pointer;padding:.6rem 1.1rem;border-radius:999px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font-weight:600}
+.chip:hover{border-color:var(--p)}
+.chip[aria-pressed="true"]{background:var(--p);color:var(--on);border-color:var(--p)}
+.panel{margin-top:22px;background:var(--surface);border:2px solid var(--p);border-radius:24px;padding:clamp(20px,4vw,32px)}
+.panel h3{margin:0 0 .4rem;color:var(--p)}
+.panel p{margin:0 0 18px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px}
+.card i{font-style:normal;font-size:1.8rem;display:block;margin-bottom:8px}
+.card h3{margin:0 0 6px}
+.card p{margin:0;color:var(--mute);font-size:.97rem}
+.steps{counter-reset:s;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.steps div{counter-increment:s;padding:22px;border-radius:22px;background:var(--soft)}
+.steps div::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--p);color:var(--on);font-weight:800;margin-bottom:10px}
+.steps b{display:block}
+.band{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border-radius:32px;padding:clamp(28px,6vw,56px);text-align:center}
+.band h2{color:#fff}
+.band .btn{background:#fff;color:var(--p2);border-color:#fff;margin:6px}
+.band .btn.o{background:transparent;color:#fff}
+footer{padding-block:32px 40px;color:var(--mute);font-size:.88rem;text-align:center}
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;box-shadow:0 10px 30px -8px var(--p)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.orb{max-width:240px}}
+</style>
+</head>
+<body>
+<div class="w">
+<nav><span class="logo">🩸 Dra. Carina Araujo</span><a class="btn o" href="https://www.instagram.com/tuhematologa/" target="_blank" rel="noopener">Instagram</a></nav>
+
+<header class="hero">
+<div>
+<span class="tag">Hematóloga y Hemato-Oncóloga</span>
+<h1>Superar una anemia compleja <em>empieza con un diagnóstico preciso</em></h1>
+<p class="lead">Acompaño a pacientes con anemias complejas y enfermedades hemato-oncológicas con diagnósticos precisos y tratamientos avanzados, con trato cercano en cada paso.</p>
+<div class="cta">
+<a class="btn" href="https://wa.me/584141121098?text=Hola%20Dra.%20Carina%2C%20quiero%20agendar%20una%20cita." target="_blank" rel="noopener">Agenda tu cita</a>
+<a class="btn o" href="#orienta">¿Por qué consultar?</a>
+</div>
+</div>
+<div class="orb" aria-hidden="true"><div><b>🩸</b><span>Tu salud,<br>en manos expertas</span></div></div>
+</header>
+
+<section id="orienta">
+<h2>¿Qué te trae a consulta?</h2>
+<p class="sub">Elige una opción y mira cómo puedo ayudarte.</p>
+<div class="chips" id="chips"></div>
+<div class="panel" id="panel" aria-live="polite"></div>
+</section>
+
+<section>
+<h2>Cómo te ayudo</h2>
+<p class="sub">Atención hematológica integral.</p>
+<div class="grid">
+<div class="card"><i>🔬</i><h3>Diagnóstico preciso</h3><p>Análisis cuidadoso de tus estudios para encontrar el origen real de la anemia o la alteración.</p></div>
+<div class="card"><i>💉</i><h3>Tratamientos avanzados</h3><p>Planes actualizados y personalizados según tu caso y tu momento de vida.</p></div>
+<div class="card"><i>🎗️</i><h3>Hemato-oncología</h3><p>Acompañamiento en enfermedades de la sangre con claridad, calma y seguimiento.</p></div>
+<div class="card"><i>🤝</i><h3>Segunda opinión</h3><p>Revisión de tu historial y resultados para darte tranquilidad y un camino claro.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Agendar es muy sencillo</h2>
+<p class="sub">Tres pasos, sin complicaciones.</p>
+<div class="steps">
+<div><b>Escríbeme por WhatsApp</b>Cuéntame brevemente tu motivo de consulta.</div>
+<div><b>Elegimos tu horario</b>Coordinamos día y hora que te convengan.</div>
+<div><b>Recibe tu plan</b>Evaluación, diagnóstico y tratamiento a tu medida.</div>
+</div>
+</section>
+
+<section>
+<div class="band">
+<h2>Da hoy el primer paso hacia tu bienestar</h2>
+<p>Cuanto antes se estudia, antes se trata.</p>
+<a class="btn" href="https://wa.me/584141121098?text=Hola%20Dra.%20Carina%2C%20quiero%20agendar%20una%20cita." target="_blank" rel="noopener">Agenda tu cita por WhatsApp</a>
+<a class="btn o" href="https://www.instagram.com/tuhematologa/" target="_blank" rel="noopener">@tuhematologa</a>
+</div>
+</section>
+
+<footer>© Dra. Carina Araujo · Hematóloga y Hemato-Oncóloga<br>La información de este sitio es orientativa y no sustituye una consulta médica.</footer>
+</div>
+<a class="btn wa" href="https://wa.me/584141121098?text=Hola%20Dra.%20Carina%2C%20quiero%20agendar%20una%20cita." target="_blank" rel="noopener">💬 WhatsApp</a>
+
+<script>
+var D=[
+["Anemia que no mejora","Si llevas tiempo con cansancio, palidez o una anemia que no responde al tratamiento, es importante estudiar la causa de fondo para tratarla de forma correcta."],
+["Resultados de laboratorio alterados","Un hemograma con valores fuera de rango merece una interpretación experta. Revisamos tus resultados y definimos los estudios necesarios."],
+["Moretones o sangrados frecuentes","Los sangrados o moretones sin causa clara pueden tener explicación hematológica. Una evaluación a tiempo da respuestas y tranquilidad."],
+["Diagnóstico hemato-oncológico","Si recibiste un diagnóstico o sospecha de enfermedad de la sangre, te acompaño con información clara y un plan de tratamiento avanzado."],
+["Segunda opinión","Revisamos tu historial y tus estudios para confirmar el diagnóstico y las opciones de tratamiento disponibles."]
+];
+var c=document.getElementById("chips"),p=document.getElementById("panel");
+function show(i){
+ [].forEach.call(c.children,function(b,j){b.setAttribute("aria-pressed",j===i)});
+ var m=encodeURIComponent("Hola Dra. Carina, quiero agendar una cita. Motivo: "+D[i][0]);
+ p.innerHTML="<h3></h3><p></p><a class='btn' target='_blank' rel='noopener' href='https://wa.me/584141121098?text="+m+"'>Agendar por este motivo</a>";
+ p.querySelector("h3").textContent=D[i][0];p.querySelector("p").textContent=D[i][1];
+}
+D.forEach(function(d,i){var b=document.createElement("button");b.className="chip";b.textContent=d[0];b.onclick=function(){show(i)};c.appendChild(b)});
+show(0);
+</script>
+</body>
+</html>

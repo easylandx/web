@@ -399,6 +399,21 @@
       font-size: 1rem;
       min-height: 50px;
     }
+    /* Los dos botones del hero con exactamente el mismo tamaño */
+    .hero-cta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+    .hero-cta .btn {
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      line-height: 1.25;
+    }
+    @media (max-width: 600px) {
+      .hero-cta { grid-template-columns: 1fr; }
+    }
     .newsletter-note {
       margin-top: 1rem;
       padding-top: 1rem;

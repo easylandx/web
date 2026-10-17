@@ -80,7 +80,7 @@ button{font:inherit;font-size:12px;color:var(--text);background:var(--bubble);bo
 /* ---------- CONFIG ---------- */
 const params = new URLSearchParams(location.search);
 const FEED_URL = params.get('feed') || '';            // your proxy endpoint (see trending-proxy.js)
-const POLL_MS  = Math.max(15, +(params.get('every') || 60)) * 1000;
+const POLL_MS  = Math.max(2, +(params.get('every') || 5)) * 1000;
 const MAX_MSGS = 200;
 if (params.get('theme')) document.documentElement.dataset.theme = params.get('theme');
 

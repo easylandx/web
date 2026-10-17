@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trending Live Chat</title>
+<!--
+  EMBED ON ANY SITE:
+  <iframe src="https://YOUR-HOST/trending-chat.html?feed=https://YOUR-PROXY/trends"
+          style="width:100%;max-width:420px;height:600px;border:0;border-radius:16px"
+          title="Trending live chat"></iframe>
+
+  FEED FORMAT (JSON) returned by your endpoint:
+  { "items": [ { "id": "unique", "name": "#Topic", "count": 12345, "url": "https://x.com/search?q=..." } ] }
+  Nothing is hardcoded: every poll is diffed against what is already shown,
+  and only NEW or CHANGED trends are posted into the chat.
+-->
+<style>
+:root{
+  --bg:#f5f6f8; --card:#ffffff; --text:#0f1419; --muted:#667085; --line:#e4e7ec;
+  --bubble:#eef1f5; --accent:#1d9bf0; --hot:#f4511e; --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0d10; --card:#14181d; --text:#e7e9ea; --muted:#8b98a5; --line:#262c33; --bubble:#1c2229;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b0d10; --card:#14181d; --text:#e7e9ea; --muted:#8b98a5; --line:#262c33; --bubble:#1c2229;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:16px clamp(16px,5vw,32px);display:flex;justify-content:center}
+.chat{width:100%;max-width:440px;height:100%;max-height:720px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+header h1{font-size:16px;margin:0;flex:1}
+.dot{width:9px;height:9px;border-radius:50%;background:#12b76a;box-shadow:0 0 0 0 rgba(18,183,106,.6);animation:pulse 2s infinite}
+.dot.off{background:#f04438;animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(18,183,106,0)}100%{box-shadow:0 0 0 0 rgba(18,183,106,0)}}
+#status{font-size:12px;color:var(--muted)}
+#log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.msg{display:flex;gap:10px;max-width:92%;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.av{flex:none;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.av.hot{background:var(--hot)}
+.bub{background:var(--bubble);padding:9px 12px;border-radius:4px 14px 14px 14px;min-width:0}
+.bub a{color:var(--text);text-decoration:none;font-weight:600;word-break:break-word}
+.bub a:hover{text-decoration:underline}
+.meta{font-size:12px;color:var(--muted);margin-top:2px}
+.up{color:var(--hot);font-weight:600}
+.sys{align-self:center;font-size:12px;color:var(--muted);text-align:center;padding:2px 8px}
+.typing{display:none;gap:4px;padding:0 16px 12px}
+.typing.on{display:flex}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:b 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
+footer{display:flex;gap:8px;align-items:center;padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+footer span{flex:1}
+button{font:inherit;font-size:12px;color:var(--text);background:var(--bubble);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="chat" role="log" aria-live="polite">
+  <header>
+    <span class="dot" id="dot"></span>
+    <h1>Trending Live</h1>
+    <span id="status">connecting…</span>
+  </header>
+  <div id="log"></div>
+  <div class="typing" id="typing"><i></i><i></i><i></i></div>
+  <footer>
+    <span id="src">Source: x.com/explore/tabs/trending</span>
+    <button id="pause">Pause</button>
+  </footer>
+</div>
+
+<script>
+/* ---------- CONFIG ---------- */
+const params = new URLSearchParams(location.search);
+const FEED_URL = params.get('feed') || '';            // your proxy endpoint (see trending-proxy.js)
+const POLL_MS  = Math.max(15, +(params.get('every') || 60)) * 1000;
+const MAX_MSGS = 200;
+if (params.get('theme')) document.documentElement.dataset.theme = params.get('theme');
+
+/* ---------- STATE ---------- */
+const log = document.getElementById('log');
+const dot = document.getElementById('dot');
+const statusEl = document.getElementById('status');
+const typing = document.getElementById('typing');
+const seen = new Map();   // id -> last count
+let paused = false, demo = !FEED_URL, timer;
+
+const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1)+'M' : n >= 1e3 ? (n/1e3).toFixed(1)+'K' : String(n);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u||'') ? u : '#';
+
+function sys(text){
+  const d = document.createElement('div'); d.className = 'sys'; d.textContent = text; log.appendChild(d); trim();
+}
+function post(item, rank, delta){
+  const d = document.createElement('div'); d.className = 'msg';
+  const hot = rank <= 3;
+  d.innerHTML =
+    `<div class="av ${hot?'hot':''}">${rank}</div>
+     <div class="bub">
+       <a href="${esc(safeUrl(item.url))}" target="_blank" rel="noopener noreferrer">${esc(item.name)}</a>
+       <div class="meta">${item.count ? fmt(item.count)+' posts' : 'trending'}${delta>0 ? ` · <span class="up">▲ +${fmt(delta)}</span>` : ''}</div>
+     </div>`;
+  log.appendChild(d); trim();
+}
+function trim(){
+  while (log.children.length > MAX_MSGS) log.removeChild(log.firstChild);
+  log.scrollTop = log.scrollHeight;
+}
+
+/* ---------- FEED ---------- */
+async function fetchLive(){
+  const r = await fetch(FEED_URL, {cache:'no-store'});
+  if (!r.ok) throw new Error('HTTP '+r.status);
+  const j = await r.json();
+  return (j.items || j.data || []).map((t,i) => ({
+    id: t.id || t.name || t.trend_name || String(i),
+    name: t.name || t.trend_name,
+    count: t.count ?? t.tweet_count ?? 0,
+    url: t.url || 'https://x.com/search?q=' + encodeURIComponent(t.name || t.trend_name || '')
+  }));
+}
+
+/* Demo generator: only used when no ?feed= is set. Produces different data each poll. */
+const W1=['Super','Late','Night','Global','Viral','Open','Quantum','Street','Retro','Solar','Turbo','Indie','Cosmic','Rapid','Urban'];
+const W2=['Launch','Derby','Summit','Remix','Finale','Update','Festival','Leak','Debate','Drop','Rally','Awards','Outage','Premiere','Cup'];
+function demoFetch(){
+  const pool = [...seen.keys()].slice(-8).map(k => ({id:k,name:k,count:seen.get(k)+Math.floor(Math.random()*9000)}));
+  const fresh = Array.from({length:3+Math.floor(Math.random()*4)}, () => {
+    const name = '#'+W1[Math.random()*W1.length|0]+W2[Math.random()*W2.length|0]+(Math.random()*90|0);
+    return {id:name,name,count:1000+Math.floor(Math.random()*400000)};
+  });
+  return Promise.resolve([...fresh,...pool.slice(0,3)].sort((a,b)=>b.count-a.count).map(t=>({...t,url:'https://x.com/search?q='+encodeURIComponent(t.name)})));
+}
+
+async function tick(){
+  if (paused) return schedule();
+  typing.classList.add('on');
+  try{
+    const items = await (demo ? demoFetch() : fetchLive());
+    await new Promise(r => setTimeout(r, 600));
+    typing.classList.remove('on');
+    dot.classList.remove('off');
+    statusEl.textContent = (demo ? 'demo · ' : 'live · ') + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    let posted = 0;
+    for (let i = 0; i < items.length; i++){
+      const t = items[i], prev = seen.get(t.id);
+      const delta = prev == null ? 0 : t.count - prev;
+      const isNew = prev == null;
+      const jumped = !isNew && prev > 0 && delta / prev > 0.15;
+      if (isNew || jumped){
+        post(t, i+1, delta); posted++;
+        await new Promise(r => setTimeout(r, 350));   // stagger like a live chat
+      }
+      seen.set(t.id, t.count);
+    }
+    if (!posted) sys('No new movement — still watching…');
+  }catch(e){
+    typing.classList.remove('on');
+    dot.classList.add('off');
+    statusEl.textContent = 'offline';
+    sys('Feed error: ' + e.message + ' — retrying');
+  }
+  schedule();
+}
+function schedule(){ clearTimeout(timer); timer = setTimeout(tick, POLL_MS); }
+
+document.getElementById('pause').onclick = e => {
+  paused = !paused; e.target.textContent = paused ? 'Resume' : 'Pause';
+  if (!paused) tick();
+};
+
+if (demo){
+  sys('Demo mode: no feed connected. Add ?feed=YOUR_PROXY_URL to stream real X trends.');
+  document.getElementById('src').textContent = 'Demo data (no feed set)';
+}
+tick();
+</script>
+</body>
+</html>

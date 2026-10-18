@@ -170,7 +170,7 @@
     overflow:hidden; white-space:nowrap; padding:13px 0;
   }
   .stripe-track{
-    display:inline-block; padding-left:100%;
+    display:inline-block; padding-left:0;
     animation: scrollstripe 34s linear infinite;
     font-size:.9rem; color:var(--ink); font-weight:700; letter-spacing:.02em;
   }
@@ -376,6 +376,76 @@
   document.head.appendChild(s);
 })();
 </script>
+
+<!-- Scrolling stripe: sentences come from the same spreadsheet (column A), nothing is hardcoded. -->
+<script>
+(function () {
+  var SHEET_ID = "1G9qq7BncidZFFEv-T9jjg0MUyER1EaVYvNQ0_iVO0y8";
+  var RANGE = "A11:A200";
+  var MAX_ITEMS = 12;      // how many sentences to show per loop
+  var PX_PER_SEC = 70;     // scroll speed
+
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function build(items) {
+    var stripe = document.getElementById("stripe");
+    var track = document.getElementById("stripe-track");
+    if (!stripe || !track || !items.length) return;
+
+    function addItems(parent) {
+      items.forEach(function (text) {
+        var s = document.createElement("span");
+        s.textContent = "★ " + text + "    ";
+        parent.appendChild(s);
+      });
+    }
+
+    stripe.hidden = false;
+    track.textContent = "";
+    var first = document.createElement("span");
+    first.style.display = "inline-block";
+    addItems(first);
+    track.appendChild(first);
+    // Repeat the sentences until one half is wider than the screen, so the loop never shows a gap.
+    var guard = 0;
+    while (first.offsetWidth < stripe.offsetWidth && guard++ < 20) addItems(first);
+    // Duplicate the half: the animation moves by exactly 50% for a seamless loop.
+    track.appendChild(first.cloneNode(true));
+    track.style.animationDuration = Math.max(20, Math.round(first.offsetWidth / PX_PER_SEC)) + "s";
+  }
+
+  window.__loadStripeSentences = function (res) {
+    try {
+      var rows = res && res.table && res.table.rows ? res.table.rows : [];
+      var list = [];
+      for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i] && rows[i].c ? rows[i].c : [];
+        var v = cells[0] && cells[0].v != null ? String(cells[0].v).trim() : "";
+        v = v.replace(/\*/g, "");
+        if (v && /[A-Za-zÀ-ÿ]/.test(v) && v.length > 8 && list.indexOf(v) === -1) list.push(v);
+      }
+      var items = shuffle(list).slice(0, MAX_ITEMS);
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () { build(items); });
+      } else {
+        build(items);
+      }
+    } catch (e) {
+      console.error("Could not load stripe sentences from the spreadsheet:", e);
+    }
+  };
+
+  var st = document.createElement("script");
+  st.src = "https://docs.google.com/spreadsheets/d/" + SHEET_ID +
+    "/gviz/tq?tqx=out:json;responseHandler:__loadStripeSentences&headers=0&range=" + encodeURIComponent(RANGE);
+  document.head.appendChild(st);
+})();
+</script>
 </head>
 <body>
 
@@ -400,7 +470,6 @@
     <div class="wrap">
       <div class="herogrid">
         <div>
-          <div class="kicker">Landing pages construidas como se construye un argumento</div>
           <h1 id="hero-title"></h1>
           <p class="hero-sub">EasyLandX escribe y diseña landing pages enfocadas en conversión para pequeñas empresas: un visitante, un argumento claro, un clic seguro.</p>
           <div class="btnrow">
@@ -417,8 +486,9 @@
         </div>
       </div>
     </div>
-    <div class="stripe" aria-hidden="true">
-      <span class="stripe-track">★ Landing Pages &nbsp; ★ Pequeños Negocios &nbsp; ★ Optimización de Conversión &nbsp; ★ Entrega Rápida &nbsp; ★ Adaptado a Móviles &nbsp; ★ Desarrollo Personalizado &nbsp; ★ WhatsApp e Instagram &nbsp; ★ Landing Pages &nbsp; ★ Pequeños Negocios &nbsp; ★ Optimización de Conversión &nbsp; ★ Entrega Rápida &nbsp; ★ Adaptado a Móviles &nbsp; ★ Desarrollo Personalizado &nbsp; ★ WhatsApp e Instagram &nbsp;</span>
+    <!-- Stripe text is loaded from the Google Sheet (see script in head); hidden until it arrives. -->
+    <div class="stripe" id="stripe" aria-hidden="true" hidden>
+      <span class="stripe-track" id="stripe-track"></span>
     </div>
   </section>
 

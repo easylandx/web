@@ -165,6 +165,28 @@
   .heroimg img.fade{opacity:0;}
   @media (max-width:900px){ .heroimg{margin:0 auto; max-width:380px;} }
   @media (prefers-reduced-motion: reduce){ .heroimg, .heroimg img{transition:none;} }
+  /* tap hint: small animated badge, top-right of the photo */
+  .tap-hint{
+    position:absolute; top:12px; right:12px; z-index:2;
+    width:38px; height:38px; border-radius:50%;
+    background:var(--red); color:#fff;
+    border:2.5px solid var(--ink);
+    display:grid; place-items:center;
+    pointer-events:none;
+    animation:hintBob 2.4s ease-in-out infinite;
+  }
+  .tap-hint::before, .tap-hint::after{
+    content:""; position:absolute; inset:-3px; border-radius:50%;
+    border:2px solid var(--red); opacity:0;
+    animation:hintRing 2.4s ease-out infinite;
+  }
+  .tap-hint::after{animation-delay:1.2s;}
+  .tap-hint svg{width:20px; height:20px; display:block; animation:hintNudge 2.4s ease-in-out infinite;}
+  .heroimg:hover .tap-hint, .heroimg:focus-visible .tap-hint{animation-duration:1.2s;}
+  @keyframes hintRing{0%{transform:scale(1); opacity:.7;} 70%,100%{transform:scale(1.9); opacity:0;}}
+  @keyframes hintBob{0%,100%{transform:scale(1);} 50%{transform:scale(1.08);}}
+  @keyframes hintNudge{0%,55%,100%{transform:translateX(0);} 70%{transform:translateX(3px);} 85%{transform:translateX(-1px);}}
+  @media (prefers-reduced-motion: reduce){ .tap-hint, .tap-hint::before, .tap-hint::after, .tap-hint svg{animation:none;} .tap-hint::before,.tap-hint::after{display:none;} }
   .stripe{
     margin-top:52px; border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);
     overflow:hidden; white-space:nowrap; padding:13px 0;
@@ -481,6 +503,7 @@
         <div class="heroside">
           <button type="button" class="heroimg" id="heroimg" aria-label="Ver la siguiente imagen">
             <img id="heroimg-pic" src="" alt="" width="640" height="640" decoding="async">
+            <span class="tap-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
           </button>
           <p class="marginal">"Una página persuasiva invita a tomar una decisión: de forma cálida, clara y directa hacia un único objetivo."</p>
         </div>

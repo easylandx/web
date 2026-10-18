@@ -53,6 +53,7 @@
   var COLORS = ["#c62828","#1565c0","#1b7f3b","#7b1fa2","#b34700","#00796b","#ad1457","#303f9f"]; // one per headline, cycling
   var SPEED_PX    = 70;     // scroll speed in pixels per second
   var REFRESH_SEC = 60;     // how often to check for new stories
+  var PROXY_URL   = "";    // OPTIONAL but most reliable: your own free Cloudflare Worker, e.g. "https://news-proxy.yourname.workers.dev/?url=" (see worker.js)
   var MAX_ITEMS   = 40;
   var PER_FEED    = 40;     // newest stories taken from each source
   var PARALLEL    = 5;      // feeds fetched at the same time (keeps free proxies from blocking us)
@@ -132,11 +133,16 @@
     {kind:"raw",  url:function(u){return "https://api.allorigins.win/raw?url="+encodeURIComponent(u)}},
     {kind:"json", url:function(u){return "https://api.allorigins.win/get?url="+encodeURIComponent(u)}},
     {kind:"raw",  url:function(u){return "https://corsproxy.io/?url="+encodeURIComponent(u)}},
-    {kind:"raw",  url:function(u){return "https://corsproxy.io/?"+encodeURIComponent(u)}},
+    {kind:"raw",  url:function(u){return "https://proxy.corsfix.com/?"+encodeURIComponent(u)}},
+    {kind:"raw",  url:function(u){return "https://corsproxy.org/?url="+encodeURIComponent(u)}},
     {kind:"raw",  url:function(u){return "https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(u)}},
-    {kind:"raw",  url:function(u){return "https://thingproxy.freeboard.io/fetch/"+u}},
-    {kind:"raw",  url:function(u){return "https://api.cors.lol/?url="+encodeURIComponent(u)}}
+    {kind:"raw",  url:function(u){return "https://yacdn.org/proxy/"+u}},
+    {kind:"json", url:function(u){return "https://everyorigin.jwvbremen.nl/api/get?url="+encodeURIComponent(u)}},
+    {kind:"raw",  url:function(u){return "https://api.cors.lol/?url="+encodeURIComponent(u)}},
+    {kind:"raw",  url:function(u){return "https://thingproxy.freeboard.io/fetch/"+u}}
   ];
+  if(PROXY_URL) PROXIES.unshift({kind:"raw", url:function(u){return PROXY_URL+encodeURIComponent(u)}});
+
   function timeout(ms){var c=new AbortController();setTimeout(function(){c.abort()},ms);return c.signal}
 
   function cleanTitle(x, f){
@@ -164,10 +170,10 @@
   // resolves with the first promise that succeeds; rejects only if all fail
   function firstOk(list){
     return new Promise(function(res, rej){
-      var left = list.length, done = false;
+      var left = list.length, done = false, errs = [];
       list.forEach(function(p){
         p.then(function(v){ if(!done){ done = true; res(v); } },
-               function(){ if(--left === 0 && !done) rej(); });
+               function(e){ errs.push(String(e && e.message || e)); if(--left === 0 && !done) rej(errs); });
       });
     });
   }
@@ -177,7 +183,7 @@
     if(!r.ok) throw new Error("http "+r.status);
     var txt;
     if(p.kind === "json"){
-      var j = await r.json(), c = j.contents || "";
+      var j = await r.json(), c = j.contents || j.html || "";
       if(c.indexOf("data:") === 0){ c = decodeURIComponent(escape(atob(c.split(",")[1]))); }   // proxy sent base64
       txt = c;
     } else {
@@ -203,7 +209,7 @@
     var tries = PROXIES.map(function(p){ return viaProxy(p, f); });
     tries.push(viaJson(f));
     try{ return await firstOk(tries); }
-    catch(e){ console.warn("News stripe: all sources failed for", f.name); return []; }
+    catch(e){ console.warn("News stripe: every relay failed for "+f.name+". Reasons:", e); return []; }
   }
 
   async function runPool(list, n, fn){

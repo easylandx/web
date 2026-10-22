@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keratina UA Madrid · Alisado de keratina, botox y reconstrucción capilar en Parla</title>
+<meta name="description" content="Alisado de keratina, botox capilar y restauración en frío en Parla, Madrid. Especialista de Ucrania, materiales de alta calidad. Cita previa en privado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --h:330;
+  --bg:hsl(var(--h) 45% 96%);
+  --bg2:hsl(var(--h) 50% 91%);
+  --card:hsl(var(--h) 60% 99%);
+  --ink:hsl(var(--h) 45% 12%);
+  --mute:hsl(var(--h) 18% 34%);
+  --acc:hsl(var(--h) 72% 38%);
+  --acc-ink:hsl(var(--h) 80% 98%);
+  --line:hsl(var(--h) 35% 80%);
+  --head:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:hsl(var(--h) 30% 9%);--bg2:hsl(var(--h) 30% 14%);--card:hsl(var(--h) 28% 12%);
+    --ink:hsl(var(--h) 40% 94%);--mute:hsl(var(--h) 20% 72%);
+    --acc:hsl(var(--h) 85% 68%);--acc-ink:hsl(var(--h) 40% 10%);--line:hsl(var(--h) 22% 24%);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:hsl(var(--h) 30% 9%);--bg2:hsl(var(--h) 30% 14%);--card:hsl(var(--h) 28% 12%);
+  --ink:hsl(var(--h) 40% 94%);--mute:hsl(var(--h) 20% 72%);
+  --acc:hsl(var(--h) 85% 68%);--acc-ink:hsl(var(--h) 40% 10%);--line:hsl(var(--h) 22% 24%);
+  color-scheme:dark;
+}
+html{height:auto;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;transition:background .6s,color .6s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1040px;margin:0 auto;padding:72px 28px}
+section{transition:background .6s}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--acc);color:var(--acc-ink);font-weight:700;text-decoration:none;padding:15px 26px;border-radius:999px;border:0;font:700 1rem var(--body);cursor:pointer;transition:background .6s,transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+
+/* hero */
+.hero .wrap{padding-top:80px;padding-bottom:88px;display:grid;gap:40px;grid-template-columns:1.3fr 1fr;align-items:center}
+.tag{display:inline-block;background:var(--bg2);border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:.9rem;margin-bottom:22px;transition:background .6s}
+h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800}
+h1 em{font-style:normal;color:var(--acc);transition:color .6s}
+.lead{font-size:1.2rem;color:var(--mute);max-width:34em;margin:22px 0 32px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.strands{display:flex;gap:10px;justify-content:center;align-items:flex-end;height:340px}
+.strands span{flex:1;max-width:46px;border-radius:999px;background:linear-gradient(to bottom,hsl(var(--h) 80% 70%),hsl(var(--h) 70% 38%));transition:background .6s}
+.strands span:nth-child(1){height:70%}.strands span:nth-child(2){height:92%}.strands span:nth-child(3){height:100%}
+.strands span:nth-child(4){height:84%}.strands span:nth-child(5){height:96%}.strands span:nth-child(6){height:66%}
+.hues{display:flex;gap:10px;margin-top:30px;align-items:center;flex-wrap:wrap}
+.hues small{color:var(--mute);margin-right:4px}
+.hue{width:30px;height:30px;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 2px var(--line);cursor:pointer;padding:0}
+.hue[aria-pressed="true"]{box-shadow:0 0 0 3px var(--acc)}
+
+/* quiz */
+.quiz{background:var(--bg2)}
+.quiz h2,.serv h2,.why h2,.steps h2{font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:12px}
+.sub{color:var(--mute);max-width:36em;margin:0 0 32px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.opt{background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:18px;padding:20px;text-align:left;font:500 1rem var(--body);cursor:pointer;transition:border-color .2s,transform .15s,background .6s}
+.opt b{display:block;font:700 1.15rem var(--head);margin-bottom:4px}
+.opt span{color:var(--mute);font-size:.94rem}
+.opt:hover{transform:translateY(-3px);border-color:var(--acc)}
+.opt[aria-pressed="true"]{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.result{margin-top:28px;background:var(--card);border:2px solid var(--acc);border-radius:22px;padding:30px;display:none;transition:background .6s}
+.result.on{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.result h3{font-size:1.9rem;color:var(--acc);margin-bottom:10px}
+.result p{margin:0 0 20px;color:var(--mute);max-width:40em}
+.result ul{margin:0 0 22px;padding-left:1.2em}
+
+/* servicios */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:30px}
+.card{border-radius:26px;padding:30px;background:hsl(var(--c) 60% 94%);color:hsl(var(--c) 50% 14%)}
+.card:nth-child(2){border-radius:26px 26px 26px 80px}
+.card h3{font-size:1.6rem;margin-bottom:10px}
+.card p{margin:0;color:hsl(var(--c) 25% 28%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card{background:hsl(var(--c) 35% 16%);color:hsl(var(--c) 60% 92%)}:root:not([data-theme="light"]) .card p{color:hsl(var(--c) 30% 76%)}}
+:root[data-theme="dark"] .card{background:hsl(var(--c) 35% 16%);color:hsl(var(--c) 60% 92%)}
+:root[data-theme="dark"] .card p{color:hsl(var(--c) 30% 76%)}
+
+/* por qué */
+.why{background:var(--bg2)}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;margin-top:30px}
+.grid4 div{border-top:3px solid var(--acc);padding-top:14px;transition:border-color .6s}
+.grid4 h3{font-size:1.25rem;margin-bottom:6px}
+.grid4 p{margin:0;color:var(--mute);font-size:.98rem}
+
+/* pasos */
+ol.s{list-style:none;counter-reset:s;margin:30px 0 0;padding:0;display:grid;gap:16px}
+ol.s li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;transition:background .6s}
+ol.s li::before{content:counter(s);width:56px;height:56px;border-radius:50%;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;font:800 1.4rem var(--head);transition:background .6s}
+ol.s h3{font-size:1.2rem;margin-bottom:2px}
+ol.s p{margin:0;color:var(--mute)}
+
+/* final */
+.final{background:var(--acc);color:var(--acc-ink);transition:background .6s}
+.final .wrap{text-align:center;padding-top:80px;padding-bottom:80px}
+.final h2{font-size:clamp(2rem,5vw,3.6rem);margin-bottom:14px}
+.final p{max-width:32em;margin:0 auto 28px;opacity:.92}
+.final .btn{background:var(--acc-ink);color:var(--acc)}
+footer .wrap{padding-top:36px;padding-bottom:48px;color:var(--mute);font-size:.92rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:780px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:48px}
+  .strands{height:180px;order:-1}
+  .wrap{padding:56px 24px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="tag">Parla, Madrid · Cita previa en privado</span>
+    <h1>Cabello liso, sano y con <em>brillo real</em></h1>
+    <p class="lead">Alisado de keratina, botox capilar y reconstrucción en frío con una especialista de Ucrania y materiales de alta calidad.</p>
+    <div class="cta-row">
+      <a class="btn" href="#quiz">Descubre tu tratamiento</a>
+      <a class="btn ghost" href="https://www.instagram.com/keratinaua_madrid/" target="_blank" rel="noopener">Instagram @keratinaua_madrid</a>
+    </div>
+    <div class="hues" role="group" aria-label="Elige el color de la página">
+      <small>Elige tu color:</small>
+      <button class="hue" data-h="330" style="background:hsl(330 75% 55%)" aria-label="Rosa" aria-pressed="true"></button>
+      <button class="hue" data-h="268" style="background:hsl(268 70% 58%)" aria-label="Violeta" aria-pressed="false"></button>
+      <button class="hue" data-h="200" style="background:hsl(200 80% 45%)" aria-label="Azul" aria-pressed="false"></button>
+      <button class="hue" data-h="160" style="background:hsl(160 70% 36%)" aria-label="Esmeralda" aria-pressed="false"></button>
+      <button class="hue" data-h="22" style="background:hsl(22 85% 52%)" aria-label="Coral" aria-pressed="false"></button>
+    </div>
+  </div>
+  <div class="strands" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div></header>
+
+<main>
+<section class="quiz" id="quiz"><div class="wrap">
+  <h2>¿Cómo está tu cabello hoy?</h2>
+  <p class="sub">Elige la opción que más se parezca a ti. Te mostramos el tratamiento ideal y la página cambia de color con él.</p>
+  <div class="opts" id="opts" role="group" aria-label="Estado del cabello">
+    <button class="opt" data-k="keratina" aria-pressed="false"><b>Encrespado y con volumen</b><span>Frizz, ondas que no controlo</span></button>
+    <button class="opt" data-k="botox" aria-pressed="false"><b>Opaco y sin vida</b><span>Sin brillo, deshidratado</span></button>
+    <button class="opt" data-k="frio" aria-pressed="false"><b>Dañado o quebradizo</b><span>Puntas abiertas, se rompe</span></button>
+    <button class="opt" data-k="nano" aria-pressed="false"><b>Muy castigado</b><span>Decoloraciones, tintes, calor</span></button>
+  </div>
+  <div class="result" id="result" aria-live="polite" tabindex="-1">
+    <h3 id="rt"></h3>
+    <p id="rp"></p>
+    <ul id="rl"></ul>
+    <a class="btn" id="rc" href="https://www.instagram.com/keratinaua_madrid/" target="_blank" rel="noopener">Pedir cita por Instagram</a>
+  </div>
+</div></section>
+
+<section class="serv" id="servicios"><div class="wrap">
+  <h2>Tratamientos</h2>
+  <p class="sub">Cada cabello es distinto. Estos son los servicios que ofrecemos en Parla.</p>
+  <div class="cards">
+    <article class="card" style="--c:330"><h3>Alisado de keratina</h3><p>Controla el frizz, reduce el volumen y deja el cabello suave y manejable durante semanas.</p></article>
+    <article class="card" style="--c:268"><h3>Botox capilar</h3><p>Hidratación profunda que devuelve brillo, suavidad y cuerpo a un cabello apagado.</p></article>
+    <article class="card" style="--c:200"><h3>Restauración en frío</h3><p>Repara la fibra capilar sin calor excesivo. Ideal para cabello sensible o dañado.</p></article>
+  </div>
+</div></section>
+
+<section class="why"><div class="wrap">
+  <h2>Por qué elegirnos</h2>
+  <div class="grid4">
+    <div><h3>Especialista de Ucrania</h3><p>Técnica cuidada y trato personal en cada sesión.</p></div>
+    <div><h3>Materiales de alta calidad</h3><p>Productos profesionales para un resultado que dura.</p></div>
+    <div><h3>Cita previa en privado</h3><p>Atención individual, sin prisas ni esperas.</p></div>
+    <div><h3>Nanoreconstrucción</h3><p>Opciones para cabello muy dañado, adaptadas a ti.</p></div>
+  </div>
+</div></section>
+
+<section class="steps"><div class="wrap">
+  <h2>Reserva en tres pasos</h2>
+  <ol class="s">
+    <li><div><h3>Escríbenos por Instagram</h3><p>Cuéntanos cómo está tu cabello y qué buscas.</p></div></li>
+    <li><div><h3>Confirma tu cita</h3><p>Te proponemos día y hora. Las citas son en privado.</p></div></li>
+    <li><div><h3>Disfruta tu resultado</h3><p>Te explicamos los cuidados para que dure más.</p></div></li>
+  </ol>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Tu mejor cabello empieza con una cita</h2>
+  <p>Escríbenos por mensaje directo y reserva tu sesión en Parla, Madrid.</p>
+  <a class="btn" href="https://www.instagram.com/keratinaua_madrid/" target="_blank" rel="noopener">Ir a @keratinaua_madrid</a>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>Keratina UA Madrid · Parla, Madrid</span>
+  <a href="https://www.instagram.com/keratinaua_madrid/" target="_blank" rel="noopener">Instagram</a>
+</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var T={
+    keratina:{h:330,t:'Alisado de keratina',p:'Es lo que tu cabello necesita para dejar atrás el frizz y el volumen descontrolado.',l:['Cabello liso y suave','Menos tiempo de peinado','Brillo y disciplina']},
+    botox:{h:268,t:'Botox capilar',p:'Tu cabello pide hidratación profunda. El botox capilar devuelve brillo y cuerpo.',l:['Brillo inmediato','Suavidad y nutrición','Menos aspecto apagado']},
+    frio:{h:200,t:'Restauración en frío',p:'Repara la fibra sin añadir calor extra, perfecto para cabello quebradizo con puntas dañadas.',l:['Reparación sin calor','Cabello más fuerte','Ideal para cabello sensible']},
+    nano:{h:160,t:'Nanoreconstrucción',p:'Para cabello muy castigado por decoloración, tintes o calor, la nanoreconstrucción es el mejor punto de partida.',l:['Reconstrucción intensa','Recupera la elasticidad','Valoración personalizada']}
+  };
+  function setHue(h){
+    root.style.setProperty('--h',h);
+    document.querySelectorAll('.hue').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.h==h))});
+  }
+  document.querySelectorAll('.hue').forEach(function(b){b.addEventListener('click',function(){setHue(b.dataset.h)})});
+  var res=document.getElementById('result');
+  document.querySelectorAll('.opt').forEach(function(o){
+    o.addEventListener('click',function(){
+      var d=T[o.dataset.k];
+      document.querySelectorAll('.opt').forEach(function(x){x.setAttribute('aria-pressed',String(x===o))});
+      setHue(d.h);
+      document.getElementById('rt').textContent=d.t;
+      document.getElementById('rp').textContent=d.p;
+      var ul=document.getElementById('rl');ul.innerHTML='';
+      d.l.forEach(function(s){var li=document.createElement('li');li.textContent=s;ul.appendChild(li)});
+      res.classList.remove('on');void res.offsetWidth;res.classList.add('on');
+    });
+  });
+})();
+</script>
+</body>
+</html>

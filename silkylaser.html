@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Silky Laser Studio — лазерная эпиляция в Мадриде</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fff;--fg:#241a22;--muted:#6d5f69;--sl:94%;--ss:70%;--sc:#fff;--line:rgba(36,26,34,.14);--ac-l:42%;--ac-s:55%;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#140f13;--fg:#f6eef3;--muted:#b8a8b2;--sl:15%;--ss:28%;--sc:#1d161c;--line:rgba(246,238,243,.16);--ac-l:72%;--ac-s:70%;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#140f13;--fg:#f6eef3;--muted:#b8a8b2;--sl:15%;--ss:28%;--sc:#1d161c;--line:rgba(246,238,243,.16);--ac-l:72%;--ac-s:70%;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Manrope',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(22px,6vw,56px)}
+section{padding:clamp(56px,9vw,96px) 0;background:hsl(var(--h) var(--ss) var(--sl))}
+h1,h2,h3{font-family:'Cormorant',Georgia,serif;line-height:1.08;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:700}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:700}
+h3{font-size:1.5rem}
+p{margin:0 0 1em}
+.acc{color:hsl(var(--h) var(--ac-s) var(--ac-l))}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.45em 1em;border-radius:99px;background:hsl(var(--h) var(--ac-s) var(--ac-l)/.14);color:hsl(var(--h) var(--ac-s) var(--ac-l));margin-bottom:1.4em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.95em 1.7em;border-radius:99px;font:700 1rem 'Manrope',sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-main{background:hsl(var(--h) 60% 40%);color:#fff;box-shadow:0 10px 28px hsl(var(--h) 60% 40%/.35)}
+.btn-ghost{border-color:hsl(var(--h) var(--ac-s) var(--ac-l));color:hsl(var(--h) var(--ac-s) var(--ac-l));background:transparent}
+.row{display:flex;flex-wrap:wrap;gap:14px;margin-top:1.6em}
+header{background:hsl(340 var(--ss) var(--sl))}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-family:'Cormorant',serif;font-weight:700;font-size:1.5rem;text-decoration:none;color:var(--fg)}
+.logo b{color:hsl(340 var(--ac-s) var(--ac-l))}
+.nav-link{font-weight:700;font-size:.9rem;color:hsl(340 var(--ac-s) var(--ac-l));text-decoration:none}
+.hero{--h:340;padding-top:clamp(24px,5vw,48px)}
+.hero-grid{display:grid;gap:40px;align-items:center}
+@media(min-width:860px){.hero-grid{grid-template-columns:1.25fr .75fr}}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:34em}
+.orb{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 28%,hsl(340 80% 88%),hsl(340 60% 62%) 55%,hsl(340 55% 32%));box-shadow:0 30px 70px hsl(340 60% 40%/.35);display:grid;place-items:center;max-width:340px;width:100%;margin:0 auto;animation:float 6s ease-in-out infinite}
+.orb span{font-family:'Cormorant',serif;font-size:clamp(2rem,6vw,3rem);color:#fff;text-align:center;line-height:1}
+.orb small{display:block;font:700 .72rem 'Manrope',sans-serif;letter-spacing:.2em;margin-top:.6em;opacity:.85}
+@keyframes float{50%{transform:translateY(-14px)}}
+@media(prefers-reduced-motion:reduce){.orb{animation:none}html{scroll-behavior:auto}}
+.cards{display:grid;gap:18px;margin-top:2em}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--sc);border:1px solid var(--line);border-radius:26px;padding:28px}
+.card .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:1em;background:hsl(var(--c) 60% 50%/.16)}
+.card:nth-child(1){--c:340}.card:nth-child(2){--c:265}.card:nth-child(3){--c:175}
+.card p{color:var(--muted);margin:0}
+.benefits{--h:265}
+.tool{--h:175}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:1.6em 0}
+.chip{font:500 1rem 'Manrope',sans-serif;padding:.7em 1.3em;border-radius:99px;border:2px solid var(--line);background:var(--sc);color:var(--fg);cursor:pointer;transition:.2s}
+.chip:hover{border-color:hsl(var(--h) var(--ac-s) var(--ac-l))}
+.chip[aria-pressed="true"]{background:hsl(var(--h) 60% 36%);border-color:hsl(var(--h) 60% 36%);color:#fff}
+.out{background:var(--sc);border:1px dashed hsl(var(--h) var(--ac-s) var(--ac-l));border-radius:22px;padding:22px 24px}
+.out .cnt{font-weight:700;color:hsl(var(--h) var(--ac-s) var(--ac-l))}
+.out q{display:block;margin-top:.6em;color:var(--muted);font-style:italic;quotes:none}
+.note{font-size:.85rem;color:var(--muted);margin-top:.8em;min-height:1.4em}
+.steps{--h:30}
+.step-list{display:grid;gap:18px;margin-top:2em;counter-reset:s}
+@media(min-width:760px){.step-list{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--sc);border:1px solid var(--line);border-radius:26px;padding:28px;counter-increment:s}
+.step::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:hsl(var(--h) 80% 50%);color:#fff;font:700 1.3rem 'Cormorant',serif;margin-bottom:1em}
+.step p{color:var(--muted);margin:0}
+.cta{--h:305;text-align:center}
+.cta .wrap{max-width:760px}
+.cta .row{justify-content:center}
+footer{padding:32px 0;background:var(--bg);text-align:center;color:var(--muted);font-size:.9rem}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top">Silky <b>Laser</b> Studio</a>
+      <a class="nav-link" href="#zapis">Записаться →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Madrid · Лазерная эпиляция</span>
+      <h1>Гладкая кожа <span class="acc">без лишних хлопот</span></h1>
+      <p class="lead">Диодный лазер премиум-класса в Мадриде. Результат заметен уже после первых сеансов, а процедура подходит для всех типов волос.</p>
+      <div class="row">
+        <a class="btn btn-main" href="https://www.instagram.com/silky_laser_studio_/" target="_blank" rel="noopener">📩 Записаться в Direct</a>
+        <a class="btn btn-ghost" href="#zony">Выбрать зоны</a>
+      </div>
+    </div>
+    <div class="orb" aria-hidden="true"><div><span>Silky<br>skin</span><small>DIODE LASER</small></div></div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap">
+    <span class="eyebrow">Почему Silky</span>
+    <h2>Три причины <span class="acc">доверить кожу нам</span></h2>
+    <div class="cards">
+      <div class="card"><div class="ic">✨</div><h3>Лучший диодный лазер</h3><p>Оборудование премиум-класса для комфортной и аккуратной работы.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Результат с первых сеансов</h3><p>Изменения вы почувствуете уже в начале курса.</p></div>
+      <div class="card"><div class="ic">🌿</div><h3>Для всех типов волос</h3><p>Подходит разным типам волос, поэтому записаться может каждая.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tool" id="zony">
+  <div class="wrap">
+    <span class="eyebrow">Небольшой помощник</span>
+    <h2>Выберите зоны <span class="acc">и напишите нам</span></h2>
+    <p style="color:var(--muted);max-width:36em">Отметьте, что хотите убрать. Мы подготовим сообщение, которое останется отправить в Direct.</p>
+    <div class="chips" id="chips" role="group" aria-label="Зоны"></div>
+    <div class="out">
+      <div class="cnt" id="cnt">Выбрано зон: 0</div>
+      <q id="msg">Выберите хотя бы одну зону, чтобы собрать сообщение.</q>
+      <div class="row">
+        <button class="btn btn-main" id="send" type="button">Скопировать и открыть Instagram</button>
+        <button class="btn btn-ghost" id="reset" type="button">Сбросить</button>
+      </div>
+      <div class="note" id="note" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <span class="eyebrow">Как это работает</span>
+    <h2>Запись <span class="acc">за три шага</span></h2>
+    <div class="step-list">
+      <div class="step"><h3>Напишите в Direct</h3><p>Отправьте сообщение в Instagram — мы ответим и подскажем.</p></div>
+      <div class="step"><h3>Выберите зоны</h3><p>Определимся с зонами и удобным временем.</p></div>
+      <div class="step"><h3>Приходите в студию</h3><p>Мадрид, лазерная эпиляция премиум-класса.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="zapis">
+  <div class="wrap">
+    <span class="eyebrow">Запись открыта</span>
+    <h2>Готовы к <span class="acc">шелковой коже?</span></h2>
+    <p style="color:var(--muted)">Запись в Direct — ответим и подберём удобное время.</p>
+    <div class="row">
+      <a class="btn btn-main" href="https://www.instagram.com/silky_laser_studio_/" target="_blank" rel="noopener">Instagram @silky_laser_studio_</a>
+      <a class="btn btn-ghost" href="https://linktr.ee/silkylaserstudio" target="_blank" rel="noopener">linktr.ee/silkylaserstudio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© Silky Laser Studio · Madrid · <a href="https://www.instagram.com/silky_laser_studio_/" target="_blank" rel="noopener">Instagram</a></div>
+</footer>
+
+<script>
+(function(){
+  var zones=['Подмышки','Бикини','Глубокое бикини','Ноги','Руки','Лицо','Спина','Живот'];
+  var sel={};
+  var chips=document.getElementById('chips'),cnt=document.getElementById('cnt'),msg=document.getElementById('msg'),note=document.getElementById('note');
+  function text(){
+    var l=zones.filter(function(z){return sel[z]});
+    return l.length?'Здравствуйте! Хочу записаться на лазерную эпиляцию. Зоны: '+l.join(', ')+'. Подскажите, пожалуйста, свободное время.':'';
+  }
+  function render(){
+    var n=zones.filter(function(z){return sel[z]}).length;
+    cnt.textContent='Выбрано зон: '+n;
+    msg.textContent=n?'«'+text()+'»':'Выберите хотя бы одну зону, чтобы собрать сообщение.';
+    Array.prototype.forEach.call(chips.children,function(c){c.setAttribute('aria-pressed',sel[c.textContent]?'true':'false')});
+  }
+  zones.forEach(function(z){
+    var b=document.createElement('button');
+    b.type='button';b.className='chip';b.textContent=z;b.setAttribute('aria-pressed','false');
+    b.onclick=function(){sel[z]=!sel[z];note.textContent='';render()};
+    chips.appendChild(b);
+  });
+  document.getElementById('reset').onclick=function(){sel={};note.textContent='';render()};
+  document.getElementById('send').onclick=function(){
+    var t=text();
+    if(!t){note.textContent='Сначала выберите хотя бы одну зону.';return}
+    var done=function(ok){
+      note.textContent=ok?'Сообщение скопировано — вставьте его в Direct.':'Скопируйте текст выше и отправьте его в Direct.';
+      window.open('https://www.instagram.com/silky_laser_studio_/','_blank','noopener');
+    };
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true)},function(){done(false)})}
+      else done(false);
+    }catch(e){done(false)}
+  };
+  render();
+})();
+</script>
+</body>
+</html>

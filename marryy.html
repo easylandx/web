@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nails Marryy · Manicura y pedicura en Madrid</title>
+<meta name="description" content="Manicura en 1,5 h y pedicura en 1 h en Madrid. Cursos de manicura y pedicura. Reserva por WhatsApp.">
+<style>
+:root{--bg:#fafafa;--fg:#111;--mut:#666;--card:#fff;--line:#e4e4e4;--skin:#d9d9d9;--accent:#d62839;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0e0e;--fg:#f4f4f4;--mut:#a0a0a0;--card:#181818;--line:#2c2c2c;--skin:#3a3a3a}}
+:root[data-theme="dark"]{--bg:#0e0e0e;--fg:#f4f4f4;--mut:#a0a0a0;--card:#181818;--line:#2c2c2c;--skin:#3a3a3a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Helvetica Neue",Arial,sans-serif;line-height:1.55;transition:background .3s}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(22px,6vw,48px)}
+section{padding:clamp(48px,8vw,84px) 0}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.1;margin:0 0 14px}
+h1{font-size:clamp(2.5rem,8vw,4.8rem);letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,5vw,2.8rem)}
+p{margin:0 0 14px}
+.mut{color:var(--mut)}
+.tag{display:inline-block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:6px 14px;margin-bottom:20px;background:var(--card)}
+.tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px;transition:background .3s}
+nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:1.3rem;text-decoration:none;color:var(--fg)}
+.logo b{color:var(--accent);transition:color .3s}
+.btn{display:inline-block;background:var(--accent);color:var(--on);text-decoration:none;font-weight:700;padding:15px 28px;border-radius:99px;border:0;font-size:1rem;cursor:pointer;transition:transform .2s,background .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--fg);border:1.5px solid var(--fg)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.hero{display:grid;gap:40px;align-items:center;padding-top:clamp(24px,5vw,48px)}
+@media(min-width:820px){.hero{grid-template-columns:1.1fr .9fr}}
+.dots{display:flex;gap:8px;margin-top:30px;flex-wrap:wrap}
+.dots span{width:34px;height:34px;border-radius:50%}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px}
+.stats div b{display:block;font-family:Georgia,serif;font-size:1.9rem}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px;text-align:center}
+.stage svg{width:100%;max-width:300px;height:auto}
+.nail{transition:fill .35s}
+.sw{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
+.sw button{width:38px;height:38px;border-radius:50%;border:3px solid var(--card);outline:1.5px solid var(--line);cursor:pointer;transition:transform .2s}
+.sw button:hover{transform:scale(1.12)}
+.sw button[aria-pressed="true"]{outline:2.5px solid var(--fg)}
+.lab{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
+.opts{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.opts button{background:transparent;color:var(--fg);border:1.5px solid var(--line);border-radius:99px;padding:9px 16px;cursor:pointer;font-size:.92rem}
+.opts button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+#sum{font-weight:700;margin:18px 0 4px;min-height:1.5em}
+.grid{display:grid;gap:18px;margin-top:30px}
+@media(min-width:760px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 26px;border-top-width:6px}
+.card .big{font-family:Georgia,serif;font-size:2rem;font-weight:700}
+.dark{background:var(--fg);color:var(--bg);border-radius:32px;padding:clamp(32px,6vw,56px)}
+.dark .mut{color:inherit;opacity:.7}
+ul.ck{list-style:none;padding:0;margin:18px 0}
+ul.ck li{padding:8px 0 8px 30px;position:relative}
+ul.ck li::before{content:"";position:absolute;left:0;top:15px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+.step{font-family:Georgia,serif;font-size:2.4rem;font-weight:700;color:var(--accent);transition:color .3s}
+footer{padding:40px 0 48px;border-top:1px solid var(--line);font-size:.9rem}
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <a class="logo" href="#">Nails<b>.</b>Marryy</a>
+  <a class="btn ghost" href="https://wa.me/34642054441" target="_blank" rel="noopener" style="padding:10px 20px">WhatsApp</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <span class="tag"><i></i>Madrid · Español · Русский · Українська</span>
+    <h1>Tus uñas, <span style="color:var(--accent);transition:color .3s">tu color.</span></h1>
+    <p class="mut" style="font-size:1.15rem;max-width:34ch">Manicura y pedicura en Madrid, con tiempo justo y acabado impecable. Manicura en 1,5 h. Pedicura en 1 h.</p>
+    <div class="row">
+      <a class="btn" href="#disena">Diseña tu manicura</a>
+      <a class="btn ghost" href="https://www.instagram.com/nails_marryy/" target="_blank" rel="noopener">Ver Instagram</a>
+    </div>
+    <div class="stats">
+      <div><b>1,5 h</b><span class="mut">manicura</span></div>
+      <div><b>1 h</b><span class="mut">pedicura</span></div>
+      <div><b>3 idiomas</b><span class="mut">ES · RU · UA</span></div>
+    </div>
+  </div>
+  <div class="stage" id="disena">
+    <h3 style="font-size:1.5rem">Elige tu color</h3>
+    <svg viewBox="0 0 300 300" role="img" aria-label="Mano con uñas pintadas del color elegido">
+      <g fill="var(--skin)">
+        <rect x="70" y="150" width="160" height="130" rx="52"/>
+        <rect x="68" y="78" width="36" height="120" rx="18"/>
+        <rect x="108" y="48" width="36" height="150" rx="18"/>
+        <rect x="148" y="38" width="36" height="160" rx="18"/>
+        <rect x="188" y="66" width="36" height="132" rx="18"/>
+        <rect x="26" y="150" width="34" height="90" rx="17" transform="rotate(-32 43 195)"/>
+      </g>
+      <g class="nails" fill="#d62839">
+        <rect class="nail" x="73" y="84" width="26" height="34" rx="12"/>
+        <rect class="nail" x="113" y="54" width="26" height="34" rx="12"/>
+        <rect class="nail" x="153" y="44" width="26" height="34" rx="12"/>
+        <rect class="nail" x="193" y="72" width="26" height="34" rx="12"/>
+        <rect class="nail" x="32" y="156" width="22" height="28" rx="10" transform="rotate(-32 43 195)"/>
+      </g>
+      <g fill="#fff" opacity=".35"><rect x="78" y="89" width="5" height="16" rx="2.5"/><rect x="118" y="59" width="5" height="16" rx="2.5"/><rect x="158" y="49" width="5" height="16" rx="2.5"/><rect x="198" y="77" width="5" height="16" rx="2.5"/></g>
+    </svg>
+    <div class="sw" id="sw" role="group" aria-label="Colores de esmalte"></div>
+    <div class="lab">Servicio</div>
+    <div class="opts" id="srv" role="group" aria-label="Servicio">
+      <button aria-pressed="true" data-v="manicura (1,5 h)">Manicura · 1,5 h</button>
+      <button aria-pressed="false" data-v="pedicura (1 h)">Pedicura · 1 h</button>
+      <button aria-pressed="false" data-v="manicura + pedicura">Las dos</button>
+    </div>
+    <div class="lab">Acabado</div>
+    <div class="opts" id="fin" role="group" aria-label="Acabado">
+      <button aria-pressed="true" data-v="brillo">Brillo</button>
+      <button aria-pressed="false" data-v="mate">Mate</button>
+    </div>
+    <p id="sum"></p>
+    <a class="btn" id="cta" href="https://wa.me/34642054441" target="_blank" rel="noopener">Reservar este look por WhatsApp</a>
+  </div>
+</section>
+
+<section>
+  <h2>Servicios</h2>
+  <p class="mut">Un trato cercano, higiene cuidada y resultados que duran.</p>
+  <div class="grid c3">
+    <div class="card" style="border-top-color:#ff6fa5"><div class="big">Manicura</div><p class="mut">Forma, cutícula y esmaltado a tu gusto. Lista en 1,5 h.</p><p><b>1,5 h</b></p></div>
+    <div class="card" style="border-top-color:#4cc9f0"><div class="big">Pedicura</div><p class="mut">Pies cuidados y esmalte perfecto. Lista en 1 h.</p><p><b>1 h</b></p></div>
+    <div class="card" style="border-top-color:#e6b422"><div class="big">Cursos</div><p class="mut">Aprende manicura y pedicura desde cero o perfecciona tu técnica.</p><p><b>Consulta fechas</b></p></div>
+  </div>
+</section>
+
+<section>
+  <div class="dark">
+    <span class="tag" style="color:var(--fg)"><i></i>Formación</span>
+    <h2>Cursos de manicura y pedicura</h2>
+    <p class="mut" style="max-width:52ch">Si quieres dedicarte a las uñas o simplemente hacerlas tú misma, te enseñamos paso a paso. Курсы маникюра и педикюра.</p>
+    <ul class="ck">
+      <li>Técnica profesional paso a paso</li>
+      <li>Para principiantes y para quienes ya trabajan</li>
+      <li>Clases en Madrid, en español, ruso o ucraniano</li>
+    </ul>
+    <a class="btn" href="https://wa.me/34642054441?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20manicura%20y%20pedicura" target="_blank" rel="noopener">Pedir información del curso</a>
+  </div>
+</section>
+
+<section>
+  <h2>Reservar es muy fácil</h2>
+  <div class="grid c3">
+    <div class="card" style="border-top-color:#a78bfa"><div class="step">1</div><b>Elige tu look</b><p class="mut">Usa el diseñador de arriba o cuéntanos tu idea.</p></div>
+    <div class="card" style="border-top-color:#3ddc97"><div class="step">2</div><b>Escríbenos</b><p class="mut">Un mensaje por WhatsApp y acordamos tu cita.</p></div>
+    <div class="card" style="border-top-color:#ff7a59"><div class="step">3</div><b>Ven y disfruta</b><p class="mut">Te esperamos en Madrid, en el barrio de Altamirano.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="grid c2" style="align-items:center">
+    <div>
+      <h2>Dónde estamos</h2>
+      <p><b>Calle de Altamirano, 33</b><br>28008 Madrid, España</p>
+      <p class="mut">Atendemos en español, русский y українська.</p>
+      <div class="row">
+        <a class="btn" href="https://wa.me/34642054441" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn ghost" href="https://www.instagram.com/nails_marryy/" target="_blank" rel="noopener">@nails_marryy</a>
+      </div>
+    </div>
+    <div class="card" style="border-top-color:var(--accent)"><div class="big">Reserva tu hueco</div><p class="mut">Las citas se llenan rápido. Escríbenos hoy y elige tu día.</p></div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="wrap">© 2026 Nails Marryy · Manicura y pedicura en Madrid · <a href="https://www.instagram.com/nails_marryy/" target="_blank" rel="noopener" style="color:inherit">Instagram</a></div>
+</footer>
+
+<a class="btn fab" href="https://wa.me/34642054441" target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+(function(){
+var colors=[["Rojo cereza","#d62839"],["Rosa chicle","#ff6fa5"],["Coral","#ff7a59"],["Dorado","#e6b422"],["Menta","#3ddc97"],["Azul hielo","#4cc9f0"],["Lila","#a78bfa"],["Burdeos","#7b1e3a"],["Nude","#e8b9a0"],["Negro","#111111"]];
+var st={c:colors[0],s:"manicura (1,5 h)",f:"brillo"};
+var root=document.documentElement,sw=document.getElementById("sw");
+function lum(h){var r=parseInt(h.substr(1,2),16),g=parseInt(h.substr(3,2),16),b=parseInt(h.substr(5,2),16);return(.299*r+.587*g+.114*b)/255}
+function render(){
+ root.style.setProperty("--accent",st.c[1]);
+ root.style.setProperty("--on",lum(st.c[1])>.62?"#111":"#fff");
+ document.querySelectorAll(".nail").forEach(function(n){n.style.fill=st.c[1];n.style.opacity=st.f==="mate"?".82":"1"});
+ document.querySelectorAll("#sw button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.n===st.c[0])});
+ document.querySelectorAll("#srv button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===st.s)});
+ document.querySelectorAll("#fin button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===st.f)});
+ document.getElementById("sum").textContent=st.c[0]+" · "+st.s+" · acabado "+st.f;
+ var msg="Hola, quiero reservar "+st.s+" en color "+st.c[0]+" con acabado "+st.f+". ¿Qué disponibilidad tenéis?";
+ document.getElementById("cta").href="https://wa.me/34642054441?text="+encodeURIComponent(msg);
+}
+colors.forEach(function(c){
+ var b=document.createElement("button");b.style.background=c[1];b.title=c[0];b.setAttribute("aria-label",c[0]);b.dataset.n=c[0];
+ b.onclick=function(){st.c=c;render()};sw.appendChild(b);
+});
+document.querySelectorAll("#srv button").forEach(function(b){b.onclick=function(){st.s=b.dataset.v;render()}});
+document.querySelectorAll("#fin button").forEach(function(b){b.onclick=function(){st.f=b.dataset.v;render()}});
+var d=document.querySelector(".dots");
+render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beauty Room · Pestañas, Cejas y Láser en Móstoles</title>
+<meta name="description" content="Extensiones de pestañas, maquillaje permanente y eliminación de tatuajes con láser en Móstoles, Madrid. Más de 5 años de experiencia. Cita previa.">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fff;--fg:#0b0b0b;--muted:#5b5b5b;--card:#f4f4f4;--line:#e0e0e0;
+  --accent:#ff2e93;--accent-ink:#fff;
+  --gx:clamp(24px,6vw,64px);--gy:clamp(28px,6vw,56px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0b0b0b;--fg:#fff;--muted:#a8a8a8;--card:#161616;--line:#2a2a2a}
+}
+:root[data-theme="dark"]{--bg:#0b0b0b;--fg:#fff;--muted:#a8a8a8;--card:#161616;--line:#2a2a2a}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;padding-block:clamp(16px,3vw,28px);background:var(--bg);color:var(--fg);font-family:"Helvetica Neue",Arial,system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin-inline:auto;padding-inline:var(--gx)}
+a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:14px;text-decoration:none}
+.logo b{color:var(--accent);transition:color .4s}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:13px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--accent);transition:transform .2s,background .4s,border-color .4s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+.btn.sm{padding:9px 18px;font-size:14px}
+.hero{padding-block:clamp(56px,10vw,88px) clamp(48px,8vw,72px);padding-inline:var(--gx);position:relative;overflow:hidden}
+.tag{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--fg);border-radius:999px;padding:6px 14px}
+h1{font-size:clamp(40px,9vw,92px);line-height:1;letter-spacing:-.03em;margin:22px 0 18px;font-weight:900}
+h1 span{color:var(--accent);transition:color .4s}
+.lead{max-width:560px;color:var(--muted);font-size:18px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.blob{position:absolute;right:-80px;top:20px;width:340px;height:340px;border-radius:50%;background:var(--accent);opacity:.18;filter:blur(8px);transition:background .5s;z-index:-1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.stat{border:1px solid var(--line);border-radius:18px;padding:22px 18px}
+.stat strong{display:block;font-size:clamp(24px,5vw,38px);font-weight:900}
+.stat span{font-size:13px;color:var(--muted)}
+section{padding-block:clamp(56px,9vw,88px);padding-inline:0}
+h2{font-size:clamp(28px,5vw,44px);letter-spacing:-.02em;line-height:1.1;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 30px;max-width:560px}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.tab{font:inherit;font-weight:700;cursor:pointer;padding:12px 20px;border-radius:999px;border:2px solid var(--fg);background:transparent;color:var(--fg);transition:.25s}
+.tab[aria-selected="true"]{background:var(--c);border-color:var(--c);color:#fff}
+.panel{background:var(--card);border-radius:26px;padding:clamp(28px,5vw,44px) clamp(24px,5vw,44px);border-left:8px solid var(--accent);transition:border-color .4s}
+.panel h3{margin:0 0 8px;font-size:26px}
+.panel p{color:var(--muted);margin:0 0 16px}
+.panel ul{padding-left:20px;margin:0 0 22px}
+.panel li{margin:4px 0}
+.lab{display:grid;gap:28px;align-items:center}
+@media(min-width:800px){.lab{grid-template-columns:1fr 1fr}}
+.eyebox{background:var(--card);border-radius:26px;padding:clamp(24px,4vw,36px)}
+.eyebox svg{width:100%;height:auto;display:block}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.opt{font:inherit;cursor:pointer;padding:10px 18px;border-radius:999px;border:2px solid var(--fg);background:transparent;color:var(--fg);font-weight:700}
+.opt[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.swatches{display:flex;gap:10px;margin:6px 0 18px}
+.sw{width:34px;height:34px;border-radius:50%;border:3px solid var(--bg);outline:2px solid var(--line);cursor:pointer;padding:0}
+.sw[aria-pressed="true"]{outline:3px solid var(--fg)}
+.result{font-weight:700;min-height:48px}
+.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step{border:1px solid var(--line);border-radius:20px;padding:26px 24px}
+.step i{font-style:normal;display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;margin-bottom:10px;transition:background .4s}
+.step h4{margin:0 0 4px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.final{background:var(--fg);color:var(--bg);border-radius:32px;padding:clamp(40px,8vw,72px) clamp(24px,6vw,64px);text-align:center}
+.final p{opacity:.8;max-width:480px;margin:0 auto 24px}
+.final .btn.ghost{color:var(--bg);border-color:var(--bg)}
+.info{display:grid;gap:8px;margin-top:26px;font-size:15px}
+footer{padding-block:clamp(40px,7vw,64px) clamp(72px,12vw,104px);color:var(--muted);font-size:14px;text-align:center}
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:6;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top">Beauty<b>Room</b></a>
+  <a class="btn sm" href="https://wa.me/message/4KUL3VR53455E1" target="_blank" rel="noopener">Pedir cita</a>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div class="blob" id="blob"></div>
+  <span class="tag">Móstoles · Madrid</span>
+  <h1>Tu mirada,<br><span id="hword">más intensa.</span></h1>
+  <p class="lead">Pestañas, cejas y láser con más de 5 años de experiencia. Atención personalizada y cita previa para que cada detalle sea para ti.</p>
+  <div class="cta">
+    <a class="btn" href="https://wa.me/message/4KUL3VR53455E1" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+    <a class="btn ghost" href="https://www.instagram.com/beautyroom_iuliia/" target="_blank" rel="noopener">Ver Instagram</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong>5+</strong><span>años de experiencia</span></div>
+    <div class="stat"><strong>3</strong><span>servicios especializados</span></div>
+    <div class="stat"><strong>1:1</strong><span>atención con cita previa</span></div>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <h2>Elige tu servicio</h2>
+  <p class="sub">Toca cada opción y descubre en qué consiste.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="panel" id="panel" role="tabpanel"></div>
+</div></section>
+
+<section><div class="wrap lab">
+  <div>
+    <h2>Diseña tu mirada</h2>
+    <p class="sub">Prueba el efecto de las extensiones: elige un estilo y un color de acento para tu look.</p>
+    <div class="opts" id="styles"></div>
+    <div class="swatches" id="swatches" aria-label="Color de acento"></div>
+    <p class="result" id="result"></p>
+    <a class="btn" id="lookcta" href="https://wa.me/message/4KUL3VR53455E1" target="_blank" rel="noopener">Quiero este look</a>
+  </div>
+  <div class="eyebox"><svg id="eye" viewBox="0 0 400 240" role="img" aria-label="Ilustración de un ojo con pestañas"></svg></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Así de fácil</h2>
+  <p class="sub">Un proceso claro, sin prisas.</p>
+  <div class="steps">
+    <div class="step"><i>1</i><h4>Escríbenos</h4><p>Cuéntanos qué te interesa por WhatsApp o llamando.</p></div>
+    <div class="step"><i>2</i><h4>Cita previa</h4><p>Reservamos un hueco pensado para ti.</p></div>
+    <div class="step"><i>3</i><h4>Disfruta</h4><p>Te asesoramos y lo hacemos con cuidado y precisión.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="final">
+    <h2>¿Lista para tu cita?</h2>
+    <p>Escríbenos y te contamos todo sin compromiso.</p>
+    <div class="cta" style="justify-content:center;margin-top:0">
+      <a class="btn" href="https://wa.me/message/4KUL3VR53455E1" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn ghost" href="https://www.instagram.com/beautyroom_iuliia/" target="_blank" rel="noopener">@beautyroom_iuliia</a>
+      <a class="btn ghost" href="tel:+34611278057">Llamar</a>
+    </div>
+    <div class="info">
+      <span>📍 Calle Parque Vosa 16, Móstoles, Madrid</span>
+      <span>📞 +34 611 27 80 57 · cita previa</span>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Beauty Room · Pestañas &amp; Cejas · Móstoles</div></footer>
+<a class="btn wa-float" href="https://wa.me/message/4KUL3VR53455E1" target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+const root=document.documentElement;
+const services=[
+ {n:"Extensiones de pestañas",c:"#ff2e93",w:"más intensa.",d:"Realza tu mirada con un acabado natural o más dramático, según tu estilo.",l:["Looks desde natural a volumen","Asesoramiento personalizado","Con cita previa"]},
+ {n:"Maquillaje permanente",c:"#7c3aed",w:"siempre perfecta.",d:"Cejas y rasgos definidos cada día, sin retoques constantes.",l:["Diseño adaptado a tu rostro","Resultado cuidado y armónico","Con cita previa"]},
+ {n:"Láser para tatuajes",c:"#00a88f",w:"nueva piel.",d:"Eliminación de tatuajes con láser, con valoración previa de tu caso.",l:["Valoración inicial","Atención profesional","Con cita previa"]}
+];
+function accent(c){root.style.setProperty("--accent",c)}
+const tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+function show(i){
+  const s=services[i];
+  [...tabs.children].forEach((b,k)=>b.setAttribute("aria-selected",k===i));
+  accent(s.c);
+  document.getElementById("hword").textContent=s.w;
+  panel.innerHTML="<h3>"+s.n+"</h3><p>"+s.d+"</p><ul>"+s.l.map(x=>"<li>"+x+"</li>").join("")+"</ul><a class='btn' href='https://wa.me/message/4KUL3VR53455E1' target='_blank' rel='noopener'>Consultar por WhatsApp</a>";
+}
+services.forEach((s,i)=>{
+  const b=document.createElement("button");
+  b.className="tab";b.role="tab";b.textContent=s.n;b.style.setProperty("--c",s.c);
+  b.onclick=()=>show(i);tabs.appendChild(b);
+});
+show(0);
+
+const looks=[
+ {n:"Natural",k:9,len:26,t:"Efecto sutil: tu mirada, pero más definida."},
+ {n:"Volumen",k:15,len:34,t:"Más densidad y profundidad para un look elegante."},
+ {n:"Glamour",k:23,len:46,t:"Máximo impacto: mirada intensa y espectacular."}
+];
+const cols=["#ff2e93","#7c3aed","#00a88f","#ff8a00","#1e6bff"];
+let cur=1,col=cols[0];
+const eye=document.getElementById("eye"),st=document.getElementById("styles"),sw=document.getElementById("swatches"),res=document.getElementById("result");
+function draw(){
+  const L=looks[cur];let g="";
+  const cx=200,cy=130;
+  for(let i=0;i<L.k;i++){
+    const t=i/(L.k-1),x=cx-120+t*240;
+    const y=cy-Math.sin(Math.PI*t)*62+12;
+    const ang=(-100+t*-0)+(t-.5)*70-0;
+    const a=(-90+(t-.5)*80)*Math.PI/180;
+    const l=L.len*(.7+.5*Math.sin(Math.PI*t));
+    g+="<path d='M"+x+" "+y+" Q"+(x+Math.cos(a)*l*.3+(t-.5)*8)+" "+(y+Math.sin(a)*l*.6)+" "+(x+Math.cos(a)*l+(t-.5)*22)+" "+(y+Math.sin(a)*l)+"' stroke='"+col+"' stroke-width='3' fill='none' stroke-linecap='round'/>";
+  }
+  eye.innerHTML="<path d='M80 130 Q200 40 320 130 Q200 210 80 130Z' fill='#fff' stroke='currentColor' stroke-width='4'/><circle cx='200' cy='128' r='38' fill='"+col+"'/><circle cx='200' cy='128' r='16' fill='#0b0b0b'/><circle cx='211' cy='116' r='6' fill='#fff'/>"+g+"<path d='M60 38 Q200 -6 340 38' stroke='currentColor' stroke-width='10' stroke-linecap='round' fill='none' opacity='.85'/>";
+  res.textContent="Look "+L.n+": "+L.t;
+  [...st.children].forEach((b,k)=>b.setAttribute("aria-pressed",k===cur));
+  [...sw.children].forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===col));
+}
+looks.forEach((l,i)=>{const b=document.createElement("button");b.className="opt";b.textContent=l.n;b.onclick=()=>{cur=i;draw()};st.appendChild(b)});
+cols.forEach(c=>{const b=document.createElement("button");b.className="sw";b.style.background=c;b.dataset.c=c;b.setAttribute("aria-label","Color "+c);b.onclick=()=>{col=c;accent(c);draw()};sw.appendChild(b)});
+draw();
+</script>
+</body>
+</html>

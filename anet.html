@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manicura y pedicura en Madrid · Anet · Cuzco</title>
+<meta name="description" content="Uñas de gel, semipermanente, pedicura y cursos en Av. de Brasil 17, Madrid (Cuzco). Elige tu look y pide cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pad:clamp(24px,6vw,88px);
+  --serif:"Instrument Serif","Georgia","Times New Roman",serif;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;background:#0b0b0b}
+body{margin:0;background:#0b0b0b;font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+p,h1,h2,h3{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1;letter-spacing:-.01em}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:var(--pad)}
+section,header{padding-block:clamp(56px,9vw,104px)}
+h2{font-size:clamp(40px,6.5vw,76px);max-width:14ch}
+.sub{margin-top:16px;max-width:44ch;opacity:.75}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:2px solid currentColor;background:none;color:inherit;font-family:inherit;cursor:pointer;transition:background .2s,color .2s}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* HERO */
+.hero{background:#0b0b0b;color:#fff;padding-bottom:0;overflow:hidden}
+.brand{font-weight:800;font-size:15px;margin-bottom:clamp(36px,7vw,80px)}
+.hero h1{font-size:clamp(54px,11vw,140px);max-width:9ch}
+.hero h1 em{font-style:italic;color:#f3b6c8}
+.hero .lead{margin-top:26px;max-width:32ch;font-size:clamp(18px,2.2vw,22px);opacity:.8}
+.hero .btn.solid{background:#fff;color:#0b0b0b;border-color:#fff}
+.hero .btn.solid:hover{background:#f3b6c8;border-color:#f3b6c8}
+.hero .btn.ghost:hover{background:#fff;color:#0b0b0b}
+.strip{display:flex;height:clamp(14px,3vw,28px);margin-top:clamp(48px,8vw,88px);margin-inline:calc(var(--pad) * -1)}
+.strip i{flex:1}
+.strip i:nth-child(1){background:#f3b6c8}.strip i:nth-child(2){background:#c9b8f2}.strip i:nth-child(3){background:#a9d3b5}.strip i:nth-child(4){background:#a8d2ec}.strip i:nth-child(5){background:#f0b79a}
+
+/* SERVICIOS rosa */
+.serv{background:#f7e4ea;color:#3b1523}
+.list{list-style:none;margin:48px 0 0;padding:0;border-top:2px solid #3b1523}
+.list li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:6px 40px;padding:26px 0;border-bottom:1px solid #e0b9c6;align-items:baseline}
+.list h3{font-size:clamp(28px,3.4vw,40px)}
+.list p{max-width:50ch;opacity:.8}
+
+/* ELIGE TU LOOK (interactivo) */
+.look{--nail1:#555;--nail2:#111;--bg:#ececec;--ink:#111;background:var(--bg);color:var(--ink);transition:background .4s,color .4s}
+.look .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,72px);align-items:center}
+.hand{display:flex;align-items:flex-end;justify-content:center;gap:clamp(8px,2vw,16px);height:clamp(220px,32vw,320px)}
+.nail{flex:1;max-width:84px;border-radius:50% 50% 16px 16px/62% 62% 16px 16px;background:linear-gradient(160deg,var(--nail1),var(--nail2));position:relative;overflow:hidden;transition:background .4s;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.nail::after{content:"";position:absolute;top:9%;left:17%;width:16%;height:44%;border-radius:999px;background:rgba(255,255,255,.5)}
+.nail:nth-child(1){height:52%}.nail:nth-child(2){height:72%}.nail:nth-child(3){height:90%}.nail:nth-child(4){height:70%}.nail:nth-child(5){height:50%}
+fieldset{border:0;padding:0;margin:0 0 28px}
+legend{font-weight:800;font-size:16px;margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:48px;padding:0 20px;border-radius:999px;border:2px solid var(--ink);background:none;color:var(--ink);font:600 16px var(--sans);cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:background .2s,color .2s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid currentColor;flex:none}
+.summary{margin-top:6px;font-family:var(--serif);font-size:clamp(26px,3.4vw,36px);line-height:1.15;min-height:2.4em}
+.look .btn{margin-top:20px;background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.look .btn:hover{background:transparent;color:var(--ink)}
+.note{margin-top:12px;font-size:15px;opacity:.7;min-height:1.6em}
+
+/* CURSOS salvia */
+.cursos{background:#dbe9dc;color:#12301e}
+.cursos .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center}
+.cursos p.t{margin-top:20px;max-width:44ch}
+.cursos .btn:hover{background:#12301e;color:#dbe9dc}
+.cursos ul{list-style:none;margin:0;padding:0 0 0 28px;border-left:3px solid #12301e;font-family:var(--serif);font-size:clamp(28px,3.6vw,42px);line-height:1.5}
+
+/* UBICACION hielo */
+.where{background:#d9ebf6;color:#0e2a3b}
+.where .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.where address{font-style:normal;font-family:var(--serif);font-size:clamp(30px,4vw,46px);line-height:1.1;margin-top:26px}
+.where .meta{margin-top:12px;opacity:.7}
+.where .btn.solid{background:#0e2a3b;color:#d9ebf6;border-color:#0e2a3b}
+.where .btn:hover{background:#0e2a3b;color:#d9ebf6}
+.where .btn.solid:hover{background:transparent;color:#0e2a3b}
+
+/* FINAL terracota */
+.final{background:#f0b79a;color:#3a1a0c}
+.final .btn.solid{background:#3a1a0c;color:#f0b79a;border-color:#3a1a0c}
+.final .btn.solid:hover{background:transparent;color:#3a1a0c}
+.final .btn.ghost:hover{background:#3a1a0c;color:#f0b79a}
+footer{background:#0b0b0b;color:#bdbdbd;padding-block:28px 96px;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:#0b0b0b;color:#fff;border:2px solid #fff;min-height:52px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;font-weight:800;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+
+@media (max-width:760px){
+  .list li,.look .grid,.cursos .grid,.where .grid{grid-template-columns:1fr}
+  .actions .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">manicura.madrid.anet</div>
+    <h1>Uñas que <em>enamoran</em></h1>
+    <p class="lead">Manicura, uñas de gel y pedicura en Madrid, junto al metro Cuzco.</p>
+    <div class="actions">
+      <a class="btn solid" href="https://wa.me/message/F5AFBDAW4Z6LM1" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a class="btn ghost" href="https://www.instagram.com/manicura.madrid.anet/" target="_blank" rel="noopener">Ver trabajos en Instagram</a>
+    </div>
+    <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</header>
+
+<main>
+  <section class="serv" id="servicios">
+    <div class="wrap">
+      <h2>Lo que hacemos</h2>
+      <p class="sub">Cuidado de manos y pies con acabado limpio y duradero.</p>
+      <ul class="list">
+        <li><h3>Uñas de gel</h3><p>Refuerzo y longitud con un acabado natural y resistente, a tu medida.</p></li>
+        <li><h3>Manicura y semipermanente</h3><p>Manos cuidadas y un esmalte que mantiene el brillo durante semanas.</p></li>
+        <li><h3>Pedicura</h3><p>Pies suaves y uñas bien arregladas, listos para cualquier plan.</p></li>
+        <li><h3>Cursos</h3><p>Aprende manicura y uñas de gel con formación práctica.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="look" id="look">
+    <div class="wrap">
+      <h2>Elige tu look</h2>
+      <p class="sub">Prueba un tono y un servicio, y te preparamos el mensaje para pedir cita.</p>
+      <div class="grid" style="margin-top:48px">
+        <div class="hand" aria-hidden="true"><div class="nail"></div><div class="nail"></div><div class="nail"></div><div class="nail"></div><div class="nail"></div></div>
+        <div>
+          <fieldset>
+            <legend>Tono</legend>
+            <div class="chips" id="tonos"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Servicio</legend>
+            <div class="chips" id="servicios-chips"></div>
+          </fieldset>
+          <p class="summary" id="resumen" aria-live="polite"></p>
+          <a class="btn" id="enviar" href="https://wa.me/message/F5AFBDAW4Z6LM1" target="_blank" rel="noopener">Copiar y abrir WhatsApp</a>
+          <p class="note" id="nota" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cursos" id="cursos">
+    <div class="wrap grid">
+      <div>
+        <h2>Aprende el oficio</h2>
+        <p class="t">Impartimos cursos de manicura y uñas de gel. Escríbenos y te contamos fechas y contenido.</p>
+        <div class="actions"><a class="btn" href="https://wa.me/message/F5AFBDAW4Z6LM1" target="_blank" rel="noopener">Preguntar por los cursos</a></div>
+      </div>
+      <ul><li>Manicura</li><li>Uñas de gel</li><li>Técnica y acabado</li></ul>
+    </div>
+  </section>
+
+  <section class="where" id="ubicacion">
+    <div class="wrap grid">
+      <div>
+        <h2>Dónde estamos</h2>
+        <address>Av. de Brasil, 17<br>Madrid, España</address>
+        <p class="meta">Metro Cuzco</p>
+      </div>
+      <div>
+        <p class="sub" style="margin-top:0">Reserva por WhatsApp o escríbenos por Instagram. Teléfono: <a href="tel:+34641015260">641 015 260</a>.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://wa.me/message/F5AFBDAW4Z6LM1" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="https://www.instagram.com/manicura.madrid.anet/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+de+Brasil+17+Madrid" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Reserva tu cita</h2>
+      <p class="sub">Escríbenos y elegimos juntas el servicio y el día.</p>
+      <div class="actions">
+        <a class="btn solid" href="https://wa.me/message/F5AFBDAW4Z6LM1" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+        <a class="btn ghost" href="https://www.instagram.com/manicura.madrid.anet/" target="_blank" rel="noopener">@manicura.madrid.anet</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Manicura | Pedicura | Madrid</span><span>Av. de Brasil, 17 · Cuzco</span></div>
+</footer>
+
+<a class="fab" href="https://wa.me/message/F5AFBDAW4Z6LM1" target="_blank" rel="noopener" aria-label="Pedir cita por WhatsApp">Pedir cita</a>
+
+<script>
+(function(){
+  var tonos=[
+    {n:"Negro",c1:"#5a5a5a",c2:"#0d0d0d",bg:"#e8e8e8",ink:"#111111"},
+    {n:"Rosa",c1:"#f8c3d3",c2:"#d9708f",bg:"#fbe6ed",ink:"#4a1327"},
+    {n:"Lila",c1:"#d6c8f7",c2:"#8b6fd1",bg:"#ece6fb",ink:"#271a55"},
+    {n:"Salvia",c1:"#bfdcc6",c2:"#5d9a70",bg:"#e0eee3",ink:"#143122"},
+    {n:"Hielo",c1:"#bfe0f4",c2:"#4f96c4",bg:"#dcedf7",ink:"#0e2c40"},
+    {n:"Terracota",c1:"#f4c2a8",c2:"#c86a42",bg:"#f8dccd",ink:"#40190a"}
+  ];
+  var servicios=["Uñas de gel","Semipermanente","Pedicura","Curso"];
+  var sel={t:1,s:0};
+  var sec=document.getElementById("look");
+  var tEl=document.getElementById("tonos"), sEl=document.getElementById("servicios-chips");
+  var res=document.getElementById("resumen"), nota=document.getElementById("nota"), btn=document.getElementById("enviar");
+
+  function msg(){
+    var t=tonos[sel.t].n, s=servicios[sel.s];
+    return sel.s===3
+      ? "Hola Anet, me interesa el curso de manicura y uñas de gel. ¿Me das información?"
+      : "Hola Anet, quiero pedir cita para "+s.toLowerCase()+" en tono "+t.toLowerCase()+". ¿Qué disponibilidad tenéis?";
+  }
+  function paint(){
+    var t=tonos[sel.t];
+    sec.style.setProperty("--nail1",t.c1);sec.style.setProperty("--nail2",t.c2);
+    sec.style.setProperty("--bg",t.bg);sec.style.setProperty("--ink",t.ink);
+    [].forEach.call(tEl.children,function(b,i){b.setAttribute("aria-pressed",i===sel.t)});
+    [].forEach.call(sEl.children,function(b,i){b.setAttribute("aria-pressed",i===sel.s)});
+    res.textContent=sel.s===3 ? "Curso de manicura y uñas de gel" : servicios[sel.s]+" en "+t.n.toLowerCase();
+    nota.textContent="";
+  }
+  tonos.forEach(function(t,i){
+    var b=document.createElement("button");b.type="button";b.className="chip";
+    b.innerHTML='<span class="dot" style="background:linear-gradient(160deg,'+t.c1+','+t.c2+')"></span>'+t.n;
+    b.onclick=function(){sel.t=i;paint()};tEl.appendChild(b);
+  });
+  servicios.forEach(function(s,i){
+    var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=s;
+    b.onclick=function(){sel.s=i;paint()};sEl.appendChild(b);
+  });
+  btn.addEventListener("click",function(){
+    var m=msg();
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(m).then(function(){nota.textContent="Mensaje copiado. Pégalo en WhatsApp: “"+m+"”"},function(){nota.textContent="Escribe en WhatsApp: “"+m+"”"});
+      }else{nota.textContent="Escribe en WhatsApp: “"+m+"”"}
+    }catch(e){nota.textContent="Escribe en WhatsApp: “"+m+"”"}
+  });
+  paint();
+})();
+</script>
+</body>
+</html>

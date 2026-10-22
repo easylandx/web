@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dra. Yulia Nadkernychna · Dermatología y Medicina Estética en Madrid</title>
+<meta name="description" content="Dermatóloga y médica estética en Madrid. Resalto tu belleza sin cambiarla.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --h:340;
+  --bg:hsl(var(--h) 45% 97%);--bg2:hsl(var(--h) 50% 92%);--card:#fff;
+  --ink:hsl(var(--h) 35% 14%);--mut:hsl(var(--h) 12% 36%);
+  --ac:hsl(var(--h) 55% 40%);--ac2:hsl(var(--h) 65% 86%);--onac:#fff;
+  --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:hsl(var(--h) 28% 9%);--bg2:hsl(var(--h) 28% 13%);--card:hsl(var(--h) 22% 16%);--ink:hsl(var(--h) 30% 94%);--mut:hsl(var(--h) 14% 70%);--ac:hsl(var(--h) 70% 72%);--ac2:hsl(var(--h) 35% 24%);--onac:hsl(var(--h) 40% 10%)}
+}
+:root[data-theme="dark"]{--bg:hsl(var(--h) 28% 9%);--bg2:hsl(var(--h) 28% 13%);--card:hsl(var(--h) 22% 16%);--ink:hsl(var(--h) 30% 94%);--mut:hsl(var(--h) 14% 70%);--ac:hsl(var(--h) 70% 72%);--ac2:hsl(var(--h) 35% 24%);--onac:hsl(var(--h) 40% 10%)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--sans);transition:background .6s,color .6s}
+.wrap{max-width:980px;margin:0 auto;padding:0 clamp(24px,6vw,48px)}
+section{padding:72px 0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;margin:0 0 16px}
+h1{font-size:clamp(40px,8vw,72px);letter-spacing:-.02em}
+h1 em,h2 em{color:var(--ac);transition:color .6s}
+h2{font-size:clamp(30px,5vw,44px)}
+p{margin:0 0 16px;color:var(--mut)}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:20px;display:block;transition:color .6s}
+.btn{display:inline-block;background:var(--ac);color:var(--onac);padding:15px 28px;border-radius:999px;font:600 16px/1 var(--sans);text-decoration:none;transition:transform .2s,background .6s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ac2);margin-left:8px}
+.hero{padding-top:88px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:40px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,var(--ac2),transparent 70%);opacity:.8;z-index:-1;transition:background .6s}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cta-row .btn.ghost{margin-left:0}
+.badge{display:inline-block;margin-top:36px;padding:8px 16px;border-radius:999px;background:var(--ac2);color:var(--ink);font-size:14px;transition:background .6s}
+.alt{background:var(--bg2);transition:background .6s}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.chip{border:1.5px solid var(--ac2);background:var(--card);color:var(--ink);padding:12px 20px;border-radius:999px;font:500 15px/1 var(--sans);cursor:pointer;transition:all .25s}
+.chip:hover{border-color:var(--ac)}
+.chip[aria-pressed="true"]{background:var(--ac);color:var(--onac);border-color:var(--ac)}
+.result{background:var(--card);border-radius:24px;padding:32px;border:1.5px solid var(--ac2);min-height:170px;transition:border-color .6s}
+.result h3{font-size:28px;color:var(--ac);transition:color .6s}
+.result .btn{margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:32px}
+.card{background:var(--card);border-radius:24px;padding:28px;border:1px solid var(--ac2);transition:border-color .6s}
+.card .n{font:italic 400 40px/1 var(--serif);color:var(--ac);transition:color .6s}
+.card h3{font-size:22px;margin:12px 0 8px}
+.card p{margin:0;font-size:16px}
+.final{text-align:center}
+.final .btn{margin-top:12px}
+footer{padding:40px 0 56px;font-size:14px;color:var(--mut);text-align:center}
+footer a{color:var(--ac);text-decoration:none}
+.fade{animation:in .5s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Dermatología · Medicina estética · Madrid</span>
+    <h1>Resalto tu belleza <em>sin cambiarla.</em></h1>
+    <p style="font-size:20px;max-width:560px">Soy la Dra. Yulia Nadkernychna, dermatóloga y médica estética. Tratamientos personalizados, resultados naturales y un cuidado basado en la ciencia.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://www.instagram.com/dra.yulianadkernychna/" target="_blank" rel="noopener">Reservar por Instagram</a>
+      <a class="btn ghost" href="#descubre">Descubre tu tratamiento</a>
+    </div>
+    <span class="badge">Médica colegiada · N.º 282891688</span>
+  </div>
+</header>
+
+<section id="descubre" class="alt">
+  <div class="wrap">
+    <span class="eyebrow">Pequeño test · 10 segundos</span>
+    <h2>¿Qué te gustaría <em>mejorar</em> en tu piel?</h2>
+    <p>Elige una opción y descubre por dónde empezar. Cada elección cambia el color de la página.</p>
+    <div class="chips" id="chips" role="group" aria-label="Preocupaciones de la piel"></div>
+    <div class="result" id="result" aria-live="polite">
+      <h3>Tu piel, tu ritmo</h3>
+      <p>Selecciona una opción arriba y te muestro el enfoque que mejor encaja contigo.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Mi forma de trabajar</span>
+    <h2>Medicina con <em>mirada de artista.</em></h2>
+    <div class="grid">
+      <div class="card"><div class="n">01</div><h3>Valoración médica</h3><p>Analizamos tu piel, tus rasgos y tus objetivos antes de tocar nada.</p></div>
+      <div class="card"><div class="n">02</div><h3>Plan a tu medida</h3><p>Solo lo que realmente necesitas, sin excesos ni protocolos genéricos.</p></div>
+      <div class="card"><div class="n">03</div><h3>Resultado natural</h3><p>Que se note que estás radiante, no que te has hecho algo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt final">
+  <div class="wrap">
+    <span class="eyebrow">Da el primer paso</span>
+    <h2>Hablemos de <em>tu piel.</em></h2>
+    <p style="max-width:520px;margin-left:auto;margin-right:auto">Escríbeme por mensaje directo en Instagram y te cuento cómo podemos empezar.</p>
+    <a class="btn" href="https://www.instagram.com/dra.yulianadkernychna/" target="_blank" rel="noopener">Escríbeme en Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Dra. Yulia Nadkernychna · Dermatóloga y médica estética · Madrid<br>
+    <a href="https://www.instagram.com/dra.yulianadkernychna/" target="_blank" rel="noopener">@dra.yulianadkernychna</a>
+  </div>
+</footer>
+
+<script>
+var IG="https://www.instagram.com/dra.yulianadkernychna/";
+var items=[
+ {t:"Manchas y luminosidad",h:30,d:"Unificamos el tono y devolvemos luz a la piel con un plan combinado de tratamientos dermatológicos y protección diaria.",b:"Quiero una piel más luminosa"},
+ {t:"Acné y cicatrices",h:200,d:"Primero controlamos el acné con criterio médico; después trabajamos la textura y las marcas para una piel más uniforme.",b:"Quiero una piel más limpia"},
+ {t:"Rejuvenecimiento natural",h:340,d:"Suavizamos signos de la edad respetando tu expresión. Que te vean descansada, no diferente.",b:"Quiero verme descansada"},
+ {t:"Hidratación y calidad de piel",h:160,d:"Recuperamos elasticidad, jugosidad y confort con tratamientos que mejoran la piel desde dentro.",b:"Quiero una piel hidratada"},
+ {t:"Armonización facial",h:270,d:"Realzamos tus proporciones con retoques sutiles y equilibrados, siempre a partir de tu rostro real.",b:"Quiero armonía sin exceso"}
+];
+var chips=document.getElementById("chips"),res=document.getElementById("result");
+items.forEach(function(it,i){
+  var b=document.createElement("button");
+  b.className="chip";b.type="button";b.textContent=it.t;b.setAttribute("aria-pressed","false");
+  b.addEventListener("click",function(){
+    chips.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed","false")});
+    b.setAttribute("aria-pressed","true");
+    document.documentElement.style.setProperty("--h",it.h);
+    res.innerHTML='<div class="fade"><h3></h3><p></p><a class="btn" target="_blank" rel="noopener"></a></div>';
+    res.querySelector("h3").textContent=it.t;
+    res.querySelector("p").textContent=it.d;
+    var a=res.querySelector("a");a.href=IG;a.textContent=it.b+" · Escribir a la Dra.";
+  });
+  chips.appendChild(b);
+});
+</script>
+</body>
+</html>

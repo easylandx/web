@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zielo Specialty Coffee & Bakery | Azuqueca de Henares</title>
+<meta name="description" content="Café de especialidad, repostería casera y ambiente pet friendly en Calle Francia 2, Azuqueca de Henares. Café, pero bien hecho.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --butter:#FFE9A8; --butter-d:#8A5A00;
+  --peach:#FFC9AE; --peach-d:#9A3412;
+  --sage:#CDE8C8;  --sage-d:#1F5D2E;
+  --sky:#C9E4F7;   --sky-d:#124A75;
+  --blush:#F9CFE0; --blush-d:#9D174D;
+  --cream:#FFF6E5; --ink:#3A2A1A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.1}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:84px 0}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:10;background:rgba(255,246,229,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:'Fraunces',serif;font-weight:800;font-size:1.5rem;text-decoration:none;letter-spacing:-.5px}
+.logo span{color:var(--peach-d)}
+nav ul{display:flex;gap:22px;list-style:none;font-weight:500;font-size:.95rem}
+nav ul a{text-decoration:none}
+nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:700px){nav ul{display:none}}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:14px 26px;border:2px solid var(--ink);border-radius:999px;font-weight:700;text-decoration:none;background:var(--blush);box-shadow:4px 4px 0 var(--ink);transition:transform .15s, box-shadow .15s;cursor:pointer;font-family:inherit;font-size:1rem;color:var(--ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.alt{background:var(--sage)}
+.btn.sky{background:var(--sky)}
+.btn.plain{background:#fff}
+
+/* HERO */
+#inicio{background:var(--butter);color:var(--butter-d);position:relative;overflow:hidden}
+#inicio h1,#inicio p{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.tag{display:inline-block;background:#fff;border:2px solid var(--ink);padding:6px 16px;border-radius:999px;font-weight:700;font-size:.85rem;margin-bottom:20px;color:var(--ink)}
+h1{font-size:clamp(2.6rem,6.5vw,4.8rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:18px}
+h1 em{font-style:normal;background:var(--peach);padding:0 .15em;border-radius:12px;display:inline-block;transform:rotate(-2deg)}
+.hero p.lead{font-size:1.2rem;max-width:520px;margin-bottom:28px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.cup{background:#fff;border:3px solid var(--ink);border-radius:36px;padding:34px;box-shadow:10px 10px 0 var(--peach-d);text-align:center;transform:rotate(3deg)}
+.cup .big{font-size:6rem;line-height:1;animation:float 3.5s ease-in-out infinite}
+.cup p{font-family:'Fraunces',serif;font-weight:800;font-size:1.4rem;margin-top:10px;color:var(--ink)}
+.cup small{display:block;font-family:'DM Sans';font-weight:500;font-size:.9rem;opacity:.8}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.cup{transform:none;max-width:320px}}
+
+/* QUIZ */
+#test{background:var(--peach)}
+.sec-head{text-align:center;margin-bottom:40px}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;margin-bottom:10px}
+.sec-head p{max-width:560px;margin:0 auto;font-size:1.1rem}
+.quiz{max-width:640px;margin:0 auto;background:#fff;border:3px solid var(--ink);border-radius:28px;padding:34px;box-shadow:8px 8px 0 var(--ink)}
+.progress{height:12px;background:var(--cream);border:2px solid var(--ink);border-radius:99px;overflow:hidden;margin-bottom:24px}
+.progress i{display:block;height:100%;width:0;background:var(--peach-d);transition:width .4s}
+.quiz h3{font-size:1.7rem;margin-bottom:20px}
+.opts{display:grid;gap:12px}
+.opt{text-align:left;padding:16px 18px;border:2px solid var(--ink);border-radius:16px;background:var(--cream);font:inherit;font-weight:500;cursor:pointer;transition:.15s;color:var(--ink)}
+.opt:hover{background:var(--butter);transform:translateX(6px)}
+.result{text-align:center}
+.result .emoji{font-size:4.5rem}
+.result h3{margin:8px 0 12px}
+.result p{margin-bottom:22px}
+.result .badge{display:inline-block;background:var(--sage);border:2px solid var(--ink);border-radius:99px;padding:4px 14px;font-weight:700;font-size:.85rem;margin-bottom:10px}
+.hidden{display:none}
+.restart{background:none;border:none;font:inherit;text-decoration:underline;cursor:pointer;margin-top:18px;color:var(--ink)}
+
+/* HIGHLIGHTS */
+#carta{background:var(--sage);color:var(--sage-d)}
+#carta .sec-head h2,#carta .sec-head p{color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.card{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:28px;transition:transform .2s}
+.card:hover{transform:translateY(-6px) rotate(-1deg)}
+.card .ic{font-size:2.6rem;margin-bottom:10px}
+.card h3{font-size:1.4rem;margin-bottom:8px;color:var(--sage-d)}
+.card p{color:var(--ink);font-size:.98rem}
+
+/* PET */
+#pet{background:var(--sky)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.split h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;margin-bottom:16px;color:var(--sky-d)}
+.split p{margin-bottom:22px;font-size:1.1rem}
+.paw-box{background:#fff;border:3px solid var(--ink);border-radius:32px;padding:30px;text-align:center;box-shadow:8px 8px 0 var(--sky-d)}
+.paw{font-size:5rem;cursor:pointer;display:inline-block;transition:transform .2s;user-select:none;border:0;background:none}
+.paw:active{transform:scale(1.3) rotate(12deg)}
+.paw-box p{margin:10px 0 0;font-weight:700;color:var(--sky-d)}
+@media(max-width:800px){.split{grid-template-columns:1fr}}
+
+/* VISIT */
+#visitanos{background:var(--blush);color:var(--ink)}
+#visitanos h2{color:var(--blush-d)}
+.addr{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:28px;margin-bottom:22px}
+.addr b{font-family:'Fraunces',serif;font-size:1.4rem;display:block;margin-bottom:6px;color:var(--blush-d)}
+
+/* FOOTER */
+footer{background:var(--butter);border-top:3px solid var(--ink);padding:36px 0;text-align:center;font-size:.95rem}
+footer .links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-bottom:14px;font-weight:700}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#inicio">Zielo<span>.</span></a>
+    <ul>
+      <li><a href="#test">Tu café ideal</a></li>
+      <li><a href="#carta">Qué nos define</a></li>
+      <li><a href="#pet">Pet friendly</a></li>
+      <li><a href="#visitanos">Visítanos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="inicio">
+  <div class="wrap hero">
+    <div>
+      <span class="tag">☕ Specialty Coffee & Bakery · Azuqueca de Henares</span>
+      <h1>Café, pero <em>bien hecho</em> 🚀</h1>
+      <p class="lead">Café de especialidad, repostería casera y un rincón pet friendly en el corazón de Azuqueca. Ven a conocernos y descubre lo que un buen café puede hacer por tu día.</p>
+      <div class="cta-row">
+        <a class="btn" href="#test">Descubre tu café ideal</a>
+        <a class="btn alt" href="https://www.instagram.com/zielocoffee/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+      </div>
+    </div>
+    <div class="cup reveal">
+      <div class="big">☕</div>
+      <p>Hecho con cariño<small>Café de especialidad · Repostería casera</small></p>
+    </div>
+  </div>
+</section>
+
+<section id="test">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>¿Cuál es tu café ideal?</h2>
+      <p>Tres preguntas rápidas y te decimos qué pedir en tu próxima visita.</p>
+    </div>
+    <div class="quiz reveal" id="quiz">
+      <div class="progress"><i id="bar"></i></div>
+      <div id="qbox"></div>
+      <div id="result" class="result hidden"></div>
+    </div>
+  </div>
+</section>
+
+<section id="carta">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Lo que nos define</h2>
+      <p>Una cafetería de barrio con alma de especialidad.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ic">☕</div><h3>Café de especialidad</h3><p>Granos seleccionados y preparados con mimo para que cada taza se note de verdad.</p></div>
+      <div class="card reveal"><div class="ic">🍪</div><h3>Repostería casera</h3><p>Dulces hechos en casa, con ese sabor de siempre que combina perfecto con tu café.</p></div>
+      <div class="card reveal"><div class="ic">🐶</div><h3>Pet friendly</h3><p>Tu peludo también es bienvenido. Aquí se viene en buena compañía.</p></div>
+      <div class="card reveal"><div class="ic">💛</div><h3>Comunidad</h3><p>Un lugar para charlar, trabajar un rato o simplemente parar y disfrutar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pet">
+  <div class="wrap split">
+    <div class="reveal">
+      <h2>Tu mejor amigo también viene 🐾</h2>
+      <p>En Zielo los perros son parte de la familia. Pasea, haz una parada y tómate un café mientras tu compañero de cuatro patas descansa a tus pies.</p>
+      <a class="btn sky" href="https://www.instagram.com/zielocoffee/" target="_blank" rel="noopener">Mira nuestro día a día</a>
+    </div>
+    <div class="paw-box reveal">
+      <button class="paw" id="paw" aria-label="Dar una caricia">🐶</button>
+      <p id="pawMsg">Toca al perrito para darle una caricia</p>
+    </div>
+  </div>
+</section>
+
+<section id="visitanos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Ven a conocernos 👇🏻</h2>
+      <p>Te esperamos con el café recién hecho.</p>
+    </div>
+    <div style="max-width:640px;margin:0 auto" class="reveal">
+      <div class="addr">
+        <b>📍 Dónde estamos</b>
+        Calle Francia 2<br>19200 Azuqueca de Henares, España
+      </div>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn plain" href="https://www.google.com/maps/search/?api=1&query=Zielo+Specialty+Coffee+Calle+Francia+2+Azuqueca+de+Henares" target="_blank" rel="noopener">📍 Cómo llegar</a>
+        <a class="btn" href="https://www.instagram.com/zielocoffee/" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn alt" href="https://linktr.ee/zielocoffee" target="_blank" rel="noopener">🔗 Linktree</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://www.instagram.com/zielocoffee/" target="_blank" rel="noopener">@zielocoffee</a>
+      <a href="https://linktr.ee/zielocoffee" target="_blank" rel="noopener">linktr.ee/zielocoffee</a>
+    </div>
+    <p>© 2026 Zielo Specialty Coffee & Bakery · Calle Francia 2, Azuqueca de Henares</p>
+  </div>
+</footer>
+
+<script>
+const questions=[
+  {q:"¿Cómo llegas hoy a la cafetería?",o:[
+    ["😴 Necesito despertar ya",{e:2}],
+    ["😌 Con calma, quiero relajarme",{r:2}],
+    ["🤤 Vengo a por algo rico",{d:2}]]},
+  {q:"¿Cómo te gusta el café?",o:[
+    ["⚫ Intenso y directo",{e:2}],
+    ["🥛 Suave y con leche",{r:2}],
+    ["🧊 Fresquito",{f:2}]]},
+  {q:"¿Qué lo acompaña?",o:[
+    ["🍪 Algo dulce de repostería",{d:2}],
+    ["📖 Un libro o mi portátil",{r:1,e:1}],
+    ["🐶 Mi perro y buena charla",{f:1,r:1}]]}
+];
+const results={
+  e:{em:"⚡",t:"Espresso o café solo",p:"Tú vas directo al sabor. Un café intenso y bien extraído para arrancar el día con fuerza."},
+  r:{em:"🥛",t:"Flat white o café con leche",p:"Suave, cremoso y perfecto para quedarte un rato disfrutando sin prisa."},
+  d:{em:"🍪",t:"Café + repostería casera",p:"Tu combo ideal: un buen café acompañado de algo dulce hecho en casa."},
+  f:{em:"🧊",t:"Café frío",p:"Refrescante y con carácter. Ideal para charlar y pasear con tu peludo."}
+};
+let step=0,score={e:0,r:0,d:0,f:0};
+const qbox=document.getElementById('qbox'),res=document.getElementById('result'),bar=document.getElementById('bar');
+function render(){
+  bar.style.width=(step/questions.length*100)+'%';
+  const q=questions[step];
+  qbox.innerHTML='<h3>'+q.q+'</h3><div class="opts"></div>';
+  const wrap=qbox.querySelector('.opts');
+  q.o.forEach(([label,pts])=>{
+    const b=document.createElement('button');
+    b.className='opt';b.textContent=label;
+    b.onclick=()=>{for(const k in pts)score[k]+=pts[k];step++;step<questions.length?render():finish();};
+    wrap.appendChild(b);
+  });
+}
+function finish(){
+  bar.style.width='100%';
+  const key=Object.keys(score).sort((a,b)=>score[b]-score[a])[0];
+  const r=results[key];
+  qbox.classList.add('hidden');res.classList.remove('hidden');
+  res.innerHTML='<div class="emoji">'+r.em+'</div><span class="badge">Tu match en Zielo</span><h3>'+r.t+'</h3><p>'+r.p+' Pregúntanos por las opciones del día cuando vengas.</p>'+
+  '<a class="btn" href="https://www.instagram.com/zielocoffee/" target="_blank" rel="noopener">Ver Zielo en Instagram</a><br>'+
+  '<button class="restart" id="again">Repetir el test</button>';
+  document.getElementById('again').onclick=()=>{step=0;score={e:0,r:0,d:0,f:0};res.classList.add('hidden');qbox.classList.remove('hidden');render();};
+}
+render();
+
+const msgs=["¡Guau! 🐾 Le encanta","Mueve la colita 💛","¡Más caricias, porfa!","Es el más feliz del barrio 🐶","¡Ya es cliente habitual!"];
+let c=0;
+document.getElementById('paw').onclick=()=>{document.getElementById('pawMsg').textContent=msgs[c++%msgs.length];};
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

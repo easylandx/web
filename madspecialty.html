@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAD Specialty · Café de especialidad en Madrid</title>
+<meta name="description" content="Café de especialidad en Madrid, hecho en familia. Encuentra tu café y síguenos en Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --h:24;
+  --pad:clamp(24px,6vw,72px);
+  --gap:clamp(72px,11vw,130px);
+  --font:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;font-family:var(--font);background:hsl(var(--h) 45% 12%);color:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:var(--pad)}
+section{padding-block:var(--gap)}
+h1,h2,h3{line-height:1.02;letter-spacing:-.02em;margin:0}
+p{margin:0}
+
+/* HERO */
+.hero{background:hsl(var(--h) 45% 12%);color:hsl(var(--h) 70% 93%);transition:background .6s ease,color .6s ease;padding-top:clamp(56px,9vw,110px)}
+.brand{font-weight:800;font-size:1.1rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.6rem;margin-bottom:clamp(48px,9vw,110px)}
+.dot{width:14px;height:14px;border-radius:50%;background:hsl(var(--h) 80% 62%);transition:background .6s}
+.hero h1{font-size:clamp(2.8rem,9.5vw,7rem);font-weight:800;max-width:11ch}
+.hero p.lead{font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:34ch;margin-top:1.6rem;color:hsl(var(--h) 40% 78%)}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:2.4rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font:600 1rem var(--font);padding:15px 26px;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .2s,background .3s,color .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,.chip:focus-visible{outline:3px solid hsl(var(--h) 90% 70%);outline-offset:3px}
+.btn.solid{background:hsl(var(--h) 85% 66%);color:hsl(var(--h) 60% 10%)}
+.btn.line{border-color:hsl(var(--h) 60% 70%);color:hsl(var(--h) 70% 93%)}
+.btn.line:hover{background:hsl(var(--h) 60% 70%);color:hsl(var(--h) 60% 10%)}
+.hero .mad{font-size:clamp(7rem,30vw,22rem);font-weight:800;line-height:.8;letter-spacing:-.05em;color:hsl(var(--h) 55% 18%);margin-top:clamp(48px,8vw,90px);user-select:none;transition:color .6s;overflow:hidden}
+
+/* PICKER */
+.picker{background:hsl(var(--h) 55% 91%);color:hsl(var(--h) 60% 12%);transition:background .6s,color .6s}
+.picker h2{font-size:clamp(2.1rem,5.5vw,3.8rem);max-width:14ch}
+.picker .sub{margin-top:1rem;max-width:44ch;color:hsl(var(--h) 35% 28%)}
+.q{margin-top:2.6rem}
+.q h3{font-size:1.15rem;font-weight:600;letter-spacing:0;margin-bottom:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:600 1rem var(--font);padding:12px 22px;border-radius:999px;border:2px solid hsl(var(--h) 60% 22%);background:transparent;color:hsl(var(--h) 60% 14%);cursor:pointer;transition:background .25s,color .25s,transform .2s}
+.chip:hover{transform:translateY(-2px)}
+.chip[aria-pressed="true"]{background:hsl(var(--h) 60% 16%);color:hsl(var(--h) 70% 92%)}
+.result{margin-top:3rem;padding:clamp(24px,4vw,44px);border-radius:28px;background:hsl(var(--h) 60% 16%);color:hsl(var(--h) 70% 92%);transition:background .6s;min-height:11rem}
+.result h3{font-size:clamp(1.7rem,4vw,2.6rem)}
+.result p{margin-top:.8rem;max-width:46ch;color:hsl(var(--h) 45% 80%)}
+.result .btn{margin-top:1.6rem}
+
+/* FAMILIA */
+.family{background:hsl(215 40% 96%);color:hsl(215 50% 12%)}
+.family h2{font-size:clamp(2.1rem,5.5vw,3.8rem);max-width:16ch}
+.family .sub{margin-top:1rem;max-width:46ch;color:hsl(215 25% 32%)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:3rem}
+.card{border-radius:24px;padding:28px;min-height:210px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .25s}
+.card:hover{transform:translateY(-4px)}
+.card h3{font-size:2.2rem;font-weight:800}
+.card p{margin-top:.4rem;font-size:.98rem}
+.c1{background:hsl(24 80% 58%);color:hsl(24 80% 10%)}
+.c2{background:hsl(160 55% 40%);color:hsl(160 80% 96%)}
+.c3{background:hsl(330 75% 62%);color:hsl(330 80% 10%)}
+.c4{background:hsl(215 70% 50%);color:hsl(215 90% 96%)}
+
+/* CTA */
+.cta{background:hsl(330 60% 14%);color:hsl(330 70% 94%);text-align:center}
+.cta h2{font-size:clamp(2.2rem,6.5vw,4.6rem);max-width:14ch;margin:0 auto}
+.cta p{margin:1.4rem auto 0;max-width:40ch;color:hsl(330 35% 78%)}
+.cta .btn{margin-top:2.2rem;background:hsl(330 80% 70%);color:hsl(330 70% 10%)}
+.cta .btn:focus-visible{outline-color:hsl(330 90% 80%)}
+footer{background:hsl(330 60% 14%);color:hsl(330 25% 70%);padding:0 var(--pad) 48px;text-align:center;font-size:.92rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>MAD Specialty</div>
+    <h1>Café de especialidad, hecho en familia.</h1>
+    <p class="lead">Desde Madrid: granos con historia, tazas con calma y una forma sencilla de disfrutar el buen café.</p>
+    <div class="actions">
+      <a class="btn solid" href="#encuentra">Encuentra tu café</a>
+      <a class="btn line" href="https://www.instagram.com/mad_specialty/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+    </div>
+    <div class="mad" aria-hidden="true">MAD</div>
+  </div>
+</header>
+
+<main>
+<section class="picker" id="encuentra">
+  <div class="wrap">
+    <h2>¿Qué café te apetece hoy?</h2>
+    <p class="sub">Elige tu momento y cómo lo quieres. La página cambia de color con tu elección.</p>
+
+    <div class="q">
+      <h3>¿Cómo te sientes?</h3>
+      <div class="chips" id="moods" role="group" aria-label="Estado de ánimo"></div>
+    </div>
+    <div class="q">
+      <h3>¿Cómo lo quieres?</h3>
+      <div class="chips" id="methods" role="group" aria-label="Método"></div>
+    </div>
+
+    <div class="result" id="result" aria-live="polite">
+      <h3 id="rTitle">Tu café ideal</h3>
+      <p id="rText">Elige un ánimo y un método para ver nuestra recomendación.</p>
+      <a class="btn solid" id="rBtn" href="https://www.instagram.com/mad_specialty/" target="_blank" rel="noopener" hidden>Cuéntanoslo por Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="family" id="familia">
+  <div class="wrap">
+    <h2>Detrás de cada taza hay una familia.</h2>
+    <p class="sub">Somos Olga, Jaime, Cris y Oli. Compartimos nuestra pasión por el café de especialidad desde Madrid, y nos encanta que te sumes.</p>
+    <div class="grid">
+      <article class="card c1"><h3>Olga</h3><p>Una taza, una conversación.</p></article>
+      <article class="card c2"><h3>Jaime</h3><p>Curiosidad en cada grano.</p></article>
+      <article class="card c3"><h3>Cris</h3><p>Buen café, buena compañía.</p></article>
+      <article class="card c4"><h3>Oli</h3><p>El pequeño de la casa.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contacto">
+  <div class="wrap">
+    <h2>Vamos a tomar un café.</h2>
+    <p>Descubre lo que preparamos, mira nuestro día a día y escríbenos. Te respondemos por Instagram.</p>
+    <a class="btn" href="https://www.instagram.com/mad_specialty/" target="_blank" rel="noopener">Ir a @mad_specialty</a>
+  </div>
+</section>
+</main>
+
+<footer>© MAD Specialty · Madrid · <a href="https://www.instagram.com/mad_specialty/" target="_blank" rel="noopener">@mad_specialty</a></footer>
+
+<script>
+(function(){
+  var moods=[
+    {k:"Despertar",h:24,adj:"con carácter",t:"Notas de chocolate y frutos secos para arrancar el día."},
+    {k:"Calma",h:160,adj:"suave",t:"Floral y delicado, para bajar revoluciones."},
+    {k:"Capricho",h:330,adj:"afrutado",t:"Dulce y jugoso, como un postre en taza."},
+    {k:"Fresco",h:205,adj:"brillante",t:"Vivo y refrescante, perfecto para los días de calor en Madrid."}
+  ];
+  var methods=[
+    {k:"Espresso",t:"Corto e intenso, para saborearlo despacio."},
+    {k:"Filtrado",t:"Limpio y aromático, de los que invitan a charlar."},
+    {k:"Con leche",t:"Cremoso y redondo, el abrazo de la mañana."}
+  ];
+  var sel={m:null,x:null};
+  var root=document.documentElement;
+
+  function build(id,list,key){
+    var box=document.getElementById(id);
+    list.forEach(function(item,i){
+      var b=document.createElement("button");
+      b.type="button";b.className="chip";b.textContent=item.k;
+      b.setAttribute("aria-pressed","false");
+      b.addEventListener("click",function(){
+        sel[key]=i;
+        Array.prototype.forEach.call(box.children,function(c,j){c.setAttribute("aria-pressed",j===i?"true":"false")});
+        if(key==="m"){root.style.setProperty("--h",moods[i].h)}
+        render();
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function render(){
+    var title=document.getElementById("rTitle"),text=document.getElementById("rText"),btn=document.getElementById("rBtn");
+    if(sel.m===null||sel.x===null){
+      title.textContent="Tu café ideal";
+      text.textContent=sel.m===null&&sel.x===null?"Elige un ánimo y un método para ver nuestra recomendación.":(sel.m===null?"Falta elegir cómo te sientes.":"Falta elegir cómo lo quieres.");
+      btn.hidden=true;return;
+    }
+    var m=moods[sel.m],x=methods[sel.x];
+    title.textContent=x.k+" "+m.adj;
+    text.textContent=m.t+" "+x.t;
+    btn.hidden=false;
+  }
+
+  build("moods",moods,"m");
+  build("methods",methods,"x");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bakery Madrid · Tartas, pasteles y bento cakes en Madrid</title>
+<meta name="description" content="Pastelería artesanal en Madrid de Olga Rusova. Bento cakes, pasteles y tartas con productos naturales. Pedidos por Instagram Directo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#ffe1e8; --rose-d:#c2335c; --rose-m:#f9b6c6;
+  --mint:#dcf5e8; --mint-d:#1f7a52; --mint-m:#a8e3c6;
+  --lav:#e9e2ff; --lav-d:#5b3fb5; --lav-m:#c9bbff;
+  --peach:#ffe6d2; --peach-d:#b4531a; --peach-m:#ffc59b;
+  --sky:#dcefff; --sky-d:#1d5f9e; --sky-m:#a9d3ff;
+  --ink:#3a2a30;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--rose);line-height:1.6}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.1}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:84px 0}
+.eyebrow{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:99px;margin-bottom:16px}
+h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:14px}
+.lead{max-width:620px;font-size:1.1rem;margin-bottom:38px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:800 1rem 'Nunito',sans-serif;padding:15px 28px;border-radius:99px;border:0;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn-main{background:var(--rose-d);color:#fff;box-shadow:0 8px 0 #8f2342}
+.btn-main:hover{box-shadow:0 11px 0 #8f2342}
+.btn-soft{background:#fff;color:var(--rose-d);box-shadow:0 8px 0 var(--rose-m)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:20;background:rgba(255,225,232,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--rose-m)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:'Fraunces',serif;font-weight:800;font-size:1.3rem;color:var(--rose-d);text-decoration:none}
+nav ul{display:flex;gap:22px;list-style:none;font-weight:700;font-size:.95rem}
+nav ul a{text-decoration:none}
+nav ul a:hover{color:var(--rose-d)}
+@media(max-width:760px){nav ul{display:none}}
+
+/* HERO */
+#inicio{background:var(--rose);padding:70px 0 90px;overflow:hidden}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero .eyebrow{background:var(--rose-m);color:#7a1d3a}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);color:var(--rose-d);margin-bottom:20px}
+.hero h1 em{font-style:italic;color:#7a1d3a}
+.hero p{font-size:1.2rem;max-width:520px;margin-bottom:30px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:16px}
+.cake-art{position:relative;height:420px;display:grid;place-items:center}
+.blob{position:absolute;width:340px;height:340px;background:var(--rose-m);border-radius:58% 42% 55% 45%;animation:morph 9s ease-in-out infinite}
+@keyframes morph{50%{border-radius:42% 58% 45% 55%;transform:rotate(8deg)}}
+.cake-art .big{position:relative;font-size:11rem;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 18px 0 rgba(194,51,92,.18))}
+@keyframes float{50%{transform:translateY(-14px) rotate(-3deg)}}
+.sticker{position:absolute;background:#fff;color:var(--rose-d);font-weight:800;padding:10px 16px;border-radius:16px;box-shadow:0 6px 0 var(--rose-m);font-size:.9rem}
+.s1{top:30px;left:0;transform:rotate(-6deg)}
+.s2{bottom:40px;right:0;transform:rotate(5deg)}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.cake-art{height:320px}.cake-art .big{font-size:8rem}}
+
+/* VALORES */
+#valores{background:var(--mint)}
+#valores .eyebrow{background:var(--mint-m);color:#0f4a31}
+#valores h2{color:var(--mint-d)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{background:#fff;border-radius:26px;padding:30px 26px;box-shadow:0 8px 0 var(--mint-m);transition:transform .25s}
+.card:hover{transform:translateY(-6px) rotate(-1deg)}
+.card .ic{font-size:2.6rem;margin-bottom:10px}
+.card h3{font-size:1.4rem;color:var(--mint-d);margin-bottom:8px}
+
+/* PRODUCTOS */
+#productos{background:var(--lav)}
+#productos .eyebrow{background:var(--lav-m);color:#2f1c75}
+#productos h2{color:var(--lav-d)}
+.prod{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.p{background:#fff;border-radius:28px;padding:34px 28px;box-shadow:0 8px 0 var(--lav-m);text-align:center}
+.p .em{font-size:4.5rem;display:block;margin-bottom:8px}
+.p h3{font-size:1.7rem;color:var(--lav-d);margin-bottom:8px}
+.p small{display:inline-block;margin-top:14px;background:var(--lav);color:var(--lav-d);font-weight:800;padding:5px 12px;border-radius:99px}
+
+/* CONFIGURADOR */
+#pedido{background:var(--peach)}
+#pedido .eyebrow{background:var(--peach-m);color:#6b2d09}
+#pedido h2{color:var(--peach-d)}
+.builder{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
+@media(max-width:860px){.builder{grid-template-columns:1fr}}
+.panel{background:#fff;border-radius:28px;padding:30px;box-shadow:0 8px 0 var(--peach-m)}
+.panel h3{font-size:1.1rem;font-family:'Nunito',sans-serif;font-weight:800;color:var(--peach-d);margin:18px 0 10px}
+.panel h3:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:2px solid var(--peach-m);background:#fff;color:var(--ink);font:700 .95rem 'Nunito',sans-serif;padding:10px 16px;border-radius:99px;cursor:pointer;transition:.15s}
+.chip:hover{background:var(--peach)}
+.chip[aria-pressed="true"]{background:var(--peach-d);border-color:var(--peach-d);color:#fff}
+.panel input[type=text],.panel textarea{width:100%;border:2px solid var(--peach-m);border-radius:14px;padding:12px 14px;font:inherit;background:#fffaf5}
+.panel input:focus,.panel textarea:focus{outline:3px solid var(--peach-m)}
+.preview{text-align:center;position:sticky;top:90px}
+.cakebox{height:230px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;margin-bottom:14px}
+.cake{display:flex;flex-direction:column;align-items:center;transition:all .35s}
+.cake .top{font-size:2rem;margin-bottom:-6px;z-index:2}
+.cake .lay{height:42px;border-radius:12px;transition:all .35s;box-shadow:inset 0 -8px 0 rgba(0,0,0,.07)}
+.cake .plate{height:12px;width:240px;background:var(--peach-m);border-radius:99px;margin-top:4px}
+.summary{background:var(--peach);border-radius:18px;padding:16px;text-align:left;font-weight:600;margin-bottom:16px;min-height:120px;white-space:pre-line}
+.msgok{font-size:.9rem;font-weight:700;color:var(--peach-d);min-height:22px;margin-top:10px}
+.note{font-size:.85rem;opacity:.75;margin-top:12px}
+
+/* PASOS */
+#como{background:var(--sky)}
+#como .eyebrow{background:var(--sky-m);color:#0e3a66}
+#como h2{color:var(--sky-d)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;counter-reset:s}
+.step{background:#fff;border-radius:26px;padding:30px 24px;box-shadow:0 8px 0 var(--sky-m);position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;width:40px;height:40px;border-radius:50%;background:var(--sky-d);color:#fff;font:800 1.2rem 'Fraunces',serif;display:grid;place-items:center}
+.step h3{color:var(--sky-d);font-size:1.3rem;margin:8px 0}
+
+/* CTA */
+#contacto{background:var(--rose-m);text-align:center}
+#contacto h2{color:#7a1d3a;font-size:clamp(2.2rem,6vw,3.8rem)}
+#contacto p{max-width:560px;margin:0 auto 30px;font-size:1.15rem}
+#contacto .btn-main{font-size:1.15rem;padding:18px 34px}
+footer{background:var(--rose);padding:28px 0;text-align:center;font-weight:600;font-size:.92rem;border-top:2px solid var(--rose-m)}
+footer a{color:var(--rose-d);font-weight:800}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#inicio">🍰 The Bakery Madrid</a>
+    <ul>
+      <li><a href="#valores">Nosotros</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#pedido">Haz tu pedido</a></li>
+      <li><a href="#como">Cómo pedir</a></li>
+    </ul>
+    <a class="btn btn-main" style="padding:10px 20px;font-size:.9rem;box-shadow:0 5px 0 #8f2342" href="https://www.instagram.com/the_bakery_madrid/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<header id="inicio">
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow">Bento · Pasteles · Tartas · Madrid</span>
+      <h1>La mejor tarta de Madrid, <em>hecha a tu medida</em></h1>
+      <p>Soy Olga Rusova, pastelera. Cada tarta se elabora con productos naturales y mucho cariño, para que tu celebración sea inolvidable.</p>
+      <div class="cta">
+        <a class="btn btn-main" href="#pedido">🎂 Diseña tu pedido</a>
+        <a class="btn btn-soft" href="https://www.instagram.com/the_bakery_madrid/" target="_blank" rel="noopener">📲 Ver el Instagram</a>
+      </div>
+    </div>
+    <div class="cake-art" aria-hidden="true">
+      <div class="blob"></div>
+      <div class="big">🎂</div>
+      <div class="sticker s1">🌿 Productos naturales</div>
+      <div class="sticker s2">📍 Madrid</div>
+    </div>
+  </div>
+</header>
+
+<section id="valores">
+  <div class="wrap">
+    <span class="eyebrow">Por qué elegirnos</span>
+    <h2>Dulce, natural y artesanal</h2>
+    <p class="lead">Una pastelería pequeña, con atención personal y resultados de los que se hablan en la mesa.</p>
+    <div class="cards">
+      <div class="card"><div class="ic">🌿</div><h3>Ingredientes naturales</h3><p>Usamos productos naturales en cada receta, sin atajos.</p></div>
+      <div class="card"><div class="ic">👩🏻‍🍳</div><h3>Hecho por Olga</h3><p>Una pastelera de verdad detrás de cada pedido, con trato directo.</p></div>
+      <div class="card"><div class="ic">🎀</div><h3>A tu medida</h3><p>Cumpleaños, regalos o celebraciones: lo adaptamos a tu ocasión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="wrap">
+    <span class="eyebrow">Nuestra carta</span>
+    <h2>Elige tu dulce</h2>
+    <p class="lead">Tres formatos para cada momento. Escríbenos y te ayudamos a decidir.</p>
+    <div class="prod">
+      <div class="p"><span class="em">🍱</span><h3>Bento cakes</h3><p>Mini tartas con mucho estilo, perfectas para regalar o darse un capricho.</p><small>Ideal para 1–2 personas</small></div>
+      <div class="p"><span class="em">🧁</span><h3>Pasteles</h3><p>Pasteles individuales y de porción para sorprender en cualquier ocasión.</p><small>Ideal para detalles</small></div>
+      <div class="p"><span class="em">🎂</span><h3>Tartas</h3><p>Tartas para celebraciones, personalizadas y con acabado artesanal.</p><small>Ideal para grupos</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="pedido">
+  <div class="wrap">
+    <span class="eyebrow">Pedido interactivo</span>
+    <h2>Diseña tu tarta en 30 segundos</h2>
+    <p class="lead">Elige tus opciones y te preparamos el mensaje listo para enviar a Olga por Instagram Directo.</p>
+    <div class="builder">
+      <div class="panel">
+        <h3>1 · ¿Qué quieres?</h3>
+        <div class="chips" data-group="tipo">
+          <button class="chip" aria-pressed="true" data-v="Bento cake" data-e="🍱">🍱 Bento cake</button>
+          <button class="chip" aria-pressed="false" data-v="Pastel" data-e="🧁">🧁 Pastel</button>
+          <button class="chip" aria-pressed="false" data-v="Tarta" data-e="🎂">🎂 Tarta</button>
+        </div>
+        <h3>2 · ¿Para cuántas personas?</h3>
+        <div class="chips" data-group="personas">
+          <button class="chip" aria-pressed="true" data-v="1–2" data-l="1">1–2</button>
+          <button class="chip" aria-pressed="false" data-v="4–6" data-l="2">4–6</button>
+          <button class="chip" aria-pressed="false" data-v="8–12" data-l="3">8–12</button>
+          <button class="chip" aria-pressed="false" data-v="15 o más" data-l="4">15 o más</button>
+        </div>
+        <h3>3 · Sabor que te apetece</h3>
+        <div class="chips" data-group="sabor">
+          <button class="chip" aria-pressed="true" data-v="Chocolate" data-c="#8a5a44">🍫 Chocolate</button>
+          <button class="chip" aria-pressed="false" data-v="Frutos rojos" data-c="#e0607e">🍓 Frutos rojos</button>
+          <button class="chip" aria-pressed="false" data-v="Vainilla" data-c="#f5d98b">🍦 Vainilla</button>
+          <button class="chip" aria-pressed="false" data-v="Pistacho" data-c="#9ccf7a">🌰 Pistacho</button>
+          <button class="chip" aria-pressed="false" data-v="Limón" data-c="#f7ee8c">🍋 Limón</button>
+        </div>
+        <h3>4 · ¿Para cuándo? y ¿alguna dedicatoria?</h3>
+        <input type="text" id="fecha" placeholder="Fecha (ej. sábado 15)" aria-label="Fecha del pedido">
+        <textarea id="dedica" rows="2" placeholder="Dedicatoria o detalles (opcional)" style="margin-top:10px" aria-label="Dedicatoria"></textarea>
+        <p class="note">Los sabores son orientativos: Olga te confirma disponibilidad, diseño y precio por mensaje.</p>
+      </div>
+
+      <div class="panel preview">
+        <div class="cakebox" aria-hidden="true">
+          <div class="cake" id="cake">
+            <div class="top" id="top">🍱</div>
+          </div>
+        </div>
+        <div class="summary" id="summary"></div>
+        <button class="btn btn-main" id="send" style="width:100%;justify-content:center;background:var(--peach-d);box-shadow:0 8px 0 #7d3510">📲 Copiar y abrir Instagram</button>
+        <div class="msgok" id="ok" role="status"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <span class="eyebrow">Fácil y rápido</span>
+    <h2>Cómo hacer tu pedido</h2>
+    <p class="lead">Los pedidos se gestionan por Directo de Instagram, sin formularios ni esperas.</p>
+    <div class="steps">
+      <div class="step"><h3>Diseña</h3><p>Usa el configurador de arriba con lo que te apetece.</p></div>
+      <div class="step"><h3>Envía</h3><p>Pega el mensaje en el Directo de Instagram de Olga.</p></div>
+      <div class="step"><h3>Confirma</h3><p>Olga te responde con detalles, diseño y precio.</p></div>
+      <div class="step"><h3>Disfruta</h3><p>Recibe tu tarta y celebra. 🎉</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <h2>¿Hablamos de tu próxima tarta?</h2>
+    <p>Escríbenos por Instagram y cuéntanos qué quieres celebrar. Madrid te espera con algo muy dulce.</p>
+    <a class="btn btn-main" href="https://www.instagram.com/the_bakery_madrid/" target="_blank" rel="noopener">📲 @the_bakery_madrid</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 The Bakery Madrid · Pastelera Olga Rusova · <a href="https://www.instagram.com/the_bakery_madrid/" target="_blank" rel="noopener">Instagram</a></div>
+</footer>
+
+<script>
+(function(){
+  var st={tipo:'Bento cake',emoji:'🍱',personas:'1–2',layers:1,sabor:'Chocolate',color:'#8a5a44'};
+  var cake=document.getElementById('cake'),top=document.getElementById('top'),sum=document.getElementById('summary'),ok=document.getElementById('ok');
+  var fecha=document.getElementById('fecha'),dedica=document.getElementById('dedica');
+  var IG='https://www.instagram.com/the_bakery_madrid/';
+
+  function msg(){
+    var m='¡Hola Olga! Me gustaría pedir: '+st.tipo+' de '+st.sabor+' para '+st.personas+' personas.';
+    if(fecha.value.trim())m+=' Para el día: '+fecha.value.trim()+'.';
+    if(dedica.value.trim())m+=' Dedicatoria/detalles: '+dedica.value.trim()+'.';
+    return m+' ¿Me puedes confirmar disponibilidad y precio? ¡Gracias!';
+  }
+  function render(){
+    top.textContent=st.emoji;
+    Array.prototype.slice.call(cake.querySelectorAll('.lay,.plate')).forEach(function(n){n.remove()});
+    for(var i=0;i<st.layers;i++){
+      var l=document.createElement('div');l.className='lay';
+      l.style.background=st.color;l.style.width=(110+ (st.layers-i)*28)+'px';
+      cake.appendChild(l);
+    }
+    var p=document.createElement('div');p.className='plate';cake.appendChild(p);
+    sum.textContent='🍰 '+st.tipo+'\n👥 '+st.personas+' personas\n✨ Sabor: '+st.sabor+(fecha.value.trim()?'\n📅 '+fecha.value.trim():'');
+  }
+  document.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip');if(!b)return;
+      g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      var k=g.dataset.group;
+      if(k==='tipo'){st.tipo=b.dataset.v;st.emoji=b.dataset.e}
+      if(k==='personas'){st.personas=b.dataset.v;st.layers=+b.dataset.l}
+      if(k==='sabor'){st.sabor=b.dataset.v;st.color=b.dataset.c}
+      render();
+    });
+  });
+  fecha.addEventListener('input',render);
+  document.getElementById('send').addEventListener('click',function(){
+    var t=msg();
+    function go(txt){ok.textContent=txt;window.open(IG,'_blank','noopener')}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){go('✅ Mensaje copiado. Pégalo en el Directo de Instagram.')},function(){go('Abre Instagram y escribe tu pedido por Directo.')});
+    }else{go('Abre Instagram y escribe tu pedido por Directo.')}
+  });
+  render();
+})();
+</script>
+</body>
+</html>

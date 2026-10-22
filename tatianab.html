@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tatiana Beauty Lab | Formación en extensiones de pestañas</title>
+<meta name="description" content="Formación en extensiones de pestañas con Tatiana: técnica, retención y diseño de mirada. Aprende a trabajar con seguridad y resultados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b0b24; --plum:#2a1236; --aubergine:#3b1a4b; --orchid:#8f5ba8; --lilac:#c9a4e0; --mist:#eadcf4;
+  --rose-deep:#5a2140; --rose:#e9b9cc; --rose-soft:#f8e4ec;
+  --pad:clamp(22px,6vw,88px);
+  --serif:'Gloock',Georgia,serif; --sans:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--ink);color:var(--mist);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1}
+h1{font-size:clamp(2.5rem,6.2vw,4.9rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:.6em}
+h3{font-size:1.45rem;margin-bottom:.4em}
+p{max-width:60ch}
+.btn{display:inline-block;padding:15px 28px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:600;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-main{background:var(--lilac);color:var(--ink)}
+.btn-main:hover{background:#dcc0ee}
+.btn-line{border-color:var(--lilac);color:var(--lilac);background:transparent}
+.btn-line:hover{background:rgba(201,164,224,.14)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(27,11,36,.88);backdrop-filter:blur(10px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.logo{font-family:var(--serif);font-size:1.3rem;text-decoration:none;color:var(--mist)}
+.navlinks{display:flex;gap:26px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.95rem;opacity:.85}
+.navlinks a:hover{opacity:1}
+.navlinks .btn{padding:10px 20px;opacity:1}
+@media(max-width:720px){.navlinks a:not(.btn){display:none}}
+
+/* hero */
+.hero{background:radial-gradient(900px 500px at 85% 20%,var(--aubergine),transparent 70%),var(--plum);padding-top:clamp(44px,8vw,96px);padding-bottom:clamp(56px,9vw,110px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero p.lead{font-size:1.2rem;margin:22px 0 32px;color:#dfcdea}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.lab{background:var(--ink);border:1px solid rgba(201,164,224,.28);border-radius:28px;padding:clamp(18px,3vw,30px)}
+.lab h2{font-size:1.5rem;margin-bottom:.2em}
+.lab .sub{font-size:.95rem;color:#bfa6cf;margin-bottom:10px}
+.lab svg{width:100%;height:auto;display:block}
+#lashes{transition:opacity .25s}
+#lashes.swap{opacity:0}
+.styles{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
+.chip{padding:9px 16px;border-radius:999px;border:1.5px solid var(--orchid);background:transparent;color:var(--mist);font:inherit;font-size:.93rem;cursor:pointer;transition:background .2s,color .2s}
+.chip[aria-pressed="true"]{background:var(--lilac);color:var(--ink);border-color:var(--lilac)}
+.chip:hover{border-color:var(--lilac)}
+#styleText{min-height:3.4em;font-size:.98rem;color:#e6d6f1}
+.lab .btn{margin-top:6px;padding:12px 22px;font-size:.95rem}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+
+/* pillars */
+.pillars{background:var(--mist);color:var(--ink);padding:clamp(60px,9vw,110px) 0}
+.pillars h2{color:var(--plum)}
+.pillars .intro{margin-bottom:38px;color:#4b3158}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tone{border-radius:24px;padding:30px 26px 34px}
+.tone p{font-size:1rem}
+.t1{background:#d9c0ea;color:#2a1236}
+.t2{background:var(--orchid);color:#fff}
+.t3{background:var(--aubergine);color:var(--mist)}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+
+/* trust */
+.trust{background:var(--aubergine);padding:clamp(60px,9vw,110px) 0}
+.trust .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.trust ul{list-style:none;display:grid;gap:14px}
+.trust li{padding:18px 20px;border-left:4px solid var(--lilac);background:rgba(27,11,36,.45);border-radius:0 16px 16px 0}
+.trust li strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.2rem;color:var(--lilac)}
+@media(max-width:860px){.trust .wrap{grid-template-columns:1fr}}
+
+/* finder */
+.finder{background:var(--rose-soft);color:var(--rose-deep);padding:clamp(60px,9vw,110px) 0}
+.finder h2{color:var(--rose-deep)}
+.finder .opts{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.finder .chip{border-color:var(--rose-deep);color:var(--rose-deep)}
+.finder .chip[aria-pressed="true"]{background:var(--rose-deep);color:var(--rose-soft)}
+.result{background:var(--rose);border-radius:24px;padding:28px;max-width:640px;min-height:150px}
+.result h3{color:var(--rose-deep)}
+.result .btn{margin-top:16px;background:var(--rose-deep);color:var(--rose-soft)}
+.result .btn:hover{background:#7a2e56}
+
+/* final */
+.final{background:var(--ink);text-align:center;padding:clamp(70px,10vw,130px) 0}
+.final p{margin:0 auto 30px;color:#d4c0e2}
+.final .cta-row{justify-content:center}
+footer{background:#12061a;padding:30px 0;font-size:.9rem;color:#a98fba}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{text-decoration:none;border-bottom:1px solid rgba(201,164,224,.4)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Tatiana Beauty Lab</a>
+    <div class="navlinks">
+      <a href="#formacion">Formación</a>
+      <a href="#seguridad">Seguridad</a>
+      <a href="#programa">Tu programa</a>
+      <a class="btn btn-main" href="https://www.instagram.com/tatiana.beautylab/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Aprende a diseñar miradas que duran</h1>
+      <p class="lead">Formación en extensiones de pestañas con técnica, retención y diseño de mirada. Para que trabajes con seguridad y tus clientas vuelvan por los resultados.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="https://ig.me/m/tatiana.beautylab" target="_blank" rel="noopener">Pedir información por Instagram</a>
+        <a class="btn btn-line" href="#programa">Descubrir mi programa</a>
+      </div>
+    </div>
+
+    <div class="lab" aria-labelledby="labTitle">
+      <h2 id="labTitle">Elige tu diseño de mirada</h2>
+      <p class="sub">Toca un estilo y mira cómo cambia el mapeo de las pestañas.</p>
+      <svg viewBox="0 0 400 210" role="img" aria-label="Ojo con extensiones de pestañas que cambian según el estilo elegido">
+        <defs>
+          <radialGradient id="iris" cx="50%" cy="50%" r="55%">
+            <stop offset="0" stop-color="#e6cdf5"/><stop offset=".55" stop-color="#8f5ba8"/><stop offset="1" stop-color="#3b1a4b"/>
+          </radialGradient>
+          <clipPath id="eyeClip"><path d="M60 128 Q200 40 340 128 Q200 190 60 128Z"/></clipPath>
+        </defs>
+        <path d="M60 128 Q200 40 340 128 Q200 190 60 128Z" fill="#f6ecfb"/>
+        <g clip-path="url(#eyeClip)">
+          <circle id="iris-c" cx="200" cy="124" r="40" fill="url(#iris)"/>
+          <circle cx="200" cy="124" r="16" fill="#1b0b24"/>
+          <circle cx="188" cy="112" r="6" fill="#fff" opacity=".9"/>
+        </g>
+        <path d="M60 128 Q200 190 340 128" fill="none" stroke="#c9a4e0" stroke-width="2" opacity=".6"/>
+        <g id="lashes" fill="none" stroke="#f3e6fb" stroke-linecap="round"></g>
+        <path d="M60 128 Q200 40 340 128" fill="none" stroke="#c9a4e0" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="styles" role="group" aria-label="Estilos de mirada">
+        <button class="chip" data-style="natural" aria-pressed="true">Natural</button>
+        <button class="chip" data-style="gato" aria-pressed="false">Efecto gato</button>
+        <button class="chip" data-style="muneca" aria-pressed="false">Muñeca</button>
+        <button class="chip" data-style="volumen" aria-pressed="false">Volumen</button>
+      </div>
+      <p id="styleText" aria-live="polite"></p>
+      <a class="btn btn-main" href="https://ig.me/m/tatiana.beautylab" target="_blank" rel="noopener">Quiero aprender este diseño</a>
+    </div>
+  </div>
+</header>
+
+<section class="pillars" id="formacion">
+  <div class="wrap">
+    <h2>Una formación pensada para resultados reales</h2>
+    <p class="intro">Tres bases que marcan la diferencia entre unas pestañas bonitas el primer día y un trabajo del que tus clientas hablan semanas después.</p>
+    <div class="grid3">
+      <article class="tone t1">
+        <h3>Técnica</h3>
+        <p>Aislamiento, aplicación limpia y control del adhesivo. Aprendes cada paso con precisión para ganar velocidad sin perder calidad.</p>
+      </article>
+      <article class="tone t2">
+        <h3>Retención</h3>
+        <p>Preparación de la pestaña natural, elección de materiales y errores que acortan la duración. Menos retoques y más clientas fieles.</p>
+      </article>
+      <article class="tone t3">
+        <h3>Diseño de mirada</h3>
+        <p>Aprende a leer la forma del ojo y a elegir longitud, curvatura y mapeo para que cada mirada se vea armónica y personalizada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="seguridad">
+  <div class="wrap">
+    <div>
+      <h2>Trabaja con seguridad y resultados</h2>
+      <p>Aprender bien desde el principio te ahorra meses de prueba y error. Tatiana te acompaña para que apliques con confianza, cuides la salud de la pestaña natural y ofrezcas un servicio profesional.</p>
+    </div>
+    <ul>
+      <li><strong>Lash Educator</strong>Formación centrada en técnica, retención y diseño.</li>
+      <li><strong>Founder de Look Beauty Salon</strong>Experiencia real atendiendo clientas en un salón propio.</li>
+      <li><strong>Trainer en Lovely Beauty Academy</strong>Metodología de enseñanza aplicada a nuevas profesionales.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="finder" id="programa">
+  <div class="wrap">
+    <h2>¿Qué necesitas ahora mismo?</h2>
+    <p>Elige tu punto de partida y te mostramos por dónde empezar.</p>
+    <div class="opts" role="group" aria-label="Tu punto de partida">
+      <button class="chip" data-need="inicio" aria-pressed="false">Empiezo desde cero</button>
+      <button class="chip" data-need="practica" aria-pressed="false">Ya aplico pestañas</button>
+      <button class="chip" data-need="retencion" aria-pressed="false">Quiero mejorar la retención</button>
+    </div>
+    <div class="result" id="result" aria-live="polite">
+      <h3>Tu recomendación aparecerá aquí</h3>
+      <p>Selecciona una opción para ver qué enfoque encaja mejor contigo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Tu próxima formación empieza con un mensaje</h2>
+    <p>Escríbenos por Instagram, cuéntanos tu nivel y te orientamos hacia la formación que mejor se adapta a ti.</p>
+    <div class="cta-row">
+      <a class="btn btn-main" href="https://ig.me/m/tatiana.beautylab" target="_blank" rel="noopener">Escribir por Instagram</a>
+      <a class="btn btn-line" href="https://www.instagram.com/tatiana.beautylab/" target="_blank" rel="noopener">Ver el perfil @tatiana.beautylab</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Tatiana Beauty Lab. Formación en extensiones de pestañas.</span>
+    <a href="https://www.instagram.com/tatiana.beautylab/" target="_blank" rel="noopener">@tatiana.beautylab</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  function initInteractions() {
+    var NS = 'http://www.w3.org/2000/svg';
+    var P0 = [60, 128], C = [200, 40], P1 = [340, 128];
+    var styles = {
+      natural: {
+        n: 22, w: 1.6, sweep: 0.25,
+        len: function (t) { return 15 + 8 * Math.sin(Math.PI * t); },
+        text: 'Natural: longitudes equilibradas que realzan la mirada sin que se note el trabajo. Ideal para el día a día.'
+      },
+      gato: {
+        n: 24, w: 1.7, sweep: 0.45,
+        len: function (t) { return 10 + 36 * Math.pow(t, 1.6); },
+        text: 'Efecto gato: las pestañas crecen hacia la esquina externa y alargan el ojo con un acabado elegante.'
+      },
+      muneca: {
+        n: 24, w: 1.7, sweep: 0.1,
+        len: function (t) { return 12 + 30 * Math.pow(Math.sin(Math.PI * t), 1.2); },
+        text: 'Muñeca: más longitud en el centro para abrir el ojo y lograr una mirada redonda y dulce.'
+      },
+      volumen: {
+        n: 36, w: 2.2, sweep: 0.3,
+        len: function (t) { return 24 + 12 * Math.sin(Math.PI * t); },
+        text: 'Volumen: más densidad y más longitud para una mirada intensa, con un acabado sofisticado.'
+      }
+    };
+
+    var lashGroup = document.getElementById('lashes');
+    var styleText = document.getElementById('styleText');
+    var styleButtons = document.querySelectorAll('.styles [data-style]');
+    var finderButtons = document.querySelectorAll('.finder [data-need]');
+    var result = document.getElementById('result');
+
+    function point(t) {
+      var a = 1 - t;
+      return [
+        a * a * P0[0] + 2 * a * t * C[0] + t * t * P1[0],
+        a * a * P0[1] + 2 * a * t * C[1] + t * t * P1[1]
+      ];
+    }
+
+    function tangent(t) {
+      return [
+        2 * (1 - t) * (C[0] - P0[0]) + 2 * t * (P1[0] - C[0]),
+        2 * (1 - t) * (C[1] - P0[1]) + 2 * t * (P1[1] - C[1])
+      ];
+    }
+
+    function drawStyle(key) {
+      var style = styles[key];
+      if (!style || !lashGroup || !styleText) return;
+
+      lashGroup.classList.add('swap');
+      void lashGroup.getBoundingClientRect();
+      lashGroup.replaceChildren();
+      lashGroup.setAttribute('stroke-width', style.w);
+
+      for (var i = 0; i <= style.n; i++) {
+        var t = i / style.n;
+        var base = point(t);
+        var direction = tangent(t);
+        var magnitude = Math.hypot(direction[0], direction[1]) || 1;
+        direction = [direction[0] / magnitude, direction[1] / magnitude];
+
+        var nx = direction[1], ny = -direction[0];
+        var length = style.len(t);
+        var tip = [
+          base[0] + nx * length + direction[0] * length * style.sweep * (t + 0.3),
+          base[1] + ny * length + direction[1] * length * style.sweep * (t + 0.3)
+        ];
+        var control = [base[0] + nx * length * 0.55, base[1] + ny * length * 0.55];
+        var lash = document.createElementNS(NS, 'path');
+
+        lash.setAttribute('d',
+          'M' + base[0].toFixed(1) + ' ' + base[1].toFixed(1) +
+          ' Q' + control[0].toFixed(1) + ' ' + control[1].toFixed(1) +
+          ' ' + tip[0].toFixed(1) + ' ' + tip[1].toFixed(1));
+        lashGroup.appendChild(lash);
+      }
+
+      requestAnimationFrame(function () { lashGroup.classList.remove('swap'); });
+      styleText.textContent = style.text;
+      styleButtons.forEach(function (button) {
+        button.setAttribute('aria-pressed', String(button.dataset.style === key));
+      });
+    }
+
+    styleButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        drawStyle(button.dataset.style);
+      });
+    });
+
+    var needs = {
+      inicio: {
+        h: 'Empieza por una base sólida',
+        t: 'Si aún no has aplicado pestañas, lo mejor es aprender técnica y seguridad desde cero: aislamiento, adhesivo, higiene y mapeo básico, con práctica guiada.'
+      },
+      practica: {
+        h: 'Perfecciona tu diseño y tu velocidad',
+        t: 'Si ya trabajas con extensiones, el siguiente paso es afinar el diseño de mirada y la limpieza de aplicación para ofrecer resultados más personalizados.'
+      },
+      retencion: {
+        h: 'Alarga la duración de tus trabajos',
+        t: 'Si tus clientas pierden pestañas antes de tiempo, revisaremos preparación, materiales y técnica para mejorar la retención y reducir los retoques.'
+      }
+    };
+
+    finderButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var recommendation = needs[button.dataset.need];
+        if (!recommendation || !result) return;
+
+        finderButtons.forEach(function (item) {
+          item.setAttribute('aria-pressed', String(item === button));
+        });
+
+        result.replaceChildren();
+        var heading = document.createElement('h3');
+        var paragraph = document.createElement('p');
+        var link = document.createElement('a');
+
+        heading.textContent = recommendation.h;
+        paragraph.textContent = recommendation.t;
+        link.className = 'btn';
+        link.href = 'https://ig.me/m/tatiana.beautylab';
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = 'Consultar por Instagram';
+
+        result.append(heading, paragraph, link);
+      });
+    });
+
+    drawStyle('natural');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInteractions, { once: true });
+  } else {
+    initInteractions();
+  }
+})();
+</script>
+</body>
+</html>

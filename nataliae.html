@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natalia Estilista Madrid | Airtouch, Balayage y Mechas</title>
+<meta name="description" content="Natalia, estilista en Madrid. Airtouch, balayage y mechas con acabado natural y luminoso. Reserva tu cita por WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💇%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@property --h{syntax:'<number>';inherits:true;initial-value:36}
+@property --s{syntax:'<number>';inherits:true;initial-value:60}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Figtree,system-ui,sans-serif;color:#1d1b20;line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;line-height:1.08}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto}
+.pad{padding-inline:clamp(1.25rem,6vw,5rem)}
+.block{padding-block:clamp(4rem,9vw,7rem)}
+/* monochrome tokens: every themed section sets --h / --s */
+.th{--d:hsl(var(--h) calc(var(--s)*1%) 11%);--m:hsl(var(--h) calc(var(--s)*1%) 27%);--l:hsl(var(--h) calc(var(--s)*1%) 72%);--p:hsl(var(--h) calc(var(--s)*1%) 95%);--b:hsl(var(--h) calc(var(--s)*1%) 72% / .35)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--l);cursor:pointer;font:inherit;font-weight:600;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--l);color:var(--d)}
+.btn.ghost{background:transparent;color:var(--p)}
+.btn svg{width:20px;height:20px;flex:none}
+:focus-visible{outline:3px solid var(--p,#fff);outline-offset:3px}
+/* hero */
+.hero{--h:36;--s:60;background:var(--d);color:var(--p);transition:--h .9s ease,--s .9s ease}
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:1.4rem}
+.brand{font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.5rem;text-decoration:none}
+.top nav{display:flex;gap:1.6rem;align-items:center}
+.top nav a:not(.btn){text-decoration:none;color:var(--l);font-size:.95rem}
+.top nav a:not(.btn):hover{color:var(--p)}
+.top .btn{padding:.55rem 1.1rem;font-size:.92rem}
+@media(max-width:700px){.top nav a:not(.btn){display:none}}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:3rem 5rem}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;padding-block:2rem 3.5rem}}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5rem);letter-spacing:-.01em}
+.hero p.sub{margin:1.4rem 0 2rem;max-width:34rem;color:var(--l);font-size:1.12rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.locks{display:flex;gap:.6rem;align-items:flex-end;height:clamp(250px,40vw,430px)}
+.lock{flex:1;border-radius:999px 999px 16px 16px;transform-origin:bottom;
+background:linear-gradient(180deg,hsl(calc(var(--h) + var(--o)) calc(var(--s)*1%) 13%),hsl(calc(var(--h) + var(--o)) calc(var(--s)*1%) 38%) 55%,hsl(calc(var(--h) + var(--o)) calc(var(--s)*1%) 76%));
+animation:rise 1.2s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*80ms)}
+@keyframes rise{from{transform:scaleY(.15);opacity:0}}
+.pick{margin-top:1.4rem}
+.pick p{color:var(--l);margin-bottom:.7rem}
+.pick strong{color:var(--p);font-weight:600}
+.swatches{display:flex;gap:.7rem;flex-wrap:wrap}
+.sw{width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;box-shadow:0 0 0 2px transparent;transition:box-shadow .2s,transform .2s}
+.sw:hover{transform:scale(1.08)}
+.sw[aria-pressed=true]{box-shadow:0 0 0 3px var(--d),0 0 0 5px var(--p)}
+/* techniques */
+.tec{background:hsl(270 18% 95%)}
+.tec h2,.find h2,.contact h2{font-size:clamp(2rem,4.4vw,3.4rem);max-width:22ch}
+.tec .intro{margin:1rem 0 2.4rem;max-width:36rem;color:#4a4650}
+.panels{display:flex;gap:.75rem;min-height:450px}
+.panel{flex:1;border-radius:1.4rem;background:var(--m);color:var(--p);overflow:hidden;display:flex;flex-direction:column;transition:flex .55s ease,background .4s}
+.panel.open{flex:3.4;background:var(--d)}
+.head{background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;width:100%;padding:1.5rem}
+.head span{font-family:'Bodoni Moda',serif;font-size:1.9rem}
+.panel:not(.open) .head{height:100%}
+.panel:not(.open) .head span{writing-mode:vertical-rl}
+.body{display:none;padding:0 1.5rem 1.7rem;min-width:300px}
+.panel.open .body{display:block}
+.body .lead{font-size:1.08rem;color:var(--l);margin-bottom:1.1rem;max-width:32rem}
+.body h3{font-family:Figtree,sans-serif;font-size:.95rem;font-weight:600;margin-bottom:.5rem}
+.body ul{list-style:none;margin-bottom:1.6rem}
+.body li{padding-left:1.3rem;position:relative;margin-bottom:.3rem}
+.body li::before{content:'';position:absolute;left:0;top:.7em;width:.5rem;height:.5rem;border-radius:50%;background:var(--l)}
+@media(max-width:820px){.panels{flex-direction:column;min-height:0}.panel:not(.open) .head{height:auto}.panel:not(.open) .head span{writing-mode:horizontal-tb}.body{min-width:0}}
+/* finder */
+.find{--h:165;--s:22;background:var(--d);color:var(--p)}
+.find-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media(max-width:860px){.find-grid{grid-template-columns:1fr}}
+.find p.t{margin-top:1.2rem;color:var(--l);max-width:30rem}
+.card{background:var(--m);border-radius:1.6rem;padding:clamp(1.4rem,3vw,2.2rem);min-height:380px}
+.card h3{font-size:1.7rem;margin:1.2rem 0 1.1rem}
+.prog{display:flex;gap:.4rem}
+.prog span{flex:1;height:4px;border-radius:4px;background:var(--b)}
+.prog span.on{background:var(--l)}
+.opt{display:block;width:100%;text-align:left;margin-bottom:.7rem;padding:1rem 1.2rem;border-radius:1rem;border:1px solid var(--b);background:transparent;color:var(--p);font:inherit;cursor:pointer;transition:background .2s,border-color .2s}
+.opt:hover{background:var(--d);border-color:var(--l)}
+.link{background:none;border:0;color:var(--l);font:inherit;text-decoration:underline;cursor:pointer;margin-top:.8rem}
+.res p{margin-bottom:1rem;color:var(--l)}
+/* contact */
+.contact{--h:36;--s:60;background:var(--d);color:var(--p);transition:--h .9s ease,--s .9s ease}
+.contact .row{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center}
+@media(max-width:860px){.contact .row{grid-template-columns:1fr}}
+.contact p.t{margin:1.2rem 0 2rem;color:var(--l);max-width:32rem}
+.info{border-left:1px solid var(--b);padding-left:2rem;display:grid;gap:1.3rem;color:var(--l)}
+.info b{display:block;color:var(--p);font-weight:600}
+.info a{text-decoration:none}
+@media(max-width:860px){.info{border-left:0;padding-left:0}}
+footer{background:#0f0e12;color:#b9b5c2;padding-block:1.8rem;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+.fab{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:20}
+.fab svg{width:30px;height:30px;fill:#fff}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.150l-.3-.2-3.100.8.8-3-.2-.3A8.200 8.200 0 1 1 12 20.200zm4.500-6.100c-.2-.1-1.500-.7-1.700-.8s-.4-.1-.6.1l-.8 1c-.1.200-.3.200-.5.100a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.200-.4.700-1.300.1-.1 0-.3 0-.4l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200 5.200 5.200 0 0 0 1.100 2.800 11.900 11.900 0 0 0 4.600 4.100c1.700.7 2.400.8 3.200.7.500-.1 1.500-.6 1.700-1.200s.2-1.100.2-1.200-.2-.2-.5-.3z"/></symbol>
+<symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.200" cy="6.800" r="1.200" fill="currentColor"/></symbol>
+</svg>
+
+<section class="hero th" id="hero">
+  <div class="pad">
+    <div class="wrap">
+      <div class="top">
+        <a class="brand" href="#hero">Natalia Estilista</a>
+        <nav>
+          <a href="#tecnicas">Técnicas</a>
+          <a href="#buscador">Tu técnica</a>
+          <a href="#contacto">Contacto</a>
+          <a class="btn main" data-wa="Hola Natalia, vengo de tu web y me gustaría pedir cita." href="https://wa.me/34643018955" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>WhatsApp</a>
+        </nav>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <h1>Color que te hace sentir tú, en tu mejor versión.</h1>
+          <p class="sub">Soy Natalia, estilista en Madrid. Hago airtouch, balayage y mechas con un acabado natural y luminoso, pensado para tu cabello y tu estilo.</p>
+          <div class="cta">
+            <a class="btn main" data-wa="Hola Natalia, vengo de tu web y me gustaría pedir cita." href="https://wa.me/34643018955" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Reservar por WhatsApp</a>
+            <a class="btn ghost" href="https://www.instagram.com/_nataliia_beauty/" target="_blank" rel="noopener"><svg><use href="#ig"/></svg>Ver mi Instagram</a>
+          </div>
+        </div>
+        <div>
+          <div class="locks" aria-hidden="true" id="locks"></div>
+          <div class="pick">
+            <p>Elige un tono: <strong id="toneName">Miel dorado</strong></p>
+            <div class="swatches" role="group" aria-label="Elige un tono" id="swatches"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tec block pad" id="tecnicas">
+  <div class="wrap">
+    <h2>Tres técnicas, un mismo objetivo: que te mires al espejo y sonrías.</h2>
+    <p class="intro">Toca cada técnica para ver en qué consiste y para quién es ideal.</p>
+    <div class="panels" id="panels">
+      <article class="panel th open" style="--h:212;--s:18">
+        <button class="head" aria-expanded="true" aria-controls="p1"><span>Airtouch</span></button>
+        <div class="body" id="p1">
+          <p class="lead">Un rubio suave y difuminado. Separo y mezclo las mechas con aire para lograr volumen, movimiento y una raíz sin cortes marcados.</p>
+          <h3>Es ideal si buscas</h3>
+          <ul><li>Un cambio que parezca natural</li><li>Retocar lo menos posible</li><li>Más volumen y movimiento</li></ul>
+          <a class="btn main" data-wa="Hola Natalia, me interesa el Airtouch. ¿Podemos hablar para pedir cita?" href="https://wa.me/34643018955" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Quiero Airtouch</a>
+        </div>
+      </article>
+      <article class="panel th" style="--h:32;--s:55">
+        <button class="head" aria-expanded="false" aria-controls="p2"><span>Balayage</span></button>
+        <div class="body" id="p2">
+          <p class="lead">Color pintado a mano, con degradado y luz donde mejor te favorece. El efecto sol de verano que crece con elegancia.</p>
+          <h3>Es ideal si buscas</h3>
+          <ul><li>Iluminar sin marcar la raíz</li><li>Un look de playa, fresco y natural</li><li>Dar profundidad a media melena o melena larga</li></ul>
+          <a class="btn main" data-wa="Hola Natalia, me interesa el Balayage. ¿Podemos hablar para pedir cita?" href="https://wa.me/34643018955" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Quiero Balayage</a>
+        </div>
+      </article>
+      <article class="panel th" style="--h:342;--s:40">
+        <button class="head" aria-expanded="false" aria-controls="p3"><span>Mechas</span></button>
+        <div class="body" id="p3">
+          <p class="lead">La técnica clásica, renovada. Mechas finas o más marcadas para dar luminosidad, contraste y brillo desde la raíz.</p>
+          <h3>Es ideal si buscas</h3>
+          <ul><li>Un resultado definido y luminoso</li><li>Integrar canas con luz</li><li>Un cambio que se note</li></ul>
+          <a class="btn main" data-wa="Hola Natalia, me interesan las Mechas. ¿Podemos hablar para pedir cita?" href="https://wa.me/34643018955" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Quiero Mechas</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="find th block pad" id="buscador">
+  <div class="wrap find-grid">
+    <div>
+      <h2>¿Cuál es la técnica ideal para ti?</h2>
+      <p class="t">Responde tres preguntas rápidas y te digo por dónde empezar. Después lo afinamos juntas en la valoración.</p>
+    </div>
+    <div class="card" id="fq" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="contact th block pad" id="contacto">
+  <div class="wrap row">
+    <div>
+      <h2>Reserva tu cita y empezamos a diseñar tu color.</h2>
+      <p class="t">Escríbeme por WhatsApp, cuéntame qué te gustaría y envíame una foto de tu cabello actual. Te respondo lo antes posible.</p>
+      <div class="cta">
+        <a class="btn main" data-wa="Hola Natalia, vengo de tu web y me gustaría pedir cita." href="https://wa.me/34643018955" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Escribir por WhatsApp</a>
+        <a class="btn ghost" href="https://www.instagram.com/_nataliia_beauty/" target="_blank" rel="noopener"><svg><use href="#ig"/></svg>@_nataliia_beauty</a>
+      </div>
+    </div>
+    <div class="info">
+      <div><b>WhatsApp</b><a href="https://wa.me/34643018955" target="_blank" rel="noopener">+34 643 01 89 55</a></div>
+      <div><b>Instagram</b><a href="https://www.instagram.com/_nataliia_beauty/" target="_blank" rel="noopener">@_nataliia_beauty</a></div>
+      <div><b>Ciudad</b>Madrid</div>
+    </div>
+  </div>
+</section>
+
+<footer class="pad">
+  <div class="wrap">
+    <span>© 2026 Natalia Estilista Madrid</span>
+    <a href="https://www.instagram.com/_nataliia_beauty/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<a class="fab" data-wa="Hola Natalia, vengo de tu web y me gustaría pedir cita." href="https://wa.me/34643018955" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+const WA='https://wa.me/34643018955?text=';
+const setWa=()=>document.querySelectorAll('[data-wa]').forEach(a=>a.href=WA+encodeURIComponent(a.dataset.wa));
+setWa();
+
+/* tone picker */
+const tones=[['Miel dorado',36,60],['Cobre',16,62],['Rosa empolvado',344,42],['Ceniza',212,16],['Ciruela',300,30]];
+const locks=document.getElementById('locks'),sw=document.getElementById('swatches'),tn=document.getElementById('toneName');
+[62,84,70,100,78,92,66,88,74].forEach((h,i)=>{const d=document.createElement('div');d.className='lock';d.style.cssText=`height:${h}%;--i:${i};--o:${(i%3-1)*5}`;locks.appendChild(d)});
+const themed=[document.getElementById('hero'),document.getElementById('contacto')];
+tones.forEach((t,i)=>{
+  const b=document.createElement('button');b.className='sw';b.type='button';
+  b.style.background=`hsl(${t[1]} ${t[2]}% 58%)`;b.setAttribute('aria-label',t[0]);b.setAttribute('aria-pressed',i===0);
+  b.onclick=()=>{
+    themed.forEach(el=>{el.style.setProperty('--h',t[1]);el.style.setProperty('--s',t[2])});
+    tn.textContent=t[0];
+    sw.querySelectorAll('.sw').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  };
+  sw.appendChild(b);
+});
+
+/* technique accordion */
+const panels=[...document.querySelectorAll('.panel')];
+panels.forEach(p=>p.querySelector('.head').onclick=()=>{
+  panels.forEach(q=>{const on=q===p;q.classList.toggle('open',on);q.querySelector('.head').setAttribute('aria-expanded',on)});
+});
+
+/* technique finder */
+const Q=[
+ {q:'¿Cómo es tu cabello ahora?',o:['Oscuro','Castaño','Rubio o ya aclarado']},
+ {q:'¿Qué efecto te gustaría?',o:['Natural y difuminado, que casi no se note el cambio','Efecto sol de verano, con degradado','Luminoso y definido, que se vea']},
+ {q:'¿Cuánto te importa retocar?',o:['Lo mínimo posible','De vez en cuando','No me importa hacerlo a menudo']}
+];
+const keys=['airtouch','balayage','mechas'];
+const T={airtouch:['Airtouch','Un rubio suave y difuminado, sin cortes marcados en la raíz.'],balayage:['Balayage','Luz pintada a mano con un degradado que crece con elegancia.'],mechas:['Mechas','Luminosidad definida y brillo desde la raíz, con un cambio que se nota.']};
+const N=['Con una base oscura, aclaro por fases para cuidar tu cabello.','Con base castaña salen resultados muy naturales y favorecedores.','Con una base clara juego con matices, luz y contraste.'];
+const bases=['oscuro','castaño','rubio o ya aclarado'];
+const box=document.getElementById('fq');let step=0,ans=[];
+function render(){
+  const prog='<div class="prog">'+[0,1,2].map(i=>`<span class="${i<=step?'on':''}"></span>`).join('')+'</div>';
+  if(step<3){
+    const q=Q[step];
+    box.innerHTML=prog+`<h3>${q.q}</h3>`+q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('')+(step?'<button class="link" data-back>Volver</button>':'');
+  }else{
+    const s={airtouch:0,balayage:0,mechas:0};
+    s[keys[ans[1]]]+=2;
+    if(ans[2]===0){s.airtouch++;s.balayage++}else if(ans[2]===1)s.balayage++;else s.mechas++;
+    const best=keys.reduce((a,k)=>s[k]>s[a]?k:a,keys[ans[1]]);
+    const msg=`Hola Natalia, he probado el buscador de tu web: mi cabello es ${bases[ans[0]]} y me ha salido ${T[best][0]}. ¿Podemos hablar para pedir cita?`;
+    box.innerHTML=prog+`<div class="res"><h3>${T[best][0]}</h3><p>${T[best][1]}</p><p>${N[ans[0]]} Lo confirmamos en la valoración.</p><a class="btn main" data-wa="${msg}" href="${WA}" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Reservar por WhatsApp</a><br><button class="link" data-reset>Volver a empezar</button></div>`;
+    setWa();
+  }
+}
+box.addEventListener('click',e=>{
+  const o=e.target.closest('.opt');
+  if(o){ans[step]=+o.dataset.i;step++;render();return}
+  if(e.target.closest('[data-back]')){step--;render()}
+  if(e.target.closest('[data-reset]')){step=0;ans=[];render()}
+});
+render();
+</script>
+</body>
+</html>

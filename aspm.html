@@ -984,9 +984,10 @@
 .legal-id{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;margin:0 0 1rem;padding:1rem 1.1rem;background:#F8F0E8;border-radius:12px}
 .legal-id dt{font-weight:700;color:#203746}
 .legal-id dd{margin:0;color:#2B3C47}
-.legal-table-wrap{overflow-x:auto;margin:0 0 1rem;border:1px solid #D8C9BE;border-radius:12px}
-.legal-table-wrap table{width:100%;border-collapse:collapse;min-width:460px;font-size:.9rem}
-.legal-table-wrap th,.legal-table-wrap td{padding:.65rem .8rem;text-align:left;vertical-align:top;border-bottom:1px solid #E7DBD0}
+.legal-table-wrap{overflow:hidden;max-width:100%;margin:0 0 1rem;border:1px solid #D8C9BE;border-radius:12px}
+.legal-table-wrap table{width:100%;max-width:100%;table-layout:fixed;border-collapse:collapse;min-width:0;font-size:.9rem}
+.legal-table-wrap th,.legal-table-wrap td{padding:.65rem .8rem;text-align:left;vertical-align:top;border-bottom:1px solid #E7DBD0;white-space:normal;overflow-wrap:anywhere;word-break:normal;hyphens:auto;box-sizing:border-box}
+.legal-table-wrap th:first-child,.legal-table-wrap td:first-child{width:55%}
 .legal-table-wrap th{background:#F3E5D8;color:#203746}
 .legal-table-wrap tr:last-child td{border-bottom:0}
 body.legal-open{overflow:hidden}

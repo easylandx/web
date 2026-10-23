@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Юрист Україна та Іспанія | Бізнес та податки в Іспанії</title>
+<style>
+:root{--ink:#1c1b3a;--y:#ffd84d;--b:#bfe3ff;--p:#ffc6dc;--o:#ffb870;--v:#d8c8ff;--w:#fffdf6;--side:clamp(24px,9vw,140px);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--w);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;line-height:1.6;font-size:17px}
+section{padding:clamp(56px,9vw,110px) var(--side)}
+.wrap{max-width:1000px;margin:0 auto}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,4rem)}
+h2{font-size:clamp(1.7rem,4vw,2.6rem)}
+.tag{display:inline-block;background:var(--ink);color:#fff;padding:6px 14px;border-radius:99px;font-size:.85rem;margin-bottom:20px}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:15px 28px;border-radius:99px;font-weight:700;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:transform .2s}
+.btn:hover{transform:translateY(-3px) rotate(-1deg)}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+#hero{background:var(--y)}
+#hero p{font-size:1.2rem;max-width:620px}
+.stats{background:var(--o)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.stat{background:#fff;border-radius:22px;padding:24px;text-align:center}
+.stat b{display:block;font-family:Georgia,serif;font-size:2.4rem}
+#services{background:var(--b)}
+.card{background:#fff;border-radius:22px;padding:26px;border:2px solid var(--ink)}
+.card span{font-size:2rem}
+#quiz{background:var(--p)}
+.opts{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+.opt{background:#fff;border:2px solid var(--ink);color:var(--ink);padding:12px 20px;border-radius:99px;cursor:pointer;font:inherit;font-weight:700;transition:.2s}
+.opt:hover{background:var(--y)}
+.opt.on{background:var(--ink);color:#fff}
+#res{background:#fff;border-radius:22px;padding:26px;min-height:120px;border:2px dashed var(--ink)}
+#steps{background:var(--v)}
+.step{background:#fff;border-radius:22px;padding:24px}
+.step i{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-weight:700;margin-bottom:10px}
+#about{background:var(--y)}
+#cta{background:var(--b);text-align:center}
+footer{background:var(--ink);color:#fff;text-align:center;padding:26px var(--side);font-size:.9rem}
+footer a{color:var(--y)}
+</style>
+</head>
+<body>
+
+<section id="hero"><div class="wrap">
+<span class="tag">🇺🇦 Юрист Україна та Іспанія 🇪🇸</span>
+<h1>Бізнес та податки в Іспанії — просто і зрозуміло</h1>
+<p>Юрист та адвокат із 9-річною практикою допоможе українцям відкрити справу, розібратися з податками та захистити свої інтереси в обох країнах.</p>
+<p><a class="btn" href="https://www.instagram.com/abogada_mak/" target="_blank" rel="noopener">Написати в Instagram →</a>
+<a class="btn alt" href="#quiz">Підібрати послугу</a></p>
+</div></section>
+
+<section class="stats"><div class="wrap grid">
+<div class="stat"><b>9 років</b>юридичної практики</div>
+<div class="stat"><b>2 країни</b>Україна та Іспанія</div>
+<div class="stat"><b>UCM</b>Universidad Complutense de Madrid</div>
+</div></section>
+
+<section id="services"><div class="wrap">
+<h2>Чим я можу допомогти</h2>
+<div class="grid">
+<div class="card"><span>💼</span><h3>Бізнес в Іспанії</h3><p>Реєстрація та юридичний супровід вашої справи.</p></div>
+<div class="card"><span>🧾</span><h3>Податки</h3><p>Податкові питання в Іспанії — зрозумілою мовою.</p></div>
+<div class="card"><span>⚖️</span><h3>Юридичний супровід</h3><p>Консультації та підтримка в правових ситуаціях.</p></div>
+<div class="card"><span>🌍</span><h3>Україна + Іспанія</h3><p>Питання на стику двох правових систем.</p></div>
+</div></div></section>
+
+<section id="quiz"><div class="wrap">
+<h2>Що вас цікавить?</h2>
+<p>Оберіть тему — і я підкажу, з чого почати.</p>
+<div class="opts" id="opts">
+<button class="opt" data-k="biz">💼 Хочу відкрити бізнес</button>
+<button class="opt" data-k="tax">🧾 Питання з податками</button>
+<button class="opt" data-k="law">⚖️ Потрібна юридична допомога</button>
+<button class="opt" data-k="two">🌍 Справа в Україні й Іспанії</button>
+</div>
+<div id="res" aria-live="polite">👆 Натисніть на один із варіантів.</div>
+</div></section>
+
+<section id="steps"><div class="wrap">
+<h2>Як це працює</h2>
+<div class="grid">
+<div class="step"><i>1</i><h3>Пишете мені</h3><p>Коротко опишіть ситуацію в Instagram.</p></div>
+<div class="step"><i>2</i><h3>Розбираємо справу</h3><p>З’ясовуємо деталі та ваші цілі.</p></div>
+<div class="step"><i>3</i><h3>Чіткий план</h3><p>Отримуєте зрозумілі кроки дій.</p></div>
+</div></div></section>
+
+<section id="about"><div class="wrap">
+<h2>Про мене</h2>
+<p>▪️ Юрист та адвокат — 9 років практики в Україні 🇺🇦<br>
+▪️ Universidad Complutense de Madrid 🇪🇸<br>
+▪️ Магістр права та міжнародної економіки</p>
+</div></section>
+
+<section id="cta"><div class="wrap">
+<h2>Готові обговорити вашу ситуацію?</h2>
+<p>Напишіть мені в Instagram — відповім і підкажу наступний крок.</p>
+<a class="btn" href="https://www.instagram.com/abogada_mak/" target="_blank" rel="noopener">@abogada_mak в Instagram</a>
+</div></section>
+
+<footer>© <span id="yr"></span> abogada_mak · <a href="https://www.instagram.com/abogada_mak/" target="_blank" rel="noopener">Instagram</a></footer>
+
+<script>
+var T={
+biz:["💼 Бізнес в Іспанії","Розберемо, яка форма діяльності вам підходить, і які кроки потрібні для старту."],
+tax:["🧾 Податки в Іспанії","Допоможу зрозуміти ваші податкові обов’язки та уникнути зайвих помилок."],
+law:["⚖️ Юридична допомога","Проаналізуємо вашу ситуацію й визначимо найкращий правовий шлях."],
+two:["🌍 Україна та Іспанія","Працюю з питаннями на стику двох країн — це моя спеціалізація."]};
+var res=document.getElementById("res");
+document.querySelectorAll(".opt").forEach(function(b){b.addEventListener("click",function(){
+document.querySelectorAll(".opt").forEach(function(x){x.classList.remove("on")});b.classList.add("on");
+var t=T[b.dataset.k];
+res.innerHTML="<h3>"+t[0]+"</h3><p>"+t[1]+"</p><a class=\"btn\" href=\"https://www.instagram.com/abogada_mak/\" target=\"_blank\" rel=\"noopener\">Обговорити в Instagram →</a>";
+});});
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

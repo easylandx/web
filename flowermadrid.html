@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flower Shop Madrid — Доставка квітів у Мадриді</title>
+<style>
+:root{--bg:#fff7e6;--ink:#3b1f4a;--pink:#ff6fa5;--yellow:#ffd23f;--blue:#6ec6ff;--orange:#ff9248;--violet:#a76bff;--card:#ffffff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(24px,7vw,72px)}
+section{padding:clamp(56px,9vw,104px) 0}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,4rem)}
+h2{font-size:clamp(1.7rem,4vw,2.6rem);text-align:center}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:700;padding:14px 26px;border-radius:999px;text-decoration:none;color:var(--ink);background:var(--yellow);box-shadow:0 6px 0 rgba(59,31,74,.18);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.pink{background:var(--pink);color:#fff}
+.btn.green{background:#3ddc84;color:#12361f}
+header{background:linear-gradient(135deg,var(--pink),var(--orange) 55%,var(--yellow))}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;flex-wrap:wrap}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:1.2rem;color:#fff}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding:40px 0 80px}
+.hero p{font-size:1.15rem;max-width:30em}
+.hero .big{font-size:clamp(7rem,20vw,12rem);text-align:center;filter:drop-shadow(0 12px 0 rgba(59,31,74,.15))}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
+.chip{background:rgba(255,255,255,.7);padding:6px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+.cats{background:#e8f6ff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:36px}
+.card{background:var(--card);border-radius:24px;padding:26px;text-align:center;box-shadow:0 8px 0 rgba(59,31,74,.1)}
+.card .e{font-size:3rem}
+.card:nth-child(1){border-top:8px solid var(--pink)}.card:nth-child(2){border-top:8px solid var(--yellow)}.card:nth-child(3){border-top:8px solid var(--violet)}.card:nth-child(4){border-top:8px solid var(--blue)}
+.picker{background:linear-gradient(160deg,#f1e6ff,#ffe3ef)}
+.box{background:#fff;border-radius:28px;padding:clamp(22px,4vw,40px);max-width:720px;margin:34px auto 0;box-shadow:0 10px 0 rgba(59,31,74,.1)}
+.q{font-weight:700;margin:18px 0 10px}
+.opts{display:flex;gap:10px;flex-wrap:wrap}
+.opt{border:3px solid transparent;background:#f6f0ff;padding:10px 18px;border-radius:999px;cursor:pointer;font:inherit;font-weight:700;color:var(--ink)}
+.opt.on{background:var(--violet);color:#fff}
+.opt.c1.on{background:var(--pink)}.opt.c2.on{background:var(--orange)}.opt.c3.on{background:var(--blue);color:var(--ink)}
+.result{margin-top:26px;padding:24px;border-radius:22px;background:var(--yellow);text-align:center}
+.result .e{font-size:3.4rem}
+.price{font-size:1.5rem;font-weight:800}
+.result .btn{margin-top:12px}
+.steps{background:#fff0c2}
+.steps .grid .card:nth-child(n){border-top:8px solid var(--orange)}
+.num{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--pink);color:#fff;font-weight:800;margin-bottom:10px}
+.contact{background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;text-align:center}
+.links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+.links .btn{background:#fff}
+footer{padding:26px 0;text-align:center;font-size:.9rem;background:#3b1f4a;color:#fff}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .big{order:-1;font-size:7rem}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">🌸 Flower Shop Madrid</div>
+    <a class="btn green" href="https://wa.link/a6csey" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="hero">
+    <div>
+      <h1>Букети з доставкою по Мадриду</h1>
+      <p>Свіжі квіти, яскраві композиції та швидка доставка. Замовте за 2 хвилини — ми потурбуємось про решту.</p>
+      <div class="chips"><span class="chip">🚚 Доставка по Мадриду</span><span class="chip">💐 Свіжі букети</span><span class="chip">🇺🇦 Говоримо українською</span></div>
+      <a class="btn" href="#picker">Підібрати букет</a>
+    </div>
+    <div class="big">💐</div>
+  </div>
+</div>
+</header>
+
+<section class="cats">
+<div class="wrap">
+  <h2>Що ми пропонуємо</h2>
+  <div class="grid">
+    <div class="card"><div class="e">🌹</div><h3>Троянди</h3><p>Класика, яка завжди доречна.</p></div>
+    <div class="card"><div class="e">🌻</div><h3>Сонячні букети</h3><p>Яскраві мікси для гарного настрою.</p></div>
+    <div class="card"><div class="e">💜</div><h3>Авторські композиції</h3><p>Букети та коробки на особливий випадок.</p></div>
+    <div class="card"><div class="e">🎁</div><h3>Подарункові набори</h3><p>Квіти з приємними додатками.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="picker" id="picker">
+<div class="wrap">
+  <h2>Підберіть букет за 3 кліки</h2>
+  <div class="box">
+    <div class="q">1. Для кого?</div>
+    <div class="opts" data-k="who">
+      <button class="opt c1" data-v="Для коханої людини">❤️ Кохана людина</button>
+      <button class="opt c2" data-v="Для мами">👩 Мама</button>
+      <button class="opt c3" data-v="Для подруги/колеги">🤝 Подруга / колега</button>
+    </div>
+    <div class="q">2. Привід?</div>
+    <div class="opts" data-k="occ">
+      <button class="opt c1" data-v="день народження">🎂 День народження</button>
+      <button class="opt c2" data-v="просто так">✨ Просто так</button>
+      <button class="opt c3" data-v="подяка">🙏 Подяка</button>
+    </div>
+    <div class="q">3. Бюджет?</div>
+    <div class="opts" data-k="bud">
+      <button class="opt c1" data-v="S">€ Скромний</button>
+      <button class="opt c2" data-v="M">€€ Середній</button>
+      <button class="opt c3" data-v="L">€€€ Розкішний</button>
+    </div>
+    <div class="result" id="res" hidden>
+      <div class="e" id="re"></div>
+      <h3 id="rt"></h3>
+      <p id="rd"></p>
+      <div class="price" id="rp"></div>
+      <a class="btn pink" id="rl" href="#" target="_blank" rel="noopener">Замовити у WhatsApp</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="steps">
+<div class="wrap">
+  <h2>Як замовити</h2>
+  <div class="grid">
+    <div class="card"><div class="num">1</div><h3>Напишіть нам</h3><p>WhatsApp, Instagram або Telegram.</p></div>
+    <div class="card"><div class="num">2</div><h3>Оберіть букет</h3><p>Підкажемо за бюджетом і приводом.</p></div>
+    <div class="card"><div class="num">3</div><h3>Ми доставимо</h3><p>У зручний час за вашою адресою у Мадриді.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="contact">
+<div class="wrap">
+  <h2 style="color:#fff">Замовте квіти просто зараз</h2>
+  <p>WhatsApp: +34 603 129 514</p>
+  <a class="btn pink" href="https://wa.link/a6csey" target="_blank" rel="noopener">Написати у WhatsApp</a>
+  <div class="links">
+    <a class="btn" href="https://www.instagram.com/flower.shop.madrid/" target="_blank" rel="noopener">Instagram · flower.shop.madrid</a>
+    <a class="btn" href="https://www.instagram.com/tanays.flowers" target="_blank" rel="noopener">Instagram · tanays.flowers</a>
+    <a class="btn" href="https://t.me/Tanays_flowers" target="_blank" rel="noopener">Telegram · Tanays_flowers</a>
+    <a class="btn" href="https://t.me/nataferkal" target="_blank" rel="noopener">Telegram · nataferkal</a>
+  </div>
+</div>
+</section>
+
+<footer><div class="wrap">🌸 Flower Shop Madrid · Доставка квітів у Мадриді</div></footer>
+
+<script>
+(function(){
+  var sel={},res=document.getElementById('res');
+  var data={
+    S:{e:'🌷',t:'Ніжний міні-букет',d:'Свіжі тюльпани або сезонні квіти — милий жест без зайвого.',p:'від 25 €'},
+    M:{e:'💐',t:'Яскравий мікс-букет',d:'Збалансована композиція з трояндами та сезонною зеленню.',p:'від 45 €'},
+    L:{e:'🌹',t:'Розкішний букет',d:'Велика авторська композиція, яка точно запам’ятається.',p:'від 80 €'}
+  };
+  document.querySelectorAll('.opts').forEach(function(g){
+    g.addEventListener('click',function(ev){
+      var b=ev.target.closest('.opt');if(!b)return;
+      g.querySelectorAll('.opt').forEach(function(o){o.classList.remove('on')});
+      b.classList.add('on');sel[g.dataset.k]=b.dataset.v;show();
+    });
+  });
+  function show(){
+    if(!(sel.who&&sel.occ&&sel.bud))return;
+    var r=data[sel.bud];
+    document.getElementById('re').textContent=r.e;
+    document.getElementById('rt').textContent=r.t;
+    document.getElementById('rd').textContent=r.d+' '+sel.who+', привід: '+sel.occ+'.';
+    document.getElementById('rp').textContent=r.p;
+    var msg='Вітаю! Хочу замовити букет. '+sel.who+', привід: '+sel.occ+', варіант: '+r.t+'.';
+    document.getElementById('rl').href='https://wa.link/a6csey';
+    document.getElementById('rl').dataset.msg=msg;
+    res.hidden=false;
+    res.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+})();
+</script>
+</body>
+</html>

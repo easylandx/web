@@ -934,7 +934,35 @@
       .hero p { font-size: 1.1rem; }
     }
       .form-field input::placeholder, .form-field textarea::placeholder { color: #4A5A64; opacity: 1; }
-  </style>
+    /* Fix móvil: la barra superior nunca se recorta por la derecha */
+    .topbar { overflow-x: hidden; }
+    .topbar .container { min-width: 0; }
+    .topbar .container > span { min-width: 0; }
+    @media (max-width: 600px) {
+      .topbar .container { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .topbar, .topbar span, .topbar a { font-size: 0.88rem; }
+      .topbar-actions {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        row-gap: 0.45rem;
+        column-gap: 0.6rem;
+        max-width: 100%;
+      }
+      .topbar-actions a { max-width: 100%; overflow-wrap: anywhere; }
+    }
+      /* Fix móvil: los nombres largos de empresas se ajustan en varias líneas sin recortarse */
+    .sponsors-wrapper, .sponsors-flex { max-width: 100%; min-width: 0; }
+    @media (max-width: 600px) {
+      .sponsor-tag {
+        white-space: normal;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        line-height: 1.35;
+        box-sizing: border-box;
+      }
+      .sponsors-cat-title { overflow-wrap: anywhere; line-height: 1.45; }
+    }
+</style>
 </head>
 <body>
 

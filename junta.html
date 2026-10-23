@@ -702,7 +702,23 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
       .nav-links .btn { font-size: 0.78rem; padding: 0.4rem 0.55rem; }
       .hero p { font-size: 1.1rem; }
     }
-</style>
+    /* Fix móvil: la barra superior nunca se recorta por la derecha */
+    .topbar { overflow-x: hidden; }
+    .topbar .container { min-width: 0; }
+    .topbar .container > span { min-width: 0; }
+    @media (max-width: 600px) {
+      .topbar .container { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .topbar, .topbar span, .topbar a { font-size: 0.88rem; }
+      .topbar-actions {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        row-gap: 0.45rem;
+        column-gap: 0.6rem;
+        max-width: 100%;
+      }
+      .topbar-actions a { max-width: 100%; overflow-wrap: anywhere; }
+    }
+  </style>
 </head>
 <body>
 

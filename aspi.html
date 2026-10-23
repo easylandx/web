@@ -234,6 +234,16 @@ body{color:#14232C;line-height:1.7;font-weight:500}
 footer,footer p,footer li,footer a{color:#FFF9F3;font-size:1rem}
 .social-follow-copy{color:#F3E9E0!important;font-size:1rem}
 @media(max-width:600px){.nav-links{font-size:.8rem}.nav-links .btn{font-size:.78rem;padding:.4rem .55rem}.hero p{font-size:1.1rem}}
+/* Fix móvil: la barra superior nunca se recorta por la derecha */
+.topbar{overflow-x:hidden}
+.topbar .container{min-width:0}
+.topbar .container>span{min-width:0}
+@media(max-width:600px){
+.topbar .container{padding-left:1.25rem;padding-right:1.25rem}
+.topbar,.topbar span,.topbar a{font-size:.88rem}
+.topbar-actions{flex-wrap:wrap;justify-content:flex-start;row-gap:.45rem;column-gap:.6rem;max-width:100%}
+.topbar-actions a{max-width:100%;overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>

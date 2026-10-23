@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yulia Hairstyle · Keratina y Blond en Fuenlabrada, Madrid</title>
+<meta name="description" content="Especialista en keratina y blond, y recuperación de cabello en Fuenlabrada (Madrid). Reserva tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2a1a4d; --soft:#5b4b7d;
+  --sun:#ffe27a; --sky:#bfe3ff; --rose:#ffc4dc; --peach:#ffb98a; --lilac:#d3c4ff; --paper:#fff9ec;
+  --side:clamp(24px,8vw,128px);
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.6 "Figtree",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Figtree",system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+h1{font-weight:800;font-size:clamp(2.6rem,7.5vw,5.4rem)}
+h2{font-weight:800;font-size:clamp(2rem,4.6vw,3.2rem)}
+h3{font-weight:800;font-size:1.6rem}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 var(--side)}
+section{padding:clamp(56px,9vw,112px) 0}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.6rem;border-radius:999px;font:600 1rem "Figtree",sans-serif;text-decoration:none;border:2px solid var(--ink);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.wa{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;gap:16px}
+nav b{font:800 1.25rem "Bricolage Grotesque",sans-serif}
+nav a.btn{padding:.6rem 1.1rem;font-size:.95rem}
+
+/* hero */
+.hero{background:var(--sun);padding-bottom:0;position:relative;overflow:hidden}
+.hero .wrap{padding-bottom:clamp(40px,7vw,80px)}
+.hero p.lead{max-width:34rem;margin:1.4rem 0 2rem;font-size:1.2rem}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px}
+.blobs{display:flex;height:clamp(60px,10vw,120px)}
+.blobs i{flex:1}
+.blobs i:nth-child(1){background:var(--rose)}.blobs i:nth-child(2){background:var(--sky)}
+.blobs i:nth-child(3){background:var(--lilac)}.blobs i:nth-child(4){background:var(--peach)}
+.blobs i:nth-child(5){background:var(--paper)}
+.tag{display:inline-block;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:.3rem .9rem;font-weight:600;font-size:.95rem;margin-bottom:1.4rem}
+
+/* servicios */
+.svc{display:grid;gap:20px;margin-top:2.5rem}
+.svc article{border-radius:28px;padding:2rem;border:2px solid var(--ink)}
+.svc article p{margin-top:.7rem;max-width:34rem}
+.svc .a{background:var(--sky)}
+.svc .b{background:var(--rose)}
+.svc .c{background:var(--lilac)}
+@media(min-width:800px){.svc{grid-template-columns:1.3fr 1fr}.svc .c{grid-column:1/-1}}
+
+/* quiz */
+.quiz{background:var(--lilac)}
+.box{background:var(--paper);border:2px solid var(--ink);border-radius:32px;padding:clamp(20px,4vw,44px);margin-top:2rem;min-height:340px}
+.dots{display:flex;gap:8px;margin-bottom:1.4rem}
+.dots span{width:34px;height:8px;border-radius:8px;background:#e5dcf5}
+.dots span.on{background:var(--ink)}
+.opts{display:grid;gap:12px;margin-top:1.4rem}
+@media(min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+.opt{font:600 1rem "Figtree",sans-serif;text-align:left;padding:1rem 1.2rem;border-radius:18px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:background .15s,transform .15s}
+.opt:nth-child(1):hover{background:var(--sun)}.opt:nth-child(2):hover{background:var(--sky)}
+.opt:nth-child(3):hover{background:var(--rose)}.opt:nth-child(4):hover{background:var(--peach)}
+.res{animation:pop .35s ease}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.res .badge{display:inline-block;padding:.35rem 1rem;border-radius:999px;border:2px solid var(--ink);font-weight:600;margin-bottom:1rem}
+.res p{margin:.8rem 0 1.6rem;max-width:34rem}
+.link{background:none;border:0;color:var(--ink);text-decoration:underline;font:600 1rem "Figtree",sans-serif;cursor:pointer;margin-left:12px}
+
+/* contacto */
+.contact{background:var(--peach)}
+.contact .grid{display:grid;gap:28px}
+.contact ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.4rem}
+@media(min-width:800px){.contact .grid{grid-template-columns:1.2fr 1fr;align-items:end}}
+footer{background:var(--sky);padding:28px 0;font-size:.95rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav>
+      <b>Yulia Hairstyle</b>
+      <a class="btn wa" href="https://wa.me/34685142097?text=Hola%20Yulia%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener">Reservar cita</a>
+    </nav>
+    <span class="tag">Fuenlabrada, Madrid</span>
+    <h1>Tu cabello, sano, suave y rubio de verdad.</h1>
+    <p class="lead">Especialista en keratina y blond, con tratamientos de recuperación para devolverle fuerza y brillo a tu cabello.</p>
+    <div class="row">
+      <a class="btn wa" href="https://wa.me/34685142097?text=Hola%20Yulia%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+      <a class="btn ghost" href="#test">Descubre tu tratamiento</a>
+    </div>
+  </div>
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</header>
+
+<main>
+<section id="servicios">
+  <div class="wrap">
+    <h2>Tres formas de cuidar tu cabello</h2>
+    <div class="svc">
+      <article class="a">
+        <h3>Keratina</h3>
+        <p>Reduce el encrespamiento y deja el cabello liso, suave y con brillo, más fácil de peinar cada día.</p>
+      </article>
+      <article class="b">
+        <h3>Blond</h3>
+        <p>Aclarados y rubios luminosos, pensados para cuidar la fibra y lograr el tono que buscas.</p>
+      </article>
+      <article class="c">
+        <h3>Recuperación de cabello</h3>
+        <p>Si tu cabello está dañado, seco o quebradizo, empezamos por devolverle la salud antes de cualquier cambio.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="quiz" id="test">
+  <div class="wrap">
+    <h2>¿Qué tratamiento es para ti?</h2>
+    <p style="margin-top:.8rem">Responde dos preguntas y te digo por dónde empezar.</p>
+    <div class="box" id="box" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Reserva tu cita</h2>
+        <p style="margin-top:1rem;max-width:30rem">Escríbeme por WhatsApp o por mensaje directo en Instagram y buscamos el mejor día para ti.</p>
+        <div class="row">
+          <a class="btn wa" href="https://wa.me/34685142097?text=Hola%20Yulia%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener">WhatsApp 685 14 20 97</a>
+          <a class="btn ghost" href="https://bit.ly/reservas_yulia_estilo_lem" target="_blank" rel="noopener">Reservar online</a>
+          <a class="btn ghost" href="https://www.instagram.com/yulia_hair_style_/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <ul>
+        <li><b>Dónde:</b> Fuenlabrada, Madrid</li>
+        <li><b>Cómo reservar:</b> por DM o WhatsApp</li>
+        <li><b>Instagram:</b> @yulia_hair_style_</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Yulia Hairstyle · Fuenlabrada, Madrid</div>
+</footer>
+
+<script>
+(function(){
+  var box=document.getElementById('box');
+  var state={};
+  var Q=[
+    {k:'estado',t:'¿Cómo está tu cabello ahora?',o:[
+      ['dañado','Seco, dañado o quebradizo'],
+      ['encrespado','Encrespado y difícil de peinar'],
+      ['oscuro','Oscuro o con color, quiero aclarar'],
+      ['sano','Bastante sano, quiero un cambio']]},
+    {k:'meta',t:'¿Qué quieres conseguir?',o:[
+      ['suave','Cabello liso, suave y con brillo'],
+      ['rubio','Un rubio luminoso'],
+      ['fuerza','Recuperar fuerza y salud']]}
+  ];
+  function dots(n){return '<div class="dots" aria-hidden="true">'+Q.map(function(_,i){return '<span class="'+(i<=n?'on':'')+'"></span>'}).join('')+'</div>'}
+  function ask(i){
+    var q=Q[i];
+    box.innerHTML=dots(i)+'<h3>'+q.t+'</h3><div class="opts">'+q.o.map(function(o){return '<button class="opt" data-v="'+o[0]+'">'+o[1]+'</button>'}).join('')+'</div>';
+    box.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        state[q.k]=b.dataset.v;
+        if(i<Q.length-1){ask(i+1)}else{show()}
+      });
+    });
+  }
+  function show(){
+    var r;
+    if(state.meta==='rubio'){
+      r=state.estado==='dañado'
+        ?{n:'Recuperación + Blond',c:'var(--rose)',d:'Primero devolvemos la salud a tu cabello y después lo aclaramos con cuidado para un rubio bonito y duradero.'}
+        :{n:'Blond',c:'var(--sun)',d:'Un aclarado a tu medida para llegar a un rubio luminoso cuidando la fibra capilar.'};
+    }else if(state.meta==='suave'){
+      r=state.estado==='dañado'
+        ?{n:'Recuperación + Keratina',c:'var(--lilac)',d:'Empezamos reparando tu cabello y después aplicamos keratina para un acabado suave, liso y con brillo.'}
+        :{n:'Keratina',c:'var(--sky)',d:'Menos encrespamiento, más suavidad y brillo, y un cabello mucho más fácil de peinar.'};
+    }else{
+      r={n:'Recuperación de cabello',c:'var(--peach)',d:'Un tratamiento para devolver fuerza, hidratación y salud a tu cabello antes de cualquier otro cambio.'};
+    }
+    var msg=encodeURIComponent('Hola Yulia, hice el test y me interesa: '+r.n+'. ¿Podemos reservar una cita?');
+    box.innerHTML=dots(Q.length-1)+'<div class="res"><span class="badge" style="background:'+r.c+'">Te recomiendo</span><h3 style="font-size:clamp(2rem,5vw,3rem)">'+r.n+'</h3><p>'+r.d+'</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/34685142097?text='+msg+'">Reservar por WhatsApp</a><button class="link" id="again">Repetir el test</button></div>';
+    document.getElementById('again').addEventListener('click',function(){state={};ask(0)});
+  }
+  ask(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<title>Anyta Romanowa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Concepto: landing monocroma. Un solo tono (--h) genera todo el color; la clienta elige el tono.
+   Bandas de fondo en escalones de ese mismo tono, un bloque oscuro para el cierre, simulador y generador de mensaje como interacción. */
+:root {
+  --h: 340;
+  --bg: hsl(var(--h) 30% 97%);
+  --surface: hsl(var(--h) 35% 93%);
+  --tint: hsl(var(--h) 38% 88%);
+  --fg: hsl(var(--h) 30% 12%);
+  --muted: hsl(var(--h) 14% 37%);
+  --line: hsl(var(--h) 25% 80%);
+  --accent: hsl(var(--h) 48% 34%);
+  --on-accent: hsl(var(--h) 40% 97%);
+  --deep: hsl(var(--h) 40% 16%);
+  --on-deep: hsl(var(--h) 30% 94%);
+  --deep-accent: hsl(var(--h) 65% 78%);
+  --on-deep-accent: hsl(var(--h) 45% 12%);
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.5rem, 1.2rem + 1.5vw, 2.1rem);
+  --step-3: clamp(2.2rem, 1.4rem + 4vw, 4rem);
+  --step-4: clamp(2.8rem, 1.2rem + 7vw, 6rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: hsl(var(--h) 22% 8%);
+    --surface: hsl(var(--h) 20% 12%);
+    --tint: hsl(var(--h) 20% 17%);
+    --fg: hsl(var(--h) 20% 93%);
+    --muted: hsl(var(--h) 12% 69%);
+    --line: hsl(var(--h) 15% 25%);
+    --accent: hsl(var(--h) 55% 73%);
+    --on-accent: hsl(var(--h) 30% 10%);
+    --deep: hsl(var(--h) 35% 21%);
+    --on-deep: hsl(var(--h) 30% 94%);
+    --deep-accent: hsl(var(--h) 65% 80%);
+    --on-deep-accent: hsl(var(--h) 45% 12%);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: hsl(var(--h) 22% 8%);
+  --surface: hsl(var(--h) 20% 12%);
+  --tint: hsl(var(--h) 20% 17%);
+  --fg: hsl(var(--h) 20% 93%);
+  --muted: hsl(var(--h) 12% 69%);
+  --line: hsl(var(--h) 15% 25%);
+  --accent: hsl(var(--h) 55% 73%);
+  --on-accent: hsl(var(--h) 30% 10%);
+  --deep: hsl(var(--h) 35% 21%);
+  --on-deep: hsl(var(--h) 30% 94%);
+  --deep-accent: hsl(var(--h) 65% 80%);
+  --on-deep-accent: hsl(var(--h) 45% 12%);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  transition: background-color .4s ease, color .4s ease;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--bg);
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.02; text-wrap: balance; margin: 0; }
+h1 { font-size: var(--step-4); letter-spacing: -0.02em; }
+h2 { font-size: var(--step-3); letter-spacing: -0.015em; }
+h3 { font-size: var(--step-2); }
+p { margin: 0; }
+em { font-style: italic; color: var(--accent); }
+.label {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+.band--surface { background: var(--surface); }
+.band--tint { background: var(--tint); }
+.band--deep { background: var(--deep); color: var(--on-deep); }
+.band--deep .label, .band--deep em { color: var(--deep-accent); }
+
+/* Cabecera */
+.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brand { font-family: var(--font-display); font-size: 1.6rem; text-decoration: none; line-height: 1; white-space: nowrap; }
+.brand span { color: var(--accent); font-style: italic; }
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a.link { text-decoration: none; font-size: .9rem; font-weight: 600; color: var(--muted); }
+.nav a.link:hover { color: var(--fg); }
+
+/* Botones */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 26px;
+  border-radius: 999px; border: 2px solid var(--accent);
+  background: var(--accent); color: var(--on-accent);
+  font: 700 .95rem var(--font-body); text-decoration: none; cursor: pointer;
+  transition: transform .2s ease, background-color .2s ease, color .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--ghost { background: transparent; color: var(--accent); }
+.btn--ghost:hover { background: var(--accent); color: var(--on-accent); }
+.btn--small { min-height: 40px; padding: 0 18px; font-size: .85rem; }
+.band--deep .btn { background: var(--deep-accent); border-color: var(--deep-accent); color: var(--on-deep-accent); }
+.band--deep .btn--ghost { background: transparent; color: var(--on-deep); border-color: var(--on-deep); }
+.band--deep .btn--ghost:hover { background: var(--on-deep); color: var(--deep); }
+
+/* Hero */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(3rem, 7vw, 5.5rem); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.hero-copy { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+.hero-copy .lead { font-size: var(--step-1); color: var(--muted); max-width: 34rem; }
+.claim {
+  display: inline-block; padding: 8px 16px; border-radius: 999px;
+  background: var(--tint); font-weight: 700; font-size: .9rem;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.picker { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 6px; }
+.picker .label { color: var(--muted); }
+.swatches { display: flex; gap: 10px; }
+.swatch {
+  width: 36px; height: 36px; border-radius: 50%; padding: 0; cursor: pointer;
+  border: 3px solid var(--bg); background: hsl(var(--sw) 50% 46%);
+  box-shadow: 0 0 0 2px var(--line); transition: transform .2s ease, box-shadow .2s ease;
+}
+.swatch:hover { transform: scale(1.12); }
+.swatch[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--fg); }
+.art {
+  background: var(--tint); border-radius: 50% 50% 46% 54% / 56% 48% 52% 44%;
+  aspect-ratio: 1 / 1; max-width: 100%; display: grid; place-items: center; padding: 8%;
+}
+.art svg { width: 100%; height: auto; display: block; overflow: visible; }
+.art .brow { fill: var(--accent); }
+.art .lid { fill: none; stroke: var(--fg); stroke-width: 3.5; stroke-linecap: round; }
+.art .lash { stroke: var(--fg); stroke-width: 3; stroke-linecap: round; }
+.art .iris { fill: var(--accent); }
+.art .pupil { fill: var(--fg); }
+@media (prefers-reduced-motion: no-preference) {
+  .art .lash-group { transform-origin: 200px 230px; animation: lift 4.5s ease-in-out infinite; }
+  @keyframes lift { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.12); } }
+}
+
+/* Cabeceras de sección */
+.head { display: flex; flex-direction: column; gap: 14px; max-width: 40rem; margin-bottom: clamp(2rem, 4vw, 3.2rem); }
+.head p { color: var(--muted); font-size: var(--step-1); }
+.band--deep .head p { color: var(--on-deep); opacity: .85; }
+
+/* Cursos */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 18px; }
+.card {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 22px;
+  padding: 28px 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.card .tag { font-size: var(--step--1); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.card p { color: var(--muted); }
+.card--solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.card--solid .tag, .card--solid p { color: var(--on-accent); }
+.card--solid p { opacity: .9; }
+.card--solid:hover { border-color: var(--accent); }
+
+/* Cifras */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 28px; }
+.fact { border-top: 2px solid var(--accent); padding-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+.fact strong { font-family: var(--font-display); font-weight: 400; font-size: var(--step-3); line-height: 1; }
+.fact span { color: var(--muted); }
+
+/* Simulador y generador */
+.tool { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+.panel { background: var(--bg); border: 1px solid var(--line); border-radius: 26px; padding: clamp(20px, 4vw, 34px); display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.band--surface .panel { background: var(--bg); }
+.field { display: flex; flex-direction: column; gap: 10px; }
+.field-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-weight: 600; }
+.field-top output { font-family: var(--font-display); font-size: 1.8rem; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: var(--accent); height: 28px; cursor: pointer; }
+.result { background: var(--deep); color: var(--on-deep); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.result .label { color: var(--deep-accent); }
+.result .big { font-family: var(--font-display); font-size: var(--step-4); line-height: 1; font-variant-numeric: tabular-nums; }
+.meter { height: 12px; border-radius: 999px; background: hsl(var(--h) 25% 30%); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--deep-accent); border-radius: 999px; transition: width .5s ease; }
+.result .note { font-size: .95rem; opacity: .92; }
+.fine { font-size: var(--step--1); color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+  border-radius: 999px; border: 2px solid var(--line); font-weight: 600; font-size: .92rem; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.chip input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 3px; }
+.chip:hover span { border-color: var(--accent); }
+legend, .legend { font-weight: 700; margin-bottom: 10px; padding: 0; }
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+textarea {
+  width: 100%; min-height: 8.5rem; resize: vertical; border-radius: 16px; border: 2px solid var(--line);
+  background: var(--surface); color: var(--fg); font: 500 .98rem/1.55 var(--font-body); padding: 14px 16px;
+}
+.toast { min-height: 1.4em; font-size: .9rem; font-weight: 600; color: var(--accent); }
+
+/* Cierre */
+.cta { display: flex; flex-direction: column; align-items: flex-start; gap: 26px; }
+.cta h2 { font-size: var(--step-4); max-width: 14ch; }
+.contact { display: flex; flex-wrap: wrap; gap: 8px 28px; font-weight: 600; }
+.contact span { opacity: .9; overflow-wrap: anywhere; }
+.foot { padding-block: 26px; font-size: var(--step--1); color: var(--muted); }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
+
+@media (max-width: 52rem) {
+  .hero-grid, .tool { grid-template-columns: minmax(0, 1fr); }
+  .art { max-width: 24rem; margin-inline: auto; width: 100%; }
+  .nav a.link { display: none; }
+}
+@media (max-width: 26rem) {
+  .brand { font-size: 1.35rem; }
+  .actions .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Anyta <span>Romanowa</span></a>
+    <nav class="nav" aria-label="Principal">
+      <a class="link" href="#cursos">Cursos</a>
+      <a class="link" href="#simulador">Simulador</a>
+      <a class="link" href="#mensaje">Reservar</a>
+      <a class="btn btn--small" href="https://wa.me/message/KFJKE5I6QSOMI1" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="label">Madrid · Cursos individuales y grupales</span>
+        <h1>Aprende cejas y pestañas. <em>Cobra</em> por lo que sabes hacer.</h1>
+        <p class="lead">Soy Anyta, experta en estética con 4 años de experiencia. Te enseño Powder Brows, cejas sombreado y lifting de pestañas para que empieces a trabajar con clientas reales.</p>
+        <span class="claim">Enseño cómo ganar más de 2.000 €</span>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/message/KFJKE5I6QSOMI1" target="_blank" rel="noopener">Reservar mi plaza por WhatsApp</a>
+          <a class="btn btn--ghost" href="https://www.instagram.com/anytaromanowa/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+        <div class="picker" role="group" aria-label="Color de la página">
+          <span class="label">Elige tu color</span>
+          <div class="swatches" id="swatches">
+            <button type="button" class="swatch" style="--sw:340" data-h="340" aria-label="Rosa" aria-pressed="true"></button>
+            <button type="button" class="swatch" style="--sw:155" data-h="155" aria-label="Salvia" aria-pressed="false"></button>
+            <button type="button" class="swatch" style="--sw:215" data-h="215" aria-label="Azul" aria-pressed="false"></button>
+            <button type="button" class="swatch" style="--sw:35" data-h="35" aria-label="Arena" aria-pressed="false"></button>
+            <button type="button" class="swatch" style="--sw:275" data-h="275" aria-label="Violeta" aria-pressed="false"></button>
+          </div>
+        </div>
+      </div>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <path class="brow" d="M40 118 C120 52 260 36 366 92 C262 76 140 84 40 118 Z"/>
+          <path class="lid" d="M70 230 C140 150 260 150 330 230"/>
+          <path class="lid" d="M70 230 C140 280 260 280 330 230"/>
+          <circle class="iris" cx="200" cy="224" r="30"/>
+          <circle class="pupil" cx="200" cy="224" r="13"/>
+          <g class="lash-group" id="lashes"></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--surface" id="cursos">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">Qué puedes aprender</span>
+        <h2>Técnicas que se piden todos los meses</h2>
+        <p>Dos especialidades, dos formatos. Tú eliges cómo quieres aprender.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">Cejas</span>
+          <h3>Powder Brows</h3>
+          <p>Cejas sombreado con efecto maquillaje, suave y natural. La técnica que las clientas buscan.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Pestañas</span>
+          <h3>Lifting de pestañas</h3>
+          <p>Mirada abierta y curvada sin extensiones. Un servicio rápido que se repite cada pocas semanas.</p>
+        </article>
+        <article class="card card--solid">
+          <span class="tag">Formato</span>
+          <h3>Curso individual</h3>
+          <p>Clases solo para ti, a tu ritmo, con atención directa en cada paso.</p>
+        </article>
+        <article class="card card--solid">
+          <span class="tag">Formato</span>
+          <h3>Curso grupal</h3>
+          <p>Aprende junto a otras alumnas, practica en equipo y comparte dudas en directo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">Quién te enseña</span>
+        <h2>Experiencia real, enseñada con calma</h2>
+      </div>
+      <div class="facts">
+        <div class="fact"><strong>4 años</strong><span>trabajando como experta en estética</span></div>
+        <div class="fact"><strong>Madrid</strong><span>cursos presenciales en la ciudad</span></div>
+        <div class="fact"><strong>1 a 1 o grupo</strong><span>tú decides con quién aprendes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tint" id="simulador">
+    <div class="wrap tool">
+      <div class="head" style="margin-bottom:0">
+        <span class="label">Simulador</span>
+        <h2>¿Cuántas clientas necesitas para llegar a <em>2.000 €</em>?</h2>
+        <p>Mueve los controles con tus propias cifras y mira cuánto suma un mes de trabajo.</p>
+      </div>
+      <div class="panel">
+        <div class="field">
+          <label class="field-top" for="clientas"><span>Clientas por semana</span><output id="o-clientas" for="clientas">6</output></label>
+          <input id="clientas" type="range" min="1" max="25" step="1" value="6">
+        </div>
+        <div class="field">
+          <label class="field-top" for="precio"><span>Precio medio por servicio</span><output id="o-precio" for="precio">150 €</output></label>
+          <input id="precio" type="range" min="40" max="400" step="10" value="150">
+        </div>
+        <div class="result" aria-live="polite">
+          <span class="label">Ingresos al mes (4 semanas)</span>
+          <span class="big" id="total">3.600 €</span>
+          <div class="meter" role="img" aria-label="Progreso hacia 2.000 euros"><i id="bar"></i></div>
+          <p class="note" id="nota"></p>
+        </div>
+        <p class="fine">Cálculo orientativo con las cifras que tú eliges. No es una promesa de resultados: dependen de tu agenda, tus precios y tu zona.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--surface" id="mensaje">
+    <div class="wrap tool">
+      <div class="head" style="margin-bottom:0">
+        <span class="label">Reserva en un minuto</span>
+        <h2>Elige tu curso y te preparo el <em>mensaje</em></h2>
+        <p>Marca lo que buscas, copia el texto y pégalo en el chat de WhatsApp con Anyta.</p>
+      </div>
+      <form class="panel" id="form" autocomplete="off">
+        <fieldset>
+          <legend>¿Qué quieres aprender?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="tema" id="t1" value="Powder Brows (cejas sombreado)" checked><span>Powder Brows</span></label>
+            <label class="chip"><input type="radio" name="tema" id="t2" value="Lifting de pestañas"><span>Lifting de pestañas</span></label>
+            <label class="chip"><input type="radio" name="tema" id="t3" value="Powder Brows y lifting de pestañas"><span>Los dos</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>¿Cómo prefieres aprender?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="formato" id="f1" value="individual" checked><span>Individual</span></label>
+            <label class="chip"><input type="radio" name="formato" id="f2" value="grupal"><span>Grupal</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>¿Cuál es tu nivel?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="nivel" id="n1" value="empiezo desde cero" checked><span>Desde cero</span></label>
+            <label class="chip"><input type="radio" name="nivel" id="n2" value="ya trabajo en estética"><span>Ya trabajo en estética</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label class="legend" for="msg">Tu mensaje</label>
+          <textarea id="msg" readonly></textarea>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn--ghost" id="copiar">Copiar mensaje</button>
+          <a class="btn" href="https://wa.me/message/KFJKE5I6QSOMI1" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        </div>
+        <p class="toast" id="toast" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="band band--deep">
+    <div class="wrap cta">
+      <span class="label">Plazas limitadas por curso</span>
+      <h2>Empieza a vivir de la <em>belleza</em></h2>
+      <div class="actions">
+        <a class="btn" href="https://wa.me/message/KFJKE5I6QSOMI1" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn btn--ghost" href="https://www.instagram.com/anytaromanowa/" target="_blank" rel="noopener">@anytaromanowa</a>
+      </div>
+      <div class="contact">
+        <span>Instagram: instagram.com/anytaromanowa</span>
+        <span>WhatsApp: wa.me/message/KFJKE5I6QSOMI1</span>
+        <span>Madrid, España</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Anyta Romanowa · Cejas, pestañas y cursos en Madrid</span>
+    <span>Powder Brows · Lifting de pestañas</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var NS = "http://www.w3.org/2000/svg";
+
+  /* Pestañas del dibujo */
+  var g = document.getElementById("lashes");
+  for (var i = 1; i <= 11; i++) {
+    var t = i / 12, u = 1 - t;
+    var x = u * u * 70 + 2 * u * t * 205 + t * t * 330;
+    var y = u * u * 230 + 2 * u * t * 150 + t * t * 230;
+    var dx = x - 200, dy = y - 235;
+    var len = Math.sqrt(dx * dx + dy * dy);
+    var L = 26 + 10 * Math.sin(t * Math.PI);
+    var l = document.createElementNS(NS, "line");
+    l.setAttribute("class", "lash");
+    l.setAttribute("x1", x.toFixed(1)); l.setAttribute("y1", y.toFixed(1));
+    l.setAttribute("x2", (x + dx / len * L).toFixed(1)); l.setAttribute("y2", (y + dy / len * L).toFixed(1));
+    g.appendChild(l);
+  }
+
+  /* Selector de color */
+  var sw = document.querySelectorAll(".swatch");
+  function setHue(h, save) {
+    root.style.setProperty("--h", h);
+    sw.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-h") === String(h))); });
+    if (save) { try { localStorage.setItem("anyta-h", String(h)); } catch (e) {} }
+  }
+  sw.forEach(function (b) { b.addEventListener("click", function () { setHue(b.getAttribute("data-h"), true); }); });
+  try { var saved = localStorage.getItem("anyta-h"); if (saved) setHue(saved, false); } catch (e) {}
+
+  /* Simulador */
+  var eur = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  var cl = document.getElementById("clientas"), pr = document.getElementById("precio");
+  var oc = document.getElementById("o-clientas"), op = document.getElementById("o-precio");
+  var total = document.getElementById("total"), bar = document.getElementById("bar"), nota = document.getElementById("nota");
+  var GOAL = 2000;
+  function calc() {
+    var c = +cl.value, p = +pr.value, m = c * p * 4;
+    oc.textContent = c; op.textContent = eur.format(p); total.textContent = eur.format(m);
+    bar.style.width = Math.min(100, m / GOAL * 100) + "%";
+    var need = Math.ceil(GOAL / (p * 4));
+    if (m >= GOAL) {
+      nota.textContent = "Con estas cifras superas los 2.000 € al mes. Con este precio te bastan " + need + (need === 1 ? " clienta" : " clientas") + " por semana.";
+    } else {
+      nota.textContent = "Te faltan " + eur.format(GOAL - m) + " al mes. Con este precio necesitas " + need + (need === 1 ? " clienta" : " clientas") + " por semana para llegar a 2.000 €.";
+    }
+  }
+  cl.addEventListener("input", calc); pr.addEventListener("input", calc); calc();
+
+  /* Generador de mensaje */
+  var form = document.getElementById("form"), msg = document.getElementById("msg"), toast = document.getElementById("toast");
+  function val(n) { return form.querySelector('input[name="' + n + '"]:checked').value; }
+  function build() {
+    msg.value = "Hola Anyta, me interesa el curso de " + val("tema") + " en formato " + val("formato") + ". Mi nivel: " + val("nivel") + ". ¿Qué fechas tienes disponibles en Madrid? Gracias.";
+  }
+  form.addEventListener("change", build);
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+  build();
+  var timer;
+  function say(t) { toast.textContent = t; clearTimeout(timer); timer = setTimeout(function () { toast.textContent = ""; }, 3500); }
+  document.getElementById("copiar").addEventListener("click", function () {
+    function fallback() { msg.focus(); msg.select(); say("Selecciona el texto y cópialo con tu teclado."); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(msg.value).then(function () { say("Mensaje copiado. Pégalo en WhatsApp."); }, fallback);
+    } else { fallback(); }
+  });
+})();
+</script>

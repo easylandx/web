@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Студия Сандры — массаж и ручная липопластика в Мадриде</title>
+<meta name="description" content="Ручная липопластика, коррекция фигуры, классический и лимфодренажный массаж в центре Мадрида. Запишитесь в Instagram.">
+<link rel="canonical" href="https://sandra-massage.site">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7efeb; --bg2:#efe1da; --card:#fffaf7; --ink:#3a2622; --muted:#7d625b;
+  --accent:#b5675a; --accent-d:#8f4a3f; --soft:#e7cfc6; --on-accent:#fff;
+  --radius:22px; --shadow:0 18px 40px -22px rgba(60,30,25,.45);
+}
+[data-theme="sage"]{--bg:#eef2ec;--bg2:#dfe7dc;--card:#f8faf6;--ink:#222e25;--muted:#5d6e61;--accent:#5f8068;--accent-d:#436049;--soft:#c9d8cb;--shadow:0 18px 40px -22px rgba(25,50,32,.45)}
+[data-theme="graphite"]{--bg:#1c1d20;--bg2:#26282c;--card:#2d2f34;--ink:#f1efec;--muted:#a9a6a1;--accent:#d8b98a;--accent-d:#c19f68;--soft:#3a3c42;--on-accent:#1c1d20;--shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+[data-theme="plum"]{--bg:#f3ecf2;--bg2:#e6d9e5;--card:#fbf7fb;--ink:#2e1f2d;--muted:#765d74;--accent:#8a5a86;--accent-d:#6b3f67;--soft:#dac6d8;--shadow:0 18px 40px -22px rgba(50,25,48,.45)}
+[data-theme="sky"]{--bg:#ecf2f6;--bg2:#d9e5ee;--card:#f7fafc;--ink:#1d2b36;--muted:#58707f;--accent:#4f7f9c;--accent-d:#37627d;--soft:#c3d6e3;--shadow:0 18px 40px -22px rgba(20,45,65,.45)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;transition:background .5s,color .5s;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:84px 0}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+h2{font-size:clamp(2rem,5vw,3.1rem);margin-bottom:16px}
+.lead{color:var(--muted);max-width:620px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--soft)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:26px;font-size:.92rem;font-weight:500}
+.nav-links a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--on-accent);padding:14px 26px;border-radius:999px;font-weight:700;font-size:.95rem;border:0;cursor:pointer;transition:transform .2s,background .3s,box-shadow .3s;box-shadow:var(--shadow);font-family:inherit}
+.btn:hover{transform:translateY(-2px);background:var(--accent-d)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--accent);box-shadow:none}
+.btn.ghost:hover{background:var(--accent);color:var(--on-accent)}
+.btn.small{padding:10px 20px;font-size:.88rem}
+
+/* hero */
+.hero{padding:70px 0 90px;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(10px);z-index:0}
+.hero::before{width:420px;height:420px;background:var(--bg2);right:-120px;top:-80px}
+.hero::after{width:260px;height:260px;background:var(--soft);left:-90px;bottom:-60px;opacity:.7}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);margin-bottom:20px}
+.hero h1 em{color:var(--accent);font-style:italic}
+.hero p.sub{color:var(--muted);font-size:1.08rem;max-width:520px;margin-bottom:30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.badge{background:var(--card);border:1px solid var(--soft);padding:8px 14px;border-radius:999px;font-size:.82rem;font-weight:600}
+.hero-art{aspect-ratio:4/5;border-radius:200px 200px 28px 28px;background:linear-gradient(160deg,var(--soft),var(--accent));position:relative;box-shadow:var(--shadow);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.hero-art svg{width:78%;opacity:.92;margin-bottom:-4px}
+.hero-tag{position:absolute;left:-14px;bottom:34px;background:var(--card);padding:14px 18px;border-radius:16px;box-shadow:var(--shadow);font-size:.85rem;font-weight:600}
+.hero-tag b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--accent)}
+
+/* theme switcher */
+.themes{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--card);border:1px solid var(--soft);border-radius:999px;padding:8px 12px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow)}
+.themes small{font-size:.72rem;color:var(--muted);font-weight:600;margin-right:2px}
+.dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--card);outline:1.5px solid var(--soft);cursor:pointer;transition:transform .2s}
+.dot:hover{transform:scale(1.18)}
+.dot.on{outline:2px solid var(--ink)}
+
+/* services */
+.services{background:var(--bg2)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:40px}
+.card{background:var(--card);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);transition:transform .3s;position:relative;border:1px solid transparent}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.card .ico{width:52px;height:52px;border-radius:16px;background:var(--soft);display:grid;place-items:center;margin-bottom:18px}
+.card .ico svg{width:26px;height:26px;stroke:var(--accent-d);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.55rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.94rem}
+
+/* quiz */
+.quiz-box{background:var(--card);border-radius:30px;padding:40px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;border:1px solid var(--soft)}
+.opts{display:grid;gap:12px}
+.opt{text-align:left;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);background:var(--bg);border:1.5px solid var(--soft);padding:16px 20px;border-radius:16px;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:12px}
+.opt:hover{border-color:var(--accent);transform:translateX(4px)}
+.opt.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.opt i{font-style:normal;font-size:1.3rem}
+.result{background:var(--bg2);border-radius:20px;padding:26px;min-height:240px;display:flex;flex-direction:column;justify-content:center;gap:12px;animation:fade .5s}
+.result h3{font-size:1.9rem;color:var(--accent-d)}
+.result ul{list-style:none;display:grid;gap:6px;font-size:.93rem;color:var(--muted)}
+.result li::before{content:"✦ ";color:var(--accent)}
+.result .btn{align-self:flex-start;margin-top:6px}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:40px;counter-reset:s}
+.step{padding:26px;border-left:3px solid var(--accent);background:var(--card);border-radius:0 var(--radius) var(--radius) 0;counter-increment:s;box-shadow:var(--shadow)}
+.step::before{content:"0" counter(s);font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--accent);display:block;line-height:1}
+.step h3{font-size:1.35rem;margin:6px 0}
+.step p{color:var(--muted);font-size:.93rem}
+
+/* about */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.about-art{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--soft),var(--accent));box-shadow:var(--shadow);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:5.5rem;color:var(--on-accent);font-style:italic}
+.about p{color:var(--muted);margin-bottom:14px}
+.facts{display:flex;gap:30px;margin-top:22px;flex-wrap:wrap}
+.facts div b{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--accent);display:block;line-height:1}
+.facts div span{font-size:.82rem;color:var(--muted)}
+
+/* contact */
+.contact-box{background:linear-gradient(135deg,var(--accent),var(--accent-d));color:var(--on-accent);border-radius:34px;padding:56px 40px;text-align:center;box-shadow:var(--shadow)}
+.contact-box h2{margin-bottom:12px}
+.contact-box p{opacity:.9;max-width:560px;margin:0 auto 28px}
+.contact-box .btn{background:var(--card);color:var(--ink)}
+.contact-box .btn:hover{background:var(--bg)}
+.contact-box .btn.ghost{background:transparent;color:var(--on-accent);border-color:rgba(255,255,255,.7)}
+.contact-box .btn.ghost:hover{background:rgba(255,255,255,.18)}
+.addr{margin-top:26px;font-size:.92rem;opacity:.92}
+
+footer{padding:34px 0 90px;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--accent);font-weight:600}
+
+@media(max-width:860px){
+  section{padding:60px 0}
+  .hero-grid,.about-grid,.quiz-box{grid-template-columns:1fr}
+  .hero-art{max-width:340px;margin:0 auto;order:-1}
+  .nav-links{display:none}
+  .quiz-box{padding:26px 20px}
+  .themes small{display:none}
+  .hero-tag{left:8px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body data-theme="rose">
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo">Studio <span>Sandra</span></a>
+    <div class="nav-links">
+      <a href="#uslugi">Услуги</a>
+      <a href="#podbor">Подбор</a>
+      <a href="#kak">Как проходит</a>
+      <a href="#sandra">О мастере</a>
+    </div>
+    <a class="btn small" href="https://www.instagram.com/studio_sandra_masaje_madrid/" target="_blank" rel="noopener">Записаться</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Массажист в Мадриде · Madrid</div>
+      <h1>Скульптор <em>вашего тела</em></h1>
+      <p class="sub">Ручная липопластика и коррекция фигуры, классический и лимфодренажный массаж в самом центре Мадрида. Мягкая работа руками — без лишней суеты.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://www.instagram.com/studio_sandra_masaje_madrid/" target="_blank" rel="noopener">Написать в Instagram →</a>
+        <a class="btn ghost" href="#podbor">Подобрать процедуру</a>
+      </div>
+      <div class="badges">
+        <span class="badge">🇺🇦 Говорим по-русски и по-украински</span>
+        <span class="badge">🇪🇸 También en español</span>
+        <span class="badge">📍 Calle Velázquez, 15</span>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 200 260" fill="none" stroke="var(--card)" stroke-width="3" stroke-linecap="round">
+        <path d="M100 20c-14 0-24 12-24 28 0 12 6 22 14 27-22 8-38 28-40 56l-4 70c0 6 5 10 10 10h12l4 45h56l4-45h12c5 0 10-4 10-10l-4-70c-2-28-18-48-40-56 8-5 14-15 14-27 0-16-10-28-24-28z" fill="var(--card)" fill-opacity=".18"/>
+        <path d="M70 150c10 8 20 12 30 12s20-4 30-12" opacity=".7"/>
+      </svg>
+      <div class="hero-tag"><b>Ручная работа</b>бережно · индивидуально</div>
+    </div>
+  </div>
+</header>
+
+<section class="services" id="uslugi">
+  <div class="wrap">
+    <div class="eyebrow">Услуги</div>
+    <h2>Три направления — один результат: ваше комфортное тело</h2>
+    <p class="lead">Подход подбирается индивидуально: сначала разговор о ваших целях и самочувствии, затем — программа процедур.</p>
+    <div class="grid3">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 6 6 10a6 6 0 0 1-12 0c0-4 3-6 6-10z"/></svg></div>
+        <h3>Ручная липопластика</h3>
+        <p>Мануальная техника для коррекции контуров, работы с тканями и формирования более гармоничного силуэта.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12c3-6 5 6 8 0s5 6 8 0"/><path d="M4 18c3-6 5 6 8 0s5 6 8 0"/></svg></div>
+        <h3>Лимфодренажный массаж</h3>
+        <p>Мягкие ритмичные движения, помогающие почувствовать лёгкость, снять ощущение тяжести и отёчности.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.500-7 10-7 10z"/></svg></div>
+        <h3>Классический массаж</h3>
+        <p>Глубокое расслабление спины, шеи и плеч. Идеально, если вы устали от работы, стресса и сидячего образа жизни.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="podbor">
+  <div class="wrap">
+    <div class="quiz-box">
+      <div>
+        <div class="eyebrow">Мини-подбор</div>
+        <h2>Чего вы хотите сейчас?</h2>
+        <p class="lead" style="margin-bottom:22px">Выберите цель — и мы подскажем, с чего начать.</p>
+        <div class="opts" id="opts">
+          <button class="opt" data-k="shape"><i>✨</i> Скорректировать фигуру</button>
+          <button class="opt" data-k="light"><i>💧</i> Почувствовать лёгкость и снять отёки</button>
+          <button class="opt" data-k="relax"><i>🌿</i> Расслабиться и снять напряжение</button>
+        </div>
+      </div>
+      <div class="result" id="result">
+        <h3>Ваша программа появится здесь</h3>
+        <p style="color:var(--muted)">Нажмите на один из вариантов слева — это займёт секунду.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="kak">
+  <div class="wrap">
+    <div class="eyebrow">Как проходит</div>
+    <h2>Просто, спокойно, прозрачно</h2>
+    <div class="steps">
+      <div class="step"><h3>Пишете нам</h3><p>В Instagram — расскажите о цели и задайте вопросы.</p></div>
+      <div class="step"><h3>Подбираем формат</h3><p>Определяем процедуру и количество сеансов под вас.</p></div>
+      <div class="step"><h3>Приходите в студию</h3><p>Уютное пространство в центре Мадрида, Calle Velázquez.</p></div>
+      <div class="step"><h3>Наслаждаетесь</h3><p>Ощущаете заботу о теле и возвращаетесь на повторный сеанс.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sandra">
+  <div class="wrap about-grid">
+    <div class="about-art" aria-hidden="true">S</div>
+    <div>
+      <div class="eyebrow">О мастере</div>
+      <h2>Escultura de tu cuerpo</h2>
+      <p>Студия Сандры — это пространство, где работа руками сочетается с вниманием к каждому клиенту. Мы говорим на вашем языке: по-русски, по-украински и по-испански.</p>
+      <p>Каждая программа — индивидуальна. Мы не обещаем чудес за один визит, зато честно подбираем процедуры и сопровождаем вас на всём пути.</p>
+      <div class="facts">
+        <div><b>3</b><span>направления работы</span></div>
+        <div><b>3</b><span>языка общения</span></div>
+        <div><b>28001</b><span>центр Мадрида</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>Запишитесь на первую консультацию</h2>
+      <p>Напишите нам в Instagram — ответим, подскажем свободные даты и подберём подходящую программу.</p>
+      <div class="cta-row" style="justify-content:center;margin:0">
+        <a class="btn" href="https://www.instagram.com/studio_sandra_masaje_madrid/" target="_blank" rel="noopener">@studio_sandra_masaje_madrid</a>
+        <a class="btn ghost" href="https://sandra-massage.site" target="_blank" rel="noopener">sandra-massage.site</a>
+      </div>
+      <p class="addr">📍 Calle Velázquez, 15, 28001 Madrid, España</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 Studio Sandra · Masaje Madrid ·
+    <a href="https://www.instagram.com/studio_sandra_masaje_madrid/" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://sandra-massage.site" target="_blank" rel="noopener">sandra-massage.site</a>
+  </div>
+</footer>
+
+<div class="themes" role="group" aria-label="Выбор цвета">
+  <small>Цвет</small>
+  <button class="dot on" data-t="rose" style="background:#b5675a" aria-label="Роза"></button>
+  <button class="dot" data-t="sage" style="background:#5f8068" aria-label="Шалфей"></button>
+  <button class="dot" data-t="sky" style="background:#4f7f9c" aria-label="Небо"></button>
+  <button class="dot" data-t="plum" style="background:#8a5a86" aria-label="Слива"></button>
+  <button class="dot" data-t="graphite" style="background:#d8b98a" aria-label="Графит"></button>
+</div>
+
+<script>
+const IG="https://www.instagram.com/studio_sandra_masaje_madrid/";
+// theme switcher
+const root=document.body;
+document.querySelectorAll('.dot').forEach(d=>d.addEventListener('click',()=>{
+  document.querySelectorAll('.dot').forEach(x=>x.classList.remove('on'));
+  d.classList.add('on');
+  root.setAttribute('data-theme',d.dataset.t);
+  try{localStorage.setItem('sandra-theme',d.dataset.t)}catch(e){}
+}));
+try{
+  const saved=localStorage.getItem('sandra-theme');
+  if(saved){root.setAttribute('data-theme',saved);document.querySelectorAll('.dot').forEach(x=>x.classList.toggle('on',x.dataset.t===saved))}
+}catch(e){}
+
+// mini selector
+const data={
+  shape:{t:"Ручная липопластика",l:["Коррекция контуров и силуэта","Индивидуальный курс сеансов","Подходит для работы с проблемными зонами"]},
+  light:{t:"Лимфодренажный массаж",l:["Мягкая техника, приятные ощущения","Ощущение лёгкости в теле","Отлично сочетается с коррекцией фигуры"]},
+  relax:{t:"Классический массаж",l:["Расслабление спины, шеи и плеч","Снятие напряжения после рабочих дней","Подходит для первого знакомства"]}
+};
+const res=document.getElementById('result');
+document.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const d=data[b.dataset.k];
+  res.style.animation='none';res.offsetHeight;res.style.animation='';
+  res.innerHTML='<div class="eyebrow" style="margin:0">Рекомендуем начать с</div><h3>'+d.t+'</h3><ul>'+d.l.map(i=>'<li>'+i+'</li>').join('')+'</ul><a class="btn" target="_blank" rel="noopener" href="'+IG+'">Записаться на эту процедуру →</a>';
+}));
+</script>
+</body>
+</html>

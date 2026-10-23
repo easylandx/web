@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Makeup Madrid · Yulia Fernández · Maquilladora profesional</title>
+<meta name="description" content="Yulia Fernández, maquilladora profesional en Madrid. Maquillaje de novia internacional, eventos y sesiones. Reserva tu look en minutos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@property --h { syntax: "<number>"; inherits: true; initial-value: 345; }
+:root{
+  --h:345;
+  --bg:hsl(var(--h) 45% 96%);
+  --bg2:hsl(var(--h) 50% 91%);
+  --mid:hsl(var(--h) 55% 72%);
+  --acc:hsl(var(--h) 60% 48%);
+  --deep:hsl(var(--h) 55% 22%);
+  --ink:hsl(var(--h) 60% 12%);
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  transition:--h .9s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;transition:background .9s ease}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* difuminado blobs */
+.blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.blobs i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:float 18s ease-in-out infinite}
+.blobs i:nth-child(1){width:55vw;height:55vw;background:var(--mid);top:-15vw;left:-10vw}
+.blobs i:nth-child(2){width:45vw;height:45vw;background:var(--bg2);top:30vh;right:-12vw;animation-delay:-6s}
+.blobs i:nth-child(3){width:40vw;height:40vw;background:hsl(var(--h) 70% 82%);bottom:-12vw;left:20vw;animation-delay:-11s}
+@keyframes float{50%{transform:translate(4vw,3vh) scale(1.08)}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid color-mix(in srgb,var(--deep) 12%,transparent)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-size:1.25rem;font-weight:500;text-decoration:none;letter-spacing:.01em}
+.logo em{color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.4rem;border-radius:999px;background:var(--deep);color:var(--bg);font-weight:700;font-size:.92rem;text-decoration:none;border:0;cursor:pointer;transition:transform .25s,background .5s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--acc) 40%,transparent)}
+.btn.ghost{background:transparent;color:var(--deep);border:1.5px solid var(--deep)}
+.btn.acc{background:var(--acc)}
+
+/* hero */
+.hero{padding:clamp(48px,9vw,110px) 0 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.tag{display:inline-block;padding:.35rem .9rem;border-radius:999px;background:var(--bg2);color:var(--deep);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;transition:background .9s}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.8rem,7vw,5.6rem);line-height:1;letter-spacing:-.02em}
+h1 em{font-style:italic;font-weight:500;color:var(--acc);transition:color .9s}
+.lead{margin:24px 0 32px;font-size:1.12rem;max-width:30em;color:color-mix(in srgb,var(--ink) 80%,transparent)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{position:relative;aspect-ratio:4/5;border-radius:200px 200px 28px 28px;overflow:hidden;background:linear-gradient(160deg,var(--mid),var(--acc) 55%,var(--deep));box-shadow:0 40px 80px -30px color-mix(in srgb,var(--deep) 60%,transparent);transition:background .9s}
+.hero-art::before,.hero-art::after{content:"";position:absolute;border-radius:50%;filter:blur(34px)}
+.hero-art::before{width:70%;height:50%;background:hsl(var(--h) 80% 90%/.75);top:12%;left:-10%}
+.hero-art::after{width:60%;height:45%;background:hsl(var(--h) 60% 16%/.55);bottom:-8%;right:-12%}
+.hero-art span{position:absolute;inset:auto 0 26px 0;text-align:center;z-index:2;font-family:var(--serif);font-style:italic;font-size:1.5rem;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.stats{display:flex;gap:30px;margin-top:38px;flex-wrap:wrap}
+.stats b{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:500;color:var(--acc);line-height:1.1;transition:color .9s}
+.stats small{font-size:.82rem;color:color-mix(in srgb,var(--ink) 65%,transparent)}
+
+/* sections */
+section{padding:70px 0}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:12px;transition:color .9s}
+h2{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.08;letter-spacing:-.015em;max-width:16em}
+h2 em{font-style:italic;font-weight:500}
+.sub{margin-top:14px;max-width:34em;color:color-mix(in srgb,var(--ink) 72%,transparent)}
+
+/* picker */
+.picker{margin-top:38px;display:grid;grid-template-columns:.9fr 1.1fr;gap:26px}
+.chips{display:flex;flex-direction:column;gap:10px}
+.chip{display:flex;align-items:center;gap:14px;text-align:left;padding:16px 18px;border-radius:20px;border:1.5px solid color-mix(in srgb,var(--deep) 18%,transparent);background:color-mix(in srgb,var(--bg) 60%,transparent);font:inherit;color:var(--ink);cursor:pointer;transition:all .35s}
+.chip:hover{transform:translateX(5px);border-color:var(--acc)}
+.chip .dot{width:30px;height:30px;border-radius:50%;flex:none;background:var(--c);box-shadow:inset 0 -6px 10px rgba(0,0,0,.15)}
+.chip strong{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:500}
+.chip span{font-size:.85rem;color:color-mix(in srgb,var(--ink) 65%,transparent)}
+.chip[aria-pressed="true"]{background:var(--deep);color:var(--bg);border-color:var(--deep)}
+.chip[aria-pressed="true"] span{color:color-mix(in srgb,var(--bg) 78%,transparent)}
+.panel{border-radius:28px;padding:34px;background:linear-gradient(150deg,var(--bg2),var(--mid));position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:center;transition:background .9s}
+.panel::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:var(--acc);filter:blur(70px);opacity:.35;right:-70px;top:-70px;transition:background .9s}
+.panel>*{position:relative;z-index:1}
+.panel h3{font-family:var(--serif);font-weight:500;font-size:2rem;line-height:1.1;margin-bottom:12px}
+.panel p{max-width:32em;margin-bottom:16px}
+.panel ul{list-style:none;display:grid;gap:8px;margin-bottom:24px}
+.panel li::before{content:"✦ ";color:var(--acc)}
+.fade{animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+
+/* blend slider */
+.blend{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;padding:34px;border-radius:30px;background:color-mix(in srgb,var(--bg) 55%,transparent);border:1px solid color-mix(in srgb,var(--deep) 14%,transparent)}
+.swatch{position:relative;height:230px;border-radius:22px;overflow:hidden;background:var(--deep)}
+.swatch i{position:absolute;top:-20%;height:140%;width:56%;transition:filter .2s}
+.swatch i:first-child{left:0;background:var(--acc)}
+.swatch i:last-child{right:0;background:hsl(var(--h) 75% 88%)}
+input[type=range]{width:100%;margin:18px 0 8px;accent-color:var(--acc);height:6px}
+.lvl{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--acc);min-height:1.7em}
+
+/* services */
+.cards{margin-top:38px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{padding:28px;border-radius:24px;background:color-mix(in srgb,var(--bg) 55%,transparent);border:1px solid color-mix(in srgb,var(--deep) 14%,transparent);transition:transform .3s,background .6s}
+.card:hover{transform:translateY(-6px);background:var(--bg2)}
+.card .n{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--acc);line-height:1;transition:color .9s}
+.card h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin:12px 0 6px}
+.card p{font-size:.95rem;color:color-mix(in srgb,var(--ink) 72%,transparent)}
+
+/* quote */
+.quote{text-align:center;padding:90px 0}
+.quote blockquote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.9rem,5vw,3.6rem);line-height:1.15;max-width:18em;margin:0 auto}
+.quote cite{display:block;margin-top:20px;font-style:normal;font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.langs{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.langs span{padding:.5rem 1.1rem;border-radius:999px;background:var(--bg2);font-weight:700;font-size:.9rem;transition:background .9s}
+
+/* final cta */
+.final{margin:30px 0 80px;padding:clamp(40px,7vw,80px) 28px;border-radius:40px;text-align:center;background:linear-gradient(135deg,var(--deep),var(--acc));color:#fff;position:relative;overflow:hidden;transition:background .9s}
+.final::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:hsl(var(--h) 80% 85%);filter:blur(90px);opacity:.35;top:-140px;left:-100px}
+.final>*{position:relative}
+.final h2{margin:0 auto;color:#fff}
+.final p{margin:16px auto 30px;max-width:30em;opacity:.9}
+.final .btn{background:#fff;color:var(--deep)}
+.final .btn.ghost{background:transparent;color:#fff;border-color:#fff}
+.final .cta-row{justify-content:center}
+
+footer{padding:34px 0 90px;text-align:center;font-size:.88rem;color:color-mix(in srgb,var(--ink) 65%,transparent)}
+footer a{margin:0 8px;font-weight:700}
+
+.float{position:fixed;right:18px;bottom:18px;z-index:30;box-shadow:0 14px 34px -8px color-mix(in srgb,var(--deep) 60%,transparent)}
+
+@media(max-width:820px){
+  .hero,.picker,.blend{grid-template-columns:1fr}
+  .hero-art{max-width:340px;margin:0 auto;order:-1}
+  nav .btn.ghost{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#inicio">makeup<em>·</em>madrid</a>
+    <div style="display:flex;gap:10px">
+      <a class="btn ghost" href="https://www.instagram.com/makeup_madrid" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://mssg.me/makeup_madrid" target="_blank" rel="noopener">Reserva tu cita</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="inicio">
+  <header class="hero">
+    <div>
+      <span class="tag">Pro Makeup Artist · Madrid</span>
+      <h1>El arte del <em>difuminado</em> en tu mejor día</h1>
+      <p class="lead">Soy Yulia, maquilladora internacional de novias en Madrid. Tu piel luminosa, tu mirada intensa y un acabado que se mantiene perfecto desde el primer momento hasta el último baile.</p>
+      <div class="cta-row">
+        <a class="btn acc" href="https://mssg.me/makeup_madrid" target="_blank" rel="noopener">✨ Reserva tu cita</a>
+        <a class="btn ghost" href="#looks">Elige tu look</a>
+      </div>
+      <div class="stats">
+        <div><b>3 idiomas</b><small>Español · English · Русский</small></div>
+        <div><b>Novias</b><small>de todo el mundo</small></div>
+        <div><b>Madrid</b><small>y donde tú me necesites</small></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><span>Tu mejor versión</span></div>
+  </header>
+
+  <section id="looks">
+    <div class="eyebrow">Elige tu look</div>
+    <h2>Cuéntame la ocasión y <em>te enseño tu paleta</em></h2>
+    <p class="sub">Toca una opción: la web entera cambia de color para mostrarte el ambiente de cada estilo.</p>
+
+    <div class="picker">
+      <div class="chips" id="chips" role="group" aria-label="Ocasión"></div>
+      <div class="panel" id="panel" aria-live="polite"></div>
+    </div>
+
+    <div class="blend">
+      <div>
+        <div class="eyebrow">Mi sello</div>
+        <h2 style="font-size:clamp(1.7rem,3.4vw,2.5rem)">Mueve el control y <em>descubre el difuminado</em></h2>
+        <input type="range" id="blur" min="0" max="100" value="55" aria-label="Nivel de difuminado">
+        <div class="lvl" id="lvl"></div>
+      </div>
+      <div class="swatch" aria-hidden="true"><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Servicios</div>
+    <h2>Un maquillaje para <em>cada momento importante</em></h2>
+    <div class="cards">
+      <article class="card"><div class="n">01</div><h3>Novias</h3><p>Prueba previa, look personalizado y acabado de larga duración para toda la celebración.</p></article>
+      <article class="card"><div class="n">02</div><h3>Invitadas y madrinas</h3><p>Brillas con naturalidad en bodas, comuniones y celebraciones familiares.</p></article>
+      <article class="card"><div class="n">03</div><h3>Eventos y fiestas</h3><p>Looks con carácter para cenas de gala, cumpleaños y noches especiales.</p></article>
+      <article class="card"><div class="n">04</div><h3>Sesiones de fotos</h3><p>Piel perfecta para cámara, con técnicas de difuminado que lucen en cada encuadre.</p></article>
+    </div>
+  </section>
+
+  <div class="quote">
+    <blockquote>“Mis novias nunca se divorcian” 😉</blockquote>
+    <cite>— Yulia Fernández</cite>
+    <div class="langs"><span>🇪🇸 Español</span><span>🇬🇧 English</span><span>🇷🇺 Русский</span></div>
+  </div>
+
+  <section class="final" id="reserva">
+    <h2>Tu look soñado empieza con <em>un mensaje</em></h2>
+    <p>Reserva tu cita en un momento y cuéntame cómo imaginas tu día. Yo me encargo de que te sientas radiante.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://mssg.me/makeup_madrid" target="_blank" rel="noopener">Reservar en mssg.me</a>
+      <a class="btn ghost" href="https://www.instagram.com/makeup_madrid" target="_blank" rel="noopener">Ver trabajos en Instagram</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="https://www.instagram.com/makeup_madrid" target="_blank" rel="noopener">@makeup_madrid</a> · <a href="https://www.instagram.com/yulia_fernandez/" target="_blank" rel="noopener">@yulia_fernandez</a> · <a href="https://mssg.me/makeup_madrid" target="_blank" rel="noopener">mssg.me/makeup_madrid</a></p>
+    <p style="margin-top:10px">© 2026 Yulia Fernández · Maquilladora profesional en Madrid</p>
+  </div>
+</footer>
+
+<a class="btn acc float" href="https://mssg.me/makeup_madrid" target="_blank" rel="noopener">💬 Reserva tu cita</a>
+
+<script>
+const looks=[
+  {id:"novia",h:345,name:"Novia",hint:"Romántica y luminosa",title:"Tu look de novia",
+   text:"Un maquillaje delicado y eterno, pensado para que te reconozcas y te enamores de tu reflejo.",
+   list:["Prueba previa para elegir tu favorito","Piel radiante con acabado de larga duración","Mirada difuminada que luce en fotos y vídeo"],cta:"Reserva tu look de novia"},
+  {id:"invitada",h:16,name:"Invitada",hint:"Cálida y elegante",title:"Invitada con estilo",
+   text:"Tonos cálidos y un acabado favorecedor para que disfrutes de la celebración con total confianza.",
+   list:["Look adaptado a tu vestido y tu piel","Labios y ojos en armonía","Duración perfecta de día y de noche"],cta:"Reserva tu look de invitada"},
+  {id:"fiesta",h:228,name:"Noche y eventos",hint:"Intensa y sofisticada",title:"Noche de gala",
+   text:"Profundidad, brillo y un difuminado impecable para destacar en cualquier evento especial.",
+   list:["Ojos con carácter y degradados suaves","Piel perfecta bajo cualquier luz","Acabado glamuroso que dura toda la noche"],cta:"Reserva tu look de noche"},
+  {id:"natural",h:150,name:"Natural",hint:"Fresca y radiante",title:"Belleza natural",
+   text:"Tu piel como siempre soñaste: uniforme, jugosa y llena de vida, con un toque casi invisible.",
+   list:["Textura ligera y cómoda","Realza tus rasgos con delicadeza","Ideal para el día a día y celebraciones sencillas"],cta:"Reserva tu look natural"},
+  {id:"foto",h:42,name:"Sesión de fotos",hint:"Dorada y editorial",title:"Listo para cámara",
+   text:"Técnicas profesionales para que tu piel y tu mirada brillen en cada encuadre.",
+   list:["Contorno y luz pensados para fotografía","Acabado impecable en primer plano","Retoques durante la sesión"],cta:"Reserva tu sesión"}
+];
+const chips=document.getElementById("chips"),panel=document.getElementById("panel");
+function show(i){
+  const l=looks[i];
+  document.documentElement.style.setProperty("--h",l.h);
+  [...chips.children].forEach((c,k)=>c.setAttribute("aria-pressed",k===i));
+  panel.innerHTML=`<div class="fade"><h3>${l.title}</h3><p>${l.text}</p><ul>${l.list.map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn" href="https://mssg.me/makeup_madrid" target="_blank" rel="noopener">${l.cta} →</a></div>`;
+}
+looks.forEach((l,i)=>{
+  const b=document.createElement("button");
+  b.className="chip";b.type="button";
+  b.style.setProperty("--c",`hsl(${l.h} 60% 50%)`);
+  b.innerHTML=`<i class="dot"></i><div><strong>${l.name}</strong><span>${l.hint}</span></div>`;
+  b.onclick=()=>show(i);
+  chips.appendChild(b);
+});
+show(0);
+
+const r=document.getElementById("blur"),lv=document.getElementById("lvl"),sw=document.querySelectorAll(".swatch i");
+function blend(){
+  const v=+r.value;
+  sw.forEach(e=>e.style.filter=`blur(${v*.6}px)`);
+  lv.textContent=v<25?"Líneas definidas y precisas":v<60?"Transición suave y elegante":v<85?"Degradado sedoso y profesional":"Difuminado perfecto ✨";
+}
+r.oninput=blend;blend();
+</script>
+</body>
+</html>

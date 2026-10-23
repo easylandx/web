@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ПСИХОПЛЁТКА — Юлия Бескоровайная | Гештальт, провокативная психология, коучинг</title>
+<meta name="description" content="Юлия Бескоровайная — автор кота Психона ©. Гештальт, провокативная психология, коучинг, Т-игры, МАК. Выберите свой формат и начните в Telegram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#D4AF37; --gold-l:#F0C040; --gold-d:#C9A84C;
+  --ink:#fff;
+  /* монохромные палитры секций */
+  --blue-1:#0b1d4a; --blue-2:#13307a; --blue-3:#2b52b8; --blue-4:#a9c0ff;
+  --teal-1:#06403f; --teal-2:#0b5f5c; --teal-3:#17908a; --teal-4:#a6ece4;
+  --green-1:#0f3b22; --green-2:#176234; --green-3:#2f9a56; --green-4:#b4efc8;
+  --brown-1:#3a1f12; --brown-2:#5b3320; --brown-3:#8a5535; --brown-4:#f1d2b8;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--blue-1);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Unbounded','Manrope',sans-serif;line-height:1.15;letter-spacing:-.01em}
+a{color:inherit}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
+section{padding-top:80px;padding-bottom:80px}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 16px 'Manrope',sans-serif;text-decoration:none;border:2px solid var(--gold);border-radius:999px;padding:15px 28px;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn-gold{background:var(--gold);color:#1a1405}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--gold-l)}
+.btn-line:hover{background:var(--gold);color:#1a1405;transform:translateY(-2px)}
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.tag{display:inline-block;font:700 12px 'Manrope';letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);border:1px solid var(--gold);border-radius:999px;padding:6px 14px;margin-bottom:18px}
+
+/* навигация */
+nav{position:sticky;top:0;z-index:20;background:var(--blue-1);border-bottom:1px solid rgba(212,175,55,.35)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px;gap:12px}
+.logo{font:800 15px 'Unbounded',sans-serif;text-decoration:none;color:var(--gold-l);letter-spacing:.04em}
+nav .links{display:flex;gap:22px;align-items:center}
+nav .links a{text-decoration:none;font-size:14px;font-weight:700;opacity:.85}
+nav .links a:hover{opacity:1;color:var(--gold-l)}
+nav .btn{padding:9px 18px;font-size:14px}
+
+/* HERO — синий */
+.hero{background:linear-gradient(180deg,var(--blue-2),var(--blue-1));padding-top:84px;padding-bottom:90px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(34px,6.4vw,66px);font-weight:800}
+.hero h1 span{color:var(--gold-l)}
+.hero .sub{font-size:clamp(17px,2.2vw,21px);color:var(--blue-4);max-width:620px;margin-top:22px}
+.hero .by{margin-top:14px;font-weight:700;color:var(--gold-l)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{background:var(--blue-3);color:#fff;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700}
+.ring{position:absolute;border:2px solid rgba(212,175,55,.35);border-radius:50%;pointer-events:none}
+.ring.a{width:420px;height:420px;right:-120px;top:-100px}
+.ring.b{width:220px;height:220px;right:90px;bottom:-90px;border-color:rgba(169,192,255,.3)}
+
+/* ИНТЕРАКТИВ — бирюзовый */
+.quiz{background:var(--teal-2)}
+.quiz h2,.formats h2,.about h2,.final h2{font-size:clamp(26px,4.4vw,42px);font-weight:700}
+.lead{color:var(--teal-4);margin-top:12px;max-width:640px;font-size:18px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:30px}
+.opt{font:700 15px 'Manrope',sans-serif;text-align:left;background:var(--teal-1);color:#fff;border:2px solid var(--teal-3);border-radius:var(--r);padding:18px;cursor:pointer;transition:all .2s}
+.opt:hover{border-color:var(--gold);transform:translateY(-3px)}
+.opt[aria-pressed="true"]{background:var(--gold);color:#1a1405;border-color:var(--gold-l)}
+.result{margin-top:26px;background:var(--teal-1);border:2px solid var(--gold);border-radius:var(--r);padding:28px;display:none}
+.result.show{display:block;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.result .kicker{color:var(--gold-l);font:700 12px 'Manrope';letter-spacing:.14em;text-transform:uppercase}
+.result h3{font-size:clamp(20px,3vw,28px);margin-top:8px}
+.result p{color:var(--teal-4);margin-top:12px}
+.result .q{margin-top:16px;padding-left:16px;border-left:3px solid var(--gold);font-weight:700;color:#fff}
+.result .note{font-size:13px;opacity:.7;margin-top:16px}
+.hint{margin-top:18px;font-size:14px;color:var(--teal-4);opacity:.85}
+
+/* ФОРМАТЫ — зелёный */
+.formats{background:var(--green-2)}
+.formats .lead{color:var(--green-4)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:34px}
+.card{background:var(--green-1);border:1px solid var(--green-3);border-radius:var(--r);padding:26px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card .ic{font-size:28px;color:var(--gold-l);font-family:'Unbounded'}
+.card h3{font-size:18px;margin-top:10px}
+.card p{color:var(--green-4);margin-top:10px;font-size:15px}
+
+/* О ПРОЕКТЕ — коричневый */
+.about{background:var(--brown-2)}
+.about .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.about p{color:var(--brown-4);margin-top:16px;font-size:17px}
+.about .box{background:var(--brown-1);border:2px solid var(--gold);border-radius:var(--r);padding:30px}
+.about .box b{font-family:'Unbounded';color:var(--gold-l);font-size:22px;display:block}
+.about .box span{color:var(--brown-4);display:block;margin-top:8px}
+.steps{list-style:none;margin-top:18px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:14px;margin-top:14px;color:var(--brown-4)}
+.steps li::before{content:counter(s);flex:0 0 32px;height:32px;border-radius:50%;background:var(--gold);color:#1a1405;font-weight:800;display:flex;align-items:center;justify-content:center}
+
+/* ФИНАЛ — тёмно-синий */
+.final{background:var(--blue-1);text-align:center}
+.final p{color:var(--blue-4);max-width:560px;margin:16px auto 0;font-size:18px}
+.final .btns{justify-content:center}
+.links-row{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:34px;font-weight:700}
+.links-row a{color:var(--gold-l)}
+footer{background:#06102b;padding-top:24px;padding-bottom:24px;text-align:center;font-size:13px;color:var(--blue-4)}
+
+@media(max-width:760px){
+  section{padding-top:56px;padding-bottom:56px}
+  nav .links a.hide{display:none}
+  .about .cols{grid-template-columns:1fr}
+  .ring.a{width:260px;height:260px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">ПСИХОПЛЁТКА</a>
+    <div class="links">
+      <a class="hide" href="#quiz">Найти формат</a>
+      <a class="hide" href="#formats">Направления</a>
+      <a class="hide" href="#about">О проекте</a>
+      <a class="btn btn-gold" href="https://telegram.dog/Painhialing_mac_bot" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="ring a"></div><div class="ring b"></div>
+  <div class="wrap">
+    <span class="tag">Юлия Бескоровайная</span>
+    <h1>Психология, в которой<br>можно <span>улыбаться</span><br>и меняться</h1>
+    <p class="sub">Гештальт, провокативная психология, коучинг, Т-игры и метафорические карты — живо, честно и с юмором.</p>
+    <p class="by">Автор кота Психона ©</p>
+    <div class="chips">
+      <span class="chip">Гештальт</span><span class="chip">Провокативная психология</span><span class="chip">Коучинг</span><span class="chip">Т-игры</span><span class="chip">МАК</span>
+    </div>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://telegram.dog/Painhialing_mac_bot" target="_blank" rel="noopener">Начать в Telegram →</a>
+      <a class="btn btn-line" href="#quiz">Подобрать формат</a>
+    </div>
+  </div>
+</header>
+
+<section class="quiz" id="quiz">
+  <div class="wrap">
+    <span class="tag">Мини-тест · 10 секунд</span>
+    <h2>С чем вы пришли сегодня?</h2>
+    <p class="lead">Выберите то, что откликается сильнее всего, — и получите ориентир, с какого направления удобно начать.</p>
+
+    <div class="opts" id="opts" role="group" aria-label="Выберите состояние">
+      <button class="opt" data-k="anx" aria-pressed="false">Внутри напряжение и тревога</button>
+      <button class="opt" data-k="lost" aria-pressed="false">Не понимаю, чего хочу на самом деле</button>
+      <button class="opt" data-k="rel" aria-pressed="false">Сложности в отношениях</button>
+      <button class="opt" data-k="burn" aria-pressed="false">Нет сил и вкуса к жизни</button>
+      <button class="opt" data-k="goal" aria-pressed="false">Хочу перемен и новых результатов</button>
+    </div>
+
+    <div class="result" id="result" aria-live="polite">
+      <div class="kicker" id="rk"></div>
+      <h3 id="rt"></h3>
+      <p id="rp"></p>
+      <p class="q" id="rq"></p>
+      <div class="btns">
+        <a class="btn btn-gold" href="https://telegram.dog/Painhialing_mac_bot" target="_blank" rel="noopener">Продолжить в Telegram →</a>
+        <button class="btn btn-line" id="again" type="button">Выбрать другое</button>
+      </div>
+      <p class="note">Это не диагноз, а мягкий ориентир для первого шага.</p>
+    </div>
+    <p class="hint" id="hint">Подсказка: нажмите на любую карточку.</p>
+  </div>
+</section>
+
+<section class="formats" id="formats">
+  <div class="wrap">
+    <span class="tag">Направления</span>
+    <h2>Пять способов прикоснуться к себе</h2>
+    <p class="lead">Каждое направление — отдельная дверь. Можно начать с любой.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">01</div><h3>Гештальт</h3><p>Внимание к «здесь и сейчас»: чувства, тело, контакт с собой и людьми.</p></div>
+      <div class="card"><div class="ic">02</div><h3>Провокативная психология</h3><p>Юмор и неожиданный взгляд, которые встряхивают привычные сценарии.</p></div>
+      <div class="card"><div class="ic">03</div><h3>Коучинг</h3><p>Цели, шаги и опора, чтобы мысли превращались в действия.</p></div>
+      <div class="card"><div class="ic">04</div><h3>Т-игры</h3><p>Трансформационные игры: играя, находишь ответы, которые не приходят в разговоре.</p></div>
+      <div class="card"><div class="ic">05</div><h3>МАК</h3><p>Метафорические ассоциативные карты: образ открывает то, что трудно сказать словами.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <span class="tag">О проекте</span>
+        <h2>Юлия Бескоровайная и кот Психон ©</h2>
+        <p>ПСИХОПЛЁТКА — пространство, где о важном говорят живым языком. Здесь можно не притворяться серьёзным и всё равно дойти до глубины.</p>
+        <p>В шапке Instagram вас ждёт «Тайный зал» — загляните и выберите свой следующий шаг.</p>
+        <ol class="steps">
+          <li>Нажмите кнопку и откройте бот в Telegram</li>
+          <li>Выберите направление, которое откликается</li>
+          <li>Сделайте первый шаг в своём темпе</li>
+        </ol>
+      </div>
+      <div class="box">
+        <b>@psychopletka</b>
+        <span>Instagram — новости, идеи и «Тайный зал»</span>
+        <div class="btns"><a class="btn btn-gold" href="https://www.instagram.com/psychopletka/" target="_blank" rel="noopener">Открыть Instagram</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Готовы к первому шагу?</h2>
+    <p>Напишите в Telegram-бот, выберите направление и начните — спокойно и в своём темпе.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://telegram.dog/Painhialing_mac_bot" target="_blank" rel="noopener">Открыть Telegram-бот →</a>
+    </div>
+    <div class="links-row">
+      <a href="https://www.instagram.com/psychopletka/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://psychopletka.ru" target="_blank" rel="noopener">psychopletka.ru</a>
+      <a href="https://telegram.dog/Painhialing_mac_bot" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© ПСИХОПЛЁТКА · Юлия Бескоровайная · Автор кота Психона ©</div>
+</footer>
+
+<script>
+(function(){
+  var data = {
+    anx:{k:'Ваш ориентир: Гештальт',t:'Начните с контакта с телом и «здесь и сейчас»',p:'Когда внутри шумно, помогает замедлиться и заметить, что именно вы чувствуете сейчас. Гештальт-подход бережно возвращает опору.',q:'Что я чувствую прямо в эту минуту — и где это в теле?'},
+    lost:{k:'Ваш ориентир: МАК',t:'Пусть ответ подскажет образ',p:'Метафорические карты помогают услышать себя там, где слов не хватает. Выбираете образ — и разговор с собой начинается сам.',q:'Какой образ откликнулся первым и почему именно он?'},
+    rel:{k:'Ваш ориентир: Провокативная психология',t:'Посмотрите на ситуацию с неожиданной стороны',p:'Юмор и лёгкая провокация расшатывают застывшие сценарии общения и показывают, где можно вести себя иначе.',q:'Что бы изменилось, если бы я сыграл(а) в этой истории по-другому?'},
+    burn:{k:'Ваш ориентир: Т-игры',t:'Вернуть интерес через игру',p:'Трансформационные игры включают воображение и живые эмоции — это мягкий способ вспомнить, что вам по-настоящему важно.',q:'Что в моей жизни раньше радовало — и что от этого можно вернуть уже на этой неделе?'},
+    goal:{k:'Ваш ориентир: Коучинг',t:'Превратите желание в понятные шаги',p:'Коучинг помогает сформулировать цель, увидеть ресурсы и выбрать первое действие, которое реально сделать сегодня.',q:'Какой самый маленький шаг к цели я готов(а) сделать в ближайшие 24 часа?'}
+  };
+  var opts = document.querySelectorAll('.opt');
+  var box = document.getElementById('result');
+  var hint = document.getElementById('hint');
+  function show(k){
+    var d = data[k];
+    document.getElementById('rk').textContent = d.k;
+    document.getElementById('rt').textContent = d.t;
+    document.getElementById('rp').textContent = d.p;
+    document.getElementById('rq').textContent = d.q;
+    box.classList.remove('show'); void box.offsetWidth; box.classList.add('show');
+    hint.style.display = 'none';
+    opts.forEach(function(o){ o.setAttribute('aria-pressed', o.dataset.k===k ? 'true':'false'); });
+    box.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  opts.forEach(function(o){ o.addEventListener('click', function(){ show(o.dataset.k); }); });
+  document.getElementById('again').addEventListener('click', function(){
+    box.classList.remove('show'); hint.style.display='';
+    opts.forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+    document.getElementById('opts').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
+</script>
+</body>
+</html>

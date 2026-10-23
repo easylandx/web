@@ -245,13 +245,23 @@ footer,footer p,footer li,footer a{color:#FFF9F3;font-size:1rem}
 .topbar-actions a{max-width:100%;overflow-wrap:anywhere}
 }
 /* Chat de Aspi más alto y cómodo de leer */
-.chatbox{height:min(860px,calc(100vh - 2rem));min-height:640px}
-#chat{padding:1.5rem;gap:1rem}
+.chatbox{height:min(1100px,calc(100vh - 1rem));height:min(1100px,calc(100dvh - 1rem));min-height:720px}
+.chat-head{flex:none}
+#chat{flex:1 1 auto;min-height:0;padding:1.5rem;gap:1rem}
 .msg{font-size:1.02rem;line-height:1.65;max-width:92%}
-.bar{padding:1rem 1.1rem;gap:.7rem}
-.bar input{padding:1rem 1.3rem;font-size:1.08rem}
-.bar .btn{min-height:52px;padding:0 1.6rem;font-size:1rem}
-@media(max-width:900px){.chatbox{height:min(780px,calc(100vh - 1rem));min-height:560px}.msg{max-width:94%}}
+.bar{flex:none;padding:1rem 1.1rem;gap:.7rem;align-items:center;box-sizing:border-box;width:100%}
+.bar input{padding:1rem 1.3rem;font-size:1.08rem;width:100%;box-sizing:border-box}
+.bar .btn{flex:none;min-height:52px;padding:0 1.6rem;font-size:1rem}
+@media(max-width:900px){
+  .chatbox{height:calc(100vh - .5rem);height:calc(100dvh - .5rem);min-height:620px}
+  .msg{max-width:94%}
+  .chat-head{padding:.7rem 1rem}
+  .avatar{width:64px;height:64px}
+  #chat{padding:1rem}
+  .bar{padding:.7rem .75rem calc(.7rem + env(safe-area-inset-bottom));gap:.5rem}
+  .bar input{font-size:16px;padding:.85rem 1rem}
+  .bar .btn{padding:0 1.1rem;min-height:48px}
+}
 </style>
 </head>
 <body>

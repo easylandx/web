@@ -696,6 +696,25 @@
       .hero { padding: 3rem 0; }
       .hero h1, .page-intro h1 { font-size: clamp(2rem, 8vw, 3rem); }
     }
+
+    /* Accesibilidad visual: mayor tamaño y contraste de texto */
+    html { font-size: 112.5%; }
+    :root { --text-dark: #14232D; --text-muted: #1E3342; }
+    body { color: #14232D; font-weight: 500; letter-spacing: 0; line-height: 1.75; }
+    h1, h2, h3, h4 { font-weight: 600; color: #14232D; }
+    .hero h1, .page-intro h1 { color: #14232D; font-weight: 700 !important; }
+    .hero p, .page-intro p, .section-header p, .card p, .embed-fallback { color: #1E3342 !important; font-weight: 500 !important; font-size: 1.1rem; }
+    .hero-card p, .hero-card h3, .hero-eyebrow { color: #14232D !important; }
+    .topbar, .topbar span, .topbar a { font-size: 0.95rem; color: #FFFFFF; }
+    .nav-links a { font-size: 1.05rem; font-weight: 600; }
+    .btn { font-size: 1.05rem; font-weight: 700; }
+    .btn-primary, .btn-secondary, .form-submit { background-color: #B00009; color: #FFFFFF; }
+    .btn-outline { border-color: #14232D; color: #14232D; }
+    .form-field label, .form-field input, .form-field textarea { font-size: 1rem; color: #14232D; }
+    footer, footer p, footer a { color: #FFFFFF; font-size: 1rem; }
+    .social-follow-copy { color: #FFFFFF; font-size: 1rem; }
+    .embed-fallback a { color: #A00008; }
+    a:focus-visible, .btn:focus-visible { outline: 3px solid #14232D; outline-offset: 3px; }
     @media (max-width: 600px) {
       .topbar .container { align-items: flex-start; flex-direction: column; gap: 0.35rem; }
       .topbar-actions { width: 100%; justify-content: space-between; gap: 0.5rem; }
@@ -731,7 +750,7 @@
       </div>
       <ul class="nav-links">
         <li><a href="#area-asociados" class="btn btn-outline">Área Privada</a></li>
-        <li><a href="https://easylandx.github.io/web/aspm.html#unete" class="btn btn-primary">Hazte Socia</a></li>
+        <li><a href="https://easylandx.github.io/web/aspm.html#unete" class="btn btn-primary">Asóciate</a></li>
       </ul>
     </div>
   </header>
@@ -803,7 +822,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
+        <p>© ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
         <p style="margin-top:0.5rem; font-size:0.85rem;"><a href="https://easylandx.github.io" style="color:inherit; text-decoration:underline;">Creado por EasyLandX</a></p>
       </div>
     </div>

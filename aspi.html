@@ -211,6 +211,29 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
   .nav-links a{white-space:nowrap}
   .nav-links .btn{white-space:nowrap;padding:.36rem .48rem;font-size:.68rem}
 }
+
+/* ===== Accesibilidad visual: texto más grande y con más contraste ===== */
+:root{--text-muted:#2B3C47;--text-dark:#14232C}
+html{font-size:112.5%}
+body{color:#14232C;line-height:1.7;font-weight:500}
+.topbar,.topbar span,.topbar a{font-size:.95rem;color:#FFF9F3}
+.nav-links{font-size:1.02rem;font-weight:600;color:#14232C}
+.btn{font-size:1.02rem;font-weight:700}
+.hero-eyebrow{color:#14232C;font-size:.98rem;font-weight:700}
+.hero p{color:#1F3140;font-size:1.3rem;font-weight:500}
+.chat-head h3{color:#14232C;font-size:1.2rem;font-weight:700}
+.chat-head small{color:#2B3C47;font-size:.95rem}
+.hero-badge{font-size:.9rem}
+.msg{font-size:1.05rem;line-height:1.6}
+.bot{color:#14232C}
+.bot b{color:#14232C}
+.msg a{color:#A60008}
+.chip{font-size:.98rem;color:#14232C;border-color:#8A7A6E;padding:.45rem .85rem}
+.bar input{font-size:1.05rem;color:#14232C;border-color:#8A7A6E}
+.bar input::placeholder{color:#4A5A64;opacity:1}
+footer,footer p,footer li,footer a{color:#FFF9F3;font-size:1rem}
+.social-follow-copy{color:#F3E9E0!important;font-size:1rem}
+@media(max-width:600px){.nav-links{font-size:.8rem}.nav-links .btn{font-size:.78rem;padding:.4rem .55rem}.hero p{font-size:1.1rem}}
 </style>
 </head>
 <body>
@@ -237,7 +260,7 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
         <li><a href="https://easylandx.github.io/web/junta.html">Junta Directiva</a></li>
         <li><a href="https://easylandx.github.io/web/noticias.html">Noticias</a></li>
         <li><a href="https://easylandx.github.io/web/asociados.html" class="btn btn-outline">Área Privada</a></li>
-        <li><a href="https://easylandx.github.io/web/aspm.html#unete" class="btn btn-primary">Hazte Socia</a></li>
+        <li><a href="https://easylandx.github.io/web/aspm.html#unete" class="btn btn-primary">Asóciate</a></li>
       </ul>
     </div>
   </header>
@@ -248,7 +271,7 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
     <h1>Hola, soy <span>Aspi</span>, el bot amistoso de ASPM</h1>
     <p>Pregúntame lo que quieras sobre la asociación, cómo hacerte socia, los patrocinadores, contacto...</p>
     <div class="hero-cta">
-      <a href="https://easylandx.github.io/web/aspm.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Hazme socia</a>
+      <a href="https://easylandx.github.io/web/aspm.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Asociarme</a>
       <a href="mailto:secretaria@aspm.es" class="btn btn-outline" style="color:#c62828;border-color:#c62828">Contactar</a>
     </div>
   </div>
@@ -303,7 +326,7 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
+        <p>© ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
         <p style="margin-top:0.5rem; font-size:0.85rem;"><a href="https://easylandx.github.io" style="color:inherit; text-decoration:underline;">Creado por EasyLandX</a></p>
       </div>
     </div>
@@ -313,9 +336,9 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
 const L=(u,t)=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`;
 const KB=[
 {k:"que es aspm asociacion quien sois presentacion sobre acerca fundada desde 1987 historia anos madrid",
- a:`<b>ASPM</b> es la <b>Asociación del Secretariado Profesional de Madrid</b>, activa <b>desde 1987</b> (más de 30 años). Conecta a profesionales de la asistencia a la dirección y el secretariado con formación, bolsa de empleo, comunidad y empresas que quieren llegar a ellas.`},
+ a:`<b>ASPM</b> es la <b>Asociación del Secretariado Profesional de Madrid</b>, activa <b>desde 1987</b> (40 años). Conecta a profesionales de la asistencia a la dirección y el secretariado con formación, bolsa de empleo, comunidad y empresas que quieren llegar a ellas.`},
 {k:"socia asociarme asociarse hazte hacerme alta unirme unete inscribir apuntarme membresia carnet",
- a:`Para asociarte, rellena la <b>«Solicitud de alta como socia»</b> en la sección <i>Da el siguiente paso</i> (botones «Hazme socia», «Hazte Socia» o «Quiero asociarme»). Te piden nombre, apellidos, email, teléfono, empresa y una breve presentación. Después ASPM se pone en contacto contigo para explicarte el proceso.`,
+ a:`Para asociarte, rellena la <b>«Solicitud de Información»</b> en la sección <i>Da el siguiente paso</i> (botones «Asociarme», «Asóciate» o «Quiero asociarme»). Te piden nombre, apellidos, email, teléfono, empresa y una breve presentación. Después ASPM se pone en contacto contigo para explicarte el proceso.`,
  c:["¿Qué datos pide el formulario?","¿Qué beneficios tienen las socias?"]},
 {k:"formulario datos campos solicitud pide rellenar enviar newsletter",
  a:`El formulario pide: <b>Nombre*, Apellidos*, Email*</b> (obligatorios), y opcionalmente <b>Teléfono, Empresa/Organización</b> y un texto «Cuéntanos brevemente sobre ti». Tiene una casilla (marcada por defecto) para recibir el <b>newsletter mensual</b>. Se envía por email a secretaria@aspm.es.`},
@@ -359,7 +382,7 @@ const KB=[
 {k:"wordpress api rest posts noticias carga imagen destacada json",
  a:`🛠️ Las noticias vienen de <code>aspm.es/wp-json/wp/v2/posts?_embed&per_page=3</code>: muestra imagen destacada (o una genérica), fecha en español, título y un extracto de 110 caracteres.`},
 {k:"enlaces secciones navegacion menu estructura partes pagina web contiene",
- a:`La página tiene: barra superior (LinkedIn y email), cabecera con <b>Área Privada</b> y <b>Hazte Socia</b>, portada con titular y Hub, «La secretaría del presente y del futuro», <b>Beneficios</b>, <b>Colaboradores</b>, <b>Noticias</b>, <b>Únete</b> (formulario + marcas) y pie de página.`},
+ a:`La página tiene: barra superior (LinkedIn y email), cabecera con <b>Área Privada</b> y <b>Asóciate</b>, portada con titular y Hub, «La secretaría del presente y del futuro», <b>Beneficios</b>, <b>Colaboradores</b>, <b>Noticias</b>, <b>Únete</b> (formulario + marcas) y pie de página.`},
 {k:"hola buenas buenos dias tardes noches hey saludos que tal",
  a:`¡Hola! 👋 Soy <b>Aspi</b>, el bot de ASPM. Pregúntame por la asociación, cómo hacerte socia, los patrocinadores...`},
 {k:"gracias genial perfecto vale ok",a:`¡De nada! 😊 Si quieres saber algo más, aquí estoy.`},

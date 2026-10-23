@@ -891,6 +891,40 @@
         font-size: 0.68rem;
       }
     }
+  
+    /* ===== Accesibilidad visual: texto más grande y con más contraste ===== */
+    :root { --text-muted: #2B3C47; --text-dark: #14232C; }
+    html { font-size: 112.5%; }
+    body { color: #14232C; line-height: 1.7; letter-spacing: 0; font-weight: 500; }
+    .topbar, .topbar span, .topbar a { font-size: 0.95rem; color: #FFF9F3; }
+    .nav-links { font-size: 1.02rem; font-weight: 600; color: #14232C; }
+    .btn { font-size: 1.02rem; font-weight: 700; }
+    .hero-eyebrow { font-size: 0.98rem; color: #14232C; font-weight: 700; }
+    .hero p { color: #1F3140; font-size: 1.3rem; font-weight: 500; }
+    .hero-card p { color: #1F3140; font-size: 1.05rem; }
+    .section-header h2 { color: #14232C; font-weight: 700; }
+    .section-header p, .card p, .future-secretary-text p, .membership-form .form-intro { color: #1F3140; font-size: 1.15rem; }
+    .section-header .tag, .tag { font-size: 0.95rem; }
+    .card h3, .membership-form h3, .future-secretary-text h2 { color: #14232C; font-weight: 700; }
+    .card p { font-size: 1.08rem; }
+    .news-date { font-size: 0.95rem; color: #A60008; }
+    .news-title { font-size: 1.3rem; color: #14232C; }
+    .news-excerpt { font-size: 1.05rem; color: #1F3140; }
+    .sponsor-tag { font-size: 0.98rem; color: #14232C; font-weight: 600; }
+    .tech-sponsors .sponsor-tag, .tech-sponsors .sponsors-cat-title { color: #A60008; }
+    .form-field label { font-size: 1rem; color: #14232C; font-weight: 700; }
+    .form-field input, .form-field textarea { font-size: 1.08rem; color: #14232C; border-color: #8A7A6E; }
+    .form-check span, .form-check { font-size: 1rem; color: #1F3140; }
+    footer, footer p, footer li, footer a { color: #FFF9F3; font-size: 1rem; }
+    .footer-brand p, .footer-col a, .social-follow-copy { color: #F3E9E0 !important; font-size: 1rem; }
+    .btn-primary { background-color: #B00009; }
+    .btn-primary:hover { background-color: #8F0007; }
+      @media (max-width: 600px) {
+      .nav-links { font-size: 0.8rem; }
+      .nav-links .btn { font-size: 0.78rem; padding: 0.4rem 0.55rem; }
+      .hero p { font-size: 1.1rem; }
+    }
+      .form-field input::placeholder, .form-field textarea::placeholder { color: #4A5A64; opacity: 1; }
   </style>
 </head>
 <body>
@@ -923,7 +957,7 @@
         <li><a href="https://easylandx.github.io/web/junta.html">Junta Directiva</a></li>
         <li><a href="https://easylandx.github.io/web/noticias.html">Noticias</a></li>
         <li><a href="https://easylandx.github.io/web/asociados.html" class="btn btn-outline">Área Privada</a></li>
-        <li><a href="#unete" class="btn btn-primary">Hazte Socia</a></li>
+        <li><a href="#unete" class="btn btn-primary">Asóciate</a></li>
       </ul>
     </div>
   </header>
@@ -1038,7 +1072,7 @@
   </script>
         <p>Conectamos a profesionales de la asistencia a la dirección y el secretariado con formación, bolsa de empleo, comunidad y empresas que quieren llegar a ellas. Un espacio pensado para crecer, en compañía.</p>
         <div class="hero-cta">
-          <a href="#unete" class="btn btn-primary">Hazme socia</a>
+          <a href="#unete" class="btn btn-primary">Asociarme</a>
           <a href="#colaboradores" class="btn btn-primary">Ser socio colaborador o patrocinador</a>
         </div>
       </div>
@@ -1145,7 +1179,7 @@
     <div class="container" style="max-width: 800px;">
       <h2 style="font-size: 2.2rem; color: var(--primary); margin-bottom: 0.4rem;">Da el siguiente paso</h2>
       <h3 style="font-size: 1.25rem; color: var(--accent); font-weight: 700; margin-bottom: 1rem;">Forma parte de la comunidad ASPM.</h3>
-      <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Únete a una comunidad que lleva más de 30 años defendiendo la profesión y sigue reinventándose contigo.</p>
+      <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Únete a una comunidad que lleva 40 años defendiendo la profesión y sigue reinventándose contigo.</p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a href="#solicitud-socia" class="btn btn-primary">Quiero asociarme</a>
         <a href="https://aspm.es" target="_blank" class="btn btn-secondary">Ver ASPM actual</a>
@@ -1153,7 +1187,7 @@
 
       <!-- Formulario único de solicitud de socia + newsletter mensual -->
       <div id="solicitud-socia" class="membership-form">
-        <h3>Solicitud de alta como socia</h3>
+        <h3>Solicitud de Información</h3>
         <p class="form-intro">
           Completa tus datos y nos pondremos en contacto contigo para informarte sobre el proceso de incorporación a ASPM.
         </p>
@@ -1198,7 +1232,7 @@
             <span>Quiero recibir también el <strong>newsletter mensual de ASPM</strong> con noticias, actividades y contenidos de interés para profesionales de la asistencia a la dirección.</span>
           </label>
 
-          <button type="submit" class="btn btn-primary form-submit">Enviar solicitud de alta</button>
+          <button type="submit" class="btn btn-primary form-submit">Enviar solicitud de información</button>
           <p id="form-status" role="status" aria-live="polite" style="display:none;margin-top:1rem;padding:0.85rem 1rem;border-radius:10px;font-size:0.95rem;text-align:center;"></p>
 
         </form>
@@ -1325,7 +1359,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
+        <p>© ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
         <p style="margin-top:0.5rem; font-size:0.85rem;"><a href="https://easylandx.github.io" style="color:inherit; text-decoration:underline;">Creado por EasyLandX</a></p>
       </div>
     </div>
@@ -1333,7 +1367,7 @@
 
 
   <script>
-    // Envío del formulario "Solicitud de alta como socia" por email a secretaria@aspm.es
+    // Envío del formulario "Solicitud de Información" por email a secretaria@aspm.es
     (function () {
       var form = document.getElementById('form-solicitud');
       if (!form) return;
@@ -1365,7 +1399,7 @@
         };
 
         var payload = Object.assign({}, datos, {
-          _subject: 'Nueva solicitud de alta como socia: ' + datos['Nombre'] + ' ' + datos['Apellidos'],
+          _subject: 'Nueva solicitud de información: ' + datos['Nombre'] + ' ' + datos['Apellidos'],
           _replyto: datos['Email'],
           _template: 'table',
           _captcha: 'false'
@@ -1394,7 +1428,7 @@
           // Plan B: abrir el correo del usuario con los datos ya escritos
           var cuerpo = Object.keys(datos).map(function (k) { return k + ': ' + datos[k]; }).join('\n');
           window.location.href = 'mailto:' + DESTINO +
-            '?subject=' + encodeURIComponent('Solicitud de alta como socia') +
+            '?subject=' + encodeURIComponent('Solicitud de Información') +
             '&body=' + encodeURIComponent(cuerpo);
           show('No hemos podido enviar el formulario automáticamente. Se ha abierto tu programa de correo para que puedas enviarnos la solicitud desde ahí.', false);
         })

@@ -671,6 +671,37 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
   .nav-links a{white-space:nowrap}
   .nav-links .btn{white-space:nowrap;padding:.36rem .48rem;font-size:.68rem}
 }
+
+    /* ===== Accesibilidad visual: texto más grande y con más contraste ===== */
+    :root { --text-muted: #2B3C47; --text-dark: #14232C; }
+    html { font-size: 112.5%; }
+    body { color: #14232C; line-height: 1.7; letter-spacing: 0; font-weight: 500; }
+    .topbar, .topbar span, .topbar a { font-size: 0.95rem; color: #FFF9F3; }
+    .nav-links { font-size: 1.02rem; font-weight: 600; color: #14232C; }
+    .btn { font-size: 1.02rem; font-weight: 700; }
+    .btn-primary, .btn-secondary { background-color: #B00009; }
+    .btn-primary:hover, .btn-secondary:hover { background-color: #8F0007; }
+    .hero-eyebrow { font-size: 0.98rem; color: #14232C !important; font-weight: 700; }
+    .hero p { color: #1F3140 !important; font-size: 1.3rem; font-weight: 500; }
+    .hero-card p { color: #1F3140 !important; font-size: 1.05rem; }
+    .section-header h2 { color: #14232C; font-weight: 700; }
+    .section-header p, .card p, .membership-form .form-intro { color: #1F3140; font-size: 1.15rem; }
+    .section-header .tag, .tag { font-size: 0.95rem; }
+    .card h3, .membership-form h3, .team-card h3 { color: #14232C; font-weight: 700; }
+    .card p { font-size: 1.08rem; }
+    .team-bio, .team-card p { color: #1F3140; font-size: 1.05rem; line-height: 1.7; }
+    .team-role { color: #A60008; font-weight: 700; }
+    .form-field label { font-size: 1rem; color: #14232C; font-weight: 700; }
+    .form-field input, .form-field textarea, .form-field select { font-size: 1.08rem; color: #14232C; border-color: #8A7A6E; }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: #4A5A64; opacity: 1; }
+    .form-check, .form-check span { font-size: 1rem; color: #1F3140; }
+    footer, footer p, footer li, footer a { color: #FFF9F3; font-size: 1rem; }
+    .footer-brand p, .social-follow-copy { color: #F3E9E0 !important; font-size: 1rem; }
+    @media (max-width: 600px) {
+      .nav-links { font-size: 0.8rem; }
+      .nav-links .btn { font-size: 0.78rem; padding: 0.4rem 0.55rem; }
+      .hero p { font-size: 1.1rem; }
+    }
 </style>
 </head>
 <body>
@@ -699,7 +730,7 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
         <li><a href="https://easylandx.github.io/web/junta.html">Junta Directiva</a></li>
         <li><a href="https://easylandx.github.io/web/noticias.html">Noticias</a></li>
         <li><a href="https://easylandx.github.io/web/asociados.html" class="btn btn-outline">Área Privada</a></li>
-        <li><a href="#contacto" class="btn btn-primary">Hazte Socia</a></li>
+        <li><a href="#contacto" class="btn btn-primary">Asóciate</a></li>
       </ul>
     </div>
   </header>
@@ -964,7 +995,7 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
       </div>
 
       <div class="membership-form">
-        <h3>Formulario de Contacto</h3>
+        <h3>Solicitud de Información</h3>
         <p class="form-intro">Responderemos a tu solicitud en la mayor brevedad posible.</p>
         <form id="form-contacto" action="https://formsubmit.co/secretaria@aspm.es" method="POST" novalidate>
           <!-- Anti-spam (campo oculto): los bots lo rellenan, las personas no -->
@@ -995,7 +1026,7 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
             <input type="checkbox" id="privacy" required>
             <label for="privacy">Acepto la política de privacidad y el tratamiento de mis datos para responder a la consulta.</label>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">Enviar Solicitud</button>
+          <button type="submit" class="btn btn-primary form-submit">Enviar solicitud de información</button>
           <p id="form-status" role="status" aria-live="polite" style="display:none;margin-top:1rem;padding:0.85rem 1rem;border-radius:10px;font-size:0.95rem;text-align:center;"></p>
         </form>
       </div>
@@ -1044,7 +1075,7 @@ header .btn-outline:hover{background:#203746;color:#FFF9F3}
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
+        <p>© ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
         <p style="margin-top:0.5rem; font-size:0.85rem;"><a href="https://easylandx.github.io" style="color:inherit; text-decoration:underline;">Creado por EasyLandX</a></p>
       </div>
     </div>

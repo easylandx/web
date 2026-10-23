@@ -775,7 +775,7 @@
           <li><a href="https://easylandx.github.io/web/junta.html">Junta Directiva</a></li>
           <li><a href="#noticias">Noticias</a></li>
           <li><a href="https://easylandx.github.io/web/asociados.html" class="btn btn-outline">Área Privada</a></li>
-          <li><a href="#asociate" class="btn btn-primary">Hazte Socia</a></li>
+          <li><a href="#asociate" class="btn btn-primary">Asóciate</a></li>
         </ul>
       </nav>
     </div>
@@ -789,7 +789,7 @@
         <h1 id="hero-title">La red que impulsa a quienes sostienen la dirección</h1>
         <p>Potenciamos el valor estratégico del secretariado y la asistencia de dirección a través de la formación continua, el networking y el apoyo mutuo.</p>
         <div class="hero-cta">
-          <a href="#asociate" class="btn btn-primary">Hazte Socia</a>
+          <a href="#asociate" class="btn btn-primary">Asóciate</a>
           <a href="#noticias" class="btn btn-outline" style="color: #fff; border-color: #fff;">Explorar Noticias</a>
         </div>
       </div>
@@ -814,7 +814,7 @@
       <div class="feed-block" id="feed-noticias">
         <div class="feed-tabs" role="tablist">
           <button type="button" class="feed-tab active" data-url="https://aspm.es/noticias/noticias-aspm/">Noticias ASPM</button>
-          <button type="button" class="feed-tab" data-url="https://aspm.es/noticias/socios-colaboradores/">Socios Colaboradores</button>
+          <button type="button" class="feed-tab" data-url="https://aspm.es/noticias/socios-colaboradores/">Noticias Socios Colaboradores</button>
           <button type="button" class="feed-tab" data-url="https://aspm.es/noticias/entrevista-asociada-del-mes/">Entrevista Asociada del Mes</button>
         </div>
         <div class="feed-grid"><p class="feed-msg">Cargando publicaciones de aspm.es...</p></div>
@@ -870,10 +870,10 @@
       </div>
 
       <div class="membership-form">
-        <h3>Solicitud de alta como socia</h3>
+        <h3>Solicitud de Información</h3>
         <p class="form-intro">Déjanos tus datos y nos pondremos en contacto contigo a la mayor brevedad posible.</p>
         <form id="form-alta" action="https://formsubmit.co/secretaria@aspm.es" method="post">
-          <input type="hidden" name="_subject" value="Nueva solicitud de alta como socia - ASPM">
+          <input type="hidden" name="_subject" value="Nueva solicitud de información - ASPM">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
@@ -907,7 +907,7 @@
             <input type="checkbox" id="politica" name="politica" required>
             <label for="politica">Acepto la política de privacidad y el tratamiento de mis datos para la gestión de la solicitud.</label>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">Enviar Solicitud</button>
+          <button type="submit" class="btn btn-primary form-submit">Enviar solicitud de información</button>
           <p id="form-status" role="status" aria-live="polite" style="margin-top:1rem;font-weight:600;"></p>
         </form>
         <div class="newsletter-note">
@@ -959,7 +959,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
+        <p>© ASPM · Asociación del Secretariado Profesional de Madrid. Todos los derechos reservados.</p>
         <p style="margin-top:0.5rem; font-size:0.85rem;"><a href="https://easylandx.github.io" style="color:inherit; text-decoration:underline;">Creado por EasyLandX</a></p>
       </div>
     </div>
@@ -974,7 +974,7 @@
       var DEST = 'secretaria@aspm.es';
 
       function mailtoFallback(data) {
-        var body = 'Solicitud de alta como socia\n\n' +
+        var body = 'Solicitud de Información\n\n' +
           'Nombre: ' + data.nombre + '\n' +
           'Apellidos: ' + data.apellidos + '\n' +
           'Correo electrónico: ' + data.email + '\n' +
@@ -982,7 +982,7 @@
           'Empresa / Cargo: ' + (data.empresa || '-') + '\n' +
           'Mensaje: ' + (data.mensaje || '-') + '\n';
         window.location.href = 'mailto:' + DEST +
-          '?subject=' + encodeURIComponent('Solicitud de alta como socia - ASPM') +
+          '?subject=' + encodeURIComponent('Solicitud de Información - ASPM') +
           '&body=' + encodeURIComponent(body);
       }
 
@@ -1007,7 +1007,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            _subject: 'Nueva solicitud de alta como socia - ASPM',
+            _subject: 'Nueva solicitud de información - ASPM',
             _template: 'table',
             _captcha: 'false',
             _replyto: data.email,
@@ -1138,6 +1138,39 @@ header .nav-links a.btn-primary:focus-visible {
   background-color: #A90008 !important;
   color: #FFF9F3 !important;
 }
+
+    /* ===== Accesibilidad visual: texto más grande y con más contraste ===== */
+    :root { --text-muted: #2B3C47; --text-dark: #14232C; }
+    html { font-size: 112.5%; }
+    body { color: #14232C; line-height: 1.7; font-weight: 500; }
+    .topbar, .topbar span, .topbar a { font-size: 0.95rem; color: #FFF9F3; }
+    .nav-links { font-size: 1.02rem; font-weight: 600; color: #14232C; }
+    .btn { font-size: 1.02rem; font-weight: 700; }
+    .hero-eyebrow { font-size: 0.98rem; color: #14232C !important; font-weight: 700; }
+    .hero p { color: #1F3140 !important; font-size: 1.3rem; font-weight: 500; }
+    .hero-card h3, .hero-card p { color: #14232C !important; }
+    .hero-card p { font-size: 1.05rem; }
+    .section-header h2 { color: #14232C; font-weight: 700; }
+    .section-header p, .card p, .future-secretary-text p, .membership-form .form-intro, .feed-msg { color: #1F3140; font-size: 1.15rem; }
+    .tag { font-size: 0.95rem; }
+    .membership-form h3, .future-secretary-text h2 { color: #14232C; font-weight: 700; }
+    .feed-tab { font-size: 1rem; font-weight: 700; color: #14232C; }
+    .feed-tab.active { color: #fff; }
+    .news-date { font-size: 0.95rem; color: #A60008; }
+    .news-title { font-size: 1.3rem; color: #14232C; }
+    .news-excerpt { font-size: 1.05rem; color: #1F3140; }
+    .form-field label { font-size: 1rem; color: #14232C; font-weight: 700; }
+    .form-field input, .form-field textarea { font-size: 1.08rem; color: #14232C; border-color: #8A7A6E; }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: #4A5A64; opacity: 1; }
+    .form-check, .form-check label, .form-check span { font-size: 1rem; color: #1F3140; }
+    .newsletter-note { font-size: 0.95rem; color: #1F3140; }
+    footer, footer p, footer li, footer a { color: #FFF9F3; font-size: 1rem; }
+    .social-follow-copy { color: #F3E9E0 !important; font-size: 1rem; }
+    @media (max-width: 600px) {
+      .nav-links { font-size: 0.8rem; }
+      .nav-links .btn { font-size: 0.78rem; padding: 0.4rem 0.55rem; }
+      .hero p { font-size: 1.1rem; }
+    }
 </style>
 
   <script>

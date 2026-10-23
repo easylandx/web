@@ -11,9 +11,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#5a3fc4; --bg-2:#4f36b3; --panel:#4d35b0;
-    --violet:#b7a9ff; --coral:#d9d0fa; --teal:#8fe0ec; --gold:#8fe0ec; --sage:#c9e8f5;
-    --ink:#ffffff; --ink-dim:#e3dcfb; --line:rgba(246,244,255,0.14);
+    --bg:#191247; --bg-2:#1f1858; --panel:#221a58;
+    --violet:#7f6fe0; --coral:#a99fd4; --teal:#8fe0ec; --gold:#8fe0ec; --sage:#5a83a2;
+    --ink:#f6f4ff; --ink-dim:#b9b1de; --line:rgba(246,244,255,0.14);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -28,7 +28,7 @@
   .glow-3{width:360px;height:360px;background:var(--coral);top:36%;left:8%;opacity:.2;}
 
   /* NAV */
-  header{position:sticky;top:0;z-index:50;background:rgba(90,63,196,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
+  header{position:sticky;top:0;z-index:50;background:rgba(25,18,71,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
   nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1160px;margin:0 auto;gap:16px;}
   .logo{font-family:'Fraunces',serif;font-size:22px;}
   .logo em{font-style:italic;color:var(--teal);}
@@ -167,7 +167,7 @@
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px;}
   .chip{font-size:13.5px;font-weight:600;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(246,244,255,.05);}
   .chip.free{background:var(--gold);color:#191247;border-color:var(--gold);}
-  .sunday{border-radius:24px;border:1px solid var(--line);background:rgba(60,40,150,.45);padding:32px 28px;text-align:center;}
+  .sunday{border-radius:24px;border:1px solid var(--line);background:rgba(25,18,71,.55);padding:32px 28px;text-align:center;}
   .sunday .emoji{font-size:42px;margin-bottom:10px;}
   .sunday .day{font-family:'Fraunces',serif;font-size:34px;font-style:italic;color:var(--sage);margin-bottom:8px;}
   .sunday p{font-size:15px;margin:0;}
@@ -210,7 +210,7 @@
   .story-text .h2{margin-bottom:22px;}
   .about-list li b{color:var(--ink);}
   .subtitle{font-family:'Fraunces',serif;font-weight:500;font-size:25px;margin-bottom:6px;}
-  .notfor{margin-top:26px;border-radius:26px;border:1px solid var(--line);background:rgba(60,40,150,.45);padding:34px 36px;}
+  .notfor{margin-top:26px;border-radius:26px;border:1px solid var(--line);background:rgba(25,18,71,.55);padding:34px 36px;}
   @media (max-width:640px){.notfor{padding:28px 22px;}}
   .notfor h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(22px,2.6vw,28px);margin-bottom:6px;}
   .notfor .about-list{margin-top:18px;}
@@ -226,7 +226,7 @@
   .tools td:first-child{color:var(--ink);font-weight:600;white-space:nowrap;}
   .tools tr:last-child td{border-bottom:none;}
   @media (max-width:520px){.tools td:first-child{white-space:normal;}}
-  .guar-card{border-radius:24px;border:1px solid var(--line);background:rgba(60,40,150,.45);padding:32px 28px;}
+  .guar-card{border-radius:24px;border:1px solid var(--line);background:rgba(25,18,71,.55);padding:32px 28px;}
   .guar-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:22px;line-height:1.3;}
   .comm a.mail,.policy a.mail,.about-list a.mail,.testimonial-card a.mail{color:var(--teal);text-decoration:underline;text-underline-offset:3px;}
   .policies{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
@@ -305,7 +305,7 @@
   .acc-lg>summary{font-size:clamp(22px,2.6vw,30px);padding:28px 30px;}
   .acc-lg .acc-body{padding:0 30px 30px;}
   .acc-body .comm{border:none;background:none;padding:6px 0 0;}
-  .acc-body .policy{background:rgba(60,40,150,.45);}
+  .acc-body .policy{background:rgba(25,18,71,.55);}
   .cta-final .cta-sub{margin:26px auto 0;font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--ink);max-width:560px;}
   .cta-final .cta-sub-wrap{margin-top:6px;}
   .prog-wrap{display:grid;grid-template-columns:.78fr 1.22fr;gap:30px;align-items:start;margin-top:10px;}
@@ -322,7 +322,7 @@
   .badge-1{top:90px;left:-10px;}
   .badge-2{bottom:90px;right:-10px;}
   @media (max-width:520px){.hero-visual{min-height:640px;}.ring-1{width:400px;height:400px;}.ring-2{width:470px;height:470px;}.badge-1{left:-4px;top:70px;}.badge-2{right:-4px;bottom:70px;}}
-  .tap{position:absolute;right:14px;top:14px;z-index:4;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#f6f4ff;background:rgba(60,40,150,.45);border:1px solid rgba(246,244,255,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);pointer-events:none;animation:tapnudge 2.6s ease-in-out infinite;transition:opacity .4s ease;}
+  .tap{position:absolute;right:14px;top:14px;z-index:4;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#f6f4ff;background:rgba(25,18,71,.55);border:1px solid rgba(246,244,255,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);pointer-events:none;animation:tapnudge 2.6s ease-in-out infinite;transition:opacity .4s ease;}
   .tap i{position:absolute;inset:-1px;border-radius:50%;border:1.5px solid var(--teal);animation:tapring 2.6s ease-out infinite;}
   @keyframes tapring{0%{transform:scale(1);opacity:.9;}70%,100%{transform:scale(1.9);opacity:0;}}
   @keyframes tapnudge{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
@@ -332,47 +332,14 @@
   .credit a{color:var(--teal);text-decoration:underline;text-underline-offset:3px;}
   .credit a:hover{opacity:.8;}
   @media (max-width:520px){.nav-cta .btn-primary{padding:9px 14px;font-size:13px;}}
-
-  /* ===== v3: secciones de color ===== */
-  .sec-white,.sec-sky,.sec-gold{
-    --ink:#241a5e; --ink-dim:#4a4283; --line:rgba(36,26,94,.16);
-    --teal:#5a3fc4; --gold:#5a3fc4; --coral:#7a5fd0; --violet:#5a3fc4; --sage:#2f6a93;
-    color:var(--ink);
-  }
-  .sec-white{background:#ffffff;--panel:#f3f0ff;}
-  .sec-sky{background:#cdeefb;--panel:rgba(255,255,255,.78);}
-  .sec-gold{background:#f6d36b;--panel:rgba(255,255,255,.72);}
-  .sec-white .btn-primary,.sec-sky .btn-primary,.sec-gold .btn-primary{background:#5a3fc4;color:#fff;}
-  .sec-white .btn-primary:hover,.sec-sky .btn-primary:hover,.sec-gold .btn-primary:hover{box-shadow:0 8px 28px rgba(90,63,196,.35);}
-  .sec-white .btn-outline,.sec-sky .btn-outline,.sec-gold .btn-outline{border-color:#5a3fc4;}
-  .sec-white .chk,.sec-sky .chk,.sec-gold .chk{background:rgba(36,26,94,.04);}
-  .sec-white .chk[aria-checked="true"],.sec-sky .chk[aria-checked="true"],.sec-gold .chk[aria-checked="true"]{background:rgba(90,63,196,.1);}
-  .sec-white .chk[aria-checked="true"] .box,.sec-sky .chk[aria-checked="true"] .box,.sec-gold .chk[aria-checked="true"] .box{color:#fff;}
-  .sec-white .gauge .track,.sec-sky .gauge .track,.sec-gold .gauge .track{stroke:rgba(36,26,94,.12);}
-  .sec-white .gauge .bar,.sec-sky .gauge .bar,.sec-gold .gauge .bar{stroke:#5a3fc4!important;}
-  .sec-white .meter.ready .btn,.sec-sky .meter.ready .btn,.sec-gold .meter.ready .btn{box-shadow:0 8px 30px rgba(90,63,196,.35);}
-  .sec-white .notfor,.sec-sky .notfor,.sec-gold .notfor,
-  .sec-white .guar-card,.sec-sky .guar-card,.sec-gold .guar-card,
-  .sec-white .sunday,.sec-sky .sunday,.sec-gold .sunday,
-  .sec-white .acc-body .policy,.sec-sky .acc-body .policy,.sec-gold .acc-body .policy{background:rgba(255,255,255,.7);}
-  .sec-white .chip,.sec-sky .chip,.sec-gold .chip{background:rgba(36,26,94,.05);}
-  .sec-white .chip.free,.sec-sky .chip.free,.sec-gold .chip.free{background:#5a3fc4;color:#fff;border-color:#5a3fc4;}
-  .sec-white details.acc[open]>summary::after,.sec-sky details.acc[open]>summary::after,.sec-gold details.acc[open]>summary::after{color:#fff;}
-  .sec-white .testimonial-card:hover,.sec-sky .testimonial-card:hover,.sec-gold .testimonial-card:hover{box-shadow:0 18px 40px rgba(36,26,94,.14);}
-  .sec-white .testimonial-card::before,.sec-sky .testimonial-card::before,.sec-gold .testimonial-card::before{color:rgba(90,63,196,.12);}
-  .sec-white details.acc:hover,.sec-sky details.acc:hover,.sec-gold details.acc:hover,
-  .sec-white details.acc[open],.sec-sky details.acc[open],.sec-gold details.acc[open]{border-color:rgba(90,63,196,.45);}
-  .sec-white .chk:hover,.sec-sky .chk:hover,.sec-gold .chk:hover{border-color:rgba(90,63,196,.5);}
-  .sec-white .step:hover,.sec-sky .step:hover,.sec-gold .step:hover{border-color:rgba(90,63,196,.5);}
-  .sec-white .quote-card,.sec-sky .quote-card,.sec-gold .quote-card,
-  .sec-white .recon,.sec-sky .recon,.sec-gold .recon,
-  .sec-white .month,.sec-sky .month,.sec-gold .month{background-image:none;}
-  .sec-white .comm,.sec-sky .comm,.sec-gold .comm{background:var(--panel);border-color:var(--line);}
-  .sec-white .t-photo,.sec-sky .t-photo,.sec-gold .t-photo{color:#fff;border-color:rgba(90,63,196,.35);background:linear-gradient(135deg,#5a3fc4,#2f6a93);}
-  .sec-white .avatar-ring,.sec-sky .avatar-ring,.sec-gold .avatar-ring{color:#fff;background:linear-gradient(135deg,#5a3fc4,#8a73e8);}
-  .sec-white .poster,.sec-sky .poster,.sec-gold .poster{border-color:rgba(36,26,94,.18);box-shadow:0 20px 50px rgba(36,26,94,.22);}
-  .sec-white ::selection,.sec-sky ::selection,.sec-gold ::selection{background:#5a3fc4;color:#fff;}
-  footer{background:var(--bg);}
+  /* ===== secciones con fondo blanco (respiro) ===== */
+  .sec-light{background:#FFFFFF;color:var(--ink);--ink:#191247;--ink-dim:#4a4478;--line:rgba(25,18,71,.14);--panel:#f4f2fc;--teal:#2b6a8f;--sage:#4f7a9c;}
+  .sec-light .btn-primary{background:#191247;color:#FFFFFF;}
+  .sec-light .btn-primary:hover{box-shadow:0 8px 30px rgba(25,18,71,.28);}
+  .sec-light .testimonial-card:hover{box-shadow:0 18px 45px rgba(25,18,71,.12);}
+  .sec-light .testimonial-card::before{color:rgba(43,106,143,.14);}
+  .sec-light .t-photo{color:#FFFFFF;border-color:rgba(43,106,143,.35);}
+  .sec-light .quote-card{box-shadow:0 14px 40px rgba(25,18,71,.08);}
 </style>
 <noscript><style>.hero h1.loading{opacity:1;}</style></noscript>
 </head>
@@ -437,7 +404,7 @@
     </div>
   </div>
 
-  <section id="problema" class="sec-white">
+  <section id="problema">
     <div class="wrap">
       <div class="about">
         <div class="about-copy reveal">
@@ -465,7 +432,7 @@
     </div>
   </section>
 
-  <section id="futuro" class="sec-sky" style="padding-top:20px;">
+  <section id="futuro" style="padding-top:20px;">
     <div class="wrap">
       <div class="about">
         <div class="about-card reveal">
@@ -489,7 +456,7 @@
     </div>
   </section>
 
-  <section id="historia" class="sec-gold">
+  <section id="historia" class="sec-light">
     <div class="wrap story">
       <div class="quote-card reveal">
         <span class="mark">“</span>
@@ -513,7 +480,7 @@
     </div>
   </section>
 
-  <section id="acompanarte" class="sec-white" style="padding-top:20px;">
+  <section id="acompanarte" style="padding-top:20px;">
     <div class="wrap">
       <div class="about">
         <div class="about-copy reveal">
@@ -533,7 +500,7 @@
     </div>
   </section>
 
-  <section id="ayuda" class="sec-sky" style="padding-top:20px;">
+  <section id="ayuda" style="padding-top:20px;">
     <div class="wrap">
       <div class="about">
         <div class="about-card reveal">
@@ -555,7 +522,7 @@
     </div>
   </section>
 
-  <section id="reconocerte" class="sec-gold" style="padding-top:20px;">
+  <section id="reconocerte" style="padding-top:20px;">
     <div class="wrap">
       <div class="recon reveal">
         <div>
@@ -609,7 +576,7 @@
     </div>
   </section>
 
-  <section id="programa" class="sec-white">
+  <section id="programa">
     <div class="wrap">
       <div class="section-head reveal">
         <h2 class="serif">Cómo funciona el programa</h2>
@@ -651,7 +618,7 @@
     </div>
   </section>
 
-  <section id="metodo" class="sec-sky" style="padding-top:20px;">
+  <section id="metodo" style="padding-top:20px;">
     <div class="wrap">
       <div class="section-head method-intro reveal">
         <h2 class="serif">El método CASA: cómo trabajamos los dos meses</h2>
@@ -677,7 +644,7 @@
     </div>
   </section>
 
-  <section id="testimonios" class="sec-gold">
+  <section id="testimonios" class="sec-light">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="section-tag">Testimonios</span>
@@ -726,7 +693,7 @@
     </div>
   </section>
 
-  <section id="faq" class="sec-white" style="padding-top:20px;">
+  <section id="faq" style="padding-top:20px;">
     <div class="wrap">
       <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
         <h2 class="serif">Preguntas frecuentes</h2>
@@ -757,7 +724,7 @@
     </div>
   </section>
 
-  <section id="garantia" class="sec-sky" style="padding-top:20px;padding-bottom:30px;">
+  <section id="garantia" style="padding-top:20px;padding-bottom:30px;">
     <div class="wrap">
       <details class="acc acc-lg reveal">
         <summary>Garantía de satisfacción</summary>

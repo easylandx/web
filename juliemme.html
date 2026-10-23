@@ -173,9 +173,18 @@
   .sunday p{font-size:15px;margin:0;}
 
 
-  /* VIDEO TESTIMONIO */
-  .t-video{width:min(100%,300px);aspect-ratio:9/16;margin:0 auto 50px;border-radius:24px;overflow:hidden;border:0;background:transparent;box-shadow:none;}
-  .t-video iframe{display:block;width:100%;height:100%;border:0;}
+  /* BOTON VIDEO TESTIMONIO */
+  .t-btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;background:linear-gradient(135deg,#191247 0%,#2b6a8f 100%);color:#fff;font-weight:600;font-size:14.5px;letter-spacing:.01em;text-decoration:none;overflow:hidden;box-shadow:0 8px 22px rgba(25,18,71,.28);transition:transform .25s ease,box-shadow .25s ease;animation:tbtnpulse 2.4s ease-out infinite;}
+  .t-btn::before{content:'';position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:tbtnshine 3.2s ease-in-out infinite;}
+  .t-btn .t-play{display:inline-block;font-size:12px;transition:transform .25s ease;animation:tbtnnudge 1.4s ease-in-out infinite;}
+  .t-btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 32px rgba(25,18,71,.38);}
+  .t-btn:hover .t-play{animation:none;transform:scale(1.25);}
+  .t-btn:active{transform:translateY(-1px) scale(.98);}
+  .t-btn:focus-visible{outline:2px solid #2b6a8f;outline-offset:3px;}
+  @keyframes tbtnshine{0%{left:-70%;}55%,100%{left:130%;}}
+  @keyframes tbtnnudge{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
+  @keyframes tbtnpulse{0%{box-shadow:0 8px 22px rgba(25,18,71,.28),0 0 0 0 rgba(43,106,143,.45);}70%,100%{box-shadow:0 8px 22px rgba(25,18,71,.28),0 0 0 14px rgba(43,106,143,0);}}
+  @media (prefers-reduced-motion:reduce){.t-btn,.t-btn::before,.t-btn .t-play{animation:none;}}
   /* TESTIMONIOS */
   .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   @media (max-width:900px){.testimonials{grid-template-columns:1fr;}}
@@ -659,9 +668,6 @@
         <span class="section-tag">Testimonios</span>
         <h2 class="serif">Probaron mi método CASA y esto les cambió por completo.</h2>
       </div>
-      <div class="t-video reveal">
-        <iframe src="https://drive.google.com/file/d/1d4lXtZnz9s6RqQ8Tn-h5cYlxjmmF4ZQU/preview" title="Video testimonio de Mel" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-      </div>
       <div class="testimonials">
         <article class="testimonial-card reveal">
           <div class="t-head">
@@ -673,6 +679,7 @@
           <p class="t-txt">Se sentía bloqueada, sin energía creativa para trabajar de su arte, y con el peso en el cuerpo de situaciones de su infancia.</p>
           <p class="t-lbl">Después</p>
           <p class="t-txt">Se sintió liviana, recuperó su energía femenina y se desbloqueó su creatividad. Eso le dio mucha energía para trabajar en su arte y en sus sesiones de una manera que antes no podía.</p>
+          <p class="t-txt"><a class="t-btn" href="https://drive.google.com/file/d/1d4lXtZnz9s6RqQ8Tn-h5cYlxjmmF4ZQU/view" target="_blank" rel="noopener"><span class="t-play">▶</span><span>Video Testimonio</span></a></p>
         </article>
         <article class="testimonial-card reveal">
           <div class="t-head">

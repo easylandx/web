@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spain Radar Live</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root {
+    --bg: #0b0f14;
+    --panel: rgba(12, 18, 26, 0.72);
+    --border: rgba(80, 255, 170, 0.25);
+    --accent: #3dffa8;
+    --text: #d7e3ee;
+    --muted: #7f93a6;
+    --err: #ff6b6b;
+  }
+  html, body { height: 100%; margin: 0; background: var(--bg); }
+  #map { position: absolute; inset: 0; background: var(--bg); }
+
+  /* Free OpenStreetMap tiles turned into a dark radar look */
+  .dark-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.6); }
+
+  .hud {
+    position: absolute; top: 14px; left: 14px; z-index: 1000;
+    padding: 12px 16px; min-width: 210px; max-width: calc(100vw - 100px);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.45);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color: var(--text);
+    pointer-events: none;
+  }
+  .hud h1 {
+    margin: 0 0 6px; font-size: 15px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+  }
+  .status { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+  .status.live .dot { background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse 1.6s infinite; }
+  .status.live { color: var(--text); }
+  .status.error .dot { background: var(--err); box-shadow: 0 0 8px var(--err); }
+  .status.error { color: var(--err); }
+  @keyframes pulse { 50% { opacity: .35; } }
+
+  /* Plane markers */
+  .plane-icon { background: none; border: none; }
+  .plane {
+    font-size: 22px; line-height: 1; width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    transform-origin: 50% 50%;
+    filter: drop-shadow(0 0 4px rgba(61,255,168,.55));
+    cursor: pointer;
+  }
+
+  /* Dark popup */
+  .leaflet-popup-content-wrapper {
+    background: rgba(12, 18, 26, 0.94); color: var(--text);
+    border: 1px solid var(--border); border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.55);
+  }
+  .leaflet-popup-tip { background: rgba(12, 18, 26, 0.94); border: 1px solid var(--border); }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+  .leaflet-container a.leaflet-popup-close-button:hover { color: var(--accent); }
+  .leaflet-popup-content { margin: 12px 14px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+  .pop-title { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: .08em; margin-bottom: 8px; }
+  .pop-row { display: flex; justify-content: space-between; gap: 18px; padding: 3px 0; border-top: 1px solid rgba(255,255,255,.06); }
+  .pop-row span:first-child { color: var(--muted); }
+  .pop-row span:last-child { color: var(--text); font-weight: 600; }
+
+  .leaflet-control-attribution { background: rgba(12,18,26,.6) !important; color: var(--muted) !important; }
+  .leaflet-control-attribution a { color: var(--muted) !important; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div class="hud">
+  <h1>Spain Radar Live</h1>
+  <div id="status" class="status"><span class="dot"></span><span id="statusText">Fetching data...</span></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>window.L || document.write('<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"><\/script>');</script>
+<script>window.L || document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');</script>
+<script>
+(function () {
+  'use strict';
+
+  if (typeof L === 'undefined') {
+    document.getElementById('status').className = 'status error';
+    document.getElementById('statusText').textContent = 'Error: map library blocked (cdnjs, jsDelivr and unpkg all unreachable)';
+    return;
+  }
+
+  // ---- Config ----
+  // Mainland Spain + Balearics + Ceuta/Melilla (aircraft outside it are hidden)
+  var BBOX = { lamin: 35.0, lomin: -10.0, lamax: 44.0, lomax: 5.2 };
+  var VIEW = [[35.8, -9.6], [43.9, 4.6]];   // initial map view
+  var REFRESH_MS = 15000;
+
+  // One query can cover at most 250 nm, so Spain is split into 4 overlapping circles
+  // [lat, lon, radius_nm]. Results are merged and de-duplicated by aircraft address.
+  var CELLS = [
+    [42.0, -5.5, 250],   // north-west
+    [42.0,  1.0, 250],   // north-east
+    [38.0, -5.5, 250],   // south-west (incl. Ceuta, Melilla)
+    [38.0,  1.0, 250]    // south-east (incl. Balearics)
+  ];
+
+  // Your own CORS relay (worker.js on Cloudflare). No trailing slash.
+  var WORKER_URL = 'https://madrid-radar.paniaguai.workers.dev';
+
+  function parseAdsb(data) { return data.ac || data.aircraft || []; }
+
+  // The ✈️ glyph points north-east (~45°) in most fonts, so subtract 45°.
+  var EMOJI_OFFSET_DEG = 45;
+
+  // Rough country from the ICAO 24-bit address block [from, to, country]
+  var ICAO_COUNTRIES = [
+    [0x010000,0x017FFF,'Egypt'],[0x020000,0x027FFF,'Morocco'],[0x0A0000,0x0A7FFF,'Algeria'],
+    [0x0D0000,0x0D7FFF,'Mexico'],[0x140000,0x15FFFF,'Russia'],
+    [0x300000,0x33FFFF,'Italy'],[0x340000,0x37FFFF,'Spain'],[0x380000,0x3BFFFF,'France'],
+    [0x3C0000,0x3FFFFF,'Germany'],[0x400000,0x43FFFF,'United Kingdom'],
+    [0x440000,0x447FFF,'Austria'],[0x448000,0x44FFFF,'Belgium'],[0x458000,0x45FFFF,'Denmark'],
+    [0x460000,0x467FFF,'Finland'],[0x468000,0x46FFFF,'Greece'],[0x470000,0x477FFF,'Hungary'],
+    [0x478000,0x47FFFF,'Norway'],[0x480000,0x487FFF,'Netherlands'],[0x488000,0x48FFFF,'Poland'],
+    [0x490000,0x497FFF,'Portugal'],[0x498000,0x49FFFF,'Czechia'],[0x4A0000,0x4A7FFF,'Sweden'],
+    [0x4A8000,0x4AFFFF,'Romania'],[0x4B0000,0x4B7FFF,'Switzerland'],[0x4B8000,0x4BFFFF,'Turkey'],
+    [0x4CA000,0x4CAFFF,'Ireland'],[0x4CC000,0x4CCFFF,'Iceland'],[0x4D0000,0x4D03FF,'Luxembourg'],
+    [0x4D2000,0x4D23FF,'Malta'],[0x508000,0x50FFFF,'Ukraine'],
+    [0x710000,0x717FFF,'Saudi Arabia'],[0x718000,0x71FFFF,'South Korea'],[0x738000,0x73FFFF,'Israel'],
+    [0x760000,0x767FFF,'Singapore'],[0x780000,0x7BFFFF,'China'],[0x7C0000,0x7FFFFF,'Australia'],
+    [0x800000,0x83FFFF,'India'],[0x840000,0x87FFFF,'Japan'],[0x896000,0x896FFF,'United Arab Emirates'],
+    [0xA00000,0xAFFFFF,'United States'],[0xC00000,0xC3FFFF,'Canada'],
+    [0xE00000,0xE3FFFF,'Argentina'],[0xE40000,0xE7FFFF,'Brazil']
+  ];
+  function countryFromHex(hex) {
+    if (!hex || hex.charAt(0) === '~') return 'Unknown';
+    var n = parseInt(hex, 16);
+    if (!isFinite(n)) return 'Unknown';
+    for (var i = 0; i < ICAO_COUNTRIES.length; i++) {
+      if (n >= ICAO_COUNTRIES[i][0] && n <= ICAO_COUNTRIES[i][1]) return ICAO_COUNTRIES[i][2];
+    }
+    return 'Unknown';
+  }
+
+  // ---- Map ----
+  var map = L.map('map', { center: [40.0, -3.5], zoom: 6, zoomControl: false });
+  map.fitBounds(VIEW);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors | Data: adsb.lol / airplanes.live',
+    maxZoom: 19,
+    className: 'dark-tiles'
+  }).addTo(map);
+
+  L.rectangle([[BBOX.lamin, BBOX.lomin], [BBOX.lamax, BBOX.lomax]], {
+    color: '#3dffa8', weight: 1, opacity: 0.25, fill: false, dashArray: '4 6', interactive: false
+  }).addTo(map);
+
+  var markerLayer = L.layerGroup().addTo(map);
+  var markers = {};      // one marker per aircraft, reused between refreshes
+  var routeCache = {};   // callsign -> {o, d, airline} | null | 'loading'
+
+  // ---- UI helpers ----
+  var statusEl = document.getElementById('status');
+  var statusText = document.getElementById('statusText');
+  function setStatus(text, kind) {
+    statusText.textContent = text;
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+  function esc(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function isNum(v) { return typeof v === 'number' && isFinite(v); }
+  function row(k, v) {
+    return '<div class="pop-row"><span>' + esc(k) + '</span><span>' + esc(v) + '</span></div>';
+  }
+
+  function airportLabel(ap) {
+    if (!ap) return 'N/A';
+    var code = ap.iata_code || ap.icao_code || '';
+    var city = ap.municipality || ap.name || '';
+    return (code + ' ' + city).trim() || 'N/A';
+  }
+  function routeRows(callsign) {
+    var cs = (callsign || '').toUpperCase();
+    if (!cs) return '';
+    var r = routeCache[cs];
+    if (r === 'loading' || r === undefined) return row('Route', 'Loading...');
+    if (!r) return row('Route', 'Unknown');
+    return (r.airline ? row('Airline', r.airline) : '') +
+           row('From', airportLabel(r.o)) +
+           row('To', airportLabel(r.d));
+  }
+  function loadRoute(callsign) {
+    var cs = (callsign || '').trim().toUpperCase();
+    if (!cs || routeCache[cs] !== undefined) return Promise.resolve();
+    routeCache[cs] = 'loading';
+    return fetch(WORKER_URL + '/route/' + encodeURIComponent(cs))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        var fr = d && d.response && typeof d.response === 'object' ? d.response.flightroute : null;
+        routeCache[cs] = fr && fr.origin && fr.destination
+          ? { o: fr.origin, d: fr.destination, airline: fr.airline && fr.airline.name }
+          : null;
+      })
+      .catch(function () { routeCache[cs] = null; });
+  }
+  function onPopupOpen(e) {
+    var m = e.target;
+    var cs = m._ac && m._ac.flight ? String(m._ac.flight).trim() : '';
+    loadRoute(cs).then(function () {
+      if (m.isPopupOpen()) m.getPopup().setContent(popupHtml(m._ac));
+    });
+  }
+
+  function popupHtml(a) {
+    var callsign = a.flight ? String(a.flight).trim() : '';
+    var onGround = a.alt_baro === 'ground';
+    var altTxt = onGround ? 'On ground'
+               : isNum(a.alt_baro) ? Math.round(a.alt_baro).toLocaleString('en-US') + ' ft' : 'N/A';
+    var spdTxt = isNum(a.gs) ? Math.round(a.gs) + ' kt' : 'N/A';
+    var hdg = isNum(a.track) ? a.track : a.true_heading;
+    var hdgTxt = isNum(hdg) ? Math.round(hdg) + '°' : 'N/A';
+
+    return '<div class="pop-title">' + esc(callsign || a.r || a.hex || 'N/A') + '</div>' +
+      row('Callsign', callsign || 'N/A') +
+      row('Country', a.country ? a.country : countryFromHex(a.hex) + ' *') +
+      row('Altitude', altTxt) +
+      row('Ground speed', spdTxt) +
+      row('Heading', hdgTxt) +
+      routeRows(callsign) +
+      (a.r ? row('Registration', a.r) : '') +
+      (a.t ? row('Aircraft type', a.t) : '') +
+      '<div style="margin-top:6px;color:var(--muted);font-size:10px">* country of registration, estimated from ICAO address</div>';
+  }
+
+  function planeIcon(heading) {
+    var rot = (isNum(heading) ? heading : 0) - EMOJI_OFFSET_DEG;
+    return L.divIcon({
+      className: 'plane-icon',
+      html: '<div class="plane" style="transform: rotate(' + rot + 'deg);">✈️</div>',
+      iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -10]
+    });
+  }
+
+  // ---- Data ----
+  async function fetchCell(c) {
+    var url = WORKER_URL + '/point/' + c[0] + '/' + c[1] + '/' + c[2];
+    var timer = null;
+    try {
+      // No AbortController: sandboxed viewers can't clone AbortSignal, so race a timer instead
+      var res = await Promise.race([
+        fetch(url),
+        new Promise(function (_, reject) {
+          timer = setTimeout(function () { reject(new Error('timeout')); }, 10000);
+        })
+      ]);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return parseAdsb(await res.json());
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function fetchAircraft() {
+    var results = await Promise.allSettled(CELLS.map(fetchCell));
+    var byHex = {}, ok = 0, errors = [];
+    results.forEach(function (r, i) {
+      if (r.status !== 'fulfilled') {
+        console.warn('area ' + (i + 1) + ' failed:', r.reason);
+        errors.push((r.reason && r.reason.message) || 'error');
+        return;
+      }
+      ok++;
+      r.value.forEach(function (a) {
+        var k = a.hex || (a.flight + '|' + a.lat + '|' + a.lon);
+        var prev = byHex[k];
+        if (!prev || (isNum(a.seen_pos) && (!isNum(prev.seen_pos) || a.seen_pos < prev.seen_pos))) byHex[k] = a;
+      });
+    });
+    if (!ok) throw new Error('all queries failed (' + errors.join(', ') + ')');
+    var list = Object.keys(byHex).map(function (k) { return byHex[k]; });
+    return {
+      list: list, source: 'relay', interval: REFRESH_MS,
+      note: ok < CELLS.length ? ', ' + ok + '/' + CELLS.length + ' areas' : ''
+    };
+  }
+
+  async function update() {
+    var nextIn = 15000;   // retry delay after a total failure
+    try {
+      setStatus('Fetching data...', '');
+      var out = await fetchAircraft();
+
+      var seen = {};
+      var count = 0;
+      out.list.forEach(function (a) {
+        if (!isNum(a.lat) || !isNum(a.lon)) return;
+        if (a.lat < BBOX.lamin || a.lat > BBOX.lamax || a.lon < BBOX.lomin || a.lon > BBOX.lomax) return;
+        if (isNum(a.seen_pos) && a.seen_pos > 60) return;   // stale position
+        var hdg = isNum(a.track) ? a.track : a.true_heading;
+        var key = a.hex || (a.flight + '|' + a.r);
+        seen[key] = true;
+        var m = markers[key];
+        if (m) {
+          m._ac = a;
+          m.setLatLng([a.lat, a.lon]);
+          m.setIcon(planeIcon(hdg));
+          if (m.isPopupOpen()) m.getPopup().setContent(popupHtml(a));
+        } else {
+          m = L.marker([a.lat, a.lon], { icon: planeIcon(hdg), keyboard: false });
+          m._ac = a;
+          m.bindPopup(function (layer) { return popupHtml(layer._ac); }, { closeButton: true, autoPan: true });
+          m.on('popupopen', onPopupOpen);
+          m.addTo(markerLayer);
+          markers[key] = m;
+        }
+        count++;
+      });
+      Object.keys(markers).forEach(function (k) {
+        if (!seen[k]) { markerLayer.removeLayer(markers[k]); delete markers[k]; }
+      });
+
+      nextIn = out.interval;
+      setStatus('Live: ' + count + ' flight' + (count === 1 ? '' : 's') + ' tracked (' + out.source + out.note + ')', 'live');
+    } catch (err) {
+      console.error(err);
+      setStatus('Error: ' + (err && err.message ? err.message : 'request failed') + ' — retrying...', 'error');
+    } finally {
+      setTimeout(update, nextIn);
+    }
+  }
+
+  update();
+})();
+</script>
+</body>
+</html>

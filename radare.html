@@ -194,30 +194,66 @@
     var cs = (callsign || '').toUpperCase();
     if (!cs) return '';
     var r = routeCache[cs];
-    if (r === 'loading' || r === undefined) return row('Route', 'Loading...');
-    if (!r) return row('Route', 'Unknown');
+    if (r === undefined || r === 'loading') return row('Route', 'Loading...');
+    if (r.fail) return row('Route', r.fail);
     return (r.airline ? row('Airline', r.airline) : '') +
            row('From', airportLabel(r.o)) +
            row('To', airportLabel(r.d));
   }
-  function loadRoute(callsign) {
-    var cs = (callsign || '').trim().toUpperCase();
-    if (!cs || routeCache[cs] !== undefined) return Promise.resolve();
+  function getJson(path) {
+    return fetch(WORKER_URL + path).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    });
+  }
+  // Source 1: adsbdb.com (by callsign)
+  function fromAdsbdb(d) {
+    var fr = d && d.response && typeof d.response === 'object' ? d.response.flightroute : null;
+    return fr && fr.origin && fr.destination
+      ? { o: fr.origin, d: fr.destination, airline: fr.airline && fr.airline.name }
+      : null;
+  }
+  // Source 2: adsb.lol routeset (by callsign + position)
+  function fromRouteset(d) {
+    var e = Array.isArray(d) ? d[0] : d;
+    if (!e || e.plausible === false) return null;
+    var aps = e._airports;
+    if (Array.isArray(aps) && aps.length >= 2) {
+      var f = aps[0], t = aps[aps.length - 1];
+      return {
+        o: { iata_code: f.iata, icao_code: f.icao, municipality: f.location, name: f.name },
+        d: { iata_code: t.iata, icao_code: t.icao, municipality: t.location, name: t.name }
+      };
+    }
+    var codes = String(e._airport_codes_iata || e.airport_codes || '').split('-');
+    if (codes.length >= 2 && codes[0] && codes[codes.length - 1]) {
+      return { o: { iata_code: codes[0] }, d: { iata_code: codes[codes.length - 1] } };
+    }
+    return null;
+  }
+  function loadRoute(ac) {
+    var cs = ac && ac.flight ? String(ac.flight).trim().toUpperCase() : '';
+    if (!cs) return Promise.resolve();
+    var cur = routeCache[cs];
+    if (cur && !cur.retry) return Promise.resolve();    // cached, or already loading
     routeCache[cs] = 'loading';
-    return fetch(WORKER_URL + '/route/' + encodeURIComponent(cs))
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) {
-        var fr = d && d.response && typeof d.response === 'object' ? d.response.flightroute : null;
-        routeCache[cs] = fr && fr.origin && fr.destination
-          ? { o: fr.origin, d: fr.destination, airline: fr.airline && fr.airline.name }
-          : null;
+    var errA = null, errB = null;
+    return getJson('/route/' + encodeURIComponent(cs)).then(fromAdsbdb)
+      .catch(function (e) { errA = e; return null; })
+      .then(function (r) {
+        if (r) return r;
+        return getJson('/routeset/' + encodeURIComponent(cs) + '/' + ac.lat + '/' + ac.lon).then(fromRouteset)
+          .catch(function (e) { errB = e; return null; });
       })
-      .catch(function () { routeCache[cs] = null; });
+      .then(function (r) {
+        routeCache[cs] = r ||
+          (errA && errB ? { fail: 'Lookup failed (' + errA.message + ')', retry: true }
+                        : { fail: 'Not in database' });
+      });
   }
   function onPopupOpen(e) {
     var m = e.target;
-    var cs = m._ac && m._ac.flight ? String(m._ac.flight).trim() : '';
-    loadRoute(cs).then(function () {
+    loadRoute(m._ac).then(function () {
       if (m.isPopupOpen()) m.getPopup().setContent(popupHtml(m._ac));
     });
   }

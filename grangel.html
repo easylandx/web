@@ -34,7 +34,9 @@ a{color:inherit}
 .section--ink{background:var(--ink);color:var(--white)}
 
 h1,h2,h3,h4{font-family:var(--display);line-height:1.04;letter-spacing:-.02em}
-h1{font-size:clamp(2.7rem,6.4vw,5.4rem);font-weight:800}
+h1{font-size:clamp(2.3rem,5.2vw,4.5rem);font-weight:800}
+#hero-title{transition:opacity .35s}
+#hero-title.pending{opacity:0}
 h2{font-size:clamp(2rem,4.2vw,3.3rem);font-weight:700;max-width:18ch}
 h3{font-size:1.5rem;font-weight:700}
 p{max-width:62ch}
@@ -185,7 +187,7 @@ footer p{max-width:80ch;margin-top:14px}
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1>We put founders in front of <em>millions.</em></h1>
+        <h1 id="hero-title" class="pending">We put founders in front of <em>millions.</em></h1>
         <p class="lead">GR Angel is Guillermo Flor and Rubén Domínguez Ibar, the writers behind Product Market Fit, The VC Corner and The AI Corner. We write the check, then put you in front of millions of potential customers and investors.</p>
         <div class="actions">
           <a class="btn btn--signal" href="#portfolio">View portfolio</a>
@@ -319,5 +321,87 @@ footer p{max-width:80ch;margin-top:14px}
     <p>GR Angel is a private investment company. It is not a fund and does not publicly offer or sell securities. Nothing on this site constitutes an offer to sell, or a solicitation of an offer to buy, any security, nor investment, legal or tax advice. Portfolio company information is provided for informational purposes only.</p>
   </div>
 </footer>
+<script>
+/* Hero headline: a different sentence from the Google Sheet "grangel sentences" (column A)
+   on every load. Nothing is hard-coded: edit the sheet and the site follows.
+   The sheet must stay shared as "Anyone with the link can view". */
+(function(){
+  var SHEET_ID = "1t-aVklsSeiVVfxN93WYbmsrEPf4YCpLruCx3X4sD79E";
+  var BASE = "https://docs.google.com/spreadsheets/d/" + SHEET_ID + "/gviz/tq";
+  var title = document.getElementById("hero-title");
+  var done = false;
+
+  function reveal(){ title.classList.remove("pending"); }
+  var safety = setTimeout(reveal, 2500); /* never leave the headline hidden */
+
+  function escapeHtml(s){
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  /* Remember the last sentence shown so a refresh never repeats it */
+  function getLast(){ try { return localStorage.getItem("gr_last_sentence"); } catch(e){ return null; } }
+  function setLast(s){ try { localStorage.setItem("gr_last_sentence", s); } catch(e){} }
+
+  function show(sentences){
+    if (done || !sentences.length) return;
+    done = true;
+    var last = getLast();
+    var pool = sentences.filter(function(s){ return s !== last; });
+    if (!pool.length) pool = sentences;
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    setLast(pick);
+    /* *text* in the sheet becomes the highlighted part of the headline */
+    title.innerHTML = escapeHtml(pick).replace(/\*([^*]+)\*/g, "<em>$1</em>");
+    clearTimeout(safety);
+    reveal();
+  }
+
+  /* Method 1: Google's JSON-in-a-script-tag response (works without CORS, even from a local file) */
+  function loadViaScript(){
+    var cb = "grSheet" + Date.now();
+    window[cb] = function(res){
+      try {
+        var list = res.table.rows.map(function(r){
+          return r.c && r.c[0] && r.c[0].v != null ? String(r.c[0].v).trim() : "";
+        }).filter(Boolean);
+        show(list);
+      } catch(e){ loadViaFetch(); }
+      delete window[cb];
+    };
+    var s = document.createElement("script");
+    s.src = BASE + "?tqx=out:json;responseHandler:" + cb + "&sheet=Sheet1&range=A:A&headers=0&_=" + Date.now();
+    s.onerror = loadViaFetch;
+    document.head.appendChild(s);
+  }
+
+  /* Method 2: CSV fallback */
+  function parseCsvFirstColumn(text){
+    var rows = [], cur = "", inQ = false, row = [];
+    for (var i = 0; i < text.length; i++){
+      var c = text[i];
+      if (inQ){
+        if (c === '"'){ if (text[i+1] === '"'){ cur += '"'; i++; } else { inQ = false; } }
+        else { cur += c; }
+      } else if (c === '"'){ inQ = true; }
+      else if (c === ","){ row.push(cur); cur = ""; }
+      else if (c === "\n" || c === "\r"){
+        if (c === "\r" && text[i+1] === "\n") i++;
+        row.push(cur); rows.push(row); row = []; cur = "";
+      } else { cur += c; }
+    }
+    if (cur !== "" || row.length){ row.push(cur); rows.push(row); }
+    return rows.map(function(r){ return (r[0] || "").trim(); }).filter(Boolean);
+  }
+  function loadViaFetch(){
+    if (done) return;
+    fetch(BASE + "?tqx=out:csv&sheet=Sheet1&range=A:A&_=" + Date.now(), {cache:"no-store"})
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(text){ show(parseCsvFirstColumn(text)); })
+      .catch(reveal); /* keep default headline */
+  }
+
+  loadViaScript();
+})();
+</script>
 </body>
 </html>

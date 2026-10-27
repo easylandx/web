@@ -54,6 +54,11 @@ p{max-width:62ch}
 .band-links{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
 .band-links a{display:block;padding:28px;border-radius:18px;background:var(--ink);color:var(--white);text-decoration:none;transition:transform .2s,background .2s}
 .band-links a:hover{transform:translateY(-4px);background:var(--ink-2)}
+/* Instagram: compact pill buttons with icon */
+.social{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.social a{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:999px;color:var(--ink);font-weight:600;text-decoration:none;box-shadow:inset 0 0 0 2px var(--ink);transition:background .2s,color .2s}
+.social a:hover{background:var(--ink);color:var(--white)}
+.social svg{width:22px;height:22px;flex:none}
 .band-links strong{display:block;font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;overflow-wrap:anywhere}
 .band-links span{display:block;margin-top:8px;color:var(--mist);font-size:.95rem}
 
@@ -309,6 +314,10 @@ footer p{max-width:80ch;margin-top:14px}
         <a href="https://grangel.co"><strong>grangel.co</strong><span>Investments, portfolio and how to back us</span></a>
         <a href="https://www.thevccorner.com"><strong>thevccorner.com</strong><span>Venture capital news and fundraising playbooks</span></a>
         <a href="https://www.the-ai-corner.com"><strong>the-ai-corner.com</strong><span>AI workflows, prompts and tools</span></a>
+      </div>
+      <div class="social">
+        <a href="https://www.instagram.com/vccorner/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@vccorner</a>
+        <a href="https://www.instagram.com/guilleflorvc/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@guilleflorvc</a>
       </div>
     </div>
   </section>

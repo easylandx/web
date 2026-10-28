@@ -1039,13 +1039,6 @@ body.legal-open{overflow:hidden}
 .article-body th,.article-body td{padding:.5rem .7rem;border:1px solid #D8C9BE}
 .article-foot{margin-top:1.75rem;padding-top:1.1rem;border-top:1px solid #E7DBD0;font-size:.88rem;color:#53616A}
 .article-foot a{color:#C9000A;text-decoration:underline}
-.article-share{margin-top:1.75rem;padding-top:1.1rem;border-top:1px solid #E7DBD0;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
-.article-share-label{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#53616A;margin-right:.3rem}
-.share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .95rem;border-radius:999px;border:1px solid #D8C9BE;background:#fff;color:#203746;font:600 .85rem/1 'Montserrat','Avenir Next',Arial,sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.share-btn svg{width:16px;height:16px;fill:currentColor;flex:none}
-.share-btn:hover,.share-btn:focus-visible{background:#C9000A;border-color:#C9000A;color:#fff;outline:none}
-.share-photo{margin-left:auto}
-.article-share-msg{flex-basis:100%;margin:.2rem 0 0;font-size:.85rem;color:#53616A;min-height:1.2em}
 body.article-open{overflow:hidden}
 @media(max-width:600px){
   .article-head{padding:.9rem 1.1rem}
@@ -1703,14 +1696,6 @@ body.article-open{overflow:hidden}
         <p class="article-date" id="article-date"></p>
         <h2 class="article-title" id="article-modal-title"></h2>
         <div class="article-body" id="article-body"></div>
-        <div class="article-share" id="article-share">
-          <span class="article-share-label">Compartir</span>
-          <a class="share-btn" id="share-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Compartir en LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
-          <button type="button" class="share-btn" id="share-instagram" aria-label="Compartir en Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>Instagram</button>
-          <a class="share-btn" id="share-x" target="_blank" rel="noopener noreferrer" aria-label="Compartir en X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
-          <button type="button" class="share-btn share-photo" id="share-photo" aria-label="Descargar foto del artículo">Descargar foto</button>
-          <p class="article-share-msg" id="share-msg" role="status" aria-live="polite"></p>
-        </div>
       </div>
     </div>
   </div>
@@ -1809,53 +1794,6 @@ body.article-open{overflow:hidden}
       let lastFocus = null;
 
 
-  /* ---- Compartir (texto + foto; el enlace apunta solo a aspm.es) ---- */
-  var SITE='https://aspm.es',shareTitle='',shareText='',shareImg='',shareMsg=document.getElementById('share-msg'),shareTimer=null;
-  function say(t){shareMsg.textContent=t;clearTimeout(shareTimer);shareTimer=setTimeout(function(){shareMsg.textContent='';},6000);}
-  function fullText(){return shareText+'\n\n'+SITE;}
-  function setShare(title,text,img){
-    shareTitle=title||'';
-    var t=(text||'').replace(/\s+/g,' ').trim();
-    if(t.length>200)t=t.slice(0,200).replace(/\s+\S*$/,'')+'…';
-    shareText=shareTitle+(t?'\n\n'+t:'');
-    shareImg=img||'';shareMsg.textContent='';
-    document.getElementById('share-linkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(SITE);
-    document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(SITE);
-    var dl=document.getElementById('share-photo');dl.style.display=shareImg?'':'none';
-  }
-  function copyText(txt){
-    if(navigator.clipboard&&navigator.clipboard.writeText){return navigator.clipboard.writeText(txt);}
-    return new Promise(function(res,rej){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy')?res():rej();}catch(e){rej(e);}document.body.removeChild(ta);});
-  }
-  function downloadPhoto(){
-    if(!shareImg)return;
-    fetch(shareImg).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){
-      var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(shareImg.split('/').pop()||'foto.jpg').split('?')[0];
-      document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
-    }).catch(function(){window.open(shareImg,'_blank','noopener');});
-  }
-  document.getElementById('share-photo').addEventListener('click',downloadPhoto);
-  // LinkedIn: no admite texto prellenado; se copia el texto para pegarlo en la publicación
-  document.getElementById('share-linkedin').addEventListener('click',function(){
-    copyText(fullText()).then(function(){say('Texto copiado: pégalo en tu publicación de LinkedIn. La foto se puede descargar con «Descargar foto».');}).catch(function(){});
-  });
-  // Instagram: no tiene enlace web para compartir. En móvil se abre el menú de compartir (con la foto si es posible); en ordenador se copia el texto y se abre Instagram.
-  document.getElementById('share-instagram').addEventListener('click',function(){
-    var coarse=window.matchMedia&&window.matchMedia('(pointer:coarse)').matches;
-    if(navigator.share&&coarse){
-      var base={title:shareTitle,text:shareText,url:SITE};
-      var go=function(d){return navigator.share(d);};
-      (shareImg?fetch(shareImg).then(function(r){return r.blob();}).then(function(b){
-        var f=new File([b],'foto.jpg',{type:b.type||'image/jpeg'});
-        return (navigator.canShare&&navigator.canShare({files:[f]}))?go({files:[f],text:fullText()}):go(base);
-      }).catch(function(){return go(base);}):go(base)).catch(function(){});
-      return;
-    }
-    copyText(fullText()).then(function(){say('Texto copiado. Pégalo en Instagram y sube la foto con «Descargar foto».');})
-      .catch(function(){say('No se pudo copiar el texto automáticamente.');});
-    window.open('https://www.instagram.com/','_blank','noopener');
-  });
-
       function openArticle(i, trigger) {
         const a = articles[i];
         if (!a) return;
@@ -1871,7 +1809,6 @@ body.article-open{overflow:hidden}
         elDate.textContent = a.dateLabel;
         elTitle.textContent = a.title;
         elBody.innerHTML = a.bodyHtml;
-        setShare(a.title, elBody.textContent, a.img);
         ov.classList.add('open');
         ov.setAttribute('aria-hidden', 'false');
         document.body.classList.add('article-open');

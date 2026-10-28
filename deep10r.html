@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" class="dark h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep10 - Real Peer-to-Peer 10-Minute Human Connection</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- PeerJS Library for Real WebRTC P2P Video & Data -->
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            },
+            dark: {
+              900: '#0f1117',
+              800: '#161922',
+              700: '#212634',
+              600: '#2d3446',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .glass-card {
+      background: rgba(22, 25, 34, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .amber-glow-btn {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .amber-glow-btn:hover {
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+      transform: translateY(-2px);
+    }
+    
+    .amber-glow-btn:active {
+      transform: translateY(0);
+    }
+
+    .mirror {
+      transform: scaleX(-1);
+    }
+  </style>
+</head>
+
+<body class="bg-dark-900 text-slate-100 font-sans h-full overflow-x-hidden flex flex-col justify-between selection:bg-amber-500 selection:text-dark-900">
+
+  <!-- TOP HEADER -->
+  <header class="w-full max-w-6xl mx-auto px-4 py-4 sm:py-6 flex justify-between items-center z-20">
+    <div class="flex items-center space-x-3 cursor-pointer" onclick="resetToLanding()">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center font-display font-bold text-dark-900 text-xl shadow-lg shadow-amber-500/20">
+        10
+      </div>
+      <div>
+        <h1 class="font-display font-bold text-xl tracking-wider text-slate-100 flex items-center gap-2">
+          DEEP<span class="text-amber-500">10</span>
+        </h1>
+        <p class="text-[10px] text-slate-400 tracking-widest uppercase font-mono">Real P2P Connection</p>
+      </div>
+    </div>
+
+    <!-- Live Network Status -->
+    <div class="glass-pill px-3 py-1.5 rounded-full flex items-center space-x-2 text-xs font-mono text-slate-300">
+      <span id="statusIndicator" class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+        <span id="statusDot" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+      </span>
+      <span id="networkStatusText">Initializing PeerJS...</span>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="w-full max-w-5xl mx-auto px-4 flex-1 flex flex-col justify-center items-center py-4 z-10">
+
+    <!-- ========================================== -->
+    <!-- STATE 1: LANDING & ROOM CREATION/JOIN      -->
+    <!-- ========================================== -->
+    <section id="stateLanding" class="w-full flex flex-col items-center text-center space-y-8 max-w-2xl py-4">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-wide uppercase">
+        <i class="fa-solid fa-wifi text-amber-400"></i> Direct WebRTC Peer-to-Peer
+      </div>
+
+      <h2 class="font-display text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-100 leading-tight">
+        10 minutes of <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500">
+          un-automated presence.
+        </span>
+      </h2>
+
+      <p class="text-slate-400 text-base sm:text-lg max-w-lg font-normal leading-relaxed">
+        Connect directly with a real person for a 10-minute video call anchored by a deep icebreaker prompt.
+      </p>
+
+      <!-- Room Joining / Creation Card -->
+      <div class="w-full glass-card p-6 rounded-2xl border border-slate-800 space-y-5 text-left">
+        
+        <!-- User Handle Input -->
+        <div>
+          <label class="block text-xs font-mono uppercase text-slate-400 mb-1">Your Name / Handle</label>
+          <input type="text" id="userInputName" placeholder="e.g. Alex" class="w-full bg-dark-900/90 border border-slate-700 focus:border-amber-500 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none transition-colors">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          
+          <!-- Option A: Create Room -->
+          <button onclick="createRoom()" class="amber-glow-btn w-full py-3.5 px-4 rounded-xl text-dark-900 font-display font-bold text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-plus-circle"></i>
+            <span>Create New Room</span>
+          </button>
+
+          <!-- Option B: Join via Room Code -->
+          <div class="flex gap-2">
+            <input type="text" id="joinRoomCodeInput" placeholder="6-Digit Code" uppercase maxlength="6" class="w-full bg-dark-900/90 border border-slate-700 focus:border-amber-500 rounded-xl px-3 py-2 text-sm text-center font-mono tracking-widest text-slate-100 focus:outline-none uppercase">
+            <button onclick="joinRoomFromInput()" class="bg-dark-700 hover:bg-dark-600 text-amber-400 border border-slate-700 hover:border-amber-500/50 px-4 py-2 rounded-xl font-display font-bold text-sm transition-all flex items-center justify-center">
+              Join
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Features Checklist -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full text-xs text-slate-400 text-center pt-2">
+        <div class="flex items-center justify-center gap-2">
+          <i class="fa-solid fa-lock text-amber-500"></i>
+          <span>Direct P2P Encrypted Call</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i class="fa-solid fa-stopwatch text-amber-500"></i>
+          <span>Strict 10-Min Auto Timer</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i class="fa-solid fa-hand-wave text-amber-500"></i>
+          <span>Mutual Opt-in Wave</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- STATE 2: WAITING ROOM / INVITE SCREEN     -->
+    <!-- ========================================== -->
+    <section id="stateWaiting" class="hidden w-full max-w-lg flex flex-col items-center text-center space-y-6 py-8">
+      
+      <div class="relative w-28 h-28 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border border-amber-500/30 animate-ping"></div>
+        <div class="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/50 flex items-center justify-center text-amber-400 text-2xl shadow-lg shadow-amber-500/20">
+          <i class="fa-solid fa-user-plus animate-pulse"></i>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-display text-2xl font-bold text-slate-100">Waiting for Partner to Join</h3>
+        <p class="text-xs text-slate-400 font-mono mt-1">Share this Room Code or link with a friend or test device.</p>
+      </div>
+
+      <!-- Shareable Code Box -->
+      <div class="w-full glass-card p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div>
+          <span class="text-[10px] font-mono uppercase text-slate-400 tracking-wider">Room Code</span>
+          <div id="displayRoomCode" class="text-3xl font-mono font-bold text-amber-400 tracking-widest py-1">------</div>
+        </div>
+
+        <button onclick="copyInviteLink()" class="w-full bg-dark-900/90 hover:bg-dark-700 text-slate-200 border border-amber-500/40 py-3 px-4 rounded-xl font-mono text-xs flex items-center justify-center gap-2 transition-all">
+          <i class="fa-regular fa-copy text-amber-400"></i>
+          <span id="copyLinkBtnText">Copy Shareable Invite Link</span>
+        </button>
+      </div>
+
+      <button onclick="resetToLanding()" class="text-slate-400 hover:text-rose-400 text-xs font-mono transition-colors">
+        <i class="fa-solid fa-xmark mr-1"></i> Cancel Room
+      </button>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- STATE 3: REAL P2P 10-MINUTE CALL          -->
+    <!-- ========================================== -->
+    <section id="stateCall" class="hidden w-full flex flex-col items-center space-y-4 max-w-4xl">
+      
+      <!-- TOP STATUS & TIMER BAR -->
+      <div class="w-full glass-card px-4 py-3 rounded-2xl flex flex-wrap items-center justify-between gap-3 border border-slate-800">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-mono uppercase tracking-widest text-slate-300 font-semibold">Live P2P Stream</span>
+        </div>
+
+        <!-- 10 Min Countdown Clock -->
+        <div class="flex items-center space-x-3 bg-dark-900/90 px-4 py-1.5 rounded-xl border border-amber-500/40">
+          <i class="fa-regular fa-clock text-amber-500 animate-pulse text-sm"></i>
+          <span id="callTimer" class="font-mono text-xl sm:text-2xl font-bold tracking-widest text-amber-400">10:00</span>
+        </div>
+
+        <button onclick="endCallEarly()" class="text-xs font-mono text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 px-3 py-1.5 rounded-lg border border-rose-500/30 transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-phone-slash"></i>
+          <span>End Session</span>
+        </button>
+      </div>
+
+      <!-- ICEBREAKER PROMPT CARD -->
+      <div class="w-full glass-card p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-transparent to-amber-500/5 border border-amber-500/30">
+        <div class="flex justify-between items-center mb-1">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold">
+            <i class="fa-solid fa-comments mr-1"></i> Shared Conversation Icebreaker
+          </span>
+          <button onclick="broadcastNewPrompt()" class="text-xs text-slate-400 hover:text-amber-400 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-arrows-rotate"></i> Sync Next Prompt
+          </button>
+        </div>
+        <p id="activePromptText" class="text-slate-100 text-base sm:text-lg font-display font-medium italic">
+          "What is a small detail of your day today that brought you unexpected joy?"
+        </p>
+      </div>
+
+      <!-- REAL WEBRTC VIDEO GRID -->
+      <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 h-[340px] sm:h-[420px]">
+        
+        <!-- Remote Partner Real Video -->
+        <div class="relative w-full h-full bg-dark-800 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between p-4">
+          <video id="remoteVideo" class="absolute inset-0 w-full h-full object-cover bg-dark-800" autoplay playsinline></video>
+          
+          <div id="remoteVideoFallback" class="absolute inset-0 bg-dark-800 flex flex-col items-center justify-center text-slate-400">
+            <i class="fa-solid fa-user text-4xl mb-2 text-slate-600 animate-pulse"></i>
+            <span class="text-xs font-mono text-slate-500">Connecting video stream...</span>
+          </div>
+
+          <div class="relative z-10 flex justify-between items-center">
+            <div class="glass-pill px-3 py-1 rounded-full text-xs font-mono text-slate-200 flex items-center gap-2">
+              <i class="fa-solid fa-user text-amber-400"></i>
+              <span id="remotePartnerName">Partner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Local Self Video -->
+        <div class="relative w-full h-full bg-dark-800 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between p-4">
+          <video id="localVideo" class="absolute inset-0 w-full h-full object-cover mirror bg-dark-800" autoplay playsinline muted></video>
+          
+          <div id="localVideoFallback" class="absolute inset-0 bg-dark-800 flex flex-col items-center justify-center text-slate-400 hidden">
+            <i class="fa-solid fa-user-slash text-3xl mb-2 text-slate-500"></i>
+            <span class="text-xs font-mono">Camera Muted or Blocked</span>
+          </div>
+
+          <div class="relative z-10 flex justify-between items-center">
+            <div class="glass-pill px-3 py-1 rounded-full text-xs font-mono text-slate-200 flex items-center gap-2">
+              <i class="fa-solid fa-circle text-emerald-400 text-[8px]"></i>
+              <span id="localNameDisplay">You</span>
+            </div>
+          </div>
+
+          <!-- Controls Overlay -->
+          <div class="relative z-10 flex justify-center space-x-3 bg-dark-900/70 backdrop-blur-sm py-2 px-4 rounded-full w-max mx-auto border border-slate-700/50">
+            <button id="toggleMicBtn" onclick="toggleMic()" class="w-9 h-9 rounded-full bg-slate-700 text-slate-200 hover:bg-slate-600 flex items-center justify-center text-sm transition-colors" title="Toggle Mic">
+              <i class="fa-solid fa-microphone" id="micIcon"></i>
+            </button>
+            <button id="toggleCamBtn" onclick="toggleCam()" class="w-9 h-9 rounded-full bg-slate-700 text-slate-200 hover:bg-slate-600 flex items-center justify-center text-sm transition-colors" title="Toggle Camera">
+              <i class="fa-solid fa-video" id="camIcon"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- STATE 4: END & DIGITAL WAVE OPT-IN        -->
+    <!-- ========================================== -->
+    <section id="stateEnd" class="hidden w-full max-w-xl flex flex-col items-center text-center space-y-6 py-6">
+      
+      <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-400 flex items-center justify-center text-dark-900 text-2xl shadow-xl shadow-amber-500/20">
+        <i class="fa-solid fa-hourglass-end"></i>
+      </div>
+
+      <div>
+        <h2 class="font-display text-3xl font-bold text-slate-100">10 Minutes Completed</h2>
+        <p class="text-slate-400 text-sm mt-1">Thank you for sharing your undivided human attention today.</p>
+      </div>
+
+      <!-- Interactive Digital Wave Box -->
+      <div id="waveBox" class="w-full glass-card p-6 rounded-2xl border border-slate-800 space-y-4">
+        <h3 class="font-display font-semibold text-lg text-slate-200">The Mutual Digital Wave</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Would you like to exchange contact details? Information will only be revealed if <strong class="text-amber-400">both</strong> participants click "Great Chat".
+        </p>
+
+        <!-- Social Handle Input -->
+        <div id="contactInputBox" class="text-left">
+          <label class="block text-[10px] font-mono uppercase text-slate-400 mb-1">Your Social Handle or Email to Share</label>
+          <input type="text" id="userContactHandle" placeholder="e.g. @alex_dev or alex@email.com" class="w-full bg-dark-900 border border-slate-700 focus:border-amber-500 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none">
+        </div>
+
+        <div id="waveButtonsGroup" class="flex flex-col sm:flex-row gap-3 pt-2">
+          <button onclick="triggerWaveOptIn()" class="flex-1 amber-glow-btn py-3 px-4 rounded-xl text-dark-900 font-display font-bold text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-hand-wave"></i>
+            <span>Great Chat (Wave)</span>
+          </button>
+          <button onclick="resetToLanding()" class="flex-1 bg-dark-700 hover:bg-dark-600 text-slate-300 py-3 px-4 rounded-xl font-display font-medium text-sm transition-colors">
+            Say Goodbye
+          </button>
+        </div>
+
+        <div id="waveStatusText" class="hidden text-xs font-mono text-amber-400 animate-pulse pt-2">
+          Wave sent! Waiting for partner's wave...
+        </div>
+      </div>
+
+      <!-- Mutual Match Revealed Box -->
+      <div id="mutualSuccessBox" class="hidden w-full glass-card p-6 rounded-2xl border border-amber-500/50 bg-amber-500/5 text-left space-y-3">
+        <div class="flex items-center gap-2 text-emerald-400 font-display font-bold text-base">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>It's a Mutual Match!</span>
+        </div>
+        <p class="text-xs text-slate-300">
+          Both of you clicked Great Chat. Here is your partner's shared contact:
+        </p>
+        <div class="bg-dark-900 p-3 rounded-xl border border-slate-700 flex justify-between items-center font-mono text-sm text-amber-400">
+          <span id="remoteContactDisplay">@partner</span>
+          <button onclick="copyPartnerContact()" class="text-xs text-slate-400 hover:text-slate-200 bg-dark-700 px-2.5 py-1 rounded">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
+      </div>
+
+      <button onclick="resetToLanding()" class="w-full py-3 rounded-xl bg-dark-700 hover:bg-dark-600 text-slate-200 font-display font-semibold text-sm transition-colors border border-slate-700">
+        Return to Home
+      </button>
+
+    </section>
+
+  </main>
+
+  <footer class="w-full max-w-6xl mx-auto px-4 py-4 text-center text-xs font-mono text-slate-500 z-20">
+    Deep10 P2P Protocol &copy; 2026 &bull; Real Peer-to-Peer Human Connection
+  </footer>
+
+
+  <!-- JS P2P REAL APPLICATION ENGINE -->
+  <script>
+    // Icebreaker Prompts
+    const PROMPTS = [
+      "What is a small detail of your day today that brought you unexpected joy?",
+      "What is something you changed your mind about recently?",
+      "What is a piece of advice you received that you actively ignore?",
+      "If you could relive one ordinary 10-minute moment from your past, what would it be?",
+      "What is a simple skill or craft you deeply admire in others?",
+      "What album, book, or story shaped how you view the world during your teenage years?",
+      "What is a habit or ritual you have that feels uniquely yours?",
+      "What is a decision you made on impulse that ended up altering your trajectory?",
+      "What is a belief you held strongly five years ago that you've since softened on?",
+      "What does an ideal slow Sunday morning look like for you?"
+    ];
+
+    // PeerJS & Connection State
+    let peer = null;
+    let dataConn = null;
+    let mediaCall = null;
+    let localStream = null;
+    let roomCode = null;
+    let userName = "Human";
+    let partnerName = "Partner";
+    let isHost = false;
+
+    // Timer & Media Controls State
+    let timerInterval = null;
+    let secondsRemaining = 600;
+    let micMuted = false;
+    let camMuted = false;
+    let myWaveSent = false;
+    let partnerWaveReceived = false;
+    let partnerContactHandle = null;
+
+    // Audio Synthesizer
+    let audioCtx = null;
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function playSound(type) {
+      try {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        const now = audioCtx.currentTime;
+
+        if (type === 'click') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.05);
+          gain.gain.setValueAtTime(0.1, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'connect') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.1);
+          osc.frequency.setValueAtTime(783.99, now + 0.2);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+          osc.start(now);
+          osc.stop(now + 0.4);
+        } else if (type === 'warning') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(330, now);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        }
+      } catch (e) {}
+    }
+
+    // View Navigation
+    function switchState(state) {
+      document.getElementById('stateLanding').classList.add('hidden');
+      document.getElementById('stateWaiting').classList.add('hidden');
+      document.getElementById('stateCall').classList.add('hidden');
+      document.getElementById('stateEnd').classList.add('hidden');
+
+      if (state === 'landing') document.getElementById('stateLanding').classList.remove('hidden');
+      if (state === 'waiting') document.getElementById('stateWaiting').classList.remove('hidden');
+      if (state === 'call') document.getElementById('stateCall').classList.remove('hidden');
+      if (state === 'end') document.getElementById('stateEnd').classList.remove('hidden');
+    }
+
+    // PeerJS Initialization
+    function initPeer(customId = null) {
+      return new Promise((resolve, reject) => {
+        const statusText = document.getElementById('networkStatusText');
+        statusText.innerText = "Connecting to PeerJS Signaling...";
+
+        peer = customId ? new Peer(customId) : new Peer();
+
+        peer.on('open', (id) => {
+          statusText.innerText = "Network Ready";
+          document.getElementById('statusDot').className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500";
+          resolve(id);
+        });
+
+        peer.on('error', (err) => {
+          console.error("PeerJS Error:", err);
+          if (err.type === 'unavailable-id') {
+            alert("Room Code is already active or in use. Generating a new room...");
+            resolve(initPeer());
+          } else {
+            statusText.innerText = "P2P Error: " + err.type;
+            reject(err);
+          }
+        });
+
+        // Handle Incoming Calls (Host side)
+        peer.on('call', async (incomingCall) => {
+          mediaCall = incomingCall;
+          await startLocalMedia();
+          mediaCall.answer(localStream);
+
+          mediaCall.on('stream', (remoteStream) => {
+            attachRemoteStream(remoteStream);
+          });
+        });
+
+        // Handle Incoming Data Connections (Host side)
+        peer.on('connection', (conn) => {
+          dataConn = conn;
+          setupDataListeners();
+        });
+      });
+    }
+
+    // Get User Camera & Mic Media
+    async function startLocalMedia() {
+      if (localStream) return localStream;
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        const localVid = document.getElementById('localVideo');
+        localVid.srcObject = localStream;
+        localVid.classList.remove('hidden');
+        document.getElementById('localVideoFallback').classList.add('hidden');
+        return localStream;
+      } catch (err) {
+        console.warn("Camera access denied or unavailable:", err);
+        document.getElementById('localVideo').classList.add('hidden');
+        document.getElementById('localVideoFallback').classList.remove('hidden');
+        return null;
+      }
+    }
+
+    function attachRemoteStream(stream) {
+      const remoteVid = document.getElementById('remoteVideo');
+      remoteVid.srcObject = stream;
+      document.getElementById('remoteVideoFallback').classList.add('hidden');
+      playSound('connect');
+      switchState('call');
+      start10MinTimer();
+    }
+
+    // Room Creation Logic
+    async function createRoom() {
+      playSound('click');
+      updateUserName();
+      isHost = true;
+      roomCode = Math.floor(100000 + Math.random() * 900000).toString();
+      
+      const peerId = "deep10-room-" + roomCode;
+      await initPeer(peerId);
+
+      document.getElementById('displayRoomCode').innerText = roomCode;
+      switchState('waiting');
+
+      await startLocalMedia();
+    }
+
+    // Join Room Logic
+    async function joinRoomFromInput() {
+      const inputCode = document.getElementById('joinRoomCodeInput').value.trim();
+      if (!inputCode || inputCode.length !== 6) {
+        alert("Please enter a valid 6-digit Room Code.");
+        return;
+      }
+      joinRoom(inputCode);
+    }
+
+    async function joinRoom(targetCode) {
+      playSound('click');
+      updateUserName();
+      isHost = false;
+      roomCode = targetCode;
+
+      await initPeer();
+      await startLocalMedia();
+
+      const hostPeerId = "deep10-room-" + roomCode;
+
+      // Connect Data Channel
+      dataConn = peer.connect(hostPeerId);
+      setupDataListeners();
+
+      // Initiate Video Call
+      if (localStream) {
+        mediaCall = peer.call(hostPeerId, localStream);
+        mediaCall.on('stream', (remoteStream) => {
+          attachRemoteStream(remoteStream);
+        });
+      }
+    }
+
+    function updateUserName() {
+      const val = document.getElementById('userInputName').value.trim();
+      if (val) userName = val;
+      document.getElementById('localNameDisplay').innerText = userName + " (You)";
+    }
+
+    // Data Channel Event Handlers (P2P Messaging)
+    function setupDataListeners() {
+      dataConn.on('open', () => {
+        // Send initial handshake with Name
+        dataConn.send({ type: 'handshake', name: userName });
+      });
+
+      dataConn.on('data', (data) => {
+        if (data.type === 'handshake') {
+          partnerName = data.name || "Partner";
+          document.getElementById('remotePartnerName').innerText = partnerName;
+        } else if (data.type === 'prompt') {
+          document.getElementById('activePromptText').innerText = `"${data.prompt}"`;
+        } else if (data.type === 'wave') {
+          partnerWaveReceived = true;
+          partnerContactHandle = data.contact;
+          checkMutualWaveMatch();
+        } else if (data.type === 'end_call') {
+          transitionToEndState();
+        }
+      });
+    }
+
+    function broadcastNewPrompt() {
+      playSound('click');
+      const newPrompt = PROMPTS[Math.floor(Math.random() * PROMPTS.length)];
+      document.getElementById('activePromptText').innerText = `"${newPrompt}"`;
+      if (dataConn && dataConn.open) {
+        dataConn.send({ type: 'prompt', prompt: newPrompt });
+      }
+    }
+
+    // Timer Engine
+    function start10MinTimer() {
+      secondsRemaining = 600;
+      updateTimerDisplay();
+
+      if (timerInterval) clearInterval(timerInterval);
+
+      timerInterval = setInterval(() => {
+        secondsRemaining--;
+        updateTimerDisplay();
+
+        if (secondsRemaining === 60) playSound('warning');
+
+        if (secondsRemaining <= 0) {
+          clearInterval(timerInterval);
+          transitionToEndState();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(secondsRemaining / 60);
+      const secs = secondsRemaining % 60;
+      const formatted = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      const timerElem = document.getElementById('callTimer');
+      timerElem.innerText = formatted;
+
+      if (secondsRemaining <= 60) {
+        timerElem.classList.remove('text-amber-400');
+        timerElem.classList.add('text-rose-500', 'animate-pulse');
+      }
+    }
+
+    // Mutual Digital Wave Engine
+    function triggerWaveOptIn() {
+      playSound('click');
+      myWaveSent = true;
+
+      const myContact = document.getElementById('userContactHandle').value.trim() || userName;
+
+      document.getElementById('waveButtonsGroup').classList.add('hidden');
+      document.getElementById('contactInputBox').classList.add('hidden');
+      document.getElementById('waveStatusText').classList.remove('hidden');
+
+      if (dataConn && dataConn.open) {
+        dataConn.send({ type: 'wave', contact: myContact });
+      }
+
+      checkMutualWaveMatch();
+    }
+
+    function checkMutualWaveMatch() {
+      if (myWaveSent && partnerWaveReceived) {
+        document.getElementById('waveBox').classList.add('hidden');
+        document.getElementById('mutualSuccessBox').classList.remove('hidden');
+        document.getElementById('remoteContactDisplay').innerText = partnerContactHandle || partnerName;
+        playSound('connect');
+      }
+    }
+
+    function copyPartnerContact() {
+      const text = document.getElementById('remoteContactDisplay').innerText;
+      copyToClipboard(text);
+      alert("Partner handle copied!");
+    }
+
+    function endCallEarly() {
+      playSound('click');
+      if (dataConn && dataConn.open) {
+        dataConn.send({ type: 'end_call' });
+      }
+      transitionToEndState();
+    }
+
+    function transitionToEndState() {
+      if (timerInterval) clearInterval(timerInterval);
+      stopMedia();
+      switchState('end');
+    }
+
+    function stopMedia() {
+      if (localStream) {
+        localStream.getTracks().forEach(t => t.stop());
+        localStream = null;
+      }
+    }
+
+    function toggleMic() {
+      playSound('click');
+      micMuted = !micMuted;
+      document.getElementById('micIcon').className = micMuted ? 'fa-solid fa-microphone-slash text-rose-400' : 'fa-solid fa-microphone';
+      if (localStream) localStream.getAudioTracks().forEach(t => t.enabled = !micMuted);
+    }
+
+    function toggleCam() {
+      playSound('click');
+      camMuted = !camMuted;
+      document.getElementById('camIcon').className = camMuted ? 'fa-solid fa-video-slash text-rose-400' : 'fa-solid fa-video';
+      if (localStream) localStream.getVideoTracks().forEach(t => t.enabled = !camMuted);
+    }
+
+    function copyInviteLink() {
+      playSound('click');
+      const inviteUrl = window.location.origin + window.location.pathname + '?room=' + roomCode;
+      copyToClipboard(inviteUrl);
+      const btnText = document.getElementById('copyLinkBtnText');
+      btnText.innerText = "Invite Link Copied!";
+      setTimeout(() => { btnText.innerText = "Copy Shareable Invite Link"; }, 2500);
+    }
+
+    function copyToClipboard(text) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+    }
+
+    function resetToLanding() {
+      playSound('click');
+      if (timerInterval) clearInterval(timerInterval);
+      stopMedia();
+      if (peer) peer.destroy();
+      myWaveSent = false;
+      partnerWaveReceived = false;
+      switchState('landing');
+      document.getElementById('waveBox').classList.remove('hidden');
+      document.getElementById('waveButtonsGroup').classList.remove('hidden');
+      document.getElementById('contactInputBox').classList.remove('hidden');
+      document.getElementById('waveStatusText').classList.add('hidden');
+      document.getElementById('mutualSuccessBox').classList.add('hidden');
+    }
+
+    // Check URL query string for auto-joining room links (?room=123456)
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const roomParam = urlParams.get('room');
+      if (roomParam && roomParam.length === 6) {
+        document.getElementById('joinRoomCodeInput').value = roomParam;
+        joinRoom(roomParam);
+      }
+    };
+  </script>
+</body>
+</html>

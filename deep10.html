@@ -37,6 +37,8 @@ header.top .sound{justify-self:end}
 @keyframes blink{50%{opacity:0}}
 .sound{background:none;border:1px solid var(--line);color:var(--dim);padding:6px 12px;border-radius:999px;font:inherit;font-size:12px;cursor:pointer}
 .sound:hover{color:var(--ink);border-color:var(--dim)}
+.soundfix{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;background:var(--amber);color:#1a1205;border:0;border-radius:999px;padding:12px 22px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+.soundfix.hide{display:none}
 
 .screen{display:none;flex:1;animation:rise .5s ease both}
 .screen.active{display:flex;flex-direction:column}
@@ -275,6 +277,7 @@ dialog .row{margin-top:18px}
   </div>
 </dialog>
 <div class="toast" id="toast" role="status"></div>
+<button class="soundfix hide" id="soundFix" type="button" data-es="🔊 Toca para activar el sonido">🔊 Toca para activar el sonido</button>
 
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script>
@@ -328,6 +331,7 @@ dialog .row{margin-top:18px}
     "CHAT DE TEXTO": "TEXT CHAT",
     "Pulsa en cualquier sitio para activar el sonido": "Click anywhere to turn the sound on",
     "No se pudo activar el micrófono · revisa el permiso del navegador": "Couldn’t turn on the microphone · check the browser permission",
+    "🔊 Toca para activar el sonido": "🔊 Tap to turn the sound on",
     "La otra persona no envía audio (sin micrófono)": "The other person isn’t sending audio (no microphone)",
     "TU SALA PRIVADA": "YOUR PRIVATE ROOM",
     "Comparte este enlace: quien lo abra entra en tu sala de vídeo.": "Share this link: whoever opens it joins your video room.",
@@ -513,9 +517,19 @@ dialog .row{margin-top:18px}
     paint(); S.dummyT = setInterval(paint, 500);
     return c.captureStream(2).getVideoTracks()[0];
   }
+  /* Pista de audio silenciosa: si no hay micrófono, el stream saliente igualmente lleva audio,
+     para que la negociación WebRTC deje pasar el sonido de la otra persona */
+  function silentAudioTrack(){
+    ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+    if(ac.state !== 'running') ac.resume();
+    const d = ac.createMediaStreamDestination(), o = ac.createOscillator(), g = ac.createGain();
+    g.gain.value = 0; o.connect(g).connect(d); o.start(); S.silentOsc = o;
+    return d.stream.getAudioTracks()[0];
+  }
   function buildOut(){
     const tr = S.stream ? S.stream.getTracks() : [];
     const out = new MediaStream(tr);
+    if(!tr.some(t => t.kind === 'audio')){ try{ out.addTrack(silentAudioTrack()); }catch(e){} }
     if(!tr.some(t => t.kind === 'video')){ try{ clearInterval(S.dummyT); out.addTrack(dummyTrack()); }catch(e){} }
     S.out = out; return out;
   }
@@ -523,6 +537,7 @@ dialog .row{margin-top:18px}
     if(S.stream){ S.stream.getTracks().forEach(t=>t.stop()); S.stream=null; }
     if(S.out){ S.out.getTracks().forEach(t=>t.stop()); S.out=null; }
     clearInterval(S.dummyT); $('#local').srcObject=null;
+    try{ S.silentOsc && S.silentOsc.stop(); }catch(e){} S.silentOsc = null;
   }
 
   /* ---------- Vídeo remoto simulado (canvas) ---------- */
@@ -596,6 +611,13 @@ dialog .row{margin-top:18px}
         v.play().catch(() => toast('Pulsa en cualquier sitio para activar el sonido'));
       });
       st.addEventListener('addtrack', () => { a.srcObject = st; a.play().catch(()=>{}); });
+      clearInterval(S.audT);
+      S.audT = setInterval(() => {
+        if(!RT.started){ clearInterval(S.audT); $('#soundFix').classList.add('hide'); return; }
+        if(a.srcObject !== st) a.srcObject = st;
+        $('#soundFix').classList.toggle('hide', !(a.paused && v.paused || (a.paused && v.muted)));
+        if(a.paused) a.play().catch(()=>{});
+      }, 1000);
       if(!st.getAudioTracks().length) toast('La otra persona no envía audio (sin micrófono)');
       setT($('#tag'), 'Persona real · en directo');
       chimeMatch(); startCall();
@@ -660,6 +682,11 @@ dialog .row{margin-top:18px}
       return;
     }
   }
+  $('#soundFix').addEventListener('click', () => {
+    const a = $('#remoteAud'), v = $('#remoteVid');
+    a.muted = false; a.volume = 1; a.play().catch(() => { v.muted = false; v.volume = 1; v.play().catch(()=>{}); });
+    $('#soundFix').classList.add('hide');
+  });
   $('#roomLink').addEventListener('focus', e => e.target.select());
   $('#copyLink').addEventListener('click', async () => {
     const i = $('#roomLink');
@@ -730,7 +757,7 @@ dialog .row{margin-top:18px}
     simT.forEach(clearTimeout); simT = [];
     clearInterval(S.timer); cancelAnimationFrame(S.raf); stopCam();
     if(RT.real){ RT.started=false; try{ if(RT.conn && !quiet && reason!=='done') RT.conn.send({t:'leave'}); }catch(e){}
-      try{ RT.call && RT.call.close(); }catch(e){} $('#remoteVid').srcObject=null; $('#remoteAud').srcObject=null;
+      try{ RT.call && RT.call.close(); }catch(e){} $('#remoteVid').srcObject=null; $('#remoteAud').srcObject=null; clearInterval(S.audT); $('#soundFix').classList.add('hide');
       if(reason==='report'){ if(RT.partner) RT.blocked.add(RT.partner); setTimeout(closeNet,400); } }
     $('#silence').classList.remove('on');
     if(reason==='report'){ go('landing'); toast('Llamada cerrada · no volverás a coincidir con esa persona'); return; }

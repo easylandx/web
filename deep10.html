@@ -211,7 +211,8 @@ dialog .row{margin-top:18px}
       <div class="stagecol">
       <div class="stage">
         <canvas id="remote" width="800" height="450"></canvas>
-        <video id="remoteVid" class="hide" autoplay playsinline></video>
+        <video id="remoteVid" class="hide" autoplay playsinline muted></video>
+        <audio id="remoteAud" autoplay playsinline style="display:none"></audio>
         <div class="tag" id="tag">Persona anónima · señal simulada</div>
         <div class="cue" id="cue" role="status"></div>
         <div class="silence" id="silence"><div>Silencio cómodo<small id="silenceTxt" data-noi18n>Respirar también es conversar · 30 s</small></div></div>
@@ -326,6 +327,7 @@ dialog .row{margin-top:18px}
     "Sin cámara ni micrófono · seguimos con el chat de texto": "No camera or microphone · continuing with text chat",
     "CHAT DE TEXTO": "TEXT CHAT",
     "Pulsa en cualquier sitio para activar el sonido": "Click anywhere to turn the sound on",
+    "No se pudo activar el micrófono · revisa el permiso del navegador": "Couldn’t turn on the microphone · check the browser permission",
     "La otra persona no envía audio (sin micrófono)": "The other person isn’t sending audio (no microphone)",
     "TU SALA PRIVADA": "YOUR PRIVATE ROOM",
     "Comparte este enlace: quien lo abra entra en tu sala de vídeo.": "Share this link: whoever opens it joins your video room.",
@@ -450,6 +452,7 @@ dialog .row{margin-top:18px}
     if(!S.soundOn) return;
     try{
       ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+      if(ac.state !== 'running') ac.resume();
       const o=ac.createOscillator(), g=ac.createGain(), st=ac.currentTime+delay;
       o.type=type; o.frequency.value=f;
       g.gain.setValueAtTime(0,st); g.gain.linearRampToValueAtTime(v,st+.02); g.gain.exponentialRampToValueAtTime(.0001,st+d);
@@ -467,6 +470,19 @@ dialog .row{margin-top:18px}
     e.target.setAttribute('aria-pressed', S.soundOn);
   });
 
+  /* Desbloqueo de audio: móviles bloquean el sonido hasta que hay un toque del usuario */
+  function unlockAudio(){
+    try{
+      ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+      if(ac.state !== 'running') ac.resume();
+      const s = ac.createBufferSource(); s.buffer = ac.createBuffer(1,1,22050); s.connect(ac.destination); s.start(0);
+    }catch(e){}
+    const a = $('#remoteAud');
+    if(a && a.srcObject && a.paused) a.play().catch(()=>{});
+  }
+  ['pointerdown','touchend','click','keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { passive:true }));
+  document.addEventListener('visibilitychange', () => { if(!document.hidden) unlockAudio(); });
+
 
   /* ---------- Cámara local (opcional) ---------- */
   async function startCam(){
@@ -480,6 +496,7 @@ dialog .row{margin-top:18px}
     $('#local').srcObject = hasV ? S.stream : null;
     $('#pip').classList.toggle('nocam', !hasV);
     if(!hasV) setT($('#pipOff'), 'Sin cámara · sigues con el chat de texto');
+    if(S.stream && !S.stream.getAudioTracks().length) setTimeout(() => toast('No se pudo activar el micrófono · revisa el permiso del navegador'), 400);
   }
   /* Stream saliente: pistas reales + una pista de vídeo de relleno si falta la cámara */
   function dummyTrack(){
@@ -546,7 +563,7 @@ dialog .row{margin-top:18px}
     for(const x of [RT.call, RT.conn]) try{ x && x.close(); }catch(e){}
     for(const x of [RT.peer, RT.q, RT.room]) try{ x && x.destroy(); }catch(e){}
     Object.assign(RT, { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, started:false, vote:null, partner:null });
-    $('#remoteVid').srcObject = null;
+    $('#remoteVid').srcObject = null; $('#remoteAud').srcObject = null;
   }
   const mkPeer = id => new Promise(res => {
     const p = id ? new Peer(id) : new Peer();
@@ -570,9 +587,15 @@ dialog .row{margin-top:18px}
       if(JOIN){ JOIN = null; try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} $('#inviteNote').classList.add('hide'); }
       clearInterval(S.msgT); clearTimeout(S.matchT);
       const v = $('#remoteVid'); v.srcObject = st; v.classList.remove('hide'); $('#remote').classList.add('hide');
-      v.muted = false; v.volume = 1;
-      const pl = v.play && v.play();
-      if(pl && pl.catch) pl.catch(() => { toast('Pulsa en cualquier sitio para activar el sonido'); document.addEventListener('click', () => v.play().catch(()=>{}), { once:true }); });
+      const a = $('#remoteAud');
+      v.muted = true; v.play().catch(()=>{});          /* el vídeo va mudo; el sonido sale por <audio> */
+      a.srcObject = st; a.muted = false; a.volume = 1;
+      const pl = a.play();
+      if(pl && pl.catch) pl.catch(() => {
+        v.muted = false; v.volume = 1;                    /* plan B: sonido por el propio vídeo */
+        v.play().catch(() => toast('Pulsa en cualquier sitio para activar el sonido'));
+      });
+      st.addEventListener('addtrack', () => { a.srcObject = st; a.play().catch(()=>{}); });
       if(!st.getAudioTracks().length) toast('La otra persona no envía audio (sin micrófono)');
       setT($('#tag'), 'Persona real · en directo');
       chimeMatch(); startCall();
@@ -707,7 +730,7 @@ dialog .row{margin-top:18px}
     simT.forEach(clearTimeout); simT = [];
     clearInterval(S.timer); cancelAnimationFrame(S.raf); stopCam();
     if(RT.real){ RT.started=false; try{ if(RT.conn && !quiet && reason!=='done') RT.conn.send({t:'leave'}); }catch(e){}
-      try{ RT.call && RT.call.close(); }catch(e){} $('#remoteVid').srcObject=null;
+      try{ RT.call && RT.call.close(); }catch(e){} $('#remoteVid').srcObject=null; $('#remoteAud').srcObject=null;
       if(reason==='report'){ if(RT.partner) RT.blocked.add(RT.partner); setTimeout(closeNet,400); } }
     $('#silence').classList.remove('on');
     if(reason==='report'){ go('landing'); toast('Llamada cerrada · no volverás a coincidir con esa persona'); return; }

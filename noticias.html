@@ -1070,16 +1070,26 @@
         var excerpt = text(post.excerpt.rendered).trim().substring(0, 110) + '...';
         var a = document.createElement('article');
         a.className = 'news-card';
-        a.innerHTML = '<img class="news-img" loading="lazy" alt="">' +
-          '<div class="news-content"><div class="news-date"></div><h3 class="news-title"></h3>' +
+        var t = text(post.title.rendered);
+        a.innerHTML = '<a class="news-img-link" tabindex="-1" aria-hidden="true"><img class="news-img" loading="lazy" alt=""></a>' +
+          '<div class="news-content"><div class="news-date"></div><h3 class="news-title"><a></a></h3>' +
           '<p class="news-excerpt"></p>' +
-          '<a target="_blank" rel="noopener" class="btn btn-outline" style="padding:0.4rem 0.9rem;font-size:0.82rem;align-self:start;">Leer más »</a></div>';
+          '<a class="btn btn-outline news-more" style="padding:0.4rem 0.9rem;font-size:0.82rem;align-self:start;">Leer noticia »</a></div>';
         a.querySelector('img').src = img;
-        a.querySelector('img').alt = text(post.title.rendered);
+        a.querySelector('img').alt = t;
         a.querySelector('.news-date').textContent = date;
-        a.querySelector('.news-title').textContent = text(post.title.rendered);
+        a.querySelector('.news-title a').textContent = t;
         a.querySelector('.news-excerpt').textContent = excerpt;
-        a.querySelector('a').href = post.link;
+        a.querySelectorAll('a').forEach(function (l) {
+          l.href = post.link;
+          l.addEventListener('click', function (e) {
+            // Ctrl/Cmd/Shift/clic central: comportamiento normal del navegador
+            if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
+            e.preventDefault();
+            if (window.ASPMOpenPost) { window.ASPMOpenPost(post, l); }
+            else { window.open(post.link, '_blank', 'noopener'); }
+          });
+        });
         return a;
       }
 
@@ -1287,5 +1297,143 @@ header .nav-links a.btn-primary:focus-visible {
       .catch(function (e) { console.warn('Hero title: using default text.', e && e.message || e); reveal(); });
   })();
   </script>
+
+<style id="news-modal-css">
+/* ===== Noticias: ventana emergente de artículo (mismo estilo que el Aviso Legal) ===== */
+.news-title a{color:inherit;text-decoration:none}
+.news-title a:hover,.news-title a:focus-visible{color:#C9000A;text-decoration:underline;outline:none}
+.news-card .news-img{cursor:pointer;transition:opacity .2s}
+.news-card .news-img:hover{opacity:.92}
+.news-img-link{display:block}
+
+.article-overlay{position:fixed;inset:0;z-index:2100;display:none;align-items:center;justify-content:center;
+  padding:max(1.25rem,env(safe-area-inset-top,0px)) max(1.25rem,env(safe-area-inset-right,0px)) max(1.25rem,env(safe-area-inset-bottom,0px)) max(1.25rem,env(safe-area-inset-left,0px));
+  background:rgba(32,55,70,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.article-overlay.open{display:flex}
+.article-modal{position:relative;width:100%;max-width:860px;max-height:100%;display:flex;flex-direction:column;
+  background:#FFFDFB;color:#203746;border:1px solid #D8C9BE;border-radius:16px;
+  box-shadow:0 24px 60px rgba(32,55,70,.35);overflow:hidden;font-family:'Montserrat','Avenir Next',Arial,sans-serif}
+.article-modal:focus{outline:none}
+.article-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.5rem;background:#F8F0E8;border-bottom:1px solid #D8C9BE}
+.article-head .article-tag{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C9000A}
+.article-close{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid #D8C9BE;background:#fff;color:#203746;font-size:1.4rem;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+.article-close:hover,.article-close:focus-visible{background:#C9000A;color:#fff;border-color:#C9000A;outline:none}
+.article-scroll{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:1.75rem 2rem 2rem}
+.article-img{width:100%;max-height:340px;object-fit:cover;border-radius:12px;margin:0 0 1.5rem;background:#E8D4C4}
+.article-date{font-size:.85rem;font-weight:700;color:#C9000A;margin:0 0 .5rem}
+.article-title{font-size:1.65rem;line-height:1.25;font-weight:600;letter-spacing:-.03em;color:#203746;margin:0 0 1.25rem}
+.article-body{font-size:1.02rem;line-height:1.75;color:#2B3C47;overflow-wrap:anywhere}
+.article-body p{margin:0 0 1rem}
+.article-body h2,.article-body h3,.article-body h4{color:#203746;line-height:1.3;margin:1.6rem 0 .6rem;font-weight:600}
+.article-body h2{font-size:1.3rem}.article-body h3{font-size:1.15rem}.article-body h4{font-size:1.05rem;color:#C9000A}
+.article-body ul,.article-body ol{margin:0 0 1rem 1.3rem}
+.article-body li{margin-bottom:.35rem}
+.article-body a{color:#C9000A;text-decoration:underline}
+.article-body img{max-width:100%;height:auto;border-radius:12px;margin:.5rem 0 1rem}
+.article-body figure{margin:1rem 0}
+.article-body figcaption{font-size:.85rem;color:#53616A;margin-top:.3rem}
+.article-body blockquote{margin:1rem 0;padding:.4rem 1.1rem;border-left:4px solid #C9000A;background:#F8F0E8;border-radius:0 12px 12px 0}
+.article-body table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:0 0 1rem}
+.article-body th,.article-body td{padding:.5rem .7rem;border:1px solid #D8C9BE}
+.article-foot{margin-top:1.75rem;padding-top:1.1rem;border-top:1px solid #E7DBD0;font-size:.88rem;color:#53616A}
+.article-foot a{color:#C9000A;text-decoration:underline}
+body.article-open{overflow:hidden}
+@media(max-width:600px){
+  .article-head{padding:.9rem 1.1rem}
+  .article-scroll{padding:1.25rem 1.25rem 1.5rem}
+  .article-title{font-size:1.35rem}
+  .article-img{max-height:220px}
+}
+</style>
+
+<div class="article-overlay" id="article-overlay" aria-hidden="true">
+  <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title" tabindex="-1">
+    <div class="article-head">
+      <span class="article-tag">Actualidad ASPM</span>
+      <button type="button" class="article-close" id="article-close" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="article-scroll" id="article-scroll">
+      <img class="article-img" id="article-img" alt="" style="display:none">
+      <p class="article-date" id="article-date"></p>
+      <h2 class="article-title" id="article-modal-title"></h2>
+      <div class="article-body" id="article-body"></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var API='https://aspm.es/wp-json/wp/v2/posts/';
+  var ov=document.getElementById('article-overlay'),modal=ov.querySelector('.article-modal'),
+      scroller=document.getElementById('article-scroll'),elImg=document.getElementById('article-img'),
+      elDate=document.getElementById('article-date'),elTitle=document.getElementById('article-modal-title'),
+      elBody=document.getElementById('article-body'),
+      closeBtn=document.getElementById('article-close'),lastFocus=null,token=0;
+
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function plain(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
+
+  // Solo texto, imágenes y enlaces seguros
+  function sanitize(html){
+    var doc=new DOMParser().parseFromString('<div id="root">'+(html||'')+'</div>','text/html');
+    var root=doc.getElementById('root');
+    root.querySelectorAll('script,style,iframe,object,embed,form,input,button,select,textarea,noscript,link,meta,svg,video,audio').forEach(function(n){n.remove();});
+    root.querySelectorAll('*').forEach(function(el){
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        var n=a.name.toLowerCase();
+        var keep=(el.tagName==='A'&&n==='href')||(el.tagName==='IMG'&&(n==='src'||n==='alt'));
+        if(!keep)el.removeAttribute(a.name);
+      });
+      if(el.tagName==='A'){
+        var h=el.getAttribute('href')||'';
+        if(!/^(https?:|mailto:|tel:)/i.test(h))el.removeAttribute('href');
+        else{el.setAttribute('target','_blank');el.setAttribute('rel','noopener noreferrer');}
+      }
+      if(el.tagName==='IMG'){
+        var s=el.getAttribute('src')||'';
+        if(!/^https?:/i.test(s))el.remove();else el.setAttribute('loading','lazy');
+      }
+    });
+    root.querySelectorAll('p,div,span').forEach(function(el){if(!el.textContent.trim()&&!el.querySelector('img'))el.remove();});
+    return root.innerHTML;
+  }
+
+  function fill(post){
+    var media=post._embedded&&post._embedded['wp:featuredmedia'];
+    var img=media&&media[0]&&media[0].source_url;
+    if(img){elImg.src=img;elImg.alt=plain(post.title.rendered);elImg.style.display='block';}
+    else{elImg.removeAttribute('src');elImg.style.display='none';}
+    elDate.textContent=new Date(post.date).toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'});
+    elTitle.textContent=plain(post.title.rendered);
+    var body=sanitize(post.content&&post.content.rendered);
+    if(!body.replace(/<[^>]+>/g,'').trim()){body='<p>'+esc(plain(post.excerpt&&post.excerpt.rendered).trim())+'</p>';}
+    elBody.innerHTML=body;
+  }
+
+  window.ASPMOpenPost=function(post,trigger){
+    lastFocus=trigger||document.activeElement;
+    var my=++token;
+    if(post.content&&post.content.rendered){fill(post);}
+    else{
+      elImg.style.display='none';elDate.textContent='';elTitle.textContent=plain(post.title.rendered);
+      elBody.innerHTML='<p>Cargando artículo…</p>';
+      fetch(API+post.id+'?_embed').then(function(r){if(!r.ok)throw 0;return r.json();})
+        .then(function(p){if(my===token)fill(p);})
+        .catch(function(){if(my===token)elBody.innerHTML='<p>No se ha podido cargar el artículo. Puedes leerlo en aspm.es.</p>';});
+    }
+    ov.classList.add('open');ov.setAttribute('aria-hidden','false');
+    document.body.classList.add('article-open');
+    scroller.scrollTop=0;modal.focus();
+  };
+  function close(){
+    token++;
+    ov.classList.remove('open');ov.setAttribute('aria-hidden','true');
+    document.body.classList.remove('article-open');elBody.innerHTML='';
+    if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  }
+  closeBtn.addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))close();});
+})();
+</script>
 </body>
 </html>

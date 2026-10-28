@@ -296,7 +296,7 @@
           <div class="video-grid">
             <!-- Remote Stream -->
             <div class="video-box">
-              <video id="remote-video" autoplay playsinline></video>
+              <video id="remote-video" autoplay playsinline controls></video>
               <div class="video-placeholder" id="remote-placeholder">
                 <div class="avatar-icon">👤</div>
                 <span>Waiting for Partner Stream...</span>
@@ -338,6 +338,7 @@
     let currentRoomCode = '';
     let secondsLeft = 600;
     let timerInterval = null;
+    let pendingCalls = new Set();
 
     function isDesktop() {
       return !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -348,98 +349,185 @@
       document.getElementById(id).classList.add('active');
     }
 
+    function setStatus(message) {
+      const el = document.getElementById('chat-status');
+      if (el) el.textContent = message;
+    }
+
+    function attachRemoteStream(stream) {
+      const video = document.getElementById('remote-video');
+      video.srcObject = stream;
+      video.muted = false;
+      video.playsInline = true;
+      document.getElementById('remote-placeholder').style.display = 'none';
+      // Some browsers require an explicit play attempt after assigning srcObject.
+      const playPromise = video.play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(() => {
+          setStatus('Remote video ready — tap the video to play');
+        });
+      }
+      stream.getTracks().forEach(track => {
+        track.addEventListener('ended', () => {
+          video.srcObject = null;
+          document.getElementById('remote-placeholder').style.display = 'flex';
+        });
+      });
+    }
+
     async function setupCamera() {
+      if (localStream && localStream.getTracks().some(track => track.readyState === 'live')) {
+        return localStream;
+      }
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('Camera access requires HTTPS (or localhost) and a supported browser.');
+      }
       try {
-        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        localStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'user' },
+          audio: true
+        });
         const localVideo = document.getElementById('local-video');
         localVideo.srcObject = localStream;
+        localVideo.muted = true;
+        await localVideo.play().catch(() => {});
         document.getElementById('local-placeholder').style.display = 'none';
+        return localStream;
       } catch (err) {
-        console.warn("Camera/Mic denied or unavailable. Proceeding in Text-Only mode.");
         document.getElementById('local-placeholder').style.display = 'flex';
+        throw err;
       }
     }
 
-    function createRoom() {
-      setupCamera();
+    function showCameraError(err) {
+      const message = err && err.name === 'NotAllowedError'
+        ? 'Please allow camera and microphone access in your browser settings, then try again.'
+        : (err && err.message) || 'Could not access the camera or microphone.';
+      alert(message);
+    }
+
+    async function createRoom() {
+      try {
+        await setupCamera();
+      } catch (err) {
+        showCameraError(err);
+        return;
+      }
+
       currentRoomCode = Math.floor(100000 + Math.random() * 900000).toString();
       const inviteUrl = window.location.origin + window.location.pathname + '?room=' + currentRoomCode;
-
       document.getElementById('display-room-code').innerText = currentRoomCode;
       document.getElementById('display-room-url').innerText = inviteUrl;
 
       peer = new Peer('deep10-' + currentRoomCode);
-
       peer.on('open', () => {
         showScreen('screen-share');
+        setStatus('Waiting for partner…');
       });
-
-      peer.on('connection', (c) => {
+      peer.on('connection', c => {
         conn = c;
         setupDataChannel();
         showScreen('screen-call');
         startTimer();
+        // The creator must call the joining peer too. A data connection alone
+        // does not establish a video/audio stream.
+        if (localStream) {
+          const call = peer.call(c.peer, localStream);
+          if (call) watchCall(call);
+        }
       });
+      peer.on('call', call => {
+        if (localStream) call.answer(localStream);
+        else call.answer();
+        watchCall(call);
+      });
+      peer.on('error', err => {
+        console.error('PeerJS error:', err);
+        setStatus('Connection issue: ' + (err.type || err.message || 'unknown error'));
+      });
+    }
 
-      peer.on('call', (call) => {
-        call.answer(localStream);
-        call.on('stream', (remoteStream) => {
-          document.getElementById('remote-video').srcObject = remoteStream;
-          document.getElementById('remote-placeholder').style.display = 'none';
-        });
+    function watchCall(call) {
+      if (pendingCalls.has(call)) return;
+      pendingCalls.add(call);
+      call.on('stream', attachRemoteStream);
+      call.on('close', () => {
+        pendingCalls.delete(call);
+        document.getElementById('remote-video').srcObject = null;
+        document.getElementById('remote-placeholder').style.display = 'flex';
+      });
+      call.on('error', err => {
+        console.error('Video call error:', err);
+        setStatus('Video connection failed — please rejoin the room');
       });
     }
 
     function sendWhatsAppInvite() {
       const inviteUrl = window.location.origin + window.location.pathname + '?room=' + currentRoomCode;
       const message = encodeURIComponent(`Hey! Join me for a 10-minute video conversation on Deep10.\n\nClick here to connect: ${inviteUrl}\nRoom Code: ${currentRoomCode}`);
-
-      let waUrl = '';
-      if (isDesktop()) {
-        // WhatsApp Web for Desktop
-        waUrl = `https://web.whatsapp.com/send?text=${message}`;
-      } else {
-        // Native WhatsApp App for Mobile
-        waUrl = `https://wa.me/?text=${message}`;
-      }
-
+      const waUrl = isDesktop()
+        ? `https://web.whatsapp.com/send?text=${message}`
+        : `https://wa.me/?text=${message}`;
       window.open(waUrl, '_blank');
     }
 
     function copyInviteText() {
       const inviteUrl = window.location.origin + window.location.pathname + '?room=' + currentRoomCode;
       const text = `Hey! Join me for a 10-minute video conversation on Deep10.\nClick here: ${inviteUrl}\nRoom Code: ${currentRoomCode}`;
-      navigator.clipboard.writeText(text).then(() => alert('Invite copied to clipboard!'));
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          () => alert('Invite copied to clipboard!'),
+          () => prompt('Copy this invitation:', text)
+        );
+      } else {
+        prompt('Copy this invitation:', text);
+      }
     }
 
-    function joinPeer() {
+    async function joinPeer() {
       const code = document.getElementById('join-code').value.trim();
-      if (!code) return alert('Enter a 6-digit room code');
+      if (!/^\d{6}$/.test(code)) return alert('Enter the 6-digit room code.');
       currentRoomCode = code;
-      setupCamera();
+
+      try {
+        await setupCamera();
+      } catch (err) {
+        showCameraError(err);
+        return;
+      }
 
       peer = new Peer();
       peer.on('open', () => {
         conn = peer.connect('deep10-' + code);
         setupDataChannel();
-
-        if (localStream) {
-          const call = peer.call('deep10-' + code, localStream);
-          call.on('stream', (remoteStream) => {
-            document.getElementById('remote-video').srcObject = remoteStream;
-            document.getElementById('remote-placeholder').style.display = 'none';
-          });
-        }
+        // Place the media call to the room creator.
+        const call = peer.call('deep10-' + code, localStream);
+        if (call) watchCall(call);
         showScreen('screen-call');
         startTimer();
+        setStatus('Connecting…');
+      });
+      peer.on('call', call => {
+        if (localStream) call.answer(localStream);
+        else call.answer();
+        watchCall(call);
+      });
+      peer.on('error', err => {
+        console.error('PeerJS error:', err);
+        setStatus('Connection issue: ' + (err.type || err.message || 'unknown error'));
       });
     }
 
     function setupDataChannel() {
-      conn.on('data', (data) => {
-        if (data.type === 'msg') {
-          appendMessage(data.sender, data.text, 'peer');
-        }
+      if (!conn) return;
+      conn.on('open', () => setStatus('Chat connected'));
+      conn.on('data', data => {
+        if (data && data.type === 'msg') appendMessage(data.sender, data.text, 'peer');
+      });
+      conn.on('close', () => setStatus('Partner disconnected'));
+      conn.on('error', err => {
+        console.error('Chat connection error:', err);
+        setStatus('Chat connection failed');
       });
     }
 
@@ -447,10 +535,9 @@
       const input = document.getElementById('chat-input');
       const text = input.value.trim();
       if (!text) return;
-
       appendMessage('Me', text, 'me');
       if (conn && conn.open) {
-        conn.send({ type: 'msg', sender: document.getElementById('user-name').value, text: text });
+        conn.send({ type: 'msg', sender: document.getElementById('user-name').value, text });
       }
       input.value = '';
     }
@@ -471,7 +558,6 @@
     function startTimer() {
       secondsLeft = 600;
       if (timerInterval) clearInterval(timerInterval);
-
       timerInterval = setInterval(() => {
         secondsLeft--;
         const m = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
@@ -479,23 +565,28 @@
         document.getElementById('timer-display').innerText = `${m}:${s}`;
         if (secondsLeft <= 0) {
           clearInterval(timerInterval);
-          alert("10 Minutes complete!");
+          alert('10 Minutes complete!');
         }
       }, 1000);
     }
 
     function endCall() {
       if (timerInterval) clearInterval(timerInterval);
+      pendingCalls.forEach(call => call.close());
+      pendingCalls.clear();
+      if (conn) conn.close();
+      if (localStream) localStream.getTracks().forEach(track => track.stop());
+      if (peer) peer.destroy();
       location.reload();
     }
 
-    // Auto-detect room parameter in URL
-    window.addEventListener('DOMContentLoaded', () => {
+    // Tap remote video to retry playback on browsers that block autoplay.
+    document.addEventListener('DOMContentLoaded', () => {
+      const remoteVideo = document.getElementById('remote-video');
+      remoteVideo.addEventListener('click', () => remoteVideo.play().catch(() => {}));
       const params = new URLSearchParams(window.location.search);
       const roomParam = params.get('room');
-      if (roomParam) {
-        document.getElementById('join-code').value = roomParam;
-      }
+      if (roomParam) document.getElementById('join-code').value = roomParam;
     });
   </script>
 </body>

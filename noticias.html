@@ -818,7 +818,6 @@
           <button type="button" class="feed-tab" data-url="https://aspm.es/noticias/entrevista-asociada-del-mes/">Entrevista Asociada del Mes</button>
         </div>
         <div class="feed-grid"><p class="feed-msg">Cargando publicaciones de aspm.es...</p></div>
-        <a class="btn btn-outline feed-more" target="_blank" rel="noopener" href="https://aspm.es/noticias/noticias-aspm/">Ver todo en aspm.es »</a>
       </div>
     </div>
   </section>
@@ -841,7 +840,6 @@
           <button type="button" class="feed-tab" data-url="https://aspm.es/actividades/formacion/">Actividades de Formación</button>
         </div>
         <div class="feed-grid"><p class="feed-msg">Cargando publicaciones de aspm.es...</p></div>
-        <a class="btn btn-outline feed-more" target="_blank" rel="noopener" href="https://aspm.es/actividades/eventos/">Ver todo en aspm.es »</a>
       </div>
     </div>
   </section>
@@ -1095,7 +1093,7 @@
 
       function show(block, url) {
         var grid = block.querySelector('.feed-grid');
-        block.querySelector('.feed-more').href = url;
+        const more = block.querySelector('.feed-more'); if (more) more.href = url;
         grid.innerHTML = '<p class="feed-msg">Cargando publicaciones de aspm.es...</p>';
         loadPosts(url).then(function (posts) {
           grid.innerHTML = '';

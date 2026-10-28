@@ -20,10 +20,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:15p
 /* CRT / tactile layer */
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
   background:repeating-linear-gradient(to bottom,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 3px);
-  mix-blend-mode:overlay}
+  opacity:.6}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:51;
-  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%);
-  animation:flicker 6s infinite steps(1)}
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.4) 100%)}
 @keyframes flicker{0%,100%{opacity:1}47%{opacity:.96}48%{opacity:1}73%{opacity:.97}74%{opacity:1}}
 @media (prefers-reduced-motion:reduce){body::after{animation:none}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
@@ -88,8 +87,8 @@ h1 em{font-style:italic;color:var(--amber)}
 .phase10 .bar>div{background:var(--rose)}
 @keyframes beat{50%{transform:scale(1.04)}}
 .stage{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;max-height:56vh;width:100%}
-#remote{width:100%;height:100%;display:block;transition:filter .6s}
-#remoteVid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;transition:filter .6s}
+#remote{width:100%;height:100%;display:block;}
+#remoteVid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
 .tag{position:absolute;left:12px;top:12px;font-size:11px;color:var(--ink);background:rgba(0,0,0,.55);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
 .pip{position:absolute;right:12px;bottom:12px;width:26%;max-width:200px;aspect-ratio:4/3;border:1px solid var(--amber-d);border-radius:10px;overflow:hidden;background:#120d05}
 .pip video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
@@ -109,6 +108,15 @@ h1 em{font-style:italic;color:var(--amber)}
 .ctl[aria-pressed="true"]{border-color:var(--amber);color:var(--amber)}
 .ctl.quiet{margin-left:auto;color:var(--dim)}
 
+/* invite */
+a.btn{display:inline-block;text-align:center;text-decoration:none}
+.invite{max-width:460px;margin:30px auto 0;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px;text-align:left}
+.invite small{color:var(--amber);letter-spacing:.14em;font-size:11px}
+.invite input{font-size:13px}
+.invite .row{margin-top:14px}
+.invite .btn{padding:13px 16px;font-size:14px}
+.btn.wa{background:#25d366;border-color:#25d366;color:#04210f;font-weight:700}
+.btn.wa:hover{background:#4be082}
 /* chat */
 .callgrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px;align-items:stretch}
 .stagecol{min-width:0}
@@ -165,13 +173,8 @@ dialog .row{margin-top:18px}
     <div style="margin-top:34px">
       <button class="btn primary" id="connectBtn">Conectar ahora</button>
     </div>
+    <p class="hint hide" id="inviteNote" style="margin-top:14px">Te han invitado a una sala privada · pulsa «Conectar ahora» para entrar.</p>
     <div class="status"><span class="dot"></span><span id="liveCount">Emparejamiento en directo · sin registro</span></div>
-    <div class="rules">
-      <div class="rule"><small>01 · CARA A CARA</small><p>Vídeo desde el primer segundo, con una entrada suave.</p></div>
-      <div class="rule"><small>02 · DIRECTO AL GRANO</small><p>Una pregunta cuidada que abre la conversación.</p></div>
-      <div class="rule"><small>03 · 10 MINUTOS EXACTOS</small><p>Un final claro que hace cada minuto más valioso.</p></div>
-    </div>
-    <p class="note">Llamada directa entre las dos personas · no se graba nada · si no hay nadie conectado, puedes probar con una persona simulada.</p>
   </main>
 
   <!-- 2. MATCHING -->
@@ -182,6 +185,15 @@ dialog .row{margin-top:18px}
       <p class="hint" style="margin-top:10px">Suele tardar unos segundos</p>
       <div style="margin-top:26px"><button class="link" id="cancelMatch">Volver al inicio</button></div>
       <div style="margin-top:14px"><button class="link hide" id="simBtn">Aún no hay nadie · probar con una persona simulada</button></div>
+      <div class="invite hide" id="invite">
+        <small>TU SALA PRIVADA</small>
+        <p class="hint">Comparte este enlace: quien lo abra entra en tu sala de vídeo.</p>
+        <input type="text" id="roomLink" readonly data-noi18n>
+        <div class="row">
+          <button class="btn" id="copyLink" type="button">Copiar enlace</button>
+          <a class="btn wa" id="waBtn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -214,11 +226,6 @@ dialog .row{margin-top:18px}
           <button class="ctl" type="submit" id="chatSend">Enviar</button>
         </form>
       </div></aside>
-      </div>
-
-      <div class="prompt">
-        <div><small>PREGUNTA PARA EMPEZAR</small><p id="promptText"></p></div>
-        <button class="ctl" id="swapPrompt" title="Puedes cambiarla una vez">Otra pregunta</button>
       </div>
 
       <div class="controls">
@@ -318,9 +325,19 @@ dialog .row{margin-top:18px}
     "Cámara en pausa": "Camera paused",
     "Sin cámara ni micrófono · seguimos con el chat de texto": "No camera or microphone · continuing with text chat",
     "CHAT DE TEXTO": "TEXT CHAT",
+    "Pulsa en cualquier sitio para activar el sonido": "Click anywhere to turn the sound on",
+    "La otra persona no envía audio (sin micrófono)": "The other person isn’t sending audio (no microphone)",
+    "TU SALA PRIVADA": "YOUR PRIVATE ROOM",
+    "Comparte este enlace: quien lo abra entra en tu sala de vídeo.": "Share this link: whoever opens it joins your video room.",
+    "Copiar enlace": "Copy link",
+    "Enlace copiado": "Link copied",
+    "Enviar por WhatsApp": "Send via WhatsApp",
+    "Te han invitado a una sala privada · pulsa «Conectar ahora» para entrar.": "You’ve been invited to a private room · press “Connect now” to join.",
+    "Esperando a que la otra persona abra la sala…": "Waiting for the other person to open the room…",
+    "Únete a mi charla de 10 minutos en Deep10: ": "Join my 10-minute chat on Deep10: ",
     "Escribe un mensaje…": "Type a message…",
     "Enviar": "Send",
-    "Rompe el hielo con un saludo. También puedes usar la pregunta de arriba.": "Break the ice with a hello. You can also use the question above.",
+    "Rompe el hielo con un saludo.": "Break the ice with a hello.",
     "No se pudo enviar el mensaje": "Could not send the message",
     "¡Hola! Qué gusto charlar contigo.": "Hi! Nice to chat with you.",
     "Qué buena pregunta, déjame pensarlo un momento…": "Great question, let me think about it for a moment…",
@@ -369,30 +386,6 @@ dialog .row{margin-top:18px}
     "Me quedé pensando en lo que contaste. Gracias por esos diez minutos. ✦": "I kept thinking about what you shared. Thanks for those ten minutes. ✦",
     "Ha sido un rato muy agradable. Te dejo mi usuario: @charla.pausada": "That was a really pleasant time. Here’s my username: @charla.pausada",
     "Qué bien se ha pasado el tiempo. Escríbeme aquí: hola@ejemplo.com": "Time flew by. Write to me here: hola@ejemplo.com",
-    "¿Qué rincón de tu infancia sigue apareciendo en tus recuerdos?": "Which corner of your childhood keeps showing up in your memories?",
-    "¿Cuál es el mejor consejo que te han dado sin pretenderlo?": "What’s the best advice anyone has given you without meaning to?",
-    "¿Qué pequeño ritual hace que tu día sea mejor?": "What small ritual makes your day better?",
-    "Si pudieras aprender algo nuevo mañana mismo, ¿qué sería?": "If you could learn something new starting tomorrow, what would it be?",
-    "¿Qué canción te devuelve a un momento feliz?": "Which song takes you back to a happy moment?",
-    "¿Quién te enseñó a ser amable y cómo lo hizo?": "Who taught you to be kind, and how did they do it?",
-    "¿Qué lugar te hace sentir en casa, aunque no sea tu casa?": "What place makes you feel at home, even though it isn’t your home?",
-    "¿Qué te hizo reír de verdad la última vez?": "What made you really laugh the last time?",
-    "¿Qué cambiarías por completo si nadie te lo fuera a discutir?": "What would you change completely if no one were going to argue with you?",
-    "¿Qué objeto pequeño guardas porque tiene una historia bonita?": "What small object do you keep because it has a lovely story?",
-    "¿Cuál ha sido el paseo más memorable que has dado?": "What’s the most memorable walk you’ve ever taken?",
-    "¿Qué aprendiste de alguien muy distinto a ti?": "What did you learn from someone very different from you?",
-    "¿Qué te gustaría que te preguntaran más a menudo?": "What would you like to be asked more often?",
-    "¿Qué comida te hace pensar en una persona concreta?": "Which food makes you think of a specific person?",
-    "¿Cuándo fue la última vez que algo te sorprendió para bien?": "When was the last time something pleasantly surprised you?",
-    "¿Qué idea tenías de la vida adulta de pequeño y cómo ha resultado?": "What idea did you have of adult life as a kid, and how has it turned out?",
-    "¿Qué hobby harías con total entrega si el tiempo no fuese un problema?": "What hobby would you throw yourself into if time were no issue?",
-    "¿Qué momento del día es solo tuyo y cómo lo vives?": "Which moment of the day is just yours, and how do you spend it?",
-    "¿Qué libro, peli o serie te cambió la forma de ver algo?": "Which book, movie or series changed the way you see something?",
-    "¿Qué te da energía cuando ya parece que no queda?": "What gives you energy when it feels like there’s none left?",
-    "¿Qué tradición de tu familia te gustaría que durase siempre?": "Which family tradition would you like to last forever?",
-    "¿Cuál es tu recuerdo favorito de un viaje, grande o pequeño?": "What’s your favorite memory from a trip, big or small?",
-    "¿Qué te gustaría haberle dicho a tu yo de hace diez años?": "What do you wish you had told yourself ten years ago?",
-    "¿Qué te hace sentir orgulloso o orgullosa y rara vez cuentas?": "What makes you feel proud that you rarely talk about?"
   };
   const T = s => (LANG === 'en' && Object.prototype.hasOwnProperty.call(EN, s)) ? EN[s] : s;
   const setT = (el, es) => { el.dataset.es = es; el.textContent = T(es); };
@@ -435,7 +428,7 @@ dialog .row{margin-top:18px}
     document.title = T(TITLE_ES); META.content = T(META_ES);
     applyStatic();
     document.querySelectorAll('[data-es]').forEach(el => { el.textContent = T(el.dataset.es); });
-    renderDone();
+    renderDone(); updateWa();
     const b = $('#langBtn');
     b.textContent = LANG === 'en' ? 'Ver en espa\u00f1ol' : 'Translate to English';
     b.lang = LANG === 'en' ? 'es' : 'en';
@@ -475,39 +468,11 @@ dialog .row{margin-top:18px}
   });
 
 
-  /* ---------- Banco de preguntas (español de España) ---------- */
-  const PROMPTS = [
-    "¿Qué rincón de tu infancia sigue apareciendo en tus recuerdos?",
-    "¿Cuál es el mejor consejo que te han dado sin pretenderlo?",
-    "¿Qué pequeño ritual hace que tu día sea mejor?",
-    "Si pudieras aprender algo nuevo mañana mismo, ¿qué sería?",
-    "¿Qué canción te devuelve a un momento feliz?",
-    "¿Quién te enseñó a ser amable y cómo lo hizo?",
-    "¿Qué lugar te hace sentir en casa, aunque no sea tu casa?",
-    "¿Qué te hizo reír de verdad la última vez?",
-    "¿Qué cambiarías por completo si nadie te lo fuera a discutir?",
-    "¿Qué objeto pequeño guardas porque tiene una historia bonita?",
-    "¿Cuál ha sido el paseo más memorable que has dado?",
-    "¿Qué aprendiste de alguien muy distinto a ti?",
-    "¿Qué te gustaría que te preguntaran más a menudo?",
-    "¿Qué comida te hace pensar en una persona concreta?",
-    "¿Cuándo fue la última vez que algo te sorprendió para bien?",
-    "¿Qué idea tenías de la vida adulta de pequeño y cómo ha resultado?",
-    "¿Qué hobby harías con total entrega si el tiempo no fuese un problema?",
-    "¿Qué momento del día es solo tuyo y cómo lo vives?",
-    "¿Qué libro, peli o serie te cambió la forma de ver algo?",
-    "¿Qué te da energía cuando ya parece que no queda?",
-    "¿Qué tradición de tu familia te gustaría que durase siempre?",
-    "¿Cuál es tu recuerdo favorito de un viaje, grande o pequeño?",
-    "¿Qué te gustaría haberle dicho a tu yo de hace diez años?",
-    "¿Qué te hace sentir orgulloso o orgullosa y rara vez cuentas?"
-  ];
-  const pickPrompt = (avoid) => { let p; do { p = PROMPTS[Math.floor(Math.random()*PROMPTS.length)]; } while (p === avoid); return p; };
-
   /* ---------- Cámara local (opcional) ---------- */
   async function startCam(){
     S.camOn = true; S.stream = null;
-    const tries = [{ video:{ facingMode:'user' }, audio:true }, { video:{ facingMode:'user' } }, { audio:true }];
+    const AUD = { echoCancellation:true, noiseSuppression:true, autoGainControl:true };
+    const tries = [{ video:{ facingMode:'user' }, audio:AUD }, { video:{ facingMode:'user' } }, { audio:AUD }];
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
       for(const c of tries){ try{ S.stream = await navigator.mediaDevices.getUserMedia(c); break; }catch(e){} }
     }
@@ -571,14 +536,16 @@ dialog .row{margin-top:18px}
   /* ---------- Flujo: Landing -> Matching ---------- */
   const matchMsgs = ["Buscando a alguien con ganas de charlar…","Afinando la conexión…","Preparando una buena pregunta…","¡Ya casi! Respira hondo y sonríe"];
   /* ---------- Conexión real (WebRTC con PeerJS) ---------- */
-  const RT = { peer:null, q:null, conn:null, call:null, real:false, searching:false, started:false, vote:null, partner:null,
+  let JOIN = (location.hash.match(/room=([A-Za-z0-9]+)/) || [])[1] || null;
+  const ROOM_PFX = 'deep10-v1-room-';
+  const RT = { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, searching:false, started:false, vote:null, partner:null,
                uid:Math.random().toString(36).slice(2), blocked:new Set() };
   const PFX = 'deep10-v1-wait-', SLOTS = 3;
   function closeNet(){
     RT.searching = false;
     for(const x of [RT.call, RT.conn]) try{ x && x.close(); }catch(e){}
-    for(const x of [RT.peer, RT.q]) try{ x && x.destroy(); }catch(e){}
-    Object.assign(RT, { peer:null, q:null, conn:null, call:null, real:false, started:false, vote:null, partner:null });
+    for(const x of [RT.peer, RT.q, RT.room]) try{ x && x.destroy(); }catch(e){}
+    Object.assign(RT, { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, started:false, vote:null, partner:null });
     $('#remoteVid').srcObject = null;
   }
   const mkPeer = id => new Promise(res => {
@@ -600,9 +567,13 @@ dialog .row{margin-top:18px}
     c.on('stream', st => {
       if(RT.started) return;
       RT.started = true; RT.searching = false; RT.vote = null;
+      if(JOIN){ JOIN = null; try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} $('#inviteNote').classList.add('hide'); }
       clearInterval(S.msgT); clearTimeout(S.matchT);
       const v = $('#remoteVid'); v.srcObject = st; v.classList.remove('hide'); $('#remote').classList.add('hide');
-      v.play && v.play().catch(()=>{});
+      v.muted = false; v.volume = 1;
+      const pl = v.play && v.play();
+      if(pl && pl.catch) pl.catch(() => { toast('Pulsa en cualquier sitio para activar el sonido'); document.addEventListener('click', () => v.play().catch(()=>{}), { once:true }); });
+      if(!st.getAudioTracks().length) toast('La otra persona no envía audio (sin micrófono)');
       setT($('#tag'), 'Persona real · en directo');
       chimeMatch(); startCall();
     });
@@ -626,9 +597,11 @@ dialog .row{margin-top:18px}
     RT.q = await mkPeer();
     if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); $('#cancelMatch').click(); } return; }
     RT.q.on('call', c => { c.answer(S.out || buildOut()); gotCall(c); });
+    const answered = () => { if(RT.conn && !RT.call && !RT.started){ RT.real = true; gotCall((RT.peer || RT.q).call(RT.conn.peer, S.out || buildOut())); return true; } return false; };
     while(RT.searching){
+      if(answered()) return;
       for(const i of [0,1,2].sort(() => Math.random()-.5)){
-        if(!RT.searching) return;
+        if(!RT.searching || answered()) return;
         const id = PFX + i, p = await mkPeer(id);
         if(p){
           RT.peer = p; p.on('connection', c => c.on('data', d => onMsg(d, c)));
@@ -639,16 +612,52 @@ dialog .row{margin-top:18px}
       }
     }
   }
+  async function joinRoom(id){
+    RT.q = await mkPeer();
+    if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); $('#cancelMatch').click(); } return; }
+    RT.q.on('call', c => { c.answer(S.out || buildOut()); gotCall(c); });
+    while(RT.searching && !RT.conn){ if(await dial(ROOM_PFX + id)) return; await wait(1500); }
+  }
+  function roomUrl(id){ return location.href.split('#')[0] + '#room=' + id; }
+  function updateWa(){
+    if(!RT.roomId) return;
+    const txt = encodeURIComponent(T('Únete a mi charla de 10 minutos en Deep10: ') + roomUrl(RT.roomId));
+    // Directo, sin la página intermedia de wa.me: app en móvil, WhatsApp Web en ordenador
+    $('#waBtn').href = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+      ? 'whatsapp://send?text=' + txt
+      : 'https://web.whatsapp.com/send?text=' + txt;
+  }
+  async function openRoom(){
+    for(let k = 0; k < 3 && RT.searching; k++){
+      const id = Math.random().toString(36).slice(2, 10), p = await mkPeer(ROOM_PFX + id);
+      if(!p) continue;
+      if(!RT.searching){ p.destroy(); return; }
+      RT.room = p; RT.roomId = id; p.on('connection', c => c.on('data', d => onMsg(d, c)));
+      $('#roomLink').value = roomUrl(id); updateWa(); $('#invite').classList.remove('hide');
+      return;
+    }
+  }
+  $('#roomLink').addEventListener('focus', e => e.target.select());
+  $('#copyLink').addEventListener('click', async () => {
+    const i = $('#roomLink');
+    try{ await navigator.clipboard.writeText(i.value); }catch(e){ i.select(); try{ document.execCommand('copy'); }catch(_){} }
+    toast('Enlace copiado');
+  });
+  if(JOIN) $('#inviteNote').classList.remove('hide');
+
   $('#connectBtn').addEventListener('click', async () => {
-    closeNet(); go('matching'); $('#simBtn').classList.add('hide');
+    closeNet(); go('matching'); $('#simBtn').classList.add('hide'); $('#invite').classList.add('hide');
     setT($('#matchMsg'), 'Pidiendo cámara y micrófono…');
     await startCam();
     if(!$('#matching').classList.contains('active')){ stopCam(); return; }
     if(!S.stream) toast('Sin cámara ni micrófono · seguimos con el chat de texto');
     buildOut();
-    let i = 0; RT.searching = true; setT($('#matchMsg'), matchMsgs[0]);
-    S.msgT = setInterval(() => { i = Math.min(i+1, matchMsgs.length-1); setT($('#matchMsg'), matchMsgs[i]); }, 1100);
+    RT.searching = true;
     S.matchT = setTimeout(() => $('#simBtn').classList.remove('hide'), 30000);
+    if(JOIN){ setT($('#matchMsg'), 'Esperando a que la otra persona abra la sala…'); joinRoom(JOIN); return; }
+    let i = 0; setT($('#matchMsg'), matchMsgs[0]);
+    S.msgT = setInterval(() => { i = Math.min(i+1, matchMsgs.length-1); setT($('#matchMsg'), matchMsgs[i]); }, 1100);
+    openRoom();
     findPartner();
   });
   $('#cancelMatch').addEventListener('click', () => { clearTimeout(S.matchT); clearInterval(S.msgT); closeNet(); stopCam(); go('landing'); });
@@ -662,8 +671,6 @@ dialog .row{margin-top:18px}
   /* ---------- Llamada ---------- */
   function startCall(){
     Object.assign(S,{ remaining:CALL_SECONDS, c1:false, c10:false, lastCeil:CALL_SECONDS, swaps:1, silenceLeft:0 });
-    S.prompt = pickPrompt(); setT($('#promptText'), S.prompt);
-    $('#swapPrompt').disabled = false; $('#swapPrompt').style.opacity = 1;
     $('#callWrap').classList.remove('phase1','phase10');
     $('#silence').classList.remove('on'); $('#cue').classList.remove('show');
     chatClear(); $('#chatInput').value='';
@@ -677,7 +684,8 @@ dialog .row{margin-top:18px}
     $('#bar').style.width = (Math.max(0,S.remaining)/CALL_SECONDS*100)+'%';
     // Entrada suave: el vídeo remoto se enfoca durante los primeros 20 s
     const elapsed = CALL_SECONDS - S.remaining;
-    $('#remote').style.filter = $('#remoteVid').style.filter = 'blur(' + Math.max(0, 10*(1 - elapsed/20)).toFixed(1) + 'px)';
+    const f = elapsed < 20 ? 'blur(' + (10*(1 - elapsed/20)).toFixed(1) + 'px)' : 'none';
+    if(S.fl !== f){ S.fl = f; $('#remote').style.filter = $('#remoteVid').style.filter = f; }
   }
   let cueT;
   function cue(msg){ const c=$('#cue'); setT(c,msg); c.classList.add('show'); clearTimeout(cueT); cueT=setTimeout(()=>c.classList.remove('show'),4200); }
@@ -732,7 +740,7 @@ dialog .row{margin-top:18px}
   function chatClear(){
     simT.forEach(clearTimeout); simT = []; simI = 0;
     $('#msgs').innerHTML = '';
-    chatPush('sys', 'Rompe el hielo con un saludo. También puedes usar la pregunta de arriba.', true);
+    chatPush('sys', 'Rompe el hielo con un saludo.', true);
   }
   function chatRecv(text){ chatPush('them', String(text).slice(0,300)); tone(660,.12,'triangle',.04); }
   function chatSend(text){
@@ -751,10 +759,6 @@ dialog .row{margin-top:18px}
     S.speed = S.speed===1 ? 30 : 1;
     e.target.setAttribute('aria-pressed', S.speed!==1);
     setT(e.target, S.speed===1 ? 'Demo ×30' : 'Demo ×30 activa');
-  });
-  $('#swapPrompt').addEventListener('click', e => {
-    if(S.swaps<=0) return; S.swaps--; S.prompt=pickPrompt(S.prompt); setT($('#promptText'), S.prompt);
-    e.target.disabled=true; e.target.style.opacity=.45;
   });
   $('#micBtn').addEventListener('click', e => { S.micOn=!S.micOn; if(S.stream) S.stream.getAudioTracks().forEach(t=>t.enabled=S.micOn); e.target.setAttribute('aria-pressed', !S.micOn); setT(e.target, S.micOn?'Micrófono activo':'Micrófono en pausa'); });
   $('#camBtn').addEventListener('click', e => {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,6 +75,12 @@ h1 em{font-style:italic;color:var(--amber)}
 .radar i{position:absolute;left:50%;top:50%;width:50%;height:2px;background:linear-gradient(90deg,var(--amber),transparent);transform-origin:left center;animation:sweep 2s linear infinite}
 @keyframes sweep{to{transform:rotate(360deg)}}
 .match-msg{font-family:var(--serif);font-size:24px;min-height:36px}
+.radar.mini{width:96px;height:96px;margin-bottom:16px}
+.waitov{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:16px;background:rgba(8,6,3,.82);backdrop-filter:blur(3px)}
+.waitov.on{display:grid}
+.waitov .match-msg{font-size:clamp(18px,3vw,24px)}
+.waiting .controls #silenceBtn,.waiting .controls #reportBtn,.waiting .callbar .demo{display:none}
+.waiting .time{color:var(--dim);text-shadow:none}
 
 /* call */
 .callbar{display:flex;align-items:center;gap:16px;margin-bottom:12px}
@@ -179,27 +185,7 @@ dialog .row{margin-top:18px}
     <div class="status"><span class="dot"></span><span id="liveCount">Emparejamiento en directo · sin registro</span></div>
   </main>
 
-  <!-- 2. MATCHING -->
-  <main class="screen" id="matching">
-    <div class="center">
-      <div class="radar" aria-hidden="true"><i></i></div>
-      <div class="match-msg" id="matchMsg" aria-live="polite">Buscando a alguien con ganas de charlar…</div>
-      <p class="hint" style="margin-top:10px">Suele tardar unos segundos</p>
-      <div style="margin-top:26px"><button class="link" id="cancelMatch">Volver al inicio</button></div>
-      <div style="margin-top:14px"><button class="link hide" id="simBtn">Aún no hay nadie · probar con una persona simulada</button></div>
-      <div class="invite hide" id="invite">
-        <small>TU SALA PRIVADA</small>
-        <p class="hint">Comparte este enlace: quien lo abra entra en tu sala de vídeo.</p>
-        <input type="text" id="roomLink" readonly data-noi18n>
-        <div class="row">
-          <button class="btn" id="copyLink" type="button">Copiar enlace</button>
-          <a class="btn wa" id="waBtn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- 3. CALL -->
+  <!-- 2. CALL (también sirve de sala de espera) -->
   <main class="screen" id="call">
     <div id="callWrap">
       <div class="callbar">
@@ -218,6 +204,15 @@ dialog .row{margin-top:18px}
         <div class="tag" id="tag">Persona anónima · señal simulada</div>
         <div class="cue" id="cue" role="status"></div>
         <div class="silence" id="silence"><div>Silencio cómodo<small id="silenceTxt" data-noi18n>Respirar también es conversar · 30 s</small></div></div>
+        <div class="waitov" id="waitOv">
+          <div>
+            <div class="radar mini" aria-hidden="true"><i></i></div>
+            <div class="match-msg" id="matchMsg" aria-live="polite">Esperando a alguien…</div>
+            <p class="hint" style="margin-top:8px">Tu chat y tu cámara ya están listos. Puedes escribir mientras esperas.</p>
+            <p class="hint">El reloj de 10 minutos arranca cuando alguien se una.</p>
+            <div style="margin-top:12px"><button class="link hide" id="simBtn">Aún no hay nadie · probar con una persona simulada</button></div>
+          </div>
+        </div>
         <div class="pip" id="pip"><video id="local" autoplay playsinline muted></video><div class="off" id="pipOff">Cámara apagada</div></div>
       </div>
       </div>
@@ -237,6 +232,15 @@ dialog .row{margin-top:18px}
         <button class="ctl" id="silenceBtn">Silencio cómodo</button>
         <button class="ctl quiet" id="reportBtn">Bloquear y salir</button>
         <button class="ctl" id="leaveBtn">Salir con calma</button>
+      </div>
+      <div class="invite hide" id="invite">
+        <small>TU SALA PRIVADA</small>
+        <p class="hint">Comparte este enlace: quien lo abra entra en tu sala de vídeo.</p>
+        <input type="text" id="roomLink" readonly data-noi18n>
+        <div class="row">
+          <button class="btn" id="copyLink" type="button">Copiar enlace</button>
+          <a class="btn wa" id="waBtn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        </div>
       </div>
     </div>
   </main>
@@ -307,6 +311,11 @@ dialog .row{margin-top:18px}
     "03 · 10 MINUTOS EXACTOS": "03 · EXACTLY 10 MINUTES",
     "Un final claro que hace cada minuto más valioso.": "A clear ending that makes every minute count.",
     "Llamada directa entre las dos personas · no se graba nada · si no hay nadie conectado, puedes probar con una persona simulada.": "Direct call between the two people · nothing is recorded · if nobody is online, you can try with a simulated person.",
+    "Esperando a alguien…": "Waiting for someone…",
+    "Tu chat y tu cámara ya están listos. Puedes escribir mientras esperas.": "Your camera and chat are ready. You can type while you wait.",
+    "El reloj de 10 minutos arranca cuando alguien se una.": "The 10-minute clock starts when someone joins.",
+    "Escribe un mensaje: se entregará en cuanto alguien se una.": "Write a message: it will be delivered as soon as someone joins.",
+    "Alguien se ha unido · ¡empieza la charla!": "Someone has joined · the chat begins!",
     "Buscando a alguien con ganas de charlar…": "Looking for someone who feels like chatting…",
     "Afinando la conexión…": "Tuning the connection…",
     "Preparando una buena pregunta…": "Preparing a good question…",
@@ -626,13 +635,13 @@ dialog .row{margin-top:18px}
   let JOIN = (location.hash.match(/room=([A-Za-z0-9]+)/) || [])[1] || null;
   const ROOM_PFX = 'deep10-v1-room-';
   const RT = { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, searching:false, started:false, vote:null, partner:null,
-               uid:Math.random().toString(36).slice(2), blocked:new Set() };
+               outbox:[], uid:Math.random().toString(36).slice(2), blocked:new Set() };
   const PFX = 'deep10-v1-wait-', SLOTS = 3;
   function closeNet(){
     RT.searching = false;
     for(const x of [RT.call, RT.conn]) try{ x && x.close(); }catch(e){}
     for(const x of [RT.peer, RT.q, RT.room]) try{ x && x.destroy(); }catch(e){}
-    Object.assign(RT, { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, started:false, vote:null, partner:null });
+    Object.assign(RT, { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, started:false, vote:null, partner:null, outbox:[] });
     $('#remoteVid').srcObject = null; $('#remoteAud').srcObject = null;
   }
   const mkPeer = id => new Promise(res => {
@@ -676,6 +685,9 @@ dialog .row{margin-top:18px}
       if(!st.getAudioTracks().length) toast('La otra persona no envía audio (sin micrófono)');
       setT($('#tag'), 'Persona real · en directo');
       chimeMatch(); startCall();
+      const box = RT.outbox; RT.outbox = [];
+      const hasMic = !!(S.stream && S.stream.getAudioTracks().length);
+      box.forEach(m => { try{ RT.conn.send({ t:'chat', m, tts: !hasMic }); }catch(e){} });
     });
   }
   function dial(id){
@@ -695,7 +707,7 @@ dialog .row{margin-top:18px}
   }
   async function findPartner(){
     RT.q = await mkPeer();
-    if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); $('#cancelMatch').click(); } return; }
+    if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); cancelWaiting(); } return; }
     RT.q.on('call', c => { c.answer(S.out || buildOut()); gotCall(c); });
     const answered = () => { if(RT.conn && !RT.call && !RT.started){ RT.real = true; gotCall((RT.peer || RT.q).call(RT.conn.peer, S.out || buildOut())); return true; } return false; };
     while(RT.searching){
@@ -714,7 +726,7 @@ dialog .row{margin-top:18px}
   }
   async function joinRoom(id){
     RT.q = await mkPeer();
-    if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); $('#cancelMatch').click(); } return; }
+    if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); cancelWaiting(); } return; }
     RT.q.on('call', c => { c.answer(S.out || buildOut()); gotCall(c); });
     while(RT.searching && !RT.conn){ if(await dial(ROOM_PFX + id)) return; await wait(1500); }
   }
@@ -750,13 +762,32 @@ dialog .row{margin-top:18px}
   });
   if(JOIN) $('#inviteNote').classList.remove('hide');
 
+  function setWaiting(on){
+    S.waiting = on;
+    $('#waitOv').classList.toggle('on', on);
+    $('#callWrap').classList.toggle('waiting', on);
+  }
+  function cancelWaiting(){
+    clearTimeout(S.matchT); clearInterval(S.msgT); simT.forEach(clearTimeout); simT = [];
+    closeNet(); stopCam(); setWaiting(false);
+    $('#invite').classList.add('hide'); $('#simBtn').classList.add('hide');
+    go('landing');
+  }
   $('#connectBtn').addEventListener('click', async () => {
-    closeNet(); go('matching'); $('#simBtn').classList.add('hide'); $('#invite').classList.add('hide');
-    setT($('#matchMsg'), 'Pidiendo cámara y micrófono…');
+    closeNet(); clearInterval(S.timer); cancelAnimationFrame(S.raf);
+    $('#simBtn').classList.add('hide'); $('#invite').classList.add('hide');
+    $('#remoteVid').classList.add('hide'); $('#remote').classList.remove('hide');
+    clearInterval(S.msgT); clearTimeout(S.matchT);
     await startCam();
-    if(!$('#matching').classList.contains('active')){ stopCam(); return; }
     if(!S.stream) toast('Sin cámara ni micrófono · seguimos con el chat de texto');
     buildOut();
+    /* Entramos directamente a la sala de vídeo y chat, sin esperar a nadie */
+    Object.assign(S,{ remaining:CALL_SECONDS, c1:false, c10:false, lastCeil:CALL_SECONDS, silenceLeft:0 });
+    $('#callWrap').classList.remove('phase1','phase10');
+    $('#silence').classList.remove('on'); $('#cue').classList.remove('show');
+    chatClear(); $('#chatInput').value='';
+    setT($('#tag'), 'Esperando a alguien…');
+    setWaiting(true); render(); go('call');
     RT.searching = true;
     S.matchT = setTimeout(() => $('#simBtn').classList.remove('hide'), 30000);
     if(JOIN){ setT($('#matchMsg'), 'Esperando a que la otra persona abra la sala…'); joinRoom(JOIN); return; }
@@ -765,20 +796,26 @@ dialog .row{margin-top:18px}
     openRoom();
     findPartner();
   });
-  $('#cancelMatch').addEventListener('click', () => { clearTimeout(S.matchT); clearInterval(S.msgT); closeNet(); stopCam(); go('landing'); });
   $('#simBtn').addEventListener('click', () => {
     clearTimeout(S.matchT); clearInterval(S.msgT); closeNet();
     $('#remoteVid').classList.add('hide'); $('#remote').classList.remove('hide');
     setT($('#tag'), 'Persona anónima · señal simulada');
     chimeMatch(); startCall();
+    /* los mensajes escritos mientras esperabas reciben respuesta simulada */
+    RT.outbox = [];
+    simT.push(setTimeout(() => { chatPush('them', SIM_REPLIES[simI++ % SIM_REPLIES.length], true); tone(660,.12,'triangle',.04); }, 1200));
   });
 
   /* ---------- Llamada ---------- */
   function startCall(){
+    const hadWait = S.waiting;
+    setWaiting(false); clearInterval(S.msgT); clearTimeout(S.matchT);
+    $('#invite').classList.add('hide'); $('#simBtn').classList.add('hide');
     Object.assign(S,{ remaining:CALL_SECONDS, c1:false, c10:false, lastCeil:CALL_SECONDS, swaps:1, silenceLeft:0 });
     $('#callWrap').classList.remove('phase1','phase10');
     $('#silence').classList.remove('on'); $('#cue').classList.remove('show');
-    chatClear(); $('#chatInput').value='';
+    if(hadWait) chatPush('sys', 'Alguien se ha unido · ¡empieza la charla!', true);
+    else { chatClear(); $('#chatInput').value=''; }
     render(); go('call');
     cancelAnimationFrame(S.raf); if(!RT.real) S.raf = requestAnimationFrame(drawRemote);
     S.last = performance.now(); clearInterval(S.timer); S.timer = setInterval(tick, 200);
@@ -845,7 +882,7 @@ dialog .row{margin-top:18px}
   function chatClear(){
     simT.forEach(clearTimeout); simT = []; simI = 0;
     $('#msgs').innerHTML = '';
-    chatPush('sys', 'Rompe el hielo con un saludo.', true);
+    chatPush('sys', 'Escribe un mensaje: se entregará en cuanto alguien se una.', true);
   }
   function speak(text){
     if(!S.soundOn || !('speechSynthesis' in window)) return;
@@ -863,7 +900,9 @@ dialog .row{margin-top:18px}
     text = text.trim().slice(0,300); if(!text) return;
     chatPush('me', text);
     if(S.avatar) avatarTalk(text);
-    if(RT.real){
+    if(S.waiting){
+      RT.outbox.push(text);   /* se entrega cuando alguien se una */
+    } else if(RT.real){
       const hasMic = !!(S.stream && S.stream.getAudioTracks().length);
       try{ RT.conn.send({ t:'chat', m:text, tts: !hasMic }); }catch(e){ toast('No se pudo enviar el mensaje'); }
     } else {
@@ -888,7 +927,7 @@ dialog .row{margin-top:18px}
   });
   $('#silenceBtn').addEventListener('click', () => { S.silenceLeft=30; $('#silenceTxt').textContent = T('Respirar también es conversar · ') + '30 s'; $('#silence').classList.add('on'); });
   $('#silence').addEventListener('click', () => { S.silenceLeft=0; $('#silence').classList.remove('on'); });
-  $('#leaveBtn').addEventListener('click', () => endCall('early'));
+  $('#leaveBtn').addEventListener('click', () => { if(S.waiting) cancelWaiting(); else endCall('early'); });
   $('#reportBtn').addEventListener('click', () => $('#reportDlg').showModal());
   $('#reportBack').addEventListener('click', () => $('#reportDlg').close());
   $('#reportOk').addEventListener('click', () => { $('#reportDlg').close(); endCall('report'); });
@@ -929,6 +968,9 @@ dialog .row{margin-top:18px}
   $('#againBtn').addEventListener('click', () => $('#connectBtn').click());
   $('#homeBtn').addEventListener('click', () => { closeNet(); go('landing'); });
   window.addEventListener('beforeunload', closeNet);
+
+  /* Inglés por defecto */
+  LANG = 'en'; applyLang();
 })();
 </script>
 </body>

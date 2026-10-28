@@ -474,7 +474,14 @@ dialog .row{margin-top:18px}
     }catch(e){}
     const a = $('#remoteAud');
     if(a && a.srcObject && a.paused) a.play().catch(()=>{});
-    if(!S.ttsOk && 'speechSynthesis' in window){ S.ttsOk = true; try{ speechSynthesis.getVoices(); const u = new SpeechSynthesisUtterance('.'); u.volume = 0.01; speechSynthesis.speak(u); }catch(e){} }
+    if('speechSynthesis' in window){
+      try{ speechSynthesis.getVoices(); speechSynthesis.resume(); }catch(e){}
+      if(!S.ttsOk && !S.ttsProbe){
+        S.ttsProbe = true; setTimeout(() => { S.ttsProbe = false; }, 800);
+        try{ const u = new SpeechSynthesisUtterance(' '); u.volume = 0; u.onstart = u.onend = () => { S.ttsOk = true; }; u.onerror = () => {}; keepU(u); speechSynthesis.speak(u); }catch(e){}
+      }
+      flushTts();
+    }
   }
   ['pointerdown','touchend','click','keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { passive:true }));
   document.addEventListener('visibilitychange', () => { if(!document.hidden) unlockAudio(); });
@@ -658,7 +665,7 @@ dialog .row{margin-top:18px}
       RT.conn = c; RT.partner = d.uid; c.on('close', lost); c.send({t:'ok', uid:RT.uid});
     } else if(d.t === 'leave'){ lost(); }
     else if(d.t === 'vote'){ RT.vote = d; }
-    else if(d.t === 'chat' && typeof d.m === 'string'){ chatRecv(d.m, d.tts === true); }
+    else if(d.t === 'chat' && typeof d.m === 'string'){ chatRecv(d.m, d.tts !== false); }
   }
   function gotCall(c){
     RT.call = c; RT.real = true; c.on('close', lost);
@@ -681,14 +688,13 @@ dialog .row{margin-top:18px}
       S.audT = setInterval(() => {
         if(!RT.started){ clearInterval(S.audT); $('#soundFix').classList.add('hide'); return; }
         if(a.srcObject !== st) a.srcObject = st;
-        $('#soundFix').classList.toggle('hide', !(a.paused && v.paused || (a.paused && v.muted)));
+        $('#soundFix').classList.toggle('hide', !(a.paused && v.paused || (a.paused && v.muted) || (S.ttsPending && S.ttsPending.length)));
         if(a.paused) a.play().catch(()=>{});
       }, 1000);
       if(!st.getAudioTracks().length) toast('La otra persona no envía audio (sin micrófono)');
       chimeMatch(); startCall();
       const box = RT.outbox; RT.outbox = [];
-      const micLive = !!(S.stream && S.stream.getAudioTracks().length) && S.micOn;
-      box.forEach(m => { try{ RT.conn.send({ t:'chat', m, tts: !micLive }); }catch(e){} });
+      box.forEach(m => { try{ RT.conn.send({ t:'chat', m, tts:true }); }catch(e){} });
     });
   }
   function dial(id){
@@ -869,6 +875,7 @@ dialog .row{margin-top:18px}
     simT.forEach(clearTimeout); simT = []; simI = 0;
     $('#msgs').innerHTML = '';
   }
+  function keepU(u){ (window._utts = window._utts || []).push(u); if(window._utts.length > 20) window._utts.shift(); }  /* evita que iOS/Chrome descarten la locución */
   function speak(text){
     if(!S.soundOn || !('speechSynthesis' in window)) return;
     try{
@@ -877,9 +884,24 @@ dialog .row{margin-top:18px}
       u.lang = lang; u.rate = 1; u.pitch = 1.05; u.volume = 1;
       const v = speechSynthesis.getVoices().find(x => x.lang && x.lang.toLowerCase().replace('_','-').startsWith(lang.slice(0,2)));
       if(v) u.voice = v;
+      let started = false;
+      u.onstart = () => { started = true; S.ttsOk = true; };
+      keepU(u);
       speechSynthesis.resume();   /* Chrome en Android a veces deja la voz en pausa */
       speechSynthesis.speak(u);
+      /* iOS bloquea la voz hasta un toque del usuario: si no arranca, guardamos el texto y pedimos un toque */
+      setTimeout(() => {
+        if(!started && !speechSynthesis.speaking){
+          (S.ttsPending = S.ttsPending || []).push(text);
+          $('#soundFix').classList.remove('hide');
+        }
+      }, 1500);
     }catch(e){}
+  }
+  function flushTts(){
+    if(!S.ttsPending || !S.ttsPending.length) return;
+    const q = S.ttsPending.splice(0); $('#soundFix').classList.add('hide');
+    q.forEach(speak);
   }
   function chatRecv(text, tts){ text = String(text).slice(0,300); chatPush('them', text); tone(660,.12,'triangle',.04); if(tts) speak(text); }
   function chatSend(text){
@@ -889,9 +911,7 @@ dialog .row{margin-top:18px}
     if(S.waiting){
       RT.outbox.push(text);   /* se entrega cuando alguien se una */
     } else if(RT.real){
-      const hasMic = !!(S.stream && S.stream.getAudioTracks().length);
-      const micLive = hasMic && S.micOn;   /* sin micro, o micro apagado: el otro móvil lee el mensaje en voz alta */
-      try{ RT.conn.send({ t:'chat', m:text, tts: !micLive }); }catch(e){ toast('No se pudo enviar el mensaje'); }
+      try{ RT.conn.send({ t:'chat', m:text, tts:true }); }catch(e){ toast('No se pudo enviar el mensaje'); }
     } else {
       simT.push(setTimeout(() => { chatPush('them', SIM_REPLIES[simI++ % SIM_REPLIES.length], true); tone(660,.12,'triangle',.04); }, 1400 + Math.random()*1800));
     }

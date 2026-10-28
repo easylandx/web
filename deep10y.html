@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep10 — In-Browser P2P Video & WhatsApp Invites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+  <style>
+    :root {
+      --bg-dark: #0b0f17;
+      --card-bg: #131924;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-cyan: #00f0ff;
+      --accent-amber: #ffb703;
+      --accent-wa: #25D366;
+      --accent-wa-hover: #1eaa52;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(37, 211, 102, 0.06) 0%, transparent 40%);
+    }
+
+    .container { width: 100%; max-width: 880px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 20px; }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    input[type="text"] {
+      width: 100%; background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md); padding: 12px 16px;
+      color: #fff; font-size: 1rem;
+    }
+    input:focus { outline: none; border-color: var(--accent-cyan); }
+
+    .btn {
+      width: 100%; padding: 14px; border: none; border-radius: var(--radius-md);
+      font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all 0.2s ease; text-decoration: none;
+    }
+    .btn-cyan { background: var(--accent-cyan); color: #0b0f17; }
+    .btn-wa { background: var(--accent-wa); color: #0b0f17; }
+    .btn-wa:hover { background: var(--accent-wa-hover); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.08); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); }
+
+    /* Share & Invite Card */
+    .invite-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .room-code-display {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-amber);
+      text-align: center;
+      letter-spacing: 0.1em;
+      margin: 8px 0;
+    }
+
+    /* Call Screen Grid */
+    .call-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .call-layout { grid-template-columns: 1fr; }
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      height: 420px;
+    }
+
+    .video-box {
+      background: #000;
+      border-radius: var(--radius-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    video { width: 100%; height: 100%; object-fit: cover; }
+
+    .video-placeholder {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .avatar-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); display: flex;
+      align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+
+    /* Chat Section */
+    .chat-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      height: 420px;
+    }
+
+    .chat-header {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .msg {
+      padding: 8px 12px;
+      border-radius: 8px;
+      max-width: 85%;
+      word-break: break-word;
+    }
+    .msg.me { background: rgba(0, 240, 255, 0.2); align-self: flex-end; color: #fff; }
+    .msg.peer { background: rgba(255, 255, 255, 0.1); align-self: flex-start; color: #fff; }
+    .msg.sys { background: transparent; color: var(--text-muted); font-size: 0.75rem; text-align: center; align-self: center; }
+
+    .chat-input-area {
+      padding: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      gap: 6px;
+    }
+
+    .chat-input-area input {
+      flex: 1; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 8px 12px; color: #fff; font-size: 0.85rem;
+    }
+
+    .chat-input-area button {
+      background: var(--accent-cyan); border: none; padding: 8px 12px;
+      border-radius: 6px; font-weight: 700; cursor: pointer; color: #000;
+    }
+
+    /* Timer Header */
+    .timer-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.4); padding: 10px 16px; border-radius: var(--radius-md); margin-bottom: 12px;
+    }
+    .timer-val { font-family: var(--font-mono); font-weight: 700; font-size: 1.2rem; color: var(--accent-amber); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="logo">DEEP 10 <span class="logo-badge">P2P + WhatsApp Invite</span></div>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">10 minutes of genuine human connection (Video & Chat).</p>
+    </header>
+
+    <main class="card">
+      <!-- SETUP SCREEN -->
+      <div id="screen-setup" class="screen active">
+        <h2 style="font-family: var(--font-heading); margin-bottom: 16px;">Start or Join Session</h2>
+        
+        <div class="form-group">
+          <label>Your Display Name</label>
+          <input type="text" id="user-name" placeholder="e.g. Alex" value="Alex">
+        </div>
+
+        <button class="btn btn-cyan" onclick="createRoom()">Create Room & Get Invite Link</button>
+        
+        <div style="text-align: center; margin: 16px 0; color: var(--text-muted); font-size: 0.8rem;">— OR ENTER ROOM CODE —</div>
+        
+        <div class="form-group">
+          <input type="text" id="join-code" placeholder="Enter 6-Digit Room Code">
+        </div>
+        <button class="btn btn-secondary" onclick="joinPeer()">Join Room</button>
+      </div>
+
+      <!-- WAITING & SHARE SCREEN -->
+      <div id="screen-share" class="screen">
+        <h3 style="font-family: var(--font-heading); margin-bottom: 8px;">Room Created!</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Invite a friend or contact to join your 10-minute session.</p>
+
+        <div class="invite-box">
+          <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Room Code</div>
+          <div class="room-code-display" id="display-room-code">------</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); word-break:break-all;" id="display-room-url">https://deep10.app/?room=------</div>
+        </div>
+
+        <button class="btn btn-wa" onclick="sendWhatsAppInvite()" style="margin-bottom: 10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.758.459 3.474 1.33 4.982l-1.413 5.163 5.283-1.385c1.455.794 3.097 1.213 4.786 1.214h.004c5.505 0 9.987-4.478 9.988-9.984 0-2.666-1.037-5.172-2.923-7.058a9.92 9.92 0 0 0-7.062-2.936z"/>
+          </svg>
+          Send Invite via WhatsApp
+        </button>
+
+        <button class="btn btn-secondary" onclick="copyInviteText()">
+          📋 Copy Invitation Text
+        </button>
+      </div>
+
+      <!-- CALL & CHAT SCREEN -->
+      <div id="screen-call" class="screen">
+        <div class="timer-bar">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Session Active</span>
+          <div class="timer-val" id="timer-display">10:00</div>
+          <button style="background: rgba(255,255,255,0.1); border:none; color:#fff; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:0.75rem;" onclick="endCall()">End Call</button>
+        </div>
+
+        <div class="call-layout">
+          <!-- Video Container -->
+          <div class="video-grid">
+            <!-- Remote Stream -->
+            <div class="video-box">
+              <video id="remote-video" autoplay playsinline></video>
+              <div class="video-placeholder" id="remote-placeholder">
+                <div class="avatar-icon">👤</div>
+                <span>Waiting for Partner Stream...</span>
+              </div>
+            </div>
+            <!-- Local Stream -->
+            <div class="video-box">
+              <video id="local-video" autoplay playsinline muted></video>
+              <div class="video-placeholder" id="local-placeholder">
+                <div class="avatar-icon">📷</div>
+                <span>No Camera Active (Text Enabled)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Integrated Text Chat -->
+          <div class="chat-box">
+            <div class="chat-header">
+              <span>Text Chat</span>
+              <span id="chat-status" style="color: var(--accent-wa); font-size: 0.75rem;">Connected</span>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+              <div class="msg sys">Welcome to Deep10! Say hi below.</div>
+            </div>
+            <div class="chat-input-area">
+              <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+              <button onclick="sendMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let peer = null;
+    let conn = null;
+    let localStream = null;
+    let currentRoomCode = '';
+    let secondsLeft = 600;
+    let timerInterval = null;
+
+    function isDesktop() {
+      return !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    async function setupCamera() {
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        const localVideo = document.getElementById('local-video');
+        localVideo.srcObject = localStream;
+        document.getElementById('local-placeholder').style.display = 'none';
+      } catch (err) {
+        console.warn("Camera/Mic denied or unavailable. Proceeding in Text-Only mode.");
+        document.getElementById('local-placeholder').style.display = 'flex';
+      }
+    }
+
+    function createRoom() {
+      setupCamera();
+      currentRoomCode = Math.floor(100000 + Math.random() * 900000).toString();
+      const inviteUrl = window.location.origin + window.location.pathname + '?room=' + currentRoomCode;
+
+      document.getElementById('display-room-code').innerText = currentRoomCode;
+      document.getElementById('display-room-url').innerText = inviteUrl;
+
+      peer = new Peer('deep10-' + currentRoomCode);
+
+      peer.on('open', () => {
+        showScreen('screen-share');
+      });
+
+      peer.on('connection', (c) => {
+        conn = c;
+        setupDataChannel();
+        showScreen('screen-call');
+        startTimer();
+      });
+
+      peer.on('call', (call) => {
+        call.answer(localStream);
+        call.on('stream', (remoteStream) => {
+          document.getElementById('remote-video').srcObject = remoteStream;
+          document.getElementById('remote-placeholder').style.display = 'none';
+        });
+      });
+    }
+
+    function sendWhatsAppInvite() {
+      const inviteUrl = window.location.origin + window.location.pathname + '?room=' + currentRoomCode;
+      const message = encodeURIComponent(`Hey! Join me for a 10-minute video conversation on Deep10.\n\nClick here to connect: ${inviteUrl}\nRoom Code: ${currentRoomCode}`);
+
+      let waUrl = '';
+      if (isDesktop()) {
+        // WhatsApp Web for Desktop
+        waUrl = `https://web.whatsapp.com/send?text=${message}`;
+      } else {
+        // Native WhatsApp App for Mobile
+        waUrl = `https://wa.me/?text=${message}`;
+      }
+
+      window.open(waUrl, '_blank');
+    }
+
+    function copyInviteText() {
+      const inviteUrl = window.location.origin + window.location.pathname + '?room=' + currentRoomCode;
+      const text = `Hey! Join me for a 10-minute video conversation on Deep10.\nClick here: ${inviteUrl}\nRoom Code: ${currentRoomCode}`;
+      navigator.clipboard.writeText(text).then(() => alert('Invite copied to clipboard!'));
+    }
+
+    function joinPeer() {
+      const code = document.getElementById('join-code').value.trim();
+      if (!code) return alert('Enter a 6-digit room code');
+      currentRoomCode = code;
+      setupCamera();
+
+      peer = new Peer();
+      peer.on('open', () => {
+        conn = peer.connect('deep10-' + code);
+        setupDataChannel();
+
+        if (localStream) {
+          const call = peer.call('deep10-' + code, localStream);
+          call.on('stream', (remoteStream) => {
+            document.getElementById('remote-video').srcObject = remoteStream;
+            document.getElementById('remote-placeholder').style.display = 'none';
+          });
+        }
+        showScreen('screen-call');
+        startTimer();
+      });
+    }
+
+    function setupDataChannel() {
+      conn.on('data', (data) => {
+        if (data.type === 'msg') {
+          appendMessage(data.sender, data.text, 'peer');
+        }
+      });
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage('Me', text, 'me');
+      if (conn && conn.open) {
+        conn.send({ type: 'msg', sender: document.getElementById('user-name').value, text: text });
+      }
+      input.value = '';
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') sendMessage();
+    }
+
+    function appendMessage(sender, text, type) {
+      const msgBox = document.getElementById('chat-messages');
+      const div = document.createElement('div');
+      div.className = `msg ${type}`;
+      div.innerText = `${sender}: ${text}`;
+      msgBox.appendChild(div);
+      msgBox.scrollTop = msgBox.scrollHeight;
+    }
+
+    function startTimer() {
+      secondsLeft = 600;
+      if (timerInterval) clearInterval(timerInterval);
+
+      timerInterval = setInterval(() => {
+        secondsLeft--;
+        const m = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
+        const s = (secondsLeft % 60).toString().padStart(2, '0');
+        document.getElementById('timer-display').innerText = `${m}:${s}`;
+        if (secondsLeft <= 0) {
+          clearInterval(timerInterval);
+          alert("10 Minutes complete!");
+        }
+      }, 1000);
+    }
+
+    function endCall() {
+      if (timerInterval) clearInterval(timerInterval);
+      location.reload();
+    }
+
+    // Auto-detect room parameter in URL
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const roomParam = params.get('room');
+      if (roomParam) {
+        document.getElementById('join-code').value = roomParam;
+      }
+    });
+  </script>
+</body>
+</html>

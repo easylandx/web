@@ -492,7 +492,7 @@ dialog .row{margin-top:18px}
     }catch(e){}
     const a = $('#remoteAud');
     if(a && a.srcObject && a.paused) a.play().catch(()=>{});
-    if(!S.ttsOk && 'speechSynthesis' in window){ S.ttsOk = true; try{ const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); }catch(e){} }
+    if(!S.ttsOk && 'speechSynthesis' in window){ S.ttsOk = true; try{ speechSynthesis.getVoices(); const u = new SpeechSynthesisUtterance('.'); u.volume = 0.01; speechSynthesis.speak(u); }catch(e){} }
   }
   ['pointerdown','touchend','click','keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { passive:true }));
   document.addEventListener('visibilitychange', () => { if(!document.hidden) unlockAudio(); });
@@ -534,6 +534,14 @@ dialog .row{margin-top:18px}
       // hombros
       x.fillStyle = '#2a1d0a'; x.strokeStyle = 'rgba(255,178,56,.55)'; x.lineWidth = 3;
       x.beginPath(); x.ellipse(cx, H*1.05 + Math.sin(t*1.6)*3, 190, 120, 0, Math.PI, 0); x.fill(); x.stroke();
+      // pelo de atrás (cae por los lados de la cara)
+      const sway2 = Math.sin(t*1.1)*2;
+      x.fillStyle = '#4a2a0c'; x.strokeStyle = '#2e1906'; x.lineWidth = 3;
+      x.beginPath(); x.moveTo(cx-98, cy-10);
+      x.bezierCurveTo(cx-120, cy+40, cx-112, cy+95, cx-84+sway2, cy+112);
+      x.lineTo(cx+84+sway2, cy+112);
+      x.bezierCurveTo(cx+112, cy+95, cx+120, cy+40, cx+98, cy-10);
+      x.closePath(); x.fill(); x.stroke();
       // cabeza
       const hg = x.createLinearGradient(0, cy-110, 0, cy+110);
       hg.addColorStop(0, '#ffd88a'); hg.addColorStop(1, '#f0a640');
@@ -542,6 +550,18 @@ dialog .row{margin-top:18px}
       // mejillas
       x.fillStyle = 'rgba(255,122,107,.30)';
       for(const d of [-58, 58]){ x.beginPath(); x.ellipse(cx+d, cy+30, 17, 10, 0, 0, Math.PI*2); x.fill(); }
+      // pelo de delante: coronilla y flequillo
+      x.fillStyle = '#5a3412'; x.strokeStyle = '#2e1906'; x.lineWidth = 3;
+      x.beginPath();
+      x.ellipse(cx, cy-4, 98, 110, 0, Math.PI, Math.PI*2);
+      x.bezierCurveTo(cx+98, cy-40, cx+84, cy-58, cx+60, cy-64);
+      x.bezierCurveTo(cx+38, cy-80, cx+12, cy-70, cx-6, cy-78);
+      x.bezierCurveTo(cx-26, cy-66, cx-56, cy-70, cx-70, cy-56);
+      x.bezierCurveTo(cx-90, cy-48, cx-98, cy-30, cx-98, cy-4);
+      x.closePath(); x.fill(); x.stroke();
+      // brillo del pelo
+      x.strokeStyle = 'rgba(255,200,120,.35)'; x.lineWidth = 4; x.lineCap = 'round';
+      x.beginPath(); x.arc(cx-8, cy-4, 96, Math.PI*1.18, Math.PI*1.45); x.stroke();
       // ojos
       if(now > blinkAt){ blinkUntil = now + 130; blinkAt = now + 2200 + Math.random()*3200; }
       const blink = now < blinkUntil, dy = typing ? 5 : 0, dx = typing ? -2 : Math.sin(t*.5)*2;
@@ -686,8 +706,8 @@ dialog .row{margin-top:18px}
       setT($('#tag'), 'Persona real · en directo');
       chimeMatch(); startCall();
       const box = RT.outbox; RT.outbox = [];
-      const hasMic = !!(S.stream && S.stream.getAudioTracks().length);
-      box.forEach(m => { try{ RT.conn.send({ t:'chat', m, tts: !hasMic }); }catch(e){} });
+      const micLive = !!(S.stream && S.stream.getAudioTracks().length) && S.micOn;
+      box.forEach(m => { try{ RT.conn.send({ t:'chat', m, tts: !micLive }); }catch(e){} });
     });
   }
   function dial(id){
@@ -892,6 +912,7 @@ dialog .row{margin-top:18px}
       u.lang = lang; u.rate = 1; u.pitch = 1.05; u.volume = 1;
       const v = speechSynthesis.getVoices().find(x => x.lang && x.lang.toLowerCase().replace('_','-').startsWith(lang.slice(0,2)));
       if(v) u.voice = v;
+      speechSynthesis.resume();   /* Chrome en Android a veces deja la voz en pausa */
       speechSynthesis.speak(u);
     }catch(e){}
   }
@@ -904,7 +925,8 @@ dialog .row{margin-top:18px}
       RT.outbox.push(text);   /* se entrega cuando alguien se una */
     } else if(RT.real){
       const hasMic = !!(S.stream && S.stream.getAudioTracks().length);
-      try{ RT.conn.send({ t:'chat', m:text, tts: !hasMic }); }catch(e){ toast('No se pudo enviar el mensaje'); }
+      const micLive = hasMic && S.micOn;   /* sin micro, o micro apagado: el otro móvil lee el mensaje en voz alta */
+      try{ RT.conn.send({ t:'chat', m:text, tts: !micLive }); }catch(e){ toast('No se pudo enviar el mensaje'); }
     } else {
       simT.push(setTimeout(() => { chatPush('them', SIM_REPLIES[simI++ % SIM_REPLIES.length], true); tone(660,.12,'triangle',.04); }, 1400 + Math.random()*1800));
     }

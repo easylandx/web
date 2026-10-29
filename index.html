@@ -353,6 +353,18 @@
   .waform .btn{width:100%; justify-content:center; border:0; cursor:pointer; font:inherit; font-weight:700;}
   .waform .waform-note{margin:10px 0 0; font-size:.8rem; color:var(--ink-soft); text-align:center;}
   @media (max-width:560px){ .waform .row2{grid-template-columns:1fr;} .waform{box-shadow:5px 5px 0 var(--ink);} }
+  /* ChatApp logo */
+  .chatlogo, .footgrid a.chatlogo{display:inline-flex; align-items:center; gap:8px; width:fit-content; margin:0; padding:7px 12px 7px 9px; background:#e1f2ff; border-radius:10px; text-decoration:none; font-family:'Poppins',sans-serif; font-weight:700; font-size:1.1rem; line-height:1; white-space:nowrap; box-sizing:border-box;}
+  .chatlogo .cl-txt{display:inline-flex; align-items:center; line-height:1; padding-top:2px;}
+  .chatlogo .cl-chat{color:#12354d;}
+  .chatlogo .cl-app{color:#2b7fb0;}
+  .chatlogo .cl-ico{width:26px; height:26px; flex:none; display:block;}
+  .chatlogo .cl-cur{display:block; width:10px; height:1.15em; background:#89cff0; margin-left:-2px; animation:clblink 1s steps(1,end) infinite;}
+  @keyframes clblink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.chatlogo .cl-cur{animation:none}}
+  .navrow .brand + .chatlogo{margin-left:14px; margin-right:auto;}
+  .footgrid a.chatlogo-foot{margin-top:16px;}
+  @media (max-width:520px){.navrow .brand + .chatlogo{margin-left:8px; font-size:.9rem; padding:5px 8px 5px 6px; gap:6px;} .navrow .brand + .chatlogo .cl-ico{width:20px; height:20px;} .navrow .brand + .chatlogo .cl-cur{width:8px;}}
 </style>
 
 <!-- Hide hero title until script loads the random line -->
@@ -493,6 +505,7 @@
 <header class="nav">
   <div class="navrow">
     <a class="brand" href="#top" target="_self">EasyLandX</a>
+    <a class="chatlogo" href="https://easylandx.github.io/chatapp/" target="_blank" rel="noopener" aria-label="ChatApp (se abre en una ventana nueva)"><svg class="cl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#4fa8d8"/><path d="M6.5 5.5h11a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5H12l-3.6 3v-3H6.5A2.5 2.5 0 0 1 4 14V8a2.5 2.5 0 0 1 2.5-2.5z" fill="#fff"/><circle cx="8.6" cy="11" r="1.1" fill="#4fa8d8"/><circle cx="12" cy="11" r="1.1" fill="#4fa8d8"/><circle cx="15.4" cy="11" r="1.1" fill="#4fa8d8"/></svg><span class="cl-txt"><span class="cl-chat">Chat</span><span class="cl-app">App</span></span><span class="cl-cur" aria-hidden="true"></span></a>
     <a class="navtoggle" href="https://easylandx.github.io/why/index.html">English</a>
     <ul class="navlinks" id="navlinks">
       <li><a href="#how" target="_self">Proceso</a></li>
@@ -510,7 +523,7 @@
       <div class="herogrid">
         <div>
           <h1 id="hero-title"></h1>
-          <p class="hero-sub">EasyLandX facilita una presencia profesional y atractiva en internet para pequeños negocios.Creamos y diseñamos landing pages que ayudan a las personas a dar el siguiente paso, diseñadas para los visitantes adecuados, un mensaje claro y un clic seguro.</p>
+          <p class="hero-sub">EasyLandX facilita una presencia profesional y atractiva en internet para pequeños negocios. Creamos y diseñamos landing pages que ayudan a las personas a dar el siguiente paso, diseñadas para los visitantes adecuados, un mensaje claro y un clic seguro.</p>
           <div class="btnrow">
             <!-- Maqueta de cortesía: el botón abre una elección rápida (WhatsApp o email). Los enlaces los rellena el script del final de la página. -->
             <div class="sample" id="sample">
@@ -632,6 +645,7 @@
       <div>
         <div class="footbrand">EasyLandX</div>
         <p style="color:rgba(255,255,255,0.75); font-size:.93rem; max-width:32ch; margin:0;">Landing pages profesionales y enfocadas en conversión para pequeños negocios y emprendedores.</p>
+        <a class="chatlogo chatlogo-foot" href="https://easylandx.github.io/chatapp/" target="_blank" rel="noopener" aria-label="ChatApp (se abre en una ventana nueva)"><svg class="cl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#4fa8d8"/><path d="M6.5 5.5h11a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5H12l-3.6 3v-3H6.5A2.5 2.5 0 0 1 4 14V8a2.5 2.5 0 0 1 2.5-2.5z" fill="#fff"/><circle cx="8.6" cy="11" r="1.1" fill="#4fa8d8"/><circle cx="12" cy="11" r="1.1" fill="#4fa8d8"/><circle cx="15.4" cy="11" r="1.1" fill="#4fa8d8"/></svg><span class="cl-txt"><span class="cl-chat">Chat</span><span class="cl-app">App</span></span><span class="cl-cur" aria-hidden="true"></span></a>
       </div>
       <div>
         <h4>Portafolio</h4>

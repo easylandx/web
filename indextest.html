@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4fa8d8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ChatApp">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>ChatApp. The new way to chat.</title>
+<meta name="description" content="">
+<link rel="canonical" href="https://easylandx.github.io/chatapp/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://easylandx.github.io/chatapp/">
+<meta property="og:title" content="ChatApp. The new way to chat.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E😊%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#eaf6ff; --panel:#ffffff; --panel2:#dff1ff;
+  --ink:#12354d; --dim:#4f7f9f; --line:#b9defa;
+  --amber:#89cff0; --amber-d:#4fa8d8; --accent-ink:#2b7fb0; --teal:#4fa8d8; --rose:#4fa8d8;
+  --mono: ui-monospace,"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  --serif: ui-serif,"Iowan Old Style",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:15px;line-height:1.5;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 50% 0%, #cfeaff 0%, var(--bg) 60%)}
+@keyframes flicker{0%,100%{opacity:1}47%{opacity:.96}48%{opacity:1}73%{opacity:.97}74%{opacity:1}}
+@media (prefers-reduced-motion:reduce){body::after{animation:none}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.shell{max-width:1040px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top,0px)) max(clamp(22px,6vw,72px),env(safe-area-inset-right,0px)) calc(48px + env(safe-area-inset-bottom,0px)) max(clamp(22px,6vw,72px),env(safe-area-inset-left,0px));min-height:100%;display:flex;flex-direction:column}
+header.top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding-bottom:18px;border-bottom:1px dashed var(--line);margin-bottom:28px}
+header.top .hright{justify-self:end;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.elx{background:var(--amber);color:#0b2a40;border:1px solid var(--amber-d);padding:6px 14px;border-radius:999px;font:inherit;font-size:12px;font-weight:700;text-decoration:none;transition:.15s;white-space:nowrap}
+.elx:hover{background:#a8dcf5;transform:translateY(-1px)}
+.elx:focus-visible{outline:2px solid var(--amber-d);outline-offset:3px}
+.lang{background:rgba(137,207,240,.08);border:1px solid var(--amber-d);color:var(--ink);padding:7px 16px;border-radius:999px;font:inherit;font-size:12px;letter-spacing:.02em;cursor:pointer;transition:.15s}
+.lang:hover{background:rgba(137,207,240,.4);color:var(--ink);border-color:var(--accent-ink)}
+.logo{font-size:22px;letter-spacing:.04em;font-weight:700}
+.logo b{color:var(--accent-ink)}
+.cursor{display:inline-block;width:.55em;height:1em;background:var(--amber);vertical-align:-.12em;margin-left:4px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sound{background:none;border:1px solid var(--line);color:var(--dim);padding:6px 12px;border-radius:999px;font:inherit;font-size:12px;cursor:pointer}
+.sound:hover{color:var(--ink);border-color:var(--dim)}
+.install{background:var(--amber);color:#0b2a40;border:1px solid var(--amber-d);padding:6px 14px;border-radius:999px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:.15s}
+.install:hover{background:#a8dcf5;transform:translateY(-1px)}
+.install.hide{display:none}
+.soundfix{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:60;background:var(--amber);color:#0b2a40;border:2px solid var(--amber-d);border-radius:999px;padding:12px 26px;font:inherit;font-weight:700;font-size:18px;line-height:1.2;text-align:center;max-width:94vw;cursor:pointer;box-shadow:0 12px 48px rgba(11,42,64,.3);animation:sfBob 1.6s ease-in-out infinite,sfPulse 1.6s ease-out infinite;-webkit-tap-highlight-color:transparent}
+.soundfix small{display:block;margin-top:2px;font-size:13px;font-weight:600;letter-spacing:.04em;color:#1d5a80}
+.soundfix:active{background:#a8dcf5}
+@keyframes sfBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+@keyframes sfPulse{0%{box-shadow:0 0 0 0 rgba(79,168,216,.75),0 12px 48px rgba(11,42,64,.3)}70%{box-shadow:0 0 0 34px rgba(79,168,216,0),0 12px 48px rgba(11,42,64,.3)}100%{box-shadow:0 0 0 0 rgba(79,168,216,0),0 12px 48px rgba(11,42,64,.3)}}
+.soundfix.hide{display:none}
+
+.screen{display:none;flex:1;animation:rise .5s ease both}
+.screen.active{display:flex;flex-direction:column}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,6vw,60px);line-height:1.08;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--accent-ink)}
+.lead{color:var(--dim);max-width:52ch;margin-top:18px;font-size:16px}
+.btn{font:inherit;cursor:pointer;border-radius:10px;padding:14px 26px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);transition:.15s}
+.btn:hover{border-color:var(--dim);transform:translateY(-1px)}
+.btn:focus-visible,.sound:focus-visible,.lang:focus-visible,.ctl:focus-visible,.link:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.btn.primary{background:var(--amber);color:#0b2a40;border-color:var(--accent-ink);font-weight:700;font-size:17px;padding:18px 34px;box-shadow:0 0 0 0 rgba(137,207,240,.5);animation:glow 2.8s infinite}
+.btn.primary:hover{background:#a8dcf5}
+@keyframes glow{0%{box-shadow:0 0 0 0 rgba(137,207,240,.45)}70%{box-shadow:0 0 0 16px rgba(137,207,240,0)}100%{box-shadow:0 0 0 0 rgba(137,207,240,0)}}
+.link{background:none;border:0;color:var(--dim);font:inherit;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.link:hover{color:var(--ink)}
+
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:26px;color:var(--dim);font-size:14px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.rule{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:16px}
+.rule small{color:var(--accent-ink);letter-spacing:.14em;font-size:11px}
+.rule p{margin-top:6px;color:var(--dim);font-size:13.5px}
+.note{margin-top:auto;padding-top:34px;color:var(--dim);font-size:12px}
+
+/* matching */
+.center{margin:auto;text-align:center}
+.radar{width:170px;height:170px;border-radius:50%;margin:0 auto 28px;position:relative;border:1px solid var(--line);
+  background:radial-gradient(circle,rgba(137,207,240,.12),transparent 65%)}
+.radar::before,.radar::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--amber);animation:ping 2.4s infinite;opacity:0}
+.radar::after{animation-delay:1.2s}
+@keyframes ping{0%{transform:scale(.2);opacity:.8}100%{transform:scale(1.25);opacity:0}}
+.radar i{position:absolute;left:50%;top:50%;width:50%;height:2px;background:linear-gradient(90deg,var(--amber),transparent);transform-origin:left center;animation:sweep 2s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.match-msg{font-family:var(--serif);font-size:24px;min-height:36px}
+.match-msg:empty{display:none}
+.radar.mini{width:96px;height:96px;margin-bottom:16px}
+.waitov{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:16px;background:rgba(234,246,255,.9);backdrop-filter:blur(3px)}
+.waitov.on{display:grid}
+.waitov .match-msg{font-size:clamp(18px,3vw,24px)}
+.waiting .controls #silenceBtn,.waiting .controls #reportBtn,.waiting .controls #wheelBtn,.waiting .controls #compBtn,.waiting .callbar .demo{display:none}
+.waiting .time,.time.wt{color:var(--dim);text-shadow:none}
+
+/* call */
+.callbar{display:flex;align-items:center;gap:16px;margin-bottom:12px}
+.brand{display:flex;align-items:baseline;gap:14px;min-width:0}
+.time{font-size:20px;line-height:1;font-weight:700;letter-spacing:.04em;color:var(--accent-ink);text-shadow:none;font-variant-numeric:tabular-nums;transition:color .4s}
+.callbar .meta{color:var(--dim);font-size:12px;line-height:1.3}
+.callbar .demo{margin-left:auto}
+.stage{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#cfe8f8;--sh:min(72vh,calc((100vw - 2*clamp(22px,6vw,72px))*4/3));height:var(--sh);width:calc(var(--sh)*3/4);max-width:100%;margin:0 auto}
+#remote{width:100%;height:100%;display:block;}
+#remoteVid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#cfe8f8}
+.tag{display:none;position:absolute;left:12px;top:12px;font-size:11px;color:var(--ink);background:rgba(255,255,255,.7);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+.pip{position:absolute;right:12px;bottom:12px;width:30%;max-width:200px;aspect-ratio:3/4;border:1px solid var(--amber-d);border-radius:10px;overflow:hidden;background:#d9eefb}
+.pip video{width:100%;height:100%;object-fit:contain;transform:scaleX(-1)}
+.pip .off{position:absolute;inset:0;display:none;place-items:center;font-size:11px;color:var(--dim);text-align:center;padding:6px;background:#d9eefb}
+/* Same-Bench Horizon: two cameras share one continuous horizontal plane */
+.stage.same-bench{
+  --sh:clamp(230px,42vw,390px);
+  width:min(100%,760px);height:var(--sh);aspect-ratio:16/9;
+  border-radius:16px;background:#cfe8f8;
+}
+.stage.same-bench #remote,
+.stage.same-bench #remoteVid{
+  position:absolute;left:0;top:0;width:50%;height:100%;
+  object-fit:cover;background:#cfe8f8;border:0;
+}
+.stage.same-bench #remote{display:block}
+.stage.same-bench #remoteVid{left:0;width:50%;}
+.stage.same-bench .pip{
+  left:50%;right:auto;top:0;bottom:0;width:50%;max-width:none;
+  height:100%;aspect-ratio:auto;border:0;border-left:2px solid rgba(255,255,255,.9);
+  border-radius:0;background:#d9eefb;
+}
+.stage.same-bench .pip video{object-fit:cover;transform:scaleX(-1)}
+.stage.same-bench .pip .off{font-size:clamp(11px,1.5vw,15px)}
+.stage.same-bench .tag{z-index:3}
+@media(max-width:640px){
+  .stage.same-bench{width:100%;height:clamp(210px,58vw,310px);--sh:clamp(210px,58vw,310px)}
+  .stage.same-bench .cue{font-size:11px;padding:7px 11px}
+}
+.pip.nocam .off{display:grid}
+.cue{position:absolute;left:50%;top:14px;transform:translate(-50%,-140%);background:var(--panel2);border:1px solid var(--amber-d);color:var(--ink);padding:8px 18px;border-radius:999px;font-size:13px;transition:transform .4s;white-space:nowrap}
+.cue.show{transform:translate(-50%,0)}
+.silence{position:absolute;inset:0;display:none;place-items:center;text-align:center;background:rgba(234,246,255,.8);backdrop-filter:blur(2px);font-family:var(--serif);font-size:22px}
+.silence.on{display:grid}
+.silence small{display:block;font-family:var(--mono);font-size:13px;color:var(--dim);margin-top:6px}
+.prompt{margin-top:16px;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.prompt small{color:var(--accent-ink);letter-spacing:.14em;font-size:11px}
+.prompt p{font-family:var(--serif);font-size:clamp(18px,2.6vw,24px);line-height:1.35;margin-top:6px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.ctl{font:inherit;font-size:13px;cursor:pointer;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:10px 16px}
+.ctl:hover{border-color:var(--dim)}
+.ctl[aria-pressed="true"]{border-color:var(--accent-ink);color:var(--accent-ink)}
+.ctl.quiet{margin-left:auto;color:var(--dim)}
+#resetBtn[data-armed]{background:var(--amber);color:#0b2a40;border-color:var(--accent-ink);font-weight:700}
+
+/* invite */
+a.btn{display:inline-block;text-align:center;text-decoration:none}
+.invite{max-width:460px;margin:30px auto 0;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px;text-align:left}
+.invite small{color:var(--accent-ink);letter-spacing:.14em;font-size:11px}
+.invite input{font-size:13px}
+.invite .row{margin-top:14px}
+.invite .btn{padding:13px 16px;font-size:14px}
+.btn.wa{background:var(--amber-d);border-color:var(--amber-d);color:#ffffff;font-weight:700}
+.btn.wa:hover{background:#5ab4e5}
+/* chat */
+.callgrid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:stretch}
+.stagecol{min-width:0}
+.chatwrap{position:relative;min-height:260px}
+.chat{position:absolute;inset:0;display:flex;flex-direction:column;border:1px solid var(--line);background:var(--panel);border-radius:14px;overflow:hidden}
+.chathead{padding:10px 14px;border-bottom:1px dashed var(--line);color:var(--accent-ink);letter-spacing:.14em;font-size:11px}
+.msgs{flex:1 1 0;min-height:0;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:85%;padding:8px 12px;border-radius:12px;font-size:13.5px;line-height:1.4;overflow-wrap:anywhere;white-space:pre-wrap}
+.msg.me{align-self:flex-end;background:var(--amber);color:#0b2a40;border-bottom-right-radius:3px}
+.msg.them{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-bottom-left-radius:3px}
+.msg.sys{align-self:center;color:var(--dim);font-size:12px;text-align:center;padding:2px 6px}
+.msg.ai::before{content:"🤖 "}
+#aiBtn[aria-pressed="true"]{background:var(--amber);color:#0b2a40;font-weight:700}
+/* Ruleta de retos */
+.wheelm{text-align:center;width:min(380px,100%)}
+.wheelbox{position:relative;width:300px;max-width:100%;margin:4px auto 14px}
+.wheelbox canvas{width:100%;height:auto;display:block}
+.wpoint{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:24px solid var(--accent-ink);z-index:2;filter:drop-shadow(0 2px 3px rgba(11,42,64,.3))}
+.modal p.wres{min-height:3.4em;font-family:var(--serif);font-size:19px;line-height:1.3;margin:0 0 14px}
+.wheelm .btn:disabled{opacity:.6;cursor:default;animation:none}
+/* Compatibilímetro */
+.compm{text-align:center;width:min(420px,100%)}
+.gauge{width:150px;height:150px;border-radius:50%;margin:4px auto 14px;display:grid;place-items:center;background:conic-gradient(var(--amber-d) calc(var(--p,0)*1%),var(--panel2) 0)}
+.gauge b{width:118px;height:118px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-family:var(--serif);font-size:34px;font-weight:500}
+.modal p.ctitle{font-family:var(--serif);font-size:21px;margin:0 0 14px}
+.cbars{text-align:left;margin-bottom:12px}
+.crow{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:center;font-size:12.5px;margin-bottom:7px}
+.cbar{height:8px;border-radius:99px;background:var(--panel2);overflow:hidden}
+.cbar i{display:block;height:100%;background:var(--amber-d);border-radius:99px;transition:width .8s ease}
+.modal p.cshared{color:var(--dim);font-size:13px;margin:0 0 14px}
+.chatform{display:flex;gap:8px;padding:10px;border-top:1px dashed var(--line)}
+.chatform input{margin-top:0;flex:1;min-width:0;padding:10px 12px;font-size:14px}
+.chatform .ctl{padding:10px 16px}
+.chatform .ctl.mic{padding:10px 12px;font-size:16px;line-height:1}
+.ctl.rec{background:var(--amber);border-color:var(--amber-d);color:#0b2a40;animation:recP 1.2s ease-in-out infinite}
+@keyframes recP{50%{box-shadow:0 0 0 5px rgba(79,168,216,.35)}}
+@media (max-width:820px){.callgrid{grid-template-columns:1fr}.chatwrap{height:300px;min-height:0}}
+
+/* wave */
+.card{max-width:560px;margin:auto;width:100%;border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:28px}
+.card h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.15}
+.card p.sub{color:var(--dim);margin-top:8px}
+label.f{display:block;margin-top:22px;font-size:12px;color:var(--accent-ink);letter-spacing:.12em}
+input[type=text]{width:100%;margin-top:8px;background:#f3faff;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:13px 14px;font:inherit}
+.hint{font-size:12px;color:var(--dim);margin-top:6px}
+.row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.row .btn{flex:1;min-width:160px}
+.result{margin-top:22px;padding:16px;border-radius:12px;border:1px dashed var(--amber-d);background:rgba(137,207,240,.06)}
+.result strong{color:var(--accent-ink)}
+.hide{display:none!important}
+
+dialog{margin:auto;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:24px;max-width:420px}
+dialog::backdrop{background:rgba(11,42,64,.45)}
+dialog h3{font-family:var(--serif);font-weight:500;font-size:22px}
+dialog p{color:var(--dim);margin-top:8px;font-size:14px}
+dialog .row{margin-top:18px}
+
+.toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));max-width:min(92vw,520px);text-align:center;transform:translate(-50%,40px);opacity:0;background:var(--panel2);border:1px solid var(--amber-d);padding:10px 18px;border-radius:999px;font-size:13px;z-index:60;transition:.3s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:640px){.rules{grid-template-columns:1fr}.pip{width:34%}.ctl.quiet{margin-left:0}
+  header.top{grid-template-columns:auto 1fr}.brand{grid-column:1/-1}.lang{grid-row:2;grid-column:1;justify-self:start}header.top .hright{grid-row:2;grid-column:2}}
+
+/* App icon */
+.appico{display:inline-block;width:1.15em;height:1.15em;margin-right:.3em;vertical-align:-.2em;border-radius:22%;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAPeElEQVR42u2dW2wc13nHf+fMzM4ul7u8iBdJ1o2WJdly65skx3YSq05Qt8mDAwMqigZp89LEdt281H1Jk9RuUxgoaqNA2zgvjYtWjVskKNwEcYIqdeSbJFuBY8mVFV0s2eKdkkiKy11yd2fmnD7M7IqSSIpcLncp8vwfBIJc/WfnfP/zfd/5zk184T9PaAxWLKRpAiMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAAyMAgxsfdj0fLgQIBALQgEaHPyxnTPPOWq8gAQgBEkGgNQVf4ymF0hpLCCwBlhTL2v6B0gQalNYIBI4liFkCSwg0GqWXqQBKds37mmIQ0OBYbGxy6Wpx6Wp26Uw6tCRsXGt5R6VCoBjN+5zPeXx8qcCZkQL940XGij6OJUnYYUPVSgh2LXq8ACY8hQa2tsb55Po0996UZGOziyWWd4+/rkfQmu6xIr/sy3KgZ5yTw5NoDcmYDEPEIgtBLObOIEsI8oHCDzR3rU7y6G2t3Lu2kaleXukwDopSgFwR0GjCXGBqW2jg3f4sL58Y5d2BLJYQxG1JsIgqWBQPIAApBJmCz/omly/f2c7ujekrVF96+bABVpoXuPJ9S53AEoKdaxvZubaRgz3j/MuR83x0qUDatdCLlB9XXQBChG4rUwz43C0tfHVHB40xq+zOpGDFu/3p86PLsV8AD6xPcdfqJC8eOc+PT47S4Mhy2y5ZAQgBgQoz3a/du5pHtrZEL6WRQmDsPvdkWWlocCR/ums1W1rj/NPhQYQAW4qqJoiymsZXKnTvf/Hpm3hkawuBDmOdNJavSAg6Cpe/s7mZp3evRwiBp6CaI+WqCEBE7t1Tmm986iY+uT6Fr8KYZky/sHa1hCBQmp1rkzz94Looh6pe1iSr1ftznuJr967mgfUpAqWxpTF91UZTMiyc3bMmyZ/fv4a8p6oWThcsAEsIMgXFF7a18LlbmgmUXvbVvLqIIPIEuzem+f3bV5EpBFVJphckAClg0ldsbnH547s7URqkMf7i5QVSoLTmj+5s5/b2Bia8YMH5wAI9QPiFvrqjk7i9sko59awe2FLw2I5OhBALHhbKynu/IFsMuH9dih1rkmHvN9avwegg7HTb2xM8tClN1gsWNMqqWABaa2wJv7d9lbFKHXyBBvZsX0XCtlALcAOyMhWGsf+OjiTb2xPlCp9BDWsEGrqaXXasSTLhqYq9gKxMfwJfaR7qCuv7CnPSXK2hozb/TFd6Qa1fkQB8pWmJ29yzJlmOSwa1zwUA7uxM0tFg4wWqogRczv/B4aKGm1vjtDc40bSmQT1GBFpD2rXYuipBMdAVFYfk/B8cuv+trfHQ/Wvj/uuFUujd1hbHj6bYaxACwgdtanaNBZZIXWBTUxw7WlO46AJQgGMJVjfGyh7BoL4SaE/auFZlRaF5C0BriFmCxpi8QoUG9fMAqZiF68iKZgnlfB+odOgBEo7ZU7JUFJBwJK4l0boGIeBq9Rnc4MNJ0wRGAAZGAAZGADcAtK7usuilzmcEQLQyVkU7aQTlcmegKttVW+JjOr4KjX41n14AnxHAFY0bbhmzZFhuGs97ZPIelH4n5leKnsoHkLmaL/rMXKF0WH+fyjee9674znqJuwR7SRtfCApewN53zrLvg34GxibQQGc6wWdvXcOX799M0rXLG0/mwjfpBfz722fYd7yfgbFJANY0JXh4+1q+dN9mEo5V/uz1jC+FIFfw+ddDZ3j1xABDmUkEsKapgYdvX8sffuJm3DnyGQFMY6yekRxP/sc7vHtumLhj4URbxwfHJnn77AV+dKSb73zxPm7pSM0qghJf90iOP3npbd7rHibh2NhT+A6eOc+PjvbwwhfvY0NrclajlZ714flxnnzpbY71XyLhWGW+/rFJDpw5z4+P9vCdP/gE66/DZ0LAVTEVBNm8x+PfP8SRnhE6UnGSMRvHCg9UaIjZdKbinBwa4yt7DzKcKyAQ07rbEl8m7/HY3kO83ztKRypBw1V8HakE7/eO8tjeQ1FYmL62rqNZt+Fcga/sPcjJoTE6U/Er+JIxm45UnCM9Izz+/UNkZ+EzApghrn7vwIe81z1CW9LFC8JTREpZttKaYqBoaXA5NZThu6+djPKBmflefOs0R3tHaGucns8LFG2NLkd7R3jxrdMz5hdKh4ned187yamhDC0NLsWZ+JIu73WP8L0DH847X1mxArCkoBgofnqsl0bXwZtlJ6SvFKm4zb7j/eSKPpYUV2TeusTnK352rI9U3MEL1Ix8XqBIxR1+dqyPoq9m5MsVffYd7ycVt/HVLHxK0+g6/PRYL8VALckNM3Kp9X6AgbFJhsYmcezZJzi0BkdKLmbzdA/nyi56qrsGGMxMMpiZxLbkrG5Ya7AtWf78THzdwzkuZvM48np8GseWDI1NlhPOpeYFluQw0PNVdIjEHCBAqfCwqZlQ9FV0KNOc6MIQ48/WsxVKzW3uVRDu8PVm4TMCKDVWlCV3NsVpTsTw1eybIEVUcEnFHdakE9HvxLV86ThNc+ETYVhpSsToTMev4JjKvSadIBV3CNTsoirxNSdidDZdy2cEMEPvS7kOu7ramCj4WFLOmi9MFH3u3tBKeypeTviu4Ys77NrUxkTxenySiaLPrk1tpOLONV6jlMi1p+LcvaE14hOz8xV8dnW1kXKdOXuhFR8CNPDE7ltJJ2IUPH/areZhsqiJWRZPPnTbdfkef3Abja5DwQum5bNlWHRqdB0ef3Dbdcu4Tz50GzHLohhMvxs65PNJJ2I8sfvWJVsWXnICkCIcz2/pSPHcnp0EGsYmvfLfpLhcFi54Ac8+eg93rmuZsRBU4tu2Oh3yKXUNH4TPCJTiuT072bY6jZ6FT2nNnetaePbReyh4Qbn8ew2fhuf27GRLR2pGPlMJnEEESmt+9zdu4gdNu3l+3we81zPCeMEDDQ2uxa5NbTz127dzb1fbdc8kKPF9/jfXsbopwfP7jnOkd4TxaB6gwbV5YHMHTz28nXs2rLpuaVlGe/X37NjIhtYkz//8A471jzKR90FAMmbzqVs6eOrh27lrfeucStV1C7vzOScwzGjBtQUvfL4r3BiiWbTDn6Y23NkL45wbzqHRrG9NsqUjfc1n5sN35sI454azAGxc1cjm9tSC+E6fz9AzkkMg2Lgqyc0V8FUSKgUwXgx44pWPGMuH4VLf6B7g6p4rENzcnio3aunl5+tWp/Jtbk+VjV6qAWgq5BOCLR3psigr5TMhYIZGLvWkUg1FCKJj50R1+ag/nxHAbA0tVg7fih4GGhgBGBgBGBgBGCwtAZRW5gZKUwzMuQB1R2QCL9D4qrIlZ7KS/1AMNBNFNfU7GNQR2WJA3lflA6YXVQBChIq7GNXTjQTq7gAYzfsUfFXDI2Kie26M+estgLD1e8aKeEoja3FETOlqk9Mjk2VBGNQHpbY/PZKv3ShAE54QcnokHx1QaLxA3TL4KByfuDiJa8uKzmus8IgYyWDW4/jFifKkjEFtUVosfXokT0+mSKxWZwSFridciPnmuXETAOqcAr7RnaEYqIrif8UCCLQm4Vgc6h3n4qRflWPLDebnhYUQjBcC3urOkHBkxcvNK64EOlIwPOnzyqnR6CJko4Cauf/oos3/OTPGQNYjJmXFrV+xAAKtaXQsfnJ6lAs5z3iBGvZ+KQRj+YCXTwzTsIDevyABQLjy9VLe58UjF8K8wHiBmvX+f3v/AkO5hfX+BQsg0JpUzObVjy7xxrlMeLGRcQOLhkCHNZjDfVleOT1K2rUW3N4Lng3UWhO3Jf9weJCeTBErWidnUP1hnyUEQ1mPv397AGeeiz8XTwCEGzRzXsBfv9HLpXxQXixpUD3jy+huxm+/2cto3id2nY2uNRNAyTU12BbdYwW+ub+7LAITDqrTtlLAhKd45rUeTg3nSTpW1dpWVvOLNjoWp0fyfP3VcwyMF8s5gZFBZZ61FPMvTPh8/RfdHB2aIBWzqtqxZLXV2uhYfHSpwFM/P8c7fdny/cFGCPNrx9K9wb8azPFn+z7mxMXJqhsf5rkzaK6wRHjKh680j2xr5Ut3tJGKWZddGuYq+enG9yqaaYXQ5b907CIv/3oEIcC15KKEVHuxFGxbAtsS/Nevh3mnL8ue21r57M1NJGxZdnGlXToCQKycE8h19I/m8u4hIcAi7Dj7P87ww+PDfHypQCpmhcvwFimfWhQPcLU3KASKvK/oao7zma40n96QZl06tmjZ8o2IvvEiB7rHefXjMc6OFohZgvgi9fqaCgCirVII8oGi4CvSrsWW1gR3dDawdVWctakYrQmbmCUqvhF7MTepVlekmkKgGZ306c8WOXkxz/+dn+DUcJ5Mwce1JK4t0eialNZrsjVMawjQkaptfK05OpTj3YEslhQ0xiwStmRDOsYzv7U+nNtm7iGhlC3/98kR/vfsGAlbopZoxpn3FTlPkSkETHgBvtLYUuDakibXRqFrWkOp6d7AkhAE0ODI8HDH6IWHsh5p1yqf3jFf4//k1Cgv/HKw7EGW7IkcQiCj84WvbAPqUjex6+cKL5tJCoGU0NnolO/FnYs7Lxn/1Y/G+MfDgyQda8mHgakJ4NQ2qBeWxO7gcIURNLlWuZHEHI3/Rvc4f3ewv3yJlTLFhvoVghbWMzRtCaf881yMf6g3y98e6MO1ZPmcfoMbVAAgaElYc3b7vxrI8exbfVhR+DDTDjewAMJiCLQm7FkTwJLxj52f4K/e6AU0tjH+MhCADtcYtsadKVnB1cYPi0onLk7y9Ou9KKVxpDAx/0YXQOk20rgjSbnTX0cbGh/OjhZ45vVe8p7CsYzxl40HUFrT4EjSrn2NAygZvzdT5Fv7u8kUAuK2Mf7yEYAIjdzoWCScK4tASmssAYNZj2/8opuRfEDCDi9JNlhGISDQmuaEhTVlabmKlj9fmPD45v4ehnIeDbY0q4yWXwgIjd4cuX/N5Vm9S/mAv9zfQ89YoarLoAyWXBKoy0PA0hq4bDHgW/t7ODtaIOUa4y/rJBBgVUMoAFuIcAHk672cGJ6k0bXwTca3fAWgCWN9KQQUA8XfvNnLkcFcuPHBGH+5CyC85aMjGQrg22/2cbgvR1PcNsZfCQJQGhpsSXPc5vlDAxzsGacpbnp+rVDX6eDSEDAdt/nn985zoGecFmP8leMBNGF9P1MIONyXJRUzRZ4VOQoQhLeQmI6/goeBZpi/wgVgYARgYARgYARgYARgYARgYARgYARgYARgYARgsIj4f2hCevb7wqRpAAAAAElFTkSuQmCC) center/cover no-repeat}
+h1 .appico{width:.95em;height:.95em;vertical-align:-.1em;margin-right:.22em}
+/* About popup */
+.aboutBtn{margin-left:10px}
+.ovl{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(18px + env(safe-area-inset-bottom,0px));background:rgba(11,42,64,.45);backdrop-filter:blur(3px)}
+.ovl.open{display:flex;animation:rise .25s ease both}
+.modal{position:relative;width:min(560px,100%);max-height:100%;overflow-y:auto;background:var(--panel);color:var(--ink);border:1px solid var(--amber-d);border-radius:16px;padding:28px 26px 24px;box-shadow:0 20px 60px rgba(11,42,64,.35)}
+.modal h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,4.5vw,28px);line-height:1.15;margin:0 34px 16px 0}
+.modal h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 8px}
+.modal ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.modal li{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px}
+.modal p{font-size:14px;margin:0 0 10px}
+.modal p.strong{font-weight:700}
+.modal .mclose{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font:inherit;font-size:18px;line-height:1;cursor:pointer}
+.modal .mclose:hover{border-color:var(--dim)}
+.modal .mclose:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.waiting .controls #telBtn,.waiting .controls #pianoBtn,.waiting .controls #cardBtn,.waiting .controls #shakeBtn{display:none}
+/* Telepatía + Dúo musical */
+.telm,.pianom{text-align:center;width:min(420px,100%)}
+.telgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:6px 0 14px}
+.telgrid button{font-size:30px;padding:10px 0;border-radius:12px;border:1px solid var(--line);background:var(--panel2);cursor:pointer;transition:.15s}
+.telgrid button:hover:not(:disabled){transform:translateY(-2px);border-color:var(--amber-d)}
+.telgrid button:disabled{opacity:.45;cursor:default}
+.telgrid button.pick{background:var(--amber);border-color:var(--accent-ink);opacity:1}
+.telbig{font-size:44px;min-height:56px;margin:0 0 4px;letter-spacing:.1em}
+.modal p.telinfo{font-family:var(--serif);font-size:20px;margin:0 0 10px}
+.keys{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0 14px}
+.key{height:88px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);font:inherit;font-size:12px;color:var(--dim);cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;transition:background .12s,transform .08s}
+.key.on{background:var(--amber);color:#0b2a40;transform:translateY(3px)}
+.key.rem{background:#ffe0b3;border-color:#e8a24a;color:#7a4a10;transform:translateY(3px)}
+.key:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+/* Postal de recuerdo */
+.cardm{width:min(640px,100%);text-align:center}
+.cardm canvas{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);background:#fffdf7;margin:0 0 12px;box-shadow:0 8px 24px rgba(11,42,64,.15)}
+.cardm input[type=text]{margin-top:0;margin-bottom:12px}
+.cardm .row{margin-top:0}
+.cardm .row .btn{padding:13px 16px;font-size:14px;min-width:140px}
+.cardm .cardtools{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+
+/* Apretón de manos digital */
+.shakem{text-align:center;width:min(420px,100%)}
+.hspad{position:relative;width:min(320px,100%);aspect-ratio:1;margin:8px auto 14px;border:1px dashed var(--amber-d);border-radius:18px;background:radial-gradient(circle at 50% 50%,rgba(137,207,240,.14),transparent 70%),var(--panel2);touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;overflow:hidden;transition:opacity .2s}
+.hspad.idle{opacity:.45}
+.hstarget{position:absolute;width:34%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);--p:0;background:conic-gradient(var(--accent-ink) calc(var(--p)*1%),rgba(79,168,216,.18) 0);display:grid;place-items:center;pointer-events:none;transition:box-shadow .2s}
+.hstarget::before{content:"";position:absolute;inset:7%;border-radius:50%;background:var(--panel);border:1px solid var(--line)}
+.hstarget b{position:relative;font-family:var(--serif);font-size:clamp(22px,8vw,34px);font-weight:500;color:var(--accent-ink)}
+.hstarget.mine{box-shadow:0 0 0 4px rgba(79,168,216,.35)}
+.hstarget.both{box-shadow:0 0 0 8px rgba(79,168,216,.5),0 0 28px rgba(79,168,216,.6);animation:glowh 1s ease-in-out infinite}
+@keyframes glowh{50%{box-shadow:0 0 0 12px rgba(79,168,216,.25),0 0 36px rgba(79,168,216,.7)}}
+.hsdot{position:absolute;width:15%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;display:none}
+.hsdot.me{background:var(--amber-d);border:2px solid #fff;box-shadow:0 2px 10px rgba(11,42,64,.35)}
+.hsdot.them{background:#ffe0b3;border:2px solid #e8a24a;box-shadow:0 2px 10px rgba(122,74,16,.3)}
+.hsdot.show{display:block}
+.hsleg{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--dim);margin:0 0 10px}
+.hsleg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.hsleg .a i{background:var(--amber-d)}.hsleg .b i{background:#e8a24a}
+.shakem .telbig{min-height:56px}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="brand">
+      <div class="logo"><span class="appico" aria-hidden="true"></span>Chat<b>App</b><span class="cursor" aria-hidden="true"></span></div>
+      <div class="time hide" id="time" role="timer" aria-live="off">00:00</div>
+    </div>
+    <button class="lang" id="langBtn" data-noi18n lang="en" type="button">English</button>
+    <div class="hright">
+      <a class="elx" href="https://easylandx.github.io" target="_blank" rel="noopener" data-noi18n>EasyLandX</a>
+      <button class="install hide" id="installBtn" type="button" data-es="Instalar app">Instalar app</button>
+      <button class="sound" id="soundBtn" aria-pressed="true">Sonido: sí</button>
+    </div>
+  </header>
+
+  <!-- 1. LANDING -->
+  <main class="screen active" id="landing">
+    <h1><span class="appico" aria-hidden="true"></span>ChatApp<br><em>La nueva forma de chat.</em></h1>
+    <div style="margin-top:34px">
+      <button class="btn primary" id="connectBtn">Conectar</button>
+      <button class="btn aboutBtn" id="aboutBtn" type="button">Acerca de</button>
+    </div>
+    <p class="hint hide" id="inviteNote" style="margin-top:14px">Te han invitado a una sala privada · pulsa «Conectar» para entrar.</p>
+  </main>
+
+  <!-- 2. CALL (también sirve de sala de espera) -->
+  <main class="screen" id="call">
+    <div id="callWrap">
+      <div class="callgrid">
+      <div class="stagecol">
+      <div class="stage">
+        <canvas id="remote" width="600" height="800"></canvas>
+        <video id="remoteVid" class="hide" autoplay playsinline muted></video>
+        <audio id="remoteAud" autoplay playsinline style="display:none"></audio>
+        <div class="tag" id="tag"></div>
+        <div class="cue" id="cue" role="status"></div>
+        <div class="silence" id="silence"><div>Silencio cómodo<small id="silenceTxt" data-noi18n>Respirar también es conversar · 30 s</small></div></div>
+        <div class="waitov" id="waitOv">
+          <div>
+            <div class="radar mini" aria-hidden="true"><i></i></div>
+            <div class="match-msg" id="matchMsg" aria-live="polite"></div>
+            <div style="margin-top:12px"><button class="link hide" id="simBtn" data-es="Chat con IA">Chat con IA</button></div>
+          </div>
+        </div>
+        <div class="pip" id="pip"><video id="local" autoplay playsinline muted></video><div class="off" id="pipOff">Cámara apagada</div></div>
+      </div>
+      </div>
+      <aside class="chatwrap"><div class="chat">
+        <div class="chathead">CHAT DE TEXTO</div>
+        <div class="msgs" id="msgs" role="log" aria-live="polite"></div>
+        <form class="chatform" id="chatForm" autocomplete="off">
+          <input type="text" id="chatInput" maxlength="300" placeholder="Escribe un mensaje…">
+          <button class="ctl mic" type="button" id="voiceBtn" aria-pressed="false" data-noi18n>🎤</button>
+          <button class="ctl" type="submit" id="chatSend">Enviar</button>
+        </form>
+      </div></aside>
+      </div>
+
+      <div class="controls">
+        <button class="ctl" id="micBtn" aria-pressed="false">Micrófono activo</button>
+        <button class="ctl" id="camBtn" aria-pressed="false">Cámara activa</button>
+        <button class="ctl" id="benchBtn" type="button" aria-pressed="false" data-es="Modo Same-Bench">Modo Same-Bench</button>
+        <button class="ctl" id="aiBtn" aria-pressed="false" title="La IA chatea por ti. Si las dos personas la activan, las IA hablan entre sí.">Modo IA: no</button>
+        <button class="ctl" id="avatarBtn" type="button" data-es="Subir avatar">Subir avatar</button>
+        <button class="ctl hide" id="avatarRm" type="button" data-es="Quitar avatar">Quitar avatar</button>
+        <input type="file" id="avatarFile" accept="image/*" hidden>
+        <button class="ctl" id="wheelBtn" type="button">Ruleta de retos</button>
+        <button class="ctl" id="compBtn" type="button">Compatibilímetro</button>
+        <button class="ctl" id="telBtn" type="button">Telepatía</button>
+        <button class="ctl" id="pianoBtn" type="button">Dúo musical</button>
+        <button class="ctl" id="cardBtn" type="button">Postal de recuerdo</button>
+        <button class="ctl" id="shakeBtn" type="button">Apretón de manos digital</button>
+        <button class="ctl quiet" id="resetBtn" type="button" data-es="Reiniciar">Reiniciar</button>
+      </div>
+      <div class="invite hide" id="invite">
+        <small>TU SALA PRIVADA</small>
+        <p class="hint">Comparte este enlace: quien lo abra entra en tu sala de vídeo.</p>
+        <input type="text" id="roomLink" readonly data-noi18n>
+        <div class="row">
+          <button class="btn" id="copyLink" type="button">Copiar enlace</button>
+          <a class="btn wa" id="waBtn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        </div>
+        <button class="link" id="newLink" type="button" style="margin-top:14px;font-size:12px" data-es="Crear enlace nuevo">Crear enlace nuevo</button>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+
+<div class="ovl" id="wheelOvl" aria-hidden="true">
+  <div class="modal wheelm" role="dialog" aria-modal="true" aria-labelledby="wheelTitle">
+    <button class="mclose" id="wheelClose" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="wheelTitle">Ruleta de retos</h2>
+    <div class="wheelbox"><div class="wpoint" aria-hidden="true"></div><canvas id="wheelCv" width="300" height="300" aria-hidden="true"></canvas></div>
+    <p class="wres" id="wheelRes" aria-live="polite" data-noi18n></p>
+    <button class="btn primary" id="wheelSpin" type="button">Girar</button>
+  </div>
+</div>
+
+<div class="ovl" id="compOvl" aria-hidden="true">
+  <div class="modal compm" role="dialog" aria-modal="true" aria-labelledby="compTitle">
+    <button class="mclose" id="compClose" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="compTitle">Compatibilímetro</h2>
+    <div id="compBody" data-noi18n></div>
+    <button class="btn primary" id="compSend" type="button">Enviar al chat</button>
+  </div>
+</div>
+
+<div class="ovl" id="telOvl" aria-hidden="true">
+  <div class="modal telm" role="dialog" aria-modal="true" aria-labelledby="telTitle">
+    <button class="mclose" id="telClose" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="telTitle">Telepatía</h2>
+    <p class="telinfo" id="telInfo" data-noi18n></p>
+    <div class="telgrid" id="telGrid"></div>
+    <div class="telbig" id="telBig" data-noi18n></div>
+    <p class="wres" id="telRes" aria-live="polite" data-noi18n></p>
+    <button class="btn primary" id="telStart" type="button" data-es="Empezar">Empezar</button>
+  </div>
+</div>
+
+<div class="ovl" id="pianoOvl" aria-hidden="true">
+  <div class="modal pianom" role="dialog" aria-modal="true" aria-labelledby="pianoTitle">
+    <button class="mclose" id="pianoClose" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="pianoTitle">Dúo musical</h2>
+    <p class="hint">Teclas pentatónicas: toquéis lo que toquéis, suena bien. La otra persona oye y ve cada nota.</p>
+    <div class="keys" id="keys"></div>
+    <p class="hint" data-noi18n>A S D F G H J K L ;</p>
+  </div>
+</div>
+
+<div class="ovl" id="cardOvl" aria-hidden="true">
+  <div class="modal cardm" role="dialog" aria-modal="true" aria-labelledby="cardTitle">
+    <button class="mclose" id="cardClose" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="cardTitle">Postal de recuerdo</h2>
+    <canvas id="cardCv" width="1200" height="800" role="img" aria-label="Postal de recuerdo"></canvas>
+    <input type="text" id="cardText" maxlength="120" placeholder="Escribe unas palabras para la postal…">
+    <div class="row">
+      <button class="btn wa" id="cardWa" type="button">Enviar por WhatsApp</button>
+      <button class="btn" id="cardSave" type="button">Guardar imagen</button>
+    </div>
+    <div class="cardtools"><button class="link" id="cardRetake" type="button">Repetir foto</button></div>
+  </div>
+</div>
+
+<div class="ovl" id="shakeOvl" aria-hidden="true">
+  <div class="modal shakem" role="dialog" aria-modal="true" aria-labelledby="shakeTitle">
+    <button class="mclose" id="shakeClose" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="shakeTitle">Apretón de manos digital</h2>
+    <p class="telinfo" id="shakeInfo" data-noi18n></p>
+    <div class="hspad idle" id="hsPad" aria-label="Apretón de manos digital">
+      <div class="hstarget" id="hsTarget"><b id="hsNum" data-noi18n></b></div>
+      <div class="hsdot them" id="hsThem"></div>
+      <div class="hsdot me" id="hsMe"></div>
+    </div>
+    <div class="hsleg"><span class="a"><i></i>Tu pulgar</span><span class="b"><i></i>Su pulgar</span></div>
+    <p class="wres" id="shakeRes" aria-live="polite" data-noi18n></p>
+    <button class="btn primary" id="shakeStart" type="button" data-es="Empezar">Empezar</button>
+  </div>
+</div>
+
+<div class="ovl" id="aboutOvl" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+    <button class="mclose" id="aboutClose" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="aboutTitle">ChatApp. La nueva forma de chat.</h2>
+    <h3>Funciones</h3>
+    <ul>
+      <li>Videochat instantáneo</li>
+      <li>Vista horizontal Same-Bench</li>
+      <li>Enlaces de sala privados</li>
+      <li>Chat de texto</li>
+      <li>Avatar de IA que habla</li>
+      <li>Modo de voz manos libres</li>
+      <li>Avatares con foto personalizada</li>
+      <li>Ruleta de retos</li>
+      <li>Compatibilímetro</li>
+      <li>Telepatía en directo</li>
+      <li>Piano a dúo</li>
+      <li>Postales de recuerdo</li>
+      <li>Apretón de manos digital</li>
+      <li>Inglés y español</li>
+    </ul>
+    <p class="strong">Funciona en el navegador.</p>
+    <p>Instalación fácil opcional.</p>
+    <p>En el móvil, añádela a la pantalla de inicio.</p>
+    <p>Funciona como una app de verdad: sin descargas, sin cuenta y sin ocupar espacio.</p>
+    <p>En el ordenador, usa el botón Instalar app de arriba, solo la primera vez.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<button class="soundfix hide" id="soundFix" type="button"><span data-es="🔊 Toca para activar el sonido">🔊 Toca para activar el sonido</span><small data-es="para la voz del chat">para la voz del chat</small></button>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const screens = [...document.querySelectorAll('.screen')];
+  const go = id => { screens.forEach(s => s.classList.toggle('active', s.id === id)); $('#time').classList.toggle('hide', id !== 'call'); window.scrollTo(0,0); };
+
+  /* ---------- i18n (ES <-> EN) ---------- */
+  let LANG = 'es', DONE = null;
+  const EN = {
+    "ChatApp · Hola, desconocido": "ChatApp · Hello, stranger",
+    "Habla cara a cara con personas nuevas. Sin registro y sin límite de tiempo.": "Talk face to face with new people. No sign-up and no time limit.",
+    "Sonido: sí": "Sound: on",
+    "Sonido: no": "Sound: off",
+    "La nueva forma de chat.": "The new way to chat.",
+    "Buscando a alguien…": "Looking for someone…",
+    "Te emparejamos con alguien que también quiere charlar con calma. Una pregunta para arrancar, un reloj amable y toda la atención puesta en la otra persona.": "We match you with someone who also wants to talk without rushing. One question to get started, a friendly clock and all your attention on the other person.",
+    "Conectar": "Connect",
+    "Emparejamiento en directo · sin registro": "Live matching · no sign-up",
+    "01 · CARA A CARA": "01 · FACE TO FACE",
+    "Vídeo desde el primer segundo, con una entrada suave.": "Video from the very first second, with a gentle fade-in.",
+    "02 · DIRECTO AL GRANO": "02 · STRAIGHT TO THE POINT",
+    "Una pregunta cuidada que abre la conversación.": "A carefully chosen question that opens the conversation.",
+    "Un final claro que hace cada minuto más valioso.": "A clear ending that makes every minute count.",
+    "Llamada directa entre las dos personas · no se graba nada · si no hay nadie conectado, puedes probar con una persona simulada.": "Direct call between the two people · nothing is recorded · if nobody is online, you can try with a simulated person.",
+    "Esperando a alguien…": "Waiting for someone…",
+    "Tu chat y tu cámara ya están listos. Puedes escribir mientras esperas.": "Your camera and chat are ready. You can type while you wait.",
+    "Escribe un mensaje: se entregará en cuanto alguien se una.": "Write a message: it will be delivered as soon as someone joins.",
+    "Alguien se ha unido · ¡empieza la charla!": "Someone has joined · the chat begins!",
+    "Buscando a alguien con ganas de charlar…": "Looking for someone who feels like chatting…",
+    "Afinando la conexión…": "Tuning the connection…",
+    "Preparando una buena pregunta…": "Preparing a good question…",
+    "¡Ya casi! Respira hondo y sonríe": "Almost there! Take a deep breath and smile",
+    "Pidiendo cámara y micrófono…": "Requesting camera and microphone…",
+    "Suele tardar unos segundos": "It usually takes a few seconds",
+    "Volver al inicio": "Back to start",
+    "Aún no hay nadie · probar con una persona simulada": "Nobody yet · try with a simulated person",
+    "TIEMPO": "TIME",
+    "RESTANTE": "LEFT",
+    "Demo ×30 activa": "Demo ×30 on",
+    "Acelera el reloj para probar los avisos": "Speeds up the clock to test the alerts",
+    "Persona anónima · señal simulada": "Anonymous person · simulated signal",
+    "Persona real · en directo": "Real person · live",
+    "Silencio cómodo": "Comfortable silence",
+    "Respirar también es conversar · ": "Breathing is also conversing · ",
+    "Respirar también es conversar · 30 s": "Breathing is also conversing · 30 s",
+    "Cámara apagada": "Camera off",
+    "Sin cámara · sigues con el chat de texto": "No camera · you can keep going with text chat",
+    "Cámara en pausa": "Camera paused",
+    "Sin cámara ni micrófono · seguimos con el chat de texto": "No camera or microphone · continuing with text chat",
+    "CHAT DE TEXTO": "TEXT CHAT",
+    "Pulsa en cualquier sitio para activar el sonido": "Click anywhere to turn the sound on",
+    "No se pudo activar el micrófono · revisa el permiso del navegador": "Couldn’t turn on the microphone · check the browser permission",
+    "🔊 Toca para activar el sonido": "🔊 Tap to turn the sound on",
+    "para la voz del chat": "for chat voice",
+    "Reiniciar": "Reset",
+    "Subir avatar": "Upload avatar",
+    "Quitar avatar": "Remove avatar",
+    "Avatar actualizado": "Avatar updated",
+    "Avatar eliminado": "Avatar removed",
+    "Elige un archivo de imagen": "Please choose an image file",
+    "No se pudo leer la imagen": "Couldn\u2019t read that image",
+    "Chat con IA": "Chat with AI",
+    "¿Seguro?": "Sure?",
+    "Voz activada": "Voice on",
+    "La otra persona no envía audio (sin micrófono)": "The other person isn’t sending audio (no microphone)",
+    "TU SALA PRIVADA": "YOUR PRIVATE ROOM",
+    "Comparte este enlace: quien lo abra entra en tu sala de vídeo.": "Share this link: whoever opens it joins your video room.",
+    "Instalar app": "Install app",
+    "Hablar con voz": "Speak with your voice",
+    "Dejar de escuchar": "Stop listening",
+    "El sonido está desactivado · la IA responderá solo por texto": "Sound is off · the AI will reply in text only",
+    "No se pudo usar el micrófono para dictar · revisa el permiso del navegador": "Couldn't use the microphone for voice input · check the browser permission",
+    "El reconocimiento de voz no está disponible ahora mismo": "Voice recognition isn't available right now",
+    "App instalada": "App installed",
+    "Para instalar: toca Compartir y luego «Añadir a pantalla de inicio»": "To install: tap Share, then “Add to Home Screen”",
+    "Para instalar: abre el menú del navegador y elige «Instalar app» o «Añadir a pantalla de inicio»": "To install: open the browser menu and choose “Install app” or “Add to Home Screen”",
+    "Copiar enlace": "Copy link",
+    "Enlace copiado": "Link copied",
+    "Crear enlace nuevo": "Create new link",
+    "Enlace nuevo creado": "New link created",
+    "Podrás crear otro enlace cuando termine la llamada": "You can create a new link once the call ends",
+    "Enviar por WhatsApp": "Send via WhatsApp",
+    "Te han invitado a una sala privada · pulsa «Conectar» para entrar.": "You’ve been invited to a private room · press “Connect” to join.",
+    "Esperando a que la otra persona abra la sala…": "Waiting for the other person to open the room…",
+    "Únete a la charla en ChatApp: ": "Join the chat on ChatApp: ",
+    "Escribe un mensaje…": "Type a message…",
+    "Enviar": "Send",
+    "Rompe el hielo con un saludo.": "Break the ice with a hello.",
+    "No se pudo enviar el mensaje": "Could not send the message",
+    "¡Hola! Qué gusto charlar contigo.": "Hi! Nice to chat with you.",
+    "Qué buena pregunta, déjame pensarlo un momento…": "Great question, let me think about it for a moment…",
+    "Jaja, me pasa algo parecido.": "Haha, something similar happens to me.",
+    "Cuéntame más, me interesa.": "Tell me more, I’m interested.",
+    "Eso me ha recordado a una época bonita de mi vida.": "That reminded me of a lovely time in my life.",
+    "Totalmente de acuerdo, nunca lo había pensado así.": "Totally agree, I’d never thought of it that way.",
+    "Y tú, ¿cómo lo vives en el día a día?": "And you, how do you experience it day to day?",
+    "PREGUNTA PARA EMPEZAR": "QUESTION TO START",
+    "Otra pregunta": "Another question",
+    "Puedes cambiarla una vez": "You can change it once",
+    "Micrófono activo": "Microphone on",
+    "Micrófono en pausa": "Microphone paused",
+    "Cámara activa": "Camera on",
+    "Modo Same-Bench": "Same-Bench view",
+    "Modo normal": "Standard view",
+    "Modo IA: sí": "AI mode: on",
+    "Modo IA: no": "AI mode: off",
+    "La IA chatea por ti. Si las dos personas la activan, las IA hablan entre sí.": "The AI chats for you. If both people turn it on, the two AIs talk to each other.",
+    "Modo IA activado · la IA chatea por ti": "AI mode on · the AI is chatting for you",
+    "Modo IA desactivado · vuelves a escribir tú": "AI mode off · you’re typing again",
+    "La IA se ha pausado tras varios mensajes seguidos · actívala de nuevo para seguir": "AI paused after several messages in a row · turn it on again to continue",
+    "Bloquear y salir": "Block and leave",
+    "Salir con calma": "Leave calmly",
+    "La charla ha terminado": "The chat has ended",
+    "¿Cómo ha ido? Si las dos personas marcáis «Gran charla», se intercambian las notas. Todo es anónimo hasta ese momento.": "How did it go? If you both mark “Great chat”, notes are exchanged. Everything is anonymous until then.",
+    "Sin problema, cada conversación cuenta. Si lo deseas, puedes dejar tu valoración.": "No problem, every conversation counts. If you wish, you can leave your feedback.",
+    "TU NOTA O ENLACE (OPCIONAL)": "YOUR NOTE OR LINK (OPTIONAL)",
+    "Un enlace, un usuario o dos líneas amables": "A link, a username or two kind lines",
+    "Solo se muestra si ambas personas dais el visto bueno.": "It is only shown if both of you give the thumbs-up.",
+    "Gran charla": "Great chat",
+    "Seguir mi camino": "Go my own way",
+    "Esperando la respuesta de la otra persona…": "Waiting for the other person’s reply…",
+    "Otra charla": "Another chat",
+    "Gracias por cuidar el espacio": "Thanks for looking after the space",
+    "Cerramos la llamada al instante y no volverás a coincidir con esta persona en esta sesión.": "We end the call instantly and you won’t be matched with this person again in this session.",
+    "Volver a la charla": "Back to the chat",
+    "La otra persona ha salido": "The other person has left",
+    "Llamada cerrada · no volverás a coincidir con esa persona": "Call closed · you won’t be matched with that person again",
+    "No se pudo contactar con el servicio de emparejamiento": "Could not reach the matching service",
+    "Para hablar con alguien necesitas permitir cámara y micrófono": "To talk with someone you need to allow camera and microphone",
+    "Queda 1 minuto · ideal para cerrar con algo bonito": "1 minute left · perfect for closing with something nice",
+    "Últimos 10 segundos · gracias por la charla": "Last 10 seconds · thanks for the chat",
+    "¡Gran charla en las dos direcciones!": "Great chat in both directions!",
+    "La otra persona te ha dejado esto:": "The other person left you this:",
+    "Tu nota también se ha enviado.": "Your note has been sent too.",
+    "Esta vez no has dejado nota, y está perfecto.": "You didn’t leave a note this time, and that’s perfectly fine.",
+    "No ha dejado nota, pero también ha dicho que sí.": "They didn’t leave a note, but they also said yes.",
+    "Cada charla suma.": "Every chat counts.",
+    "Esta vez no ha habido intercambio, y tu nota se ha borrado de forma automática. Quedan muchas conversaciones buenas por delante.": "There was no exchange this time, and your note was deleted automatically. Plenty of good conversations lie ahead.",
+    "Gracias por tu tiempo.": "Thank you for your time.",
+    "Tu respuesta es privada y no se comparte. Que tengas un día estupendo.": "Your answer is private and is not shared. Have a wonderful day.",
+    "Me quedé pensando en lo que contaste. Gracias por la charla. ✦": "I kept thinking about what you shared. Thanks for the chat. ✦",
+    "Ha sido un rato muy agradable. Te dejo mi usuario: @charla.pausada": "That was a really pleasant time. Here’s my username: @charla.pausada",
+    "Qué bien se ha pasado el tiempo. Escríbeme aquí: hola@ejemplo.com": "Time flew by. Write to me here: hola@ejemplo.com",
+    "Acerca de": "About",
+    "ChatApp. La nueva forma de chat.": "ChatApp. The new way to chat.",
+    "Funciones": "Features",
+    "Videochat instantáneo": "Instant video chat",
+    "Enlaces de sala privados": "Private room links",
+    "Chat de texto": "Text chat",
+    "Avatar de IA que habla": "Talking AI avatar",
+    "Modo de voz manos libres": "Hands free voice mode",
+    "Avatares con foto personalizada": "Custom photo avatars",
+    "Inglés y español": "English & Spanish",
+    "Funciona en el navegador.": "Runs in your browser.",
+    "Instalación fácil opcional.": "Optional Easy Install.",
+    "En el móvil, añádela a la pantalla de inicio.": "On phone, add to home screen.",
+    "Funciona como una app de verdad: sin descargas, sin cuenta y sin ocupar espacio.": "Works like a real app, no download, account or space needed.",
+    "En el ordenador, usa el botón Instalar app de arriba, solo la primera vez.": "On desktop, use the Install app button above, first time only.",
+    "Cerrar": "Close",
+    "Ruleta de retos": "Challenge wheel",
+    "Girar": "Spin",
+    "Gira la ruleta y el reto es para las dos personas.": "Spin the wheel and the challenge is for both of you.",
+    "Compatibilímetro": "Compatibility meter",
+    "Enviar al chat": "Send to chat",
+    "Charlad un poco más y el compatibilímetro tendrá mucho que decir ✨": "Chat a little more and the compatibility meter will have plenty to say ✨",
+    "Equilibrio de charla": "Chat balance",
+    "Sintonía de palabras": "Word harmony",
+    "Buen rollo": "Good vibes",
+    "Curiosidad": "Curiosity",
+    "Tiempo juntos": "Time together",
+    "Palabras que compartís: ": "Words you share: ",
+    "Seguid charlando: las palabras en común llegan enseguida": "Keep chatting: shared words show up quickly",
+    "Almas gemelas del café": "Coffee soulmates",
+    "Dúo dinámico": "Dynamic duo",
+    "Pareja de baile perfecta": "Perfect dance partners",
+    "Equipo de pizza compartida": "Shared-pizza team",
+    "Amigos en construcción": "Friends in the making",
+    "Exploradores recién llegados": "Fresh explorers",
+    "Telepatía": "Telepathy", "Dúo musical": "Duo jam", "Telepatía en directo": "Live telepathy", "Piano a dúo": "Piano duet",
+    "Empezar": "Start", "Otra vez": "Again", "Ronda": "Round",
+    "Teclas pentatónicas: toquéis lo que toquéis, suena bien. La otra persona oye y ve cada nota.": "Pentatonic keys: whatever you play, it sounds good. The other person hears and sees every note.",
+    "Elige el mismo emoji que la otra persona, sin decírselo. 3 rondas.": "Pick the same emoji as the other person, without telling them. 3 rounds.",
+    "¡Misma mente! ✅": "Same mind! ✅", "Esta vez no… ❌": "Not this time… ❌",
+    "¿En qué emoji está pensando?": "Which emoji are they thinking of?",
+    "Postal de recuerdo": "Memory postcard", "Postales de recuerdo": "Memory postcards",
+    "Saludos desde ChatApp": "Greetings from ChatApp",
+    "Escribe unas palabras para la postal…": "Write a few words for the postcard…",
+    "Repetir foto": "Retake photo", "Guardar imagen": "Save image",
+    "Este rato se queda con nosotros. ✦": "This moment stays with us. ✦",
+    "💌 Una postal de recuerdo desde ChatApp": "💌 A memory postcard from ChatApp",
+    "Postal copiada · pégala en WhatsApp (Ctrl+V)": "Postcard copied · paste it in WhatsApp (Ctrl+V)",
+    "Postal guardada · adjúntala en WhatsApp": "Postcard saved · attach it in WhatsApp",
+    "Postal guardada": "Postcard saved",
+    "No se pudo crear la postal": "Couldn’t create the postcard",
+    "juntos": "together",
+    "Apretón de manos digital": "Digital handshake", "Tu pulgar": "Your thumb", "Su pulgar": "Their thumb",
+    "Poned el pulgar a la vez sobre el círculo y mantenedlo 3 segundos.": "Both place a thumb on the circle at the same time and hold for 3 seconds.",
+    "Pulsa «Empezar» y la otra persona verá el mismo círculo.": "Press “Start” and the other person will see the same circle.",
+    "Pon el pulgar sobre el círculo": "Place your thumb on the circle",
+    "Esperando el pulgar de la otra persona…": "Waiting for the other person’s thumb…",
+    "La otra persona ya está esperando · pon tu pulgar": "The other person is already waiting · place your thumb",
+    "¡Sigue así, no lo sueltes!": "Keep going, don’t let go!",
+    "¡Apretón de manos completado!": "Handshake complete!",
+    "En ordenador, mantén pulsado el botón del ratón sobre el círculo.": "On desktop, hold the mouse button down on the circle.",
+    "🤝 Apretón de manos digital completado": "🤝 Digital handshake complete",
+    "Mentes conectadas": "Minds connected", "Casi telepatía": "Almost telepathy", "Chispa de sintonía": "Spark of sync", "Mundos paralelos": "Parallel worlds",
+  };
+  const T = s => (LANG === 'en' && Object.prototype.hasOwnProperty.call(EN, s)) ? EN[s] : s;
+  const setT = (el, es) => { el.dataset.es = es; el.textContent = T(es); };
+  const origText = new WeakMap();
+  const META = $('meta[name="description"]'), TITLE_ES = document.title, META_ES = META.content;
+  function applyStatic(){
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n =>
+      (n.nodeValue.trim() && n.parentElement && !n.parentElement.closest('script,style,[data-es],[data-noi18n]'))
+        ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+    const nodes = []; while(w.nextNode()) nodes.push(w.currentNode);
+    nodes.forEach(n => {
+      if(!origText.has(n)) origText.set(n, n.nodeValue);
+      const m = origText.get(n).match(/^(\s*)([\s\S]*?)(\s*)$/);
+      n.nodeValue = m[1] + T(m[2]) + m[3];
+    });
+    document.querySelectorAll('[title],[placeholder]').forEach(el => {
+      ['title','placeholder'].forEach(a => {
+        if(!el.hasAttribute(a)) return;
+        const k = 'es' + a;
+        if(!(k in el.dataset)) el.dataset[k] = el.getAttribute(a);
+        el.setAttribute(a, T(el.dataset[k]));
+      });
+    });
+  }
+  function renderDone(){
+    const box = $('#waveDone'); if(!DONE) return;
+    if(DONE.kind === 'mutual'){
+      const q = LANG === 'en' ? ['\u201c','\u201d'] : ['\u00ab','\u00bb'];
+      box.innerHTML = '<strong>' + T('¡Gran charla en las dos direcciones!') + '</strong><br><br>' + T('La otra persona te ha dejado esto:') + '<br><em></em><br><br>' +
+                      T(DONE.mine ? 'Tu nota también se ha enviado.' : 'Esta vez no has dejado nota, y está perfecto.');
+      box.querySelector('em').textContent = DONE.pn ? q[0] + (DONE.sim ? T(DONE.pn) : DONE.pn) + q[1] : T('No ha dejado nota, pero también ha dicho que sí.');
+    } else if(DONE.kind === 'none'){
+      box.innerHTML = '<strong>' + T('Cada charla suma.') + '</strong><br><br>' + T('Esta vez no ha habido intercambio, y tu nota se ha borrado de forma automática. Quedan muchas conversaciones buenas por delante.');
+    } else {
+      box.innerHTML = '<strong>' + T('Gracias por tu tiempo.') + '</strong><br><br>' + T('Tu respuesta es privada y no se comparte. Que tengas un día estupendo.');
+    }
+  }
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = T(TITLE_ES); META.content = T(META_ES);
+    applyStatic();
+    document.querySelectorAll('[data-es]').forEach(el => { el.textContent = T(el.dataset.es); });
+    renderDone(); updateWa(); voiceLabel(); wheelRes(); compRender(false); telRender(); hsRender(); cardRedraw();
+    const b = $('#langBtn');
+    b.textContent = LANG === 'en' ? 'Espa\u00f1ol' : 'English';
+    b.lang = LANG === 'en' ? 'es' : 'en';
+  }
+  $('#langBtn').addEventListener('click', () => { LANG = LANG === 'en' ? 'es' : 'en'; applyLang(); });
+
+  /* ---------- Estado ---------- */
+  const S = { elapsed: 0, timer: null, last: 0,
+              swaps: 1, stream: null, raf: null, matchT: null, msgT: null, silenceLeft: 0, soundOn: true,
+              prompt: '', camOn: true, micOn: true };
+
+  /* ---------- Toast ---------- */
+  let toastT;
+  function toast(msg, ms){ const t=$('#toast'); t.textContent=T(msg); t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),ms||2600); }
+
+  /* ---------- Audio (WebAudio, sin ficheros) ---------- */
+  let ac;
+  function tone(f,d=.2,type='sine',v=.06,delay=0){
+    if(!S.soundOn) return;
+    try{
+      ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+      if(ac.state !== 'running') ac.resume();
+      const o=ac.createOscillator(), g=ac.createGain(), st=ac.currentTime+delay;
+      o.type=type; o.frequency.value=f;
+      g.gain.setValueAtTime(0,st); g.gain.linearRampToValueAtTime(v,st+.02); g.gain.exponentialRampToValueAtTime(.0001,st+d);
+      o.connect(g).connect(ac.destination); o.start(st); o.stop(st+d+.05);
+    }catch(e){}
+  }
+  const chimeSoft  = () => { tone(523,.5,'sine',.05); tone(784,.7,'sine',.05,.18); };
+  const tickFinal  = () => tone(880,.09,'square',.035);
+  const chimeEnd   = () => { tone(392,.6,'sine',.06); tone(523,.6,'sine',.06,.2); tone(659,.9,'sine',.06,.4); };
+  const chimeMatch = () => { tone(440,.25,'triangle',.05); tone(660,.4,'triangle',.05,.15); };
+
+  $('#soundBtn').addEventListener('click', e => {
+    S.soundOn = !S.soundOn;
+    setT(e.target, 'Sonido: ' + (S.soundOn ? 'sí' : 'no'));
+    e.target.setAttribute('aria-pressed', S.soundOn);
+  });
+
+  /* Desbloqueo de audio: móviles bloquean el sonido hasta que hay un toque del usuario */
+  const IS_TOUCH = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform));
+  function unlockAudio(){
+    try{
+      ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+      if(ac.state !== 'running') ac.resume();
+      const s = ac.createBufferSource(); s.buffer = ac.createBuffer(1,1,22050); s.connect(ac.destination); s.start(0);
+    }catch(e){}
+    const a = $('#remoteAud');
+    if(a && a.srcObject && a.paused) a.play().catch(()=>{});
+    if('speechSynthesis' in window){
+      try{ speechSynthesis.getVoices(); speechSynthesis.resume(); }catch(e){}
+      if(!S.ttsOk && !S.ttsProbe){
+        S.ttsProbe = true; setTimeout(() => { S.ttsProbe = false; }, 800);
+        try{ const u = new SpeechSynthesisUtterance(' '); u.volume = 0; u.onstart = u.onend = () => { if(!IS_TOUCH) S.ttsOk = true; }; u.onerror = () => {}; keepU(u); speechSynthesis.speak(u); }catch(e){}
+      }
+      flushTts();
+    }
+  }
+  ['pointerdown','touchend','click','keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { passive:true }));
+  document.addEventListener('visibilitychange', () => { if(!document.hidden) unlockAudio(); });
+
+
+  /* ---------- Cámara local (opcional) ---------- */
+  async function startCam(){
+    S.camOn = true; S.stream = null;
+    const AUD = { echoCancellation:true, noiseSuppression:true, autoGainControl:true };
+    const tries = [{ video:{ facingMode:'user' }, audio:AUD }, { video:{ facingMode:'user' } }, { audio:AUD }];
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+      for(const c of tries){ try{ S.stream = await navigator.mediaDevices.getUserMedia(c); break; }catch(e){} }
+    }
+    try{ const vt = S.stream && S.stream.getVideoTracks()[0], cp = vt && vt.getCapabilities && vt.getCapabilities();
+      if(cp && cp.zoom) vt.applyConstraints({ advanced:[{ zoom: cp.zoom.min }] }).catch(()=>{}); }catch(e){}
+    const hasV = !!(S.stream && S.stream.getVideoTracks().length);
+    $('#local').srcObject = hasV ? S.stream : null;
+    $('#pip').classList.toggle('nocam', !hasV);
+    if(!hasV) setT($('#pipOff'), 'Sin cámara · sigues con el chat de texto');
+    if(S.stream && !S.stream.getAudioTracks().length) setTimeout(() => toast('No se pudo activar el micrófono · revisa el permiso del navegador'), 400);
+  }
+  /* Stream saliente: pistas reales + una pista de vídeo de relleno si falta la cámara */
+  /* Avatar animado: sustituye a la cámara. Mueve la boca al escribir y al enviar un mensaje */
+  const AV = { typeUntil:0, talkUntil:0 };
+  function avatarTalk(text){ AV.talkUntil = performance.now() + Math.min(20000, 600 + String(text).length * 62); }
+  /* Avatar animado compartido: cámara local (sin cámara) y la persona «Chat AI» */
+  function avatarPainter(st){
+    const W = 480, H = 640;
+    let blinkAt = performance.now() + 2200, blinkUntil = 0, mouth = 0;
+    /* Avatar con foto subida: fondo difuminado + foto entera; rebota suavemente al hablar */
+    const paintPhoto = (x, img, t, talking, typing, m) => {
+      x.drawImage(img.bg, 0, 0, W, H);
+      const sc = 1 + Math.sin(t*1.2)*.004 + (talking ? .02*m : 0);
+      const dy = Math.sin(t*1.6)*3 - (talking ? 5*m : 0);
+      x.save(); x.translate(W/2, H/2 + dy); x.scale(sc, sc); x.drawImage(img.main, -W/2, -H/2); x.restore();
+      if(typing){
+        for(let k = 0; k < 3; k++){
+          x.fillStyle = 'rgba(79,168,216,' + (.55 + .45*Math.sin(t*8 - k*1.2)) + ')';
+          x.beginPath(); x.arc(W - 90 + k*18, 60 - Math.abs(Math.sin(t*8 - k*1.2))*6, 6, 0, Math.PI*2); x.fill();
+        }
+      }
+    };
+    return x => {
+      const now = performance.now(), t = now/1000;
+      const talking = now < st.talkUntil, typing = now < st.typeUntil;
+      const bg = x.createRadialGradient(W/2, H*.45, 20, W/2, H*.5, W*.6);
+      bg.addColorStop(0, '#d6efff'); bg.addColorStop(1, '#d9eefb');
+      x.fillStyle = bg; x.fillRect(0, 0, W, H);
+      let target = 0;
+      if(talking) target = .25 + .75 * Math.abs(Math.sin(t*13)) * (.6 + .4*Math.sin(t*4.1 + 1));
+      else if(typing) target = .08 + .12 * Math.abs(Math.sin(t*9));
+      mouth += (target - mouth) * .5;
+      if(st.img){ paintPhoto(x, st.img, t, talking, typing, mouth); return; }
+      const cx = W/2 + Math.sin(t*.8)*6, cy = H*.42 + Math.sin(t*1.6)*3;
+      // hombros
+      x.fillStyle = '#6bb7e0'; x.strokeStyle = 'rgba(137,207,240,.55)'; x.lineWidth = 3;
+      x.beginPath(); x.ellipse(cx, H*1.02 + Math.sin(t*1.6)*3, 200, 290, 0, Math.PI, 0); x.fill(); x.stroke();
+      // pelo de atrás (cae por los lados de la cara)
+      const sway2 = Math.sin(t*1.1)*2;
+      x.fillStyle = '#4a8fb8'; x.strokeStyle = '#1d5a80'; x.lineWidth = 3;
+      x.beginPath(); x.moveTo(cx-98, cy-10);
+      x.bezierCurveTo(cx-120, cy+40, cx-112, cy+95, cx-84+sway2, cy+112);
+      x.lineTo(cx+84+sway2, cy+112);
+      x.bezierCurveTo(cx+112, cy+95, cx+120, cy+40, cx+98, cy-10);
+      x.closePath(); x.fill(); x.stroke();
+      // cabeza
+      const hg = x.createLinearGradient(0, cy-110, 0, cy+110);
+      hg.addColorStop(0, '#cfeeff'); hg.addColorStop(1, '#89cff0');
+      x.fillStyle = hg; x.strokeStyle = 'rgba(137,207,240,.9)'; x.lineWidth = 3;
+      x.beginPath(); x.ellipse(cx, cy, 92, 106, 0, 0, Math.PI*2); x.fill(); x.stroke();
+      // mejillas
+      x.fillStyle = 'rgba(79,168,216,.30)';
+      for(const d of [-58, 58]){ x.beginPath(); x.ellipse(cx+d, cy+30, 17, 10, 0, 0, Math.PI*2); x.fill(); }
+      // pelo de delante: coronilla y flequillo
+      x.fillStyle = '#3b7ca6'; x.strokeStyle = '#1d5a80'; x.lineWidth = 3;
+      x.beginPath();
+      x.ellipse(cx, cy-4, 98, 110, 0, Math.PI, Math.PI*2);
+      x.bezierCurveTo(cx+98, cy-40, cx+84, cy-58, cx+60, cy-64);
+      x.bezierCurveTo(cx+38, cy-80, cx+12, cy-70, cx-6, cy-78);
+      x.bezierCurveTo(cx-26, cy-66, cx-56, cy-70, cx-70, cy-56);
+      x.bezierCurveTo(cx-90, cy-48, cx-98, cy-30, cx-98, cy-4);
+      x.closePath(); x.fill(); x.stroke();
+      // brillo del pelo
+      x.strokeStyle = 'rgba(255,200,120,.35)'; x.lineWidth = 4; x.lineCap = 'round';
+      x.beginPath(); x.arc(cx-8, cy-4, 96, Math.PI*1.18, Math.PI*1.45); x.stroke();
+      // ojos
+      if(now > blinkAt){ blinkUntil = now + 130; blinkAt = now + 2200 + Math.random()*3200; }
+      const blink = now < blinkUntil, dy = typing ? 5 : 0, dx = typing ? -2 : Math.sin(t*.5)*2;
+      for(const d of [-34, 34]){
+        if(blink){ x.strokeStyle = '#12354d'; x.lineWidth = 4; x.lineCap = 'round';
+          x.beginPath(); x.moveTo(cx+d-10, cy-20); x.lineTo(cx+d+10, cy-20); x.stroke(); }
+        else {
+          x.fillStyle = '#fff6e0'; x.beginPath(); x.ellipse(cx+d, cy-20, 14, 16, 0, 0, Math.PI*2); x.fill();
+          x.fillStyle = '#12354d'; x.beginPath(); x.ellipse(cx+d+dx, cy-18+dy, 7.5, 9, 0, 0, Math.PI*2); x.fill();
+          x.fillStyle = '#fff'; x.beginPath(); x.arc(cx+d+dx+2.5, cy-21+dy, 2.4, 0, Math.PI*2); x.fill();
+        }
+      }
+      // cejas
+      const raise = talking ? -7 : (typing ? -3 : 0);
+      x.strokeStyle = '#1d5a80'; x.lineWidth = 5; x.lineCap = 'round';
+      x.beginPath(); x.moveTo(cx-52, cy-48+raise+3); x.quadraticCurveTo(cx-34, cy-58+raise, cx-16, cy-48+raise); x.stroke();
+      x.beginPath(); x.moveTo(cx+52, cy-48+raise+3); x.quadraticCurveTo(cx+34, cy-58+raise, cx+16, cy-48+raise); x.stroke();
+      // boca
+      const my = cy + 52;
+      if(mouth < .06){
+        x.strokeStyle = '#1d5a80'; x.lineWidth = 5; x.beginPath(); x.arc(cx, my-14, 26, .2*Math.PI, .8*Math.PI); x.stroke();
+      } else {
+        x.fillStyle = '#12354d'; x.strokeStyle = '#1d5a80'; x.lineWidth = 4;
+        x.beginPath(); x.ellipse(cx, my, 18 + 12*mouth, 3 + 20*mouth, 0, 0, Math.PI*2); x.fill(); x.stroke();
+        if(mouth > .3){ x.fillStyle = '#5ab4e5'; x.beginPath(); x.ellipse(cx, my + 8*mouth, 11, 5*mouth, 0, 0, Math.PI*2); x.fill(); }
+      }
+      // puntos de "escribiendo…"
+      if(typing){
+        for(let k = 0; k < 3; k++){
+          x.fillStyle = 'rgba(137,207,240,' + (.55 + .45*Math.sin(t*8 - k*1.2)) + ')';
+          x.beginPath(); x.arc(cx + 120 + k*18, cy - 100 - Math.abs(Math.sin(t*8 - k*1.2))*6, 6, 0, Math.PI*2); x.fill();
+        }
+      }
+    };
+  }
+  function dummyTrack(){
+    const c = document.createElement('canvas'); c.width = 480; c.height = 640;
+    const x = c.getContext('2d');
+    const ap = avatarPainter(AV), paint = () => ap(x);
+    paint(); S.dummyT = setInterval(paint, 66);
+    return c.captureStream(15).getVideoTracks()[0];
+  }
+  /* Pista de audio silenciosa: si no hay micrófono, el stream saliente igualmente lleva audio,
+     para que la negociación WebRTC deje pasar el sonido de la otra persona */
+  function silentAudioTrack(){
+    ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+    if(ac.state !== 'running') ac.resume();
+    const d = ac.createMediaStreamDestination(), o = ac.createOscillator(), g = ac.createGain();
+    g.gain.value = 0; o.connect(g).connect(d); o.start(); S.silentOsc = o;
+    return d.stream.getAudioTracks()[0];
+  }
+  function buildOut(){
+    const tr = S.stream ? S.stream.getTracks() : [];
+    const out = new MediaStream(tr);
+    if(!tr.some(t => t.kind === 'audio')){ try{ out.addTrack(silentAudioTrack()); }catch(e){} }
+    S.avatar = false;
+    if(!tr.some(t => t.kind === 'video')){ try{ clearInterval(S.dummyT); out.addTrack(dummyTrack()); S.avatar = true;
+      $('#local').srcObject = new MediaStream(out.getVideoTracks()); $('#pip').classList.remove('nocam'); }catch(e){} }
+    S.out = out; return out;
+  }
+  function stopCam(){
+    if(S.stream){ S.stream.getTracks().forEach(t=>t.stop()); S.stream=null; }
+    if(S.out){ S.out.getTracks().forEach(t=>t.stop()); S.out=null; }
+    clearInterval(S.dummyT); $('#local').srcObject=null;
+    try{ S.silentOsc && S.silentOsc.stop(); }catch(e){} S.silentOsc = null;
+  }
+
+  /* ---------- Avatar propio: sube una foto (selfie, cuerpo entero, tu gato…) y sustituye al avatar ---------- */
+  const AV_KEY = 'chatapp-avatar-v1';
+  function setAvatarImage(img){
+    const W = 480, H = 640, iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+    const main = document.createElement('canvas'); main.width = W; main.height = H;
+    const s = Math.min(W/iw, H/ih), w = iw*s, h = ih*s;
+    main.getContext('2d').drawImage(img, (W-w)/2, (H-h)/2, w, h);          /* foto entera, sin recortar */
+    const tiny = document.createElement('canvas'); tiny.width = 24; tiny.height = 32;
+    const sc = Math.max(24/iw, 32/ih);
+    tiny.getContext('2d').drawImage(img, (24 - iw*sc)/2, (32 - ih*sc)/2, iw*sc, ih*sc);
+    const bg = document.createElement('canvas'); bg.width = W; bg.height = H;
+    const bx = bg.getContext('2d'); bx.imageSmoothingEnabled = true; bx.imageSmoothingQuality = 'high';
+    bx.drawImage(tiny, 0, 0, W, H);                                          /* fondo difuminado del mismo color */
+    bx.fillStyle = 'rgba(234,246,255,.3)'; bx.fillRect(0, 0, W, H);
+    AV.img = { main, bg };
+    $('#avatarRm').classList.remove('hide');
+  }
+  function saveAvatar(img){
+    try{
+      const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height, k = Math.min(1, 720/Math.max(iw, ih));
+      const c = document.createElement('canvas'); c.width = Math.round(iw*k); c.height = Math.round(ih*k);
+      const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(img, 0, 0, c.width, c.height);
+      localStorage.setItem(AV_KEY, c.toDataURL('image/jpeg', .85));
+    }catch(e){}
+  }
+  $('#avatarBtn').addEventListener('click', () => $('#avatarFile').click());
+  $('#avatarFile').addEventListener('change', e => {
+    const f = e.target.files && e.target.files[0]; e.target.value = '';
+    if(!f) return;
+    if(!/^image\//.test(f.type)){ toast('Elige un archivo de imagen'); return; }
+    const url = URL.createObjectURL(f), im = new Image();
+    im.onload = () => {
+      URL.revokeObjectURL(url);
+      setAvatarImage(im); saveAvatar(im);
+      /* con cámara real encendida, pasamos a modo avatar para que se vea la foto */
+      if(S.camOn && S.out && S.stream && S.stream.getVideoTracks().length) $('#camBtn').click();
+      toast('Avatar actualizado');
+    };
+    im.onerror = () => { URL.revokeObjectURL(url); toast('No se pudo leer la imagen'); };
+    im.src = url;
+  });
+  $('#avatarRm').addEventListener('click', () => {
+    AV.img = null; $('#avatarRm').classList.add('hide');
+    try{ localStorage.removeItem(AV_KEY); }catch(e){}
+    toast('Avatar eliminado');
+  });
+  try{ const d = localStorage.getItem(AV_KEY);
+    if(d){ const im = new Image(); im.onload = () => setAvatarImage(im); im.src = d; } }catch(e){}
+
+  /* ---------- Vídeo remoto simulado (canvas): el avatar estándar de la videollamada ---------- */
+  let remoteAv = null;
+  function drawRemote(){
+    const c = $('#remote'), x = c.getContext('2d');
+    remoteAv = remoteAv || avatarPainter(RV);
+    x.save(); x.scale(c.width/480, c.height/640); remoteAv(x); x.restore();
+    S.raf = requestAnimationFrame(drawRemote);
+  }
+
+  /* ---------- Flujo: Landing -> Matching ---------- */
+  /* ---------- Conexión real (WebRTC con PeerJS) ---------- */
+  let JOIN = (location.hash.match(/room=([A-Za-z0-9]+)/) || [])[1] || null;
+  const ROOM_PFX = 'chatapp-v1-room-';
+  const RT = { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, searching:false, started:false, vote:null, partner:null,
+               outbox:[], uid:Math.random().toString(36).slice(2), blocked:new Set() };
+  const PFX = 'chatapp-v1-wait-', SLOTS = 3;
+  function closeNet(){
+    RT.searching = false; clearTimeout(S.callWd);
+    for(const x of [RT.call, RT.conn]) try{ x && x.close(); }catch(e){}
+    for(const x of [RT.peer, RT.q, RT.room]) try{ x && x.destroy(); }catch(e){}
+    Object.assign(RT, { room:null, roomId:null, peer:null, q:null, conn:null, call:null, real:false, started:false, vote:null, partner:null, outbox:[] });
+    $('#remoteVid').srcObject = null; $('#remoteAud').srcObject = null;
+  }
+  const mkPeer = id => new Promise(res => {
+    const p = id ? new Peer(id) : new Peer();
+    let opened = false;
+    p.on('open', () => { opened = true; res(p); });
+    /* Antes de abrir, un error descarta el peer. Después (p. ej. «peer-unavailable» al llamar a una sala
+       que aún no está lista) el peer sigue vivo; si no, se rompía la conexión y se quedaba atascada. */
+    p.on('error', () => { if(!opened){ try{ p.destroy(); }catch(e){} res(null); } });
+    p.on('disconnected', () => setTimeout(revive, 400));
+  });
+  /* El servidor de señalización se corta cuando el móvil pasa a segundo plano (p. ej. al compartir por WhatsApp).
+     Reconectamos al volver y mientras se espera. */
+  let reopening = false;
+  function revive(){
+    for(const p of [RT.room, RT.q, RT.peer]) if(p && !p.destroyed && p.disconnected){ try{ p.reconnect(); }catch(e){} }
+    if(RT.searching && RT.roomId && RT.room && RT.room.destroyed && !reopening){
+      reopening = true;
+      mkPeer(ROOM_PFX + RT.roomId).then(p => {
+        reopening = false;
+        if(!p) return;
+        if(!RT.searching || !RT.roomId){ try{ p.destroy(); }catch(e){} return; }
+        RT.room = p; p.on('connection', c => c.on('data', d => onMsg(d, c)));
+      });
+    }
+  }
+  document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'visible') revive(); });
+  window.addEventListener('pageshow', revive);
+  window.addEventListener('focus', revive);
+  window.addEventListener('online', revive);
+  setInterval(() => { if(RT.searching) revive(); }, 3000);
+
+  /* Quien recibe la conexión llama con el vídeo; si la llamada no arranca en 8 s, se reintenta */
+  function callPartner(){
+    if(!RT.conn || RT.call || RT.started) return;
+    const src = [RT.peer, RT.q, RT.room].find(p => p && !p.destroyed && !p.disconnected) || RT.peer || RT.q || RT.room;
+    if(!src) return;
+    RT.real = true;
+    gotCall(src.call(RT.conn.peer, S.out || buildOut()));
+    clearTimeout(S.callWd);
+    S.callWd = setTimeout(() => {
+      if(RT.searching && !RT.started && RT.conn){ try{ RT.call && RT.call.close(); }catch(e){} RT.call = null; callPartner(); }
+    }, 8000);
+  }
+  function lost(){
+    if(!RT.started) return;
+    toast('La otra persona ha salido');
+    if(RT.roomId) rewait(); else endCall('early', true);   /* anfitrión: sigues en la sala con el mismo enlace */
+  }
+  function rewait(){
+    simT.forEach(clearTimeout); simT = []; clearTimeout(AI.t); simStop(); clearTimeout(S.callWd);
+    clearInterval(S.timer); cancelAnimationFrame(S.raf); clearInterval(S.audT);
+    try{ speechSynthesis.cancel(); }catch(e){}
+    const call = RT.call, conn = RT.conn;
+    RT.started = false; RT.real = false; RT.call = null; RT.conn = null; RT.partner = null; RT.vote = null; RT.outbox = [];
+    try{ call && call.close(); }catch(e){} try{ conn && conn.close(); }catch(e){}
+    for(const x of [RT.q, RT.peer]) try{ x && x.destroy(); }catch(e){}
+    RT.q = RT.peer = null;
+    $('#remoteVid').srcObject = null; $('#remoteAud').srcObject = null;
+    $('#remoteVid').classList.add('hide'); $('#remote').classList.remove('hide');
+    $('#soundFix').classList.add('hide'); $('#silence').classList.remove('on'); $('#cue').classList.remove('show');
+    Object.assign(S, { elapsed:0, silenceLeft:0 });
+    chatClear(); $('#chatInput').value = '';
+    const mm = $('#matchMsg'); mm.textContent = ''; delete mm.dataset.es;
+    setWaiting(true); render(); RT.searching = true;
+    $('#simBtn').classList.remove('hide'); $('#invite').classList.remove('hide');
+    findPartner();
+  }
+  function onMsg(d, c){
+    if(d.t === 'hello'){
+      if(RT.conn || RT.blocked.has(d.uid)){ c.send({t:'busy'}); return; }
+      RT.conn = c; RT.partner = d.uid; c.on('close', lost); c.send({t:'ok', uid:RT.uid});
+      if(RT.searching) setTimeout(() => { if(RT.conn === c && !RT.call && !RT.started) callPartner(); }, 250);
+    } else if(d.t === 'leave'){ lost(); }
+    else if(d.t === 'vote'){ RT.vote = d; }
+    else if(d.t === 'wheel' && Number.isInteger(d.i) && d.i >= 0 && d.i < 12){ wheelRecv(d.i); }
+    else if(d.t === 'note' && Number.isInteger(d.i) && d.i >= 0 && d.i < 10){ pianoRecv(d.i); }
+    else if(d.t === 'tel'){ telNet(d); }
+    else if(d.t === 'hs'){ hsNet(d); }
+    else if(d.t === 'chat' && typeof d.m === 'string'){ chatRecv(d.m, d.tts !== false, !!d.ai); }
+  }
+  function gotCall(c){
+    RT.call = c; RT.real = true; c.on('close', lost);
+    c.on('stream', st => {
+      if(RT.started) return;
+      RT.started = true; RT.searching = false; RT.vote = null;
+      if(JOIN){ JOIN = null; try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} $('#inviteNote').classList.add('hide'); }
+      clearInterval(S.msgT); clearTimeout(S.matchT);
+      const v = $('#remoteVid'); v.srcObject = st; v.classList.remove('hide'); $('#remote').classList.add('hide');
+      const a = $('#remoteAud');
+      v.muted = true; v.play().catch(()=>{});          /* el vídeo va mudo; el sonido sale por <audio> */
+      a.srcObject = st; a.muted = false; a.volume = 1;
+      const pl = a.play();
+      if(pl && pl.catch) pl.catch(() => {
+        v.muted = false; v.volume = 1;                    /* plan B: sonido por el propio vídeo */
+        v.play().catch(() => toast('Pulsa en cualquier sitio para activar el sonido'));
+      });
+      st.addEventListener('addtrack', () => { a.srcObject = st; a.play().catch(()=>{}); });
+      clearInterval(S.audT);
+      S.audT = setInterval(() => {
+        if(!RT.started){ clearInterval(S.audT); $('#soundFix').classList.add('hide'); return; }
+        if(a.srcObject !== st) a.srcObject = st;
+        $('#soundFix').classList.toggle('hide', !(a.paused && v.paused || (a.paused && v.muted) || (S.ttsPending && S.ttsPending.length) || (IS_TOUCH && !S.ttsOk && 'speechSynthesis' in window)));
+        if(a.paused) a.play().catch(()=>{});
+      }, 1000);
+      if(!st.getAudioTracks().length) toast('La otra persona no envía audio (sin micrófono)');
+      chimeMatch(); startCall();
+      const box = RT.outbox; RT.outbox = [];
+      box.forEach(m => { try{ RT.conn.send({ t:'chat', m, tts:true }); }catch(e){} });
+    });
+  }
+  function dial(id){
+    return new Promise(res => {
+      const q = RT.q; let c; try{ c = q && !q.destroyed && !q.disconnected ? q.connect(id, {reliable:true}) : null; }catch(e){ c = null; }
+      if(!c){ res(false); return; }
+      let fin = false;
+      const onErr = e => { if(e && e.type === 'peer-unavailable' && String(e.message || '').includes(id)) done(false); };
+      const done = ok => { if(fin) return; fin = true; clearTimeout(t); try{ q.off('error', onErr); }catch(e){} if(!ok) try{ c.close(); }catch(e){} res(ok); };
+      const t = setTimeout(() => done(false), 4000);
+      q.on('error', onErr);
+      c.on('open', () => c.send({t:'hello', uid:RT.uid}));
+      c.on('error', () => done(false));
+      c.on('data', d => {
+        if(d.t === 'ok' && !fin){
+          if(RT.blocked.has(d.uid)) return done(false);
+          RT.conn = c; RT.partner = d.uid; RT.real = true; c.on('close', lost); done(true);
+        } else if(d.t === 'busy'){ done(false); } else onMsg(d, c);
+      });
+    });
+  }
+  async function findPartner(){
+    RT.q = await mkPeer();
+    if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); cancelWaiting(); } return; }
+    RT.q.on('call', c => { c.answer(S.out || buildOut()); gotCall(c); });
+    const answered = () => { if(RT.conn && !RT.call && !RT.started){ callPartner(); return true; } return false; };
+    while(RT.searching){
+      if(answered()) return;
+      for(const i of [0,1,2].sort(() => Math.random()-.5)){
+        if(!RT.searching || answered()) return;
+        const id = PFX + i, p = await mkPeer(id);
+        if(p){
+          RT.peer = p; p.on('connection', c => c.on('data', d => onMsg(d, c)));
+          for(let t=0; t<30 && RT.searching && !RT.conn; t++) await wait(200);
+          if(RT.conn){ callPartner(); return; }
+          p.destroy(); RT.peer = null;
+        } else if(RT.q && await dial(id)) return;
+      }
+    }
+  }
+  async function joinRoom(id){
+    RT.q = await mkPeer();
+    if(!RT.q){ if(RT.searching){ toast('No se pudo contactar con el servicio de emparejamiento'); cancelWaiting(); } return; }
+    RT.q.on('call', c => { c.answer(S.out || buildOut()); gotCall(c); });
+    while(RT.searching && !RT.conn){ if(await dial(ROOM_PFX + id)) return; await wait(1500); }
+  }
+  function roomUrl(id){ return 'https://easylandx.github.io/chatapp/#room=' + id; }
+  function updateWa(){
+    if(!RT.roomId) return;
+    const txt = encodeURIComponent(T('Únete a la charla en ChatApp: ') + roomUrl(RT.roomId));
+    // Directo, sin la página intermedia de wa.me: app en móvil, WhatsApp Web en ordenador
+    $('#waBtn').href = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+      ? 'whatsapp://send?text=' + txt
+      : 'https://web.whatsapp.com/send?text=' + txt;
+  }
+  /* El enlace de tu sala se mantiene durante toda la visita (esta pestaña): puedes reutilizarlo.
+     Se crea uno aleatorio nuevo al abrir otra pestaña o con «Crear enlace nuevo». */
+  const ROOM_KEY = 'chatapp-room-v1';
+  const roomSaved = () => { try{ return sessionStorage.getItem(ROOM_KEY) || null; }catch(e){ return null; } };
+  const roomSave = id => { try{ id ? sessionStorage.setItem(ROOM_KEY, id) : sessionStorage.removeItem(ROOM_KEY); }catch(e){} };
+  async function openRoom(){
+    let id = roomSaved(), fails = 0;
+    for(let k = 0; k < 8 && RT.searching; k++){
+      const fresh = !id; if(fresh) id = Math.random().toString(36).slice(2, 10);
+      const p = await mkPeer(ROOM_PFX + id);
+      if(!p){
+        /* el servidor puede tardar unos segundos en liberar un id usado hace poco */
+        if(!fresh && ++fails < 3){ await wait(1500); continue; }
+        id = null; continue;
+      }
+      if(!RT.searching){ p.destroy(); return; }
+      roomSave(id);
+      RT.room = p; RT.roomId = id; p.on('connection', c => c.on('data', d => onMsg(d, c)));
+      $('#roomLink').value = roomUrl(id); updateWa(); $('#invite').classList.remove('hide');
+      return;
+    }
+  }
+  $('#soundFix').addEventListener('click', () => {
+    const a = $('#remoteAud'), v = $('#remoteVid');
+    a.muted = false; a.volume = 1; a.play().catch(() => { v.muted = false; v.volume = 1; v.play().catch(()=>{}); });
+    unlockAudio();
+    /* Dentro del toque: una locución breve y audible desbloquea la voz del chat en iOS */
+    if('speechSynthesis' in window){
+      try{
+        speechSynthesis.cancel(); speechSynthesis.resume();
+        const lang = LANG === 'en' ? 'en-US' : 'es-ES';
+        const u = new SpeechSynthesisUtterance(T('Voz activada'));
+        u.lang = lang; u.volume = 1; u.rate = 1;
+        const vo = speechSynthesis.getVoices().find(x => x.lang && x.lang.toLowerCase().replace('_','-').startsWith(lang.slice(0,2)));
+        if(vo) u.voice = vo;
+        let rel = false; const release = () => { if(rel) return; rel = true; duck(false); };
+        u.onstart = () => { S.ttsOk = true; };
+        u.onend = u.onerror = release; setTimeout(release, 3000);
+        keepU(u); duck(true); speechSynthesis.speak(u);
+      }catch(e){}
+    }
+    S.ttsOk = true;
+    $('#soundFix').classList.add('hide');
+    flushTts();
+  });
+  $('#roomLink').addEventListener('focus', e => e.target.select());
+  $('#copyLink').addEventListener('click', async () => {
+    const i = $('#roomLink');
+    try{ await navigator.clipboard.writeText(i.value); }catch(e){ i.select(); try{ document.execCommand('copy'); }catch(_){} }
+    toast('Enlace copiado');
+  });
+  $('#newLink').addEventListener('click', async () => {
+    if(RT.started){ toast('Podrás crear otro enlace cuando termine la llamada'); return; }
+    const old = RT.room, mine = RT.conn && RT.conn.provider === old, conn = mine ? RT.conn : null, call = mine ? RT.call : null;
+    RT.room = null; RT.roomId = null; if(mine){ RT.conn = null; RT.call = null; RT.partner = null; clearTimeout(S.callWd); }
+    try{ call && call.close(); }catch(e){} try{ conn && conn.close(); }catch(e){} try{ old && old.destroy(); }catch(e){}
+    roomSave(null);
+    await openRoom();
+    toast('Enlace nuevo creado');
+  });
+  if(JOIN) $('#inviteNote').classList.remove('hide');
+
+  function setWaiting(on){
+    S.waiting = on;
+    $('#waitOv').classList.toggle('on', on);
+    $('#callWrap').classList.toggle('waiting', on); $('#time').classList.toggle('wt', on);
+  }
+  function cancelWaiting(){
+    clearTimeout(S.matchT); clearInterval(S.msgT); simT.forEach(clearTimeout); simT = [];
+    closeNet(); stopCam(); setWaiting(false);
+    $('#invite').classList.add('hide'); $('#simBtn').classList.add('hide');
+    go('landing');
+  }
+  $('#connectBtn').addEventListener('click', async () => {
+    closeNet(); clearInterval(S.timer); cancelAnimationFrame(S.raf);
+    $('#simBtn').classList.add('hide'); $('#invite').classList.add('hide');
+    $('#remoteVid').classList.add('hide'); $('#remote').classList.remove('hide');
+    clearInterval(S.msgT); clearTimeout(S.matchT);
+    await startCam();
+    if(!S.stream){ toast('Sin cámara ni micrófono · seguimos con el chat de texto'); if(window._showSf) window._showSf(); }
+    buildOut();
+    /* Entramos directamente a la sala de vídeo y chat, sin esperar a nadie */
+    Object.assign(S,{ elapsed:0, silenceLeft:0 });
+    $('#silence').classList.remove('on'); $('#cue').classList.remove('show');
+    chatClear(); $('#chatInput').value='';
+    setWaiting(true); render(); go('call');
+    RT.searching = true;
+    $('#simBtn').classList.remove('hide');
+    const mm = $('#matchMsg'); mm.textContent = ''; delete mm.dataset.es;
+    if(JOIN){ setT($('#matchMsg'), 'Esperando a que la otra persona abra la sala…'); joinRoom(JOIN); return; }
+    openRoom();
+    findPartner();
+  });
+  $('#simBtn').addEventListener('click', () => {
+    clearTimeout(S.matchT); clearInterval(S.msgT); closeNet();
+    $('#remoteVid').classList.add('hide'); $('#remote').classList.remove('hide');
+    chimeMatch();
+    /* «Chat AI»: la otra persona es una IA con avatar animado; recibe lo que ya escribiste mientras esperabas */
+    simStop(); SP.on = true;
+    SP.hist = AI.hist.map(([r, c]) => [r === 'assistant' ? 'user' : 'assistant', c]);
+    const mine = AI.persona; do { SP.persona = PERSONAS[Math.floor(Math.random() * PERSONAS.length)]; } while(SP.persona === mine);
+    startCall();
+    simKick(2000 + Math.random() * 600);
+  });
+
+  /* ---------- Llamada ---------- */
+  function startCall(){
+    const hadWait = S.waiting;
+    setWaiting(false); clearInterval(S.msgT); clearTimeout(S.matchT);
+    $('#invite').classList.toggle('hide', !RT.roomId); $('#simBtn').classList.add('hide');
+    Object.assign(S,{ elapsed:0, swaps:1, silenceLeft:0 });
+    $('#silence').classList.remove('on'); $('#cue').classList.remove('show');
+    if(hadWait) chatPush('sys', 'Alguien se ha unido · ¡empieza la charla!', true);
+    else { chatClear(); $('#chatInput').value=''; }
+    render(); go('call');
+    if(AI.on) aiKick(3000 + Math.random() * 800);
+    cancelAnimationFrame(S.raf); if(!RT.real) S.raf = requestAnimationFrame(drawRemote);
+    S.last = performance.now(); clearInterval(S.timer); S.timer = setInterval(tick, 200);
+  }
+  const fmt = s => { s=Math.max(0,Math.floor(s)); const h=Math.floor(s/3600), m=Math.floor(s%3600/60), x=s%60, p=n=>String(n).padStart(2,'0'); return (h?h+':':'')+p(m)+':'+p(x); };
+  function render(){
+    $('#time').textContent = fmt(S.elapsed);
+    if(S.fl !== 'none'){ S.fl = 'none'; $('#remote').style.filter = $('#remoteVid').style.filter = 'none'; }
+  }
+  let cueT;
+  function cue(msg){ const c=$('#cue'); setT(c,msg); c.classList.add('show'); clearTimeout(cueT); cueT=setTimeout(()=>c.classList.remove('show'),4200); }
+  function tick(){
+    const now=performance.now(), dt=(now-S.last)/1000; S.last=now;
+    S.elapsed += dt;
+    if(S.silenceLeft>0){
+      S.silenceLeft -= dt;
+      if(S.silenceLeft<=0){ $('#silence').classList.remove('on'); }
+      else $('#silenceTxt').textContent = T('Respirar también es conversar · ') + Math.ceil(S.silenceLeft) + ' s';
+    }
+    render();
+  }
+  function endCall(reason, quiet){
+    simT.forEach(clearTimeout); simT = []; clearTimeout(AI.t); simStop();
+    clearInterval(S.timer); cancelAnimationFrame(S.raf); stopCam(); try{ speechSynthesis.cancel(); }catch(e){}
+    if(RT.real){ RT.started=false; try{ if(RT.conn && !quiet && reason!=='done') RT.conn.send({t:'leave'}); }catch(e){}
+      try{ RT.call && RT.call.close(); }catch(e){} $('#remoteVid').srcObject=null; $('#remoteAud').srcObject=null; clearInterval(S.audT); $('#soundFix').classList.add('hide');
+      if(reason==='report'){ if(RT.partner) RT.blocked.add(RT.partner); setTimeout(closeNet,400); } }
+    $('#silence').classList.remove('on');
+    if(reason==='report'){ go('landing'); toast('Llamada cerrada · no volverás a coincidir con esa persona'); return; }
+    DONE=null; closeNet(); go('landing');
+  }
+
+  /* ---------- Chat de texto ---------- */
+  let simT = [], simI = 0;
+  const RV = { talkUntil:0, typeUntil:0 };   /* estado del avatar remoto «Chat AI» */
+  const SP = { on:false, busy:false, t:null, hist:[], persona:null, angle:null, run:0 };
+  const AI = { on:false, busy:false, t:null, n:0, run:0, seq:0, hist:[], persona:null, angle:null };
+  function chatPush(cls, text, tr, ai){
+    const box = $('#msgs'), d = document.createElement('div'); d.className = 'msg ' + cls + (ai ? ' ai' : '');
+    if(tr) setT(d, text); else { d.textContent = text; d.setAttribute('data-noi18n',''); }
+    if(cls === 'me' || cls === 'them') d.dataset.src = text;
+    box.appendChild(d); box.scrollTop = box.scrollHeight;
+    if(cls === 'me' || cls === 'them'){ AI.seq++; AI.hist.push([cls === 'me' ? 'assistant' : 'user', text]); if(AI.hist.length > 30) AI.hist.shift(); }
+    if(cls === 'them') aiIncoming();
+    return d;
+  }
+  function chatClear(){
+    simT.forEach(clearTimeout); simT = []; simI = 0; simStop();
+    clearTimeout(AI.t); AI.hist = []; AI.run = 0; AI.seq++; AI.persona = null;
+    $('#msgs').innerHTML = '';
+  }
+  function keepU(u){ (window._utts = window._utts || []).push(u); if(window._utts.length > 20) window._utts.shift(); }  /* evita que iOS/Chrome descarten la locución */
+  /* iOS apaga o atenúa la voz del sistema mientras el micrófono está capturando.
+     Solución: silenciar el micrófono SOLO mientras suena la voz del chat y devolverlo después. */
+  let duckN = 0;
+  function duck(on){
+    if(!IS_TOUCH || !S.stream) return;
+    if(on){ duckN++; S.stream.getAudioTracks().forEach(t => { t.enabled = false; }); }
+    else { duckN = Math.max(0, duckN - 1); if(!duckN) S.stream.getAudioTracks().forEach(t => { t.enabled = S.micOn; }); }
+  }
+  function speak(text, inGesture){
+    if(!S.soundOn || !('speechSynthesis' in window)) return;
+    try{
+      const u = new SpeechSynthesisUtterance(text);
+      const lang = LANG === 'es' ? 'es-ES' : (/[áéíóúñ¿¡ü]/i.test(text) ? 'es-ES' : 'en-US');
+      u.lang = lang; u.rate = 1; u.pitch = 1.05; u.volume = 1;
+      const v = speechSynthesis.getVoices().find(x => x.lang && x.lang.toLowerCase().replace('_','-').startsWith(lang.slice(0,2)));
+      if(v) u.voice = v;
+      let started = false, rel = false;
+      const release = () => { if(rel) return; rel = true; duck(false); };
+      u.onstart = () => { started = true; S.ttsOk = true; };
+      u.onend = u.onerror = release;
+      keepU(u);
+      duck(true);
+      setTimeout(release, 3500 + text.length * 110);   /* red de seguridad: el micrófono siempre vuelve */
+      const run = () => {
+        speechSynthesis.resume();   /* Chrome en Android a veces deja la voz en pausa */
+        speechSynthesis.speak(u);
+        /* iOS bloquea la voz hasta un toque del usuario: si no arranca, guardamos el texto y pedimos un toque */
+        setTimeout(() => {
+          if(!started && !speechSynthesis.speaking){
+            release();
+            (S.ttsPending = S.ttsPending || []).push(text);
+            $('#soundFix').classList.remove('hide');
+          }
+        }, 1800);
+      };
+      /* fuera de un toque damos un instante a iOS para liberar el micrófono; dentro de un toque, al momento */
+      if(IS_TOUCH && !inGesture && S.stream) setTimeout(run, 220); else run();
+    }catch(e){}
+  }
+  function flushTts(){
+    if(!S.ttsPending || !S.ttsPending.length) return;
+    const q = S.ttsPending.splice(0); $('#soundFix').classList.add('hide');
+    q.forEach(t => speak(t, true));
+  }
+  function chatRecv(text, tts, ai){ text = String(text).slice(0,300); if(tts && S.soundOn) S.speakUntil = performance.now() + Math.min(20000, 600 + text.length * 62); chatPush('them', text, false, ai); tone(660,.12,'triangle',.04); if(tts) speak(text); }
+  function chatSend(text, ai, quick){
+    text = text.trim().slice(0,300); if(!text) return;
+    chatPush('me', text, false, ai);
+    if(S.avatar) avatarTalk(text);
+    if(S.waiting){
+      RT.outbox.push(text);   /* se entrega cuando alguien se una */
+    } else if(RT.real){
+      try{ RT.conn.send({ t:'chat', m:text, tts:true, ai:!!ai }); }catch(e){ toast('No se pudo enviar el mensaje'); }
+    } else if(SP.on){
+      SP.hist.push(['user', text]); if(SP.hist.length > 30) SP.hist.shift(); SP.run = 0;
+      simKick(quick ? 900 + Math.random() * 300 : 2900 + Math.random() * 500);
+    }
+  }
+  $('#chatInput').addEventListener('input', () => { if(S.avatar && $('#chatInput').value) AV.typeUntil = performance.now() + 900; });
+  $('#chatForm').addEventListener('submit', e => { e.preventDefault(); const i = $('#chatInput'); AI.run = 0; chatSend(i.value); i.value = ''; i.focus(); });
+
+  /* ---------- Entrada de voz: manos libres. Hablas, tras ~1,2 s de silencio se envía solo y sigue escuchando ---------- */
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const VOICE_DELAY = 1200;   /* ms de pausa tras lo último que dices antes de enviar */
+  const VOICE = { on:false, rec:null, live:false, fails:0, buf:'', sendT:null };
+  const vBtn = $('#voiceBtn');
+  function voiceLabel(){ const t = T(VOICE.on ? 'Dejar de escuchar' : 'Hablar con voz'); vBtn.title = t; vBtn.setAttribute('aria-label', t); }
+  voiceLabel();
+  if(!SR) vBtn.style.display = 'none';
+  /* mientras el avatar habla no escuchamos, para que no se oiga a sí mismo */
+  const avatarBusy = () => {
+    try{ if('speechSynthesis' in window && (speechSynthesis.speaking || speechSynthesis.pending)) return true; }catch(e){}
+    const n = performance.now(); return n < (RV.talkUntil || 0) || n < (S.speakUntil || 0);
+  };
+  const showBuf = tmp => { VOICE.shown = true; $('#chatInput').value = (VOICE.buf + ' ' + (tmp || '')).trim().slice(0, 300); };
+  function vFlush(){
+    clearTimeout(VOICE.sendT); VOICE.sendT = null;
+    const t = VOICE.buf.trim(); VOICE.buf = '';
+    if(!t){ return; }
+    VOICE.shown = false; $('#chatInput').value = ''; AI.run = 0; chatSend(t, false, true);
+  }
+  function vDrop(){ const r = VOICE.rec; VOICE.rec = null; VOICE.live = false; try{ r && r.abort(); }catch(e){} }
+  function vStop(){
+    VOICE.on = false; vDrop();
+    clearTimeout(VOICE.sendT); VOICE.sendT = null;
+    /* al parar a mano, lo que quedaba pendiente se deja en la caja para editarlo o enviarlo */
+    if(VOICE.buf && $('#call').classList.contains('active')) $('#chatInput').value = VOICE.buf.trim().slice(0, 300);
+    VOICE.buf = '';
+    vBtn.classList.remove('rec'); vBtn.setAttribute('aria-pressed', 'false'); voiceLabel();
+  }
+  function vStart(){
+    if(!SR || !VOICE.on || VOICE.live || avatarBusy()) return;
+    const r = new SR();
+    VOICE.rec = r; VOICE.live = true;
+    r.lang = LANG === 'es' ? 'es-ES' : 'en-US'; r.interimResults = true; r.continuous = false; r.maxAlternatives = 1;
+    r.onresult = e => {
+      if(VOICE.rec !== r) return;
+      let fin = '', tmp = '';
+      for(let i = e.resultIndex; i < e.results.length; i++){ const x = e.results[i]; if(x.isFinal) fin += x[0].transcript; else tmp += x[0].transcript; }
+      if(fin && fin.trim()){ VOICE.fails = 0; VOICE.buf = (VOICE.buf + ' ' + fin.trim()).trim(); showBuf(); }
+      else if(tmp) showBuf(tmp);
+      /* cada vez que oímos algo se reinicia la cuenta atrás; cuando hay silencio, se envía */
+      if(VOICE.buf){ clearTimeout(VOICE.sendT); VOICE.sendT = setTimeout(vFlush, tmp && !fin ? VOICE_DELAY + 1500 : VOICE_DELAY); }
+    };
+    r.onerror = e => {
+      if(VOICE.rec !== r) return;
+      VOICE.live = false;
+      if(e.error === 'not-allowed' || e.error === 'service-not-allowed'){ toast('No se pudo usar el micrófono para dictar · revisa el permiso del navegador'); vStop(); }
+      else if(e.error !== 'no-speech' && e.error !== 'aborted' && ++VOICE.fails >= 3){ toast('El reconocimiento de voz no está disponible ahora mismo'); vStop(); }
+    };
+    r.onend = () => {
+      if(VOICE.rec !== r) return;
+      VOICE.live = false;
+      if(VOICE.shown) showBuf();   /* una frase a medias que no llegó a cerrarse se descarta; lo ya confirmado se conserva */
+    };
+    try{ r.start(); }catch(e){ VOICE.live = false; }
+  }
+  vBtn.addEventListener('click', () => {
+    if(VOICE.on){ vStop(); return; }
+    VOICE.on = true; VOICE.fails = 0; VOICE.buf = '';
+    vBtn.classList.add('rec'); vBtn.setAttribute('aria-pressed', 'true'); voiceLabel();
+    try{ unlockAudio(); }catch(e){}
+    if(SP.on && !S.soundOn) toast('El sonido está desactivado · la IA responderá solo por texto');
+    vStart();
+  });
+  setInterval(() => {
+    if(!VOICE.on) return;
+    if(!$('#call').classList.contains('active')){ vStop(); return; }
+    if(avatarBusy()){ if(VOICE.live) vDrop(); }
+    else if(!VOICE.live) vStart();
+  }, 400);
+
+  /* ---------- Modo IA: la IA chatea por ti · si las dos partes la activan, las IA hablan entre sí ---------- */
+  const AI_ENDPOINT = 'https://text.pollinations.ai/openai';   /* IA gratuita sin clave · cámbialo por tu propio endpoint compatible con OpenAI */
+  const inCall = () => $('#call').classList.contains('active') && !S.waiting;
+  function aiKick(ms){
+    const h = AI.hist[AI.hist.length - 1];
+    if(AI.on && (!h || h[0] === 'user')){ clearTimeout(AI.t); AI.t = setTimeout(aiReply, ms); }
+  }
+  function aiIncoming(){
+    /* mismo ritmo en todos los modos: ~4,5 s tras el mensaje, y nunca pisa la voz de la otra parte */
+    const talking = Math.max(RV.talkUntil, S.speakUntil || 0) - performance.now();
+    aiKick(Math.max(4200 + Math.random() * 500, talking + 1200));
+  }
+  function norm(t){ return String(t).toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, '').replace(/\s+/g, ' ').trim(); }
+  function similar(a, b){
+    a = norm(a); b = norm(b); if(!a || !b) return false;
+    if(a === b || (Math.min(a.length, b.length) > 18 && (a.includes(b) || b.includes(a)))) return true;
+    const A = new Set(a.split(' ')), B = new Set(b.split(' ')); let k = 0; A.forEach(w => { if(B.has(w)) k++; });
+    return k / (A.size + B.size - k) >= .6;
+  }
+  const isRepeat = (t, hist = AI.hist) => hist.slice(-8).some(([, c]) => similar(t, c));
+  const noLaugh = t => String(t).replace(/\b(?:(?:ja|je|ji|ha|he){2,}|lol|lmao)\b[!.,]*\s*/gi, '').replace(/\s+/g, ' ').trim();
+  const FB = {
+    en: ["What do you do when you need a break from everything?", "What's something small that made you smile recently?", "Where would you travel next if there were no limits?",
+      "What kind of music do you put on when you want to focus?", "Is there a food you could eat every week without getting bored?", "What did you want to be when you were a kid?",
+      "What's the best advice anyone has given you?", "Are you more of a morning person or a night owl?", "What's a hobby you'd like to pick up this year?",
+      "Which place feels most like home to you, and why?", "What's a book or film you keep recommending to people?", "What does a perfect lazy Sunday look like for you?",
+      "What did you learn recently that surprised you?", "Do you prefer the mountains, the sea or the city?", "Who is someone that really shaped the way you think?",
+      "What would you cook for someone you wanted to impress?", "What's one thing you're looking forward to this month?", "If you could master any skill overnight, what would it be?",
+      "I find the best conversations start with small, everyday things.", "I've been walking more lately; it really clears my head.", "Strong coffee and a quiet morning are hard to beat.",
+      "I like places where you can hear the rain from inside.", "Learning a new language has been on my list for ages.", "I think curiosity matters more than being right.",
+      "A long journey is my favourite way to think.", "Cooking for friends is where I feel most relaxed.", "I always feel better after spending time near the water.",
+      "Old photographs make me wonder about the stories behind them."],
+    es: ["¿Qué haces cuando necesitas desconectar de todo?", "¿Qué pequeña cosa te ha hecho sonreír últimamente?", "¿A dónde viajarías ahora si no hubiera límites?",
+      "¿Qué música pones cuando quieres concentrarte?", "¿Hay alguna comida que podrías comer cada semana sin aburrirte?", "¿Qué querías ser de pequeño?",
+      "¿Cuál es el mejor consejo que te han dado?", "¿Eres más de mañanas o de noches?", "¿Qué afición te gustaría empezar este año?",
+      "¿Qué lugar se parece más a un hogar para ti y por qué?", "¿Qué libro o película recomiendas siempre a la gente?", "¿Cómo sería un domingo perfecto para ti?",
+      "¿Qué has aprendido hace poco que te sorprendió?", "¿Prefieres la montaña, el mar o la ciudad?", "¿Quién ha marcado de verdad tu forma de pensar?",
+      "¿Qué cocinarías para impresionar a alguien?", "¿Qué es lo que más esperas de este mes?", "Si pudieras dominar una habilidad de la noche a la mañana, ¿cuál sería?",
+      "Creo que las mejores conversaciones empiezan con cosas pequeñas del día a día.", "Últimamente camino más y me despeja la cabeza.", "Un buen café y una mañana tranquila son difíciles de superar.",
+      "Me gustan los sitios donde se oye la lluvia desde dentro.", "Aprender un idioma nuevo lleva siglos en mi lista.", "Creo que la curiosidad importa más que tener razón.",
+      "Un viaje largo en es mi forma favorita de pensar.", "Cocinar para amigos es donde más me relajo.", "Siempre me siento mejor cerca del agua.",
+      "Las fotos antiguas me hacen pensar en las historias que esconden."]
+  };
+  const isEs = t => /[áéíóúñ¿¡]|\b(hola|que|qué|gracias|pero|como|cómo|muy)\b/i.test(t);
+  function aiFallback(first, hist = AI.hist){
+    const last = [...hist].reverse().find(h => h[0] === 'user');
+    const es = LANG !== 'en';
+    if(first){ const g = es ? ['¡Hola! ¿Qué tal va tu día?', '¡Buenas! ¿Qué te trae por aquí?', 'Hola, ¿cómo estás hoy?'] : ['Hi! How is your day going?', 'Hey there! What brings you here?', 'Hello! How are you today?']; return g[Math.floor(Math.random() * g.length)]; }
+    const pool = FB[es ? 'es' : 'en'], free = pool.filter(m => !hist.some(h => h[1] === m)), src = free.length ? free : pool;
+    return src[Math.floor(Math.random() * src.length)];
+  }
+  const PERSONAS = ['a freelance designer who loves cycling and strong coffee', 'a teacher who is learning the guitar', 'a software tester who collects postcards from trips',
+    'a chef curious about other cultures', 'a physiotherapist who runs and reads science fiction', 'an architecture student who loves old cities and photography',
+    'a paramedic who unwinds with cooking and podcasts', 'a bookshop owner who gardens and loves journeys', 'a sound engineer who hikes on weekends', 'a nurse who paints landscapes'];
+  const ANGLES = ['Share a short, specific personal anecdote related to what was said.', 'Ask one curious, specific follow-up question.', 'Give a mild, honest opinion and a reason for it.',
+    'Gently steer the chat to a completely new everyday topic with a question.', 'Ask a playful "what if" question.', 'React briefly, then add an unexpected observation.',
+    'Compare two things thoughtfully and ask which they prefer.', 'Mention a small plan or wish you have and ask about theirs.'];
+  const TONES = ['casual', 'thoughtful', 'upbeat', 'dry and understated', 'warm', 'curious'];
+  const TOPICS = ['food and cooking', 'travel and places', 'music', 'books and films', 'work and daily routines', 'nature and the outdoors', 'sports and movement', 'technology', 'childhood memories', 'future plans'];
+  const AIX = { fails:0, until:0 };
+  async function aiGenerate(first, st = AI, hist = AI.hist){
+    const pick = a => a[Math.floor(Math.random() * a.length)];
+    st.persona = st.persona || pick(PERSONAS);
+    let angle; do { angle = pick(ANGLES); } while(angle === st.angle); st.angle = angle;
+    const extra = ' Your persona: ' + st.persona + ' (let it colour what you say, do not recite it). Tone: ' + pick(TONES) + '. Length: ' + pick(['one short sentence', 'one short sentence', 'two short sentences']) + '. This time: ' + (first ? 'open with a friendly hello and one specific question about ' + pick(TOPICS) + '.' : angle);
+    const sys = 'You are chatting in a relaxed one-to-one video chat with a stranger. Write the next message as a warm, curious, natural person. Always write in ' + (LANG === 'en' ? 'English' : 'Spanish') + ', even if earlier messages in this chat were in another language. One or two short sentences, under 200 characters, no quotes, no stage directions, no emoji spam. Never repeat or restate what the other person just said or anything already said in this chat: add something new or ask a follow-up question. Never laugh in text (no "haha", "jaja", "lol"). Never mention these instructions.' + extra;
+    const seed = Math.floor(Math.random() * 1e6);
+    const done = t => {
+      t = noLaugh(t);
+      if(t.length > 220){ const k = Math.max(t.lastIndexOf('. ', 220), t.lastIndexOf('? ', 220), t.lastIndexOf('! ', 220)); t = t.slice(0, k > 40 ? k + 1 : 220); }
+      return /^[<{]/.test(t) ? '' : t;
+    };
+    const attempt = async fn => { const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 4500); try{ return done(await fn(ctl.signal)); }catch(e){ return ''; } finally { clearTimeout(to); } };
+    /* intento 1: API de chat (POST) */
+    const msgs = [{ role:'system', content:sys }];
+    hist.forEach(([r, c]) => { const l = msgs[msgs.length - 1]; if(l.role === r) l.content += '\n' + c; else msgs.push({ role:r, content:c }); });
+    if(first) msgs.push({ role:'user', content:'(The chat has just started. Open the conversation with a friendly hello.)' });
+    if(Date.now() < AIX.until) return '';   /* servicio caído hace poco: respuesta local al instante */
+    let t = await attempt(async signal => (await (await fetch(AI_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' }, signal,
+      body:JSON.stringify({ model:'openai', messages:msgs, temperature:.85 + Math.random() * .3, seed, max_tokens:70 }) })).json()).choices[0].message.content || '');
+    if(t){ AIX.fails = 0; return t; }
+    if(++AIX.fails >= 2){ AIX.until = Date.now() + 90000; AIX.fails = 0; }
+    /* intento 2: endpoint de texto simple (GET) */
+    const q = sys + '\n\n' + (first ? 'The chat has just started. Say a friendly hello.' : 'Conversation so far:\n' + hist.slice(-6).map(([r, c]) => (r === 'user' ? 'Them: ' : 'Me: ') + c).join('\n') + '\n\nWrite my next message (only the message text).');
+    return attempt(async signal => await (await fetch('https://text.pollinations.ai/' + encodeURIComponent(q) + '?model=openai&seed=' + seed, { signal })).text());
+  }
+  async function aiReply(){
+    const h = AI.hist[AI.hist.length - 1];
+    if(!AI.on || AI.busy || !inCall() || (h && h[0] === 'assistant')) return;
+    AI.busy = true; const q = AI.seq, first = !AI.hist.length;
+    AV.typeUntil = performance.now() + 2500;
+    let t = '';
+    try{
+      t = await aiGenerate(first);
+      if(t && isRepeat(t)) t = await aiGenerate(first);
+      if(!t || isRepeat(t)) t = aiFallback(first);
+    } finally { AI.busy = false; }
+    if(!AI.on || !inCall()) return;
+    if(AI.seq !== q){ aiKick(600); return; }   /* llegó otro mensaje mientras pensaba */
+    if(!t) return;
+    chatSend(t, true);
+    if(++AI.run >= 60){ aiSet(false, true); chatPush('sys', 'La IA se ha pausado tras varios mensajes seguidos · actívala de nuevo para seguir', true); }
+  }
+  function aiSet(on, quiet){
+    AI.on = on; AI.run = 0; clearTimeout(AI.t);
+    const b = $('#aiBtn'); b.setAttribute('aria-pressed', on); setT(b, 'Modo IA: ' + (on ? 'sí' : 'no'));
+    if(!quiet) chatPush('sys', on ? 'Modo IA activado · la IA chatea por ti' : 'Modo IA desactivado · vuelves a escribir tú', true);
+    if(on && inCall()) aiKick(2000);
+  }
+  $('#aiBtn').addEventListener('click', () => aiSet(!AI.on));
+
+  /* ---------- Chat AI: la persona simulada es una IA que conversa sola, igual que el Modo IA ---------- */
+  function simStop(){
+    clearTimeout(SP.t);
+    Object.assign(SP, { on:false, busy:false, hist:[], persona:null, angle:null, run:0 });
+    RV.talkUntil = RV.typeUntil = 0;
+  }
+  function simKick(ms){
+    if(!SP.on) return;
+    const h = SP.hist[SP.hist.length - 1];
+    if(!h || h[0] === 'user'){ clearTimeout(SP.t); SP.t = setTimeout(() => simReply(false), ms); }
+  }
+  function simNudge(){   /* si te quedas callado, la IA retoma la charla (máx. 2 veces seguidas) */
+    clearTimeout(SP.t);
+    if(SP.on && SP.run < 2) SP.t = setTimeout(() => simReply(true), 24000 + Math.random() * 16000);
+  }
+  function simSay(text){
+    text = String(text).slice(0, 300);
+    SP.hist.push(['assistant', text]); if(SP.hist.length > 30) SP.hist.shift(); SP.run++;
+    RV.typeUntil = 0; RV.talkUntil = performance.now() + Math.min(20000, 600 + text.length * 62);   /* el avatar mueve la boca al hablar */
+    chatPush('them', text, false, true); tone(660,.12,'triangle',.04); speak(text);
+    simNudge();
+  }
+  async function simReply(nudge){
+    const h = SP.hist[SP.hist.length - 1];
+    if(!SP.on || SP.busy || !inCall() || (h && h[0] === 'assistant' && !nudge)) return;
+    SP.busy = true; const q = AI.seq, first = !SP.hist.length;
+    SP.minAt = performance.now() + 1100 + Math.random() * 400;   /* tiempo mínimo de «escribir» */
+    RV.typeUntil = performance.now() + 9000;   /* puntos de «escribiendo…» mientras piensa */
+    let t = '';
+    try{
+      t = await aiGenerate(first, SP, SP.hist);
+      if(t && isRepeat(t, SP.hist)) t = await aiGenerate(first, SP, SP.hist);
+      if(!t || isRepeat(t, SP.hist)) t = aiFallback(first, SP.hist);
+    } finally { SP.busy = false; RV.typeUntil = 0; }
+    if(!SP.on || !inCall()) return;
+    if(AI.seq !== q){ simKick(600); return; }   /* llegó otro mensaje mientras pensaba */
+    if(t){ const wait = Math.max(0, SP.minAt - performance.now()); if(wait) await new Promise(r => setTimeout(r, wait)); if(SP.on && inCall() && AI.seq === q) simSay(t); else if(SP.on) simKick(600); }
+  }
+
+  /* ---------- Ventanas emergentes (ruleta y compatibilímetro) ---------- */
+  const ovlOpen = o => { o.classList.add('open'); o.setAttribute('aria-hidden', 'false'); };
+  const ovlClose = o => { o.classList.remove('open'); o.setAttribute('aria-hidden', 'true'); };
+  [['#wheelOvl', '#wheelClose'], ['#compOvl', '#compClose'], ['#telOvl', '#telClose'], ['#pianoOvl', '#pianoClose'], ['#cardOvl', '#cardClose'], ['#shakeOvl', '#shakeClose']].forEach(([o, c]) => {
+    const ov = $(o); $(c).addEventListener('click', () => ovlClose(ov));
+    ov.addEventListener('click', e => { if(e.target === ov) ovlClose(ov); });
+  });
+  const OVLS = '#wheelOvl.open,#compOvl.open,#telOvl.open,#pianoOvl.open,#cardOvl.open,#shakeOvl.open';
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') document.querySelectorAll(OVLS).forEach(ovlClose); });
+  setInterval(() => { if(!$('#call').classList.contains('active') || S.waiting){ document.querySelectorAll(OVLS).forEach(ovlClose); telReset(); hsReset(); } }, 500);
+
+  /* ---------- Ruleta de retos: gira para las dos personas, cada una lo ve en su idioma ---------- */
+  const WH = { rot:0, i:-1, spinning:false, bag:[] };
+  /* Bolsa barajada: ningún reto se repite hasta que han salido los 12. Los resultados de la otra persona también cuentan. */
+  function wheelTake(i){
+    if(!WH.bag.length) WH.bag = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    if(i === undefined) i = WH.bag[Math.floor(Math.random() * WH.bag.length)];
+    const k = WH.bag.indexOf(i); if(k > -1) WH.bag.splice(k, 1);
+    return i;
+  }
+  const W_EM = ['🏴‍☠️','🐧','🎭','🎬','🎵','⚡','💛','❓','📺','🔮','🏆','😮'];
+  const W_TXT = {
+    es: ['Habla como un pirata durante 1 minuto', 'Imita a tu animal favorito y que la otra persona lo adivine', 'Cuenta un chiste malísimo con la cara más seria del mundo',
+      'Describe tu día como si fuera un documental de naturaleza', 'Tararea una canción y que la otra persona adivine cuál es', 'Inventad juntos un superpoder inútil pero genial',
+      'Dile un cumplido sincero a la otra persona', 'Hablad solo con preguntas durante 1 minuto', 'Presenta el objeto que tengas más cerca como si lo vendieras en la teletienda',
+      'Resume tu semana en tres emojis y que la otra persona lo interprete', 'Elegid juntos un nombre épico para vuestra amistad', 'Pon tu mejor cara de sorpresa durante 5 segundos'],
+    en: ['Talk like a pirate for 1 minute', 'Imitate your favourite animal and let the other person guess it', 'Tell a terrible joke with the most serious face ever',
+      'Describe your day like a nature documentary', 'Hum a song and let the other person guess which one it is', 'Invent a useless but awesome superpower together',
+      'Give the other person a sincere compliment', 'Talk only in questions for 1 minute', 'Present the object nearest to you as if you were selling it on a shopping channel',
+      'Sum up your week in three emojis and let the other person interpret it', 'Pick an epic name for your friendship together', 'Make your best surprised face for 5 seconds']
+  };
+  const wheelCv = $('#wheelCv'), wctx = wheelCv.getContext('2d');
+  function wheelDraw(){
+    const W = wheelCv.width, c = W / 2, R = c - 6, a = Math.PI * 2 / 12;
+    wctx.clearRect(0, 0, W, W);
+    for(let k = 0; k < 12; k++){
+      const s = WH.rot + k * a - Math.PI / 2;
+      wctx.beginPath(); wctx.moveTo(c, c); wctx.arc(c, c, R, s, s + a); wctx.closePath();
+      wctx.fillStyle = k % 2 ? '#dff1ff' : '#89cff0'; wctx.fill();
+      wctx.strokeStyle = '#4fa8d8'; wctx.lineWidth = 2; wctx.stroke();
+      wctx.save(); wctx.translate(c, c); wctx.rotate(s + a / 2);
+      wctx.font = '26px serif'; wctx.textAlign = 'center'; wctx.textBaseline = 'middle'; wctx.fillText(W_EM[k], R * .68, 0); wctx.restore();
+    }
+    wctx.beginPath(); wctx.arc(c, c, 16, 0, Math.PI * 2); wctx.fillStyle = '#fff'; wctx.fill(); wctx.strokeStyle = '#4fa8d8'; wctx.stroke();
+  }
+  function wheelRes(){
+    const r = $('#wheelRes'); if(!r) return;
+    r.textContent = WH.i < 0 ? T('Gira la ruleta y el reto es para las dos personas.') : W_EM[WH.i] + ' ' + W_TXT[LANG === 'en' ? 'en' : 'es'][WH.i];
+  }
+  function wheelSpinTo(i){
+    if(WH.spinning) return;
+    WH.spinning = true; WH.i = -1; wheelRes(); $('#wheelSpin').disabled = true;
+    const a = Math.PI * 2 / 12, TAU = Math.PI * 2, s0 = WH.rot % TAU, fin = TAU - (i * a + a / 2);
+    const delta = (((fin - s0) % TAU) + TAU) % TAU + TAU * 5, t0 = performance.now(), D = 4200;
+    let lastK = -1;
+    const step = now => {
+      const p = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - p, 3);
+      WH.rot = s0 + delta * e; wheelDraw();
+      const k = Math.floor(WH.rot / a); if(k !== lastK){ lastK = k; tone(480 + (k % 6) * 45, .05, 'square', .02); }
+      if(p < 1){ requestAnimationFrame(step); return; }
+      WH.rot = WH.rot % TAU; WH.i = i; WH.spinning = false; $('#wheelSpin').disabled = false;
+      wheelDraw(); wheelRes(); chimeMatch();
+      chatPush('sys', W_EM[i] + ' ' + W_TXT[LANG === 'en' ? 'en' : 'es'][i], false);
+    };
+    requestAnimationFrame(step);
+  }
+  function wheelRecv(i){ if(!$('#call').classList.contains('active') || WH.spinning) return; wheelTake(i); ovlOpen($('#wheelOvl')); wheelDraw(); wheelSpinTo(i); }
+  $('#wheelBtn').addEventListener('click', () => { ovlOpen($('#wheelOvl')); wheelDraw(); wheelRes(); });
+  $('#wheelSpin').addEventListener('click', () => {
+    if(WH.spinning) return;
+    const i = wheelTake();
+    if(RT.real && RT.conn){ try{ RT.conn.send({ t:'wheel', i }); }catch(e){} }
+    wheelSpinTo(i);
+  });
+
+  /* ---------- Compatibilímetro: puntúa la charla (equilibrio, palabras comunes, buen rollo, curiosidad, tiempo) ---------- */
+  const CP = { res:null };
+  const STOP = new Set('para pero como esto esta este esos estas porque cuando donde tambien entonces sobre desde hasta muy mas menos algo todo toda todos with that this have from they there what your about would could just like been were will them then than into also very much more some when where which their'.split(' '));
+  const CTITLES = [[90, 'Almas gemelas del café', '☕'], [80, 'Dúo dinámico', '🦸'], [70, 'Pareja de baile perfecta', '💃'], [60, 'Equipo de pizza compartida', '🍕'], [50, 'Amigos en construcción', '🧱'], [0, 'Exploradores recién llegados', '🧭']];
+  const VIBE = /(?:ja|je|ji|ha|he){2,}|lol|[!❤✨\u{1F600}-\u{1F64F}\u{1F389}\u{1F525}\u{1F496}]/iu;
+  function wordsOf(arr){ const s = new Set(); arr.forEach(t => norm(t).split(' ').forEach(w => { if(w.length > 3 && !STOP.has(w)) s.add(w); })); return s; }
+  function compCalc(){
+    const els = [...document.querySelectorAll('#msgs .msg')].filter(e => e.dataset.src);
+    const me = els.filter(e => e.classList.contains('me')).map(e => e.dataset.src), th = els.filter(e => e.classList.contains('them')).map(e => e.dataset.src);
+    if(me.length < 2 || th.length < 2) return null;
+    const frac = (arr, re) => arr.filter(t => re.test(t)).length / arr.length;
+    const bal = 1 - Math.abs(me.length - th.length) / (me.length + th.length);
+    const A = wordsOf(me), B = wordsOf(th), shared = [...A].filter(w => B.has(w));
+    const words = Math.min(1, shared.length / (new Set([...A, ...B]).size || 1) * 4);
+    const vibe = Math.min(1, (frac(me, VIBE) + frac(th, VIBE)) / 2 * 2.2);
+    const cur = Math.min(1, Math.min(frac(me, /\?/), frac(th, /\?/)) * 3);
+    const time = Math.min(1, S.elapsed / 600);
+    const raw = bal * .2 + words * .25 + vibe * .25 + cur * .15 + time * .15;
+    return { pct:Math.round(35 + 64 * raw), shared:shared.slice(0, 3),
+      parts:[['Equilibrio de charla', bal], ['Sintonía de palabras', words], ['Buen rollo', vibe], ['Curiosidad', cur], ['Tiempo juntos', time]] };
+  }
+  function compRender(anim){
+    const box = $('#compBody'); if(!box) return;
+    const r = CP.res; $('#compSend').classList.toggle('hide', !r);
+    if(!r){ box.innerHTML = '<p></p>'; box.firstChild.textContent = T('Charlad un poco más y el compatibilímetro tendrá mucho que decir ✨'); return; }
+    const t = CTITLES.find(x => r.pct >= x[0]);
+    box.innerHTML = '<div class="gauge"><b></b></div><p class="ctitle"></p><div class="cbars"></div><p class="cshared"></p>';
+    box.querySelector('.ctitle').textContent = t[2] + ' ' + T(t[1]);
+    const bars = box.querySelector('.cbars');
+    r.parts.forEach(([l, v]) => {
+      const row = document.createElement('div'); row.className = 'crow';
+      const s = document.createElement('span'); s.textContent = T(l);
+      const bar = document.createElement('div'); bar.className = 'cbar'; const i = document.createElement('i'); i.style.width = Math.round(v * 100) + '%'; bar.appendChild(i);
+      row.append(s, bar); bars.appendChild(row);
+    });
+    box.querySelector('.cshared').textContent = r.shared.length ? T('Palabras que compartís: ') + r.shared.join(', ') : T('Seguid charlando: las palabras en común llegan enseguida');
+    const g = box.querySelector('.gauge'), n = g.querySelector('b'), t0 = performance.now();
+    const step = now => {
+      const p = anim ? Math.min(1, (now - t0) / 1400) : 1, v = Math.round(r.pct * (1 - Math.pow(1 - p, 3)));
+      g.style.setProperty('--p', v); n.textContent = v + '%';
+      if(p < 1 && g.isConnected) requestAnimationFrame(step); else if(p === 1 && anim) chimeMatch();
+    };
+    requestAnimationFrame(step);
+  }
+  $('#compBtn').addEventListener('click', () => { CP.res = compCalc(); ovlOpen($('#compOvl')); compRender(true); });
+  $('#compSend').addEventListener('click', () => {
+    const r = CP.res; if(!r) return; const t = CTITLES.find(x => r.pct >= x[0]);
+    AI.run = 0; chatSend('💞 ' + T('Compatibilímetro') + ': ' + r.pct + '% · ' + t[2] + ' ' + T(t[1]));
+    ovlClose($('#compOvl'));
+  });
+
+  const rnd = n => Math.floor(Math.random() * n);
+  const sendNet = o => { if(RT.real && RT.conn){ try{ RT.conn.send(o); }catch(e){} } };
+
+  /* ---------- Telepatía: los dos eligen un emoji a la vez; se revela a la vez; 3 rondas ---------- */
+  const EMO = ['🐱','🌙','🍕','🔥','🌊','🎈','🍀','⭐'];
+  const TL_T = [[3, 'Mentes conectadas', '🧠'], [2, 'Casi telepatía', '🔮'], [1, 'Chispa de sintonía', '✨'], [0, 'Mundos paralelos', '🪐']];
+  const TL = { on:false, r:1, mine:null, their:{}, score:0, reveal:null, final:false, gen:0 };
+  const tg = $('#telGrid');
+  EMO.forEach(e => { const b = document.createElement('button'); b.type = 'button'; b.textContent = e; b.setAttribute('aria-label', e); b.addEventListener('click', () => telPick(e)); tg.appendChild(b); });
+  function telReset(){ TL.gen++; Object.assign(TL, { on:false, r:1, mine:null, their:{}, score:0, reveal:null, final:false }); telRender(); }
+  function telRender(){
+    const info = $('#telInfo'); if(!info) return;
+    const big = $('#telBig'), res = $('#telRes'), st = $('#telStart');
+    const live = TL.on && !TL.final && TL.mine == null && !TL.reveal;
+    [...tg.children].forEach(b => { b.disabled = !live; b.classList.toggle('pick', TL.mine === b.textContent); });
+    st.classList.toggle('hide', TL.on && !TL.final);
+    big.textContent = ''; res.textContent = '';
+    if(TL.final){
+      const t = TL_T.find(x => TL.score >= x[0]);
+      big.textContent = t[2]; info.textContent = TL.score + '/3'; res.textContent = T(t[1]); setT(st, 'Otra vez');
+    } else if(!TL.on){
+      info.textContent = T('Elige el mismo emoji que la otra persona, sin decírselo. 3 rondas.'); setT(st, 'Empezar');
+    } else {
+      info.textContent = T('Ronda') + ' ' + TL.r + '/3';
+      if(TL.reveal){ big.textContent = TL.reveal.m + '  ' + TL.reveal.t; res.textContent = T(TL.reveal.hit ? '¡Misma mente! ✅' : 'Esta vez no… ❌'); }
+      else if(TL.mine != null) res.textContent = T('Esperando la respuesta de la otra persona…');
+      else res.textContent = T('¿En qué emoji está pensando?');
+    }
+  }
+  function telBegin(remote){
+    if(remote && TL.on && !TL.final) return;
+    TL.gen++; Object.assign(TL, { on:true, r:1, mine:null, their:{}, score:0, reveal:null, final:false });
+    if(!remote) sendNet({ t:'tel', k:'start' });
+    ovlOpen($('#telOvl')); telRender();
+  }
+  function telPick(e){
+    if(!TL.on || TL.final || TL.mine != null || TL.reveal || !EMO.includes(e)) return;
+    TL.mine = e; tone(520, .1, 'triangle', .04);
+    sendNet({ t:'tel', k:'pick', r:TL.r, e });
+    if(SP.on){ const r = TL.r, g = TL.gen; setTimeout(() => { if(TL.gen === g) telGot(r, Math.random() < .35 ? e : EMO[rnd(EMO.length)]); }, 900 + rnd(900)); }
+    telRender(); telCheck();
+  }
+  function telNet(d){
+    if(d.k === 'start') telBegin(true);
+    else if(d.k === 'pick' && Number.isInteger(d.r) && d.r >= 1 && d.r <= 3 && EMO.includes(d.e)) telGot(d.r, d.e);
+  }
+  function telGot(r, e){ TL.their[r] = e; if(TL.on) telCheck(); }
+  function telCheck(){
+    if(!TL.on || TL.final || TL.reveal || TL.mine == null || TL.their[TL.r] == null) return;
+    const hit = TL.mine === TL.their[TL.r];
+    if(hit){ TL.score++; chimeMatch(); } else tone(300, .25, 'sine', .05);
+    TL.reveal = { m:TL.mine, t:TL.their[TL.r], hit }; telRender();
+    const g = TL.gen;
+    setTimeout(() => {
+      if(TL.gen !== g) return;
+      if(TL.r >= 3){
+        TL.final = true; const t = TL_T.find(x => TL.score >= x[0]);
+        chatPush('sys', '🔮 ' + T('Telepatía') + ': ' + TL.score + '/3 · ' + t[2] + ' ' + T(t[1]), false); chimeEnd();
+      } else { TL.r++; TL.mine = null; TL.reveal = null; }
+      telRender(); telCheck();
+    }, 2200);
+  }
+  $('#telBtn').addEventListener('click', () => { ovlOpen($('#telOvl')); telRender(); });
+  $('#telStart').addEventListener('click', () => telBegin(false));
+
+  /* ---------- Dúo musical: piano pentatónico compartido en directo ---------- */
+  const PN = [261.63, 293.66, 329.63, 392, 440, 523.25, 587.33, 659.25, 783.99, 880], PL = ['C','D','E','G','A','C','D','E','G','A'], PKEYS = 'asdfghjkl;';
+  const PS = { t:null };
+  const keysEl = $('#keys');
+  PL.forEach((n, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'key'; b.textContent = n; b.setAttribute('aria-label', n + (i > 4 ? ' 5' : ' 4'));
+    b.addEventListener('pointerdown', e => { e.preventDefault(); pianoPlay(i); });
+    keysEl.appendChild(b);
+  });
+  const pianoSound = i => { tone(PN[i], .9, 'triangle', .08); tone(PN[i] * 2, .5, 'sine', .02); };
+  const pianoFlash = (i, c) => { const k = keysEl.children[i]; k.classList.add(c); setTimeout(() => k.classList.remove(c), 220); };
+  function pianoPlay(i){
+    pianoSound(i); pianoFlash(i, 'on'); sendNet({ t:'note', i });
+    if(SP.on) pianoEcho(i);
+  }
+  function pianoRecv(i){
+    if(!$('#call').classList.contains('active') || S.waiting) return;
+    const o = $('#pianoOvl'); if(!o.classList.contains('open')) ovlOpen(o);
+    pianoSound(i); pianoFlash(i, 'rem');
+  }
+  /* la persona «Chat AI» te acompaña con notas armónicas */
+  function pianoEcho(i){
+    if(PS.t) return;
+    PS.t = setTimeout(() => {
+      PS.t = null; if(!SP.on) return;
+      const offs = [[2], [2, 4], [-2, 0], [3, 5, 3]][rnd(4)];
+      offs.forEach((o, k) => setTimeout(() => { if(SP.on) pianoRecv(((i + o) % 10 + 10) % 10); }, k * 280));
+    }, 650 + rnd(400));
+  }
+  $('#pianoBtn').addEventListener('click', () => ovlOpen($('#pianoOvl')));
+  document.addEventListener('keydown', e => {
+    if(e.repeat || e.ctrlKey || e.metaKey || e.altKey || !$('#pianoOvl').classList.contains('open')) return;
+    if(document.activeElement && /INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
+    const i = PKEYS.indexOf(e.key.toLowerCase()); if(i > -1) pianoPlay(i);
+  });
+
+  /* ---------- Apretón de manos digital: los dos ponen el pulgar en el mismo punto y lo mantienen 3 s ---------- */
+  const HS_MS = 3000, HS_R = .18, HS_STALE = 1000;   /* radio de acierto relativo al lado del panel, para que sea igual en los dos dispositivos */
+  const HS = { on:false, final:false, tx:.5, ty:.5, mine:null, mineIn:false, mineLast:0, their:null, theirIn:false, theirAt:0,
+               t0:null, lastSec:0, raf:0, hb:null, sendAt:0, simAt:0, gen:0 };
+  const hsPad = $('#hsPad'), hsTarget = $('#hsTarget'), hsMe = $('#hsMe'), hsThem = $('#hsThem');
+  const hsPlace = (el, x, y) => { el.style.left = (x * 100) + '%'; el.style.top = (y * 100) + '%'; };
+  const hsInside = (x, y) => Math.hypot(x - HS.tx, y - HS.ty) <= HS_R;
+  const hsTheirIn = now => HS.theirIn && now - HS.theirAt < HS_STALE;
+  function hsReset(){
+    HS.gen++; hsRelease(true); clearInterval(HS.hb); HS.hb = null; cancelAnimationFrame(HS.raf); HS.raf = 0;
+    Object.assign(HS, { on:false, final:false, their:null, theirIn:false, theirAt:0, t0:null, lastSec:0, simAt:0 });
+    hsRender();
+  }
+  function hsRender(){
+    const info = $('#shakeInfo'); if(!info) return;
+    const res = $('#shakeRes'), st = $('#shakeStart'), num = $('#hsNum'), now = performance.now();
+    const mine = HS.on && HS.mineIn, theirs = HS.on && hsTheirIn(now), both = mine && theirs;
+    hsPad.classList.toggle('idle', !HS.on);
+    hsTarget.classList.toggle('mine', mine); hsTarget.classList.toggle('both', both);
+    hsPlace(hsTarget, HS.tx, HS.ty);
+    hsMe.classList.toggle('show', !!(HS.on && HS.mine)); if(HS.mine) hsPlace(hsMe, HS.mine.x, HS.mine.y);
+    hsThem.classList.toggle('show', !!(HS.on && theirs && HS.their)); if(HS.their) hsPlace(hsThem, HS.their.x, HS.their.y);
+    st.classList.toggle('hide', HS.on && !HS.final);
+    if(HS.final){
+      hsTarget.style.setProperty('--p', 100); num.textContent = '🤝'; info.textContent = '';
+      res.textContent = T('¡Apretón de manos completado!'); setT(st, 'Otra vez');
+    } else if(!HS.on){
+      hsTarget.style.setProperty('--p', 0); num.textContent = '';
+      info.textContent = T('Pulsa «Empezar» y la otra persona verá el mismo círculo.');
+      res.textContent = T(IS_TOUCH ? 'Poned el pulgar a la vez sobre el círculo y mantenedlo 3 segundos.' : 'En ordenador, mantén pulsado el botón del ratón sobre el círculo.'); setT(st, 'Empezar');
+    } else {
+      info.textContent = T('Poned el pulgar a la vez sobre el círculo y mantenedlo 3 segundos.');
+      if(both) res.textContent = T('¡Sigue así, no lo sueltes!');
+      else if(mine) res.textContent = T('Esperando el pulgar de la otra persona…');
+      else if(theirs) res.textContent = T('La otra persona ya está esperando · pon tu pulgar');
+      else res.textContent = T('Pon el pulgar sobre el círculo');
+      if(!both){ num.textContent = ''; hsTarget.style.setProperty('--p', 0); }
+    }
+  }
+  function hsBegin(remote, d){
+    if(remote && HS.on && !HS.final){
+      /* los dos pulsaron «Empezar» a la vez: manda el punto de quien tenga el id menor, igual en ambos lados */
+      if(!(RT.partner && RT.partner < RT.uid)) return;
+    }
+    hsReset(); HS.on = true;
+    if(remote && d && d.x >= .2 && d.x <= .8 && d.y >= .2 && d.y <= .8){ HS.tx = d.x; HS.ty = d.y; }
+    else { HS.tx = .25 + Math.random() * .5; HS.ty = .25 + Math.random() * .5; }
+    if(!remote) sendNet({ t:'hs', k:'start', x:HS.tx, y:HS.ty });
+    if(SP.on) HS.simAt = performance.now() + 900 + rnd(900);
+    ovlOpen($('#shakeOvl')); hsRender(); hsKick();
+  }
+  function hsKick(){ if(HS.on && !HS.final && !HS.raf) HS.raf = requestAnimationFrame(hsLoop); }
+  function hsSend(force){
+    const now = performance.now(); if(!force && now - HS.sendAt < 70) return; HS.sendAt = now;
+    sendNet({ t:'hs', k:'p', on:HS.mineIn, x:HS.mine ? HS.mine.x : null, y:HS.mine ? HS.mine.y : null });
+  }
+  function hsPos(e){ const r = hsPad.getBoundingClientRect(); return { x:Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), y:Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)) }; }
+  function hsMove(e){
+    if(HS.mine == null || e.pointerId !== HS.pid) return;
+    const p = hsPos(e), was = HS.mineIn; HS.mine = p; HS.mineIn = hsInside(p.x, p.y);
+    if(HS.mineIn) HS.mineLast = performance.now();
+    hsSend(was !== HS.mineIn); hsRender();
+  }
+  function hsRelease(quiet){
+    if(HS.mine == null && !HS.mineIn) return;
+    const had = HS.mine != null; HS.mine = null; HS.mineIn = false; HS.pid = null; clearInterval(HS.hb); HS.hb = null;
+    if(had && !quiet) hsSend(true); else if(had) sendNet({ t:'hs', k:'p', on:false, x:null, y:null });
+    hsRender();
+  }
+  hsPad.addEventListener('pointerdown', e => {
+    if(!HS.on || HS.final || HS.mine != null) return;
+    e.preventDefault(); HS.pid = e.pointerId; try{ hsPad.setPointerCapture(e.pointerId); }catch(x){}
+    const p = hsPos(e); HS.mine = p; HS.mineIn = hsInside(p.x, p.y); if(HS.mineIn) HS.mineLast = performance.now();
+    clearInterval(HS.hb); HS.hb = setInterval(() => hsSend(true), 250);   /* latido: si se corta, la otra persona deja de contar */
+    hsSend(true); hsRender(); hsKick();
+  });
+  hsPad.addEventListener('pointermove', hsMove);
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => hsPad.addEventListener(ev, e => { if(e.pointerId === HS.pid) hsRelease(); }));
+  hsPad.addEventListener('contextmenu', e => e.preventDefault());
+  function hsNet(d){
+    if(d.k === 'start'){ if($('#call').classList.contains('active') && !S.waiting) hsBegin(true, d); return; }
+    if(!HS.on || HS.final) return;
+    if(d.k === 'p'){
+      HS.theirIn = d.on === true; HS.theirAt = performance.now();
+      HS.their = (typeof d.x === 'number' && typeof d.y === 'number') ? { x:Math.min(1, Math.max(0, d.x)), y:Math.min(1, Math.max(0, d.y)) } : null;
+      /* un punto fuera del círculo no cuenta, aunque la otra parte diga lo contrario */
+      if(HS.their && !hsInside(HS.their.x, HS.their.y)) HS.theirIn = false;
+      if(!HS.their) HS.theirIn = false;
+      hsRender();
+    } else if(d.k === 'done'){
+      /* solo se acepta si yo también tengo el pulgar puesto (o lo acabo de soltar por el retardo de red) */
+      if(HS.mineIn || performance.now() - HS.mineLast < 700) hsDone(true);
+    }
+  }
+  function hsDone(remote){
+    if(!HS.on || HS.final) return;
+    HS.final = true; clearInterval(HS.hb); HS.hb = null; cancelAnimationFrame(HS.raf); HS.raf = 0;
+    if(!remote) sendNet({ t:'hs', k:'done' });
+    chatPush('sys', '🤝 Apretón de manos digital completado', true);
+    chimeEnd(); try{ navigator.vibrate && navigator.vibrate([60, 40, 60, 40, 120]); }catch(e){}
+    hsRelease(true); hsRender();
+  }
+  function hsLoop(){
+    HS.raf = 0; if(!HS.on || HS.final) return;
+    const ov = $('#shakeOvl'), now = performance.now();
+    if(!ov.classList.contains('open') || !$('#call').classList.contains('active') || S.waiting){ hsRelease(); hsRender(); return; }   /* ventana cerrada: se suelta el pulgar */
+    if(SP.on && HS.simAt && now >= HS.simAt){   /* la persona «Chat AI» pone su pulgar sobre el círculo */
+      HS.theirIn = true; HS.theirAt = now; HS.their = { x:HS.tx + (Math.random() - .5) * .04, y:HS.ty + (Math.random() - .5) * .04 };
+    }
+    const both = HS.mineIn && hsTheirIn(now);
+    if(both){
+      if(HS.t0 == null){ HS.t0 = now; HS.lastSec = 0; tone(660, .12, 'triangle', .04); try{ navigator.vibrate && navigator.vibrate(25); }catch(e){} }
+      const el = now - HS.t0, sec = Math.floor(el / 1000);
+      if(sec > HS.lastSec){ HS.lastSec = sec; tone(660 + sec * 110, .14, 'triangle', .05); try{ navigator.vibrate && navigator.vibrate(25); }catch(e){} }
+      hsTarget.style.setProperty('--p', Math.min(100, el / HS_MS * 100));
+      $('#hsNum').textContent = Math.max(1, Math.ceil((HS_MS - el) / 1000));
+      if(el >= HS_MS){ hsDone(false); return; }
+    } else if(HS.t0 != null){ HS.t0 = null; HS.lastSec = 0; tone(300, .2, 'sine', .05); }
+    hsRender();
+    HS.raf = requestAnimationFrame(hsLoop);
+  }
+  $('#shakeBtn').addEventListener('click', () => { ovlOpen($('#shakeOvl')); hsRender(); hsKick(); });
+  $('#shakeStart').addEventListener('click', () => hsBegin(false));
+
+  /* ---------- Postal de recuerdo: foto de los dos + mensaje, lista para enviar por WhatsApp ---------- */
+  const CARD = { r:null, l:null, blob:null, t:null };
+  const cardCv = $('#cardCv');
+  function cardSnap(src, mirror){
+    try{
+      const isV = src.tagName === 'VIDEO', w = isV ? src.videoWidth : src.width, h = isV ? src.videoHeight : src.height;
+      if(!w || !h) return null;
+      const c = document.createElement('canvas'); c.width = 480; c.height = 640;
+      const x = c.getContext('2d'), s = Math.max(480 / w, 640 / h), dw = w * s, dh = h * s;
+      x.save(); if(mirror){ x.translate(480, 0); x.scale(-1, 1); }
+      x.drawImage(src, (480 - dw) / 2, (640 - dh) / 2, dw, dh); x.restore();
+      return c;
+    }catch(e){ return null; }
+  }
+  function cardCapture(){
+    const rv = $('#remoteVid');
+    CARD.r = (!rv.classList.contains('hide') && cardSnap(rv)) || cardSnap($('#remote'));
+    CARD.l = cardSnap($('#local'), !S.avatar);
+  }
+  function cardWrap(x, text, w){
+    const out = []; let line = '';
+    const words = [];
+    String(text).split(/\s+/).filter(Boolean).forEach(word => {
+      while(x.measureText(word).width > w && word.length > 1){
+        let k = word.length - 1; while(k > 1 && x.measureText(word.slice(0, k)).width > w) k--;
+        words.push(word.slice(0, k)); word = word.slice(k);
+      }
+      words.push(word);
+    });
+    words.forEach(word => {
+      const test = line ? line + ' ' + word : word;
+      if(line && x.measureText(test).width > w){ out.push(line); line = word; } else line = test;
+    });
+    if(line) out.push(line);
+    return out;
+  }
+  function cardPolaroid(x, img, cx, cy, rot, emoji){
+    const pw = 290, ph = 380, pad = 18, bot = 74, W = pw + pad * 2, H = ph + pad + bot;
+    x.save(); x.translate(cx, cy); x.rotate(rot * Math.PI / 180);
+    x.shadowColor = 'rgba(11,42,64,.28)'; x.shadowBlur = 18; x.shadowOffsetY = 8;
+    x.fillStyle = '#fff'; x.fillRect(-W / 2, -H / 2, W, H);
+    x.shadowColor = 'transparent'; x.shadowBlur = 0; x.shadowOffsetY = 0;
+    if(img) x.drawImage(img, -pw / 2, -H / 2 + pad, pw, ph);
+    else {
+      x.fillStyle = '#dff1ff'; x.fillRect(-pw / 2, -H / 2 + pad, pw, ph);
+      x.font = '90px serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#12354d'; x.fillText('😊', 0, -H / 2 + pad + ph / 2);
+    }
+    x.font = '34px serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#12354d'; x.fillText(emoji, 0, H / 2 - bot / 2);
+    x.fillStyle = 'rgba(137,207,240,.65)'; x.save(); x.rotate(-.05); x.fillRect(-45, -H / 2 - 12, 90, 28); x.restore();
+    x.restore();
+  }
+  function cardDraw(){
+    const x = cardCv.getContext('2d'), W = 1200, H = 800, es = LANG !== 'en';
+    const SER = 'Georgia, "Iowan Old Style", "Times New Roman", serif', INK = '#12354d', DIM = '#4f7f9f';
+    const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#fffdf7'); g.addColorStop(1, '#eaf6ff');
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+    x.strokeStyle = '#89cff0'; x.lineWidth = 10; x.strokeRect(5, 5, W - 10, H - 10);
+    x.setLineDash([14, 10]); x.strokeStyle = '#4fa8d8'; x.lineWidth = 2; x.strokeRect(24, 24, W - 48, H - 48); x.setLineDash([]);
+    x.strokeStyle = '#b9defa'; x.lineWidth = 3; x.beginPath(); x.moveTo(650, 90); x.lineTo(650, H - 90); x.stroke();
+    cardPolaroid(x, CARD.r, 180, 410, -4, '👋');
+    cardPolaroid(x, CARD.l, 455, 400, 3.5, '😊');
+    /* sello y matasellos */
+    x.fillStyle = '#fff'; x.fillRect(1030, 56, 120, 150);
+    x.setLineDash([6, 5]); x.strokeStyle = '#4fa8d8'; x.lineWidth = 3; x.strokeRect(1040, 66, 100, 130); x.setLineDash([]);
+    x.font = '60px serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = INK; x.fillText('💌', 1090, 122);
+    x.font = '700 15px ui-monospace, Menlo, monospace'; x.fillStyle = '#2b7fb0'; x.fillText('ChatApp', 1090, 172);
+    const now = new Date(), loc = es ? 'es-ES' : 'en-GB';
+    x.strokeStyle = 'rgba(18,53,77,.55)'; x.lineWidth = 3;
+    x.beginPath(); x.arc(985, 140, 58, 0, Math.PI * 2); x.stroke();
+    x.beginPath(); x.arc(985, 140, 48, 0, Math.PI * 2); x.stroke();
+    x.fillStyle = 'rgba(18,53,77,.7)'; x.font = '700 20px ui-monospace, Menlo, monospace';
+    x.fillText(now.toLocaleDateString(loc, { day:'2-digit', month:'short' }).replace('.', '').toUpperCase(), 985, 132);
+    x.font = '700 16px ui-monospace, Menlo, monospace'; x.fillText(String(now.getFullYear()), 985, 156);
+    /* encabezado */
+    x.textAlign = 'left'; x.textBaseline = 'alphabetic';
+    x.font = '700 18px ui-monospace, Menlo, monospace'; x.fillStyle = '#2b7fb0';
+    x.fillText(T('Postal de recuerdo').toUpperCase().split('').join(String.fromCharCode(8202)), 690, 112);
+    x.font = 'italic 500 52px ' + SER; x.fillStyle = INK;
+    cardWrap(x, T('Saludos desde ChatApp'), 460).slice(0, 2).forEach((l, i) => x.fillText(l, 690, 280 + i * 60));
+    /* mensaje sobre líneas */
+    const msg = $('#cardText').value.trim() || T('Este rato se queda con nosotros. ✦');
+    x.font = 'italic 29px ' + SER;
+    const lines = cardWrap(x, msg, 460).slice(0, 5);
+    x.strokeStyle = '#b9defa'; x.lineWidth = 2;
+    for(let i = 0; i < 5; i++){ const y = 420 + i * 46 + 10; x.beginPath(); x.moveTo(690, y); x.lineTo(1150, y); x.stroke(); }
+    x.fillStyle = INK; lines.forEach((l, i) => x.fillText(l, 690, 420 + i * 46));
+    /* datos de la charla */
+    const cp = compCalc(); let y = 680;
+    if(cp){ const t = CTITLES.find(z => cp.pct >= z[0]); x.font = '700 24px ' + SER; x.fillStyle = INK; x.fillText('💞 ' + cp.pct + '% · ' + t[2] + ' ' + T(t[1]), 690, y); y += 40; }
+    x.font = '20px ui-monospace, Menlo, monospace'; x.fillStyle = DIM;
+    x.fillText('⏱ ' + fmt(S.elapsed) + ' ' + T('juntos') + ' · ' + now.toLocaleDateString(loc, { day:'numeric', month:'long', year:'numeric' }), 690, y);
+    x.font = '15px ui-monospace, Menlo, monospace'; x.fillText('ChatApp · easylandx.github.io/chatapp', 690, 752);
+    CARD.blob = null; try{ cardCv.toBlob(b => { CARD.blob = b; }, 'image/png'); }catch(e){}
+  }
+  function cardRedraw(){ if($('#cardOvl').classList.contains('open')) cardDraw(); }
+  function cardSave(quiet){
+    if(!CARD.blob){ toast('No se pudo crear la postal'); return false; }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(CARD.blob); a.download = 'chatapp-postal.png';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    if(!quiet) toast('Postal guardada');
+    return true;
+  }
+  function cardSend(){
+    if(!CARD.blob){ toast('No se pudo crear la postal'); return; }
+    const link = RT.roomId ? roomUrl(RT.roomId) : 'https://easylandx.github.io/chatapp/';
+    const txt = T('💌 Una postal de recuerdo desde ChatApp') + ' · ' + link;
+    const file = new File([CARD.blob], 'chatapp-postal.png', { type:'image/png' });
+    /* móvil: la hoja de compartir del sistema lleva la imagen directa a WhatsApp */
+    if(IS_TOUCH && navigator.canShare && navigator.canShare({ files:[file] })){ navigator.share({ files:[file], text:txt }).catch(() => {}); return; }
+    const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent), q = encodeURIComponent(txt);
+    const url = mobile ? 'whatsapp://send?text=' + q : 'https://web.whatsapp.com/send?text=' + q;
+    if(!mobile && navigator.clipboard && window.ClipboardItem){
+      navigator.clipboard.write([new ClipboardItem({ 'image/png': CARD.blob })])
+        .then(() => toast('Postal copiada · pégala en WhatsApp (Ctrl+V)', 6000))
+        .catch(() => { cardSave(true); toast('Postal guardada · adjúntala en WhatsApp', 6000); });
+    } else { cardSave(true); toast('Postal guardada · adjúntala en WhatsApp', 6000); }
+    if(mobile) location.href = url; else window.open(url, '_blank', 'noopener');
+  }
+  $('#cardBtn').addEventListener('click', () => { cardCapture(); ovlOpen($('#cardOvl')); cardDraw(); });
+  $('#cardRetake').addEventListener('click', () => { cardCapture(); cardDraw(); });
+  $('#cardText').addEventListener('input', () => { clearTimeout(CARD.t); CARD.t = setTimeout(cardDraw, 120); });
+  $('#cardWa').addEventListener('click', cardSend);
+  $('#cardSave').addEventListener('click', () => cardSave());
+
+  /* ---------- Controles de llamada ---------- */
+  /* Reiniciar: doble pulsación con confirmación «¿Seguro?» */
+  let resetT;
+  const resetDisarm = () => { const b = $('#resetBtn'); clearTimeout(resetT); b.removeAttribute('data-armed'); b.setAttribute('aria-pressed','false'); setT(b, 'Reiniciar'); };
+  $('#resetBtn').addEventListener('click', e => {
+    const b = e.currentTarget;
+    if(b.hasAttribute('data-armed')){ resetDisarm(); if(S.waiting) cancelWaiting(); else endCall('early');
+      /* damos un instante para avisar a la otra persona y recargamos la página limpia */
+      setTimeout(() => { location.href = 'https://easylandx.github.io/chatapp/'; }, 300); return; }
+    b.setAttribute('data-armed','1'); b.setAttribute('aria-pressed','true'); setT(b, '¿Seguro?');
+    resetT = setTimeout(resetDisarm, 3000);
+  });
+  $('#micBtn').addEventListener('click', e => { S.micOn=!S.micOn; if(S.stream) S.stream.getAudioTracks().forEach(t=>t.enabled=S.micOn); e.target.setAttribute('aria-pressed', !S.micOn); setT(e.target, S.micOn?'Micrófono activo':'Micrófono en pausa'); });
+  $('#benchBtn').addEventListener('click', e => {
+    const stage = $('.stage');
+    const enabled = !stage.classList.contains('same-bench');
+    stage.classList.toggle('same-bench', enabled);
+    e.currentTarget.setAttribute('aria-pressed', String(enabled));
+    setT(e.currentTarget, enabled ? 'Modo normal' : 'Modo Same-Bench');
+    toast(enabled ? 'Vista horizontal activada · lado a lado' : 'Vista estándar activada');
+  });
+
+  $('#camBtn').addEventListener('click', e => {
+    S.camOn=!S.camOn; e.target.setAttribute('aria-pressed', !S.camOn); setT(e.target, S.camOn?'Cámara activa':'Cámara en pausa');
+    if(S.stream) S.stream.getVideoTracks().forEach(t=>t.enabled=S.camOn);
+    $('#pip').classList.toggle('nocam', !S.camOn || !(S.stream && S.stream.getVideoTracks().length));
+    setT($('#pipOff'), S.camOn ? 'Sin cámara · sigues con el chat de texto' : 'Cámara en pausa');
+    camAvatar(!S.camOn); if(S.avatar) $('#pip').classList.remove('nocam');
+  });
+  function camAvatar(on){
+    if(!(S.stream && S.stream.getVideoTracks().length) || !S.out) return;
+    const real = S.stream.getVideoTracks()[0], pc = RT.call && RT.call.peerConnection;
+    if(on && !S.avTrack){ clearInterval(S.dummyT); S.avTrack = dummyTrack(); }
+    const tr = on ? S.avTrack : real; S.avatar = on;
+    S.out.getVideoTracks().forEach(t => S.out.removeTrack(t)); S.out.addTrack(tr);
+    $('#local').srcObject = new MediaStream([tr]);
+    try{ const snd = pc && pc.getSenders().find(x => x.track && x.track.kind === 'video'); if(snd) snd.replaceTrack(tr); }catch(e){}
+    if(!on){ clearInterval(S.dummyT); if(S.avTrack){ S.avTrack.stop(); S.avTrack = null; } }
+  }
+
+  const wait = ms => new Promise(r=>setTimeout(r,ms));
+  window.addEventListener('beforeunload', closeNet);
+
+
+
+  /* ---------- App instalable (PWA) ---------- */
+  (function(){
+    const btn = $('#installBtn');
+    const standalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    let deferred = null;
+
+    if('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')){
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+    if(standalone()) return;                       // ya instalada: sin botón
+
+    window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; btn.classList.remove('hide'); });
+    window.addEventListener('appinstalled', () => { deferred = null; btn.classList.add('hide'); toast('App instalada'); });
+    if(isIOS) btn.classList.remove('hide');         // iOS no ofrece aviso propio: mostramos la guía
+
+    btn.addEventListener('click', async () => {
+      if(deferred){
+        deferred.prompt();
+        try{ await deferred.userChoice; }catch(e){}
+        deferred = null; btn.classList.add('hide');
+      } else if(isIOS){
+        toast('Para instalar: toca Compartir y luego «Añadir a pantalla de inicio»', 6000);
+      } else {
+        toast('Para instalar: abre el menú del navegador y elige «Instalar app» o «Añadir a pantalla de inicio»', 6000);
+      }
+    });
+  })();
+
+  /* About popup */
+  (() => {
+    const ovl = $('#aboutOvl'), openBtn = $('#aboutBtn'), closeBtn = $('#aboutClose');
+    let last = null;
+    const open = () => { last = document.activeElement; ovl.classList.add('open'); ovl.setAttribute('aria-hidden','false'); closeBtn.focus(); };
+    const close = () => { ovl.classList.remove('open'); ovl.setAttribute('aria-hidden','true'); if(last) last.focus(); };
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    ovl.addEventListener('click', e => { if(e.target === ovl) close(); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape' && ovl.classList.contains('open')) close(); });
+  })();
+
+  /* Inglés por defecto */
+  LANG = 'en'; applyLang();
+})();
+</script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C32H6BV2R3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C32H6BV2R3');
+</script>
+
+
+</body>
+</html>

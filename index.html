@@ -884,9 +884,12 @@
   }
   function buildChannels(){
     channelEls.forEach(el=>el.remove());channelEls=[];
+    const okNums=[];
+    for(let n=1;n<=channels.length;n++){const t=String(n);if(!t.includes("4")&&!t.includes("13"))okNums.push(n);}
+    current=okNums.length?okNums[Math.floor(Math.random()*okNums.length)]-1:0;
     channels.forEach((ch,i)=>{
       const div=document.createElement("div");
-      div.className="xtv-ch"+(i===0?" active":"");
+      div.className="xtv-ch"+(i===current?" active":"");
       div.style.background=ch.bg;
       div.innerHTML=`<div class="xtv-emoji">${esc(ch.emoji)}</div><div class="xtv-title">${esc(ch.title)}</div><div class="xtv-desc">${esc(ch.desc)}</div><div class="xtv-hint">Clic para abrir →</div>`;
       div.addEventListener("click",()=>window.open(ch.url,"_blank"));

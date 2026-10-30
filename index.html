@@ -510,6 +510,30 @@
   document.head.appendChild(st);
 })();
 </script>
+
+<style>
+.xtv-wrap{display:flex;justify-content:center;margin:0 auto 36px;padding:12px 0}
+.xtv{width:min(440px,100%);background:linear-gradient(160deg,#2a2a32,#1a1a20);border-radius:20px;padding:16px 16px 10px;box-shadow:0 0 0 4px #111,0 16px 36px rgba(0,0,0,.45),inset 0 2px 0 rgba(255,255,255,.08);position:relative;color:#fff;text-align:left}
+.xtv-bezel{background:#000;border-radius:10px;padding:8px;box-shadow:inset 0 0 20px rgba(0,0,0,.9)}
+.xtv-screen{position:relative;width:100%;aspect-ratio:16/10;background:#111;border-radius:6px;overflow:hidden;cursor:pointer}
+.xtv-ch{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1rem;color:#fff;opacity:0;pointer-events:none;transition:opacity .1s linear}
+.xtv-ch.active{opacity:1;pointer-events:auto}
+.xtv-emoji{font-size:clamp(2.2rem,9vw,3.4rem);margin-bottom:.4rem;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))}
+.xtv-title{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:clamp(1rem,4.6vw,1.35rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.35rem;max-width:92%;line-height:1.15}
+.xtv-desc{font-size:clamp(.72rem,3vw,.85rem);opacity:.92;max-width:34ch;line-height:1.4}
+.xtv-hint{position:absolute;bottom:.6rem;font-size:.68rem;opacity:.7;letter-spacing:.04em}
+.xtv-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1a2e;color:#ccc;z-index:30;font-size:.9rem;gap:.5rem;text-align:center;padding:1rem}
+.xtv-loading.hidden{display:none}
+.xtv-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:0 4px;color:#aaa;font-size:.72rem;gap:8px}
+.xtv-brand{font-weight:600;color:#ccc;letter-spacing:.06em;min-width:80px}
+.xtv-controls{display:flex;align-items:center;gap:10px}
+.xtv-btn{width:32px;height:32px;border-radius:50%;border:none;background:linear-gradient(145deg,#3a3a44,#222228);color:#eee;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 0 #111,inset 0 1px 0 rgba(255,255,255,.12);transition:transform .1s,box-shadow .1s;user-select:none;padding:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.xtv-btn:active{transform:translateY(2px);box-shadow:0 1px 0 #111}
+.xtv-btn:disabled{opacity:.4;cursor:not-allowed}
+.xtv-num{font-variant-numeric:tabular-nums;font-weight:600;color:#ddd;min-width:84px;text-align:center;letter-spacing:.04em}
+.xtv-power{width:9px;height:9px;min-width:0;background:#2ecc71;border-radius:1px;box-shadow:0 0 6px #2ecc71,inset 0 0 2px rgba(255,255,255,.5);flex:0 0 9px}
+.xtv-pw{min-width:80px;display:flex;justify-content:flex-end}
+</style>
 </head>
 <body>
 
@@ -572,6 +596,27 @@
 
   <section class="section-purple-gold" id="how">
     <div class="wrap">
+      <div class="xtv-wrap">
+        <div class="xtv" id="xtv">
+          <div class="xtv-bezel">
+            <div class="xtv-screen" id="xtvScreen">
+              <div class="xtv-loading" id="xtvLoading">
+                <div>📡 Sintonizando EasyLandX…</div>
+                <div style="font-size:.75rem;opacity:.7">Cargando todos los canales</div>
+              </div>
+            </div>
+          </div>
+          <div class="xtv-foot">
+            <span class="xtv-brand">EASYLANDX TV</span>
+            <div class="xtv-controls">
+              <button class="xtv-btn" id="xtvPrev" type="button" title="Canal anterior" disabled>◀</button>
+              <span class="xtv-num" id="xtvNum">—</span>
+              <button class="xtv-btn" id="xtvNext" type="button" title="Canal siguiente" disabled>▶</button>
+            </div>
+            <div class="xtv-pw"><div class="xtv-power"></div></div>
+          </div>
+        </div>
+      </div>
       <p>Creamos páginas de alta conversión que transforman visitantes en clientes.</p>
       
       <div class="steps-grid">
@@ -779,6 +824,68 @@
   try{ var l=parseInt(localStorage.getItem(KEY),10); i=isNaN(l)?0:(l+1)%P.length; localStorage.setItem(KEY,String(i)); }catch(e){ i=Math.floor(Math.random()*P.length); }
   var a=document.getElementById('hero-promo'), img=document.getElementById('hero-promo-pic'), p=P[i];
   a.href=p.href; img.src=p.src; img.alt=p.alt; img.width=p.w; img.height=p.h;
+})();
+</script>
+
+<script>
+(function(){
+  const INTERVAL=8000;
+  const screen=document.getElementById("xtvScreen"),loading=document.getElementById("xtvLoading"),
+        chNum=document.getElementById("xtvNum"),prevBtn=document.getElementById("xtvPrev"),nextBtn=document.getElementById("xtvNext");
+  let channels=[],current=0,changing=false,autoTimer=null,channelEls=[];
+  function colorFromString(str){
+    let hash=0;
+    for(let i=0;i<str.length;i++){hash=str.charCodeAt(i)+((hash<<5)-hash);}
+    const h1=Math.abs(hash)%360,h2=(h1+40+(Math.abs(hash>>8)%60))%360,s=55+(Math.abs(hash>>16)%25),
+          l1=28+(Math.abs(hash>>4)%18),l2=38+(Math.abs(hash>>12)%20);
+    return `linear-gradient(145deg, hsl(${h1},${s}%,${l1}%), hsl(${h2},${s}%,${l2}%))`;
+  }
+  function esc(t){const d=document.createElement("div");d.textContent=t;return d.innerHTML;}
+  async function loadAllChannels(){
+    try{
+      const res=await fetch("https://raw.githubusercontent.com/easylandx/all/main/index.html");
+      const doc=new DOMParser().parseFromString(await res.text(),"text/html");
+      channels=Array.from(doc.querySelectorAll("a.card")).map(card=>{
+        const title=card.querySelector("h3")?.textContent?.trim()||"Untitled";
+        return {emoji:card.querySelector(".card-emoji")?.textContent?.trim()||"📺",title,
+          desc:card.querySelector("p")?.textContent?.trim()||"",url:card.getAttribute("href")||"#",bg:colorFromString(title)};
+      });
+      channels=channels.slice(0,427);
+      if(channels.length) channels.push(Object.assign({},channels[Math.floor(Math.random()*channels.length)]));
+      if(!channels.length) throw new Error("No cards found");
+      buildChannels();
+    }catch(err){
+      console.error(err);
+      loading.innerHTML='<div>⚠️ No se pudieron cargar los canales</div><div style="font-size:.75rem;opacity:.7">Revisa tu conexión e inténtalo de nuevo</div>';
+    }
+  }
+  function buildChannels(){
+    channelEls.forEach(el=>el.remove());channelEls=[];
+    channels.forEach((ch,i)=>{
+      const div=document.createElement("div");
+      div.className="xtv-ch"+(i===0?" active":"");
+      div.style.background=ch.bg;
+      div.innerHTML=`<div class="xtv-emoji">${esc(ch.emoji)}</div><div class="xtv-title">${esc(ch.title)}</div><div class="xtv-desc">${esc(ch.desc)}</div><div class="xtv-hint">Clic para abrir →</div>`;
+      div.addEventListener("click",()=>window.open(ch.url,"_blank"));
+      screen.appendChild(div);channelEls.push(div);
+    });
+    loading.classList.add("hidden");
+    prevBtn.disabled=false;nextBtn.disabled=false;
+    updateDisplay();resetTimer();
+  }
+  function updateDisplay(){chNum.textContent=`CH ${String(current+1).padStart(3,"0")} / ${channels.length}`;}
+  function changeChannel(dir=1){
+    if(!channels.length)return;
+    channelEls[current].classList.remove("active");
+    current=(current+dir+channels.length)%channels.length;
+    channelEls[current].classList.add("active");
+    updateDisplay();
+    resetTimer();
+  }
+  function resetTimer(){clearInterval(autoTimer);autoTimer=setInterval(()=>changeChannel(1),INTERVAL);}
+  prevBtn.addEventListener("click",()=>changeChannel(-1));
+  nextBtn.addEventListener("click",()=>changeChannel(1));
+  loadAllChannels();
 })();
 </script>
 </body>
